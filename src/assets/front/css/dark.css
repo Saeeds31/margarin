@@ -1,0 +1,311 @@
+.darkMode #homeSection #aboutUsSection #text h1,
+.darkMode #homeSection #aboutUsSection #text h3,
+.darkMode #homeSection #aboutUsSection #text p,
+.darkMode .blackColor06,
+.darkMode #text div h1,
+.darkMode #text div h4,
+.darkMode #router span,
+.darkMode .productCart .product h1,
+.darkMode .productCart .product h4,
+.darkMode #homeSection #weeklyCookingSection .cart .body .header .titles h1,
+.darkMode #homeSection #weeklyCookingSection .cart .body p,
+.darkMode .kitchen,
+.darkMode #homeSection #certificatesSlider .cart .content .titles .contentTitle .footerSection h4,
+.darkMode #homeSection #certificatesSlider .cart .content .certificateText,
+.darkMode #homeSection #certificatesSlider .cart .content .date p span,
+.darkMode #frontSection #footer #footerSection .footerTitle,
+.darkMode #frontSection #footer #footerSection ul li a,
+.darkMode #frontSection #footer #footerSection #aboutUs p,
+.darkMode #frontSection #footer #footerSection #aboutUs span,
+.darkMode #Header #mainContent #topSection nav #topMenu li a,
+.darkMode #Header #mainContent #topSection nav #topMenu li i,
+.darkMode #languageSwitcher,
+.darkMode #Header #mainContent #bottomSection nav #bottomMenu li a,
+.darkMode .blackColor04,
+.darkMode #contactUsSection #contactUsForm textarea,
+.darkMode #contactUsSection #contactUsForm #formTop .contactUsInput input,
+.darkMode #loginRegisterSection #gotoHome span#text,
+.darkMode #loginRegisterSection #loginRegisterOption a,
+.darkMode .multiselect__placeholder,
+.darkMode #blogDetailSection #introductionSection #headerBlog .headerBlogOption div p span:first-child,
+.darkMode #blogDetailSection #introductionSection #headerBlog .headerBlogOption div p span:last-child,
+.darkMode #blogDetailSection #tagsSection #tags a,
+.darkMode #footerLinkRouter a,
+.darkMode #loginRegisterSection #content h1,
+.darkMode #loginRegisterSection #content p,
+.darkMode #blogDetailSection #relatedBlogs .blogCartMobile .innerContent .content h1,
+.darkMode #cooperationSection #buttons #backStep span,
+.darkMode #introductionSection #content div h3,
+.darkMode #aboutSection #sliderbox #sliderContent .mainImage h3,
+.darkMode .collapseSection .card .card-header button span,
+.darkMode #blogDetailSection .blogDescription,
+.darkMode .ckEditorOutput,
+.darkMode .blackColor08 {
+    color: white !important;
+}
+
+.darkMode #productDetailSection #introductionSection #content #imageBox .mainProductImage,
+.darkMode #productDetailSection #introductionSection .imageColumn .chartImage {
+    background: #9f9f9f;
+}
+
+.darkMode #faqSection #faq #questions #formBottom textarea {
+    background-color: #3e3e3e;
+}
+
+.darkMode #cooperationSection .multiselect__single {
+    background-color: white;
+}
+
+.darkMode #faqSection #faq #questions #searchBox input {
+    background: #4e4e4e;
+}
+
+.darkMode .options button svg path {
+    fill: #f7941e;
+    opacity: 1;
+}
+
+
+/* .darkMode .simpleCooperationInput,
+.darkMode .selectCooperationInput,
+.darkMode #selectBirthDay,
+.darkMode .iconCooperationInput,
+.darkMode .largeInput,
+.darkMode #skil,
+.darkMode #newSkill,
+.darkMode #descriptionBox {
+    background: #767676;
+    box-shadow: 0 0 40px #0000006b;
+}
+.darkMode .simpleCooperationInput input{
+    background: #767676;
+
+} */
+
+.darkMode .darkMode #introductionSection #content .innerContent {
+    background-color: #3e3e3e
+}
+
+.darkMode #blogDetailSection #relatedBlogs .slick-slider .slick-dots {
+    background: #202020;
+}
+
+.darkMode #blogDetailSection #relatedBlogs .blogCartMobile {
+    background-color: #202020;
+    box-shadow: 0 0 40px #000000a3;
+}
+
+.darkMode #footerLinkRouter a svg circle {
+    fill: #c9c9c9;
+}
+
+.darkMode #introductionSection #content .innerContent {
+    fill: #3e3e3e;
+}
+
+.darkMode #mobileMenu {
+    background: #323232
+}
+
+.darkMode .commentForm #commentFormTop input,
+.darkMode .commentForm textarea {
+    background: transparent;
+    color: white;
+}
+
+.darkMode #filterBox .multiselect .multiselect__tags {
+    border: 3px solid #b2b2b2;
+}
+
+.darkMode .cookingCart {
+    background-color: #646464;
+}
+
+.darkMode .titleBox .endLine {
+    background-color: #838383 !important;
+}
+
+.darkMode .commentsBox .comment .headerComment .answerCommentButton {
+    opacity: 1;
+    background: #b11015
+}
+
+.darkMode .commentsBox .comment .mainComment,
+.darkMode .commentsBox .comment .answerComment {
+    background-color: #8b8b8b;
+}
+
+.darkMode #blogDetailSection #tagsSection {
+    background: #686868
+}
+
+.darkMode #blogDetailSection #tagsSection #tags a {
+    background: #4c4c4c;
+}
+
+.darkMode .multiselect__input,
+.darkMode .multiselect__single {
+    background: #b2b2b2
+}
+
+.darkMode #healthAmbassador {
+    background-color: white
+}
+
+.darkMode #filterBox .multiselect .multiselect__tags {
+    border: 3px solid #b2b2b2 !important;
+}
+
+.darkMode #productsSection #products .productCart .product:hover a {
+    background-color: transparent
+}
+
+.darkMode #introductionSection #content .innerContent {
+    background: #3e3e3e;
+}
+
+.darkMode #productsSection #products .productCart a {
+    background: transparent
+}
+
+.darkMode #healthAmbassador #goodFamily #content h3,
+.darkMode #healthAmbassador #goodFamily #content h1,
+.darkMode #healthAmbassador #goodFamily #content p,
+.darkMode #healthAmbassador #application #content #routes a div span:first-child,
+.darkMode #healthAmbassador #application #content #routes a div span:last-child,
+.darkMode #healthAmbassador #statisticsSection .cartStatistics #content h1,
+.darkMode #healthAmbassador #statisticsSection .cartStatistics #content h3,
+.darkMode #healthAmbassador #blogsSection h1,
+.darkMode #healthAmbassador #blogsSection h2,
+.darkMode #healthAmbassador .footer #mainFooter .width40 p {
+    color: black !important
+}
+
+.darkMode .collapseSection .card {
+    background-color: #5c5c5c;
+}
+
+.darkMode #contactUsSection #contactUsForm #formTop .contactUsInput,
+.darkMode #contactUsSection #contactUsForm textarea {
+    border: 4px solid #606060
+}
+
+.darkMode #contactUsSection #contactUsForm #formTop .contactUsInput input {
+    background-color: transparent;
+}
+
+.darkMode #aboutSection #sliderbox p,
+.darkMode .slotElements {
+    color: white;
+    opacity: 0.6;
+}
+
+.darkMode #aboutSection #statisticsSection #content #detail a {
+    background: linear-gradient(148deg, black, #000054)
+}
+
+.darkMode #aboutSection #statisticsSection #racemeSection .raceme svg g {
+    opacity: 1;
+}
+
+.darkMode #Header #mainContent #bottomSection #buttons .searchSvg circle {
+    opacity: 1;
+}
+
+.darkMode #aboutSection #statisticsSection #racemeSection .raceme svg g path,
+.darkMode #Header #mainContent #bottomSection #buttons .searchSvg circle {
+    fill: #f7941e;
+}
+
+.darkMode #Header #mainContent #topSection #verticalLine {
+    background: #ffffff2e
+}
+
+.darkMode #frontSection #footer #footerSection #mapSection #map {
+    background: #efefef
+}
+
+.darkMode #frontSection #footer #footerSection #buttons button {
+    background-color: #ffffff61
+}
+
+.darkMode #frontSection #footer #footerSection #buttons button span {
+    opacity: 1;
+}
+
+.darkMode #frontSection #footer #footerSection .footerTitle {
+    border-bottom: 3px solid #ffffff54;
+}
+
+.darkMode #frontSection #footer {
+    background: #282828
+}
+
+.darkMode #homeSection #certificatesSlider .cart .content .titles .contentTitle .footerSection .verticalBorder {
+    background-color: white !important;
+    opacity: 0.3;
+}
+
+.darkMode #homeSection #articles #sliderSection .sliderItem .smallCart,
+.darkMode .blogCart {
+    background: #efefefc9
+}
+
+.darkMode #homeSection,
+.darkMode #frontSection {
+    background-color: #3e3e3e !important;
+}
+
+.darkMode #sectionHeader #router a svg circle,
+.darkMode #homeSection #certificatesSlider .cart .content .date g,
+.darkMode div#currentPathSection .arrow path {
+    fill: #efefef;
+}
+
+.darkMode #doubleLine div {
+    opacity: 0.3 !important;
+    background-color: #ffffff !important;
+}
+
+.darkMode #searchBox input {
+    background: #686868;
+    color: white
+}
+
+.darkMode #contactUsSection .mainContent .contactCart .footerSvg a svg circle {
+    fill: white;
+}
+
+.darkMode #contactUsSection #contactUsForm textarea {
+    background: transparent;
+}
+
+.darkMode .contactCart .headerSvg circle {
+    fill: #9a99abc4;
+}
+
+.darkMode #homeSection #aboutUsSection .aboutCart,
+.darkMode .contactCart {
+    background: linear-gradient(243deg, black, #03035c) !important
+}
+
+.darkMode #filterBox .multiselect .multiselect__tags {
+    background: #b2b2b2;
+}
+
+.darkMode .catalogue .content {
+    background-color: unset;
+}
+
+.darkMode .productCart .product {
+    border: 5px solid #ebebeb8c;
+}
+
+.darkMode .productCart .product button {
+    background: transparent;
+}
+
+.darkMode #homeSection #weblogsSection #multiSlider .cart .content {
+    background: #adadad
+}

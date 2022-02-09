@@ -1,0 +1,358 @@
+<template>
+  <div id="statisticsSection">
+    <div
+      data-aos="zoom-in-up"
+      data-aos-duration="1000"
+      data-aos-once="true"
+      id="racemeSection"
+      class="width80 margin-auto d-flex justify-content-between"
+    >
+      <raceme v-for="(item, index) in racemeItems" :key="index" :data="item" />
+    </div>
+    <div
+      id="content"
+     
+      class="width90 d-flex justify-content-between"
+    >
+      <img       data-aos="fade-right"
+      data-aos-duration="1000"
+      data-aos-once="true" class="hiddenInMobile" :src="chartImage" alt="" />
+      <div id="detail" class="d-flex flex-direction-column align-items-end">
+        <h1 data-aos="fade-left"
+      data-aos-duration="1000"
+      data-aos-once="true" class="blackColor06">{{ $cookie.get('ltrTheme')?aboutData.title_en:aboutData.title_fa }}</h1>
+        <h3  data-aos="fade-left"
+      data-aos-duration="1500"
+      data-aos-once="true"  class="blackColor06">{{ $cookie.get('ltrTheme')?aboutData.summary_en:aboutData.summary_fa }}</h3>
+        <img  data-aos="fade-left"
+      data-aos-duration="1500"
+      data-aos-once="true"  class="showInMobile" :src="chartImage" :alt="aboutData.summary_fa" />
+
+        <p  data-aos="fade-left"
+      data-aos-duration="2000"
+      data-aos-once="true"  class="blackColor06">{{text }}</p>
+        <router-link  data-aos="fade-left"
+      data-aos-duration="2000"
+      data-aos-once="true"  class="blackColor06" to="/products">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="16"
+            height="18"
+            viewBox="0 0 20 18"
+          >
+            <image
+              id="Path_79_copy"
+              data-name="Path 79 copy"
+              width="20"
+              height="18"
+              opacity="1"
+              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAABHNCSVQICAgIfAhkiAAAAT5JREFUOE+l1M9KQkEUx/HGFM0CCQQNchESBb1JvUoQKoIuJC0XEkF7E59IXyAIooIiAjctTLPb99gxMO3OnduFHyPz5+OZ6zjG87wVv8cYk2X8kHld34k6aPxAsAzzaiRG+sxt29A/QbA0i+uKfdA2AZ9CgWCbLGyQOBGsBfZgw2R8ocJf2IQ5F2B3QbAFECxF5xlJEGdsDgTbkPdE1sgnuaSy26CVzeZNt6zYOZ1Jxa7ov3HFphUSqUy2ua7YPe1bGGwG7vGhoPhQ319Y7/tXZssHCMckolU+0spxcX5+jg3oPqtPFJVK63zZwFWcO4eguwBFRd9pT13RZQc7D1Qiq2REGqCvQStd+l+m0h2AsqJjOQWgL0FQv8shB1AhUSKoXA7PNtR2fW0DVBXtAV7/C5TFbH+L5gisY8Nk/AuevIxjAHKE/AAAAABJRU5ErkJggg=="
+            />
+          </svg>
+          {{$cookie.get('ltrTheme')?"Margarin Products":'محصولات مارگارین'}}</router-link
+        >
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import raceme from "@/components/front/aboutUs/statistics/raceme.vue";
+export default {
+  components: {
+    raceme
+  },
+  props:{
+    text:String,
+    racemeItems:Array,
+    chartImage:String
+  },
+  data() {
+    return {
+    
+      aboutData: {
+        title_en:"In the language of statistics and figures",
+        title_fa: "بـــــه زبـــــان آمـــــار و ارقـــــام",
+        summary_en: "Examine the status of the margarine group",
+        summary_fa: "بـــررسی وضـــعیت گـــروه مارگاریـــن",
+      }
+    };
+  },
+  mounted() {
+    this.setStyle();
+    window.addEventListener("resize", this.setStyle);
+  },
+  beforeDestroy() {
+    window.removeEventListener("resize", this.setStyle);
+  },
+  methods: {
+    setStyle() {
+      if (window.innerWidth > 1000) {
+        if (window.innerWidth > 1495) {
+          this.$root.setProportionStyle(
+            "width",
+            "%",
+            "#aboutSection #statisticsSection #racemeSection",
+            1920,
+            70,
+            1496,
+            80
+          );
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #statisticsSection #content #detail h1",
+            1920,
+            52,
+            1496,
+            39
+          );
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #statisticsSection #content #detail h3",
+            1920,
+            32,
+            1496,
+            25
+          );
+
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #statisticsSection #content #detail p",
+            1920,
+            18,
+            1496,
+            13
+          );
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #statisticsSection #content #detail a",
+            1920,
+            24,
+            1496,
+            14
+          );
+
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #awardsSection .sliderItem .content h1",
+            1920,
+            48,
+            1496,
+            39
+          );
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #awardsSection .sliderItem .content h3",
+            1920,
+            28,
+            1496,
+            25
+          );
+
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #awardsSection .sliderItem .content p",
+            1920,
+            18,
+            1496,
+            14
+          );
+
+          this.$root.setProportionStyle(
+            "width",
+            "%",
+            "#aboutSection #awardsSection .sliderItem .content .dateBox",
+            1920,
+            38,
+            1496,
+            45
+          );
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #awardsSection .sliderItem .content .dateBox p span",
+            1920,
+            16,
+            1496,
+            14
+          );
+        } else {
+          // ! 1495=>1100
+          this.$root.setProportionStyle(
+            "width",
+            "%",
+            "#aboutSection #statisticsSection #racemeSection",
+            1496,
+            80,
+            1100,
+            80
+          );
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #statisticsSection #content #detail h1",
+            1496,
+            39,
+            1100,
+            39
+          );
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #statisticsSection #content #detail h3",
+            1496,
+            25,
+            1100,
+            25
+          );
+
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #statisticsSection #content #detail p",
+            1496,
+            13,
+            1100,
+            13
+          );
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #statisticsSection #content #detail a",
+            1496,
+            14,
+            1100,
+            14
+          );
+
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #awardsSection .sliderItem .content h1",
+            1496,
+            39,
+            1100,
+            32
+          );
+
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #awardsSection .sliderItem .content h3",
+            1496,
+            25,
+            1100,
+            18
+          );
+
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #awardsSection .sliderItem .content p",
+            1496,
+            14,
+            1100,
+            11
+          );
+
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#aboutSection #awardsSection .sliderItem .content .dateBox p span",
+            1496,
+            14,
+            1100,
+            9
+          );
+        }
+        this.$root.unsetInlineStyle(
+          "width",
+          "#aboutSection #statisticsSection #content #detail a"
+        );
+      } else {
+        // unset desktop config
+        this.$root.unsetInlineStyle(
+          "width",
+          "#aboutSection #statisticsSection #racemeSection"
+        );
+        this.$root.unsetInlineStyle(
+          "font-size",
+          "#aboutSection #statisticsSection #content #detail p"
+        );
+        this.$root.unsetInlineStyle(
+          "font-size",
+          "#aboutSection #awardsSection .sliderItem .content h1"
+        );
+        this.$root.unsetInlineStyle(
+          "font-size",
+          "#aboutSection #awardsSection .sliderItem .content h3"
+        );
+        this.$root.unsetInlineStyle(
+          "font-size",
+          "#aboutSection #awardsSection .sliderItem .content p"
+        );
+        this.$root.unsetInlineStyle(
+          "width",
+          "#aboutSection #awardsSection .sliderItem .content .dateBox"
+        );
+        this.$root.unsetInlineStyle(
+          "font-size",
+          "#aboutSection #awardsSection .sliderItem .content .dateBox p span"
+        );
+        this.$root.unsetInlineStyle(
+          "font-size",
+          "#aboutSection #statisticsSection #content #detail a"
+        );
+
+        this.$root.setProportionStyle(
+          "font-size",
+          "px",
+          "#aboutSection #statisticsSection #content #detail h1",
+          999,
+          39,
+          375,
+          24
+        );
+
+        this.$root.setProportionStyle(
+          "font-size",
+          "px",
+          "#aboutSection #statisticsSection #content #detail h3",
+          999,
+          25,
+          375,
+          16
+        );
+
+        this.$root.setProportionStyle(
+          "width",
+          "%",
+          "#aboutSection #statisticsSection #content #detail a",
+          999,
+          17,
+          375,
+          77
+        );
+      }
+    }
+  }
+};
+</script>
+<style>
+@media only screen and (max-width: 1280px) and (min-width: 1000px) {
+  #aboutSection #statisticsSection #racemeSection {
+    flex-wrap: wrap;
+    justify-content: center !important;
+  }
+  #aboutSection #statisticsSection #racemeSection .raceme {
+    margin: 10px;
+  }
+}
+</style>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30" height="30" viewBox="0 0 30 30">
+  <g id="Icon" transform="translate(-407 -1191)">
+    <g id="Rounded_Rectangle_38" data-name="Rounded Rectangle 38" transform="translate(407 1191)" fill="#f7941e" stroke="#f1f1f1" stroke-width="2">
+      <rect width="30" height="30" rx="10" stroke="none"/>
+      <rect x="1" y="1" width="28" height="28" rx="9" fill="none"/>
+    </g>
+    <image id="_" data-name="+" width="10" height="2" transform="translate(417 1205)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAACCAYAAABhYU3QAAAABHNCSVQICAgIfAhkiAAAABJJREFUCFtj/A8EDEQARmIVAgDXBAf7U7iGLgAAAABJRU5ErkJggg=="/>
+  </g>
+</svg>

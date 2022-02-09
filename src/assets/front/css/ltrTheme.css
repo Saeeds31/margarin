@@ -1,0 +1,376 @@
+    .ltrTheme #homeSection #sliderSection #sliderContent #headerContent,
+    .ltrTheme #homeSection #sliderSection #sliderContent #headerContent #buttons,
+    .ltrTheme #sectionHeader,
+    .ltrTheme #homeSection #aboutUsSection,
+    .ltrTheme .productCart .product a,
+    .ltrTheme #sectionHeader #text,
+    .ltrTheme #homeSection #weeklyCookingSection .cart .body .header,
+    .ltrTheme #homeSection #weeklyCookingSection .cart .body .buttons,
+    .ltrTheme .kitchen,
+    .ltrTheme #homeSection #articles #sliderSection .sliderItem .smallCart .innerContent .content .articleDate,
+    .ltrTheme .blogCart .innerContent .content .articleDate .commentAndDate .comment,
+    .ltrTheme .blogCart .innerContent .content .articleDate .commentAndDate .date,
+    .ltrTheme #homeSection #certificatesSlider .cart,
+    .ltrTheme #homeSection #certificatesSlider .cart .content .titles,
+    .ltrTheme #homeSection #certificatesSlider .cart .content .titles .contentTitle .footerSection,
+    .ltrTheme #homeSection #certificatesSlider .cart .content .date,
+    .ltrTheme #aboutSection #awardsSection .sliderItem .content .dateBox,
+    .ltrTheme .collapseSection .card .card-header button,
+    .ltrTheme #contactUsSection #introductionSection .slotElements .contactWay,
+    .ltrTheme #contactUsSection #contactUsForm #formTop .contactUsInput,
+    .ltrTheme #blogDetailSection #tagsSection,
+    .ltrTheme #blogDetailSection #tagsSection .tagsTitles,
+    .ltrTheme #blogDetailSection #commentBox .titleBox,
+    .ltrTheme #blogDetailSection #commentBox .titleBox .content,
+    .ltrTheme #contactUsSection #contactUsForm #formTop,
+    .ltrTheme #blogDetailSection #commentBox .commentForm #commentFormTop,
+    .ltrTheme .cookingCart .detail,
+    .ltrTheme #blogDetailSection #introductionSection #headerBlog .headerBlogOption div,
+    .ltrTheme #faqSection #faq,
+    .ltrTheme #faqSection #faq #categories .selectButton,
+    .ltrTheme #productDetailSection #introductionSection .imageColumn .mainOption .options button {
+        flex-direction: row-reverse !important;
+    }
+    
+    .ltrTheme #homeSection #aboutUsSection #text,
+    .ltrTheme #homeSection #aboutUsSection .aboutCart,
+    .ltrTheme #sectionHeader,
+    .ltrTheme #sectionHeader #text div,
+    .ltrTheme .productCart .product .content,
+    .ltrTheme #homeSection #weeklyCookingSection .cart .body,
+    .ltrTheme #homeSection #weeklyCookingSection .cart .body .header .titles,
+    .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content,
+    .ltrTheme #homeSection #certificatesSlider .cart .content,
+    .ltrTheme #aboutSection #awardsSection .sliderItem .content,
+    .ltrTheme .collapseSection .card,
+    .ltrTheme #contactUsSection .mainContent .contactCart,
+    .ltrTheme .contactCart p,
+    .ltrTheme #contactUsSection #contactUsForm #formTop .contactUsInput p,
+    .ltrTheme #blogDetailSection #tagsSection #staticText,
+    .ltrTheme .cookingCart .image .chef,
+    .ltrTheme #cookingsSection #cookings .cookingCart,
+    .ltrTheme #faqSection #faq #categories .selectButton p,
+    .ltrTheme #productDetailSection #introductionSection .imageColumn .mainOption .options,
+    .ltrTheme #videoSection #content,
+    .ltrTheme #introductionSection #content .innerContent,
+    .ltrTheme #aboutSection #statisticsSection #content #detail {
+        align-items: flex-start !important
+    }
+    
+    .ltrTheme #homeSection #weeklyCookingSection .cart .body .loading,
+    .ltrTheme #homeSection #weblogsSection #singleSlider .cart .content p,
+    .ltrTheme .blogCart .innerContent .content .articleDate .commentAndDate,
+    .ltrTheme #blogsSection #filterBox #yourFilter {
+        justify-content: flex-start !important;
+    }
+    
+    .ltrTheme #homeSection #aboutUsSection #text h3,
+    .ltrTheme #homeSection #aboutUsSection .aboutCart h3,
+    .ltrTheme div h1,
+    .ltrTheme #text div h4,
+    .ltrTheme #homeSection #weeklyCookingSection .cart .body .description,
+    .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content h1,
+    .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content h1,
+    .ltrTheme #homeSection #weblogsSection #singleSlider .cart .content h1,
+    .ltrTheme #homeSection #weblogsSection #singleSlider .cart .content h3,
+    .ltrTheme #homeSection #articles #sliderSection .sliderItem .smallCart .innerContent .content p,
+    .ltrTheme .blogCart .innerContent .content p,
+    .ltrTheme #homeSection #articles #sliderSection .sliderItem .smallCart .innerContent .content h1,
+    .ltrTheme .blogCart .innerContent .content h1,
+    .ltrTheme #homeSection #certificatesSlider .cart .content .certificateText,
+    .ltrTheme #aboutSection #awardsSection .sliderItem .content p,
+    .ltrTheme #contactUsSection #contactUsForm #formTop .contactUsInput input,
+    .ltrTheme #contactUsSection #contactUsForm textarea,
+    .ltrTheme #searchBox input,
+    .ltrTheme .multiselect__single,
+    .ltrTheme #blogDetailSection #commentBox .commentForm #commentFormTop input,
+    .ltrTheme #introductionSection #content div h1,
+    .ltrTheme #introductionSection #content div h3 {
+        text-align: left;
+    }
+    
+    .ltrTheme .contactCart .footerDetail {
+        text-align: left !important
+    }
+    
+    .ltrTheme #homeSection #aboutUsSection #text p,
+    .ltrTheme .medium14,
+    .ltrTheme #aboutSection #statisticsSection #content #detail p,
+    .ltrTheme #productDetailSection .productDescription p,
+    .ltrTheme #blogDetailSection .blogDescription,
+    .ltrTheme #faqSection #faq #questions #collapseBox .collapseSection .card .card-header button span,
+    .ltrTheme #homeSection #articles #sliderSection .sliderItem .smallCart .innerContent .content h1,
+    .ltrTheme .blogCart .innerContent .content h1,
+    .ltrTheme .blogCart .innerContent .content .articleDate .commentAndDate .comment p span:last-child,
+    .ltrTheme #productDetailSection #introductionSection .imageColumn .commentShare button span .ltrTheme #faqSection #faq #questions #searchBox input,
+    .ltrTheme #blogDetailSection #tagsSection #tags a,
+    .ltrTheme #aboutSection #awardsSection .sliderItem .content p,
+    .ltrTheme #blogsSection .slotElements,
+    .ltrTheme #searchBox input,
+    .ltrTheme .commentForm textarea,
+    .ltrTheme #introductionSection #content div h1,
+    .ltrTheme #introductionSection #content div h3 {
+        direction: ltr;
+    }
+    
+    .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content .description {
+        direction: ltr;
+    }
+    
+    .ltrTheme .slotElements {
+        direction: ltr !important;
+    }
+    
+    .ltrTheme #catalogueSection #introductionSection #content .innerContent,
+    .ltrTheme #cookingsSection #introductionSection #content .innerContent {
+        margin-left: 10%;
+    }
+    
+    .ltrTheme #productDetailSection #introductionSection .imageColumn .mainOption .options button svg,
+    .ltrTheme #introductionSection #content .innerContent div#currentPathSection .arrow,
+    .ltrTheme #aboutSection #statisticsSection #content #detail a svg {
+        transform: rotate(180deg);
+    }
+    
+    .ltrTheme #cooperationSection #buttons #roundedButton {
+        direction: ltr;
+        padding: 5px 30px 5px 5px;
+    }
+    
+    .ltrTheme #contactUsSection #introductionSection .slotElements .contactWay {
+        flex-direction: row !important;
+    }
+    
+    .ltrTheme #introductionSection #content .innerContent div#currentPathSection,
+    .ltrTheme #aboutSection #statisticsSection #content #detail a {
+        direction: rtl;
+    }
+    
+    .ltrTheme #cooperationSection #buttons #roundedButton span {
+        transform: rotate(0);
+    }
+    
+    .ltrTheme .cookingCart .image .chef {
+        right: unset;
+        left: 5%;
+    }
+    
+    .ltrTheme #searchBox svg {
+        right: 2%;
+        left: unset
+    }
+    
+    .ltrTheme #filterBox .multiselect__select {
+        right: unset;
+        left: 1px;
+        top: 12px;
+    }
+    
+    .ltrTheme .contactWay p {
+        margin-left: 15px !important;
+    }
+    
+    .ltrTheme #filterBox .multiselect .multiselect__tags {
+        padding: 12px 40px 12px 12px;
+    }
+    
+    .ltrTheme .multiselect__select {
+        right: 1px;
+        left: unset;
+    }
+    
+    .ltrTheme #contactUsSection #contactUsForm #formBottom #roundedButton {
+        right: 0;
+    }
+    
+    .ltrTheme #roundedButton {
+        direction: rtl;
+        padding: 5px 5px 5px 30px;
+    }
+    
+    .ltrTheme #roundedButton span {
+        transform: rotate(180deg);
+    }
+    
+    .ltrTheme #awardsSection .slick-prev {
+        left: 20%;
+    }
+    
+    .ltrTheme #awardsSection .slick-next {
+        right: 68%;
+    }
+    
+    .ltrTheme #homeSection #certificatesSlider {
+        margin-right: 0;
+        margin-left: 15%;
+    }
+    
+    .ltrTheme #certificatesSlider .slick-next {
+        right: 70%;
+    }
+    
+    .ltrTheme #certificatesSlider .slick-prev {
+        left: -5%
+    }
+    
+    .ltrTheme #sliderSection .slick-next {
+        right: 21%;
+    }
+    
+    .ltrTheme #sliderSection .slick-prev {
+        left: 70%
+    }
+    
+    .ltrTheme #weeklyCookingSection .slick-prev {
+        left: 60%;
+    }
+    
+    .ltrTheme .commentForm textarea {
+        text-align: left;
+    }
+    
+    .ltrTheme #blogDetailSection #introductionSection #headerBlog .headerBlogOption div {
+        flex-direction: row !important;
+    }
+    
+    .ltrTheme #weeklyCookingSection .slick-next {
+        right: 33%;
+    }
+    
+    .ltrTheme .kitchen svg {
+        transform: rotate(180deg)
+    }
+    
+    .ltrTheme .productCart .product a svg {
+        transform: rotate(180deg)
+    }
+    
+    .ltrTheme #sectionHeader #router a {
+        display: flex;
+        flex-direction: row-reverse !important;
+        align-items: center;
+    }
+    
+    .ltrTheme #homeSection #aboutUsSection #pictures #carts {
+        align-items: flex-end !important
+    }
+    
+    .ltrTheme #homeSection #aboutUsSection #pictures #carts #column2 {
+        left: 43%
+    }
+    
+    .ltrTheme #homeSection #aboutUsSection #pictures #back2 {
+        left: unset;
+        right: 17%;
+    }
+    
+    .ltrTheme #homeSection #aboutUsSection #text p {
+        padding: 0 25% 0 1%;
+    }
+    
+    .ltrTheme #homeSection #sliderSection #sliderContent #shadowBox {
+        background: linear-gradient( 172deg, black, transparent);
+    }
+    
+    .ltrTheme #homeSection #sliderSection #sliderContent #verticalMenu {
+        right: unset;
+        left: 5%;
+    }
+    
+    .ltrTheme #homeSection #sliderSection #sliderContent #verticalMenu ul li p {
+        right: unset;
+        left: 100%;
+        border-top-left-radius: unset;
+        border-bottom-left-radius: unset;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    
+    .ltrTheme #homeSection #sliderSection #sliderContent #slider .sliderItem h3 {
+        right: unset;
+        left: 15%;
+    }
+    
+    .ltrTheme #homeSection #sliderSection #sliderContent #slider .sliderItem p {
+        right: unset;
+        left: 15%;
+    }
+    
+    .ltrTheme #aboutSection #sliderbox p {
+        text-align: justify
+    }
+    
+    @media (max-width:1000px) {
+        /* ltr responsive */
+        /* contact responsive */
+        .ltrTheme #introductionSection #content .innerContent {
+            align-items: center !important;
+        }
+        /* index responsive */
+        .ltrTheme #homeSection #sliderSection #sliderContent #slider .sliderItem h3,
+        .ltrTheme #homeSection #sliderSection #sliderContent #slider .sliderItem p {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .ltrTheme #homeSection #aboutUsSection #text #aboutUsSectionImage {
+            margin: auto;
+        }
+        .ltrTheme #homeSection #aboutUsSection #text {
+            align-items: center !important;
+        }
+        .ltrTheme #homeSection #aboutUsSection #text p {
+            padding: 5%;
+            text-align: center
+        }
+        .ltrTheme #homeSection #weeklyCookingSection .cart .body .header {
+            flex-direction: column !important;
+        }
+        .ltrTheme #weeklyCookingSection .slick-next {
+            right: 7%;
+        }
+        .ltrTheme #homeSection #weeklyCookingSection .cart .body .description {
+            text-align: center;
+        }
+        .ltrTheme #homeSection #weeklyCookingSection .cart .body .seen {
+            text-align: left;
+        }
+        .ltrTheme #homeSection #certificatesSlider .cart .content .titles {
+            flex-direction: column-reverse !important;
+            align-items: center !important;
+        }
+        .ltrTheme #homeSection #certificatesSlider .cart .content {
+            align-items: center !important
+        }
+        /* about us responsive */
+        .ltrTheme #awardsSection .slick-next {
+            right: 12% !important
+        }
+        .ltrTheme #awardsSection .slick-prev {
+            left: 62%
+        }
+        .ltrTheme .collapseSection .card .card-header button span {
+            direction: ltr
+        }
+        /* contact us responsive */
+        .ltrTheme #contactUsSection #introductionSection .slotElements .contactWay {
+            flex-direction: row !important;
+            /* justify-content: center !important */
+        }
+        .ltrTheme #contactUsSection #contactUsForm #formTop {
+            flex-direction: column-reverse !important;
+        }
+        /* weblog detail responsive */
+        .ltrTheme #blogDetailSection #tagsSection {
+            flex-direction: column-reverse !important
+        }
+        .ltrTheme #blogDetailSection #commentBox .commentForm #commentFormTop {
+            flex-direction: column !important;
+        }
+        /* faq responsive */
+        .ltrTheme #faqSection #faq {
+            flex-direction: column-reverse !important;
+        }
+        .ltrTheme #productDetailSection .productDescription p {
+            text-align: center;
+        }
+    }

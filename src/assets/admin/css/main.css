@@ -1,0 +1,138 @@
+nav#mainNavbarAdmin {
+    width: 95%;
+    margin: 30px auto;
+    border-radius: 10px;
+    background-color: var(--color-theme) !important;
+}
+
+
+/* customize bootstrap vue */
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white !important;
+}
+
+.modal-header {
+    direction: rtl;
+}
+
+.modal-header .close {
+    padding: 1rem 1rem;
+    margin: -1rem auto -1rem -1rem;
+}
+
+.swal-footer {
+    display: flex;
+    justify-content: center;
+}
+
+.vpd-icon-btn {
+    margin-bottom: 0!important;
+}
+
+
+/* style for all page */
+
+.mainContentAdmin {
+    width: 94%;
+    padding: 2%;
+    height: 100vh;
+    overflow: auto;
+}
+
+.mainContentAdmin::-webkit-scrollbar {
+    display: none;
+}
+
+
+/* Hide scrollbar for IE, Edge and Firefox */
+
+.mainContentAdmin {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.mainTable {
+    margin: 30px auto;
+}
+
+.table {
+    direction: rtl;
+}
+
+.table-hover .trDetail:hover {
+    box-shadow: 0 0 5px;
+    background: #cfcfcf;
+    border-right: 3px solid;
+    border-left: 3px solid;
+}
+
+tr.trDetail:nth-child(2n) {
+    background: #f3f3f3;
+}
+
+tr.trHeader th,
+tr.trDetail td {
+    text-align: center;
+}
+
+.noItems {
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.noItems svg {
+    width: 50px;
+    margin: 0 30px
+}
+
+div#logoPanel {
+    padding: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #eb5e1a;
+}
+
+#mainNavbarAdmin #routes {
+    height: calc(100vh - 100px);
+    overflow: auto;
+    width: 100%;
+}
+
+#mainNavbarAdmin div#routes::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #eb5e1a;
+    background-color: #F5F5F5;
+}
+
+.modal-dialog {
+    max-width: 70%;
+    margin: 1.75rem auto;
+}
+
+#mainNavbarAdmin div#routes::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+#mainNavbarAdmin div#routes::-webkit-scrollbar-thumb {
+    background-color: #eb5e1a;
+}
+
+.filters .btn-primary {
+    padding: 10px 20px;
+    box-shadow: -3px 8px 10px #0000ff6b;
+    font-family: 'yekan-bold';
+}
+
+@media (max-width: 768px) {
+    .modal-dialog {
+        max-width: 100%;
+        margin: 1.75rem auto;
+    }
+}

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <image id="image" width="10" height="16" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAQCAYAAAAvf+5AAAAABHNCSVQICAgIfAhkiAAAAHdJREFUKFNjZGBgUALiOUAc9f///xdAGitgBIpyAPEGIJYDYkeg4pfYVDICJRgYGRkJKgYrBAEkxbJQk18hmwxXSEgxikI0xTJAvhPQRrDJGArRFEtDFb/GqhCbYsoUIoUAbquRFOH2DL6wJC3AiYpCohMFsckMANKhbBFs6RwnAAAAAElFTkSuQmCC"/>
+  </defs>
+  <g id="arrowLeft" transform="translate(-1594 -3110)">
+    <use id="Layer_2628_copy_4" data-name="Layer 2628 copy 4" transform="translate(1600 3110)" opacity="0.502" xlink:href="#image"/>
+    <use id="Layer_2628_copy_5" data-name="Layer 2628 copy 5" transform="translate(1594 3110)" opacity="0.302" xlink:href="#image"/>
+  </g>
+</svg>

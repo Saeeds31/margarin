@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.789" y1="1" x2="0.211" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#f7941e"/>
+      <stop offset="1" stop-color="#f0aa56"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_1asdasdasdaasd" data-name="Group 1asdasdasdaasd" transform="translate(-1485 -776)">
+    <circle id="Ellipse_1" data-name="Ellipse 1" cx="30" cy="30" r="30" transform="translate(1485 776)" fill="url(#linear-gradient)"/>
+    <image id="Layer_2707" data-name="Layer 2707" width="24" height="24" transform="translate(1503 794)" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAtZJREFUSEudlVmIj1EYh2ciS5FCiWkyciHlwq6UmrggZUkoZb1B2VOSTI2xTMhyQYgyuFCiJkrIekHZC5Erki3hRpaGaTzP9B59ff0XnHo631ne9/edc97znsq2traKEqU3Y6NgRDCSuhPcy3CX7/fFfFQWEeiAwTqoD4elfuIXg9uhAVryEwsJDGZSE4wu4PVTOOlbYOwRfQvhYXYsLzCfwUPQJSb5dwfhOtyHl9Hfj9ptGwcrMvN/8r0G9ieRrMCgUO8ag0+oF8BjGA/DA8/gQQheoe4PxyCtWJExaSVJwD2/GQP6PwLLQFGNh4XoF+pv0Cfaz6nnheDO+HuH3C6DoyUJbKCxNYzSoH+/D/zjVBbz8Q7OZfrcRrflANyCtBL9bVSgZxjpyChQuRLu5Jzrcw4YktcyAn4qMha+gtvXOfqqFZhI40IY7KZ2Ncb5kJyTUgKOuV1u5WZYG7ZTFaijYQxbpoN7fKmA83ICjk8Bz7M57BsUOBsD9lXBItjynwL12B2GN2F/XgH31Kjw8Ixv1aeVEHA7h+bGu9E28m6H7VtqL+MHBV7xUQ3eUnPPKZhVRMA7sa3AWHf6dsHFsP1I3QteK3CGjxlhNCAm7CgiUK7bADkJL2JiswLraTRGx8xYST4MyzlO45P4cLtOR0edAhNoXI4OL9ZqyN7qv3VukjNFGOrLw2iyAj1oeMDmoHRhTAkapKRXTsQL6lthiPo+dAT7qlKqWEVjb3h5Rm1imw3ZzFpMREf+8dFwniLM82hMAqaGq1AbXo5TL4EaaAKXXqiYcefCU9gDJkiLacbU0ZpN1zoz0RlyFldiwjO3mPfNUWLOchvkBgyEE+CqLT/iW/uK/INjuDZlRP71wfmO7VJwB9pLoSezhn73szZNytSlnkxvsSs26f0pxR59z2QleD/SC1dAr73LQ94EPvyt+UnFBNI8Q9jwS/ufzsBD9AxS/bmY+m+6RerADqOULAAAAABJRU5ErkJggg=="/>
+  </g>
+</svg>
