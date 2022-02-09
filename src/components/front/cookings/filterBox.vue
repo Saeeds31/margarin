@@ -24,7 +24,7 @@
         :placeholder="'دسته بندی'"
         v-model="category"
         :options="cookingCategory"
-      >
+      > 
       </multiSelect>
       <div id="searchBox" class="width45">
         <input
