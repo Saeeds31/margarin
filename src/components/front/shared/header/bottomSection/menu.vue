@@ -2,39 +2,38 @@
   <nav class="width55">
     <ul id="bottomMenu" class="d-flex justify-content-between width100">
       <li>
-        <router-link to="/"
-          >
+        <router-link to="/">
           <i class="far fa-circle"></i>
-          تامین کنندگان داخلی و خارجی
+          {{
+            $cookie.get("ltrTheme")
+              ? "Domestic and foreign suppliers"
+              : "تامین کنندگان داخلی و خارجی"
+          }}
         </router-link>
       </li>
       <li>
-        <router-link to="/"
-          >
+        <router-link to="/">
           <i class="far fa-circle"></i>
-          سهامداران
+          {{ $cookie.get("ltrTheme") ? "Shareholders" : "سهامداران" }}
         </router-link>
       </li>
       <li>
-        <router-link to="/weblogs"
-          >
+        <router-link to="/weblogs">
           <i class="far fa-circle"></i>
-          بلاگ
+          {{ $cookie.get("ltrTheme") ? "Blog" : "بلاگ" }}
+        </router-link>
+      </li>
 
-        </router-link>
-      </li>
-      
-    <li>
+      <li>
         <router-link to="/about-us">
           <i class="far fa-circle"></i>
-          درباره ما
+          {{ $cookie.get("ltrTheme") ? "About Us" : "درباره ما" }}
         </router-link>
       </li>
-        <li>
-        <router-link to="/"
-          >
+      <li>
+        <router-link to="/">
           <i class="fa fa-angle-down blackColor04"></i>
-          محصولات
+          {{ $cookie.get("ltrTheme") ? "Products" : "محصولات" }}
         </router-link>
       </li>
     </ul>

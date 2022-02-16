@@ -8,7 +8,7 @@
           <img  class="showInMobile width15" src="@/assets/front/images/weeklyHome.png" :alt="data.title">
 
         <div class="titles">
-          <h1>{{ 'دســـتورات پـــخت هفتـــه' }}</h1>
+          <h1>{{ $cookie.get('ltrTheme')?'Weekly cooking instructions':'دســـتورات پـــخت هفتـــه' }}</h1>
           <h4>{{ data.title }}</h4>
         </div>
         <div class="image showInMobile">
@@ -22,7 +22,8 @@
         {{ data.shortDescription }}
       </p>
       <p class="seen">
-        {{ `تــا کنــون ${data.viewCount} نــفر مشاهــده کرده انــد` }}
+        {{ $cookie.get('ltrTheme')?`to now ${data.viewCount} People have observed`
+        :`تــا کنــون ${data.viewCount} نــفر مشاهــده کرده انــد` }}
       </p>
 <div class="loading">
     <span></span>
@@ -34,10 +35,10 @@
 </svg>
 
         <span>
-            ورود به آشپزخانه
+          {{$cookie.get('ltrTheme')?"The Kitchen":"ورود به آشپزخانه"}}
         </span>
         </router-link>
-        <router-link class="detail width45" :to="`/cooking-detail/${data.id}/${$root.slugGenerator(data.title)}`">جزئیات بیشتر</router-link>
+        <router-link class="detail width45" :to="`/cooking-detail/${data.id}/${$root.slugGenerator(data.title)}`">{{$cookie.get('ltrTheme')?"See More":'جزئیات بیشتر'}}</router-link>
       </div>
     </div>
   </div>

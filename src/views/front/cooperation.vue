@@ -1,206 +1,229 @@
 <template>
   <div class="width100 margin-auto" id="cooperationSection">
-    <introduction v-if="introduction" class="width80 margin-auto" :data="introduction">
-      <p class="slotElements width80 blackColor06">
-        {{ introduction.text }}
+    <introduction
+      v-if="result"
+      class="width80 margin-auto"
+      :title="
+        $cookie.get('ltrTheme')
+          ? 'Absorption of human energy'
+          : 'جــــذب نیــــروی انسانــــی'
+      "
+      :summary="result.title"
+      :image="$root.baseImageUrl + result.image"
+      :routes="routes"
+    >
+      <p
+        data-aos="zoom-in"
+        data-aos-duration="2000"
+        data-aos-once="true"
+        class="slotElements width80 blackColor06"
+      >
+        {{ result.text }}
       </p>
     </introduction>
     <div
-            data-aos="zoom-in"
-        data-aos-duration="1000"
-        data-aos-once="true"
+      data-aos="zoom-in"
+      data-aos-duration="1000"
+      data-aos-delay="500"
+      data-aos-once="true"
       id="stepBox"
       class="width80 margin-auto d-flex justify-content-end align-items-center"
     >
       <div class="stepSvg">
-<button :class="{ activeStep: currentStep == 4 }">
+        <button :class="{ activeStep: currentStep == 4 }">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="70"
+            height="70"
+            viewBox="0 0 100 100"
+          >
+            <g id="step4" transform="translate(-618 -981)">
+              <g
+                id="Ellipse_8_copy_4"
+                data-name="Ellipse 8 copy 4"
+                transform="translate(618 981)"
+                fill="#fff"
+                stroke="rgba(0,0,0,0.08)"
+                stroke-linejoin="round"
+                stroke-width="6"
+              >
+                <circle cx="50" cy="50" r="50" stroke="none" />
+                <circle cx="50" cy="50" r="47" fill="none" />
+              </g>
+              <image
+                id="Layer_654"
+                data-name="Layer 654"
+                width="34"
+                height="34"
+                transform="translate(651 1014)"
+                opacity="0.6"
+                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAABHNCSVQICAgIfAhkiAAAAdBJREFUWEftmCFIBEEUhr1iEwTbFc+iSRBMJteiGATFZBDOIlwUg1GvC2aTG0yCeCBYXavJYLJ4Fk2CYNLk/y87MM7NMDsz641hB37udva9N9++ebMzd42RwTaKrhbUhMY099n1BT1Cr4b7zt0NxWMW1/MQYcq0DEZPZQxtNjJIAuNpm4Pm/iX63j38frkIEE7FsmewT/gR5tvTP3cTIFv4bqqHMvGZkesQGIJMQJvKaJyimTIEkg0LmEBvGr9J9L0U/Tf4vFdtCMLipNgWoLUCzpHDybwP6wPoQngRJIGYgXYB4hQx0DiF/w5jEIQZWIU6gUF93bfheC5AzoYwHSZQ1lSTIPvQse/jVOS3QpBTaLeigL5hugThcmKNxGw9gtxCSUwKjJ3VIMoM1BlRS7LOiHNGHuDRhT4Cl/c4/A+hOUMc69QQ4igQQrjzXcV3lq5ZQZiRvYpATkIyUhGDNYw1I9YIFRn8LxAWIys6ZsuPAevQVUwKjL0hftc846IVCaaPcacESBsXPLfGaDzFp/Jv3xgHpAwQS3x6GYSvYdZKMqS09DAOs5FvH+rfEuzjNHEV/VXNsCa4daTyA+tAxH2upkXItFG5Jo7bxR3ETAy0HyUdUBujAeNaAAAAAElFTkSuQmCC"
+              />
+            </g>
+          </svg>
+        </button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="70"
-          height="70"
-          viewBox="0 0 100 100"
-        >
-          <g id="step4" transform="translate(-618 -981)">
-            <g
-              id="Ellipse_8_copy_4"
-              data-name="Ellipse 8 copy 4"
-              transform="translate(618 981)"
-              fill="#fff"
-              stroke="rgba(0,0,0,0.08)"
-              stroke-linejoin="round"
-              stroke-width="6"
-            >
-              <circle cx="50" cy="50" r="50" stroke="none" />
-              <circle cx="50" cy="50" r="47" fill="none" />
-            </g>
-            <image
-              id="Layer_654"
-              data-name="Layer 654"
-              width="34"
-              height="34"
-              transform="translate(651 1014)"
-              opacity="0.6"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAABHNCSVQICAgIfAhkiAAAAdBJREFUWEftmCFIBEEUhr1iEwTbFc+iSRBMJteiGATFZBDOIlwUg1GvC2aTG0yCeCBYXavJYLJ4Fk2CYNLk/y87MM7NMDsz641hB37udva9N9++ebMzd42RwTaKrhbUhMY099n1BT1Cr4b7zt0NxWMW1/MQYcq0DEZPZQxtNjJIAuNpm4Pm/iX63j38frkIEE7FsmewT/gR5tvTP3cTIFv4bqqHMvGZkesQGIJMQJvKaJyimTIEkg0LmEBvGr9J9L0U/Tf4vFdtCMLipNgWoLUCzpHDybwP6wPoQngRJIGYgXYB4hQx0DiF/w5jEIQZWIU6gUF93bfheC5AzoYwHSZQ1lSTIPvQse/jVOS3QpBTaLeigL5hugThcmKNxGw9gtxCSUwKjJ3VIMoM1BlRS7LOiHNGHuDRhT4Cl/c4/A+hOUMc69QQ4igQQrjzXcV3lq5ZQZiRvYpATkIyUhGDNYw1I9YIFRn8LxAWIys6ZsuPAevQVUwKjL0hftc846IVCaaPcacESBsXPLfGaDzFp/Jv3xgHpAwQS3x6GYSvYdZKMqS09DAOs5FvH+rfEuzjNHEV/VXNsCa4daTyA+tAxH2upkXItFG5Jo7bxR3ETAy0HyUdUBujAeNaAAAAAElFTkSuQmCC"
-            />
-          </g>
-        </svg>
-      </button>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="14"
-        height="16"
-        viewBox="0 0 14 16"
-      >
-        <image
-          id="Layer_3461_copy_3"
-          data-name="Layer 3461 copy 3"
           width="14"
           height="16"
-          opacity="0.2"
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAABHNCSVQICAgIfAhkiAAAAOJJREFUKFOVkjEKwkAURE1jJwh2VqnsBMXKylTWHiFXyAk0J1BPoBcQvYF2VoJgZ2Vn6xGcF3ZhWc26DgxLknn8+UmSxm/liszl1ERXOoskwM30bOkAbnT4DWwrsZEB6/QxMVNyLwOHtHUnsguTYnSy4MK8gBiITAWyC/X+UQl4lNktRleFCjsxBnwpvJZZqVJM1YOZ8tDZlPsW5Mxl/40SpBYg6soTuSU/6z5HqYf8WlQkOJZTW9MHuT8wYaYhao1kKrq6h/7VTMmeB9jLSwjsKDU1VX1+FwJtmKnUZVd0k89vNCgkoVsje5UAAAAASUVORK5CYII="
-        />
-      </svg>
-      <button :class="{ activeStep: currentStep == 3 }">
+          viewBox="0 0 14 16"
+        >
+          <image
+            id="Layer_3461_copy_3"
+            data-name="Layer 3461 copy 3"
+            width="14"
+            height="16"
+            opacity="0.2"
+            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAABHNCSVQICAgIfAhkiAAAAOJJREFUKFOVkjEKwkAURE1jJwh2VqnsBMXKylTWHiFXyAk0J1BPoBcQvYF2VoJgZ2Vn6xGcF3ZhWc26DgxLknn8+UmSxm/liszl1ERXOoskwM30bOkAbnT4DWwrsZEB6/QxMVNyLwOHtHUnsguTYnSy4MK8gBiITAWyC/X+UQl4lNktRleFCjsxBnwpvJZZqVJM1YOZ8tDZlPsW5Mxl/40SpBYg6soTuSU/6z5HqYf8WlQkOJZTW9MHuT8wYaYhao1kKrq6h/7VTMmeB9jLSwjsKDU1VX1+FwJtmKnUZVd0k89vNCgkoVsje5UAAAAASUVORK5CYII="
+          />
+        </svg>
+        <button :class="{ activeStep: currentStep == 3 }">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="70"
+            height="70"
+            viewBox="0 0 100 100"
+          >
+            <g id="step3" transform="translate(-792 -981)">
+              <g
+                id="Ellipse_8_copy_2"
+                data-name="Ellipse 8 copy 2"
+                transform="translate(792 981)"
+                fill="#fff"
+                stroke="rgba(0,0,0,0.08)"
+                stroke-linejoin="round"
+                stroke-width="6"
+              >
+                <circle cx="50" cy="50" r="50" stroke="none" />
+                <circle cx="50" cy="50" r="47" fill="none" />
+              </g>
+              <image
+                id="Layer_653"
+                data-name="Layer 653"
+                width="30"
+                height="34"
+                transform="translate(827 1014)"
+                opacity="0.6"
+                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAiCAYAAABIiGl0AAAABHNCSVQICAgIfAhkiAAAAT1JREFUWEdjZMAEUkAhSSAG0dQAz4CGPAdiEA0HjEhsYSDbCmopNSxEN+MtUOAAEINoBpjFIEt9gZiNFjYimfkLyN4MshxkMciyYCDmpbGlMONBli8DWawLxJZ0shRmzXGQxSDfgoKangAc1Gn0tBFm16C1OAFP/O8Fyq0iN7QI+XgmHoNvAeV6aWWxM9BgAxyGHwOKH6eVxeSaS1AfoaAmaAC5CkYtRg85WTyJi1AoXwAqeIxLEaGgbqOgOAVVf1VDzmJQ5UFuBQLyMbjSxwYIBTWheCRbftRisoOOVI2EgjoMaCCooiAVfANqAFWZOCsRQhbjqxYJOQZvtUnI4mKg6WqEbMAhD/IxqLEwmp3AITCgzdsBa9APWBcGFOQD0mmDJXeQ5Q5QR5CZg/Bqw9pNRdZBi445yNIHyJYAAPCWOPPdo2BsAAAAAElFTkSuQmCC"
+              />
+            </g>
+          </svg>
+        </button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="70"
-          height="70"
-          viewBox="0 0 100 100"
-        >
-          <g id="step3" transform="translate(-792 -981)">
-            <g
-              id="Ellipse_8_copy_2"
-              data-name="Ellipse 8 copy 2"
-              transform="translate(792 981)"
-              fill="#fff"
-              stroke="rgba(0,0,0,0.08)"
-              stroke-linejoin="round"
-              stroke-width="6"
-            >
-              <circle cx="50" cy="50" r="50" stroke="none" />
-              <circle cx="50" cy="50" r="47" fill="none" />
-            </g>
-            <image
-              id="Layer_653"
-              data-name="Layer 653"
-              width="30"
-              height="34"
-              transform="translate(827 1014)"
-              opacity="0.6"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAiCAYAAABIiGl0AAAABHNCSVQICAgIfAhkiAAAAT1JREFUWEdjZMAEUkAhSSAG0dQAz4CGPAdiEA0HjEhsYSDbCmopNSxEN+MtUOAAEINoBpjFIEt9gZiNFjYimfkLyN4MshxkMciyYCDmpbGlMONBli8DWawLxJZ0shRmzXGQxSDfgoKangAc1Gn0tBFm16C1OAFP/O8Fyq0iN7QI+XgmHoNvAeV6aWWxM9BgAxyGHwOKH6eVxeSaS1AfoaAmaAC5CkYtRg85WTyJi1AoXwAqeIxLEaGgbqOgOAVVf1VDzmJQ5UFuBQLyMbjSxwYIBTWheCRbftRisoOOVI2EgjoMaCCooiAVfANqAFWZOCsRQhbjqxYJOQZvtUnI4mKg6WqEbMAhD/IxqLEwmp3AITCgzdsBa9APWBcGFOQD0mmDJXeQ5Q5QR5CZg/Bqw9pNRdZBi445yNIHyJYAAPCWOPPdo2BsAAAAAElFTkSuQmCC"
-            />
-          </g>
-        </svg>
-      </button>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="14"
-        height="16"
-        viewBox="0 0 14 16"
-      >
-        <image
-          id="Layer_3461_copy_3"
-          data-name="Layer 3461 copy 3"
           width="14"
           height="16"
-          opacity="0.2"
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAABHNCSVQICAgIfAhkiAAAAOJJREFUKFOVkjEKwkAURE1jJwh2VqnsBMXKylTWHiFXyAk0J1BPoBcQvYF2VoJgZ2Vn6xGcF3ZhWc26DgxLknn8+UmSxm/liszl1ERXOoskwM30bOkAbnT4DWwrsZEB6/QxMVNyLwOHtHUnsguTYnSy4MK8gBiITAWyC/X+UQl4lNktRleFCjsxBnwpvJZZqVJM1YOZ8tDZlPsW5Mxl/40SpBYg6soTuSU/6z5HqYf8WlQkOJZTW9MHuT8wYaYhao1kKrq6h/7VTMmeB9jLSwjsKDU1VX1+FwJtmKnUZVd0k89vNCgkoVsje5UAAAAASUVORK5CYII="
-        />
-      </svg>
-      <button :class="{ activeStep: currentStep == 2 }">
+          viewBox="0 0 14 16"
+        >
+          <image
+            id="Layer_3461_copy_3"
+            data-name="Layer 3461 copy 3"
+            width="14"
+            height="16"
+            opacity="0.2"
+            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAABHNCSVQICAgIfAhkiAAAAOJJREFUKFOVkjEKwkAURE1jJwh2VqnsBMXKylTWHiFXyAk0J1BPoBcQvYF2VoJgZ2Vn6xGcF3ZhWc26DgxLknn8+UmSxm/liszl1ERXOoskwM30bOkAbnT4DWwrsZEB6/QxMVNyLwOHtHUnsguTYnSy4MK8gBiITAWyC/X+UQl4lNktRleFCjsxBnwpvJZZqVJM1YOZ8tDZlPsW5Mxl/40SpBYg6soTuSU/6z5HqYf8WlQkOJZTW9MHuT8wYaYhao1kKrq6h/7VTMmeB9jLSwjsKDU1VX1+FwJtmKnUZVd0k89vNCgkoVsje5UAAAAASUVORK5CYII="
+          />
+        </svg>
+        <button :class="{ activeStep: currentStep == 2 }">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="70"
+            height="70"
+            viewBox="0 0 100 100"
+          >
+            <g id="location" transform="translate(-966 -981)">
+              <g
+                id="Ellipse_8_copy_3"
+                data-name="Ellipse 8 copy 3"
+                transform="translate(966 981)"
+                fill="#fff"
+                stroke="rgba(0,0,0,0.08)"
+                stroke-linejoin="round"
+                stroke-width="6"
+              >
+                <circle cx="50" cy="50" r="50" stroke="none" />
+                <circle cx="50" cy="50" r="47" fill="none" />
+              </g>
+              <image
+                id="Layer_652"
+                data-name="Layer 652"
+                width="24"
+                height="34"
+                transform="translate(1004 1014)"
+                opacity="0.6"
+                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAiCAYAAABFlhkzAAAABHNCSVQICAgIfAhkiAAAAeFJREFUSEu9lj1Ow0AQhZ0GKiQkOipzA3ICQkNNTkByAzgByQnIDTAnIDUN5gRwA6joEEhUUPE+yxs2zv7FmIz0JDszO29mdmacXhaXU5kcCkcN0we9PwnzkIteQDmR7kzIIzG8SH8jYL8iLgKiva6jjuf3a0E24zqrxa9NApzfC7vreLZsP/R8bJPYBH91bngg6QuULrMJHluUxZdoWWeyIBjVdW9ZGecx7qMwGTzrJe/Se12iAwioPeWJCTU1Pc9spATUh2AiXEa8F9KTsi20MqUNyRQC2nIQsCqlo/VcEjs7TyEYWqVpklCq21BwKQRETxYuIXOy8EmZQhDKgDvgLoIEV9Ke/9MdzMggFgXchXAhsAYQdhWBcTYkYwgwfo8YosY5GxNhdlIWYjVoCJ1AR3QpDOXQEAz0EuqGNsRV99nbNDY065CUMq6Gc6PfAwhHQqivU7Kg22bG0PVNTlliPqJCiqWl6PtX0aaraGHqbmalCsJHQI9z6fR7ijidhwjQpU6r13mMwEQe2lUrNW+m6ytR044p5/LNeqDOdAsEQUklwEku8GmFZCqYvdQZQSxYp96XwZ6s94Utgedtj/cv/f4mfAuv9fOSaZMAZyfCTqtws+xT5+5soo0TmMA7K9EP1KhizpXBdfMAAAAASUVORK5CYII="
+              />
+            </g>
+          </svg>
+        </button>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="70"
-          height="70"
-          viewBox="0 0 100 100"
-        >
-          <g id="location" transform="translate(-966 -981)">
-            <g
-              id="Ellipse_8_copy_3"
-              data-name="Ellipse 8 copy 3"
-              transform="translate(966 981)"
-              fill="#fff"
-              stroke="rgba(0,0,0,0.08)"
-              stroke-linejoin="round"
-              stroke-width="6"
-            >
-              <circle cx="50" cy="50" r="50" stroke="none" />
-              <circle cx="50" cy="50" r="47" fill="none" />
-            </g>
-            <image
-              id="Layer_652"
-              data-name="Layer 652"
-              width="24"
-              height="34"
-              transform="translate(1004 1014)"
-              opacity="0.6"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAiCAYAAABFlhkzAAAABHNCSVQICAgIfAhkiAAAAeFJREFUSEu9lj1Ow0AQhZ0GKiQkOipzA3ICQkNNTkByAzgByQnIDTAnIDUN5gRwA6joEEhUUPE+yxs2zv7FmIz0JDszO29mdmacXhaXU5kcCkcN0we9PwnzkIteQDmR7kzIIzG8SH8jYL8iLgKiva6jjuf3a0E24zqrxa9NApzfC7vreLZsP/R8bJPYBH91bngg6QuULrMJHluUxZdoWWeyIBjVdW9ZGecx7qMwGTzrJe/Se12iAwioPeWJCTU1Pc9spATUh2AiXEa8F9KTsi20MqUNyRQC2nIQsCqlo/VcEjs7TyEYWqVpklCq21BwKQRETxYuIXOy8EmZQhDKgDvgLoIEV9Ke/9MdzMggFgXchXAhsAYQdhWBcTYkYwgwfo8YosY5GxNhdlIWYjVoCJ1AR3QpDOXQEAz0EuqGNsRV99nbNDY065CUMq6Gc6PfAwhHQqivU7Kg22bG0PVNTlliPqJCiqWl6PtX0aaraGHqbmalCsJHQI9z6fR7ijidhwjQpU6r13mMwEQe2lUrNW+m6ytR044p5/LNeqDOdAsEQUklwEku8GmFZCqYvdQZQSxYp96XwZ6s94Utgedtj/cv/f4mfAuv9fOSaZMAZyfCTqtws+xT5+5soo0TmMA7K9EP1KhizpXBdfMAAAAASUVORK5CYII="
-            />
-          </g>
-        </svg>
-      </button>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="14"
-        height="16"
-        viewBox="0 0 14 16"
-      >
-        <image
-          id="Layer_3461_copy_3"
-          data-name="Layer 3461 copy 3"
           width="14"
           height="16"
-          opacity="0.2"
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAABHNCSVQICAgIfAhkiAAAAOJJREFUKFOVkjEKwkAURE1jJwh2VqnsBMXKylTWHiFXyAk0J1BPoBcQvYF2VoJgZ2Vn6xGcF3ZhWc26DgxLknn8+UmSxm/liszl1ERXOoskwM30bOkAbnT4DWwrsZEB6/QxMVNyLwOHtHUnsguTYnSy4MK8gBiITAWyC/X+UQl4lNktRleFCjsxBnwpvJZZqVJM1YOZ8tDZlPsW5Mxl/40SpBYg6soTuSU/6z5HqYf8WlQkOJZTW9MHuT8wYaYhao1kKrq6h/7VTMmeB9jLSwjsKDU1VX1+FwJtmKnUZVd0k89vNCgkoVsje5UAAAAASUVORK5CYII="
-        />
-      </svg>
-      <button id="firstSvgStep" :class="{ activeStep: currentStep == 1 }">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="70"
-          height="70"
-          viewBox="0 0 100 100"
+          viewBox="0 0 14 16"
         >
-          <defs>
-            <linearGradient
-              id="linear-gradient"
-              x1="0.789"
-              y1="1"
-              x2="0.211"
-              gradientUnits="objectBoundingBox"
-            >
-              <stop offset="0" stop-color="#f7941e" />
-              <stop offset="1" stop-color="#f0aa56" />
-            </linearGradient>
-          </defs>
-          <g id="user" transform="translate(-1140 -981)">
-            <circle
-              id="Ellipse_8_copy"
-              data-name="Ellipse 8 copy"
-              cx="50"
-              cy="50"
-              r="50"
-              transform="translate(1140 981)"
-              fill="url(#linear-gradient)"
-            />
-            <image
-              id="Layer_650"
-              data-name="Layer 650"
-              width="36"
-              height="33"
-              transform="translate(1173 1016)"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAhCAYAAACxzQkrAAAABHNCSVQICAgIfAhkiAAABN5JREFUWEe1l1FIW1cYxxNNTHRODYrWlrmViSyIMBxMKGxYNsYEmS2iUPrQjPngi9C+jO1pIri+bXvzUdqHobCN1j3Yh2KDjhUcpR0Dl5U6XetirJpIYqLGmOz/v9wTTo735t509sDhnnvOd873O9/33e+c63RYlFwu9ypE3kFtRmVblDQaq6iPnU5n2Godu+POYoKAIQirVfkDUPeFEObVo31OmkRggiesFjIFwqLdmNxmtYA0vg6FP0tQ/WgTTC4PIPOg2JqGQIB5A5M+kidms1nn7u6u+/DwsIxtMVZWVpZzu93ZysrKDJ6/CYVY4zRkeg2U01JBMygzoEuYkI8Xguzt7bmsrEWo6urqm8I1BwcHA6lU6pSY53K5slVVVRls4h5kHhutdwxItU48Hq/AwuVWMGJ8c3Pzfnt7+yLfGYM7OzvnaFV5vsfjidXW1t60C5QPZIIQyC4M5fb39yMtLS232aTbAPMJoDzqGgsLCz/29/evqf1GFmLsMIYc29vbXjle7IDpQHcgmwAQ3dVLINVKwWDwzuDg4ArGmT7yxRToRawjWYhAtBC/sl6jGNSBmA4KUoERkOYyu4GsWg0uftra2jqH/gyAaglE66hum56enhkZGYlifBf1SKxjBKR9rqUGs1hwZWVlsaura0kHeoubU4EAmm5qavpen5OkrCkQBzDhEoDqS/m69HnpQCDww+zsLOOCFvoYz3oVaG1t7VFnZ+ejUoBOw2UX7eQe2WWSdRwTExOe4eHhCxyXgSSXiqnFXSaktra2/PjCCrK1Gi/yO2LkSVtb2y+iLxaLfVBXV9fAdxGPGxsbSx0dHVqO0ksOz7i8TtHDdW5uDjmu/X1k1aK5SHGB5r1MJtNdXl5OhY7l5eXk5OTkX+Pj47SGXA7wsm8bCIKunp4e3+joaGtzc3OL1+vNHwPpdDoKK0SmpqaWDBRRCZWxMEvL1xah/xCNlGr1ohbShWmdSnVikXdV0SvcmJVlxLgdIMq6dSgr+bwL8IXVYc63cN2bQtnR0dHvuBFE9cM1aLQpKwWqe2kt7lbeMZMa8wg/9aw8QYf6Cn1XDZTvoO8W6jXEKNtasboxcpdv23DXKhZdNZMDWABjkybjhDkroAqAMJHKr+gQ3TZAVBEmuyDqbekSxqBuDIfDn+PDuGay5neQ18Y0IP0OxB28CIQZN+E+hSI+CcXM/7CiouKMOgE3hF9xuXsP/VmnDvMQL3TPSRe647wO5YhGo1/4fL7rqpJEIrFYU1NzGf1/E4iWCZw0ibTeLQBd1D3BkODmC0ooFPra7/ffQGeMQPdO2FXH9gYgLzq1RAl9WvYWBVfenxobG7/U31MvHQjnYRxHCO9YzwglgHD23Z2fn7/R19cnn20a0CgEmSteSpEswHMszJiFxdbRft1A4SaBGMx0m518UxI0zrt/BwYGLszMzIgTXf71UX9CKRPJ5yHkiW9wi/sMab2mJK0mwrTM0NDQdQmGWfyJJC6AaDl+jdpBKydGXsjrcfn+EL8x/oaGhnfx/3TGKG+oDIyTZDIZwuXrz0gkEhobG7srgQhxzQLSXJ6PPIgLigzE5PUa6rF/qBOwGBX/g1pw1hmta3SW0VI+1IK/zf8BRcs8twOjukzVWa1bi3chmpfVqtAC4nLGvMP4sLSKvOh/u7JfoG3ofYUAAAAASUVORK5CYII="
-            />
-          </g>
+          <image
+            id="Layer_3461_copy_3"
+            data-name="Layer 3461 copy 3"
+            width="14"
+            height="16"
+            opacity="0.2"
+            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAQCAYAAAAmlE46AAAABHNCSVQICAgIfAhkiAAAAOJJREFUKFOVkjEKwkAURE1jJwh2VqnsBMXKylTWHiFXyAk0J1BPoBcQvYF2VoJgZ2Vn6xGcF3ZhWc26DgxLknn8+UmSxm/liszl1ERXOoskwM30bOkAbnT4DWwrsZEB6/QxMVNyLwOHtHUnsguTYnSy4MK8gBiITAWyC/X+UQl4lNktRleFCjsxBnwpvJZZqVJM1YOZ8tDZlPsW5Mxl/40SpBYg6soTuSU/6z5HqYf8WlQkOJZTW9MHuT8wYaYhao1kKrq6h/7VTMmeB9jLSwjsKDU1VX1+FwJtmKnUZVd0k89vNCgkoVsje5UAAAAASUVORK5CYII="
+          />
         </svg>
-      </button>
+        <button
+          id="firstSvgStep"
+          :class="{
+            activeStep: currentStep == 1,
+            deactiveStep: currentStep != 1
+          }"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="70"
+            height="70"
+            viewBox="0 0 100 100"
+          >
+            <defs>
+              <linearGradient
+                id="linear-gradient"
+                x1="0.789"
+                y1="1"
+                x2="0.211"
+                gradientUnits="objectBoundingBox"
+              >
+                <stop offset="0" stop-color="#f7941e" />
+                <stop offset="1" stop-color="#f0aa56" />
+              </linearGradient>
+            </defs>
+            <g id="user" transform="translate(-1140 -981)">
+              <circle
+                id="Ellipse_8_copy"
+                data-name="Ellipse 8 copy"
+                cx="50"
+                cy="50"
+                r="50"
+                transform="translate(1140 981)"
+                fill="url(#linear-gradient)"
+              />
+              <image
+                id="Layer_650"
+                data-name="Layer 650"
+                width="36"
+                height="33"
+                transform="translate(1173 1016)"
+                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAhCAYAAACxzQkrAAAABHNCSVQICAgIfAhkiAAABN5JREFUWEe1l1FIW1cYxxNNTHRODYrWlrmViSyIMBxMKGxYNsYEmS2iUPrQjPngi9C+jO1pIri+bXvzUdqHobCN1j3Yh2KDjhUcpR0Dl5U6XetirJpIYqLGmOz/v9wTTo735t509sDhnnvOd873O9/33e+c63RYlFwu9ypE3kFtRmVblDQaq6iPnU5n2Godu+POYoKAIQirVfkDUPeFEObVo31OmkRggiesFjIFwqLdmNxmtYA0vg6FP0tQ/WgTTC4PIPOg2JqGQIB5A5M+kidms1nn7u6u+/DwsIxtMVZWVpZzu93ZysrKDJ6/CYVY4zRkeg2U01JBMygzoEuYkI8Xguzt7bmsrEWo6urqm8I1BwcHA6lU6pSY53K5slVVVRls4h5kHhutdwxItU48Hq/AwuVWMGJ8c3Pzfnt7+yLfGYM7OzvnaFV5vsfjidXW1t60C5QPZIIQyC4M5fb39yMtLS232aTbAPMJoDzqGgsLCz/29/evqf1GFmLsMIYc29vbXjle7IDpQHcgmwAQ3dVLINVKwWDwzuDg4ArGmT7yxRToRawjWYhAtBC/sl6jGNSBmA4KUoERkOYyu4GsWg0uftra2jqH/gyAaglE66hum56enhkZGYlifBf1SKxjBKR9rqUGs1hwZWVlsaura0kHeoubU4EAmm5qavpen5OkrCkQBzDhEoDqS/m69HnpQCDww+zsLOOCFvoYz3oVaG1t7VFnZ+ejUoBOw2UX7eQe2WWSdRwTExOe4eHhCxyXgSSXiqnFXSaktra2/PjCCrK1Gi/yO2LkSVtb2y+iLxaLfVBXV9fAdxGPGxsbSx0dHVqO0ksOz7i8TtHDdW5uDjmu/X1k1aK5SHGB5r1MJtNdXl5OhY7l5eXk5OTkX+Pj47SGXA7wsm8bCIKunp4e3+joaGtzc3OL1+vNHwPpdDoKK0SmpqaWDBRRCZWxMEvL1xah/xCNlGr1ohbShWmdSnVikXdV0SvcmJVlxLgdIMq6dSgr+bwL8IXVYc63cN2bQtnR0dHvuBFE9cM1aLQpKwWqe2kt7lbeMZMa8wg/9aw8QYf6Cn1XDZTvoO8W6jXEKNtasboxcpdv23DXKhZdNZMDWABjkybjhDkroAqAMJHKr+gQ3TZAVBEmuyDqbekSxqBuDIfDn+PDuGay5neQ18Y0IP0OxB28CIQZN+E+hSI+CcXM/7CiouKMOgE3hF9xuXsP/VmnDvMQL3TPSRe647wO5YhGo1/4fL7rqpJEIrFYU1NzGf1/E4iWCZw0ibTeLQBd1D3BkODmC0ooFPra7/ffQGeMQPdO2FXH9gYgLzq1RAl9WvYWBVfenxobG7/U31MvHQjnYRxHCO9YzwglgHD23Z2fn7/R19cnn20a0CgEmSteSpEswHMszJiFxdbRft1A4SaBGMx0m518UxI0zrt/BwYGLszMzIgTXf71UX9CKRPJ5yHkiW9wi/sMab2mJK0mwrTM0NDQdQmGWfyJJC6AaDl+jdpBKydGXsjrcfn+EL8x/oaGhnfx/3TGKG+oDIyTZDIZwuXrz0gkEhobG7srgQhxzQLSXJ6PPIgLigzE5PUa6rF/qBOwGBX/g1pw1hmta3SW0VI+1IK/zf8BRcs8twOjukzVWa1bi3chmpfVqtAC4nLGvMP4sLSKvOh/u7JfoG3ofYUAAAAASUVORK5CYII="
+              />
+            </g>
+          </svg>
+        </button>
       </div>
       <p class="stepTitle d-flex flex-direction-column align-items-end">
         <span class="blackColor06">{{ stepText }}</span>
@@ -210,32 +233,45 @@
     <div id="form" class="width80 margin-auto">
       <div
         data-aos="fade-up"
+        data-aos-delay="500"
         data-aos-duration="1000"
         data-aos-once="false"
         v-show="currentStep == 1"
         id="userInfo"
-        class="width100  justify-content-between"
+        class="width100 justify-content-between"
       >
-        <simpleInput :title="'نام پدر'" type="text" v-model="fatherName" />
-        <simpleInput :title="'نام خانوادگی'" type="text" v-model="lastName" />
-        <simpleInput :title="'نام'" type="text" v-model="firstName" />
+        <simpleInput
+          :title="$cookie.get('ltrTheme') ? 'Father Name' : 'نام پدر'"
+          type="text"
+          v-model="fatherName"
+        />
+        <simpleInput
+          :title="$cookie.get('ltrTheme') ? 'Last Name' : 'نام خانوادگی'"
+          type="text"
+          v-model="lastName"
+        />
+        <simpleInput
+          :title="$cookie.get('ltrTheme') ? 'first Name' : 'نام'"
+          type="text"
+          v-model="firstName"
+        />
         <selectionInput
-          :title="'جنسیت'"
+          :title="$cookie.get('ltrTheme') ? 'Gender' : 'جنسیت'"
           v-model="genderOption"
           @selectValue="gender = $event"
         />
         <simpleInput
-          :title="'شماره شناسنامه'"
+          :title="$cookie.get('ltrTheme') ? 'NationalCode' : 'شماره شناسنامه'"
           type="number"
           v-model="nationalId"
         />
         <simpleInput
-          :title="'شناسه ملی'"
+          :title="$cookie.get('ltrTheme') ? 'Passport Number' : 'شناسه ملی'"
           type="number"
           v-model="nationalCode"
         />
         <selectionInput
-          :title="'مذهب'"
+          :title="$cookie.get('ltrTheme') ? 'Religion' : 'مذهب'"
           v-model="religionOption"
           @selectValue="religion = $event"
         />
@@ -245,14 +281,20 @@
           class="width30 d-flex align-items-center justify-content-between"
         >
           <date-picker id="birthDate" v-model="brithDate" />
-          <label>تاریخ تولد</label>
+          <label>{{
+            $cookie.get("ltrTheme") ? "Date of birth" : "تاریخ تولد"
+          }}</label>
         </div>
         <selectionInput
-          :title="'وضعیت تاهل'"
+          :title="$cookie.get('ltrTheme') ? 'marital status' : 'وضعیت تاهل'"
           v-model="maritalStatus"
           @selectValue="lifeStyle = $event"
         />
-        <iconInput :title="'پست الکترونیک'" :type="'email'" v-model="email">
+        <iconInput
+          :title="$cookie.get('ltrTheme') ? 'E-mail' : 'پست الکترونیک'"
+          :type="'email'"
+          v-model="email"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -286,7 +328,15 @@
             </g>
           </svg>
         </iconInput>
-        <iconInput :title="'شماره تلفن ثابت'" :type="'number'" v-model="phone">
+        <iconInput
+          :title="
+            $cookie.get('ltrTheme')
+              ? 'Landline phone number'
+              : 'شماره تلفن ثابت'
+          "
+          :type="'number'"
+          v-model="phone"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -320,7 +370,11 @@
             </g>
           </svg>
         </iconInput>
-        <iconInput :title="'شماره  همراه'" :type="'number'" v-model="mobile">
+        <iconInput
+          :title="$cookie.get('ltrTheme') ? 'Mobile number' : 'شماره  همراه'"
+          :type="'number'"
+          v-model="mobile"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -356,10 +410,19 @@
         </iconInput>
       </div>
 
-      <div         data-aos="fade-up"
+      <div
+        data-aos="fade-up"
+        data-aos-delay="500"
         data-aos-duration="1000"
-        data-aos-once="false" v-show="currentStep == 2" id="locationInfo">
-        <iconInput :title="'کد  پستی'" :type="'number'" v-model="postalCode">
+        data-aos-once="false"
+        v-show="currentStep == 2"
+        id="locationInfo"
+      >
+        <iconInput
+          :title="$cookie.get('ltrTheme') ? 'Postal Code' : 'کد  پستی'"
+          :type="'number'"
+          v-model="postalCode"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -400,11 +463,17 @@
           <multiSelect
             :allow-empty="false"
             v-model="city"
-            deselect-label="یک گزینه باید انتخاب شود"
+            :deselect-label="
+              $cookie.get('ltrTheme')
+                ? 'An option must be selected'
+                : 'یک گزینه باید انتخاب شود'
+            "
             :options="cityOption"
           >
           </multiSelect>
-          <label class="blackColor06">{{ "انتخاب شهر" }}</label>
+          <label class="blackColor06">{{
+            $cookie.get("ltrTheme") ? "Select a city" : "انتخاب شهر"
+          }}</label>
         </div>
         <div
           class="selectCooperationInput d-flex justify-content-between align-items-center"
@@ -414,18 +483,24 @@
             label="label"
             :allow-empty="false"
             v-model="province"
-            deselect-label="یک گزینه باید انتخاب شود"
+            :deselect-label="
+              $cookie.get('ltrTheme')
+                ? 'An option must be selected'
+                : 'یک گزینه باید انتخاب شود'
+            "
             :options="provinceAndCity"
           >
           </multiSelect>
-          <label class="blackColor06">{{ "انتخاب استان" }}</label>
+          <label class="blackColor06">{{
+            $cookie.get("ltrTheme") ? "Select a province" : "انتخاب استان"
+          }}</label>
         </div>
 
         <div
           class="largeInput d-flex justify-content-between align-items-center width100"
         >
           <svg
-          class="hiddenInMobile"
+            class="hiddenInMobile"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             width="209"
@@ -465,7 +540,13 @@
                 font-weight="500"
                 letter-spacing="-0.01em"
               >
-                <tspan x="0" y="0">انتخاب روی نقشه</tspan>
+                <tspan x="0" y="0">
+                  {{
+                    $cookie.get("ltrTheme")
+                      ? "Select on the map"
+                      : "انتخاب روی نقشه"
+                  }}
+                </tspan>
               </text>
             </g>
           </svg>
@@ -475,12 +556,19 @@
             placeholder="اتوبان تندگویان , بلوار حمدی نژاد , خیابان شقایق سوم , پلاک 38 , واحد 2"
             v-model="address"
           />
-          <label for="address">نشانی دقیق</label>
+          <label for="address">{{
+            $cookie.get("ltrTheme") ? "Adderss" : "نشانی دقیق"
+          }}</label>
         </div>
       </div>
-      <div         data-aos="fade-up"
+      <div
+        data-aos="fade-up"
+        data-aos-delay="500"
         data-aos-duration="1000"
-        data-aos-once="false" v-show="currentStep == 3" id="fileInfo">
+        data-aos-once="false"
+        v-show="currentStep == 3"
+        id="fileInfo"
+      >
         <div
           class="largeInput d-flex justify-content-between align-items-center width100"
           @click="showFileSection"
@@ -492,7 +580,7 @@
           ></b-form-file>
 
           <svg
-          class="hiddenInMobile"
+            class="hiddenInMobile"
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
             width="206"
@@ -532,31 +620,47 @@
                 font-weight="500"
                 letter-spacing="-0.01em"
               >
-                <tspan x="0" y="0">انتخاب کنید</tspan>
+                <tspan x="0" y="0">
+                  {{ $cookie.get("ltrTheme") ? "Select" : "انتخاب کنید" }}
+                </tspan>
               </text>
             </g>
           </svg>
           <input
             disabled
             type="text"
-            placeholder="فایل مورد نظر خود را انتخاب کنید         JPEG , WORD , PDF"
+            :placeholder="
+              $cookie.get('ltrTheme')
+                ? 'Select the file you want JPEG, WORD, PDF'
+                : 'فایل مورد نظر خود را انتخاب کنید         JPEG , WORD , PDF'
+            "
           />
-          <label for="">آپلود کنید</label>
+          <label for="">{{
+            $cookie.get("ltrTheme") ? "Upload" : "آپلود کنید"
+          }}</label>
         </div>
         <div
           id="skil"
           class="width60 d-flex align-items-center justify-content-between"
         >
           <input
-            placeholder="برای مثال     برنامه نویسی وب"
+            :placeholder="
+              $cookie.get('ltrTheme')
+                ? 'For example web programming'
+                : 'برای مثال     برنامه نویسی وب'
+            "
             type="text"
             v-model="capabilities"
             id="skillInput"
           />
-          <label for="skillInput">آیا دارای مهارت یا تخصص خاصی هستید ؟</label>
+          <label for="skillInput">{{
+            $cookie.get("ltrTheme")
+              ? "Do you have any special skills or expertise?"
+              : "آیا دارای مهارت یا تخصص خاصی هستید ؟"
+          }}</label>
         </div>
         <selectionInput
-          :title="'تحصیلات'"
+          :title="$cookie.get('ltrTheme') ? 'education' : 'تحصیلات'"
           v-model="educations"
           @selectValue="education = $event"
         />
@@ -569,8 +673,14 @@
             class="d-flex justify-content-between align-items-center"
           >
             <p class="d-flex flex-direction-column align-items-end">
-              <span class="blackColor06">افزودن سطر جدید</span>
-              <span class="blackColor04">تحصیلات و توانایی های اجرایی</span>
+              <span class="blackColor06">{{
+                $cookie.get("ltrTheme") ? "Add new Row" : "افزودن سطر جدید"
+              }}</span>
+              <span class="blackColor04">{{
+                $cookie.get("ltrTheme")
+                  ? "Education and executive abilities"
+                  : "تحصیلات و توانایی های اجرایی"
+              }}</span>
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -611,20 +721,27 @@
           class="width100"
           id="newSkill"
           type="text"
-          placeholder="افزودن مهارت جدید"
+          :placeholder="
+            $cookie.get('ltrTheme') ? 'Add new skills' : 'افزودن مهارت جدید'
+          "
         />
       </div>
-      <div         data-aos="fade-up"
+      <div
+        data-aos="fade-up"
+        data-aos-delay="500"
         data-aos-duration="1000"
-        data-aos-once="false" v-show="currentStep == 4" id="lastStep">
+        data-aos-once="false"
+        v-show="currentStep == 4"
+        id="lastStep"
+      >
         <selectionInput
           :class="{ disableInput: insurance == false }"
-          :title="'مدت به ماه'"
+          :title="$cookie.get('ltrTheme') ? 'Duration to Mounth' : 'مدت به ماه'"
           v-model="monthInsurance"
           @selectValue="mounth = $event"
         />
         <selectionInput
-          :title="'مدت به سال'"
+          :title="$cookie.get('ltrTheme') ? 'Duration to year' : 'مدت به سال'"
           :class="{ disableInput: insurance == false }"
           v-model="yearInsurance"
           @selectValue="year = $event"
@@ -633,10 +750,18 @@
           id="insuranceBox"
           class="width30 d-flex flex-direction-column align-items-end"
         >
-          <p class="blackColor06">آیا سابقه پرداخت حق بیمه دارید ؟</p>
+          <p class="blackColor06">
+            {{
+              $cookie.get("ltrTheme")
+                ? "Do you have a history of paying premiums?"
+                : "آیا سابقه پرداخت حق بیمه دارید ؟"
+            }}
+          </p>
           <div class="d-flex">
             <div class="d-flex align-items-center">
-              <span class="blackColor04">خیر,ندارم</span>
+              <span class="blackColor04">{{
+                $cookie.get("ltrTheme") ? "No, I do not" : "خیر,ندارم"
+              }}</span>
               <button
                 @click="
                   insurance = false;
@@ -651,7 +776,9 @@
               </button>
             </div>
             <div class="d-flex align-items-center">
-              <span class="blackColor04">بله,دارم</span>
+              <span class="blackColor04">{{
+                $cookie.get("ltrTheme") ? "Yes I Have" : "بله,دارم"
+              }}</span>
               <button
                 @click="
                   insurance = true;
@@ -668,35 +795,50 @@
           </div>
         </div>
         <div id="descriptionBox" class="width100">
-          <label for="description"
-            >اگر توضیح خاصی مد نظر دارید یادداشت کنید . . .</label
-          >
+          <label for="description">{{
+            $cookie.get("ltrTheme")
+              ? "Take notes if you have a specific explanation. . ."
+              : "اگر توضیح خاصی مد نظر دارید یادداشت کنید . . ."
+          }}</label>
           <textarea
             class="width100"
             id="description"
             v-model="description"
-            placeholder="برای مثال     یکی از درخواست های خود و محیط کار پیشنهادی را شرح دهید"
+            :placeholder="
+              $cookie.get('ltrTheme')
+                ? 'For example, describe one of your requirements and the proposed work environment'
+                : 'برای مثال     یکی از درخواست های خود و محیط کار پیشنهادی را شرح دهید'
+            "
             cols="30"
             rows="10"
           ></textarea>
         </div>
       </div>
     </div>
-    <div        data-aos="fade-up"
-        data-aos-duration="1000"
-        data-aos-once="true" id="buttons" class="d-flex width80 align-items-center">
+    <div
+      data-aos="fade-up"
+      data-aos-delay="500"
+      data-aos-duration="1000"
+      data-aos-once="true"
+      id="buttons"
+      class="d-flex width80 align-items-center"
+    >
       <rounded-button
         v-if="currentStep == 4"
         @buttonClicked="sendCoopeartion()"
         :type="'button'"
-        :title="'ثــبت نهایــی اطلاعــات'"
+        :title="
+          $cookie.get('ltrTheme')
+            ? 'Final registration of information'
+            : 'ثــبت نهایــی اطلاعــات'
+        "
         :buttonType="'button'"
       />
       <rounded-button
         v-else
         @buttonClicked="nextStep('f')"
         :type="'button'"
-        :title="'مرحله بعد'"
+        :title="$cookie.get('ltrTheme') ? 'Next Step' : 'مرحله بعد'"
         :buttonType="'button'"
       />
       <button
@@ -704,7 +846,13 @@
         @click="nextStep('b')"
         id="backStep"
       >
-        <span> بازگشت به مرحله قبل </span>
+        <span>
+          {{
+            $cookie.get("ltrTheme")
+              ? "Return to the previous step"
+              : "بازگشت به مرحله قبل "
+          }}</span
+        >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -760,7 +908,7 @@ export default {
   },
   data() {
     return {
-      education:"کارشناسی",
+      education: "کارشناسی",
       insurance: true,
       notinsurance: false,
       fatherName: "",
@@ -772,7 +920,7 @@ export default {
       gender: "مرد",
       address: "",
       description: null,
-      mounth:1,
+      mounth: 1,
       year: 1,
 
       lifeStyle: "مجرد",
@@ -874,9 +1022,9 @@ export default {
         "باسمنج",
         "سهند"
       ],
-capabilities:"",
-      educationDegree: "کارشناسی",
-      religion: "شیعه",
+      capabilities: "",
+      educationDegree: this.$cookie.get("ltrTheme") ? "Masters" : "کارشناسی",
+      religion: this.$cookie.get("ltrTheme") ? "Shia" : "شیعه",
       brithDate: null,
       email: "",
       phone: "",
@@ -884,26 +1032,27 @@ capabilities:"",
       file: null,
       postalCode: "",
       currentStep: 1,
-      stepTitle: "اطلاعات فردی شما",
-      stepText: "مرحله نخست",
-      introduction:null,
-      result:null,
-      
+      stepTitle: this.$cookie.get("ltrTheme")
+        ? "Your information"
+        : "اطلاعات فردی شما",
+      stepText: this.$cookie.get("ltrTheme") ? "first level" : "مرحله نخست",
+      routes: [
+        {
+          route: "",
+          routeTitle_fa: "همکاری با ما",
+          routeTitle_en: "Work with us"
+        }
+      ],
+
+      result: null
     };
   },
   mounted() {
-    this.$axios.get("Home/GetCooperationInfo").then(res=>{
+    this.$axios.get("Home/GetCooperationInfo").then((res) => {
       let step1 = JSON.stringify(res.data.data);
-            let step2 = step1.replace(/_fa"/g, '"');
-            let step3 = step2.replace(/_en"/g, '"');
-                    this.result= JSON.parse(step3);
-      this.introduction={
-        image: this.$root.baseImageUrl+this.result.image,
-        routes: [{ route: "", routeTitle: "درباره ما" }],
-        title: "دربــــاره گــــروه مارگاریــــن",
-        summary: this.result.title,
-        text:this.result.text
-         }
+      let step2 = step1.replace(/_fa"/g, '"');
+      let step3 = step2.replace(/_en"/g, '"');
+      this.result = JSON.parse(step3);
     });
   },
   mixins: [cooperationMixin],
@@ -919,18 +1068,144 @@ capabilities:"",
       if (move == "f") {
         if (this.currentStep == 1) {
           // 1
-          this.stepTitle = "موقعیت مکانی شما";
-          this.stepText = "مرحله دوم";
+          //  
+          if (this.firstName == "") {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "the first name is required"
+                : "نام را وارد کنید"
+            );
+          } else if (this.firstName.length < 2) {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "The number of characters in a name is more than three letters"
+                : "تعداد کارکتر های یک نام بیش از سه حرف است"
+            );
+          } else if (this.lastName == "") {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "the last  name is required"
+                : "نام خانوادگی را وارد کنید"
+            );
+          } else if (this.lastName.length < 5) {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "The number of characters in a last name is more than five letters"
+                : "تعداد کارکتر های یک فامیلی بیش از 5 حرف است"
+            );
+          }
+          else if (this.fatherName == "") {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "the father  name is required"
+                : "نام پدر را وارد کنید"
+            );
+          } else if (this.fatherName.length < 2) {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "The number of characters in a fatherName is more than three letters"
+                : "تعداد کارکتر های نام پدر بیش از 3 حرف است"
+            );
+          }
+          else if (this.nationalCode == "") {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "the national id is required"
+                : "کدملی را وارد کنید"
+            );
+          } else if (this.nationalCode.length !=10) {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "The number of characters in a nationalId is more than Eleven letters"
+                : "تعداد ارقام کدملی باید 11 رقم باشد"
+            );
+          }
+          
+          else if (this.nationalId == "") {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "the national id is required"
+                : "شماره شناسنامه را وارد کنید"
+            );
+          }
+          else if (this.brithDate==null) {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "Enter date of birth is required"
+                : "وارد کردن تاریخ تولد الزامی است"
+            );
+          }
+          else if (this.email=="") {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "E-mail is required"
+                : "وارد کردن ایمیل الزامی است"
+            );
+          }
+          else if (this.validateEmail(this.email)!=true) {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "The email format entered is incorrect"
+                : "فرمت وارد شده ایمیل صحیح نیست"
+            );
+          }
+          else if (this.phone=="") {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "the phone is required"
+                : "وارد کردن تلفن ثابت الزامی است"
+            );
+          }
+          else if (this.phone.length<10) {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "The landline number is not entered correctly, please enter it in full with the prefix"
+                : "شماره تلفن ثابت به درستی وارد نشده است لطفا به همراه پیش شماره به صورت کامل وارد کنید"
+            );
+          }
+          else if (this.mobile=="") {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "the mobile is required"
+                : "وارد کردن موبایل الزامی است"
+            );
+          }
+          else if (this.mobile.length!==11) {
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "Mobile must have 11 digits"
+                : "موبایل باید دارای 11 رقم باشد"
+            );
+          }
+          // email- phone- mobile-
+          this.stepTitle = this.$cookie.get("ltrTheme")
+            ? "Your Location"
+            : "موقعیت مکانی شما";
+          this.stepText = this.$cookie.get("ltrTheme")
+            ? "second level"
+            : "مرحله دوم";
         } else if (this.currentStep == 2) {
           if (this.address.length < 10) {
-            return this.$toast.error("آدرس را به صورت کامل وارد کنید");
+            return this.$toast.error(
+              this.$cookie.get("ltrTheme")
+                ? "Enter the full address"
+                : "آدرس را به صورت کامل وارد کنید"
+            );
           }
 
-          this.stepTitle = "رزومه شما";
-          this.stepText = "مرحله سوم";
+          this.stepTitle = this.$cookie.get("ltrTheme")
+            ? "Your resume"
+            : "رزومه شما";
+          this.stepText = this.$cookie.get("ltrTheme")
+            ? "third level"
+            : "مرحله سوم";
         } else if (this.currentStep == 3) {
-          this.stepTitle = "اطلاعات بیمه شما";
-          this.stepText = "مرحله چهارم";
+          this.stepTitle = this.$cookie.get("ltrTheme")
+            ? "Your insurance information"
+            : "اطلاعات بیمه شما";
+          this.stepText = this.$cookie.get("ltrTheme")
+            ? "The fourth step"
+            : "مرحله چهارم";
         }
         this.currentStep++;
         document
@@ -938,14 +1213,26 @@ capabilities:"",
           .scrollIntoView({ behavior: "smooth" });
       } else {
         if (this.currentStep == 2) {
-          this.stepTitle = "اطلاعات فردی شما";
-          this.stepText = "مرحله نخست";
+          this.stepTitle = this.$cookie.get("ltrTheme")
+            ? "Your information"
+            : "اطلاعات فردی شما";
+          this.stepText = this.$cookie.get("ltrTheme")
+            ? "first level"
+            : "مرحله نخست";
         } else if (this.currentStep == 3) {
-          this.stepTitle = "موقعیت مکانی شما";
-          this.stepText = "مرحله دوم";
+          this.stepTitle = this.$cookie.get("ltrTheme")
+            ? "Your Location"
+            : "موقعیت مکانی شما";
+          this.stepText = this.$cookie.get("ltrTheme")
+            ? "second level"
+            : "مرحله دوم";
         } else if (this.currentStep == 4) {
-          this.stepTitle = "رزومه شما";
-          this.stepText = "مرحله سوم";
+          this.stepTitle = this.$cookie.get("ltrTheme")
+            ? "Your resume"
+            : "رزومه شما";
+          this.stepText = this.$cookie.get("ltrTheme")
+            ? "third level"
+            : "مرحله سوم";
         }
         this.currentStep--;
       }
@@ -957,7 +1244,7 @@ capabilities:"",
         fatherName: this.fatherName,
         shomareMelli: this.nationalCode,
         shomareShenasname: this.nationalId,
-        gender: this.gender=='مرد'?'male':'female',
+        gender: this.gender == "مرد" ? "male" : "female",
         maritalStatus: this.lifeStyle,
         birthDate: this.brithDate,
         religion: this.religion,
@@ -968,32 +1255,41 @@ capabilities:"",
         city: this.city,
         pstalCode: this.postalCode,
         address: this.address,
-        file: this.file!=null?this.file:"",
+        file: this.file != null ? this.file : "",
         education: this.education,
         capabilities: this.capabilities,
         yearInsurance: this.year,
         monthInsurance: this.mounth,
         extraDescription: this.description
       };
-      console.log(pack)
-      this.$axios.post("Cooperation", JSON.stringify(pack), {
-                        headers: {
-                            // Overwrite Axios's automatically set Content-Type
-                            "Content-Type": "application/json"
-                        }
-                    })
-                    .then((response) => {
-                        
-                        this.$toast.success(response.data.message);
-                        this.$router.push("/")
-                 
-                    })
-                    
+      console.log(pack);
+      this.$axios
+        .post("Cooperation", JSON.stringify(pack), {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            "Content-Type": "application/json"
+          }
+        })
+        .then((response) => {
+          this.$toast.success(response.data.message);
+          this.$router.push("/");
+        })
+        .catch((error) => {
+          let arrayError = error.response.data.message.split("|");
+          arrayError.forEach((err, index) => {
+            this.$toast.error(err, {
+              timeout: 1000 * (index + 4),
+              pauseOnHover: true
+            });
+          });
+        });
     }
   },
-     metaInfo() {
+  metaInfo() {
     return {
-      title:  this.$cookie.get("ltrTheme") ? "cooperation - margarin" : "مارگارین - همکاری با ما",
+      title: this.$cookie.get("ltrTheme")
+        ? "Work with us - margarin"
+        : "مارگارین - همکاری با ما",
       meta: [
         {
           name: "description",
@@ -1001,7 +1297,9 @@ capabilities:"",
         },
         {
           property: "og:title",
-          content:  this.$cookie.get("ltrTheme") ? "cooperation - margarin" : "مارگارین - همکاری با ما"
+          content: this.$cookie.get("ltrTheme")
+            ? "Work with us - margarin"
+            : "مارگارین - همکاری با ما"
         },
         { name: "robots", content: "index,follow" }
       ]
@@ -1053,7 +1351,7 @@ button.selectedButton .selected {
   fill: var(--color-theme);
 }
 #stepBox .activeStep .firstSvgStep circle {
-  fill: transparent
+  fill: transparent;
 }
 #locationInfo .selectCooperationInput,
 #fileInfo .selectCooperationInput,
@@ -1073,5 +1371,8 @@ button.selectedButton .selected {
 #filefromUser__BV_file_outer_ {
   position: fixed;
   top: -100px;
+}
+.deactiveStep svg circle {
+  fill: #afa2a2 !important;
 }
 </style>

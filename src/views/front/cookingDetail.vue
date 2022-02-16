@@ -1,15 +1,23 @@
 <template>
   <div v-if="cookingData" id="blogDetailSection" class="width80 margin-auto">
-    <introduction :data="introduction">
+    <introduction 
+     :title="cookingData.title"
+      :summary="cookingData.userInfo"
+      :image="$root.baseImageUrl + cookingData.image"
+      :routes="routes">
       <div id="headerBlog" class="d-flex flex-direction-column align-items-end slotElements blackColor06">
-        <p class="cookingTitle">
-          {{ cooking.title }}
+        <p data-aos="fade-up"
+        data-aos-duration="1500"
+        data-aos-once="true" class="cookingTitle">
+          {{ cookingData.shortDescription }}
         </p>
-        <div class="headerBlogOption d-flex justify-content-between">
+        <div data-aos="zoom-in"
+        data-aos-duration="2000"
+        data-aos-once="true" class="headerBlogOption d-flex justify-content-between">
           <div class="d-flex justify-content-between align-items-center width30">
             <p class="d-flex flex-direction-column align-items-center">
-              <span>اشتراک گذاری</span>
-              <span>در شبکه های اجتماعی</span>
+              <span>{{$cookie.get('ltrTheme')?'Share':'اشتراک گذاری'}}</span>
+              <span>{{$cookie.get('ltrTheme')?"On social networks":'در شبکه های اجتماعی'}}</span>
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -57,8 +65,8 @@
           </div>
           <div class="d-flex justify-content-between align-items-center width30">
             <p class="d-flex flex-direction-column align-items-center">
-              <span>تاریخ انتشار</span>
-              <span>{{ cooking.date }}</span>
+              <span>{{$cookie.get('ltrTheme')?"Published At":'تاریخ انتشار'}}</span>
+              <span>{{ cookingData.createDate }}</span>
             </p>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -106,8 +114,8 @@
           </div>
           <div class="d-flex justify-content-end align-items-center width30">
             <p class="d-flex flex-direction-column align-items-center">
-              <span>زمان مطالعه</span>
-              <span>{{ cooking.readyTime }}</span>
+              <span>{{$cookie.get('ltrTheme')?"Study time":'زمان مطالعه'}}</span>
+              <span>{{ cookingData.timeToRead }}</span>
             </p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -156,9 +164,12 @@
         </div>
       </div>
     </introduction>
-    <div class="ckEditorOutput" v-html="cooking.html"></div>
+    <div data-aos="fade-up"
+        data-aos-duration="1000"
+        data-aos-delay="1000"
+        data-aos-once="true" class="ckEditorOutput" v-html="cookingData.description"></div>
    
-    <commentBox :comments="cooking.comments" />
+    <commentBox :likeRoute="'RecipeComment'" :field="'recipeId'" :routeComment="'RecipeComment'"  :comments="cookingData.comments" />
   </div>
   <Loader v-else />
 </template>
@@ -176,95 +187,28 @@ export default {
     return {
      
      
-      blogDetailHeader: {
-        route: "/",
-        routeTitle: "مشاهده آرشیو مقالات",
-        title: "اخــــبار , مقــــالات مرتبــــط",
-        summary: "بـــا مـــا همیشـــه بـــروز باشیـــد",
-        image: false
-      },
-      introduction: {
-        image:
-          "https://s4.uupload.ir/files/clipcooking_7sw0.png",
-        routes: [
-          { route: "", routeTitle: "دستورات پخت" }
-        ],
-        title: "کــــوردن بــــلو مــــرغ",
-        summary: "ســـرآشپز هـــادی محمـــدی"
-      },
-      cooking: {
-        title:
-          "برای درست کردن کوردن بلو باید ابتدا استخوان سینه مرغ را جدا کنید و کف دستتان را روی سینه مرغ بگذارید و با یک چاقوی تیز از کنار به صورت عرضی آن را برش دهید و به دو قسمت تقسیم کنید. هر دو طرف برش ها را به نمک و فلفل آغشته کنید .",
-        readyTime: "12 دقیقه",
-        html: "",
-        date: "26 اردیبهشت ماه 1400",
-        tags: [
-          { title: "تغذیه و سلامت" },
-          { title: "بهداشت فردی" },
-          { title: "بیماری یائسگی" }
-        ],
-        comments: [
-          {
-            id: "1",
-            image: "https://s4.uupload.ir/files/rounded_rectangle_3sdsdsd_copy_90e.png",
-            fullName: "سعید دهقان",
-            date: "26 دی 1396",
-            rate: 3.6,
-            comment:
-              "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
-            answer: [
-              {
-                id: "10",
-                image: null,
-                fullName: "سعید دهقان",
-                date: "26 دی 1396",
-                rate: 4,
-                comment:
-                  "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد."
-              }
-            ]
-          },
-
-          {
-            id: "2",
-            image: null,
-            rate: 3.6,
-            fullName: "سعید دهقان",
-            date: "26 دی 1396",
-            comment:
-              "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
-            answer: null
-          },
-          {
-            id: "3",
-            image: null,
-            fullName: "سعید دهقان",
-            date: "26 دی 1396",
-            rate:4,
-            comment:
-              "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.",
-            answer: null
-          }
-        ]
-      }
+      routes:[{ route: "", routeTitle_fa: "دستورات پخت", routeTitle_en:"Baking instructions"}],
+      
+     
+     
     };
   },
-    //  metaInfo() {
-  //   return {
-  //     title: this.blogData?this.blogData.title:"جزئیات پست",
-  //     meta: [
-  //       {
-  //         name: "description",
-  //         content: this.blogData ? this.blogData.meta : false
-  //       },
-  //       {
-  //         property: "og:title",
-  //         content: this.blogData?this.blogData.title:"جزئیات پست"
-  //       },
-  //       { name: "robots", content: "index,follow" }
-  //     ]
-  //   };
-  // },
+      metaInfo() {
+    return {
+      title: this.cookingData?this.cookingData.title:"جزئیات آشپزی",
+      meta: [
+        {
+          name: "description",
+          content: this.cookingData ? this.cookingData.meta : false
+        },
+        {
+          property: "og:title",
+          content: this.cookingData?this.cookingData.title:"جزئیات آشپزی"
+        },
+        { name: "robots", content: "index,follow" }
+      ]
+    };
+  },
   computed:{
     cookingData(){
       return this.$store.getters.getCookingData;

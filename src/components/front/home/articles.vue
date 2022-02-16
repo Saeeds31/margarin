@@ -1,6 +1,6 @@
 <template>
   <div id="articles" class="width100">
-    <sectionHeader :data="articleHeader">
+    <sectionHeader :data="articleHeader" >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -95,9 +95,9 @@ export default {
       showSlider: false,
       articleHeader: {
         route: "/",
-        routeTitle: "مشاهده آرشیو مقالات",
-        title: "مقــــــالات گــــــروه مارگاریــــــن",
-        summary: "بـــا مـــا همیشـــه بـــروز باشیـــد",
+        routeTitle:this.$cookie.get('ltrTheme')?"View article archive": "مشاهده آرشیو مقالات",
+        title:this.$cookie.get('ltrTheme')?"Margarine Group Articles": "مقــــــالات گــــــروه مارگاریــــــن",
+        summary:this.$cookie.get('ltrTheme')?"Always be up to date with us": "بـــا مـــا همیشـــه بـــروز باشیـــد",
         image: true
       },
       // articles: [
@@ -238,15 +238,7 @@ this.$root.setProportionStyle(
           1024,
           45
         );
-        this.$root.setProportionStyle(
-          "top",
-          "%",
-          "#sliderSection .slick-prev",
-          1496,
-          -9,
-          1024,
-          -11
-        );
+       
         this.$root.setProportionStyle(
           "top",
           "%",
@@ -255,15 +247,6 @@ this.$root.setProportionStyle(
           -9,
           1024,
           -11
-        );
-        this.$root.setProportionStyle(
-          "left",
-          "%",
-          "#sliderSection .slick-prev",
-          1496,
-          20,
-          1024,
-          25
         );
         
         //
@@ -328,21 +311,14 @@ this.$root.setProportionStyle(
 </script>
 <style>
 .firstRow {
-  margin-bottom: 3%;
+  margin-bottom: 1%;
 }
 
 #sliderSection .slick-prev:before,
 #sliderSection .slick-next:before {
   opacity: 1;
 }
-#sliderSection .slick-prev {
-  top: -8%;
-  left: 14%;
-}
-#sliderSection .slick-next {
-  top: -8%;
-  right: 76%;
-}
+
 #sliderSection .slick-prev,
 #sliderSection .slick-next {
   background: white;
@@ -353,7 +329,13 @@ this.$root.setProportionStyle(
   cursor: pointer;
   z-index: 100;
 }
+#sliderSection .slick-prev{
+  left: -70px;
+}
 #sliderSection .slick-prev:before,
+#sliderSection .slick-next{
+  right:-70px
+}
 #sliderSection .slick-next:before {
   color: black;
   font-size: 15px;

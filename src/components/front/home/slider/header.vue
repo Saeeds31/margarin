@@ -1,8 +1,12 @@
 <template>
-    <div id="headerContent" class="d-flex width90 align-items-center justify-content-between">
+    <div :class="{'reStyleHeaderContent':$root.sectionIndexHome!=1}" id="headerContent" class="d-flex width90 align-items-center justify-content-between">
         <buttons />
-        <menuBar />
-        <logo class="width5"/>
+        <menuBar v-if="$root.sectionIndexHome==1" />
+        <logo v-if="$root.sectionIndexHome==1" />
+        <logo v-else  data-aos="flip-left"
+      data-aos-duration="2500"
+
+      data-aos-once="false" class="width5"/>
     </div>
 </template>
 <script>

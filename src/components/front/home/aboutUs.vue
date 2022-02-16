@@ -2,7 +2,7 @@
   <div id="aboutUsSection" class="d-flex justify-content-end">
     <div id="text" class="width50 d-flex flex-direction-column align-items-end">
       <img
-      data-aos="zoom-in" data-aos-duration="1500"    data-aos-once="true"
+      data-aos="flip-right" data-aos-duration="2200" data-aos-delay="500"    data-aos-once="false"
       id="aboutUsSectionImage"
         class="width70"
         src="@/assets/front/images/aboutUSHome.png"
@@ -13,19 +13,11 @@
           <cart v-for="item in aboutUsList" :content="item" :key="item.id" />
         </VueSlickCarousel>
       </div>
-      <h1>دربــــــاره گــــــروه مارگاریــــــن</h1>
-      <h3 class="summary">اهــــــمیت بــــــه ســــــلامت خانــــــواده</h3>
+      <h1>{{$cookie.get('ltrTheme')?'About Margarine Group':'دربــــــاره گــــــروه مارگاریــــــن'}}</h1>
+      <h3 class="summary">{{$cookie.get('ltrTheme')?'Importance for family health':'اهــــــمیت بــــــه ســــــلامت خانــــــواده'}}</h3>
       <p>
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-        متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
-        نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-        خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید
-        داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان
-        رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
-        پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+        
+        {{$cookie.get('ltrTheme')? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, printer et al. It is practical, many books in the past sixty-three percent of the present and the future, require a lot of knowledge of society and professionals, to create more knowledge with software for computer designers, especially creative designers, and the leading culture in Persian, In this case, it can be hoped that all the difficulties in providing solutions, and difficult typing conditions will end, and the time required, including typing the main achievements, and answering the continuous questions of the existing world of design, will be basically used.' :' لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. '}}
       </p>
     </div>
     <div id="pictures" class="width50 hiddenInMobile">
@@ -38,13 +30,19 @@
      
       <div id="carts" class="width100 height100 d-flex flex-direction-column">
         <div id="column1" class="width90">
-          <template v-for="(item, index) in aboutUsList">
-            <cart v-if="index < 2" :content="item" :key="item.id" />
+          <template  v-for="(item, index) in aboutUsList">
+            <cart 
+            class="otherCart"
+              v-if="index < 2" :content="item" :key="item.id" />
           </template>
         </div>
         <div id="column2" class="width90">
           <template v-for="(item, index) in aboutUsList">
-            <cart v-if="index > 1" :content="item" :key="item.id" />
+            <cart 
+            :id="index==2?'carts3':''"
+            :class="{otherCart:index!=2}"
+  
+            v-if="index > 1" :content="item" :key="item.id" />
           </template>
         </div>
       </div>
@@ -94,27 +92,27 @@ export default {
         {
           id: 1,
           image: "https://s4.uupload.ir/files/a_3j4x.png",
-          title: "معرفی مجموعه",
-          text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
+          title:this.$cookie.get("ltrTheme")?"Introducing the collection": "معرفی مجموعه",
+          text:this.$cookie.get("ltrTheme")?"Lorem ipsum dolor sit amet, consectetur adipiscing elit.": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
         },
           {
           id: 3,
           image: "https://s4.uupload.ir/files/b_mbnf.png",
-          title: "چشم اندازها",
-          text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
+          title:this.$cookie.get("ltrTheme")?"Perspectives": "چشم اندازها",
+          text:this.$cookie.get("ltrTheme")?"Lorem ipsum dolor sit amet, consectetur adipiscing elit.": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
         },
         {
           id: 2,
           image: "https://s4.uupload.ir/files/aboutushomecart1_p0ia.png",
-          title: "ماموریت ما",
-          text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
+          title:this.$cookie.get("ltrTheme")?"Our mission": "ماموریت ما",
+          text:this.$cookie.get("ltrTheme")?"Lorem ipsum dolor sit amet, consectetur adipiscing elit.": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
         },
       
         {
           id: 4,
           image: "https://s4.uupload.ir/files/-e-icon_2e8m.png",
-          title: "ارزش های گروه",
-          text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
+          title:this.$cookie.get("ltrTheme")?"Group values": "ارزش های گروه",
+          text:this.$cookie.get("ltrTheme")?"Lorem ipsum dolor sit amet, consectetur adipiscing elit.": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
         }
       ]
     };
@@ -167,14 +165,9 @@ export default {
           1024,
           18
         );
-          this.$root.setProportionStyle(
+          this.$root.unsetInlineStyle(
           "margin-bottom",
-          "px",
           "#homeSection #aboutUsSection",
-          1496,
-          10,
-          1024,
-          10
         );
         this.$root.setProportionStyle(
           "font-size",

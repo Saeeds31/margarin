@@ -33,8 +33,29 @@ export default {
   methods: {
     setStyle() {
       if (window.innerWidth > 1000) {
+        if(window.innerWidth>1495){
+          this.$root.setProportionStyle(
+          "top",
+          "%",
+          "#weeklyCookingSection .slick-prev",
+          1920,
+          86,
+          1495,
+          86
+        );
         this.$root.setProportionStyle(
-          "font-size",
+          "top",
+          "%",
+          "#weeklyCookingSection .slick-next",
+          1920,
+          86,
+          1495,
+          86
+        );
+        }else{
+
+          this.$root.setProportionStyle(
+            "font-size",
           "px",
           "#homeSection #weeklyCookingSection .cart .body .header .titles h1",
           1496,
@@ -113,7 +134,7 @@ export default {
           "%",
           "#weeklyCookingSection .slick-prev",
           1496,
-          85,
+          86,
           1024,
           90
         );
@@ -122,10 +143,11 @@ export default {
           "%",
           "#weeklyCookingSection .slick-next",
           1496,
-          85,
+          86,
           1024,
           90
         );
+          }
       } else {
         this.$root.setProportionStyle(
           "font-size",
@@ -155,7 +177,7 @@ export default {
           43,
           "important"
         );
-
+        
         this.$root.setProportionStyle(
           "top",
           "%",
@@ -235,12 +257,12 @@ export default {
   box-shadow: none;
 }
 #weeklyCookingSection .slick-prev {
-  left: 85%;
+  left: 70%;
   top: 85%;
   z-index: 100;
 }
 #weeklyCookingSection .slick-next {
-  right: 7%;
+  right: 23%;
   top: 85%;
   z-index: 100;
 }

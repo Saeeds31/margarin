@@ -49,9 +49,10 @@ export default {
             this.$axios.defaults.headers.common["Accept-Language"] = "fa";
 
       }
+      this.$router.go(0)
     },
     showMoreLanguage() {
-      this.showOtherLanguage = true;
+      this.showOtherLanguage = !this.showOtherLanguage;
     }
   },
   mounted(){

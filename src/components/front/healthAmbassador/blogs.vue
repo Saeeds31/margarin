@@ -3,13 +3,21 @@
     id="blogsSection"
     class="width80 margin-auto d-flex align-items-center flex-direction-column"
   >
-    <h1 class="blackColor06">{{ data.title }}</h1>
-    <h2 class="blackColor06">{{ data.summary }}</h2>
-    <div class="lineBreak">
+    <h1 data-aos="zoom-in"
+      data-aos-duration="1500"
+      data-aos-once="false" class="blackColor06">{{ data.title }}</h1>
+    <h2 data-aos="zoom-out"
+      data-aos-duration="1500"
+      data-aos-once="false" class="blackColor06">{{ data.summary }}</h2>
+    <div data-aos="fade-right"
+      data-aos-duration="1500"
+      data-aos-once="false" class="lineBreak">
       <span></span><span class="large"></span><span></span>
     </div>
 
-    <div id="weblogsList" class="width100">
+    <div data-aos="fade-up"
+      data-aos-duration="1500"
+      data-aos-once="false" id="weblogsList" class="width100">
         <VueSlickCarousel v-bind="sliderSettings">
       <cart v-for="(blog, index) in data.blogs" :key="index" :article="blog" />
     </VueSlickCarousel>

@@ -28,7 +28,7 @@
         </template>
       </VueSlickCarousel>
     </div>
-    <p>{{ lastText }}</p>
+    <p id="lastAboutUsP">{{ lastText }}</p>
   </div>
 </template>
 <script>

@@ -3,13 +3,13 @@
 <div class="innerContent width100">
         <img class="width100" :src="$root.baseImageUrl+article.image" :alt="article.title" />
     <div class="content">
-        <p class="width80 margin-auto">{{  `دسته بندی ${article.category}` }}</p>
+        <p class="width80 margin-auto">{{  `${$cookie.get('ltrTheme')?'category':'دسته بندی'} ${article.category}` }}</p>
     <h1 class="width80">{{ article.title }}</h1>
     <div class="articleDate d-flex justify-content-end width80 ">
       
 
       <p class="d-flex flex-direction-column">
-        <span>منتشر شده</span>
+        <span>{{$cookie.get('ltrTheme')?'published':'منتشر شده'}}</span>
         <span>{{article.createDate }}</span>
       </p>
       <svg

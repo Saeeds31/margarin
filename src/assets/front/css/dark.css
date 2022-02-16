@@ -40,7 +40,9 @@
 .darkMode .collapseSection .card .card-header button span,
 .darkMode #blogDetailSection .blogDescription,
 .darkMode .ckEditorOutput,
-.darkMode .blackColor08 {
+.darkMode .blackColor08,
+.darkMode .cookingCart .detail span,
+.darkMode #homeSection #sliderSection #sliderContent #headerContent #navBarMenu ul li a {
     color: white !important;
 }
 
@@ -83,6 +85,10 @@
 
 } */
 
+.darkMode #Header #mainContent #topSection nav #topMenu li a {
+    opacity: 1;
+}
+
 .darkMode .darkMode #introductionSection #content .innerContent {
     background-color: #3e3e3e
 }
@@ -106,6 +112,20 @@
 
 .darkMode #mobileMenu {
     background: #323232
+}
+
+.darkMode .commentForm {
+    background: #646464;
+}
+
+.darkMode #productsSection #filterBox #searchBox input {
+    background: #b2b2b2;
+    color: white;
+}
+
+.darkMode .productCart .product h1,
+.darkMode .productCart .product h4 {
+    color: #646464 !important
 }
 
 .darkMode .commentForm #commentFormTop input,
@@ -265,7 +285,15 @@
 
 .darkMode #doubleLine div {
     opacity: 0.3 !important;
-    background-color: #ffffff !important;
+    background: linear-gradient(3deg, red, #5600fffa) !important;
+}
+ 
+.darkMode #aboutSection #statisticsSection #racemeSection .raceme h4 {
+    color: white
+}
+
+.darkMode #awardsSection .sliderItem .content h1 {
+    opacity: 1;
 }
 
 .darkMode #searchBox input {
@@ -300,6 +328,7 @@
 
 .darkMode .productCart .product {
     border: 5px solid #ebebeb8c;
+    background: rgb(245 245 255);
 }
 
 .darkMode .productCart .product button {

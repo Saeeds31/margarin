@@ -5,30 +5,31 @@
       <i class="fa fa-circle"></i></router-link></li>
       <li>
         <router-link to="/"
-          >پنل همکاران
+          >
+          {{$cookie.get('ltrTheme')?'Partners panel':'پنل همکاران'}}
           <i class="fa fa-circle"></i>
         </router-link>
       </li>
 
       <li>
         <router-link to="/login"
-          >عضویت
+          >{{$cookie.get('ltrTheme')?'Membership':'عضویت'}}
           <i class="fa fa-circle"></i>
         </router-link>
       </li>
       <li>
         <router-link to="/contact-us"
-          >تماس با ما
+          >{{$cookie.get('ltrTheme')?'Contact Us':'تماس با ما'}}
           <i class="fa fa-circle"></i>
         </router-link>
       </li>
       <li>
         <router-link to="/">
-          افتخارات
+          {{$cookie.get('ltrTheme')?'Honors':'افتخارات'}}
           <i class="fa fa-circle"></i>
         </router-link>
       </li>
-      <li><router-link to="/">صفحه نخست </router-link></li>
+      <li><router-link to="/">{{$cookie.get('ltrTheme')?'Home':'صفحه نخست'}} </router-link></li>
     </ul>
   </nav>
 </template>

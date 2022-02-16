@@ -1,30 +1,29 @@
 <template>
   <div id="filterBox">
     <div id="filters" class="width100 d-flex justify-content-between">
-      <multiSelect
-        :placeholder="'براساس '"
+          <multiSelect
+        class="hiddenInMobile"
+        :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
         id="sortOption"
         track-by="name"
         label="name"
         v-model="sort"
         :options="sortOptions"
-        class="hiddenInMobile"
       ></multiSelect>
-      <multiSelect
-      v-if="productCategory"
+    <multiSelect
+        v-if="productCategory"
         id="categotyOption"
-        track-by="name"
-        label="name"
-        :placeholder="'دسته بندی'"
+        :placeholder="$cookie.get('ltrTheme') ? 'Category' : 'دسته بندی'"
         v-model="category"
         :options="productCategory"
       >
       </multiSelect>
       <div id="searchBox" class="width45">
         <input
-          class="width100 blackColor06"
+          v-model="search"
+          class="width100"
           type="text"
-          placeholder="جستوجو را همین الان شروع کنید ..."
+          :placeholder="searchPlaceHolder"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -63,17 +62,75 @@ export default {
    }
  },
 
+   watch: {
+    sort(newVal) {
+      // this.filterList.push(newVal);
+      let filter = {
+        category: this.category != null ? this.category : "",
+        isDesending: newVal != null ?newVal.value: true,
+        search: this.search
+      };
+      this.$emit("filtered", filter);
+    },
+    category(newVal) {
+      // this.filterList.push(newVal);
+      let filter = {
+        category: newVal != null ? newVal : "",
+
+        isDesending: this.sort != null ? this.sort.value : true,
+        search: this.search
+      };
+      this.$emit("filtered", filter);
+    },
+    search() {
+      let filter = {
+        category: this.category != null ? this.category : "",
+
+        isDesending: this.sort != null ? this.sort.value : true,
+        search: this.search
+      };
+      this.$emit("filtered", filter);
+    }
+  },
   data() {
     return {
+      search: "",
       filterList: [],
+      searchPlaceHolder:
+        this.placeHolder != ""
+          ? this.placeHolder
+          : this.$cookie.get("ltrTheme")
+          ? "Start searching now ..."
+          : "جستجوی را همین الان شروع کنید ...",
       category: null,
-    
-      sort: null,
+      sort:
+        this.isDesendingSelected != ""
+          ? this.isDesendingSelected == true
+            ? {
+                name: this.$cookie.get("ltrTheme") ? "Newest" : "جدیدترین",
+                value: "true"
+              }
+            : {
+                name: this.$cookie.get("ltrTheme") ? "Oldest" : "قدیمی ترین",
+                value: "false"
+              }
+          : null,
       sortOptions: [
-        { name: "محبوب ترین ها", value: "poupular" },
-        { name: "پر بازدید", value: "visited" }
+        {
+          name: this.$cookie.get("ltrTheme") ? "Oldest" : "قدیمی ترین",
+          value: "false"
+        },
+        {
+          name: this.$cookie.get("ltrTheme") ? "Newest" : "جدیدترین",
+          value: "true"
+        }
       ]
     };
+  },
+  props: {
+    placeHolder: String,
+    isDesendingSelected: String,
+    categorySelected: String
   }
 };
 </script>

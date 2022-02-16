@@ -37,7 +37,9 @@ import Toast from "vue-toastification";
 import "vue-toastification/dist/index.css";
 import swal from "sweetalert";
 import CKEditor from "ckeditor4-vue";
-
+// CKEditor.replace('DescriptionRtl', {
+//     customConfig: '/js/Config.js'
+// });
 Vue.use(CKEditor);
 window.swal = swal;
 Vue.use(Toast);
@@ -65,6 +67,7 @@ Vue.config.productionTip = false;
 new Vue({
     data() {
         return {
+            sectionIndexHome: 1,
             screenSize: 0,
             baseImageUrl: "http://blogtest.ir/"
         };
@@ -86,6 +89,9 @@ new Vue({
     created() {
         if (this.$cookie.get("ltrTheme")) {
             this.$axios.defaults.headers.common["Accept-Language"] = "en";
+            if (!document.body.classList.contains('ltrTheme')) {
+                document.body.classList.add('ltrTheme')
+            }
         } else {
             this.$axios.defaults.headers.common["Accept-Language"] = "fa";
         }
@@ -115,6 +121,7 @@ new Vue({
                 "Bearer " + this.$cookie.get("Authorization");
         }
     },
+
     router,
     store,
     render: function(h) {

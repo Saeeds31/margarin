@@ -44,20 +44,26 @@
               class="tools d-flex justify-content-between align-items-end width80 margin-auto"
             >
               <div
-                class="discountRate d-flex flex-direction-column align-items-stretch"
+                class="discountRate d-flex flex-direction-column align-items-center"
               >
                 <div
+                 data-aos="fade-up"
+              data-aos-duration="1500"
+              data-aos-once="true"
                   v-if="product.discount"
                   class="discount d-flex flex-direction-column"
                 >
                   <span> {{ product.discount }}%</span>
-                  <span>تخفیف</span>
+                  <span>{{$cookie.get('ltrTheme')?'rate':'تخفیف'}}</span>
                 </div>
                 <div
+                 data-aos="zoom-in"
+              data-aos-duration="1000"
+              data-aos-once="true"
                   class="rate d-flex justify-content-between align-items-center"
                 >
                   <p class="d-flex flex-direction-column align-items-center">
-                    <span>امتیاز</span>
+                    <span>{{$cookie.get('ltrTheme')?'score':'امتیاز'}}</span>
                     <span>{{ productData.scroe }}</span>
                   </p>
                   <svg
@@ -94,7 +100,9 @@
                   </svg>
                 </div>
               </div>
-              <div class="zoom d-flex flex-direction-column align-items-end">
+              <div  data-aos="zoom-in"
+              data-aos-duration="2500"
+              data-aos-once="true" class="zoom d-flex flex-direction-column align-items-end">
                 <svg
                   @click="zoom('in')"
                   :class="{ disableButton: scale == 1.5 }"
@@ -163,6 +171,9 @@
             </div>
             <div class="mainImage d-flex justify-content-center">
               <img
+               data-aos="fade-down"
+              data-aos-duration="2000"
+              data-aos-once="true"
                 :src="$root.baseImageUrl + productData.image"
                 :alt="productData.name"
               />
@@ -190,10 +201,10 @@
               data-aos="fade-up"
               data-aos-duration="1000"
               data-aos-once="true"
-              class="commentShare d-flex justify-content-between width90 margin-auto"
+              class="commentShare d-flex justify-content-between width100 margin-auto"
             >
               <button class="share d-flex justify-content-around">
-                <span>اشتراک گذاری</span>
+                <span>{{$cookie.get('ltrTheme')?'share':'اشتراک گذاری'}}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -213,7 +224,7 @@
               </button>
               <button class="comment d-flex justify-content-around">
                 <span>
-                  {{ product.comments.length + "نظرات داده شده" }}
+                  {{ `${product.comments.length}  ${$cookie.get('ltrTheme')?'comments':"نظرات داده شده"}` }}
                 </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -385,7 +396,7 @@ export default {
         mainImage: "https://s4.uupload.ir/files/layer_2706_izb5.png",
         sizeImage: "https://s4.uupload.ir/files/group_1asdasdasdasd_7ipq.png",
         chartImage: "https://s4.uupload.ir/files/layer_2712_1tgc.png",
-        routes: [{ route: "/products", routeTitle: "محصولات" }],
+        routes: [{ route: "/products", routeTitle_fa: "محصولات" , routeTitle_en: "products" }],
         title: "روغــــــــن آفتابــــــــگردان",
         summary: "پــالایش شــده مصــارف خانگــی"
       }

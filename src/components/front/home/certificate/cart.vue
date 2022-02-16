@@ -34,7 +34,7 @@
       <div class="date d-flex align-items-center">
       
         <p class="d-flex flex-direction-column">
-          <span>دریافت در تاریخ</span>
+          <span>{{$cookie.get('ltrTheme')?'recived Date':'دریافت در تاریخ'}}</span>
           <span>{{ certificate.receivedDate }}</span>
         </p>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="58" height="58" viewBox="0 0 70 70">

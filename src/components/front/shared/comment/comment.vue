@@ -29,8 +29,8 @@
             </svg>
           </span> -->
 
-          <span class="unLike blackColor04">
-            12
+          <span  @click="sendReact('disLike',comment.id)" class="unLike blackColor04">
+            {{comment.disLike}}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -48,8 +48,8 @@
               />
             </svg>
           </span>
-          <span class="like">
-            36
+          <span @click="sendReact('like',comment.id)" class="like">
+            {{comment.like}}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -81,7 +81,7 @@
         </div>
       </div>
       <div class="commentText">
-        {{ comment.comment }}
+        {{ comment.text }}
       </div>
          <div class="rateToComment align-items-center d-flex justify-content-center showInMobileFlex">
            <button
@@ -109,8 +109,8 @@
             </svg>
           </span> -->
 
-          <span class="unLike blackColor04">
-            12
+          <span @click="sendReact('disLike',comment.id)" class="unLike blackColor04">
+            {{comment.disLike}}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -128,8 +128,8 @@
               />
             </svg>
           </span>
-          <span class="like">
-            36
+          <span @click="sendReact('like',comment.id)" class="like">
+            {{comment.like}}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -148,8 +148,8 @@
           </span>
         </div>
     </div>
-    <template v-if="comment.answer">
-      <div class="answerComment" v-for="(answer,index) in comment.answer" :key="index">
+    <template v-if="comment.replyComments&&comment.replyComments.length>0">
+      <div class="answerComment" v-for="(answer,index) in comment.replyComments" :key="index">
         <div class="headerComment align-items-center d-flex justify-content-between">
         
           <div class="rateToComment align-items-center d-flex justify-content-center hiddenInMobile">
@@ -178,8 +178,8 @@
               </svg>
             </span > -->
 
-            <span class="unLike blackColor04">
-              12
+            <span @click="sendReact('disLike',answer.id)" class="unLike blackColor04">
+              {{answer.disLike}}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -197,8 +197,8 @@
                 />
               </svg>
             </span>
-            <span class="like">
-              36
+            <span @click="sendReact('like',answer.id)" class="like">
+              {{answer.like}}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -230,7 +230,7 @@
           </div>
         </div>
         <div class="commentText">
-          {{ answer.comment }}
+          {{ answer.text }}
         </div>
                   <div class="rateToComment align-items-center d-flex justify-content-center showInMobileFlex">
               <button
@@ -258,8 +258,8 @@
               </svg>
             </span > -->
 
-            <span class="unLike blackColor04">
-              12
+            <span @click="sendReact('disLike',answer.id)"  class="unLike blackColor04">
+              {{answer.disLike}}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -277,8 +277,8 @@
                 />
               </svg>
             </span>
-            <span class="like">
-              36
+            <span  @click="sendReact('like',answer.id)"  class="like">
+              {{answer.like}}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -305,9 +305,20 @@
 // import {BModal} from "bootstrap-vue"
 export default {
   props: {
-    comment: Object
+    comment: Object,
+    likeRoute:String
   },
   methods: {
+    sendReact(type,id){
+      
+        this.$axios.post(`${this.likeRoute}/${type=='disLike'?'DisLike':'Like'}?id=${id}`).then(res=>{
+          this.$toast.success(res.data.message);
+          this.comment[type]++;
+          }).catch(error=>{
+          this.$toast.error(error.response.data.message);
+
+          })
+    },
     answerToComment(id){
       this.$emit("changeReplatTo",id);
       document.getElementById("commentFormTop").scrollIntoView({behavior:'smooth'})

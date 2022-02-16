@@ -30,7 +30,7 @@
               />
             </svg>
 
-            <span>دریافت تقویم سال 1400</span>
+            <span>{{$cookie.get('ltrTheme')?'Get the 2022 calendar':'دریافت تقویم سال 1400'}}</span>
           </button>
           <button class="d-flex flex-direction-column align-items-center">
             <svg
@@ -49,7 +49,7 @@
               />
             </svg>
 
-            <span>دریافت کاتالوگ معرفی شرکت</span>
+            <span>{{$cookie.get('ltrTheme')?'Get the company introduction catalog':'دریافت کاتالوگ معرفی شرکت'}}</span>
           </button>
         </div>
       </div>
@@ -57,11 +57,9 @@
         id="aboutUs"
         class="width20 d-flex flex-direction-column align-items-end"
       >
-        <h1 id="footerTitle" class="footerTitle">نشانی دفتر مرکزی</h1>
-        <p>
-          ایران , تهران , شهر ري , كيلومتر 3 جاده ورامين , بلوار شهید تندگویان ,
-          گروه شرکت های صنعتی مارگارین
-        </p>
+        <h1 id="footerTitle" class="footerTitle">{{$cookie.get('ltrTheme')?'Headquarters address':'نشانی دفتر مرکزی'}}</h1>
+        <p>{{$cookie.get('ltrTheme')?'Iran, Tehran, Rey city, 3 km of Varamin road, Shahid Tondgovian boulevard, Margarine industrial companies group':' ایران , تهران , شهر ري , كيلومتر 3 جاده ورامين , بلوار شهید تندگویان ,
+          گروه شرکت های صنعتی مارگارین'}}</p>
         <span> info@email.com </span>
         <h2> ۰۲۱- ۳۵۸۱۱</h2>
         <div id="social" class="width100 d-flex justify-content-around">
@@ -191,7 +189,7 @@
               />
             </svg>
 
-            <span>دریافت تقویم سال 1400</span>
+            <span>{{$cookie.get('ltrTheme')?'Get the 2022 calendar':'دریافت تقویم سال 1400'}}</span>
           </button>
           <button class="d-flex flex-direction-column align-items-center">
             <svg
@@ -210,31 +208,31 @@
               />
             </svg>
 
-            <span>دریافت کاتالوگ معرفی شرکت</span>
+            <span>{{$cookie.get('ltrTheme')?'Get the company introduction catalog':'دریافت کاتالوگ معرفی شرکت'}}</span>
           </button>
         </div>
       </div>
       <div id="bestRoute" class="hiddenInMobile">
-        <h1 class="footerTitle">لینک های کاربردی</h1>
+        <h1 class="footerTitle">{{$cookie.get('ltrTheme')?'Applied links':'لینک های کاربردی'}}</h1>
         <ul>
-          <li><router-link to="/about-us">درباره ما</router-link></li>
-          <li><router-link to="/">محصولات ما</router-link></li>
-          <li><router-link to="/">آشپزخانه</router-link></li>
-          <li><router-link to="/weblogs">وبلاگ</router-link></li>
-          <li><router-link to="/">همکاری با ما</router-link></li>
-          <li><router-link to="/contact-us">تماس با ما</router-link></li>
+          <li><router-link to="/about-us">{{$cookie.get('ltrTheme')?'About us':'درباره ما'}}</router-link></li>
+          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Products':'محصولات ما'}}</router-link></li>
+          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Cookings':'آشپزخانه'}}</router-link></li>
+          <li><router-link to="/weblogs">{{$cookie.get('ltrTheme')?'weblogs':'وبلاگ'}}</router-link></li>
+          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Cooperation':'همکاری با ما'}}</router-link></li>
+          <li><router-link to="/contact-us">{{$cookie.get('ltrTheme')?'Contact Us':'تماس با ما'}}</router-link></li>
         </ul>
       </div>
       <div id="route" class="hiddenInMobile">
-        <h1 class="footerTitle">خدمات گروه ما</h1>
+        <h1 class="footerTitle">{{$cookie.get('ltrTheme')?'Our group services':'خدمات گروه ما'}}</h1>
         <ul>
-          <li><router-link to="/">روغن های صنعت</router-link></li>
-          <li><router-link to="/">روغن های صنف</router-link></li>
-          <li><router-link to="/">روغن های خانوار</router-link></li>
+          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Industrial oils':'روغن های صنعت'}}</router-link></li>
+          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Class oils':'روغن های صنف'}}</router-link></li>
+          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Household oils':'روغن های خانوار'}}</router-link></li>
         </ul>
       </div>
       <button
-        v-if="showGotoTOp"
+        v-if="showGotoTOp&&$route.path!='/faq'"
         @click="goToTop()"
         data-aos="fade-up"
         data-aos-duration="1000"

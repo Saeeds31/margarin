@@ -2,11 +2,11 @@
   <div @click="gotoLink(blog.id,blog.title)" class="cart">
    <div class="content d-flex flex-direction-column align-items-end">
  <img :src="$root.baseImageUrl+blog.image" :alt="blog.title" />
-    <h1>{{ blog.title }}</h1>
-    <p class="description">{{ "معاون وزیر صمت و رییس سازمان حمایت مصرف کنندگان و تولیدکنندگان کشور، در حاشیه دیدار با حسن خلخالی مدیر عامل کارخانه . . ." }}</p>
+    <h1>{{ $root.showWith3Dot(blog.title,9) }}</h1>
+    <p class="description">{{ $root.showWith3Dot(blog.shortDescription,22)}}</p>
     <p class="date">
       <span>
-        {{ blog.date }}
+        {{ blog.createDate }}
       </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"

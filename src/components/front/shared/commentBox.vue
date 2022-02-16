@@ -23,7 +23,7 @@
     <div data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-once="true" class="commentsBox">
-      <comment @changeReplatTo="changeReplatTo"  v-for="comment in comments" :comment="comment" :key="comment.id" />
+      <comment :likeRoute="likeRoute" @changeReplatTo="changeReplatTo"  v-for="comment in comments" :comment="comment" :key="comment.id" />
     </div>
     <titleBox data-aos="zoom-in"
         data-aos-duration="1000"
@@ -34,7 +34,7 @@
 
     </titleBox>
 
-    <sendComment :replyTo="replyTo" @changeReplatTo="changeReplatTo" data-aos="fade-up"
+    <sendComment :field="field" :replyTo="replyTo" @changeReplatTo="changeReplatTo" data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-once="true" :route="routeComment" />
   </div>
@@ -56,12 +56,14 @@ export default {
   },
   data() {
     return {
-      replyTo:0,
+      replyTo:null,
     };
   },
   props: {
     comments: Array,
-    routeComment:String
+    routeComment:String,
+    field:String,
+    likeRoute:String,
   }
 };
 </script>

@@ -16,9 +16,9 @@ export default {
     data(){
         return{
             headerData:{
-                title:"محصــــــولات مــــــنتخب و برتــــــر",
-                summary:"تولیـــــد بـــــا بهتریـــــن مـــــواد اولیـــــه",
-                routeTitle:"محصولات مارگارین",
+                title:this.$cookie.get('ltrTheme')?"Selected and superior products":"محصــــــولات مــــــنتخب و برتــــــر",
+                summary:this.$cookie.get('ltrTheme')?"Production with the best raw materials":"تولیـــــد بـــــا بهتریـــــن مـــــواد اولیـــــه",
+                routeTitle:this.$cookie.get('ltrTheme')?"Margarine products":"محصولات مارگارین",
                 route:"/products",
                 image:false
             }

@@ -36,9 +36,9 @@ export default {
     return {
       weblogsHeaderData: {
         route: "/weblogs",
-        routeTitle: "مشاهده آرشیو اخبار",
-        title: "اخبــــــار و اطلاعیــــــه هــــــا",
-        summary: "مطالعـــه جدیـــدترین هـــا",
+        routeTitle:this.$cookie.get('ltrTheme')?"View news archive": "مشاهده آرشیو اخبار",
+        title:this.$cookie.get('ltrTheme')?"News and announcements": "اخبــــــار و اطلاعیــــــه هــــــا",
+        summary:this.$cookie.get('ltrTheme')?"Study the latest": "مطالعـــه جدیـــدترین هـــا",
         image: true
       }
     };
@@ -63,7 +63,8 @@ export default {
         16,
         1024,
         13
-      );
+      );   
+     
        this.$root.setProportionStyle(
         "font-size",
         "px",
@@ -136,7 +137,7 @@ export default {
         1000,
         50,
         425,
-        90
+        90,
       );
        }
     }

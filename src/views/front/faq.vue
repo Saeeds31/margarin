@@ -2,7 +2,14 @@
   <div  id="faqSection" class="width100"
       v-if="faq"
   >
-    <introduction class="width80 margin-auto" :data="introduction">
+    <introduction class="width80 margin-auto" :title="
+        $cookie.get('ltrTheme')
+          ? 'Answers to your questions'
+          : 'پـــاسخ بـــه ســـوالات شـــما'
+      "
+      :summary="faq.faqIntro.title"
+      :image="$root.baseImageUrl + faq.faqIntro.image"
+      :routes="routes">
       <p data-aos="zoom-in"
             data-aos-duration="2000"
             data-aos-once="true"        class="slotElements width80 blackColor06">
@@ -24,7 +31,7 @@
             <input
               v-model="search"
               type="text"
-              placeholder="جستجو در میان پرسش ها را شروع کنید . . ."
+              :placeholder="$cookie.get('ltrTheme') ?'Start searching among the questions. . .':'جستجو در میان پرسش ها را شروع کنید . . .'"
               id="search"
             />
             <svg
@@ -76,7 +83,7 @@
                 v-if="!writeFullName"
                 @click="showSection('writeFullName', true)"
               >
-                <span class="blackColor06">نام و نام خانوادگی</span>
+                <span class="blackColor06">{{$cookie.get('ltrTheme') ?'Full Name':'نام و نام خانوادگی'}}</span>
                 <span class="blackColor06" v-if="fullName">{{ fullName }}</span>
               </p>
               <input
@@ -106,7 +113,7 @@
             </div>
             <div class="faqInput d-flex justify-content-end align-items-center">
               <p v-if="!writeEamil" @click="showSection('writeEamil', true)">
-                <span class="blackColor06">پست الکترونیک</span>
+                <span class="blackColor06">{{$cookie.get('ltrTheme') ?'E-mail':'پست الکترونیک'}}</span>
                 <span class="blackColor06" v-if="email">{{ email }}</span>
               </p>
               <input
@@ -136,7 +143,7 @@
             </div>
             <div class="faqInput d-flex justify-content-end align-items-center">
               <p v-if="!writeMobile" @click="showSection('writeMobile', true)">
-                <span class="blackColor06">شماره همراه</span>
+                <span class="blackColor06">{{$cookie.get('ltrTheme') ?'Mobile':'شماره همراه'}}</span>
                 <span class="blackColor06" v-if="mobile">{{ mobile }}</span>
               </p>
               <input
@@ -168,7 +175,7 @@
           <div id="formBottom">
             <textarea
               id="bodyMessage"
-              placeholder="متن پیام یا نظر خود را یادداشت کنید"
+              :placeholder="$cookie.get('ltrTheme') ?'Write down the text of your message or comment':'متن پیام یا نظر خود را یادداشت کنید'"
               v-model="text"
               cols="30"
               rows="10"
@@ -177,7 +184,7 @@
               @buttonClicked="sendMessage()"
               :type="'button'"
               :buttonType="'button'"
-              :title="'پیام را ارسال کنید'"
+              :title="$cookie.get('ltrTheme') ?'Send Your Message':'پیام را ارسال کنید'"
             />
           </div>
         </template>
@@ -191,9 +198,9 @@
           data-aos-duration="1000"
           data-aos-once="true"
           id="addQuestion"
-          @click="showQuestionForm = true"
+          @click="showQuestionFormFunc()"
         >
-          ایجاد پرسش جدید <span><i class="fa fa-plus"></i></span>
+          {{$cookie.get('ltrTheme') ?'Create new questions':'ایجاد پرسش جدید'}} <span><i class="fa fa-plus"></i></span>
         </button>
         <selectListButton
           data-aos="fade-up"
@@ -281,30 +288,7 @@ export default {
       this.$store.dispatch("getFaqListFromServer");
     }
   },
-  data() {
-    return {
-      activeQuestion: null,
-      showMoveToTop: false,
-      writeEamil: false,
-      writeMobile: false,
-      writeFullName: false,
-      fullName: "",
-      mobile: "",
-      email: "",
-      text: "",
-      showQuestionForm: false,
-      introduction: {
-        image: "https://s4.uupload.ir/files/clipfaq_d8qi.png",
-        routes: [{ route: "", routeTitle: "پرسش های متداول" }],
-        title: "پـــاسخ بـــه ســـوالات شـــما",
-        summary: "هــمه نیازهــای شــما را پــاسخ میدهیــم",
-        text: "مارگارين اولين شركت توليد كننده روغن گياهي در ايران است كه با برندهای خروس، آفتاب و آفتاب طلايي  در بين مردم شناخته شده است. اين شركت كه در دی ماه سال 1332 با ظرفیت تصفيه 8 تن روغن گياهي در روز پا به عرصه صنعت گذاشت و اکنون با همكاري كارشناسان مجرب توانسته است با ظرفیت توليدي 1000 تن در روز، میهمان بسیاری ازخانواده ها و صنایع مختلف کشور باشد. اين مجموعه همواره سعي می نماید محصولاتی با کیفیت برتر و منطبق با نیاز مشتریان طراحی و تولید نماید ."
-      },
-      search: null,
-      faqList: null,
-      faqListHelp: null
-    };
-  },
+ 
   methods: {
     moveToTop() {
       document
@@ -340,23 +324,32 @@ this.showQuestionForm=false;
       var re = /\S+@\S+\.\S+/;
       return re.test(email);
     },
+    showQuestionFormFunc(){
+      this.showQuestionForm = true;
+      if(screen.width<768){
+        setTimeout(() =>{
+          document.getElementById('formBottom').scrollIntoView({behavior:'smooth'})
+        },100)
+      }
+    },
     sendMessage() {
+      
       if (this.$v.fullName.required == false) {
-        return this.$toast.error("وارد کردن نام الزامی است");
+        return this.$toast.error(this.$cookie.get('ltrTheme') ?'Enter name required':"وارد کردن نام الزامی است");
       } else if (this.$v.fullName.minLength == false) {
-        return this.$toast.error("نام کامل شما باید بیش از شش حرف باشد");
+        return this.$toast.error(this.$cookie.get('ltrTheme') ?'Your full name must be longer than six letters':"نام کامل شما باید بیش از شش حرف باشد");
       } else if (this.$v.email.required == false) {
-        return this.$toast.error("وارد کردن ایمیل الزامی است");
+        return this.$toast.error(this.$cookie.get('ltrTheme') ?'Email is required':"وارد کردن ایمیل الزامی است");
       } else if (this.$v.email.email == false) {
-        return this.$toast.error("فرمت وارد شده ایمیل نامعتبر است");
+        return this.$toast.error(this.$cookie.get('ltrTheme') ?'Invalid imported email format':"فرمت وارد شده ایمیل نامعتبر است");
       }else  if (this.$v.mobile.required == false) {
-        return this.$toast.error("وارد کردن شماره موبایل الزامی است");
+        return this.$toast.error(this.$cookie.get('ltrTheme') ?'Mobile is required':"وارد کردن شماره موبایل الزامی است");
       }else  if (this.$v.mobile.minLength == false || this.$v.mobile.minLength == false) {
-        return this.$toast.error("شماره موبایل شامل 11 رقم است");
+        return this.$toast.error(this.$cookie.get('ltrTheme') ?'The mobile number contains 11 digits':"شماره موبایل شامل 11 رقم است");
       }else  if (this.$v.text.required == false) {
-        return this.$toast.error("وارد کردن پرسش الزامی است");
+        return this.$toast.error(this.$cookie.get('ltrTheme') ?'Question is required':"وارد کردن پرسش الزامی است");
       }else  if (this.$v.text.minLength == false) {
-        return this.$toast.error("حداقل حروف برای یک سوال شامل 20 حرف است");
+        return this.$toast.error(this.$cookie.get('ltrTheme') ?'The minimum letters for a question are 20 letters':"حداقل حروف برای یک سوال شامل 20 حرف است");
       }
       const pack = {
         fullName: this.fullName,
@@ -373,7 +366,7 @@ this.showQuestionForm=false;
           }
         })
         .then(() => {
-          this.$toast.success("پیام شما با موفقیت به دست ما رسید");
+          this.$toast.success(this.$cookie.get('ltrTheme') ?'Your message has reached us successfully':"پیام شما با موفقیت به دست ما رسید");
           this.fullName = "";
           this.text = "";
           this.disabled = false;
@@ -413,15 +406,31 @@ this.showQuestionForm=false;
       maxLength: maxLength(5)
     }
   },
+   data() {
+    return {
+      activeQuestion: null,
+      showMoveToTop: false,
+      writeEamil: false,
+      writeMobile: false,
+      writeFullName: false,
+      fullName: "",
+      mobile: "",
+      email: "",
+      text: "",
+      showQuestionForm: false,
+      routes:[{ route: "", routeTitle_fa: "پرسش های متداول", routeTitle_en:"common questions"}],
+
+      search: null,
+      faqList: null,
+      faqListHelp: null
+    };
+  },
   watch: {
     faq(newVal) {
   
       this.activeQuestion = newVal.faq[0].id;
       this.faqList = newVal.faq[0].questions;
       this.faqListHelp = newVal.faq[0].questions;
-      this.introduction.summary=newVal.faqIntro.title;
-      this.introduction.text=newVal.faqIntro.text;
-      this.introduction.image=this.$root.baseImageUrl+newVal.faqIntro.image;
     },
     search(newVal) {
       this.faqList = this.faqListHelp.filter((item) => {

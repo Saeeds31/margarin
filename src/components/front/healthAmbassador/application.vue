@@ -1,10 +1,16 @@
 <template>
   <div id="application" class="width80 margin-auto d-flex justify-content-around  align-items-center">
     <div id="content" class="width40 d-flex flex-direction-column align-items-end">
-      <h2 class="blackColor06">{{ data.title }}</h2>
-      <h1 class="blackColor06">{{ data.summary }}</h1>
+      <h2 data-aos="zoom-in"
+      data-aos-duration="1500"
+      data-aos-once="false" class="blackColor06">{{ data.title }}</h2>
+      <h1 data-aos="zoom-out"
+      data-aos-duration="1500"
+      data-aos-once="false" class="blackColor06">{{ data.summary }}</h1>
       <div id="routes" class="d-flex">
-        <a class="d-flex align-item-center" :href="data.iosRoute">
+        <a data-aos="zoom-in"
+      data-aos-duration="1500"
+      data-aos-once="false" class="d-flex align-item-center" :href="data.iosRoute">
           <div class="d-flex flex-direction-column align-items-end">
             <span class="blackColor06">نسخه ای او اس</span>
             <span class="blackColor06">دریافت از پلی استور</span>
@@ -23,7 +29,9 @@
             />
           </svg>
         </a>
-        <a class="d-flex align-item-center" :href="data.androidRoute">
+        <a data-aos="zoom-in"
+      data-aos-duration="2000"
+      data-aos-once="false" class="d-flex align-item-center" :href="data.androidRoute">
           <div class="d-flex flex-direction-column align-items-end">
             <span class="blackColor06">نسخه اندروید</span>
             <span class="blackColor06">دریافت از گوگل پلی</span>
@@ -44,9 +52,13 @@
         </a>
       </div>
     </div>
-    <img class="width40" :src="data.image" :alt="data.title" />
+    <img data-aos="fade-up"
+      data-aos-duration="2000"
+      data-aos-once="false" class="width40" :src="data.image" :alt="data.title" />
     <div id="logos">
-      <img :src="data.logos" alt="مارگارین" />
+      <img data-aos="zoom-in"
+      data-aos-duration="1500"
+      data-aos-once="false" :src="data.logos" alt="مارگارین" />
     </div>
   </div>
 </template>

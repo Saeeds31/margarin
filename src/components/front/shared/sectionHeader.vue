@@ -59,19 +59,24 @@ export default {
   methods:{
     setStyle(){
       // 
-      if(window.innerWidth>1000){
-        
-         this.$root.setProportionStyle("font-size","px","#text div h1",1496,32,1024,19);
+      if(screen.width>1000){
+        if(screen.width>1495){
+          this.$root.setProportionStyle("font-size","px","#text div h1",1920,40,1495,28);
+        }else{
+          this.$root.setProportionStyle("font-size","px","#text div h1",1495,28,1024,16);
+
+          
        this.$root.setProportionStyle("font-size","px","#text div h4",1496,22,1024,16);
        this.$root.setProportionStyle("width","%","#sectionHeader #router",1496,20,1024,28);
       
                 this.$root.unsetInlineStyle('margin-top','#footerLinkRouter')
                 this.$root.unsetInlineStyle('margin-bottom','#sectionHeader')
+        }
 
       }else{
                 this.$root.unsetInlineStyle('width','#sectionHeader #router')
 
-          this.$root.setProportionStyle("font-size","px","#sectionHeader #text div h1",1000,32,425,17);
+          this.$root.setProportionStyle("font-size","px","#sectionHeader #text div h1",1000,32,375,14);
           this.$root.setProportionStyle("font-size","px","#sectionHeader #text div h4",1000,24,425,15);
          this.$root.setProportionStyle("margin-top","%","#footerLinkRouter",1000,10,425,15);
        this.$root.setProportionStyle("margin-bottom","%","#sectionHeader",768,2.5,425,5);

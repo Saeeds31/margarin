@@ -1,6 +1,6 @@
 <template>
   <div id="switchTheme" class="d-flex justify-content-between align-items-end width25">
-    <img src="@/assets/front/images/moon.svg" alt="" />
+    <img id="moonSvg" src="@/assets/front/images/moon.svg" alt="" />
     <b-form-checkbox size="lg" v-model="switchTheme" switch> </b-form-checkbox>
     <img src="@/assets/front/images/sun.svg" alt="" />
   </div>

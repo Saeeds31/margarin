@@ -504,6 +504,10 @@ const routes = [{
 }];
 
 const router = new VueRouter({
+    scrollBehavior(to, from, savedPosition) {
+        window.scrollTo(0, 0)
+            // ...
+    },
     mode: "history",
     base: process.env.BASE_URL,
     routes

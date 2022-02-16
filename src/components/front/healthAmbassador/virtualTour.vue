@@ -5,6 +5,10 @@
       class="d-flex flex-direction-column align-items-end width50"
     >
       <svg
+        data-aos="zoom-in"
+        data-aos-duration="1500"
+        
+        data-aos-once="false"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         width="120"
@@ -32,14 +36,40 @@
         </g>
       </svg>
 
-      <h1>{{ data.title }}</h1>
-      <h3>{{ data.summary }}</h3>
-      <div class="lineBreak">
+      <h1
+        data-aos="fade-right"
+        data-aos-duration="1000"
+        
+        data-aos-once="false"
+      >
+        {{ data.title }}
+      </h1>
+      <h3
+        data-aos="fade-right"
+        data-aos-duration="1500"
+        
+        data-aos-once="false"
+      >
+        {{ data.summary }}
+      </h3>
+      <div
+        data-aos="fade-right"
+        data-aos-duration="1500"
+        
+        data-aos-once="false"
+        class="lineBreak"
+      >
         <span class="showInMobile"></span>
         <span class="large"></span>
         <span></span>
       </div>
-      <button id="seeTour">
+      <button
+        data-aos="fade-right"
+        data-aos-duration="2000"
+        
+        data-aos-once="false"
+        id="seeTour"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -71,10 +101,25 @@
             />
           </g>
         </svg>
-        <span> مشاهده آنلاین تور مجازی </span>
+        <span
+          data-aos="fade-right"
+          data-aos-duration="2000"
+          
+          data-aos-once="false"
+        >
+          مشاهده آنلاین تور مجازی
+        </span>
       </button>
     </div>
-    <img class="width40" :src="data.image" alt="" />
+    <img
+      data-aos="fade-left"
+      data-aos-duration="1500"
+      
+      data-aos-once="false"
+      class="width40"
+      :src="data.image"
+      alt=""
+    />
   </div>
 </template>
 <script>

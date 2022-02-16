@@ -124,10 +124,19 @@ div#logoPanel {
     background-color: #eb5e1a;
 }
 
+.SForm .englishTab .form-control {
+    text-align: left;
+}
+
 .filters .btn-primary {
     padding: 10px 20px;
     box-shadow: -3px 8px 10px #0000ff6b;
     font-family: 'yekan-bold';
+}
+
+.SForm .englishTab .col-form-label {
+    text-align: left;
+    direction: ltr;
 }
 
 @media (max-width: 768px) {

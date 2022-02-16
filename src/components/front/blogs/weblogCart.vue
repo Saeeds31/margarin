@@ -9,12 +9,12 @@
           <div
             class="commentAndDate d-flex justify-content-end width80 margin-auto"
           >
-            <div v-if="showComment" class="comment  d-flex align-items-center">
+            <div v-if="showComment" class="comment  d-flex align-items-center width50">
           
 
               <p class="d-flex flex-direction-column">
                 <span>{{$cookie.get('ltrTheme')?"Comment":'تعداد نظرات'}}</span>
-                <span>{{ `${article.commentCount} ${$cookie.get('ltrTheme')?"People are registered":'نفر ثبت شده است'}` }}</span>
+                <span>{{ `${article.commentCount} ${$cookie.get('ltrTheme')?"People":'نفر ثبت شده است'}` }}</span>
               </p>
                   <svg
                 xmlns="http://www.w3.org/2000/svg"

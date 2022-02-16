@@ -133,7 +133,6 @@ export default {
       //   }
       // }
       let pack={
-        blogId:this.$route.params.id,
         replyTo:this.replyTo,
         fullName:this.fullName,
         email:this.email,
@@ -141,22 +140,32 @@ export default {
         text:this.message,
         isShow:true,
       }
-
+        
+      pack[this.field]=this.$route.params.id
     //   ارسال کامنت
       this.$axios.post(this.route, pack).then((response) => {
-        this.$emit("changeReplatTo",0);
+        this.$emit("changeReplatTo",null);
         this.fullName=null;
         this.email=null;
         this.mobile=null;
         this.message=null;
-        return this.$toast.success("دیدگاه شما با موفقیت ثبت شد");
-      });
+        return this.$toast.success(response.data.message);
+      }).catch((error) =>{
+        let arrayError = error.response.data.message.split("|");
+            arrayError.forEach((err, index) => {
+                this.$toast.error(err, {
+                    timeout: 1000 * (index + 4),
+                    pauseOnHover: true
+                });
+            });
+      })
     //   بازگردانی به حالت اولیه
-       this.$refs.commentForm.reset();
+      //  this.$refs.commentForm.reset();
     }
   },
   props: {
     route: String,
+    field:String,
      replyTo:Number
   }
 };

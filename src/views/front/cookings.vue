@@ -1,22 +1,34 @@
 <template>
   <div v-if="cookingsData" id="cookingsSection" class="width100">
-    <introduction v-if="cookingsData" :title="
+    <introduction
+      v-if="cookingsData"
+      :title="
         $cookie.get('ltrTheme')
           ? 'Archive of Cooking Commands'
           : 'آرشیــــو دســــتورات آشپــــزی'
       "
       :summary="cookingsData.data.cookingArchiveIntro.title"
-      :image="$root.baseImageUrl +cookingsData.data.cookingArchiveIntro.image"
+      :image="$root.baseImageUrl + cookingsData.data.cookingArchiveIntro.image"
       :routes="routes"
-       class="width80 margin-auto">
-      <p    data-aos="zoom-in"
+      class="width80 margin-auto"
+    >
+      <p
+        data-aos="zoom-in"
         data-aos-duration="1000"
-        data-aos-once="true" class="slotElements width80 blackColor06">
-        {{ cookingsData.data.cookingArchiveIntro.text}}
+        data-aos-once="true"
+        class="slotElements width80 blackColor06"
+      >
+        {{ cookingsData.data.cookingArchiveIntro.text }}
       </p>
     </introduction>
-    <filter-box  @filtered="filteredBlogs"  class="width80 margin-auto" />
-    <div id="cookings" class="d-flex justify-content-between width80">
+    <filter-box
+      :isDesendingSelected="isDesendingSelected"
+      :categorySelected="categorySelected"
+      :placeHolder="searchPlaceHolder"
+      @filtered="filteredBlogs"
+      class="width80 margin-auto"
+    />
+    <div :style="{'marginBottom':cookingsData.pagination.TotalPages > 1?'5%':'200px'}" id="cookings" class="d-flex justify-content-between width80">
       <cart
         :data-aos="index % 2 == 0 ? 'fade-right' : 'fade-left'"
         data-aos-duration="1000"
@@ -27,10 +39,12 @@
         :key="index"
       />
     </div>
-    <pagination v-if="cookingsData.pagination.TotalPages>1"
-        :totalPages="cookingsData.pagination.TotalPages"
-        :currentPage="cookingsData.pagination.CurrentPage"
-      @pageChanged="pageChanged" />
+    <pagination
+      v-if="cookingsData.pagination.TotalPages > 1"
+      :totalPages="cookingsData.pagination.TotalPages"
+      :currentPage="cookingsData.pagination.CurrentPage"
+      @pageChanged="pageChanged"
+    />
   </div>
   <loader v-else />
 </template>
@@ -39,7 +53,7 @@ import pagination from "@/components/front/shared/pagination.vue";
 import cart from "@/components/front/cookings/cart.vue";
 import introduction from "@/components/front/shared/introduction.vue";
 import FilterBox from "@/components/front/cookings/filterBox.vue";
-import Loader from '@/components/front/shared/loader.vue';
+import Loader from "@/components/front/shared/loader.vue";
 export default {
   components: {
     introduction,
@@ -50,7 +64,13 @@ export default {
   },
   data() {
     return {
-             routes: [{ route: "", routeTitle_fa: "دستورات پخت", routeTitle_en: "Baking orders" }],
+      routes: [
+        {
+          route: "",
+          routeTitle_fa: "دستورات پخت",
+          routeTitle_en: "Baking orders"
+        }
+      ],
 
       cookings: {
         total: 6,
@@ -96,17 +116,44 @@ export default {
             image: "https://s4.uupload.ir/files/clip1_vu5s.png"
           }
         ]
-      }
+      },
+      categorySelected: "",
+      isDesendingSelected: "",
+      searchPlaceHolder: ""
     };
   },
-  methods: { 
-     filteredBlogs(filter){
-      filter.page= this.$route.query.page ? this.$route.query.page : 1
-      this.$store.dispatch("getBlogsFromServer", filter);
-
+  methods: {
+    filteredBlogs(filter) {
+      this.$router.replace({
+        name: "cookings",
+        query: {
+          page: this.$route.query.page ? this.$route.query.page : 1,
+          category: filter.category ? filter.category : "",
+          search: filter.search ? filter.search : "",
+          isDesending: filter.isDesending ? filter.isDesending : true
+        }
+      });
+      document
+        .getElementById("cookingsSection")
+        .scrollIntoView({ behavior: "smooth" });
     },
-     pageChanged(page){
-      console.log(page)
+    pageChanged(page) {
+      this.$router.replace({
+        name: "cookings",
+        query: {
+          page: page,
+          category: this.$route.query.category
+            ? this.$route.query.category
+            : "",
+          search: this.$route.query.search ? this.$route.query.search : "",
+          isDesending: this.$route.query.isDesending
+            ? this.$route.query.isDesending
+            : true
+        }
+      });
+      document
+        .getElementById("cookingsSection")
+        .scrollIntoView({ behavior: "smooth" });
     },
     setStyle() {
       if (screen.width > 1000) {
@@ -276,52 +323,71 @@ export default {
       }
     }
   },
-     metaInfo() {
+  metaInfo() {
     return {
-      title: this.$cookie.get("ltrTheme") ? "Cooking Archive - Margarin" : "مارگارین -آشپزخانه",
+      title: this.$cookie.get("ltrTheme")
+        ? "Cooking Archive - Margarin"
+        : "مارگارین -آشپزخانه",
       meta: [
         {
           name: "description",
-          content: this.cookingsData ? this.cookingsData.data.cookingArchiveIntro.text : false
+          content: this.cookingsData
+            ? this.cookingsData.data.cookingArchiveIntro.text
+            : false
         },
         {
           property: "og:title",
-          content: this.$cookie.get("ltrTheme") ? "Cooking Archive - Margarin" : "مارگارین -آشپزخانه"
+          content: this.$cookie.get("ltrTheme")
+            ? "Cooking Archive - Margarin"
+            : "مارگارین -آشپزخانه"
         },
         { name: "robots", content: "index,follow" }
       ]
     };
   },
-  computed:{
-    cookingsData(){
-      return this.$store.getters.getCookingsData
+  computed: {
+    cookingsData() {
+      return this.$store.getters.getCookingsData;
     }
   },
-  watch:{
-    cookingsData(){
-     
-
-      setTimeout(()=>{
-      this.setStyle()
-
-      },500)
+  watch: {
+    "$route.query": {
+      handler(value) {
+        if (Object.keys(value).length == 0) return;
+        let pack = {
+          page: value.page ? value.page : 1,
+          category: value.category ? value.category : "",
+          search: value.search ? value.search : "",
+          isDesending: value.isDesending ? value.isDesending : true
+        };
+        this.searchPlaceHolder = value.search ? value.search : "";
+        (this.typeSelected = value.type ? value.type : ""),
+          (this.isDesendingSelected = value.isDesendingSelected ? value.isDesendingSelected : ""),
+          this.$store.dispatch("getCookingsFromServer", pack);
+      },
+      deep: true,
+      immediate: true
+    },
+    cookingsData() {
+      setTimeout(() => {
+        this.setStyle();
+      }, 500);
     }
   },
   mounted() {
-    if(this.cookingsData==null){
-       let pack = {
+    if (this.cookingsData == null) {
+      let pack = {
         page: this.$route.query.page ? this.$route.query.page : 1,
         isDesending: this.$route.query.isDesending
           ? this.$route.query.isDesending
           : true,
         category: this.$route.query.category ? this.$route.query.category : "",
-        search: this.$route.query.search ? this.$route.query.search : "",
+        search: this.$route.query.search ? this.$route.query.search : ""
         // keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
       };
-      this.$store.dispatch("getCookingsFromServer",pack)
-    }else{
-
-    this.setStyle();
+      this.$store.dispatch("getCookingsFromServer", pack);
+    } else {
+      this.setStyle();
     }
     window.addEventListener("resize", this.setStyle);
   },

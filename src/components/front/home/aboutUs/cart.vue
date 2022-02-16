@@ -1,6 +1,8 @@
 <template>
     <div class="aboutCart  d-flex flex-direction-column align-items-end">
-        <img class="width40"  :src="content.image" alt="">
+        <img 
+      data-aos="flip-left" :data-aos-duration="3000"    data-aos-once="false" data-aos-delay="500"
+         class="width40"  :src="content.image" alt="">
         <h2 class="blackColor06">{{content.title}}</h2>
         <h3 class="width65 summary blackColor06">{{content.text}}</h3>
     </div>

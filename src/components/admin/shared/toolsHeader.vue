@@ -1342,15 +1342,15 @@ AAAAAElFTkSuQmCC"
             دسته بندی
             <i class="fa fa-align-justify" aria-hidden="true"></i></span
         ></router-link>
-        <a
+        <router-link to="/admin-panel/weblog-comments"
           :class="{ activeRoute: $route.name == 'panelWeblogComment' }"
           class="childRoute"
         >
-          <!-- to="/admin-panel/weblog-comments" -->
+          <!--  -->
           <span>
             دیدگاه ها
             <i class="fa fa-comments" aria-hidden="true"></i></span
-        ></a>
+        ></router-link>
           <router-link
           :class="{ activeRoute: $route.name == 'panelFaqIntroduction' }"
           class="childRoute"
@@ -1468,16 +1468,16 @@ AAAAAElFTkSuQmCC"
             > تنظیمات معرفی
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
         ></router-link> 
-        <a
+        <router-link to="/admin-panel/recipe-comments"
           :class="{ activeRoute: $route.name == 'panelRecipeComment' }"
           class="childRoute"
         >
           <span>
             دیدگاه ها
-            <!-- to="/admin-panel/recipe-comments" -->
+            <!--  -->
 
             <i class="fa fa-comments" aria-hidden="true"></i></span
-        ></a>
+        ></router-link>
       </b-collapse>
       <router-link
         :class="{ activeRoute: $route.name == 'panelSettings' }"

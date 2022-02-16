@@ -2,7 +2,7 @@
   <div id="frontSection">
       <orgHeader v-if="!$route.name.includes('loginRegister')&&!$route.name.includes('home')&&!$route.name.includes('healthAmbassador')&&!$route.path.includes('admin-panel')" class="width80 margin-auto"  />
       <router-view></router-view>
-      <footerSite v-if="!$route.name.includes('healthAmbassador')&&!$route.path.includes('admin-panel')&&!$route.name.includes('loginRegister')" />
+      <footerSite v-if="!$route.name.includes('healthAmbassador')&&!$route.path.includes('admin-panel')&&!$route.name.includes('loginRegister')&&$root.sectionIndexHome==7" />
   </div>
 </template>
 <script>

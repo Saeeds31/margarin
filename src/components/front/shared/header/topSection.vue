@@ -87,3 +87,9 @@ export default {
   }
 };
 </script>
+<style >
+ #mobileMenu nav ul {
+        flex-direction: column !important;
+    }
+    
+</style>

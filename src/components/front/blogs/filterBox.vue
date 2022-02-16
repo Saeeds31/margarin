@@ -1,31 +1,33 @@
 <template>
   <div id="filterBox">
-    <div id="filters"        data-aos="zoom-in"
-        data-aos-duration="1000"
-        data-aos-once="true" class="width100 d-flex justify-content-between">
+    <div
+      id="filters"
+      data-aos="zoom-in"
+      data-aos-duration="1000"
+      data-aos-once="true"
+      class="width100 d-flex justify-content-between"
+    >
       <multiSelect
-      class="hiddenInMobile"
-        :placeholder="$cookie.get('ltrTheme')?'Sort By':'براساس '"
+        class="hiddenInMobile"
+        :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
         id="sortOption"
         track-by="name"
         label="name"
-        v-model="sort"
-        :options="sortOptions"
+        v-model="type"
+        :options="typeOption"
       ></multiSelect>
       <multiSelect
         id="categotyOption"
-       v-if="categories"
-         track-by="id"
-        label="name"
-        :placeholder="$cookie.get('ltrTheme')?'Category':'دسته بندی'"
+        v-if="categories"
+        :placeholder="$cookie.get('ltrTheme') ? 'Category' : 'دسته بندی'"
         v-model="category"
         :options="categories"
       >
       </multiSelect>
       <div id="searchBox" class="width45">
         <input
-        v-model="search"
-          class="width100 "
+          v-model="search"
+          class="width100"
           type="text"
           :placeholder="searchPlaceHolder"
         />
@@ -46,10 +48,14 @@
         </svg>
       </div>
     </div>
-    <div        data-aos="fade-right"
-        data-aos-duration="1000"
-        data-aos-once="true"
-         v-if="filterList.length > 0" id="yourFilter" class="width100">
+    <div
+      data-aos="fade-right"
+      data-aos-duration="1000"
+      data-aos-once="true"
+      v-if="filterList.length > 0"
+      id="yourFilter"
+      class="width100"
+    >
       <div v-for="item in filterList" :key="item">
         <span class="removeFilter" @click="removeFromFilter(item.value)">
           <svg
@@ -80,9 +86,9 @@ export default {
   components: {
     multiSelect
   },
-  computed:{
-    categories(){
-      return this.$store.getters.getBlogCategory
+  computed: {
+    categories() {
+      return this.$store.getters.getBlogCategory;
     }
   },
   methods: {
@@ -94,74 +100,96 @@ export default {
     }
   },
   mounted() {
-    if(this.categories==null){
+    if (this.categories == null) {
       this.$store.dispatch("getBlogCategoryFromServer");
-
     }
   },
   watch: {
-    sort(newVal) {
-      this.filterList.push(newVal);
-      let filter={
-        type:this.category!=null?this.category.value:1,
-        isDesending:this.sort!=null?this.sort.value:true,
-        search:this.search
-      }
-      this.$emit('filtered',filter)
+    type(newVal) {
+      // this.filterList.push(newVal);
+      let filter = {
+        category: this.category != null ? this.category : "",
+        type: this.type != null ? this.type.value : 1,
+        search: this.search
+      };
+      this.$emit("filtered", filter);
     },
     category(newVal) {
-      this.filterList.push(newVal);
-      let filter={
-        type:this.category!=null?this.category.value:1,
-        isDesending:this.sort!=null?this.sort.value:true,
-        search:this.search
-      }
-      this.$emit('filtered',filter)
+      console.log(newVal);
+      // this.filterList.push(newVal);
+      let filter = {
+        category: newVal != null ? newVal : "",
+        type: this.type != null ? this.type.value : "",
+        search: this.search
+      };
+      this.$emit("filtered", filter);
     },
     search() {
-      let filter={
-        type:this.category!=null?this.category.value:1,
-        isDesending:this.sort!=null?this.sort.value:true,
-        search:this.search
-      }
-      this.$emit('filtered',filter)
+      let filter = {
+        category: this.category != null ? this.category : "",
+        type: this.type != null ? this.type.value : "",
+        search: this.search
+      };
+      this.$emit("filtered", filter);
     }
   },
   data() {
     return {
-      searchPlaceHolder:this.placeHolder!=""?this.placeHolder: this.$cookie.get('ltrTheme')?'Start searching now ...':"جستوجو را همین الان شروع کنید ...",
-      search:"",
+      searchPlaceHolder:
+        this.placeHolder != ""
+          ? this.placeHolder
+          : this.$cookie.get("ltrTheme")
+          ? "Start searching now ..."
+          : "جستجو را همین الان شروع کنید ...",
+      search: "",
       filterList: [],
-      category: this.typeSelected!=""?this.typeSelected==1?{ name: "مقالات", value: "1" }:{ name: "اخبار", value: "2" }:null,
-     
-      sort: this.isDesendingSelected!=""?this.isDesendingSelected=='false'? { name: "قدیمی ترین", value: "false" }:{ name: "جدیدترین", value: "true" }:null,
-      sortOptions: [
-        { name:this.$cookie.get('ltrTheme')?"Oldest": "قدیمی ترین", value: "false" },
-        { name:this.$cookie.get('ltrTheme')?"Newest": "جدیدترین", value: "true" }
+      category: this.categorySelected != "" ? this.categorySelected : null,
+
+      type:
+        this.typeSelected != ""
+          ? this.typeSelected == "1"
+            ? {
+                name: this.$cookie.get("ltrTheme") ? "News" : "اخبار",
+                value: "1"
+              }
+            : {
+                name: this.$cookie.get("ltrTheme") ? "Articles" : "مقالات",
+                value: "2"
+              }
+          : null,
+      typeOption: [
+        {
+          name: this.$cookie.get("ltrTheme") ? "Articles" : "مقالات",
+          value: "2"
+        },
+        { name: this.$cookie.get("ltrTheme") ? "News" : "اخبار", value: "1" }
       ]
     };
-  },props:{
-    placeHolder:String,
-    isDesendingSelected:String,
-    typeSelected:String
+  },
+  props: {
+    placeHolder: String,
+    typeSelected: String,
+    categorySelected: String
   }
 };
 </script>
-<style>#searchBox{
+<style>
+#searchBox {
   position: relative;
-} #searchBox input{
-  padding:17px 20px;
-    border-radius: 30px;
-    text-align: right;
-    border: 3px solid var(--grayBackground);
-    font-size: 20px;
-    font-family: 'yekan-heavy';
-    direction:rtl
+}
+#searchBox input {
+  padding: 17px 20px;
+  border-radius: 30px;
+  text-align: right;
+  border: 3px solid var(--grayBackground);
+  font-size: 20px;
+  font-family: "yekan-heavy";
+  direction: rtl;
 }
 #searchBox svg {
-    position: absolute;
-    left: 2%;
-    top: 20px;
+  position: absolute;
+  left: 2%;
+  top: 20px;
 }
 #filterBox .multiselect {
   width: 25%;
@@ -177,9 +205,10 @@ export default {
   text-align: right;
   border: 3px solid var(--grayBackground);
 }
-#filterBox .multiselect__placeholder,#filterBox .multiselect__single{
-  color:#000000d4;
+#filterBox .multiselect__placeholder,
+#filterBox .multiselect__single {
+  color: #000000d4;
   font-size: 20px;
-  font-family:'yekan-heavy'
+  font-family: "yekan-heavy";
 }
 </style>

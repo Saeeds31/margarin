@@ -1,19 +1,19 @@
 <template>
   <div class="cookingCart d-flex flex-direction-column align-items-end">
     <div class="image">
-      <img :src="$root.baseImageUrl+data.image" :alt="data.title" />
+      <img v-if="data.image!=null" :src="$root.baseImageUrl+data.image" :alt="data.title" />
       <div class="chef">
-        <img v-if="data.userImage!=null" :src="$root.baseImageUrl+data.userImage" :alt="data.userInfo" />
+        <img v-if="data.userImage!=null&&data.userImage!='string'" :src="$root.baseImageUrl+data.userImage" :alt="data.userInfo" />
         <img v-else  src="@/assets/front/images/user.jpg" :alt="data.userInfo" />
         <h4 class="blackColor04">
-          {{ data.userInfo!=" "?data.userInfo:"ادمین" }}
+          {{ data.userInfo!=" "?data.userInfo:this.$cookie.get("ltrTheme")?"Admin":"ادمین" }}
         </h4>
       </div>
     </div>
     <h1 class="blackColor06 width90 margin-auto">{{ data.title }}</h1>
     <double-line class="width50" />
     <div class="detail">
-      <span> {{ data.commentCount }}نظر </span>
+      <span> {{ `${data.commentCount} ${this.$cookie.get("ltrTheme")?'Comment':'نظر'}` }} </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -30,7 +30,7 @@
           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAmVJREFUSEu1ls1LVFEYh50WKoGSYmqSH6UV4kINEYREAkGQUjdhpBGViKII+o+IE4QiDAjqyoW5aKG4EmtRposMESMbC/uAKTW1TU7PL88d5sM7EzPXAw/33nPPeZ9zzj1z3nH5/f4kuzKTmePiXRFUwgX4YzjieggrsNbk+6rnE4vrJAGB00xQBc6wHcHxi114DW8Q/QpvGyEguEZ6H86axt/VGd6DZnTGoHbVkG3a/eY6juRTsCREQPCLvGyHVFiHBTpsRZsBfYp4XwvFECEJCGhYSIM2SIZlmCG4/QcKsppv1UxVRbjkn4AGKbzoNyN/xfX5/wa3PEZym+frRuImxoElqKGyATaoHI+2JDGWS9/oLlyDOWItup5lZOuj9cE5GKPyQ7wC9WMmBVwewQ9wS1DGzR3YJvhIIsGDlqub+xyYkKCVm1KYRqAfTqAwGu2okhjSiGWlXxV9bsE7CawgHgRehwS5xOmCjxI84OYSjCL47NASWQKvBI8Jmg/DCL6chqCToHnwFME3h5doSzO4R9CrMIXgrUMCnVGNsCbBDW7q4QWCWYeWqIc452Ey+HewjmAyUQFbVBtGG+cnDEmgE7QDfAjciQjMeaRtr5N1nngLEqTzMAA7VAzGKzDBW+hfDjq2nxBvXwJtUW1VLxWeeARRj2sEdQS9Cavw0kzvMtc9WIp1+Jk8oo1yxYw8JKtpBg95oWRjV5QylSNCjhGe9e1ip0wEvTTMMtF9XJV7N41UGUoZLlrRsaykv6wEE95QM1Dy1tmxSQM1DhSmr9ysfxYarf5dZIKSipbP+jOg09Q2tf4FSIYH8ck2jp0AAAAASUVORK5CYII="
         />
       </svg>
-      <span> {{ 0 }}لایک </span>
+      <span> {{ `${0} ${this.$cookie.get("ltrTheme")?"Like":"لایک"}` }} </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -48,9 +48,10 @@
         />
       </svg>
       <span>
-        زمان آموزش
-        {{ data.timeToRead }}
-        دقیقه
+        {{`${this.$cookie.get("ltrTheme")?data.timeToRead+'Minutes'+' Time training'  :data.timeToRead+'دقیقه'+' زمان آموزش'}`}}
+        
+        
+        
       </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +87,7 @@
           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAatJREFUSEu9lksrRVEUx91b3nkNMECSCRlIoShFBsrAQAkxMPcxfAcjAwbyKnXv4JaRAVEoGYiJ5DWQCXlcj8LvX3vfTqd7ziFtu37tffZaZ/3X3medfU4sUVGVE9KKsdVBDZRBofFN0z/ADVzCS1CMWICAArVBswn8Qf8MCqwmu8RzjdAJ/aHHntHLJqCM+6AS7uAULkwgCakpsFZUD00e303GV5noDPwCjcwNaB4O4AhevTdkGRcw1wrt8AUbcGb9vAK1TA7Bp3E6jwjsNzeY5OL0SbiWgxXQno5ACaTgt8GtmEQG4RHWIG0Furnogi3Y+0Hmpfg8mdX63TuZ6IFd2JFAEYNx0ANchvcIARXAPMzBTBbfPObGQIWwJAFVgZal7Pcjgvdi1/5qK6dgIcC/w6wiJYF+LlpgBW5DBJR5wgSfpp8N8a3GNgrHEhhmUA6L8BZwk5JYB+19VHCFyIcJuJeABipNrUC9v6m+t0HlNwmrIZlbk3y1gvi/CDjfIucP2XmZOn/R9OSdHhUScH7YScTpcW1fEKcfHCvi9JNpRZx+9L1HzZ9/W74BqCOenYm/r8wAAAAASUVORK5CYII="
         />
       </svg>
-      <span>مشاهده جزئیات</span>
+      <span>{{$cookie.get('ltrTheme')?'See More':'مشاهده جزئیات'}}</span>
     </router-link>
     </div>
   </div>

@@ -10,63 +10,66 @@
       </template>
     </b-overlay>
     <div class="filters">
-      <b-button variant="primary" @click="showModal = true">افزودن </b-button>
+      <!-- <b-button variant="primary" @click="showModal = true">افزودن </b-button> -->
     </div>
     <div v-if="items" class="mainTable">
-       <s-table
-                    v-model="items"
-                    @showEditModal="showEditModal"
-                    @deleteItem="deleteItem"
-                    :headers="headers"
-                  />
-    </div>
-    <b-modal
-      id="categoryModal"
-      hide-footer
-      ref="categoryModal"
-      no-close-on-backdrop
-      v-model="showModal"
-      @close="resetModal()"
-      :title="mode == 'create' ? 'افزودن ' + title : ' پاسخ ' + title"
-    >
-      <s-inputs
-        :disabled="disabled"
-        @submit="submit"
-        :mode="mode"
-        :bigData="bigData"
+      <s-table-comment
+      :field="'blogId'"
+        :list="itemsWithChild(items)"
+        :likeRoute="'BlogComment'"
+        :ReplyByAdminRoute="'BlogComment/ReplyByAdmin'"
+        @showEditModal="showEditModal"
+        @deleteItem="deleteItem"
         :headers="headers"
       />
-    </b-modal>
+    </div>
+    <div v-if="items != null && totalPages > 1">
+      <div id="pagination">
+        <pagination
+          @pageChanged="pageChanged"
+          :totalPages="totalPages"
+          :currentPage="currentPage"
+        />
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import SInputs from "@/components/admin/shared/sInputs.vue";
-import STable from "@/components/admin/shared/sTable.vue";
-import adminMixin from "@/libraries/adminController.js"
-import { BModal, BButton,BOverlay,BSpinner } from "bootstrap-vue";
+import STableComment from "@/components/admin/shared/sTableComment.vue";
+import adminMixin from "@/libraries/adminController.js";
+import { BModal, BButton, BOverlay, BSpinner } from "bootstrap-vue";
 export default {
-mixins:[adminMixin],
-  components: { SInputs, BModal, BButton, STable,BOverlay,BSpinner },
+  mixins: [adminMixin],
+  components: { SInputs, BModal, BButton, STableComment, BOverlay, BSpinner },
   data() {
     return {
       headers: [
-//           "blogId": 0,
-//   "replyTo": 0,
-//   "fullName": "string",
-//   "email": "string",
-//   "phone": "string",
-//   "text": "stringstringstringst",
-//   "isShow": true,
+        //           "blogId": 0,
+        //   "replyTo": 0,
+        //   "fullName": "string",
+        //   "email": "string",
+        //   "phone": "string",
+        //   "text": "stringstringstringst",
+        //   "isShow": true,
         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "پاسخ را وارد کنید",
+          placeholder: "نام را وارد کنید",
           type: "string",
-          multiData: true,
-          name: "پاسخ",
-          key: "text"
+          multiData: false,
+          name: "نام کامل",
+          key: "fullName"
         },
-      
+        {
+          style: "col-12",
+          show_in_table: true,
+          placeholder: "نام را وارد کنید",
+          type: "string",
+          multiData: false,
+          name: "ایمیل",
+          key: "email"
+        },
         {
           style: "col-12",
           show_in_table: true,
@@ -75,9 +78,10 @@ mixins:[adminMixin],
           name: "تنظیمات",
           multiData: false,
           key: "",
+          innerRoute: "/admin-panel/product-feature",
           edit: true,
-          response:true,
-          delete: true
+          delete: true,
+          editLabel: "ویرایش"
         }
       ],
       bigData: {
@@ -86,17 +90,40 @@ mixins:[adminMixin],
         both: {}
       },
       title: "دیدگاه ها",
+      pageSize: 10,
       editedId: null,
-      apiRoute: "BlogComment",
+      apiRoute: "BlogComment"
     };
   },
   mounted() {
-      this.loadItems();
+    if (this.$route.query.page) {
+      this.currentPage = this.$route.query.page;
+    } else {
+      this.currentPage = 1;
+    }
+    this.loadItems(this.currentPage);
   },
-  watch:{
-      item(newVal){
-          this.bigData = newVal
-      }
+  watch: {
+    item(newVal) {
+      this.bigData = newVal;
+    }
+  },
+  methods: {
+    itemsWithChild(list) {
+      let newList = [];
+      list.forEach((element) => {
+        element.replayId = element.id;
+        newList.push(element);
+        if (element.replyComments.length > 0) {
+          element.replyComments.forEach((ele2) => {
+            ele2.replayId = element.id;
+            newList.push(ele2);
+          });
+        }
+      });
+      console.log(newList);
+      return newList
+    }
   }
 };
 </script>

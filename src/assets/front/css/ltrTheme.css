@@ -28,7 +28,17 @@
     .ltrTheme #blogDetailSection #introductionSection #headerBlog .headerBlogOption div,
     .ltrTheme #faqSection #faq,
     .ltrTheme #faqSection #faq #categories .selectButton,
-    .ltrTheme #productDetailSection #introductionSection .imageColumn .mainOption .options button {
+    .ltrTheme #productDetailSection #introductionSection .imageColumn .mainOption .options button,
+    .ltrTheme #cooperationSection #stepBox,
+    .ltrTheme #frontSection #Header,
+    .ltrTheme #Header #mainContent #topSection,
+    .ltrTheme #languageAndSwitcherBox,
+    .ltrTheme #languageSwitcher,
+    .ltrTheme #Header #mainContent #bottomSection,
+    .ltrTheme #Header #mainContent #topSection nav #topMenu,
+    .ltrTheme #homeSection #weblogsSection #singleSlider .cart .content p,
+    .ltrTheme .cookingCart .cookingRoute a,
+    .ltrTheme #frontSection #footer #footerSection {
         flex-direction: row-reverse !important;
     }
     
@@ -53,12 +63,13 @@
     .ltrTheme #productDetailSection #introductionSection .imageColumn .mainOption .options,
     .ltrTheme #videoSection #content,
     .ltrTheme #introductionSection #content .innerContent,
-    .ltrTheme #aboutSection #statisticsSection #content #detail {
+    .ltrTheme #aboutSection #statisticsSection #content #detail,
+    .ltrTheme #cooperationSection #stepBox .stepTitle,
+    .ltrTheme #frontSection #footer #footerSection #aboutUs {
         align-items: flex-start !important
     }
     
     .ltrTheme #homeSection #weeklyCookingSection .cart .body .loading,
-    .ltrTheme #homeSection #weblogsSection #singleSlider .cart .content p,
     .ltrTheme .blogCart .innerContent .content .articleDate .commentAndDate,
     .ltrTheme #blogsSection #filterBox #yourFilter {
         justify-content: flex-start !important;
@@ -77,24 +88,24 @@
     .ltrTheme .blogCart .innerContent .content p,
     .ltrTheme #homeSection #articles #sliderSection .sliderItem .smallCart .innerContent .content h1,
     .ltrTheme .blogCart .innerContent .content h1,
-    .ltrTheme #homeSection #certificatesSlider .cart .content .certificateText,
     .ltrTheme #aboutSection #awardsSection .sliderItem .content p,
     .ltrTheme #contactUsSection #contactUsForm #formTop .contactUsInput input,
     .ltrTheme #contactUsSection #contactUsForm textarea,
-    .ltrTheme #searchBox input,
     .ltrTheme .multiselect__single,
     .ltrTheme #blogDetailSection #commentBox .commentForm #commentFormTop input,
     .ltrTheme #introductionSection #content div h1,
-    .ltrTheme #introductionSection #content div h3 {
+    .ltrTheme #introductionSection #content div h3,
+    .ltrTheme #frontSection #footer #footerSection #aboutUs p {
         text-align: left;
     }
     
-    .ltrTheme .contactCart .footerDetail {
+    .ltrTheme .contactCart .footerDetail,
+    .ltrTheme #searchBox input,
+    .ltrTheme .ckEditorOutput {
         text-align: left !important
     }
     
     .ltrTheme #homeSection #aboutUsSection #text p,
-    .ltrTheme .medium14,
     .ltrTheme #aboutSection #statisticsSection #content #detail p,
     .ltrTheme #productDetailSection .productDescription p,
     .ltrTheme #blogDetailSection .blogDescription,
@@ -106,7 +117,7 @@
     .ltrTheme #blogDetailSection #tagsSection #tags a,
     .ltrTheme #aboutSection #awardsSection .sliderItem .content p,
     .ltrTheme #blogsSection .slotElements,
-    .ltrTheme #searchBox input,
+    .ltrTheme #homeSection #certificatesSlider .cart .content .certificateText,
     .ltrTheme .commentForm textarea,
     .ltrTheme #introductionSection #content div h1,
     .ltrTheme #introductionSection #content div h3 {
@@ -117,19 +128,46 @@
         direction: ltr;
     }
     
-    .ltrTheme .slotElements {
+    .ltrTheme #productsSection #filterBox #searchBox input {
+        direction: ltr !important;
+        text-align: left;
+    }
+    
+    .ltrTheme .slotElements,
+    .ltrTheme #searchBox input,
+    .ltrTheme .medium14,
+    .ltrTheme #aboutSection #lastAboutUsP {
         direction: ltr !important;
     }
     
     .ltrTheme #catalogueSection #introductionSection #content .innerContent,
-    .ltrTheme #cookingsSection #introductionSection #content .innerContent {
+    .ltrTheme #cookingsSection #introductionSection #content .innerContent,
+    .ltrTheme #cooperationSection #introductionSection #content .innerContent,
+    .ltrTheme #faqSection #introductionSection #content .innerContent,
+    .ltrTheme #productsSection #introductionSection #content .innerContent,
+    .ltrTheme #aboutSection #introductionSection #content .innerContent,
+    .ltrTheme #blogsSection #introductionSection #content .innerContent,
+    .ltrTheme #blogDetailSection #introductionSection #content .innerContent {
         margin-left: 10%;
+    }
+    
+    .ltrTheme .blogCart .innerContent .content .articleDate .commentAndDate .comment {
+        justify-content: flex-end;
     }
     
     .ltrTheme #productDetailSection #introductionSection .imageColumn .mainOption .options button svg,
     .ltrTheme #introductionSection #content .innerContent div#currentPathSection .arrow,
-    .ltrTheme #aboutSection #statisticsSection #content #detail a svg {
+    .ltrTheme #aboutSection #statisticsSection #content #detail a svg,
+    .ltrTheme .cookingCart .cookingRoute a svg {
         transform: rotate(180deg);
+    }
+    
+    .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content .date {
+        direction: rtl;
+    }
+    
+    .ltrTheme #blogDetailSection #sectionHeader #router {
+        flex-direction: row-reverse;
     }
     
     .ltrTheme #cooperationSection #buttons #roundedButton {
@@ -137,17 +175,66 @@
         padding: 5px 30px 5px 5px;
     }
     
-    .ltrTheme #contactUsSection #introductionSection .slotElements .contactWay {
-        flex-direction: row !important;
+    .ltrTheme #introductionSection #content .innerContent div#currentPathSection,
+    .ltrTheme #aboutSection #statisticsSection #content #detail a,
+    .ltrTheme #cooperationSection #stepBox .stepSvg,
+    .ltrTheme #faqSection #faq #questions #formTop .faqInput {
+        direction: rtl;
     }
     
-    .ltrTheme #introductionSection #content .innerContent div#currentPathSection,
-    .ltrTheme #aboutSection #statisticsSection #content #detail a {
-        direction: rtl;
+    .ltrTheme #faqSection #faq #questions #formBottom textarea,
+    .ltrTheme #faqSection #faq #questions #formTop .faqInput input {
+        text-align: left
     }
     
     .ltrTheme #cooperationSection #buttons #roundedButton span {
         transform: rotate(0);
+    }
+    
+    .ltrTheme .titleBox .content h1 {
+        direction: ltr !important;
+    }
+    
+    .ltrTheme .simpleCooperationInput input {
+        text-align: left;
+    }
+    
+    .ltrTheme .selectCooperationInput {
+        direction: rtl;
+    }
+    
+    .ltrTheme #contactUsSection #introductionSection #content {
+        justify-content: flex-start !important;
+    }
+    
+    .ltrTheme #contactUsSection #introductionSection #content .innerContent {
+        margin-left: 10%;
+    }
+    
+    .ltrTheme .selectCooperationInput .blackColor06 {
+        text-align: left
+    }
+    
+    .ltrTheme .selectCooperationInput .multiselect .multiselect__tags {
+        padding: 8px 40px 0 8px;
+    }
+    
+    .ltrTheme .simpleCooperationInput .cooperationFormLabel {
+        direction: rtl;
+    }
+    
+    .ltrTheme .selectCooperationInput .multiselect .multiselect__select {
+        left: unset;
+        right: -1px;
+    }
+    
+    .ltrTheme #cooperationSection .iconCooperationInput,
+    .ltrTheme #cooperationSection .largeInput {
+        flex-direction: row-reverse;
+    }
+    
+    .ltrTheme #cooperationSection .iconCooperationInput input {
+        text-align: left;
     }
     
     .ltrTheme .cookingCart .image .chef {
@@ -156,8 +243,8 @@
     }
     
     .ltrTheme #searchBox svg {
-        right: 2%;
-        left: unset
+        right: 2% !important;
+        left: unset !important
     }
     
     .ltrTheme #filterBox .multiselect__select {
@@ -213,14 +300,6 @@
         left: -5%
     }
     
-    .ltrTheme #sliderSection .slick-next {
-        right: 21%;
-    }
-    
-    .ltrTheme #sliderSection .slick-prev {
-        left: 70%
-    }
-    
     .ltrTheme #weeklyCookingSection .slick-prev {
         left: 60%;
     }
@@ -230,7 +309,7 @@
     }
     
     .ltrTheme #blogDetailSection #introductionSection #headerBlog .headerBlogOption div {
-        flex-direction: row !important;
+        flex-direction: row-reverse !important;
     }
     
     .ltrTheme #weeklyCookingSection .slick-next {
@@ -300,8 +379,20 @@
         text-align: justify
     }
     
+    .ltrTheme #Header #mainContent #mobileMenu nav #topMenu {
+        flex-direction: column !important;
+    }
+    
     @media (max-width:1000px) {
         /* ltr responsive */
+        /* cooperation */
+        .ltrTheme #cooperationSection #stepBox {
+            flex-direction: column-reverse !important;
+        }
+        .ltrTheme .selectCooperationInput .multiselect .multiselect__select {
+            left: unset;
+            right: -20px;
+        }
         /* contact responsive */
         .ltrTheme #introductionSection #content .innerContent {
             align-items: center !important;
@@ -352,10 +443,6 @@
             direction: ltr
         }
         /* contact us responsive */
-        .ltrTheme #contactUsSection #introductionSection .slotElements .contactWay {
-            flex-direction: row !important;
-            /* justify-content: center !important */
-        }
         .ltrTheme #contactUsSection #contactUsForm #formTop {
             flex-direction: column-reverse !important;
         }

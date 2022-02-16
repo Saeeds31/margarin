@@ -131,7 +131,8 @@
 
             <template v-if="header.multiData && header.type == 'ckEditor'">
               <ckeditor
-                :config="{ contentsLangDirection: 'rtl' }"
+                name="DescriptionRtl"
+                :config="ckEditorConfig"
                 lan="fa"
                 class="cke_rtl"
                 v-model="bigData.persian[header.key + '_fa']"
@@ -299,6 +300,7 @@
 
             <template v-if="header.multiData && header.type == 'ckEditor'">
               <ckeditor
+               :config="ckEditorConfig"
                 class="cke_rtl"
                 v-model="bigData.english[header.key + '_en']"
               ></ckeditor>
@@ -505,8 +507,8 @@
           <template v-if="!header.multiData && header.type == 'ckEditor'">
             <ckeditor
               :editor="editor"
+               :config="ckEditorConfig"
               v-model="editorData"
-              :config="editorConfig"
             ></ckeditor>
           </template>
           <template v-if="!header.multiData && header.type == 'menu_link'">
@@ -582,6 +584,7 @@ import {
 
 export default {
   methods: {
+
     event_image_change(e) {
       // return  console.log(e)
       const file = e.target.files[0];
@@ -912,6 +915,11 @@ export default {
   },
   data() {
     return {
+     ckEditorConfig:{ contentsLangDirection: 'rtl',
+    language : 'fa',
+    filebrowserImageUploadUrl : 'http://www.blogtest.ir/api/files/uploadckfile',
+    
+     } ,
       previewImage: {},
       innerDisabled: false,
       baseMediaUrl: "http://blogtest.ir/",
@@ -946,6 +954,7 @@ export default {
   }
 };
 </script>
+
 <style scoped>
 .disableLink {
   pointer-events: none;
@@ -1015,7 +1024,7 @@ div#bothLanguage {
   padding: 15px;
   border-radius: 15px;
   box-shadow: 0 0 30px #0000003d;
-  width:100%;
+  width: 100%;
 }
 .form_btn {
   display: flex;

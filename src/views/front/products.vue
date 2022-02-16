@@ -1,16 +1,27 @@
 <template>
   <div v-if="productsData" id="productsSection">
-    <introduction v-if="introduction" class="width80 margin-auto" :data="introduction">
+    <introduction  class="width80 margin-auto"   :title="
+        $cookie.get('ltrTheme')
+          ? 'Products Margarin Group'
+          : 'مــــحصولات گــــروه مارگاریــــن'
+      "
+      :summary="productsData.data.productsIntro.title"
+      :image="$root.baseImageUrl +productsData.data.productsIntro.image"
+      :routes="routes">
       <p
         data-aos="zoom-in"
         data-aos-duration="2000"
         data-aos-once="true"
         class="slotElements"
       >
-        {{ introduction.description }}
+        {{productsData.data.productsIntro.text }}
       </p>
     </introduction>
     <filterBox
+      :isDesendingSelected="isDesendingSelected"
+      :categorySelected="categorySelected"
+      :placeHolder="searchPlaceHolder"
+      @filtered="filteredProducts"
       data-aos="zoom-in"
       data-aos-duration="1000"
       data-aos-once="true"
@@ -56,60 +67,46 @@ export default {
   },
   data() {
     return {
-      // products: {
-      //   total: 8,
-      //   prePage: 6,
-      //   products: [
-      //     {
-      //       id: 1,
-      //       title: "روغن کنجد",
-      //       summary: "سرخ کردنی ویژه رژیم غذایی",
-      //       image: "https://s4.uupload.ir/files/layer_2760_qxn6.png"
-      //     },
-      //     {
-      //       id: 2,
-      //       title: "روغن آفتاب گردان",
-      //       summary: "پالایش شده و برای مصارف خانگی",
-      //       // image: "https://s4.uupload.ir/files/layer_2695_iwrb.png"
-      //       image: "https://s4.uupload.ir/files/layer_2759_yn0q.png"
-      //     },
-      //     {
-      //       id: 3,
-      //       title: "روغن زیتون پالایش شده",
-      //       summary: "برای طعم دار کردن سالاد ها",
-      //       image: "https://s4.uupload.ir/files/layer_2760_qxn6.png"
-      //     },
+        categorySelected: "",
+      isDesendingSelected: "",
+      searchPlaceHolder: "",
+       routes:[{ route: "", routeTitle_fa: "محصولات ", routeTitle_en:"Products"}],
 
-      //     {
-      //       id: 4,
-      //       title: "روغن آفتاب گردان",
-      //       summary: "پالایش شده و برای مصارف خانگی",
-      //       // image: "https://s4.uupload.ir/files/layer_2695_iwrb.png"
-      //       image: "https://s4.uupload.ir/files/layer_2759_yn0q.png"
-      //     },
-      //     {
-      //       id: 1,
-      //       title: "روغن کنجد",
-      //       summary: "سرخ کردنی ویژه رژیم غذایی",
-      //       image: "https://s4.uupload.ir/files/layer_2760_qxn6.png"
-      //     },
-      //     {
-      //       id: 2,
-      //       title: "روغن آفتاب گردان",
-      //       summary: "پالایش شده و برای مصارف خانگی",
-      //       // image: "https://s4.uupload.ir/files/layer_2695_iwrb.png"
-      //       image: "https://s4.uupload.ir/files/layer_2759_yn0q.png"
-      //     }
-      //   ]
-      // },
-
-      introduction:null,
     };
   },
   methods: {
-    pageChanged(page){
-     this.$router.replace({ path: '/products' ,query:{page:page}})
-    }
+     filteredProducts(filter) {
+      this.$router.replace({
+        name: "products",
+        query: {
+          page: this.$route.query.page ? this.$route.query.page : 1,
+          category: filter.category ? filter.category : "",
+          search: filter.search ? filter.search : "",
+          isDesending: filter.isDesending ? filter.isDesending : true
+        }
+      });
+      document
+        .getElementById("productsSection")
+        .scrollIntoView({ behavior: "smooth" });
+    },
+    pageChanged(page) {
+      this.$router.replace({
+        name: "products",
+        query: {
+          page: page,
+          category: this.$route.query.category
+            ? this.$route.query.category
+            : "",
+          search: this.$route.query.search ? this.$route.query.search : "",
+          isDesending: this.$route.query.isDesending
+            ? this.$route.query.isDesending
+            : true
+        }
+      });
+      document
+        .getElementById("productsSection")
+        .scrollIntoView({ behavior: "smooth" });
+    },
     },
        metaInfo() {
     return {
@@ -143,16 +140,29 @@ export default {
       this.$store.dispatch("getProductsFromServer", pack);
     }
   },
-  watch: {
-    productsData(va) {
-      this.introduction= {
-        image:this.$root.baseImageUrl+va.data.productsIntro.image,
-        description:va.data.productsIntro.text,
-        routes: [{ route: "", routeTitle: "محصولات" }],
-        title: "اخــــبار و مقــــاله و اطلاعیــــه",
-        summary: va.data.productsIntro.title
-      }
+watch: {
+    "$route.query": {
+      handler(value) {
+        if (Object.keys(value).length == 0) return;
+        let pack = {
+          page: value.page ? value.page : 1,
+          category: value.category ? value.category : "",
+          search: value.search ? value.search : "",
+          isDesending: value.isDesending ? value.isDesending : true
+        };
+        this.searchPlaceHolder = value.search ? value.search : "";
+        (this.typeSelected = value.type ? value.type : ""),
+          (this.isDesendingSelected = value.isDesendingSelected ? value.isDesendingSelected : ""),
+          this.$store.dispatch("getProductsFromServer", pack);
+      },
+      deep: true,
+      immediate: true
+    },
+    cookingsData() {
+      setTimeout(() => {
+        this.setStyle();
+      }, 500);
     }
-  }
+  },
 };
 </script>

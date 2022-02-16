@@ -19,12 +19,21 @@ export default new Vuex.Store({
         cookingData: null,
         cookingCategory: null,
         productCategory: null,
+        multiSliderNewsList: [],
+        singleSliderNewsList: [],
         // inner data
         racemeItemsAboutUs: null,
         contactUsCartsData: null,
     },
     getters: {
         // inner data getters
+        getMultiSliderNews(state) {
+            return state.multiSliderNewsList
+        },
+        getSingleSliderNews(state) {
+            return state.singleSliderNewsList
+
+        },
         getRacemeItems(state) {
             return state.racemeItemsAboutUs
         },
@@ -74,6 +83,12 @@ export default new Vuex.Store({
     },
     mutations: {
         // inner data mutation
+        setMultiSliderNews(state, list) {
+            state.multiSliderNewsList = list;
+        },
+        setSingleSliderNews(state, list) {
+            state.singleSliderNewsList = list;
+        },
         setRacemeItems(state, list) {
             state.racemeItemsAboutUs = list
         },
@@ -139,22 +154,33 @@ export default new Vuex.Store({
                 commit(pack.destination, JSON.parse(step3));
             }
         },
-        getProductCategoryFromServer({ dispatch }) {
+        getProductCategoryFromServer({ commit }) {
             axios.get("Home/GetProductCategories").then(response => {
-                let pack = {
-                    destination: "setProductCategory",
-                    data: response.data.data
-                };
-                dispatch("withoutEnAndFa", pack);
+                let list = [];
+                response.data.data.forEach(element => {
+                    if (element.name_en) {
+                        list.push(element.name_en)
+                    }
+                    if (element.name_fa) {
+                        list.push(element.name_fa)
+                    }
+                });
+                commit("setProductCategory", list)
             })
+
         },
-        getCookingCategoryFromServer({ dispatch }) {
+        getCookingCategoryFromServer({ commit }) {
             axios.get("Home/GetRecipeCategories").then(response => {
-                let pack = {
-                    destination: "setCookingCategory",
-                    data: response.data.data
-                };
-                dispatch("withoutEnAndFa", pack);
+                let list = [];
+                response.data.data.forEach(element => {
+                    if (element.name_en) {
+                        list.push(element.name_en)
+                    }
+                    if (element.name_fa) {
+                        list.push(element.name_fa)
+                    }
+                });
+                commit("setCookingCategory", list)
             })
         },
         getCookingFromServer({ dispatch }, id) {
@@ -205,11 +231,11 @@ export default new Vuex.Store({
         getBlogsFromServer({ dispatch }, pack) {
             axios
                 .get(
-                    `Home/GetBlogArchive?search=${pack.search ? pack.search : ""}&Type=${
-            pack.type ? pack.type : ""
-          }&pageNumber=${pack.page ? pack.page : 1}&isDesending=${
-            pack.isDesending ? pack.isDesending : true
-          }`
+                    `Home/GetBlogArchive?search=${pack.search ? pack.search : ""}&cat=${
+            pack.category ? pack.category : ""
+          }&pageNumber=${pack.page ? pack.page : 1}&isDesending=true&type=${
+            pack.type ? pack.type : 1
+          }&keyword=${pack.keyword?pack.keyword:""}`
                 )
                 .then((res) => {
                     let pack = {
@@ -243,7 +269,9 @@ export default new Vuex.Store({
                 .get(
                     `Home/GetProductArchive?pageNumber=${pack.page}&search=${
             pack.search ? pack.search : ""
-          }&cat=${pack.category ? pack.category : ""}`
+          }&cat=${pack.category ? pack.category : ""}&isDesending=${
+            pack.isDesending ? pack.isDesending : true
+          }`
                 )
                 .then((res) => {
                     let pack = {
@@ -272,13 +300,19 @@ export default new Vuex.Store({
                 dispatch("withoutEnAndFa", pack);
             });
         },
-        getBlogCategoryFromServer({ dispatch }) {
+        getBlogCategoryFromServer({ commit }) {
             axios.get("Home/GetBlogCategories").then((res) => {
-                let pack = {
-                    destination: "setBlogCategory",
-                    data: res.data.data
-                };
-                dispatch("withoutEnAndFa", pack);
+                let list = [];
+                res.data.data.forEach(element => {
+                    if (element.name_en) {
+                        list.push(element.name_en)
+                    }
+                    if (element.name_fa) {
+                        list.push(element.name_fa)
+                    }
+                });
+                commit("setBlogCategory", list)
+
             });
         }
     },

@@ -225,7 +225,7 @@
     <commentBox   data-aos="fade-up"
         data-aos-delay="500"
       data-aos-duration="1000"
-      data-aos-once="true" :routeComment="'BlogComment'" :comments="blogData.comments" />
+      data-aos-once="true" :likeRoute="'BlogComment'" :field="'blogId'" :routeComment="'BlogComment'" :comments="blogData.comments" />
   </div>
   <loader v-else />
 </template>
@@ -343,9 +343,9 @@ shareBlog(){
    window.open(`whatsapp://send?text=${window.location.href}`,'_blank');  
 },
     setStyle() {
-      setTimeout(() => {
-        this.$root.setSliderHeight("#relatedBlogs .blogCart .innerContent img");
-      });
+      // setTimeout(() => {
+      //   this.$root.setSliderHeight("#relatedBlogs .blogCart .innerContent img");
+      // });
       if (screen.width > 1000) {
         if (screen.width > 1495) {
           this.$root.unsetInlineStyle(
@@ -475,6 +475,7 @@ shareBlog(){
   width: 55px;
   height: 55px;
   border-radius: 50px;
+  top: -75px;
   box-shadow: 0 0 18px #00000059;
   cursor: pointer;
 }

@@ -8,7 +8,7 @@
         @keypress.enter="searchInBlogs"
           class="width100"
           type="text"
-          placeholder="جستوجو را همین الان شروع کنید ..."
+          :placeholder="$cookie.get('ltrTheme')?'search right now ...':'جستوجو را همین الان شروع کنید ...'"
         />
         <svg
         @click="searchInBlogs()"

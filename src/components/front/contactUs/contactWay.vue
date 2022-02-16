@@ -32,6 +32,7 @@ p span:last-child{
     font-size:20px;
     font-family:'yekan-heavy';
     letter-spacing:1px;
+    opacity: 0.8;
 }
 .contactWay p{
   margin-right: 15px;

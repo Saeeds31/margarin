@@ -9,7 +9,7 @@
     >
       <multiSelect
         class="hiddenInMobile"
-        :placeholder="'براساس '"
+        :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
         id="sortOption"
         track-by="name"
         label="name"
@@ -17,21 +17,20 @@
         :options="sortOptions"
       ></multiSelect>
       <multiSelect
-      v-if="cookingCategory"
+        v-if="cookingCategory"
         id="categotyOption"
-        track-by="id"
-        label="name"
-        :placeholder="'دسته بندی'"
+        :placeholder="$cookie.get('ltrTheme') ? 'Category' : 'دسته بندی'"
         v-model="category"
         :options="cookingCategory"
-      > 
+      >
       </multiSelect>
+
       <div id="searchBox" class="width45">
         <input
           v-model="search"
           class="width100"
           type="text"
-          placeholder="جستوجو را همین الان شروع کنید ..."
+          :placeholder="searchPlaceHolder"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -89,8 +88,8 @@ export default {
     multiSelect
   },
   computed: {
-    cookingCategory(){
-      return this.$store.getters.getCookingCategory
+    cookingCategory() {
+      return this.$store.getters.getCookingCategory;
     }
   },
   mounted() {
@@ -108,27 +107,29 @@ export default {
   },
   watch: {
     sort(newVal) {
-      this.filterList.push(newVal);
+      // this.filterList.push(newVal);
       let filter = {
-        type: this.category != null ? this.category : 1,
-        isDesending: this.sort != null ? this.sort : true,
+        category: this.category != null ? this.category : "",
+        isDesending: newVal != null ?newVal.value: true,
         search: this.search
       };
       this.$emit("filtered", filter);
     },
     category(newVal) {
-      this.filterList.push(newVal);
+      // this.filterList.push(newVal);
       let filter = {
-        type: this.category != null ? this.category : 1,
-        isDesending: this.sort != null ? this.sort : true,
+        category: newVal != null ? newVal : "",
+
+        isDesending: this.sort != null ? this.sort.value : true,
         search: this.search
       };
       this.$emit("filtered", filter);
     },
     search() {
       let filter = {
-        type: this.category != null ? this.category : 1,
-        isDesending: this.sort != null ? this.sort : true,
+        category: this.category != null ? this.category : "",
+
+        isDesending: this.sort != null ? this.sort.value : true,
         search: this.search
       };
       this.$emit("filtered", filter);
@@ -138,18 +139,41 @@ export default {
     return {
       search: "",
       filterList: [],
-      searchPlaceHolder:this.placeHolder!=""?this.placeHolder: this.$cookie.get('ltrTheme')?'Start searching now ...':"جستوجو را همین الان شروع کنید ...",
+      searchPlaceHolder:
+        this.placeHolder != ""
+          ? this.placeHolder
+          : this.$cookie.get("ltrTheme")
+          ? "Start searching now ..."
+          : "جستوجو را همین الان شروع کنید ...",
       category: null,
-      categoryOption: [
-        { name: "مقالات", value: "1" },
-        { name: "اخبار", value: "2" }
-      ],
-      sort: null,
+      sort:
+        this.isDesendingSelected != ""
+          ? this.isDesendingSelected == true
+            ? {
+                name: this.$cookie.get("ltrTheme") ? "Newest" : "جدیدترین",
+                value: "true"
+              }
+            : {
+                name: this.$cookie.get("ltrTheme") ? "Oldest" : "قدیمی ترین",
+                value: "false"
+              }
+          : null,
       sortOptions: [
-        { name: "قدیمی ترین", value: "false" },
-        { name: "جدیدترین", value: "true" }
+        {
+          name: this.$cookie.get("ltrTheme") ? "Oldest" : "قدیمی ترین",
+          value: "false"
+        },
+        {
+          name: this.$cookie.get("ltrTheme") ? "Newest" : "جدیدترین",
+          value: "true"
+        }
       ]
     };
+  },
+  props: {
+    placeHolder: String,
+    isDesendingSelected: String,
+    categorySelected: String
   }
 };
 </script>
@@ -187,7 +211,7 @@ export default {
 }
 #filterBox .multiselect__placeholder,
 #filterBox .multiselect__single {
-  color: #000000d4;
+  color: #7c7578;
   font-size: 20px;
   font-family: "yekan-heavy";
 }

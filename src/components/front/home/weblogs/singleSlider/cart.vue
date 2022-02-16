@@ -5,7 +5,7 @@
     <div class="backgroundGradient"></div>
     <div class="content">
       <p class="date d-flex justify-content-end width90 margin-auto">
-        <span> نمیاد </span>
+        <span> {{weblog.createDate}} </span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -24,7 +24,7 @@
       </p>
       <h1 class="width90">{{ weblog.title }}</h1>
       <h3 class="width90">
-        {{ " نمیادweblog.text" }}
+        {{ $root.showWith3Dot(weblog.shortDescription,31) }}
       </h3>
     </div>
   </div>

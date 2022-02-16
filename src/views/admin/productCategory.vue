@@ -59,6 +59,15 @@ mixins:[adminMixin],
           name: "نام دسته بندی",
           key: "name"
         },
+        {
+          style: "col-12",
+          show_in_table: true,
+          placeholder: "کد رنگ را به صورت هگزا وارد کنید",
+          type: "string",
+          multiData: false,
+          name: "کد رنگ محصول",
+          key: "colorCode"
+        },
       
         {
           style: "col-12",

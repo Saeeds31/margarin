@@ -1,16 +1,18 @@
 <template>
   <div id="healthAmbassador" class="width100">
-    <mainHeader />
-    <shopSection :data="healthAmbassador.shopSection" />
+    <mainHeader data-aos="zoom-in"
+      data-aos-duration="1500"
+      data-aos-once="false" />
+    <shopSection  :data="healthAmbassador.shopSection" />
     <virtualTour :data="healthAmbassador.virtualTour" />
     <ourProduct :data="healthAmbassador.ourProduct" />
     <goodFamily :data="healthAmbassador.goodFamily" />
     <statistics :data="healthAmbassador.statistics" />
     <application :data="healthAmbassador.application" />
     <div id="breaker"></div>
-    <blogs :data="healthAmbassador.blogs" />
-    <healthFooter class="hiddenInMobile" />
-    <mainFooter class="showInMobile" />
+    <blogs  :data="healthAmbassador.blogs" />
+    <healthFooter  class="hiddenInMobile" />
+    <mainFooter  class="showInMobile" />
   </div>
 </template>
 <script>

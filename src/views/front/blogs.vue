@@ -14,7 +14,7 @@
         {{ blogsData.data.webLogIntro.text }}
       </p>
     </introduction>
-    <filterBox :typeSelected="typeSelected" :isDesendingSelected="isDesendingSelected" :placeHolder="searchPlaceHolder" @filtered="filteredBlogs" />
+    <filterBox :typeSelected="typeSelected" :categorySelected="categorySelected"  :placeHolder="searchPlaceHolder" @filtered="filteredBlogs" />
     <div
       id="weblogsList"
       class="width100 d-flex f-wrap justify-content-between"
@@ -57,7 +57,7 @@ export default {
   },
   data() {
     return {
-      isDesendingSelected:"",
+      categorySelected:"",
       typeSelected:"",
       searchPlaceHolder: "",
       // weblogs: {
@@ -135,14 +135,14 @@ export default {
         if(Object.keys(value).length==0)return
         let pack = {
           page: value.page ? value.page : 1,
-          isDesending: value.isDesending ? value.isDesending : true,
+          category: value.category ? value.category : "",
           type: value.type ? value.type : 1,
           search: value.search ? value.search : "",
           keyword: value.keyword ? value.keyword : ""
         };
         this.searchPlaceHolder = value.search ? value.search : "";
-         this.isDesendingSelected=value.isDesending?value.isDesending:"",
          this.typeSelected=value.type?value.type:"",
+         this.categorySelected=value.category?value.category:"",
         this.$store.dispatch("getBlogsFromServer", pack);
       },
       deep: true,
@@ -176,10 +176,8 @@ export default {
     if (this.blogsData == null) {
       let pack = {
         page: this.$route.query.page ? this.$route.query.page : 1,
-        isDesending: this.$route.query.isDesending
-          ? this.$route.query.isDesending
-          : true,
-        type: this.$route.query.type ? this.$route.query.type : 1,
+       type:this.$route.query.type ? this.$route.query.type : 1,
+        category: this.$route.query.category ? this.$route.query.category : "",
         search: this.$route.query.search ? this.$route.query.search : "",
         keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
       };
@@ -194,16 +192,17 @@ export default {
   },
   methods: {
     pageChanged(page) {
-    let pack = {
-        page:page,
-        isDesending: this.$route.query.isDesending
-          ? this.$route.query.isDesending
-          : true,
-        type: this.$route.query.type ? this.$route.query.type : 1,
+    
+      this.$router.replace({
+        name: "weblogs",
+        query: {
+           page:page,
+        type:this.$route.query.type ? this.$route.query.type : 1,
+        category: this.$route.query.category ? this.$route.query.category : "",
         search: this.$route.query.search ? this.$route.query.search : "",
         keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
-      };
-      this.$store.dispatch("getBlogsFromServer", pack);
+        }
+      });
       document.getElementById('weblogsList').scrollIntoView({behavior:'smooth'})
     },
     filteredBlogs(filter) {
@@ -218,12 +217,11 @@ export default {
         query: {
           page: filter.page,
           search: filter.search,
-          type: filter.type,
-          isDesending: filter.isDesending
+          category: filter.category,
+          type: filter.type
         }
       });
-      // { path: 'register', query: { plan: 'private' }
-      // this.$store.dispatch("getBlogsFromServer", filter);
+
     },
     setStyle() {
       if (screen.width > 1000) {

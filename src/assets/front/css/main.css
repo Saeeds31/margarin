@@ -487,6 +487,7 @@ input:-internal-autofill-selected {
 
 #loginRegisterSection #roundedButton {
     letter-spacing: 2px;
+    width: 340px
 }
 
 #loginRegisterSection #gotoHome span#arrow {
@@ -540,18 +541,24 @@ input:-internal-autofill-selected {
     position: relative;
 }
 
-#homeSection #sliderSection #sliderContent #headerContent {
+#homeSection #homeLeader #headerContent {
     position: absolute;
     right: 5%;
     top: 6%;
     z-index: 10;
 }
 
-#homeSection #sliderSection #sliderContent #headerContent #buttons {
+#homeSection #homeLeader #headerContent.reStyleHeaderContent {
+    width: 95%;
+    right: 2.5%;
+    top: 2%;
+}
+
+#homeSection #homeLeader #headerContent #buttons {
     width: 35%;
 }
 
-#homeSection #sliderSection #sliderContent #headerContent #buttons button {
+#homeSection #homeLeader #headerContent #buttons button {
     background-color: #ffffff20;
     width: 60px;
     height: 60px;
@@ -559,7 +566,21 @@ input:-internal-autofill-selected {
     border-radius: 10px;
 }
 
-#homeSection #sliderSection #sliderContent #ambassadorButton {
+#homeSection #homeLeader #headerContent #buttons button i.fa.fa-bars {
+    color: white;
+    font-size: 40px;
+}
+
+#homeSection #homeLeader #headerContent #buttons button.reStyleToggle i.fa.fa-bars {
+    color: var(--color-theme);
+}
+
+#homeSection #homeLeader #headerContent #buttons button.reStyleToggle {
+    background-color: #5a5a5a20;
+    position: relative;
+}
+
+#homeSection #homeLeader #ambassadorButton {
     background-color: #01B74A;
     padding: 15px 20px;
     width: max-content;
@@ -568,32 +589,32 @@ input:-internal-autofill-selected {
     border: none;
 }
 
-#homeSection #sliderSection #sliderContent #ambassadorButton span {
+#homeSection #homeLeader #ambassadorButton span {
     font-family: 'yekan-heavy';
     font-size: 16px;
     color: white;
     margin: 0 10px;
 }
 
-#homeSection #sliderSection #sliderContent #headerContent #navBarMenu ul {
+#homeSection #homeLeader #headerContent #navBarMenu ul {
     margin: 0;
 }
 
-#homeSection #sliderSection #sliderContent #headerContent #navBarMenu i.fa.fa-circle {
+#homeSection #homeLeader #headerContent #navBarMenu i.fa.fa-circle {
     font-size: 5px;
     opacity: 0.3;
     margin: 0 5px;
 }
 
-#homeSection #sliderSection #sliderContent #headerContent #navBarMenu ul li a {
+#homeSection #homeLeader #headerContent #navBarMenu ul li a {
     font-family: 'yekan-bold';
     font-size: 16px;
     color: white;
     opacity: 0.6;
 }
 
-#homeSection #sliderSection #sliderContent #verticalMenu {
-    position: absolute;
+#homeSection #homeLeader #verticalMenu {
+    position: fixed;
     right: 5%;
     background: #ffffff29;
     top: 25%;
@@ -602,35 +623,39 @@ input:-internal-autofill-selected {
     z-index: 9;
 }
 
-#homeSection #sliderSection #sliderContent #verticalMenu ul {
+#homeSection #homeLeader #verticalMenu ul {
     padding: 10px 0;
 }
 
-#homeSection #sliderSection #sliderContent #verticalMenu ul li {
+#homeSection #homeLeader #verticalMenu ul li {
     position: relative;
 }
 
-#homeSection #sliderSection #sliderContent #verticalMenu ul li:hover p {
+#homeSection #homeLeader #verticalMenu ul li:hover p {
     display: block;
 }
 
-#homeSection #sliderSection #sliderContent #verticalMenu ul li {
+#homeSection #homeLeader #verticalMenu ul li {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-#homeSection #sliderSection #sliderContent #verticalMenu ul li a svg path {
+#homeSection #homeLeader #verticalMenu ul li a svg path {
     fill: #c1b7b4;
     transition: all 0.5s;
 }
 
-#homeSection #sliderSection #sliderContent #verticalMenu ul li:hover a svg path {
+#homeSection #homeLeader #verticalMenu ul li:hover a svg path {
     fill: var(--color-theme);
 }
 
-#homeSection #sliderSection #sliderContent #verticalMenu ul li p {
+#homeSection #homeLeader #verticalMenu ul li a.activeSection svg path {
+    fill: var(--color-theme);
+}
+
+#homeSection #homeLeader #verticalMenu ul li p {
     display: none;
     transition: all 0.6s;
     font-family: 'yekan-bold';
@@ -646,15 +671,16 @@ input:-internal-autofill-selected {
     padding: 10px;
 }
 
-#homeSection #sliderSection #sliderContent #shadowBox {
+
+/* #homeSection #sliderSection #sliderContent #shadowBox {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    background: linear-gradient( 205deg, black, transparent);
+    background: linear-gradient( 205deg, #000000b0, transparent);
     z-index: 1;
-}
+} */
 
 #homeSection #sliderSection #sliderContent #slider {
     height: 96%;
@@ -751,8 +777,15 @@ input:-internal-autofill-selected {
 }
 
 #homeSection #aboutUsSection {
-    margin-top: 5%;
-    max-height: 100vh;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    transform: scaleY(.97);
+}
+
+#homeSection div#selectedProductSection {
+    height: 100vh;
+    overflow: hidden;
 }
 
 #homeSection #aboutUsSection #pictures {
@@ -797,10 +830,41 @@ input:-internal-autofill-selected {
     margin: 20px;
 }
 
+#homeSection #aboutUsSection .aboutCart#carts3:hover img {
+    animation: cart3 5s infinite linear;
+}
+
+#homeSection #aboutUsSection .aboutCart.otherCart:hover img {
+    animation: otherCart 2s infinite linear alternate;
+}
+
+@keyframes cart3 {
+    from {
+        transform: rotate(0)
+    }
+    to {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes otherCart {
+    from {
+        transform: scale(1)
+    }
+    to {
+        transform: scale(1.2)
+    }
+}
+
 #homeSection #aboutUsSection .aboutCart h2 {
     font-size: 22px;
     font-family: 'yekan-heavy';
     margin: 0 10px;
+    transition: color 1s;
+}
+
+#homeSection #aboutUsSection .aboutCart:hover h2 {
+    color: #4d0370;
 }
 
 #homeSection #aboutUsSection .aboutCart h3 {
@@ -861,6 +925,7 @@ input:-internal-autofill-selected {
 .productCart .product img {
     position: relative;
     bottom: 15%;
+    width: auto;
     transition: all 0.5s;
 }
 
@@ -902,17 +967,21 @@ input:-internal-autofill-selected {
 
 #homeSection #weeklyCookingSection {
     overflow: hidden;
+    height: 100vh;
+    padding-top: 5%;
+    margin: 0;
 }
 
 #homeSection #weeklyCookingSection .cart .imageBox img {
     border-radius: 20px;
     padding: 15px;
+    height: 100%;
     background: #ffffff69;
 }
 
 #homeSection #weeklyCookingSection .cart .body {
     padding: 7%;
-    padding-right: 8%;
+    padding-right: 12%;
 }
 
 #homeSection #weeklyCookingSection .cart .body .header .titles {
@@ -979,12 +1048,17 @@ input:-internal-autofill-selected {
     margin: 20px 0;
 }
 
+#homeSection #weblogsSection {
+    overflow: hidden;
+}
+
 #homeSection #weblogsSection #multiSlider .cart {
     background: white;
     border-radius: 10px;
     padding: 10px;
     margin: 0 10px;
     width: 97% !important;
+    height: 62vh !important
 }
 
 #homeSection #weblogsSection #multiSlider .slick-slider,
@@ -1029,8 +1103,21 @@ input:-internal-autofill-selected {
     width: 96%;
     margin: auto;
     border-radius: 10px;
-    height: 270px !important;
-    object-fit: fill;
+    height: 250px !important;
+    object-fit: cover;
+}
+
+#homeSection #articles {
+    overflow: hidden;
+    height: 100vh;
+}
+
+#homeSection #articles #sectionHeader {
+    margin: 2% auto -2%;
+}
+
+#homeSection #articles #sliderSection {
+    transform: scale(0.8);
 }
 
 #homeSection #weblogsSection #multiSlider .cart .content .date span {
@@ -1044,7 +1131,7 @@ input:-internal-autofill-selected {
     background: white;
     border-radius: 20px;
     margin: 0 10px;
-    height: 100%;
+    height: 62vh;
 }
 
 #homeSection #weblogsSection #singleSlider .slick-list,
@@ -1060,7 +1147,7 @@ input:-internal-autofill-selected {
 #homeSection #weblogsSection #singleSlider .cart img {
     width: 100%;
     border-radius: 20px;
-    height: 100%;
+    height: 100%
 }
 
 #homeSection #weblogsSection #singleSlider .cart .content {
@@ -1197,12 +1284,31 @@ input:-internal-autofill-selected {
 }
 
 #homeSection #certificatesSlider {
-    margin-right: 15%;
-    padding: 10% 0;
+    padding-right: 15%;
+    /* padding: 10% 0; */
+    height: 100vh;
+    overflow: hidden;
+    /* margin-bottom: 200px; */
+    width: 100%;
 }
 
 #homeSection #certificatesSlider .cart .content {
     margin: 10%;
+    margin-right: 14%;
+    width: 60%
+}
+
+#filterBox .multiselect__placeholder {
+    color: #7c7578;
+    font-weight: bolder;
+}
+
+#productsSection .productCart .product .content {
+    position: absolute;
+}
+
+#productsSection #filterBox {
+    transform: scaleY(1.2);
 }
 
 #homeSection #certificatesSlider .cart .content .titles {
@@ -1241,7 +1347,8 @@ input:-internal-autofill-selected {
     opacity: 0.6;
     font-size: 13px;
     padding: 0 15px;
-    text-align: right;
+    text-align: justify;
+    direction: rtl;
 }
 
 #homeSection #certificatesSlider .cart .content .date p {
@@ -1277,6 +1384,11 @@ input:-internal-autofill-selected {
     margin: 20px auto;
     text-align: right;
     font-size: 18px;
+}
+
+#aboutSection #lastAboutUsP {
+    text-align: justify;
+    direction: rtl;
 }
 
 #aboutSection #sliderbox #sliderContent .mainImage {
@@ -1484,6 +1596,13 @@ input:-internal-autofill-selected {
 
 #blogsSection #weblogsList {
     flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+}
+
+#blogsSection #filterBox {
+    position: relative;
+    z-index: 2;
 }
 
 #blogsSection #weblogsList .blogCart {
@@ -1538,6 +1657,7 @@ input:-internal-autofill-selected {
 
 .ckEditorOutput {
     text-align: right;
+    margin-top: 30px
 }
 
 #blogDetailSection #introductionSection #headerBlog {
@@ -1582,8 +1702,7 @@ input:-internal-autofill-selected {
 }
 
 #blogDetailSection #introductionSection #headerBlog .headerBlogOption div p span:last-child {
-    font-family: 'yekan-thin';
-    font-size: 10px;
+    font-size: 12px;
     color: black;
     width: max-content;
 }
@@ -1616,7 +1735,9 @@ input:-internal-autofill-selected {
 }
 
 #blogDetailSection #sectionHeader {
-    margin: 5% 0 2.5% auto;
+    margin: 5% 0 25px auto;
+    height: 101px;
+    width: 100%;
 }
 
 #blogDetailSection #sectionHeader #router {
@@ -1663,6 +1784,7 @@ input:-internal-autofill-selected {
 #productsSection #filterBox #searchBox input {
     font-size: 16px;
     padding: 13px 20px;
+    height: 100%;
 }
 
 #productsSection #filterBox .multiselect .multiselect__tags {
@@ -1682,6 +1804,13 @@ input:-internal-autofill-selected {
 #productsSection #products {
     flex-wrap: wrap;
     margin-top: 6%;
+    position: relative;
+    z-index: 1;
+}
+
+#productsSection #filterBox {
+    position: relative;
+    z-index: 2;
 }
 
 #productsSection #products .productCart .content {
@@ -1691,6 +1820,7 @@ input:-internal-autofill-selected {
 #productsSection #products .productCart a {
     display: flex;
     justify-content: center;
+    align-items: center;
     border: 5px solid #00000006;
     background-color: white;
     transition: all 0.5s;
@@ -1716,6 +1846,12 @@ input:-internal-autofill-selected {
 #productDetailSection .productDescription {
     margin-top: 40%;
     margin-right: 10%;
+}
+
+#productDetailSection .productDescription .blackColor06 {
+    direction: rtl;
+    text-align: right;
+    font-size: 16px;
 }
 
 #productDetailSection .productDescription p {
@@ -1753,6 +1889,7 @@ input:-internal-autofill-selected {
 
 #productDetailSection #introductionSection #content #imageBox .tools .discountRate .rate {
     margin-top: 15px;
+    width: 70px;
 }
 
 #productDetailSection #introductionSection #content #imageBox .tools .discountRate .rate p {
@@ -1784,7 +1921,7 @@ input:-internal-autofill-selected {
 #productDetailSection #introductionSection .mainProductImage .mainImage .background {
     position: absolute;
     bottom: 0;
-    width: 80%;
+    width: 96%;
     height: 80%;
     border-radius: 20px;
     background-color: #FECE3C;
@@ -1806,10 +1943,14 @@ input:-internal-autofill-selected {
     justify-content: center;
 }
 
+#productDetailSection #introductionSection .imageColumn .chartImage img {
+    width: 100%;
+}
+
 #productDetailSection #introductionSection #content #imageBox .mainProductImage {
     padding: 0 15px 15px;
     background: white;
-    box-shadow: 0 0 40px #00000024;
+    box-shadow: 0 0 40px #00000029;
     border-radius: 20px;
 }
 
@@ -1982,9 +2123,13 @@ input:-internal-autofill-selected {
 
 #cookingsSection #filterBox {
     margin-top: 5%;
+    position: relative;
+    z-index: 2;
 }
 
 #cookingsSection #cookings {
+    position: relative;
+    z-index: 1;
     flex-wrap: wrap;
     margin: 5% auto;
     row-gap: 30px;
@@ -2015,7 +2160,7 @@ input:-internal-autofill-selected {
 .cookingCart .image {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 311px;
     transition: all 0.5s;
 }
 
@@ -2058,6 +2203,7 @@ input:-internal-autofill-selected {
     opacity: 0.5;
     font-size: 12px;
     font-family: 'yekan-bold';
+    direction: rtl;
 }
 
 .cookingCart .detail svg {
@@ -2104,8 +2250,13 @@ input:-internal-autofill-selected {
 }
 
 .cookingCart:hover .image {
-    height: 40%
+    height: 219px
 }
+
+
+/* .cookingCart:hover .image img {
+    object-fit: cover;
+} */
 
 
 /* cooperation style */
@@ -2122,7 +2273,7 @@ div#descriptionBox #description {
     width: 100%;
     resize: none;
     border: none;
-    border-radius: 30px;
+    border-radius: 50px;
     text-align: right;
     padding: 60px 60px 0;
 }
@@ -2243,7 +2394,7 @@ textarea:focus-visible {
 }
 
 #cooperationSection .largeInput label {
-    font-size: 14px;
+    font-size: 22px;
     color: black;
     font-family: 'yekan-bold';
 }
@@ -2382,6 +2533,8 @@ input[type=number] {
 #healthAmbassador #headerContent {
     width: 80%;
     margin: 2% auto;
+    position: relative;
+    z-index: 2
 }
 
 #healthAmbassador #headerContent #navBarMenu i.fa.fa-circle {
@@ -2725,6 +2878,7 @@ div#application {
     border-radius: 15px;
     border: 3px solid var(--grayBackground);
     box-shadow: none;
+    height: auto
 }
 
 #healthAmbassador #blogsSection .blogCart .innerContent .content {
@@ -2906,6 +3060,7 @@ div#application {
     font-family: 'yekan-bold';
     font-size: 16px;
     direction: rtl;
+    text-align: justify
 }
 
 #faqSection #faq #questions #collapseBox .collapseSection .card .card-header button {
@@ -3482,18 +3637,81 @@ div#application {
     justify-content: center;
 }
 
+#healthAmbassador #searchModal,
+#healthAmbassador #mobileMenu {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10000;
+    left: -12.5%;
+    top: -44%;
+}
+
 #mobileMenu {
     top: 0;
     display: flex;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: #ededed;
+    height: 100vh;
+    background: #625d5d;
     position: fixed;
-    padding-top: 10%;
-    flex-direction: column;
     align-items: center;
     z-index: 1000;
+    flex-wrap: wrap;
+    column-gap: 3%;
+    flex-direction: row-reverse;
+    padding: 50px;
+}
+
+.menuItem {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 350px;
+}
+
+.menuHeader {
+    width: 100%;
+    text-align: center;
+    border-bottom: 3px solid #e5e0d857
+}
+
+.menuHeader a {
+    font-size: 18px;
+    font-family: 'yekan-bold';
+    padding-bottom: 15px;
+    color: white;
+}
+
+ul.menuChild {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    list-style: disc;
+    color: #f7941e;
+}
+
+ul.menuChild li a {
+    color: white;
+    opacity: 0.8;
+}
+
+ul.menuChild li {
+    direction: rtl;
+    margin-top: 5px;
+    text-align: right;
+}
+
+#mobileMenu img {
+    transform: rotate( 197deg) scale(0.7);
+    width: 100px;
+    border-radius: 10px;
+    position: fixed;
+    left: 5px;
+    top: -31px;
+    cursor: pointer;
 }
 
 #mobileMenu #navBarMenu {
@@ -3555,6 +3773,10 @@ div#application {
     width: 25%;
 }
 
+#topSection #mobileMenu #switchTheme #moonSvg {
+    transform: rotate(25deg);
+}
+
 
 /* @media  */
 
@@ -3584,7 +3806,7 @@ div#application {
         transform: translateX(50%);
         bottom: -1% !important;
     }
-    #homeSection #sliderSection #sliderContent #ambassadorButton {
+    #homeSection #homeLeader #ambassadorButton {
         position: absolute;
         top: 70%;
         z-index: 1;
@@ -3599,6 +3821,12 @@ div#application {
     }
     #homeSection #sliderSection #sliderContent #slider .sliderItem p {
         top: 50%
+    }
+    #selectedProductSlider .slick-prev {
+        left: -25px !important;
+    }
+    #selectedProductSlider .slick-next {
+        right: -25px !important;
     }
     /*home about responsive */
     #homeSection #aboutUsSection #text {
@@ -4014,6 +4242,9 @@ div#application {
     #blogDetailSection {
         width: 95%
     }
+    .ckEditorOutput {
+        margin-top: 30px;
+    }
     #blogDetailSection #introductionSection #content {
         justify-content: center !important;
     }
@@ -4032,6 +4263,9 @@ div#application {
     #blogDetailSection #introductionSection .cookingTitle {
         padding: 15px;
         font-size: 18px;
+    }
+    #blogDetailSection #introductionSection #headerBlog .headerBlogOption div {
+        flex-direction: row !important;
     }
     #blogDetailSection #introductionSection #headerBlog .headerBlogOption div svg {
         width: 60px;
@@ -4402,6 +4636,7 @@ div#application {
     }
     #cooperationSection #form #lastStep #descriptionBox #description {
         padding: 60px 30px 0;
+        border-radius: 30px;
     }
     #cooperationSection #stepBox {
         flex-direction: column-reverse
@@ -4473,7 +4708,24 @@ div#application {
     }
 }
 
+#homeSection #articles #sliderSection .sliderItem .smallCart,
+#homeSection #articles #sliderSection .sliderItem .blogCart {
+    height: 46vh;
+}
+
 @media (max-width: 500px) {
+    #productDetailSection #introductionSection #content #imageBox .tools .discountRate .rate {
+        width: 70px
+    }
+    #cookingsSection #cookings {
+        width: 96%
+    }
+    #introductionSection #content div h1 {
+        text-align: center !important;
+    }
+    .cookingCart .image {
+        height: auto;
+    }
     #cookingsSection #filterBox #filters {
         flex-wrap: wrap;
         flex-direction: column-reverse;

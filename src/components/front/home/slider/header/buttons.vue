@@ -1,46 +1,16 @@
 <template>
   <div id="buttons" class="d-flex justify-content-between">
-    <button @click="toggleMenu()" id="toggleMenu">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="30"
-        height="30"
-        viewBox="0 0 30 30"
-      >
-        <g id="Group_2" data-name="Group 2" transform="translate(-205 -120)">
-          <rect
-            id="Rectangle_839"
-            data-name="Rectangle 839"
-            width="30"
-            height="6"
-            rx="3"
-            transform="translate(205 120)"
-            fill="#fff"
-          />
-          <g id="Group_1" data-name="Group 1">
-            <rect
-              id="Rectangle_839_copy_2"
-              data-name="Rectangle 839 copy 2"
-              width="22"
-              height="6"
-              rx="3"
-              transform="translate(205 132)"
-              fill="#fff"
-            />
-          </g>
-          <rect
-            id="Rectangle_839_copy"
-            data-name="Rectangle 839 copy"
-            width="13"
-            height="6"
-            rx="3"
-            transform="translate(205 144)"
-            fill="#fff"
-          />
-        </g>
-      </svg>
+    <button data-aos="zoom-in-up"
+      data-aos-duration="2500"
+      data-aos-delay="2500"
+
+      data-aos-once="false"  v-if="$root.sectionIndexHome!=1" class="reStyleToggle" @click="toggleMenu()" id="toggleMenu">
+      <i class="fa fa-bars"></i>
     </button>
-    <button id="phone" class="hiddenInMobile">
+    <button v-else @click="toggleMenu()" id="toggleMenu">
+      <i class="fa fa-bars"></i>
+    </button>
+    <button v-if="$root.sectionIndexHome==1" id="phone" class="hiddenInMobile">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -57,7 +27,7 @@
         />
       </svg>
     </button>
-    <button @click="showSearch=true" id="search" class="hiddenInMobile">
+    <button v-if="$root.sectionIndexHome==1" @click="showSearch=true" id="search" class="hiddenInMobile">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -75,9 +45,9 @@
       </svg>
     </button>
     <search @exit="exitSearch()" v-if="showSearch" />
-    <router-link
+    <router-link 
       class="hiddenInMobile"
-      v-if="!$route.name.includes('healthAmbassador')"
+      v-if="!$route.name.includes('healthAmbassador')&&$root.sectionIndexHome==1"
       to="/health-ambassador"
       id="ambassadorButton"
     >
@@ -96,26 +66,24 @@
           xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAeCAYAAADU8sWcAAAABHNCSVQICAgIfAhkiAAAAuVJREFUSEu9l0uITlEcwOfzjighomQniR0lC7FSXhslO6FsbWWNoshKKSxYyJDHJEOhRGhEMrHwyBSmvI3xfozfbzqnbvc73/fde2uc+vWdzj33/M75n8c9X21gYKAtkaZTthyWgPka/ISncAUuwZfMe+PIz4RpMDaU2/BHeAEv4U/eU8vJbWQbbIHJqV6Fsof87oZTMBfmgO/aSaViXpS+gzvwLNtmVj6LB8dgcRNp/tEBCu7CCPjb5D2fm+7BrdC5tiifRMFVmFdCbNWT0AFjEu/9pmxYwMdGYTR0wc3BghD2I+Q3lBRb/ThcSMiNwhTog/4gjR0YTuY89ChfROZG6FlZf0r+g0YWwmZwrk+A4XbUJqfgNZxWfojMxrLWUD8l/84zd8r6UMfw74cHuQ50KO+h0G1SJaXkrnTnehmsCUIdOyHuglHk7yt3K1i5Smo050o+w+pMBHaQfwKKDX2v8uQpU7AnjeS+/gumwq7QltvydoiEg+0bSrkr3i24HdzKduI5jAyR7h9KuQO2A4rthEdsnF5/Pym3ggdAldQs7LE9V7tT64hjcs5fKe8l4wehSioiT7XroutW3k5mbRUz71SVG4VO5avInPuPco9Xj9125YbAw35+hQ5UGbnHrF+2rvhhMeyGv2wqK3fUXkJ0fYtyV7ufxhUl7WXlRvkyPNKTv0wYDk+loqmM3HA/hosweKrmr1ErKTsDhqdIKip3dft5PWu4Y8N5ueWb4CAU+dgUkSt2nt1R77MjSsl97kXADrQ6+VrJneMPIdRv86FsJLfeOjgM8SqcmoZmcsVvgtgrdF1qJrfyUjgKM1IvU9ZIrtgLhCv7a4N36xZcqt7s0IEFiYd5uevExdoN16Huj0K2jVYjj3XHk9kHLsZsysr9UnmB8FqsvGUqKo8NKd8DE0OB8k6YAH4dr4E300KprNxG/Wu0F7yhun38y+Th4d8hR144VZHbuFtwK3hL8Vrsqi6d/gFmAP87hbs6GgAAAABJRU5ErkJggg=="
         />
       </svg>
-      <span>سفیر سلامت باش</span>
+      <span>{{$cookie.get('ltrTheme')?'Be a health ambassador':'سفیر سلامت باش'}}</span>
     </router-link>
     <div data-aos="fade-right" data-aos-duration="1000"    data-aos-once="false" v-if="showMenuModal" id="mobileMenu">
-      <button id="closeMenu" @click="toggleMenu()">
-        <i class="fa fa-times"></i>
-      </button>
-      <logo />
-        <menuBar />
-
+  
+        <img @click="showMenuModal=false"  src="@/assets/front/images/arrowclose.png" alt="">
+     
+     <menuSection data-aos="fade-left" :data-aos-duration="8000-index*1000"    data-aos-once="false" v-for="(item, index) in menu" :key="index" :header="item.header" :menuItem="item.menuItem" />
     </div>
   </div>
 </template>
 <script>
 import search from "@/components/front/shared/searchModal.vue"
 import menuBar from "@/components/front/home/slider/header/menu.vue"
-
+import menuSection from "@/components/front/shared/menuSection.vue"
 import logo from "@/components/front/shared/logo.vue"
 export default {
   components:{
-    logo,menuBar,search
+    logo,menuBar,search,menuSection
   },
   methods:{
     toggleMenu(){
@@ -130,11 +98,89 @@ export default {
     return{
       showSearch:false,
       showMenuModal:false,
+      menu:[
+        {
+          header:{title:'مارگارین',route:'/'},
+          menuItem:[
+            {title:'درباره ما (معرفی شرکت,معرفی مدیران و اعضاء هیئت مدیره)',route:'/about-us'},
+            {title:'چشم انداز',route:'/'},
+            {title:'ماموریت',route:'/'},
+            {title:'اهداف و خط مشی',route:'/'},
+            {title:'گواهینامه ها',route:'/'},
+            {title:'کاتالوگ',route:'/catalogue'},
+          ]
+        },
+        
+        {
+          header:{title:'محصولات',route:'/products'},
+          menuItem:[
+            {title:'خانوار',route:'/'},
+            {title:'صنف و صنعت',route:'/'},
+            {title:'لیست قیمت محصولات',route:'/'},
+          ]
+        },
+        
+        {
+          header:{title:'برندهای مارگارین',route:'/'},
+          menuItem:[
+            {title:'آفتاب',route:'/'},
+            {title:'خروس',route:'/'},
+            {title:'آفتاب طلایی',route:'/'},
+          ]
+        },
+        
+        {
+          header:{title:'گزارشات',route:'/'},
+          menuItem:[
+            {title:'صورت های مالی',route:'/'},
+            {title:'تفسیری مدیریت',route:'/'},
+            {title:'فعالیت های هیئت مدیره',route:'/'},
+            {title:'گزارشات کنترل داخلی',route:'/'},
+          ]
+        },
+        
+        {
+          header:{title:'روابط عمومی',route:'/'},
+          menuItem:[
+            {title:'ارتباط با روابط عمومی',route:'/'},
+            {title:'پنل همکاران(فیش حقوقی , فرم نظر سنجی یا انتقادات و پیشنهادات , خبرهای داخلی)',route:'/'},
+            {title:'اخبار و اطلاعیه ها',route:'/weblogs?weblogType=news'},
+            {title:'گالری تصاویر',route:'/'},
+            {title:'مجله آفتاب',route:'/'},
+          ]
+        },
+        
+        {
+          header:{title:'تحقیق و توسعه',route:'/'},
+          menuItem:[
+            {title:'معرفی دپارتمان تحقیق و توسعه',route:'/'},
+            {title:'محصولات جدید',route:'/products'},
+            {title:'پذیرش پیشنهادات نوآورانه',route:''},
+            {title:'همکاری مشترک با افراد',route:'/'},
+          ]
+        },
+        
+        {
+          header:{title:'لینک های کاربردی',route:'/'},
+          menuItem:[
+            {title:'لینک های مفید',route:'/'},
+            {title:'آشپزخانه',route:'/cooking-archive'},
+            {title:'همکاری با ما (جذب نیرو)',route:'/cooperation'},
+            {title:'ارتباط با ما',route:'/contact-us'},
+            {title:'سوالات متداول',route:'/faq'},
+          ]
+        },
+        
+      
+      ]
     }
   }
 }
 </script>
-<style scoped>
+<style >
+ #mobileMenu nav ul {
+        flex-direction: column !important;
+    }
 </style>
 <style>
 

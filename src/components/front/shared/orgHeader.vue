@@ -46,7 +46,7 @@ export default {
     setStyle() {
       if (screen.width > 1000) {
         // ! 1495=>1920
-        if (window.innerWidth > 1495) {
+        if (screen.width > 1495) {
           this.$root.setProportionStyle(
             "width",
             "%",
@@ -187,8 +187,21 @@ export default {
           1496,
           40
         );
-
+     
+             this.$root.unsetInlineStyle(
+          "width",
+          "#topSection #mobileMenu #mainLogo"
+        );
+             this.$root.unsetInlineStyle(
+          "width",
+          "#topSection #mobileMenu #mainLogo"
+        );
         // از بین بردن استایل های موبایلی
+         
+           this.$root.unsetInlineStyle(
+          "width",
+          "#topSection #mobileMenu #switchTheme"
+        );
       } else {
         this.$root.unsetInlineStyle(
           "font-size",
@@ -241,3 +254,8 @@ export default {
   }
 };
 </script>
+<style >
+ #mobileMenu nav ul {
+        flex-direction: column !important;
+    }
+</style>
