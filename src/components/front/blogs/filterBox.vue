@@ -26,12 +26,15 @@
       </multiSelect>
       <div id="searchBox" class="width45">
         <input
+        @keypress.enter="searched()"
           v-model="search"
           class="width100"
           type="text"
           :placeholder="searchPlaceHolder"
         />
         <svg
+        @click="searched()"
+
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           width="24"
@@ -92,6 +95,15 @@ export default {
     }
   },
   methods: {
+        searched() {
+      let filter = {
+        category: this.category != null ? this.category : "",
+        type: this.type != null ? this.type.value : "",
+        search: this.search
+      };
+      this.$emit("filtered", filter);
+    },
+
     removeFromFilter(value) {
       this.filterList = this.filterList.filter((item) => {
         return item.value != value;
@@ -124,14 +136,6 @@ export default {
       };
       this.$emit("filtered", filter);
     },
-    search() {
-      let filter = {
-        category: this.category != null ? this.category : "",
-        type: this.type != null ? this.type.value : "",
-        search: this.search
-      };
-      this.$emit("filtered", filter);
-    }
   },
   data() {
     return {
@@ -150,17 +154,17 @@ export default {
           ? this.typeSelected == "1"
             ? {
                 name: this.$cookie.get("ltrTheme") ? "News" : "اخبار",
-                value: "1"
+                value: "0"
               }
             : {
                 name: this.$cookie.get("ltrTheme") ? "Articles" : "مقالات",
-                value: "2"
+                value: "1"
               }
           : null,
       typeOption: [
         {
           name: this.$cookie.get("ltrTheme") ? "Articles" : "مقالات",
-          value: "2"
+          value: "0"
         },
         { name: this.$cookie.get("ltrTheme") ? "News" : "اخبار", value: "1" }
       ]
@@ -207,8 +211,8 @@ export default {
 }
 #filterBox .multiselect__placeholder,
 #filterBox .multiselect__single {
-  color: #000000d4;
   font-size: 20px;
   font-family: "yekan-heavy";
+  text-align: center;
 }
 </style>

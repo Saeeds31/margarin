@@ -34,22 +34,10 @@
         <router-link  data-aos="fade-left"
       data-aos-duration="2000"
       data-aos-once="true"  class="blackColor06" to="/products">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="16"
-            height="18"
-            viewBox="0 0 20 18"
-          >
-            <image
-              id="Path_79_copy"
-              data-name="Path 79 copy"
-              width="20"
-              height="18"
-              opacity="1"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAABHNCSVQICAgIfAhkiAAAAT5JREFUOE+l1M9KQkEUx/HGFM0CCQQNchESBb1JvUoQKoIuJC0XEkF7E59IXyAIooIiAjctTLPb99gxMO3OnduFHyPz5+OZ6zjG87wVv8cYk2X8kHld34k6aPxAsAzzaiRG+sxt29A/QbA0i+uKfdA2AZ9CgWCbLGyQOBGsBfZgw2R8ocJf2IQ5F2B3QbAFECxF5xlJEGdsDgTbkPdE1sgnuaSy26CVzeZNt6zYOZ1Jxa7ov3HFphUSqUy2ua7YPe1bGGwG7vGhoPhQ319Y7/tXZssHCMckolU+0spxcX5+jg3oPqtPFJVK63zZwFWcO4eguwBFRd9pT13RZQc7D1Qiq2REGqCvQStd+l+m0h2AsqJjOQWgL0FQv8shB1AhUSKoXA7PNtR2fW0DVBXtAV7/C5TFbH+L5gisY8Nk/AuevIxjAHKE/AAAAABJRU5ErkJggg=="
-            />
-          </svg>
+         <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.3287 11.0002V13.0002L7.50042 13.0002L10.7429 16.2428L9.32873 17.657L3.67188 12.0001L9.32873 6.34326L10.7429 7.75747L7.50019 11.0002L20.3287 11.0002Z" fill="black"/>
+</svg>
+
           {{$cookie.get('ltrTheme')?"Margarin Products":'محصولات مارگارین'}}</router-link
         >
       </div>

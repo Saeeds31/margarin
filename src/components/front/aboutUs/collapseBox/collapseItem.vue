@@ -85,7 +85,7 @@
         accordion="my-accordion"
         role="tabpanel"
       >
-        <b-card-body class="d-flex justify-content-end">
+        <b-card-body class=" d-flex justify-content-end">
           <b-card-text class="medium14 blackColor06">{{ data.answer }}</b-card-text>
         </b-card-body>
       </b-collapse>

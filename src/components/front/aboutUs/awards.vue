@@ -141,7 +141,7 @@ beforeDestroy() {
       document.getElementById(`aboutSliderImage${index}`).click();
     },
     setStyle(){
-      if(screen.width>1000){
+      if(window.innerWidth>1000){
          this.$root.setProportionStyle(
             "font-size",
             "px",
@@ -211,12 +211,12 @@ beforeDestroy() {
   opacity: 1;
 }
 #awardsSection .slick-prev{
-  top:76%;
-  left: 7%;
+  top:50%;
+  left: 48%;
 }
 #awardsSection .slick-next{
-  top:76%;
-  right:80%
+  top:50%;
+  right:12%
 }
 
 #awardsSection .slick-prev,#awardsSection .slick-next {

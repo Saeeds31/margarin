@@ -1,7 +1,10 @@
 <template>
-    <div id="footerLinkRouter" class="d-flex justify-content-between width20 align-items-center showInMobileFlex">
-      <router-link :to="data.route">
-        <svg
+  <div
+    id="footerLinkRouter"
+    class="d-flex justify-content-between width20 align-items-center showInMobileFlex"
+  >
+    <router-link :to="data.route">
+      <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         width="60"
@@ -30,53 +33,54 @@
         </g>
       </svg>
       <span>{{ data.routeTitle }}</span>
-      </router-link>
-    </div>
-
+    </router-link>
+  </div>
 </template>
 <script>
 export default {
   props: {
     data: Object
   },
-     mounted() {
+  mounted() {
     this.setStyle();
     window.addEventListener("resize", this.setStyle);
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.setStyle);
   },
-  methods:{
-    setStyle(){
-      // 
-      if(window.innerWidth>1000){
-         this.$root.setProportionStyle(
-        "font-size",
-        "px",
-        "#text div h1",
-        1496,
-        32,
-        1024,
-        19
-      );
-       this.$root.setProportionStyle(
-        "font-size",
-        "px",
-        "#text div h4",
-        1496,
-        22,
-        1024,
-        16
-      );
-       this.$root.setProportionStyle(
-        "width",
-        "%",
-        "#sectionHeader #router",
-        1496,
-        20,
-        1024,
-        28
-      );
+  methods: {
+    setStyle() {
+      //
+      if (window.innerWidth > 1000) {
+       
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#text div h1",
+            1496,
+            32,
+            1024,
+            19
+          );
+        
+        this.$root.setProportionStyle(
+          "font-size",
+          "px",
+          "#text div h4",
+          1496,
+          22,
+          1024,
+          16
+        );
+        this.$root.setProportionStyle(
+          "width",
+          "%",
+          "#sectionHeader #router",
+          1496,
+          20,
+          1024,
+          28
+        );
       }
     }
   }
@@ -84,27 +88,27 @@ export default {
 </script>
 <style scoped>
 #sectionHeader {
-  margin:5% auto 2.5%;
+  margin: 5% auto 2.5%;
 }
-#text .ifImage{
+#text .ifImage {
   margin: 0 15px;
 }
-#text div h1{
-font-size:32px;
-font-family: 'yekan-heavy';
-opacity:0.6;
-color:black;
-text-align:right;
-
+#text div h1 {
+  font-size: 32px;
+  font-family: "yekan-heavy";
+  opacity: 0.6;
+  color: black;
+  text-align: right;
 }
-#text div h4{
-  font-size:22px;
-font-family: 'yekan-medium';
-opacity:0.6;
-color:black;
+#text div h4 {
+  font-size: 22px;
+  font-family: "yekan-medium";
+  opacity: 0.6;
+  color: black;
 }
-#router span{
+#router span {
   margin: 0 10px;
-  color:black;
+  color: black;
 }
+
 </style>

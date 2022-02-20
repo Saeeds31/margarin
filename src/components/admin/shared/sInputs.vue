@@ -132,8 +132,8 @@
             <template v-if="header.multiData && header.type == 'ckEditor'">
               <ckeditor
                 name="DescriptionRtl"
-                :config="ckEditorConfig"
                 lan="fa"
+                :config="ckEditorConfig"
                 class="cke_rtl"
                 v-model="bigData.persian[header.key + '_fa']"
               ></ckeditor>
@@ -300,7 +300,9 @@
 
             <template v-if="header.multiData && header.type == 'ckEditor'">
               <ckeditor
-               :config="ckEditorConfig"
+                 name="Descriptionltr"
+                lan="en"
+               :config="ckEditorConfig1"
                 class="cke_rtl"
                 v-model="bigData.english[header.key + '_en']"
               ></ckeditor>
@@ -916,6 +918,12 @@ export default {
   data() {
     return {
      ckEditorConfig:{ contentsLangDirection: 'rtl',
+    language : 'fa',
+    filebrowserImageUploadUrl : 'http://www.blogtest.ir/api/files/uploadckfile',
+    
+     } ,
+     
+     ckEditorConfig1:{ contentsLangDirection: 'ltr',
     language : 'fa',
     filebrowserImageUploadUrl : 'http://www.blogtest.ir/api/files/uploadckfile',
     

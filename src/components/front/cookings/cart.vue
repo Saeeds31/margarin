@@ -1,5 +1,5 @@
 <template>
-  <div class="cookingCart d-flex flex-direction-column align-items-end">
+  <div @click="goToRoute(`/cooking-detail/${data.id}/${$root.slugGenerator(data.title)}`)" class="cookingCart d-flex flex-direction-column align-items-end">
     <div class="image">
       <img v-if="data.image!=null" :src="$root.baseImageUrl+data.image" :alt="data.title" />
       <div class="chef">
@@ -14,61 +14,63 @@
     <double-line class="width50" />
     <div class="detail">
       <span> {{ `${data.commentCount} ${this.$cookie.get("ltrTheme")?'Comment':'نظر'}` }} </span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-      >
-        <image
-          id="Layer_2710"
-          data-name="Layer 2710"
-          width="24"
-          height="24"
-          opacity="0.502"
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAmVJREFUSEu1ls1LVFEYh50WKoGSYmqSH6UV4kINEYREAkGQUjdhpBGViKII+o+IE4QiDAjqyoW5aKG4EmtRposMESMbC/uAKTW1TU7PL88d5sM7EzPXAw/33nPPeZ9zzj1z3nH5/f4kuzKTmePiXRFUwgX4YzjieggrsNbk+6rnE4vrJAGB00xQBc6wHcHxi114DW8Q/QpvGyEguEZ6H86axt/VGd6DZnTGoHbVkG3a/eY6juRTsCREQPCLvGyHVFiHBTpsRZsBfYp4XwvFECEJCGhYSIM2SIZlmCG4/QcKsppv1UxVRbjkn4AGKbzoNyN/xfX5/wa3PEZym+frRuImxoElqKGyATaoHI+2JDGWS9/oLlyDOWItup5lZOuj9cE5GKPyQ7wC9WMmBVwewQ9wS1DGzR3YJvhIIsGDlqub+xyYkKCVm1KYRqAfTqAwGu2okhjSiGWlXxV9bsE7CawgHgRehwS5xOmCjxI84OYSjCL47NASWQKvBI8Jmg/DCL6chqCToHnwFME3h5doSzO4R9CrMIXgrUMCnVGNsCbBDW7q4QWCWYeWqIc452Ey+HewjmAyUQFbVBtGG+cnDEmgE7QDfAjciQjMeaRtr5N1nngLEqTzMAA7VAzGKzDBW+hfDjq2nxBvXwJtUW1VLxWeeARRj2sEdQS9Cavw0kzvMtc9WIp1+Jk8oo1yxYw8JKtpBg95oWRjV5QylSNCjhGe9e1ip0wEvTTMMtF9XJV7N41UGUoZLlrRsaykv6wEE95QM1Dy1tmxSQM1DhSmr9ysfxYarf5dZIKSipbP+jOg09Q2tf4FSIYH8ck2jp0AAAAASUVORK5CYII="
-        />
-      </svg>
+    <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8,11a1,1,0,1,0,1,1A1,1,0,0,0,8,11Zm4,0a1,1,0,1,0,1,1A1,1,0,0,0,12,11Zm4,0a1,1,0,1,0,1,1A1,1,0,0,0,16,11ZM12,2A10,10,0,0,0,2,12a9.89,9.89,0,0,0,2.26,6.33l-2,2a1,1,0,0,0-.21,1.09A1,1,0,0,0,3,22h9A10,10,0,0,0,12,2Zm0,18H5.41l.93-.93a1,1,0,0,0,.3-.71,1,1,0,0,0-.3-.7A8,8,0,1,1,12,20Z"/></svg>
       <span> {{ `${0} ${this.$cookie.get("ltrTheme")?"Like":"لایک"}` }} </span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="24"
-        height="22"
-        viewBox="0 0 24 22"
-      >
-        <image
-          id="Layer_2709a"
-          data-name="Layer 2709a"
-          width="24"
-          height="22"
-          opacity="0.502"
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAABHNCSVQICAgIfAhkiAAAAphJREFUSEullctLVVEUh7uVWWn4qFSkhxiB5KMnOCgdmJOoTHtAkBZoOGkSKP0XDRo06k3ovUEDH6AOGmqIA1EsKFMxblgWKD4GZdHt+8U6dq6ec++BDnzsffZea/323mevdUKxWGyD83Rl5+bSPwEZsBWiMF4zN/tx1cjVwf4ArwdhL3yHORjF/pNjFpIAhpsYOAdHIOQRbJixXhx/ag77zTRn4aiHrVY8Bt2ydwTOM3AcVmAApmEj7IeTkAJa1VML2GBzsn8NUy77U2Y/gkBHqDMrp4iBqxb8IYNf3atitbt4r4dMeANaYSkswnPsv62x3837TUiFiAQu0imDPowH3cZOH5Ec+k3mpOEf8Bj7WR97fUcd+ZgEWumkwz0c5r0cNGYf9JrNt2M7kcB2B3MtsCSB27b9uzgt+TmZSL5a7GaS2G1n/g4sSKCRzj5ow/FDIsegc+xWV1e7jUqgnM4Z0Kr0kX8HDeRz/rp9zZAHvRJQDtyCbBhCoOc/BWrwPwZKuvtOHigTb4ASyPc2JRPmaJQD1fALnrHY6F8BPUyW0FyyIGEmx5MFdM/jf4j3Kzb2Ev+36q8KmEglbRUoQ3XPvwQRIfgeOwFl/Cv8+h2/OAETqaM9DMpUfXS1vg/Bs5hU5qbBMPZdbmMvAX3066A69Bme4KQdrXsIroqrDFd5mARd9bhbuE7AdqFEkeNOeA8RHP/VdQasAuuuF4Lq1yNsVELiHk8BE1FwbX0bDOLc5/ZE4ALvKtfL8ID5Ba9d+gqYSAGtSrOOrYcgQzZeQXsa9H/QEfqWjoQCFkw/oVrQ2YZhC1y21b4g+DuvlTtjSQVMRFdXV1hnrN0ETsigAvqNatXFtrLAJSWQgO1Cq1ad0S70fw5UFP8AhHYQ3T85bxcAAAAASUVORK5CYII="
-        />
-      </svg>
+    
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25" height="25"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<g>
+	<g id="heart_x5F_stroke">
+		<g>
+			<path style="fill:#030104;" d="M23.113,6c2.457,0,4.492,1.82,4.836,4.188L16.004,23.906L4.051,10.188C4.395,7.82,6.43,6,8.887,6
+				c2.016,0,3.855,2.164,3.855,2.164L16,11.625l3.258-3.461C19.258,8.164,21.098,6,23.113,6 M23.113,2
+				c-2.984,0-5.5,1.578-7.113,3.844C14.387,3.578,11.871,2,8.887,2C3.984,2,0,5.992,0,10.891v0.734L16.008,30L32,11.625v-0.734
+				C32,5.992,28.016,2,23.113,2L23.113,2z"/>
+		</g>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
       <span>
         {{`${this.$cookie.get("ltrTheme")?data.timeToRead+'Minutes'+' Time training'  :data.timeToRead+'دقیقه'+' زمان آموزش'}`}}
         
         
         
       </span>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-      >
-        <image
-          id="Layer_2708a"
-          data-name="Layer 2708a"
-          width="24"
-          height="24"
-          opacity="0.502"
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAgJJREFUSEu1lssrRVEUh12vSAbeYSpGKAZGXpkw8MiMzAyUTDDgT2DCRMrATEaSx4CSvKIUA2ZKJkLyKEnkdX0/9tU5xz3HuXFP/dq7vdde395r7b3uDQSDwRi3byE9J4W5fJSHck0r83N0YdqzptvLBzcfgXAAHMeyoBJVoTjL4ifTT7KMvdHfRFuA3p2gHwCcZ2HUYnb+SHuIzsxub4yDDHMana4EJRubOSBXVogNgPNSJhtRPDpG8yy4dzu+xlmTStOMCtArWmTNQWjNN8DsvIsJJWUZo30vx8451pczVo8CaCJ0kk+AiXmnCYt2ENY5dkp2DPNK8o/PQBQBhXRSOQkBqhmoVVgYnHLbOQ56DWDUw6bDhGsNXxuB+bRsXcU+9IzGvWIOYNAAhjwAykk3SkQjAhTSaUe7OF/yirsfgNZj10BTgaYFqKEjzQLQlXT9IgDo6raidQHa6BShMQDX/wTIxE8POhKgn04CGgbgXje+jq4c6GWPYKtHGPbDTld1AL1EClCulLM7NAPkNBzBCYgkRDqpEliGVHdW0Y7z5ABsIarBSPo1yaHd4qCYvh6UruIKgG3rSZi3Jdn3NXU4UcGrQ3sAThxztmvq+6G5JdXh3P7QTC3yVSp8AuylIpJi9xvAtdhpYVTLteV2RO8HxwKJ3k+mBRK9H33Hlfvz35YP+zg06Jy4zIQAAAAASUVORK5CYII="
-        />
-      </svg>
+     <svg width="25" height="25" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+  <path d="M2 0v1h1v.03c-1.7.24-3 1.71-3 3.47 0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5c0-.45-.1-.87-.25-1.25l-.91.38c.11.29.16.57.16.88 0 1.39-1.11 2.5-2.5 2.5s-2.5-1.11-2.5-2.5 1.11-2.5 2.5-2.5c.3 0 .59.05.88.16l.34-.94c-.23-.08-.47-.12-.72-.16v-.06h1v-1h-3zm5 1.16s-3.65 2.81-3.84 3c-.19.2-.19.49 0 .69.19.2.49.2.69 0 .2-.2 3.16-3.69 3.16-3.69z"
+  />
+</svg>
     </div>
     <div class="cookingRoute width90  d-flex justify-content-end">
         <router-link class="d-flex justify-content-around" :to="`cooking-detail/${data.id}/${$root.slugGenerator(data.title)}`">
@@ -98,6 +100,12 @@ export default {
   components: { doubleLine },
   props: {
     data: Object
+  },
+  methods:{
+    goToRoute(path){
+      if(window.innerWidth<1000)
+      this.$router.push(path)
+    }
   }
 };
 </script>

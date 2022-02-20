@@ -5,7 +5,10 @@
       <verticalMenu />
     </div>
     <div
-      v-if="homeData.sliders.length > 0 && $root.sectionIndexHome == 1"
+      v-if="
+        (homeData.sliders.length > 0 && $root.sectionIndexHome == 1) ||
+        (homeData.sliders.length > 0 && $root.screenSize < 1000)
+      "
       id="sliderSection"
       class="d-flex width100 height100vh"
     >
@@ -23,14 +26,17 @@
       <slider :slider="homeData.sliders" class="width100 height100" />
     </div>
     <aboutUs
-      v-if="$root.sectionIndexHome == 2"
+      v-if="$root.sectionIndexHome == 2 || $root.screenSize < 1000"
       data-aos="fade-up"
       data-aos-duration="1500"
       data-aos-delay="500"
       data-aos-once="false"
     />
     <selectedProduct
-      v-if="homeData.products.length > 0 && $root.sectionIndexHome == 3"
+      v-if="
+        (homeData.products.length > 0 && $root.sectionIndexHome == 3) ||
+        (homeData.products.length > 0 && $root.screenSize < 1000)
+      "
       :products="homeData.products"
       data-aos="fade-up"
       data-aos-duration="1500"
@@ -38,7 +44,9 @@
       data-aos-once="false"
     />
     <weeklyCooking
-      v-if="homeData.recipes.length > 0 && $root.sectionIndexHome == 4"
+      v-if="
+        (homeData.recipes.length > 0 && $root.sectionIndexHome == 4) ||
+        (homeData.recipes.length > 0 && $root.screenSize < 1000)"
       :cookings="homeData.recipes"
       data-aos="fade-up"
       data-aos-duration="1500"
@@ -47,9 +55,10 @@
     />
     <news
       v-if="
-        multiSlider.length > 0 &&
-        singleSlider.length > 0 &&
-        $root.sectionIndexHome == 5
+        (multiSlider.length > 0 &&
+          singleSlider.length > 0 &&
+          $root.sectionIndexHome == 5) ||
+        $root.screenSize < 1000
       "
       :singleSliderList="singleSlider"
       :multiSliderList="multiSlider"
@@ -59,7 +68,10 @@
       data-aos-once="false"
     />
     <articles
-      v-if="homeData.articles.length > 0 && $root.sectionIndexHome == 6"
+      v-if="
+        (homeData.articles.length > 0 && $root.sectionIndexHome == 6) ||
+        (homeData.articles.length > 0 && $root.screenSize < 1000)
+      "
       :articles="homeData.articles"
       data-aos="fade-up"
       data-aos-duration="1500"
@@ -68,18 +80,22 @@
     />
     <certificates
       :prizes="homeData.prizes"
-      v-if="homeData.prizes.length > 0 && $root.sectionIndexHome == 7"
+      v-if="(homeData.prizes.length > 0 && $root.sectionIndexHome == 7) ||
+        (homeData.prizes.length > 0 && $root.screenSize < 1000)"
       data-aos="fade-up"
       data-aos-duration="1500"
       data-aos-delay="500"
       data-aos-once="false"
     />
+    <footerSite v-if="$root.sectionIndexHome == 7 ||$root.screenSize < 1000" />
+    <footerNavigation class="showInMobile" />
   </div>
   <Loader v-else />
 </template>
 <script>
 import headerSticky from "@/components/front/home/slider/header.vue";
 import verticalMenu from "@/components/front/home/slider/verticalMenu.vue";
+import footerSite from "@/components/front/shared/footer.vue";
 import slider from "@/components/front/home/slider.vue";
 import aboutUs from "@/components/front/home/aboutUs.vue";
 import selectedProduct from "@/components/front/home/selectedProduct.vue";
@@ -88,7 +104,6 @@ import news from "@/components/front/home/weblogs.vue";
 import articles from "@/components/front/home/articles.vue";
 import certificates from "@/components/front/home/certificates.vue";
 import Loader from "@/components/front/shared/loader.vue";
-
 export default {
   components: {
     Loader,
@@ -100,6 +115,7 @@ export default {
     weeklyCooking,
     news,
     articles,
+    footerSite,
     certificates
   },
   created() {
@@ -154,6 +170,7 @@ export default {
         this.$store.commit("setMultiSliderNews", newVal.news);
         this.$store.commit("setSingleSliderNews", newVal.news);
       }
+      
     }
   },
   computed: {
@@ -168,7 +185,7 @@ export default {
     }
   },
   mounted() {
-    this.setStyle();
+    
     window.addEventListener("resize", this.setStyle);
     window.addEventListener("keydown", this.showSection);
     window.addEventListener("wheel", this.showSectionWithScroll);
@@ -189,29 +206,26 @@ export default {
       } else {
         this.wheelCounter = 0;
       }
-      if(this.wheelCounter==3){
-        this.wheelCounter=0;
-        if(this.$root.sectionIndexHome!=7){
+      if (this.wheelCounter == 3) {
+        this.wheelCounter = 0;
+        if (this.$root.sectionIndexHome != 7) {
           this.$root.sectionIndexHome++;
         }
         window.removeEventListener("wheel", this.showSectionWithScroll);
-        setTimeout(()=>{
-        window.addEventListener("wheel", this.showSectionWithScroll);
-
-        },2000)
+        setTimeout(() => {
+          window.addEventListener("wheel", this.showSectionWithScroll);
+        }, 2000);
       }
-      if(this.wheelCounter==-3){
-        this.wheelCounter=0;
-        if(this.$root.sectionIndexHome!=1){
-          this.$root.sectionIndexHome--
+      if (this.wheelCounter == -3) {
+        this.wheelCounter = 0;
+        if (this.$root.sectionIndexHome != 1) {
+          this.$root.sectionIndexHome--;
         }
         window.removeEventListener("wheel", this.showSectionWithScroll);
-        setTimeout(()=>{
-        window.addEventListener("wheel", this.showSectionWithScroll);
-
-        },2000)
+        setTimeout(() => {
+          window.addEventListener("wheel", this.showSectionWithScroll);
+        }, 2000);
       }
- 
     },
     showSection(e) {
       if (e.key == "8" || e.key == "ArrowUp") {
@@ -230,8 +244,8 @@ export default {
       window.open(link, "_blank");
     },
     setStyle() {
-      if (screen.width > 1000) {
-        if (screen.width > 1495) {
+      if (window.innerWidth > 1000) {
+        if (window.innerWidth > 1495) {
           this.$root.setProportionStyle(
             "width",
             "px",
@@ -461,11 +475,14 @@ export default {
           1024,
           50
         );
-
-        this.$root.unsetInlineStyle(
+        this.$root.setProportionStyle(
           "width",
-
-          "#homeSection #homeLeader #headerContent .mainLogo "
+          "px",
+          "#homeSection #homeLeader #headerContent .mainLogo",
+          1920,
+          100,
+          1495,
+          85
         );
       } else {
         this.$root.setProportionStyle(

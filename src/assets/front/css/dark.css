@@ -26,7 +26,6 @@
 .darkMode #contactUsSection #contactUsForm #formTop .contactUsInput input,
 .darkMode #loginRegisterSection #gotoHome span#text,
 .darkMode #loginRegisterSection #loginRegisterOption a,
-.darkMode .multiselect__placeholder,
 .darkMode #blogDetailSection #introductionSection #headerBlog .headerBlogOption div p span:first-child,
 .darkMode #blogDetailSection #introductionSection #headerBlog .headerBlogOption div p span:last-child,
 .darkMode #blogDetailSection #tagsSection #tags a,
@@ -46,6 +45,12 @@
     color: white !important;
 }
 
+.darkMode #homeSection #aboutUsSection #text h1,
+.darkMode #text div h1,
+.darkMode #homeSection #certificatesSlider .cart .content .titles .contentTitle .footerSection h4 {
+    opacity: 1 !important;
+}
+
 .darkMode #productDetailSection #introductionSection #content #imageBox .mainProductImage,
 .darkMode #productDetailSection #introductionSection .imageColumn .chartImage {
     background: #9f9f9f;
@@ -61,6 +66,10 @@
 
 .darkMode #faqSection #faq #questions #searchBox input {
     background: #4e4e4e;
+}
+
+.darkMode #weblogsSection .newsSvg path {
+    fill: white;
 }
 
 .darkMode .options button svg path {
@@ -115,7 +124,7 @@
 }
 
 .darkMode .commentForm {
-    background: #646464;
+    background: linear-gradient(45deg, #4c0000, #020e38);
 }
 
 .darkMode #productsSection #filterBox #searchBox input {
@@ -123,9 +132,16 @@
     color: white;
 }
 
+.darkMode .calendarSvgCatalogue path,
+.darkMode .calendarSvgCatalogue polygon {
+    fill: white
+}
+
 .darkMode .productCart .product h1,
 .darkMode .productCart .product h4 {
-    color: #646464 !important
+    /* color: #646464 !important */
+    color: #ffffff !important;
+    opacity: 1;
 }
 
 .darkMode .commentForm #commentFormTop input,
@@ -269,7 +285,8 @@
 
 .darkMode #homeSection #articles #sliderSection .sliderItem .smallCart,
 .darkMode .blogCart {
-    background: #efefefc9
+    /* background: #efefefc9 */
+    background: linear-gradient(81deg, #ababb185, #00092080)
 }
 
 .darkMode #homeSection,
@@ -284,10 +301,20 @@
 }
 
 .darkMode #doubleLine div {
-    opacity: 0.3 !important;
+    opacity: 1 !important;
     background: linear-gradient(3deg, red, #5600fffa) !important;
 }
- 
+
+.darkMode #aboutSection #statisticsSection #content #detail a svg path,
+.darkMode .kitchen svg path {
+    fill: white;
+}
+
+.darkMode #weeklyCookingSection svg.hiddenInMobile path,
+.darkMode #weeklyCookingSection svg.hiddenInMobile circle {
+    fill: white;
+}
+
 .darkMode #aboutSection #statisticsSection #racemeSection .raceme h4 {
     color: white
 }
@@ -315,7 +342,16 @@
 
 .darkMode #homeSection #aboutUsSection .aboutCart,
 .darkMode .contactCart {
-    background: linear-gradient(243deg, black, #03035c) !important
+    /* background: linear-gradient(243deg, black, #03035c) !important */
+    background: linear-gradient(310deg, #02095c, #930f1b) !important;
+}
+
+.darkMode .cookingCart .detail svg path {
+    fill: #ffffff78 !important
+}
+
+.darkMode .titleBox svg path {
+    fill: white;
 }
 
 .darkMode #filterBox .multiselect .multiselect__tags {
@@ -326,9 +362,26 @@
     background-color: unset;
 }
 
+.darkMode #homeSection #weeklyCookingSection .cart .body .loading {
+    background: linear-gradient(281deg, red, #1000ff)
+}
+
+.darkMode #homeSection #weeklyCookingSection .cart .body .loading span {
+    background: black
+}
+
+.darkMode .kitchen {
+    background: linear-gradient(45deg, #a50101, #004aef)
+}
+
+.darkMode #homeSection #homeLeader #verticalMenu {
+    background: linear-gradient(45deg, #b50000, #3b2eff);
+}
+
 .darkMode .productCart .product {
     border: 5px solid #ebebeb8c;
-    background: rgb(245 245 255);
+    /* background: rgb(245 245 255); */
+    background: linear-gradient(269deg, #a30404, #0f0354b8)
 }
 
 .darkMode .productCart .product button {
@@ -336,5 +389,59 @@
 }
 
 .darkMode #homeSection #weblogsSection #multiSlider .cart .content {
-    background: #adadad
+    /* background: #adadad */
+    background: linear-gradient(58deg, #000000, #04003ef7);
+}
+
+.darkMode #homeSection #weblogsSection #multiSlider .cart .content h1,
+.darkMode #homeSection #weblogsSection #multiSlider .cart .content .description {
+    color: white;
+    opacity: 1;
+}
+
+.darkMode #contactUsSection #contactUsForm #formTop .contactUsInput svg path,
+.darkMode #contactUsSection #contactUsForm #formTop .contactUsInput svg polygon {
+    fill: white
+}
+
+
+/* footer nav */
+
+.darkMode #homeFooterNavigation {
+    background-image: url("../images/footerNavDark.png");
+}
+
+.darkMode a#mobileMenuBar {
+    color: white;
+}
+
+.darkMode a.healthRoute.circleNavFooter {
+    background: transparent;
+}
+
+.darkMode a#mobileMenuBar {
+    color: black
+}
+
+.darkMode #cuurentSection.health {
+    background: linear-gradient( 271deg, #b50000, #2700ff);
+}
+
+.darkMode div#mobileMenuSection {
+    /* background: linear-gradient(46deg, #cb0000, #001fd7fa); */
+    background: linear-gradient(46deg, #720000, #000b4cfa)
+}
+
+.darkMode .multiselect__placeholder.darkMode svg#newsSvg path,
+.darkMode #articleSvg path,
+.darkMode #cookingHomeSvg path {
+    fill: white
+}
+
+.darkMode #mobileMenuSection .menuHeader a {
+    color: white
+}
+
+.darkMode #mobileMenuSection ul.menuChild li a {
+    color: white;
 }

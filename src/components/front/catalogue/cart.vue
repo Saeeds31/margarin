@@ -11,21 +11,48 @@
         <span class="blackColor04">
           {{ catalogue.date }}
         </span>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-        >
-          <image
-            id="Layer_2564_copy"
-            data-name="Layer 2564 copy"
-            width="18"
-            height="18"
-            xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABHNCSVQICAgIfAhkiAAAAVtJREFUOE/NlMtKQlEUht0NQugy0BoEYVnRqCY1LUkQBJ9Ce7+GhQZR1FtEd4ICK7qgNDBP3x972fHA6XQadeDDtdde63etfXNBEGTsc85NYddgD//DYCJkxMU4YpahALKzMAN38O59YT39azRGvhsl1+ER2jABRbiEDoxEquozHgvFvGFPQ15C23BEKxeUPYm95cevMa0NxZCzoBwJNeAEoTOcqkA+lfu9eMOKmv+K4euTs4S9aRVpPYSEJCD/T5/FqFWtWdaEbhlonaJrkqCXkVAeZq21Q8q8SsqKWbN5/GUTOkbo/I9Ci+SV/pVQ+tbYanWgVnJ+d3veLqZqzZ+ZEsk6rB9+63Ub2mmF1knSSd6BUaj63/20QmskzkETKqBq9FI824E8YHCdtP20tkrMCnRhHHYlojwTOsW+TxJiXs+N7paSW4i8WI6ENkBv0m/umPKeQDdhICLnJzMRkVnGwA65AAAAAElFTkSuQmCC"
-          />
-        </svg>
+       
+<svg class="calendarSvgCatalogue" width="18" height="18" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 330 330" style="enable-background:new 0 0 330 330;" xml:space="preserve">
+<g id="XMLID_71_">
+	<path id="XMLID_85_" d="M30,120H0v195c0,8.284,6.716,15,15,15h165v-30v-21.213V195c0-8.283,6.716-15,15-15h83.787H300h30v-60h-30
+		H30z"/>
+	<polygon id="XMLID_86_" points="278.787,210 210,210 210,278.787 210,321.213 321.213,210 	"/>
+	<path id="XMLID_87_" d="M315,30h-85V15c0-8.284-6.716-15-15-15c-8.284,0-15,6.716-15,15v15h-70V15c0-8.284-6.716-15-15-15
+		c-8.284,0-15,6.716-15,15v15H15C6.716,30,0,36.716,0,45v45h30h270h30V45C330,36.716,323.284,30,315,30z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
       </p>
     </div>
    <div class="download d-flex justify-content-center width100">

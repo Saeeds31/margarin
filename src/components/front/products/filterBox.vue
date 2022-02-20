@@ -20,12 +20,14 @@
       </multiSelect>
       <div id="searchBox" class="width45">
         <input
+        @keypress.enter="searched()"
           v-model="search"
           class="width100"
           type="text"
           :placeholder="searchPlaceHolder"
         />
         <svg
+        @click="searched()"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           width="24"
@@ -56,6 +58,17 @@ export default {
       this.$store.dispatch("getProductCategoryFromServer")
     }
   },
+  methods: {
+       searched() {
+      let filter = {
+        category: this.category != null ? this.category : "",
+
+        isDesending: this.sort != null ? this.sort.value : true,
+        search: this.search
+      };
+      this.$emit("filtered", filter);
+    }
+},
  computed:{
    productCategory (){
      return this.$store.getters.getProductCategory;
@@ -82,15 +95,7 @@ export default {
       };
       this.$emit("filtered", filter);
     },
-    search() {
-      let filter = {
-        category: this.category != null ? this.category : "",
-
-        isDesending: this.sort != null ? this.sort.value : true,
-        search: this.search
-      };
-      this.$emit("filtered", filter);
-    }
+ 
   },
   data() {
     return {
@@ -166,6 +171,6 @@ export default {
 #filterBox #searchBox svg {
     position: absolute;
     left: 2%;
-    top: 20px;
+    top: 15px;
 }
 </style>

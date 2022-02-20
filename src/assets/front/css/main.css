@@ -598,6 +598,7 @@ input:-internal-autofill-selected {
 
 #homeSection #homeLeader #headerContent #navBarMenu ul {
     margin: 0;
+    margin-left: 100px;
 }
 
 #homeSection #homeLeader #headerContent #navBarMenu i.fa.fa-circle {
@@ -606,11 +607,22 @@ input:-internal-autofill-selected {
     margin: 0 5px;
 }
 
+#cookingHomeSvg {
+    transform: scale(-1, 1);
+}
+
+svg#newsSvg,
+#articleSvg,
+#cookingHomeSvg {
+    opacity: 0.15;
+}
+
 #homeSection #homeLeader #headerContent #navBarMenu ul li a {
     font-family: 'yekan-bold';
-    font-size: 16px;
+    font-size: 17px;
     color: white;
-    opacity: 0.6;
+    cursor: pointer;
+    text-shadow: 0 0 10px black;
 }
 
 #homeSection #homeLeader #verticalMenu {
@@ -629,6 +641,7 @@ input:-internal-autofill-selected {
 
 #homeSection #homeLeader #verticalMenu ul li {
     position: relative;
+    cursor: pointer;
 }
 
 #homeSection #homeLeader #verticalMenu ul li:hover p {
@@ -660,7 +673,8 @@ input:-internal-autofill-selected {
     transition: all 0.6s;
     font-family: 'yekan-bold';
     font-size: 14px;
-    width: max-content;
+    width: 100px;
+    text-align: center;
     background-color: #F8941C;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -699,6 +713,7 @@ input:-internal-autofill-selected {
 
 #homeSection #sliderSection #sliderContent #slider .sliderItem h3 {
     color: white;
+    text-shadow: 0 0 10px black;
     font-family: 'yekan-heavy';
     font-size: 42px;
     position: absolute;
@@ -712,6 +727,7 @@ input:-internal-autofill-selected {
     color: white;
     font-family: 'yekan-medium';
     font-size: 36px;
+    text-shadow: 0 0 10px black;
     position: absolute;
     top: 50%;
     right: 15%;
@@ -975,7 +991,7 @@ input:-internal-autofill-selected {
 #homeSection #weeklyCookingSection .cart .imageBox img {
     border-radius: 20px;
     padding: 15px;
-    height: 100%;
+    height: 520px;
     background: #ffffff69;
 }
 
@@ -992,15 +1008,16 @@ input:-internal-autofill-selected {
 }
 
 #homeSection #weeklyCookingSection .cart .body .header .titles h1 {
-    font-size: 39px;
+    font-size: 36px;
     font-family: 'yekan-heavy';
     opacity: 0.6;
     color: black;
+    text-align: right;
 }
 
 #homeSection #weeklyCookingSection .cart .body .header .titles h4 {
     color: var(--color-theme);
-    font-size: 28px;
+    font-size: 25px;
     font-family: 'yekan-heavy';
 }
 
@@ -1058,7 +1075,8 @@ input:-internal-autofill-selected {
     padding: 10px;
     margin: 0 10px;
     width: 97% !important;
-    height: 62vh !important
+    height: 62vh !important;
+    cursor: pointer;
 }
 
 #homeSection #weblogsSection #multiSlider .slick-slider,
@@ -1079,8 +1097,9 @@ input:-internal-autofill-selected {
     font-family: 'yekan-heavy';
     font-size: 16px;
     width: 80%;
-    margin: 20px 15px;
+    margin: 15px;
     text-align: right;
+    direction: rtl;
 }
 
 #homeSection #weblogsSection #multiSlider .cart .content .description {
@@ -1114,6 +1133,7 @@ input:-internal-autofill-selected {
 
 #homeSection #articles #sectionHeader {
     margin: 2% auto -2%;
+    transform: scale(0.8);
 }
 
 #homeSection #articles #sliderSection {
@@ -1298,9 +1318,18 @@ input:-internal-autofill-selected {
     width: 60%
 }
 
+.cookingCart .detail svg path {
+    fill: #e4abad !important;
+}
+
 #filterBox .multiselect__placeholder {
     color: #7c7578;
     font-weight: bolder;
+}
+
+#filterBox .multiselect__input,
+#filterBox .multiselect__single {
+    margin: 10px 0;
 }
 
 #productsSection .productCart .product .content {
@@ -1472,7 +1501,7 @@ input:-internal-autofill-selected {
 
 #aboutSection #awardsSection {
     margin-left: 25%;
-    padding: 5% 0;
+    padding: 5% 0 10%;
 }
 
 #aboutSection #awardsSection .sliderItem .content h1 {
@@ -1489,6 +1518,13 @@ input:-internal-autofill-selected {
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 5px black;
+}
+
+button#toggleMenuModal i {
+    color: var(--color-theme);
+    font-size: 35px;
+    /* line-height: 23px; */
+    font-weight: bolder;
 }
 
 #aboutSection #awardsSection .sliderItem .content p {
@@ -2530,11 +2566,21 @@ input[type=number] {
 
 /* healthAmbassador style*/
 
+#healthAmbassador button#toggleMenu i {
+    font-size: 30px;
+    padding: 0 2px;
+    color: white
+}
+
 #healthAmbassador #headerContent {
     width: 80%;
     margin: 2% auto;
     position: relative;
     z-index: 2
+}
+
+#healthAmbassador #navBarMenu {
+    width: 50%
 }
 
 #healthAmbassador #headerContent #navBarMenu i.fa.fa-circle {
@@ -3594,6 +3640,7 @@ div#application {
     position: relative;
     top: -40%;
     margin: auto;
+    box-shadow: 0 0 10px #12131420;
 }
 
 #frontSection #footer #footerSection #buttons {
@@ -3656,7 +3703,7 @@ div#application {
     background: #625d5d;
     position: fixed;
     align-items: center;
-    z-index: 1000;
+    z-index: 1000000000000;
     flex-wrap: wrap;
     column-gap: 3%;
     flex-direction: row-reverse;
@@ -3704,7 +3751,7 @@ ul.menuChild li {
     text-align: right;
 }
 
-#mobileMenu img {
+#mobileMenu #closeArrow {
     transform: rotate( 197deg) scale(0.7);
     width: 100px;
     border-radius: 10px;
@@ -3712,6 +3759,10 @@ ul.menuChild li {
     left: 5px;
     top: -31px;
     cursor: pointer;
+}
+
+#mobileMenu #topMenu li a {
+    opacity: 1 !important;
 }
 
 #mobileMenu #navBarMenu {
@@ -3777,10 +3828,53 @@ ul.menuChild li {
     transform: rotate(25deg);
 }
 
+img#moonSvg {
+    width: 18px;
+    transform: rotate( 36deg);
+}
+
+#aboutSection #statisticsSection #content #detail a svg path,
+.kitchen svg path {
+    fill: #606060
+}
+
+#weeklyCookingSection .cart.width100.d-flex.justify-content-between {
+    margin-top: -40px;
+}
+
 
 /* @media  */
 
 @media (max-width:1000px) {
+    #homeSection #weblogsSection #singleSlider .cart .content h1 {
+        font-size: 14px;
+    }
+    #frontSection #footer {
+        padding-bottom: 70px;
+    }
+    #homeSection #weblogsSection #singleSlider .cart .content h3 {
+        font-size: 10px;
+    }
+    #mobileMenu {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow: auto;
+    }
+    ul.menuChild {
+        padding-right: 30px
+    }
+    #mobileMenu .menuItem {
+        width: 100%;
+        min-height: max-content;
+        margin-bottom: 20px
+    }
+    #mobileMenu .menuItem ul.menuChild {
+        padding: 20px;
+        width: 100%;
+    }
+    #aboutSection #statisticsSection #content #detail h1 {
+        text-align: center;
+    }
     #loginRegisterSection #roundedButton {
         letter-spacing: 0;
     }
@@ -3861,7 +3955,9 @@ ul.menuChild li {
         transition: color 0.6s;
     }
     #homeSection #aboutUsSection {
-        margin: 5% auto 50%;
+        margin: 5% auto 5%;
+        height: auto;
+        overflow: visible
     }
     #homeSection #aboutUsSection #text p {
         padding: 5%;
@@ -3887,7 +3983,7 @@ ul.menuChild li {
     /*home cooking responsive */
     #homeSection #weeklyCookingSection {
         background-image: none;
-        margin-bottom: 80%;
+        margin-bottom: 20%;
         overflow: visible;
     }
     #homeSection #weeklyCookingSection .cart .body {
@@ -3948,7 +4044,7 @@ ul.menuChild li {
         margin: auto;
     }
     #weblogsSection {
-        margin-bottom: 25%;
+        margin-bottom: 20%;
     }
     /* home articles responsive */
     #articles #sliderSection .slick-prev,
@@ -3998,6 +4094,7 @@ ul.menuChild li {
     }
     #homeSection #certificatesSlider {
         margin: auto !important;
+        padding: 0 !important;
     }
     #certificatesSlider .slick-prev {
         left: 28% !important;
@@ -4087,6 +4184,9 @@ ul.menuChild li {
     .blogCart {
         background-color: unset;
     }
+    .titleBox svg {
+        opacity: 0.5;
+    }
     div#languageAndSwitcherBox #toggleMenu {
         padding: 15px;
         border-radius: 10px;
@@ -4107,6 +4207,11 @@ ul.menuChild li {
         background: white;
         box-shadow: 0 0 10px black;
         padding: 10px;
+    }
+    @media (max-width:425px) {
+        #introductionSection #content .innerContent .mainImage {
+            width: 100% !important
+        }
     }
     #introductionSection #content div h3 {
         margin: 0;
@@ -4165,6 +4270,10 @@ ul.menuChild li {
     }
     #aboutSection #awardsSection .sliderItem h1 {
         font-family: 'yekan-heavy';
+        text-align: center;
+    }
+    #aboutSection #awardsSection .sliderItem h3 {
+        text-align: center;
     }
     #aboutSection #awardsSection .sliderItem .imageCart {
         width: 90%;
@@ -4205,7 +4314,8 @@ ul.menuChild li {
     }
     #awardsSection .slick-next,
     #awardsSection .slick-prev {
-        top: 92% !important;
+        top: unset !important;
+        bottom: 0px;
         width: 40px !important;
         height: 40px !important;
     }
@@ -4334,6 +4444,10 @@ ul.menuChild li {
     }
     #blogDetailSection #commentBox .titleBox .width25 h1 {
         font-size: 15px;
+        text-align: center;
+    }
+    #relatedBlogs .slick-slide {
+        padding: 0 !important;
     }
     #blogDetailSection #commentBox .commentsBox .comment .mainComment,
     #blogDetailSection #commentBox .commentsBox .comment .answerComment {
@@ -4516,7 +4630,7 @@ ul.menuChild li {
         transition: all 1s;
     }
     .cookingCart:hover .cookingRoute {
-        display: flex !important;
+        display: none !important;
     }
     #cookingsSection #filterBox .multiselect {
         width: 50%;
@@ -4568,6 +4682,7 @@ ul.menuChild li {
     }
     #productDetailSection .productDescription {
         width: 100%;
+        margin-right: 0;
     }
     #productDetailSection #introductionSection #content .productDesc {
         width: 100%
@@ -4695,9 +4810,27 @@ ul.menuChild li {
     #blogsSection #filterBox #filters {
         justify-content: center !important;
     }
+    a#ambassadorButtonMobile span {
+        color: white;
+        font-size: 10px;
+        margin: 0 5px;
+        font-family: 'yekan-bold';
+    }
+    a#ambassadorButtonMobile {
+        background: #01B74A;
+        position: absolute;
+        bottom: 20%;
+        left: 50%;
+        transform: translate(-50%);
+        z-index: 100;
+        padding: 10px 15px;
+        box-shadow: 0 0 10px #ffffff6b;
+        border-radius: 10px;
+    }
     #productsSection #filterBox #filters {
         flex-wrap: wrap;
         flex-direction: column-reverse;
+        margin-bottom: 50px;
     }
     #productsSection #filterBox .multiselect {
         width: 100% !important;
@@ -4708,12 +4841,34 @@ ul.menuChild li {
     }
 }
 
+#aboutSection .posterVideo {
+    height: 65vh;
+}
+
+#aboutSection .posterVideo img {
+    height: 100%;
+}
+
 #homeSection #articles #sliderSection .sliderItem .smallCart,
 #homeSection #articles #sliderSection .sliderItem .blogCart {
     height: 46vh;
 }
 
 @media (max-width: 500px) {
+    #frontSection #footer #footerSection #buttons button {
+        transform: scale(0.8);
+    }
+    #topSection #mobileMenu #languageSwitcher {
+        width: 40%;
+    }
+    #productDetailSection #introductionSection #content #imageBox .tools .discountRate .discount {
+        padding: 5px 15px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    #productDetailSection #introductionSection #content #imageBox .tools .discountRate .discount span:first-child {
+        font-size: 14px;
+    }
     #productDetailSection #introductionSection #content #imageBox .tools .discountRate .rate {
         width: 70px
     }
@@ -4818,7 +4973,7 @@ ul.menuChild li {
         object-fit: cover;
     }
     #aboutSection #statisticsSection #content #detail img {
-        width: 140%;
+        width: 100%;
         position: relative;
         right: 20%;
     }
@@ -4984,3 +5139,127 @@ ul.menuChild li {
     75%{}
    100%{}
 } */
+
+
+/* footer nav */
+
+#homeFooterNavigation {
+    background-image: url("../images/footerNav.png");
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 65px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    z-index: 100000;
+}
+
+.circleNavFooter {
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a#mobileMenuBar {
+    position: absolute;
+    left: 10%;
+    top: 7%;
+    color: var(--color-theme);
+    font-size: 24px;
+}
+
+div#cuurentSection {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: -40%;
+}
+
+a.healthRoute.circleNavFooter {
+    position: absolute;
+    right: 10%;
+    top: 7%;
+    background-color: #01b74a;
+}
+
+a.healthRoute.circleNavFooter.health {
+    background: transparent
+}
+
+a#cuurentSection {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: -40%;
+}
+
+#cuurentSection.health {
+    background: #01b74a;
+}
+
+a#cuurentSection {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: -40%;
+    width: 55px;
+    height: 55px;
+    animation: shaker 1.3s infinite linear alternate
+}
+
+#logoSvgfooter {
+    width: 60px
+}
+
+.healthRoute.health #logoSvgfooter {
+    width: 44px
+}
+
+@keyframes shaker {
+    from {
+        top: -60%;
+    }
+    to {
+        top: -40%
+    }
+}
+
+div#mobileMenuSection {
+    position: absolute;
+    left: 0;
+    bottom: 70px;
+    background: #ffffff;
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 90%;
+    margin-left: 5%;
+    z-index: 5;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px #00000063;
+    padding-top: 15px;
+}
+
+#mobileMenuSection .menuItem {
+    width: 90%;
+    min-height: auto;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+#mobileMenuSection .menuHeader a {
+    color: black
+}
+
+#mobileMenuSection ul.menuChild {
+    width: 100%
+}
+
+#mobileMenuSection ul.menuChild li a {
+    color: black
+}

@@ -2,7 +2,7 @@
   <div class="cart d-flex justify-content-between align-items-center">
     <div class="content d-flex flex-direction-column align-items-end">
       <div class="titles d-flex align-items-center">
-    <img class="width50 showInMobile" :src="$root.baseImageUrl+certificate.image" :alt="certificate.title" />
+    <img v-img class="width50 showInMobile" :src="$root.baseImageUrl+certificate.image" :alt="certificate.title" />
       
         <div class="contentTitle">
           <h1>{{ certificate.title }}</h1>
@@ -49,7 +49,7 @@
 
       </div>
     </div>
-    <img class="width25 hiddenInMobile" :src="$root.baseImageUrl+certificate.image" :alt="certificate.title" />
+    <img v-img class="width25 hiddenInMobile" :src="$root.baseImageUrl+certificate.image" :alt="certificate.title" />
   </div>
 </template>
 <script>

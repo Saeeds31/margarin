@@ -53,7 +53,7 @@
         </button>
   <video-player  class="video-player-box"
                  ref="videoPlayer"
-                 :src="video"
+            
                  :options="playerOptions"
           >
   </video-player>
@@ -97,11 +97,12 @@ window.removeEventListener("resize",this.setStyle)
   },
   methods:{
     showVideo(){
-      // this.playerOptions.sources[0].src=video;
+          
+  this.playerOptions.sources[0].src=this.$root.baseImageUrl+this.video;
       this.showVideoBox=true;
     },
     setStyle(){
-      if(screen.width>1000){
+      if(window.innerWidth>1000){
         
           this.$root.setProportionStyle(
             "bottom",

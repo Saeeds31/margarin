@@ -326,7 +326,7 @@ this.showQuestionForm=false;
     },
     showQuestionFormFunc(){
       this.showQuestionForm = true;
-      if(screen.width<768){
+      if(window.innerWidth<768){
         setTimeout(() =>{
           document.getElementById('formBottom').scrollIntoView({behavior:'smooth'})
         },100)

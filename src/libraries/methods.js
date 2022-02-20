@@ -32,8 +32,8 @@ export function setSliderHeight(selector) {
     let maxHeight = Math.max(...imageHeight);
     console.log(imageHeight);
     if (images[0].style["height"] == "") {
-        if (screen.width > 1000) {
-            if (screen.width > 1495) {
+        if (window.innerWidth > 1000) {
+            if (window.innerWidth > 1495) {
                 maxHeight -= 150;
             } else {
                 maxHeight -= 100;
@@ -61,7 +61,7 @@ export function setProportionStyle(
     // ! محاسبه تناسب بر پایه هر واحد
     let proportionUnit = (highSize - lowSize) / (highValue - lowValue);
     if (windowKind == "width") {
-        var windowSize = screen.width;
+        var windowSize = window.innerWidth;
     } else {
         var windowSize = screen.height;
     }

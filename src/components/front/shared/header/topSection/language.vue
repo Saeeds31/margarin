@@ -39,12 +39,11 @@ export default {
       this.currentLanguage = oth;
       this.otherLanguage = cur;
       if (this.currentLanguage == "English") {
-        document.body.classList.add("ltrTheme");
+       
         this.$cookie.set("ltrTheme","true")
             this.$axios.defaults.headers.common["Accept-Language"] = "en";
 
       } else {
-        document.body.classList.remove("ltrTheme");
         this.$cookie.delete("ltrTheme")
             this.$axios.defaults.headers.common["Accept-Language"] = "fa";
 

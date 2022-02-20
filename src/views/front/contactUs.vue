@@ -496,21 +496,48 @@
             v-model="email"
             type="text"
           />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="24"
-            height="20"
-            viewBox="0 0 24 20"
-          >
-            <image
-              id="Layer_2512"
-              data-name="Layer 2512"
-              width="24"
-              height="20"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAUCAYAAACXtf2DAAAABHNCSVQICAgIfAhkiAAAAc5JREFUOE+1lcsvZEEUxl3vVyZEIt6LwbAiwRi2xNJfzJ6RGQsboREhLMRCpDXD0H6/q3pymdu3vbqSL1W3zqnvq1N1Tt2oWCzW2KIoqqVrjj8+3m7gfYh5QT0YBUOg8ePcMcMtOAY5BYYDdugvP0ngCzxj4ECBhaC2Rz8ITgnv73uEOGZPoy/wjXgqCiyDTYnBErgBPxH58xYRyL2/H6AJrAShqX8CEJ7g1IphDji/ztzVa0RY1x7WebGuKzDXz/i5gGQYvGh3opiRXGSJ4N+JfRYUgr8XLE+6QDDW0c+ALvALkbM0EUh63CU4B7/xuy/5ZQoEEY9pEgyALRYfJUUgMK0ngOmo/amgQqsokHAcZ2yd7MCxG8S/0ZuGe8xtl4mu/BElyK1uj6AbOHa3NtPZ47BuvKf/0rpiBDh4D99BB9gADWAaeHSmtRlmxpnWZk58uYnNZV6yZGZGW1gcVziiVmgNZKVv7fPACBRRLG5ZaWqhuDNFXJRP7uzlGKKWIKJpDf/rsgLlnLMEAllpU9aQIvnUCJhcTIT71qfCiI3ciFZBL4grOX7sUM0hYDoeMr6rtOs0e3jsvmLz4fSVHqz2c71fzR+OlZ+Lqv3LfAQhAuSAb5rVeAAAAABJRU5ErkJggg=="
-            />
-          </svg>
+       
+
+<svg width="25" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 330.001 330.001" style="enable-background:new 0 0 330.001 330.001;" xml:space="preserve">
+<g id="XMLID_348_">
+	<path id="XMLID_350_" d="M173.871,177.097c-2.641,1.936-5.756,2.903-8.87,2.903c-3.116,0-6.23-0.967-8.871-2.903L30,84.602
+		L0.001,62.603L0,275.001c0.001,8.284,6.716,15,15,15L315.001,290c8.285,0,15-6.716,15-14.999V62.602l-30.001,22L173.871,177.097z"
+		/>
+	<polygon id="XMLID_351_" points="165.001,146.4 310.087,40.001 19.911,40 	"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
         </div>
         <div
           class="contactUsInput d-flex justify-content-end align-items-center"
@@ -527,21 +554,59 @@
             @blur="writeMobile = false"
             type="number"
           />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-          >
-            <image
-              id="Layer_2511"
-              data-name="Layer 2511"
-              width="24"
-              height="24"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAtVJREFUSEuVlQdPVUEQRr2gRoM9JnaCxt5b7L0k/mWNxgIxaIyKBBGliASNHQtRsDzPuew+l8srvJt82TY738zszNysVCrNaeTLsqwF+ePgA3gN3qOjqpIsPePyIi6sA+/Y/1yNGLmNnK0Hy8AkGEC+v5J8mYBLWxDYDn6AhWAUPKppXZYp1wo2g49BfiIlyglQvpXNbaBXS1ivZn4IvKlHojLk9UT5ueABOiTLvwwsBufAUw4GygdZtor54SIJypRfC94iP5bIq1wSyW5xlnsiwX5J2GiPwsml6Mljzg2Z1i5lOAIWgK/gIWffwtk8xjNgnL3OSHCFSX/VR8qyfcGAjtQAiFaw3g1MDA0wozRgOcNJ8CwPN5NLwFTrquDB/GDRKOe9Fc6b2NsLDFl74skO1j7+NQlOgOZiiLBE5ea7450Y0yokWtyEzO3ghV6dB50SmGJm0VUE/kQFEPhghuEu++NFxek6hOVU8CJ/ePbOMoxJ4GNdBKboYEJwjLmP1lGrFhL5y8xfIdsXCDS8NdbBHhZmzA0E/gYB01ErTN8ycTVPwqNPRG9Za3xLJLAiLwRlQ4lVO5m3gftctPc0/KWtIirzQb8HL8ySo8C3sG3kqdjIlxKo7HS4bMrFUFmhvocV2s3+cOKhnm8KZ0OVDKjUTa3EEYS7E0U+tm1jJbCAXhDiJcxN45/AzmveD6f38iiwMc1jLm5gw/YxyFlPQuKj2RDtup+AuW6LuGd6c89iO1gkmUGQs06R2CJmWjTVImzrWt5VqB3/JQeA4cqNq0gQSKLwCOsns6mFgnE3TdmqBEF4TXD7SyCxe9b8Qv7bQC3clzUJAont2YbmaI34yOWWUmSDIKb7deQm6xIEEh+4LcT+F+NzYIedRoRyk8C+ZkjzdJ4VQbQSBfatXcDQ/Qb+Gg2fqWiaWhc9KP/fDYppWi/GwSOJzDR/LhZgcyDqQ1/5f6zsP/fie4Jv/vNdAAAAAElFTkSuQmCC"
-            />
-          </svg>
+        
+<svg width="25" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 297 297" style="enable-background:new 0 0 297 297;" xml:space="preserve">
+<g>
+	<path d="M108.66,51.642c16.03,0,29.073,13.044,29.073,29.077c0,5.53,4.483,10.013,10.013,10.013
+		c5.529,0,10.013-4.482,10.013-10.013c0-27.074-22.025-49.104-49.099-49.104c-5.529,0-10.013,4.482-10.013,10.014
+		C98.648,47.157,103.13,51.642,108.66,51.642z"/>
+	<path d="M108.659,20.026c33.465,0.002,60.69,27.229,60.69,60.692c0,5.53,4.483,10.013,10.013,10.013
+		c5.53,0,10.014-4.482,10.014-10.013c0-44.506-36.209-80.717-80.716-80.719c-5.529,0-10.013,4.482-10.013,10.013
+		C98.648,15.544,103.13,20.026,108.659,20.026z"/>
+	<path d="M273.714,238.342l-68.719-68.721c-1.877-1.877-4.424-2.934-7.08-2.934c-2.656,0-5.202,1.057-7.08,2.934l-30.273,30.27
+		c-7.895-5.509-15.892-12.236-23.379-19.725c-7.49-7.49-14.218-15.486-19.727-23.382l30.273-30.271c3.91-3.91,3.91-10.25,0-14.161
+		L79.009,43.629c-1.878-1.877-4.424-2.932-7.08-2.932c-2.656,0-5.203,1.055-7.08,2.932l-34.36,34.363
+		c-13.311,13.31-13.517,36.962-0.578,66.599c11.665,26.716,32.887,56.229,59.754,83.099c26.866,26.866,56.377,48.088,83.093,59.753
+		c14.597,6.374,27.74,9.558,38.913,9.558c11.512,0,20.93-3.381,27.685-10.137l34.359-34.36
+		C277.624,248.593,277.624,242.253,273.714,238.342z M71.929,64.871l54.56,54.562l-20.2,20.2l-54.56-54.562L71.929,64.871z
+		 M180.771,269.089c-24.479-10.689-51.806-30.421-76.945-55.561c-25.142-25.143-44.873-52.471-55.563-76.952
+		c-6.075-13.914-8.705-25.912-7.77-34.418l51.592,51.593c7.236,13.539,17.901,27.54,30.938,40.574
+		c13.029,13.03,27.027,23.697,40.57,30.937l51.596,51.597C206.684,277.795,194.687,275.165,180.771,269.089z M232.275,265.623
+		l-54.56-54.561l20.2-20.2l54.559,54.562L232.275,265.623z"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
         </div>
         <div
           class="contactUsInput d-flex justify-content-end align-items-center"
@@ -558,21 +623,47 @@
             @blur="writeFullName = false"
             type="text"
           />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="22"
-            height="24"
-            viewBox="0 0 22 24"
-          >
-            <image
-              id="Layer_2510"
-              data-name="Layer 2510"
-              width="22"
-              height="24"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAYCAYAAAD+vg1LAAAABHNCSVQICAgIfAhkiAAAAkRJREFUSEuVlftLVEEUxxuDHvY2e1BZGxkGPYii6JeiJ0J/cCRJSf0iFRWKBFma1W6lpb2zwLbPZ5krm965jRc+DHvPOd8598yZs6HZbK6qekIIe7DvhO7o94F1mrhGZVyVMKLHCD4AczADAXbDFpggdiwlHlLCiO4j6CTcx2e6XQDbLn6fgcfY6mXiVcKnCVgg8ElpYAhu2oH9UbYwGfnJ/TBG4OuEsF90FPvASoQ34HwZ7hL4OSFsnS/AID4/l/qUloKE1+N4Fe4R9CkhvJX35+EWPvO5wmtiKYYJshuWPWy+g5fnYACf31nCOhF4jWWSoOcJ4V7e17APZtc4Cp9itY5DBP9zi+LhXsQ2l+yaij72AA1+hs94e1YI9/HbjO9g+7GijGPWNVZv3yx4lX2srQc3iuirMtFWbMas2IbfwShmSWw/r3NptxQbpdrNrjgMPXB76alTCu2X4A2M/7crYgs5dJwFC/CUoKnSGoZgmY7AangPU+2t2coYwXUY7ILt4CSzdnVsiicf4hTdC/vBknkODqb5QthJ5bx1kn2sEkvZ2MSkzsIMGg8dNnIdKk85ZzPEzfw43FC0E65AcuDkiOqD8OJgUngjeMI2+7dckTI/hAutIYU9AEsxkuqA3M0QtqNOwM3i8Py38E/zO7yERtkoTGRpRxlbA8fAO2IfLF4QdtvEy0PRya9wBth6DnHHYjEavRzizLbFPCPb8i28QPSLCSy7eWzQwfsusP02w9oo5OrzK27i+hWc17MI/on21vIXNi0WCBE4xC0AAAAASUVORK5CYII="
-            />
-          </svg>
+        
+<svg width="26" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+<path d="M48.014,42.889l-9.553-4.776C37.56,37.662,37,36.756,37,35.748v-3.381c0.229-0.28,0.47-0.599,0.719-0.951
+	c1.239-1.75,2.232-3.698,2.954-5.799C42.084,24.97,43,23.575,43,22v-4c0-0.963-0.36-1.896-1-2.625v-5.319
+	c0.056-0.55,0.276-3.824-2.092-6.525C37.854,1.188,34.521,0,30,0s-7.854,1.188-9.908,3.53C17.724,6.231,17.944,9.506,18,10.056
+	v5.319c-0.64,0.729-1,1.662-1,2.625v4c0,1.217,0.553,2.352,1.497,3.109c0.916,3.627,2.833,6.36,3.503,7.237v3.309
+	c0,0.968-0.528,1.856-1.377,2.32l-8.921,4.866C8.801,44.424,7,47.458,7,50.762V54c0,4.746,15.045,6,23,6s23-1.254,23-6v-3.043
+	C53,47.519,51.089,44.427,48.014,42.889z"/>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
         </div>
       </div>
       <div id="formBottom">
@@ -642,8 +733,8 @@ export default {
       }, 500);
     },
     setStyle() {
-      if (screen.width > 1000) {
-        if (screen.width > 1495) {
+      if (window.innerWidth > 1000) {
+        if (window.innerWidth > 1495) {
           this.$root.setProportionStyle(
             "margin-top",
             "%",

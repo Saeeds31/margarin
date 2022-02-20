@@ -2,26 +2,31 @@
   <div id="articles" class="width100">
     <sectionHeader :data="articleHeader" >
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="93"
-        height="83"
-        viewBox="0 0 93 83"
-      >
-        <image
-          id="Layer_2765"
-          data-name="Layer 2765"
-          width="93"
-          height="83"
-          opacity="0.149"
-          xlink:href="data:image/png;base64,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"
-        />
-      </svg>
+            id="articleSvg"
+            enable-background="new 0 0 510 510"
+            height="70"
+            viewBox="0 0 510 510"
+            width="80"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="XMLID_3990_">
+              <path id="XMLID_3994_" d="m90 90h390v60h-390z" />
+              <path
+                id="XMLID_4088_"
+                d="m90 180v255 15c0 10.876-2.871 21.135-7.965 30h338.965c49.075 0 89-39.925 89-89v-211c-37.127 0-324.82 0-420 0zm225 195h-165v-150h165zm135 0h-105v-30h105zm0-60h-105v-30h105zm0-60h-105v-30h105z"
+              />
+              <path id="XMLID_4092_" d="m180 255h105v90h-105z" />
+              <path
+                id="XMLID_4093_"
+                d="m157.5 30c-19.246 0-60.584 0-97.5 0-24.563 0-47.168 0-60 0v405 15c0 16.568 13.432 30 30 30 2.318 0 4.572-.272 6.74-.77 13.322-3.06 23.26-14.98 23.26-29.23v-390h120z"
+              />
+            </g>
+          </svg>
     </sectionHeader>
     <div id="sliderSection" class="width80 margin-auto hiddenInMobile" v-if="showSlider">
       <VueSlickCarousel
         :autoplay="mobileSize==true?true:false"
-       
+       v-bind="sliderSettings"
       >
         <div
           v-for="i in articleLength"
@@ -90,11 +95,20 @@ export default {
   },
   data() {
     return {
+       sliderSettings: {
+        dots: false,
+        arrows: true,
+        infinite: false ,
+        slidesToShow: 1,
+       
+        slidesToScroll: 1,
+        speed: 2000,
+      },
       mobileSize:false,
       articleLength: 0,
       showSlider: false,
       articleHeader: {
-        route: "/",
+        route: "/weblogs?page=1&search=&category=&type=2",
         routeTitle:this.$cookie.get('ltrTheme')?"View article archive": "مشاهده آرشیو مقالات",
         title:this.$cookie.get('ltrTheme')?"Margarine Group Articles": "مقــــــالات گــــــروه مارگاریــــــن",
         summary:this.$cookie.get('ltrTheme')?"Always be up to date with us": "بـــا مـــا همیشـــه بـــروز باشیـــد",
@@ -178,8 +192,8 @@ export default {
   },
   methods: {
     setStyle() {
-      if (screen.width> 1000) {
-        if(screen.width>1495){
+      if (window.innerWidth> 1000) {
+        if(window.innerWidth>1495){
 this.$root.setProportionStyle(
           "right",
           "%",

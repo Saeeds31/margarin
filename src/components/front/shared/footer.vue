@@ -62,7 +62,9 @@
           گروه شرکت های صنعتی مارگارین'}}</p>
         <span> info@email.com </span>
         <h2> ۰۲۱- ۳۵۸۱۱</h2>
-        <div id="social" class="width100 d-flex justify-content-around">
+        <div v-if="$root.footerData" id="social" class="width100 d-flex justify-content-around">
+         <a target="_blank" :href="'https://wa.me/'+$root.footerData.whatsApp">
+           
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -97,6 +99,8 @@
               />
             </g>
           </svg>
+         </a>
+         <a target="_blank" :href="$root.footerData.instagrm">
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -132,6 +136,8 @@
               />
             </g>
           </svg>
+         </a>
+         <a target="_blank" :href="$root.footerData.telgram">
 
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -167,6 +173,7 @@
               />
             </g>
           </svg>
+         </a>
         </div>
         <div
           id="buttons"
@@ -258,8 +265,10 @@
   </footer>
 </template>
 <script>
+
 export default {
   mounted() {
+   
     this.setStyle();
     window.addEventListener("resize", this.setStyle);
     window.addEventListener("scroll", this.setGotoTop);
@@ -372,8 +381,8 @@ button#mainMoveToTopBotton {
   transform: rotate(90deg);
   border: none;
   position: fixed;
-  left: 20px;
-  bottom: 20px;
+  left: 10px;
+  bottom: 70px;
   box-shadow: 0 0 40px #5e5e5eb0;
   background: white;
 }

@@ -156,8 +156,8 @@ export default {
         .scrollIntoView({ behavior: "smooth" });
     },
     setStyle() {
-      if (screen.width > 1000) {
-        if (screen.width > 1495) {
+      if (window.innerWidth > 1000) {
+        if (window.innerWidth > 1495) {
           this.$root.setProportionStyle(
             "font-size",
             "px",
@@ -185,16 +185,7 @@ export default {
             1495,
             12
           );
-          this.$root.setProportionStyle(
-            "font-size",
-            "px",
-            "#searchBox input",
-            1920,
-            18,
-            1495,
-            13
-          );
-
+          
           this.$root.setProportionStyle(
             "padding-top",
             "px",
@@ -218,7 +209,6 @@ export default {
             "padding-top",
             "#filterBox .multiselect .multiselect__tags"
           );
-          this.$root.unsetInlineStyle("font-size", "#searchBox input");
           this.$root.unsetInlineStyle("width", ".cookingCart .cookingRoute a");
           this.$root.unsetInlineStyle(
             "padding-top",
@@ -301,15 +291,7 @@ export default {
           375,
           9
         );
-        this.$root.setProportionStyle(
-          "font-size",
-          "px",
-          "#searchBox input",
-          999,
-          18,
-          375,
-          13
-        );
+       
 
         this.$root.setProportionStyle(
           "padding-top",

@@ -59,8 +59,8 @@ export default {
   methods:{
     setStyle(){
       // 
-      if(screen.width>1000){
-        if(screen.width>1495){
+      if(window.innerWidth>1000){
+        if(window.innerWidth>1495){
           this.$root.setProportionStyle("font-size","px","#text div h1",1920,40,1495,28);
         }else{
           this.$root.setProportionStyle("font-size","px","#text div h1",1495,28,1024,16);

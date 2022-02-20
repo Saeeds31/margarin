@@ -1,5 +1,5 @@
 <template>
-    <div :class="{'reStyleHeaderContent':$root.sectionIndexHome!=1}" id="headerContent" class="d-flex width90 align-items-center justify-content-between">
+    <div :class="{'reStyleHeaderContent':$root.sectionIndexHome!=1}" id="headerContent" class="d-flex width90 align-items-center justify-content-between hiddenInMobile">
         <buttons />
         <menuBar v-if="$root.sectionIndexHome==1" />
         <logo v-if="$root.sectionIndexHome==1" />

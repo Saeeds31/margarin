@@ -138,11 +138,15 @@ export default {
             console.log(this.userId)
             this.disabled = true;
             if (pack.mode == "edit") {
+
                 let putData = pack.data;
                 if (this.userId != null) {
                     putData.userId = this.userId
                 }
                 putData.id = this.editedId;
+                if (putData.createDate) {
+                    delete putData.createDate
+                }
                 await this.$axios
                     .put(this.apiRoute, JSON.stringify(putData), {
                         headers: {

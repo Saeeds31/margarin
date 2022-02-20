@@ -194,7 +194,7 @@ export default {
           999,
           3,
           375,
-          5
+          10
         );
       }
     }
@@ -221,6 +221,7 @@ export default {
   border-radius: 20px;      padding: 15px;
     background: white;
     box-shadow: 0 0 40px #8d8d8d70;
+     min-width: 450px;
 }
 .slotElements {
   margin-top: 23%;

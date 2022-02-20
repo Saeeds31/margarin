@@ -108,24 +108,10 @@ export default {
         1024,
         10
       );
-        this.$root.unsetInlineStyle(
-        "top",
-        "#certificatesSlider .slick-next",
-      );
+       
       
-         this.$root.unsetInlineStyle(
-        "right",
-        "#certificatesSlider .slick-next",
-      );
-      
-          this.$root.unsetInlineStyle(
-        "left",
-        "#certificatesSlider .slick-prev",
-      );
-          this.$root.unsetInlineStyle(
-        "top",
-        "#certificatesSlider .slick-prev",
-      );
+        
+       
       // 
       }else{
           this.$root.setProportionStyle(
@@ -147,44 +133,10 @@ export default {
         15
       );
       
-          this.$root.setProportionStyle(
-        "top",
-        "%",
-        "#certificatesSlider .slick-prev",
-        1000,
-        87,
-        425,
-        89,"important"
-      );
-         this.$root.setProportionStyle(
-        "top",
-        "%",
-        "#certificatesSlider .slick-next",
-       1000,
-        87,
-        425,
-        89,"important"
-      );
       
-         this.$root.setProportionStyle(
-        "right",
-        "%",
-        "#certificatesSlider .slick-next",
-       1000,
-        28,
-        425,
-        4,"important"
-      );
       
-          this.$root.setProportionStyle(
-        "left",
-        "%",
-        "#certificatesSlider .slick-prev",
-        1000,
-        28,
-        425,
-        4,"important"
-      );
+      
+        
       }
     }
   }

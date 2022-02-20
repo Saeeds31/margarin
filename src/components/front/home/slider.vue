@@ -1,11 +1,11 @@
 <template>
   <div id="sliderContent">
  
-    <router-link
+    <!-- <router-link
       class="showInMobile"
       v-if="!$route.name.includes('healthAmbassador')"
       to="/health-ambassador"
-      id="ambassadorButton"
+      id="ambassadorButtonMobile"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@
         />
       </svg>
       <span>{{$cookie.get('ltrTheme')?'Be a health ambassador':'سفیر سلامت باش'}}</span>
-    </router-link>
+    </router-link> -->
     <div id="slider">
       <VueSlickCarousel v-bind="sliderSettings">
         <div @click="gotoLink(item.link)" class="sliderItem" v-for="(item, index) in slider" :key="index">
@@ -92,7 +92,7 @@ export default {
       window.open(link, '_blank');
     },
     setStyle() {
-      if (screen.width > 1000) {
+      if (window.innerWidth > 1000) {
        this.$root.unsetInlineStyle("font-size","#homeSection #sliderSection #sliderContent #slider .sliderItem p")
        this.$root.unsetInlineStyle("font-size","#homeSection #sliderSection #sliderContent #slider .sliderItem h3")
       } else {

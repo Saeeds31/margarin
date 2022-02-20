@@ -69,6 +69,7 @@ new Vue({
         return {
             sectionIndexHome: 1,
             screenSize: 0,
+            footerData: null,
             baseImageUrl: "http://blogtest.ir/"
         };
     },
@@ -76,7 +77,7 @@ new Vue({
         ...MyMethods,
         ...VueMethods,
         setScreen() {
-            this.screenSize = screen.width;
+            this.screenSize = window.innerWidth;
             console.log(this.screenSize);
         }
     },
@@ -87,6 +88,9 @@ new Vue({
         window.removeEventListener("resize", this.setScreen);
     },
     created() {
+        this.$axios.get("Home/GetFooterContactUs").then(res => {
+            this.footerData = res.data.data
+        })
         if (this.$cookie.get("ltrTheme")) {
             this.$axios.defaults.headers.common["Accept-Language"] = "en";
             if (!document.body.classList.contains('ltrTheme')) {
@@ -94,6 +98,11 @@ new Vue({
             }
         } else {
             this.$axios.defaults.headers.common["Accept-Language"] = "fa";
+        }
+        if (this.$cookie.get("darkMode")) {
+            if (!document.body.classList.contains('darkMode')) {
+                document.body.classList.add('darkMode')
+            }
         }
         window.addEventListener("resize", this.setScreen);
         this.$axios.interceptors.response.use(

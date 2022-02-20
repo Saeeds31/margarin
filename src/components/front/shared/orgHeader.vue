@@ -44,9 +44,9 @@ export default {
   },
   methods: {
     setStyle() {
-      if (screen.width > 1000) {
+      if (window.innerWidth > 1000) {
         // ! 1495=>1920
-        if (screen.width > 1495) {
+        if (window.innerWidth > 1495) {
           this.$root.setProportionStyle(
             "width",
             "%",

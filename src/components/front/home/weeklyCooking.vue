@@ -19,8 +19,8 @@ export default {
         edgeFriction: 0.35,
         infinite: false,
         autoplay: true,
-        speed: 2000,
-        autoplaySpeed: 2000,
+        speed: 3000,
+        autoplaySpeed: 3000,
         cssEase: "linear",
         slidesToShow: 1,
         slidesToScroll: 1
@@ -33,122 +33,138 @@ export default {
   methods: {
     setStyle() {
       if (window.innerWidth > 1000) {
-        if(window.innerWidth>1495){
+        if (window.innerWidth > 1495) {
           this.$root.setProportionStyle(
-          "top",
-          "%",
-          "#weeklyCookingSection .slick-prev",
-          1920,
-          86,
-          1495,
-          86
-        );
-        this.$root.setProportionStyle(
-          "top",
-          "%",
-          "#weeklyCookingSection .slick-next",
-          1920,
-          86,
-          1495,
-          86
-        );
-        }else{
-
+            "top",
+            "%",
+            "#weeklyCookingSection .slick-prev",
+            1920,
+            86,
+            1495,
+            86
+          );
+          this.$root.setProportionStyle(
+            "top",
+            "%",
+            "#weeklyCookingSection .slick-next",
+            1920,
+            86,
+            1495,
+            86
+          );
+        } else {
           this.$root.setProportionStyle(
             "font-size",
-          "px",
-          "#homeSection #weeklyCookingSection .cart .body .header .titles h1",
-          1496,
-          39,
-          1024,
-          24
-        );
-        //
-        this.$root.setProportionStyle(
-          "font-size",
-          "px",
-          "#homeSection #weeklyCookingSection .cart .body .header .titles h4",
-          1496,
-          28,
-          1024,
-          20
-        );
-        // #homeSection #weeklyCookingSection .cart .body .buttons a
-        this.$root.setProportionStyle(
-          "font-size",
-          "px",
-          "#homeSection #weeklyCookingSection .cart .body .buttons a",
-          1496,
-          14,
-          1024,
-          11
-        );
-        this.$root.setProportionStyle(
-          "width",
-          "px",
-          ".kitchen svg",
-          1496,
-          16,
-          1024,
-          10
-        );
-        this.$root.setProportionStyle(
-          "margin-right",
-          "px",
-          ".kitchen svg",
-          1496,
-          15,
-          1024,
-          7
-        );
-        this.$root.setProportionStyle(
-          "margin-left",
-          "px",
-          ".kitchen svg",
-          1496,
-          15,
-          1024,
-          7
-        );
-        // #weeklyCookingSection .slick-prev, #weeklyCookingSection .slick-next
-        this.$root.setProportionStyle(
-          "width",
-          "px",
-          "#weeklyCookingSection .slick-prev",
-          1496,
-          50,
-          1024,
-          45
-        );
-        this.$root.setProportionStyle(
-          "width",
-          "px",
-          "#weeklyCookingSection .slick-next",
-          1496,
-          50,
-          1024,
-          45
-        );
-        this.$root.setProportionStyle(
-          "top",
-          "%",
-          "#weeklyCookingSection .slick-prev",
-          1496,
-          86,
-          1024,
-          90
-        );
-        this.$root.setProportionStyle(
-          "top",
-          "%",
-          "#weeklyCookingSection .slick-next",
-          1496,
-          86,
-          1024,
-          90
-        );
-          }
+            "px",
+            "#homeSection #weeklyCookingSection .cart .body .header .titles h1",
+            1496,
+            39,
+            1024,
+            24
+          );
+          //
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#homeSection #weeklyCookingSection .cart .body .header .titles h4",
+            1496,
+            28,
+            1024,
+            20
+          );
+          // #homeSection #weeklyCookingSection .cart .body .buttons a
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#homeSection #weeklyCookingSection .cart .body .buttons a",
+            1496,
+            14,
+            1024,
+            11
+          );
+          this.$root.setProportionStyle(
+            "width",
+            "px",
+            ".kitchen svg",
+            1496,
+            16,
+            1024,
+            10
+          );
+          this.$root.setProportionStyle(
+            "margin-right",
+            "px",
+            ".kitchen svg",
+            1496,
+            15,
+            1024,
+            7
+          );
+          this.$root.setProportionStyle(
+            "margin-left",
+            "px",
+            ".kitchen svg",
+            1496,
+            15,
+            1024,
+            7
+          );
+          // #weeklyCookingSection .slick-prev, #weeklyCookingSection .slick-next
+          this.$root.setProportionStyle(
+            "width",
+            "px",
+            "#weeklyCookingSection .slick-prev",
+            1496,
+            50,
+            1024,
+            45
+          );
+          this.$root.setProportionStyle(
+            "width",
+            "px",
+            "#weeklyCookingSection .slick-next",
+            1496,
+            50,
+            1024,
+            45
+          );
+          this.$root.setProportionStyle(
+            "top",
+            "%",
+            "#weeklyCookingSection .slick-prev",
+            1496,
+            86,
+            1024,
+            90
+          );
+          this.$root.setProportionStyle(
+            "top",
+            "%",
+            "#weeklyCookingSection .slick-next",
+            1496,
+            86,
+            1024,
+            90
+          );
+        }
+        if (document.body.classList.contains("ltrTheme")) {
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
+            "#homeSection #weeklyCookingSection .cart .body .header .titles h1",
+            1920,
+            35,
+            1495,
+            25
+          );
+        }
       } else {
+        if (document.body.classList.contains("ltrTheme")) {
+          this.$root.unsetInlineStyle(
+            "font-size",
+            "#homeSection #weeklyCookingSection .cart .body .header .titles h1"
+          );
+        }
         this.$root.setProportionStyle(
           "font-size",
           "px",
@@ -177,7 +193,7 @@ export default {
           43,
           "important"
         );
-        
+
         this.$root.setProportionStyle(
           "top",
           "%",
@@ -257,12 +273,12 @@ export default {
   box-shadow: none;
 }
 #weeklyCookingSection .slick-prev {
-  left: 70%;
+  left: 80%;
   top: 85%;
   z-index: 100;
 }
 #weeklyCookingSection .slick-next {
-  right: 23%;
+  right: 12%;
   top: 85%;
   z-index: 100;
 }

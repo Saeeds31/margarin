@@ -404,7 +404,7 @@ export default {
   },
   methods: {
     setStyle() {
-      if (screen.width > 1000) {
+      if (window.innerWidth > 1000) {
         this.$root.unsetInlineStyle(
           "width",
           "#productDetailSection #introductionSection #content #imageBox"

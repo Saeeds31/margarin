@@ -38,12 +38,12 @@
     .ltrTheme #Header #mainContent #topSection nav #topMenu,
     .ltrTheme #homeSection #weblogsSection #singleSlider .cart .content p,
     .ltrTheme .cookingCart .cookingRoute a,
-    .ltrTheme #frontSection #footer #footerSection {
+    .ltrTheme #frontSection #footer #footerSection,
+    .ltrTheme #cooperationSection #skil {
         flex-direction: row-reverse !important;
     }
     
     .ltrTheme #homeSection #aboutUsSection #text,
-    .ltrTheme #homeSection #aboutUsSection .aboutCart,
     .ltrTheme #sectionHeader,
     .ltrTheme #sectionHeader #text div,
     .ltrTheme .productCart .product .content,
@@ -88,14 +88,14 @@
     .ltrTheme .blogCart .innerContent .content p,
     .ltrTheme #homeSection #articles #sliderSection .sliderItem .smallCart .innerContent .content h1,
     .ltrTheme .blogCart .innerContent .content h1,
-    .ltrTheme #aboutSection #awardsSection .sliderItem .content p,
     .ltrTheme #contactUsSection #contactUsForm #formTop .contactUsInput input,
     .ltrTheme #contactUsSection #contactUsForm textarea,
     .ltrTheme .multiselect__single,
     .ltrTheme #blogDetailSection #commentBox .commentForm #commentFormTop input,
     .ltrTheme #introductionSection #content div h1,
     .ltrTheme #introductionSection #content div h3,
-    .ltrTheme #frontSection #footer #footerSection #aboutUs p {
+    .ltrTheme #frontSection #footer #footerSection #aboutUs p,
+    .ltrTheme div#descriptionBox #description {
         text-align: left;
     }
     
@@ -103,6 +103,10 @@
     .ltrTheme #searchBox input,
     .ltrTheme .ckEditorOutput {
         text-align: left !important
+    }
+    
+    .ltrTheme #cookingHomeSvg {
+        transform: scale(1)
     }
     
     .ltrTheme #homeSection #aboutUsSection #text p,
@@ -124,7 +128,8 @@
         direction: ltr;
     }
     
-    .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content .description {
+    .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content .description,
+    .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content h1 {
         direction: ltr;
     }
     
@@ -133,11 +138,25 @@
         text-align: left;
     }
     
+    .ltrTheme #Header #mainContent #topSection nav #topMenu li {
+        direction: rtl;
+    }
+    
+    .ltrTheme #Header #mainContent #topSection nav #topMenu li i {
+        padding-left: 0;
+        padding-right: 15px
+    }
+    
     .ltrTheme .slotElements,
     .ltrTheme #searchBox input,
     .ltrTheme .medium14,
     .ltrTheme #aboutSection #lastAboutUsP {
         direction: ltr !important;
+    }
+    
+    .ltrTheme div#descriptionBox label {
+        right: unset;
+        left: 5%;
     }
     
     .ltrTheme #catalogueSection #introductionSection #content .innerContent,
@@ -195,12 +214,24 @@
         direction: ltr !important;
     }
     
+    .ltrTheme #homeSection #homeLeader #verticalMenu ul li p {
+        padding: 10px 2px;
+    }
+    
+    .ltrTheme #homeSection #homeLeader #headerContent #navBarMenu ul li {
+        direction: rtl;
+    }
+    
     .ltrTheme .simpleCooperationInput input {
         text-align: left;
     }
     
     .ltrTheme .selectCooperationInput {
         direction: rtl;
+    }
+    
+    .ltrTheme #text div h1 {
+        font-size: 29px !important;
     }
     
     .ltrTheme #contactUsSection #introductionSection #content {
@@ -280,16 +311,16 @@
     }
     
     .ltrTheme #awardsSection .slick-prev {
-        left: 20%;
+        left: 48%;
     }
     
     .ltrTheme #awardsSection .slick-next {
-        right: 68%;
+        right: 12%;
     }
     
     .ltrTheme #homeSection #certificatesSlider {
         margin-right: 0;
-        margin-left: 15%;
+        padding-left: 15%;
     }
     
     .ltrTheme #certificatesSlider .slick-next {
@@ -331,11 +362,13 @@
     }
     
     .ltrTheme #homeSection #aboutUsSection #pictures #carts {
-        align-items: flex-end !important
+        align-items: flex-end !important;
+        direction: rtl;
     }
     
     .ltrTheme #homeSection #aboutUsSection #pictures #carts #column2 {
-        left: 43%
+        left: unset;
+        right: 50%
     }
     
     .ltrTheme #homeSection #aboutUsSection #pictures #back2 {
@@ -383,9 +416,46 @@
         flex-direction: column !important;
     }
     
+    .ltrTheme #homeSection #weeklyCookingSection .cart .body .header .titles h1 {
+        text-align: left;
+    }
+    
+    .ltrTheme ul.menuChild li {
+        direction: ltr;
+        text-align: left
+    }
+    
+    .ltrTheme ul.menuChild {
+        align-items: flex-end;
+    }
+    
+    .ltrTheme #mobileMenu {
+        direction: rtl;
+        padding-left: 90px;
+    }
+    
+    .ltrTheme #frontSection #footer #footerSection .footerTitle {
+        padding: 15px 30px 15px 0px
+    }
+    
+    .ltrTheme #frontSection #footer #footerSection ul li {
+        text-align: left
+    }
+    
     @media (max-width:1000px) {
+        .ltrTheme ul.menuChild {
+            align-items: flex-start;
+            padding-left: 30px;
+        }
         /* ltr responsive */
+        .ltrTheme #text div h1,
+        .ltrTheme #homeSection #weeklyCookingSection .cart .body .header .titles h1 {
+            font-size: 21px !important;
+        }
         /* cooperation */
+        .ltrTheme #aboutSection #statisticsSection #content #detail {
+            align-items: center !important;
+        }
         .ltrTheme #cooperationSection #stepBox {
             flex-direction: column-reverse !important;
         }
@@ -396,6 +466,9 @@
         /* contact responsive */
         .ltrTheme #introductionSection #content .innerContent {
             align-items: center !important;
+        }
+        .ltrTheme #introductionSection #content .innerContent {
+            margin-left: 0 !important;
         }
         /* index responsive */
         .ltrTheme #homeSection #sliderSection #sliderContent #slider .sliderItem h3,
@@ -459,5 +532,17 @@
         }
         .ltrTheme #productDetailSection .productDescription p {
             text-align: center;
+        }
+        .ltrTheme #weblogsSection #text div h1,
+        .ltrTheme #articles #text div h1 {
+            font-size: 15px !important
+        }
+        .ltrTheme #certificatesSlider .slick-prev {
+            top: 45% !important;
+            left: 5% !important
+        }
+        .ltrTheme #certificatesSlider .slick-next {
+            top: 45% !important;
+            right: 5% !important
         }
     }

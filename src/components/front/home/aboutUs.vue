@@ -224,15 +224,7 @@ export default {
           425,
           80
         );
-        this.$root.setProportionStyle(
-          "margin-bottom",
-          "%",
-          "#homeSection #aboutUsSection",
-          1000,
-          50,
-          425,
-          80
-        );
+       
         this.$root.setProportionStyle(
           "font-size",
           "px",

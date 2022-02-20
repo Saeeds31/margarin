@@ -346,8 +346,8 @@ shareBlog(){
       // setTimeout(() => {
       //   this.$root.setSliderHeight("#relatedBlogs .blogCart .innerContent img");
       // });
-      if (screen.width > 1000) {
-        if (screen.width > 1495) {
+      if (window.innerWidth > 1000) {
+        if (window.innerWidth > 1495) {
           this.$root.unsetInlineStyle(
             "width",
             "#blogDetailSection #commentBox .titleBox .content"
@@ -462,11 +462,12 @@ shareBlog(){
 }
 #relatedBlogs .slick-prev {
   top: -11%;
-  left: 5%;
+  left: 10px;
+  z-index:10000;
 }
 
 #relatedBlogs .slick-next {
-  right: 84%;
+  right: 10px;
   top: -11%;
 }
 #relatedBlogs .slick-prev,
@@ -475,7 +476,7 @@ shareBlog(){
   width: 55px;
   height: 55px;
   border-radius: 50px;
-  top: -75px;
+  top: 50%;
   box-shadow: 0 0 18px #00000059;
   cursor: pointer;
 }

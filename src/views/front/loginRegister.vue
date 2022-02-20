@@ -104,8 +104,8 @@ this.$toast.error(error.response.data.message);
       })
     },
     setStyle() {
-      if (screen.width > 1000) {
-        if(screen.width>1495){
+      if (window.innerWidth > 1000) {
+        if(window.innerWidth>1495){
         this.$root.setProportionStyle("font-size","px","#loginRegisterSection #content p",1920,21,1495,18);
      this.$root.setProportionStyle("width","%"," #loginRegisterSection #userNameBox",1920,80,1496,80);
         this.$root.setProportionStyle("width","%","#loginRegisterSection #passWordBox",1920,80,1496,80);

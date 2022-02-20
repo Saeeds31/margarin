@@ -31,22 +31,55 @@
 
           <span  @click="sendReact('disLike',comment.id)" class="unLike blackColor04">
             {{comment.disLike}}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="24"
-              height="22"
-              viewBox="0 0 24 22"
-            >
-              <image
-                id="Layer_2560_copy"
-                data-name="Layer 2560 copy"
-                width="24"
-                height="22"
-                opacity="0.4"
-                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAABHNCSVQICAgIfAhkiAAAAXBJREFUSEu1lT1LA0EQhu8EFT9AUKwsVBAb9QeohWBnbyFWVv4tKxERK20SQTuxCFYpBSOBoEUCokEhmPN5j11Y4oa7mNuBYXYns/Pszuxt4iiK5tBe+U6SpC1nHMczmCUNPXE+1w/OZ9Z/puvRY09UlYB7ku/w2+oAyW2qLoMzbdIFaMdTJsICDplP59x5b1gZQM0FXBOxgS6iwwLq5CgB6LqADs7RAk6g8rTQBwCNrB4MU6ImgMuQgBqAcijAOyW6AdAKBVAr1YvzkABB7kICmgCuQgFUnle0kgUYIWgZ3f3Hc6ESpU2e9DwFHW6APrxUeJO2MOueuCxXIyZRVpAA4wQdoLKufDF565PgA381F8CcYgG7h6psVlTrCzape++V3AADWcGqH65UADwWAjCQTaxeXSsvAEpFAsZIduQkbAM4LQxgTrGPnTVJ1YcTIPqr/CMD9cCu5latMd428yeS3xZ6AnOKeewEWgfQ967/AkEgwuejqML/AAAAAElFTkSuQmCC"
-              />
-            </svg>
+          
+<svg class="disLikeSvg" width="22" height="24" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<path d="M117.333,10.667h-64C23.936,10.667,0,34.603,0,64v170.667C0,264.064,23.936,288,53.333,288H160
+				c5.888,0,10.667-4.779,10.667-10.667V64C170.667,34.603,146.731,10.667,117.333,10.667z"/>
+			<path d="M512,208c0-18.496-10.603-34.731-26.347-42.667c3.285-6.549,5.013-13.781,5.013-21.333
+				c0-18.496-10.603-34.752-26.368-42.688c4.864-9.728,6.293-20.928,3.84-32.043C463.36,47.68,443.051,32,419.819,32H224
+				c-7.232,0-16.405,1.173-25.771,3.285c-5.739,1.301-9.344,6.976-8.064,12.693C191.403,53.632,192,58.859,192,64v213.333
+				c0,5.739-1.6,11.264-4.736,16.448c-1.835,3.029-2.048,6.763-0.555,9.984l47.957,103.893v72.32c0,3.243,1.472,6.293,3.989,8.341
+				c0.683,0.555,16.512,13.013,38.677,13.013c24.683,0,64-39.061,64-85.333c0-29.184-10.453-65.515-16.96-85.333h131.755
+				c28.715,0,53.141-21.248,55.637-48.341c1.387-15.189-3.669-29.824-13.632-40.725C506.901,232.768,512,220.821,512,208z"/>
+		</g>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
           </span>
           <span @click="sendReact('like',comment.id)" class="like">
             {{comment.like}}
@@ -111,22 +144,53 @@
 
           <span @click="sendReact('disLike',comment.id)" class="unLike blackColor04">
             {{comment.disLike}}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="24"
-              height="22"
-              viewBox="0 0 24 22"
-            >
-              <image
-                id="Layer_2560_copy"
-                data-name="Layer 2560 copy"
-                width="24"
-                height="22"
-                opacity="0.4"
-                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAABHNCSVQICAgIfAhkiAAAAXBJREFUSEu1lT1LA0EQhu8EFT9AUKwsVBAb9QeohWBnbyFWVv4tKxERK20SQTuxCFYpBSOBoEUCokEhmPN5j11Y4oa7mNuBYXYns/Pszuxt4iiK5tBe+U6SpC1nHMczmCUNPXE+1w/OZ9Z/puvRY09UlYB7ku/w2+oAyW2qLoMzbdIFaMdTJsICDplP59x5b1gZQM0FXBOxgS6iwwLq5CgB6LqADs7RAk6g8rTQBwCNrB4MU6ImgMuQgBqAcijAOyW6AdAKBVAr1YvzkABB7kICmgCuQgFUnle0kgUYIWgZ3f3Hc6ESpU2e9DwFHW6APrxUeJO2MOueuCxXIyZRVpAA4wQdoLKufDF565PgA381F8CcYgG7h6psVlTrCzape++V3AADWcGqH65UADwWAjCQTaxeXSsvAEpFAsZIduQkbAM4LQxgTrGPnTVJ1YcTIPqr/CMD9cCu5latMd428yeS3xZ6AnOKeewEWgfQ967/AkEgwuejqML/AAAAAElFTkSuQmCC"
-              />
-            </svg>
+<svg class="disLikeSvg" width="22" height="24" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<path d="M117.333,10.667h-64C23.936,10.667,0,34.603,0,64v170.667C0,264.064,23.936,288,53.333,288H160
+				c5.888,0,10.667-4.779,10.667-10.667V64C170.667,34.603,146.731,10.667,117.333,10.667z"/>
+			<path d="M512,208c0-18.496-10.603-34.731-26.347-42.667c3.285-6.549,5.013-13.781,5.013-21.333
+				c0-18.496-10.603-34.752-26.368-42.688c4.864-9.728,6.293-20.928,3.84-32.043C463.36,47.68,443.051,32,419.819,32H224
+				c-7.232,0-16.405,1.173-25.771,3.285c-5.739,1.301-9.344,6.976-8.064,12.693C191.403,53.632,192,58.859,192,64v213.333
+				c0,5.739-1.6,11.264-4.736,16.448c-1.835,3.029-2.048,6.763-0.555,9.984l47.957,103.893v72.32c0,3.243,1.472,6.293,3.989,8.341
+				c0.683,0.555,16.512,13.013,38.677,13.013c24.683,0,64-39.061,64-85.333c0-29.184-10.453-65.515-16.96-85.333h131.755
+				c28.715,0,53.141-21.248,55.637-48.341c1.387-15.189-3.669-29.824-13.632-40.725C506.901,232.768,512,220.821,512,208z"/>
+		</g>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
           </span>
           <span @click="sendReact('like',comment.id)" class="like">
             {{comment.like}}
@@ -180,22 +244,53 @@
 
             <span @click="sendReact('disLike',answer.id)" class="unLike blackColor04">
               {{answer.disLike}}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24"
-                height="22"
-                viewBox="0 0 24 22"
-              >
-                <image
-                  id="Layer_2560_copy"
-                  data-name="Layer 2560 copy"
-                  width="24"
-                  height="22"
-                  opacity="0.4"
-                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAABHNCSVQICAgIfAhkiAAAAXBJREFUSEu1lT1LA0EQhu8EFT9AUKwsVBAb9QeohWBnbyFWVv4tKxERK20SQTuxCFYpBSOBoEUCokEhmPN5j11Y4oa7mNuBYXYns/Pszuxt4iiK5tBe+U6SpC1nHMczmCUNPXE+1w/OZ9Z/puvRY09UlYB7ku/w2+oAyW2qLoMzbdIFaMdTJsICDplP59x5b1gZQM0FXBOxgS6iwwLq5CgB6LqADs7RAk6g8rTQBwCNrB4MU6ImgMuQgBqAcijAOyW6AdAKBVAr1YvzkABB7kICmgCuQgFUnle0kgUYIWgZ3f3Hc6ESpU2e9DwFHW6APrxUeJO2MOueuCxXIyZRVpAA4wQdoLKufDF565PgA381F8CcYgG7h6psVlTrCzape++V3AADWcGqH65UADwWAjCQTaxeXSsvAEpFAsZIduQkbAM4LQxgTrGPnTVJ1YcTIPqr/CMD9cCu5latMd428yeS3xZ6AnOKeewEWgfQ967/AkEgwuejqML/AAAAAElFTkSuQmCC"
-                />
-              </svg>
+       <svg class="disLikeSvg" width="22" height="24" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<path d="M117.333,10.667h-64C23.936,10.667,0,34.603,0,64v170.667C0,264.064,23.936,288,53.333,288H160
+				c5.888,0,10.667-4.779,10.667-10.667V64C170.667,34.603,146.731,10.667,117.333,10.667z"/>
+			<path d="M512,208c0-18.496-10.603-34.731-26.347-42.667c3.285-6.549,5.013-13.781,5.013-21.333
+				c0-18.496-10.603-34.752-26.368-42.688c4.864-9.728,6.293-20.928,3.84-32.043C463.36,47.68,443.051,32,419.819,32H224
+				c-7.232,0-16.405,1.173-25.771,3.285c-5.739,1.301-9.344,6.976-8.064,12.693C191.403,53.632,192,58.859,192,64v213.333
+				c0,5.739-1.6,11.264-4.736,16.448c-1.835,3.029-2.048,6.763-0.555,9.984l47.957,103.893v72.32c0,3.243,1.472,6.293,3.989,8.341
+				c0.683,0.555,16.512,13.013,38.677,13.013c24.683,0,64-39.061,64-85.333c0-29.184-10.453-65.515-16.96-85.333h131.755
+				c28.715,0,53.141-21.248,55.637-48.341c1.387-15.189-3.669-29.824-13.632-40.725C506.901,232.768,512,220.821,512,208z"/>
+		</g>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
             </span>
             <span @click="sendReact('like',answer.id)" class="like">
               {{answer.like}}
@@ -260,22 +355,53 @@
 
             <span @click="sendReact('disLike',answer.id)"  class="unLike blackColor04">
               {{answer.disLike}}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                width="24"
-                height="22"
-                viewBox="0 0 24 22"
-              >
-                <image
-                  id="Layer_2560_copy"
-                  data-name="Layer 2560 copy"
-                  width="24"
-                  height="22"
-                  opacity="0.4"
-                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAABHNCSVQICAgIfAhkiAAAAXBJREFUSEu1lT1LA0EQhu8EFT9AUKwsVBAb9QeohWBnbyFWVv4tKxERK20SQTuxCFYpBSOBoEUCokEhmPN5j11Y4oa7mNuBYXYns/Pszuxt4iiK5tBe+U6SpC1nHMczmCUNPXE+1w/OZ9Z/puvRY09UlYB7ku/w2+oAyW2qLoMzbdIFaMdTJsICDplP59x5b1gZQM0FXBOxgS6iwwLq5CgB6LqADs7RAk6g8rTQBwCNrB4MU6ImgMuQgBqAcijAOyW6AdAKBVAr1YvzkABB7kICmgCuQgFUnle0kgUYIWgZ3f3Hc6ESpU2e9DwFHW6APrxUeJO2MOueuCxXIyZRVpAA4wQdoLKufDF565PgA381F8CcYgG7h6psVlTrCzape++V3AADWcGqH65UADwWAjCQTaxeXSsvAEpFAsZIduQkbAM4LQxgTrGPnTVJ1YcTIPqr/CMD9cCu5latMd428yeS3xZ6AnOKeewEWgfQ967/AkEgwuejqML/AAAAAElFTkSuQmCC"
-                />
-              </svg>
+      <svg class="disLikeSvg" width="22" height="24" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<g>
+	<g>
+		<g>
+			<path d="M117.333,10.667h-64C23.936,10.667,0,34.603,0,64v170.667C0,264.064,23.936,288,53.333,288H160
+				c5.888,0,10.667-4.779,10.667-10.667V64C170.667,34.603,146.731,10.667,117.333,10.667z"/>
+			<path d="M512,208c0-18.496-10.603-34.731-26.347-42.667c3.285-6.549,5.013-13.781,5.013-21.333
+				c0-18.496-10.603-34.752-26.368-42.688c4.864-9.728,6.293-20.928,3.84-32.043C463.36,47.68,443.051,32,419.819,32H224
+				c-7.232,0-16.405,1.173-25.771,3.285c-5.739,1.301-9.344,6.976-8.064,12.693C191.403,53.632,192,58.859,192,64v213.333
+				c0,5.739-1.6,11.264-4.736,16.448c-1.835,3.029-2.048,6.763-0.555,9.984l47.957,103.893v72.32c0,3.243,1.472,6.293,3.989,8.341
+				c0.683,0.555,16.512,13.013,38.677,13.013c24.683,0,64-39.061,64-85.333c0-29.184-10.453-65.515-16.96-85.333h131.755
+				c28.715,0,53.141-21.248,55.637-48.341c1.387-15.189-3.669-29.824-13.632-40.725C506.901,232.768,512,220.821,512,208z"/>
+		</g>
+	</g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
             </span>
             <span  @click="sendReact('like',answer.id)"  class="like">
               {{answer.like}}

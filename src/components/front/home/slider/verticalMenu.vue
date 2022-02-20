@@ -4,7 +4,10 @@
       class="d-flex justify-content-between align-items-center flex-direction-column height100"
     >
       <li>
-        <a :class="{'activeSection':$root.sectionIndexHome==1}" @click="toSection(1)">
+        <a
+          :class="{ activeSection: $root.sectionIndexHome == 1 }"
+          @click="toSection(1)"
+        >
           <svg
             id="Layer_1"
             enable-background="new 0 0 511.995 511.995"
@@ -20,30 +23,81 @@
             </g>
           </svg>
         </a>
-        <p>صفحه اصلی</p>
+        <p>{{$cookie.get('ltrTheme')?'Home':'صفحه اصلی'}}</p>
       </li>
       <li>
-        <a :class="{'activeSection':$root.sectionIndexHome==2}" @click="toSection(2)">
+        <a
+          :class="{ activeSection: $root.sectionIndexHome == 2 }"
+          @click="toSection(2)"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="32"
+            xml:space="preserve"
+            width="37"
             height="37"
-            viewBox="0 0 32 37"
+            version="1.1"
+            shape-rendering="geometricPrecision"
+            text-rendering="geometricPrecision"
+            image-rendering="optimizeQuality"
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            viewBox="0 0 3333.33 3333.33"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlns:xodm="http://www.corel.com/coreldraw/odm/2003"
           >
-            <image
-              id="Layer_2772_copy"
-              data-name="Layer 2772 copy"
-              width="32"
-              height="37"
-              xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAlCAYAAAAjt+tHAAAABHNCSVQICAgIfAhkiAAABXFJREFUWEe92HWoZVUUx3GfMXZ3j42B3TkmBjYGYrcg4qgMJj5R1D/McbAQHLvF7hg7sLAV440tdo9i/T7DOY/zDue8e9+MuODLPbHP3muvvdbaa9+eCWMWmmISZbF891CYO+wdbpuUfnomQ4GfM+C34fWwZVgnPDdUJSZVgasy0DZhnvBneCbMGxb/PxRYK4M8HbYID1cG/D3Xl4QjhqJEkwVmSwcnhA0DM5sd7i46fjO/s4f5awPdkPvtw3TF87Xzu17Rz4L5fTucGSxZvzQpcHHeHhL6wlTFYDPk1wwfCWa+c7izpsDUuf8xPB+WC3OFP8J34ZfAafW5RCcFnkiDNUI5E+3XDacHjjZNMNO6AnzgvUDZD8OpgVUmFAM+md+Vw0ydFHg8DVYKs1YbVq5ZYURYMVTN+X3u/wmrFgrUP78rDyzrLJ0UoPXWYeYWBTzmB9OGcwJLWWtRMWMQFU3CYS3NAN9p8oH90og3W0NrWpfePBgVpg9mjCmLRq/kd6OW78bn+bth82qHTQow0Wfh5HB2bfSxud8nfBPOCO8XCsyR3z3DiPBDMciLlW/5B7/Q5tZOCnh/bjgyWG+KPBvuCFsFIXpduCcsFcyet98YjgsckaN693cYGQ4LH4Rlq4O7rlvA2p8SlgnWtifwYgOY5bhCgUfzO6zeWe77Agt575tfA6/Xj/svwuiCiZ9XFXit0NCszwpmbXBJ596wfOB4OrX+bcJ/vgonBmHLL8iS4eBwQOCoomh8qYBMJ/R2C/X49rEQkx+s+1ODDO4VpVcJIuWocF6tvf1DTpiTEhS4PRdCaNHwaUPnUvPX4aCwZji0gwJe7xiEM8vt0NL+ozwfRoHfcvFlGN7S0FpLpcwnyRxeaScEra2lqcp2ubk5mNyuLf3KISMpQMObgs2C6eqJRFyPC5cF+8QLlQ4fzDUzvxo4GrEEw8Pn4YGgVqgLRzSR0aUPbJyb+wNr7BHKnU/qZEZW4AeqH8lJlrQ5WTbWuz7wH3JpsMZXhr8CvzmpeLdwfvkYB+Too6pRwDnENjOL2U8CBa4ONqK3Ag+/MLDCMUG87xJsvWZu5zOISLErnlb0KQmxiKiQxHzzGKWaMqGOjw7zBXFb5u43ci2X7x5eChxWpzLn6oGzCmUDs4xnsuEVQc3Ij24J8kS/tJVk66dFuXlIt6WY+WphryAiZDhLYsZm7tp2bMBrK9+xJn/Yvzq46zYFzMIab1D7QGVjQ1GWacM/LAlnpJgtV8qmWFWEMF9g1QFO3qSAyobD2Qt4flXuy40sJ1saWDIxe0nH+qsHKUDRqrCK76w9P+uXJgWWzluFho2nWnQysdlvGniySGFqIoqYWDaVVXm4iqgqfEDslxEx8V2TAuJW50xa5nFtmVwYXhOOD2bJCUuRLYUk6xwY6vsFq5q9MO+XJgV2yluJaYGiQ+bbthiY8wnFl4MEVRXr7B0L8Q2K9oaPi0bCT+jpf1AFFKRmazZSrVmrjvuCdFyusVNRXbRRU0po2vrezH8Ki4QLwoBzQ5sTOmIpHnQkls3KaYiDem55mkTxItSkWYraQZXhtnQhulnoeC5o6ljoyGrqOTFdpt16W7vq2KBsl44tXZnWGzXu5mxo1kLt8qBQtSRSdJMw77Fh32BvEUlCt1W6UcDHKlp+wIN5srTbVH6/k+dMLCJUPtI05Sdbgd70YH3ld1lP4SkVV0VolsukDtDGSWhQ6dYCloFDSiaSjZ1R5hsTRIOE5Ph2flghcNpNguL0P1FAJ72BFWRHpbkyXG4vK96LCmVs3Y7vTksdpVsLlB2pBw2k3hdm8gVR8crzChUHD6fnrmSoCuhUCDq4mL1EQ1jBfwlKNse2ruVfHfKAD8FQiYUAAAAASUVORK5CYII="
-            /></svg
-        ></a>
-        <p>درباره مارگارین</p>
+            <g id="Layer_x0020_1">
+              <metadata id="CorelCorpID_0Corel-Layer" />
+              <path
+                fill="#B11219"
+                d="M1770.56 1790.1c80.31,-73.29 154.93,-128.72 195.97,-268.06 183.11,97.76 320.8,365.03 270.75,661.53 -323.18,7.89 -382.81,-116.55 -466.72,-393.46zm-1125.96 393.72c-22.3,-140.39 -0.81,-293.78 51.09,-409.6 42.69,-95.24 121.36,-212.32 215.22,-252.21 85.04,113 86.19,181.67 208.37,238.19 -19.69,85.74 -94.25,256.65 -139.21,319.76 -69.92,98.22 -188.46,106.78 -335.48,103.86zm581.37 -468.11c-390.38,-136.94 -298.69,-899.69 237.41,-876.35 227.96,9.92 393.46,159.32 436.99,360.36 72.45,334.61 -163.34,457.72 -233.31,546.15 74.67,178.85 239.06,444.67 217.12,662.62 -23.11,229.84 -216.21,437.33 -464.82,425.22 -238.69,-11.65 -420.52,-223.65 -427.96,-468.63 -7.57,-249.11 182.58,-434.51 234.56,-649.36zm-945.15 -389.83c108.9,-187.1 302.08,-300.46 608,-252.21 29.89,48.87 9.35,-10.37 15.38,51.83 1.8,18.54 0.55,19.79 -0.52,35.56 -0.24,3.42 -12.12,62.51 -14,77.68 -9.11,73.13 0.29,129.29 -13.39,183.6 -44.1,70.42 -171.88,196.24 -304.09,133.96 -102.24,-48.12 -226.21,-137.05 -291.38,-230.41zm2029.75 230.28c-136.81,64.41 -217.13,-52.09 -303.18,-108.8l-13.31 -372.87c318.61,-37.54 489.89,51.54 608.26,251.38 -65.33,91.2 -190.94,182.79 -291.77,230.28zm-669.2 -805.02c102.06,-194.3 408.95,-265.4 615.7,-245.61 24.54,322.52 20.91,458.69 -307.2,499.28 -35.09,-8.82 -101.85,-120.49 -232.19,-198.53l-76.32 -55.15zm-392.71 30.94c-317.67,86.73 -155.19,289.84 -436.52,200.44 -217.31,-69.06 -209.81,-228.27 -186.11,-475.24 135.82,-17.05 267.15,9.97 382.37,57.6 139.74,57.72 195.27,85.69 240.26,217.2zm-58.67 -200.13c18.02,-170.49 155.58,-377.77 251.46,-418.01 103.89,58.72 211.38,219.76 249.42,388.24 -151.51,230.31 -158.2,184.69 -370.31,191.14 -30.34,-94.22 -53.44,-110.67 -130.57,-161.38zm-102.22 -96.08c-80.37,0 -803.61,-368.79 -518.08,407.54 32.53,88.46 21.33,-24.57 31.75,100.88 -99.45,23.16 -173.96,59.82 -243.83,109.84 -118.72,84.93 -249.92,215.77 -114.09,336.52 101.43,90.24 265.4,207.05 402.16,238.9 -116.73,220.62 -88.43,277.51 -88.43,596.85 114.1,26.58 204.09,39.06 331.59,-22.12 -71.04,304.93 186.21,685.29 486.31,685.29l9.77 0c204.25,-0.42 352.44,-15.48 499.36,-220.36 113.42,-158.22 124.41,-289.65 109.81,-464.93 59.32,28.49 331.59,107.89 331.59,-44.2 0,-253.63 22.09,-321.69 -88.43,-530.54 172.19,-40.11 464.22,-256.94 464.22,-353.68 0,-62.45 -115.69,-176.63 -163.34,-212.45 -79.81,-59.94 -151.15,-94.57 -256.65,-119.14 13.21,-158.8 330.7,-718.5 -282.47,-569.85 -41.72,10.13 -157.39,61.43 -181.75,61.43 -111.61,0 -181.85,-420.02 -375.79,-420.02 -188.04,0 -292.11,420.02 -353.67,420.02z"
+              />
+              <path
+                fill="#F7941D"
+                d="M1242.5 1659.42c4.28,-3.24 10.42,-14.31 12.04,-10.7 1.62,3.61 9.53,-8.51 11.7,-10.99 12.04,-13.84 13.68,-12.82 29.97,-37.31l84.83 -157.88c3.84,-6.16 21.57,-32.72 27.34,-40.08 22.24,-28.51 17.36,-21.98 33.08,-36.32 84.72,101.57 126.89,230.78 198.95,298.46 329.68,-193.03 193.81,-754.14 -199,-746.04 -393.83,8.09 -492.84,510.96 -198.9,740.87z"
+              />
+              <path
+                fill="#F7941D"
+                d="M1441.46 1705.9c45.59,62.48 225.66,417.72 261.67,508.29 85.46,214.91 -50.96,467.88 -261.41,467.56 -213.83,-0.31 -351.17,-249.52 -263.88,-470.04 38.98,-98.51 206.21,-444.61 263.62,-505.81zm0 -181.25c-79.37,81.67 -286.89,522.57 -338.04,657.56 -106.81,281.93 57.7,574.85 315.71,591.03 288.87,18.17 472.68,-320.04 351.14,-605.08 -48.2,-113.05 -267.96,-566.67 -328.82,-643.51z"
+              />
+              <path
+                fill="#FEF100"
+                d="M280.83 1325.88c65.17,93.37 189.13,182.3 291.38,230.41 132.22,62.27 260,-63.55 304.09,-133.96 13.68,-54.31 4.28,-110.47 13.39,-183.6 1.88,-15.17 13.76,-74.26 14,-77.68 1.07,-15.77 2.32,-17.02 0.52,-35.56 -6.03,-62.19 14.52,-2.95 -15.38,-51.83 -305.92,-48.25 -499.1,65.11 -608,252.21z"
+              />
+              <path
+                fill="#FEF100"
+                d="M1994.08 1074.5l13.31 372.87c86.06,56.71 166.37,173.2 303.18,108.8 100.83,-47.49 226.44,-139.08 291.77,-230.28 -118.38,-199.84 -289.65,-288.92 -608.26,-251.38z"
+              />
+              <path
+                fill="#FEF100"
+                d="M1248.67 782.08c-44.98,-131.51 -100.52,-159.48 -240.26,-217.2 -115.22,-47.63 -246.55,-74.65 -382.37,-57.6 -23.71,246.97 -31.2,406.18 186.11,475.24 281.32,89.4 118.85,-113.71 436.52,-200.44z"
+              />
+              <path
+                fill="#FEF100"
+                d="M1641.37 751.14l76.32 55.15c130.33,78.04 197.09,189.71 232.19,198.53 328.11,-40.6 331.74,-176.76 307.2,-499.28 -206.76,-19.79 -513.65,51.3 -615.7,245.61z"
+              />
+              <path
+                fill="#FEF100"
+                d="M644.61 2183.82c147.02,2.93 265.56,-5.64 335.48,-103.86 44.96,-63.11 119.53,-234.02 139.21,-319.76 -122.19,-56.53 -123.34,-125.19 -208.37,-238.19 -93.86,39.89 -172.53,156.97 -215.22,252.21 -51.91,115.82 -73.39,269.21 -51.09,409.6z"
+              />
+              <path
+                fill="#FEF100"
+                d="M1770.56 1790.1c83.91,276.91 143.55,401.35 466.72,393.46 50.05,-296.5 -87.65,-563.77 -270.75,-661.53 -41.04,139.35 -115.66,194.78 -195.97,268.06z"
+              />
+              <path
+                fill="#FEF100"
+                d="M1190 581.95c77.13,50.7 100.23,67.15 130.57,161.38 212.11,-6.45 218.8,39.17 370.31,-191.14 -38.04,-168.48 -145.53,-329.52 -249.42,-388.24 -95.87,40.24 -233.44,247.52 -251.46,418.01z"
+              />
+            </g>
+          </svg>
+        </a>
+        <p>{{$cookie.get('ltrTheme')?'About Margarin':'درباره مارگارین'}}</p>
       </li>
 
       <li>
-        <a :class="{'activeSection':$root.sectionIndexHome==3}" @click="toSection(3)">
+        <a
+          :class="{ activeSection: $root.sectionIndexHome == 3 }"
+          @click="toSection(3)"
+        >
           <svg
             id="Capa_1"
             enable-background="new 0 0 512 512"
@@ -62,11 +116,14 @@
             </g>
           </svg>
         </a>
-        <p>محصولات</p>
+        <p>{{$cookie.get('ltrTheme')?'Products':'محصولات'}}</p>
       </li>
 
       <li>
-        <a :class="{'activeSection':$root.sectionIndexHome==4}" @click="toSection(4)">
+        <a
+          :class="{ activeSection: $root.sectionIndexHome == 4 }"
+          @click="toSection(4)"
+        >
           <svg
             version="1.1"
             width="32"
@@ -121,10 +178,13 @@
             <g></g>
           </svg>
         </a>
-        <p>آشپزی</p>
+        <p>{{$cookie.get('ltrTheme')?'Cooking':'آشپزی'}}</p>
       </li>
       <li>
-        <a :class="{'activeSection':$root.sectionIndexHome==5}" @click="toSection(5)">
+        <a
+          :class="{ activeSection: $root.sectionIndexHome == 5 }"
+          @click="toSection(5)"
+        >
           <svg
             height="37"
             viewBox="0 0 511 511.99897"
@@ -148,10 +208,13 @@
             />
           </svg>
         </a>
-        <p>آموزش</p>
+        <p>{{$cookie.get('ltrTheme')?'News':'اخبار'}}</p>
       </li>
       <li>
-        <a :class="{'activeSection':$root.sectionIndexHome==6}" @click="toSection(6)">
+        <a
+          :class="{ activeSection: $root.sectionIndexHome == 6 }"
+          @click="toSection(6)"
+        >
           <svg
             id="Layer_1"
             enable-background="new 0 0 510 510"
@@ -174,12 +237,15 @@
             </g>
           </svg>
         </a>
-        <p>ارشیو</p>
+        <p>{{$cookie.get('ltrTheme')?'Articles':'مقالات'}}</p>
       </li>
       <li>
-        <a :class="{'activeSection':$root.sectionIndexHome==7}" @click="toSection(7)">
+        <a
+          :class="{ activeSection: $root.sectionIndexHome == 7 }"
+          @click="toSection(7)"
+        >
           <svg
-            id="Capa_1"
+            id="Capa_1" 
             enable-background="new 0 0 512.001 512.001"
             height="37"
             viewBox="0 0 512.001 512.001"
@@ -202,10 +268,10 @@
             </g>
           </svg>
         </a>
-        <p>افتخارات</p>
+        <p>{{$cookie.get('ltrTheme')?'Awards':'افتخارات'}}</p>
       </li>
-      <li>
-        <a @click="toSection()">
+      <li v-if="$root.footerData">
+        <a :href="'https://wa.me/'+$root.footerData.whatsApp" target="_blank">
           <svg
             version="1.1"
             width="32"
@@ -253,7 +319,7 @@
             <g></g>
           </svg>
         </a>
-        <p>واتساپ</p>
+        <p>{{$cookie.get('ltrTheme')?'WhatsApp':'واتساپ'}}</p>
       </li>
     </ul>
   </div>
@@ -262,7 +328,7 @@
 export default {
   methods: {
     toSection(index) {
-      this.$root.sectionIndexHome=index
+      this.$root.sectionIndexHome = index;
     }
   }
 };

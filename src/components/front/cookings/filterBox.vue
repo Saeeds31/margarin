@@ -30,9 +30,11 @@
           v-model="search"
           class="width100"
           type="text"
+          @keypress.enter="searched()"
           :placeholder="searchPlaceHolder"
         />
         <svg
+        @click="searched()"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           width="24"
@@ -98,6 +100,16 @@ export default {
     }
   },
   methods: {
+    searched(){
+    
+       let filter = {
+        category: this.category != null ? this.category : "",
+
+        isDesending: this.sort != null ? this.sort.value : true,
+        search: this.search
+      };
+      this.$emit("filtered", filter);
+    },
     removeFromFilter(value) {
       this.filterList = this.filterList.filter((item) => {
         return item.value != value;
@@ -125,15 +137,7 @@ export default {
       };
       this.$emit("filtered", filter);
     },
-    search() {
-      let filter = {
-        category: this.category != null ? this.category : "",
-
-        isDesending: this.sort != null ? this.sort.value : true,
-        search: this.search
-      };
-      this.$emit("filtered", filter);
-    }
+    
   },
   data() {
     return {

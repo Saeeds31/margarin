@@ -27,11 +27,11 @@
       data-aos="fade-up"
       data-aos-duration="1500"
       data-aos-once="true"
-      
         data-aos-delay="500"
       class="width80 margin-auto"
     />
     <videoBox
+    
       v-if="aboutUsData.aboutUs.video != null"
       :video="aboutUsData.aboutUs.video"
       :image="aboutUsData.aboutUs.videoCover"
