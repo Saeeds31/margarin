@@ -4,9 +4,9 @@
       <svg
             id="articleSvg"
             enable-background="new 0 0 510 510"
-            height="70"
+            height="50"
             viewBox="0 0 510 510"
-            width="80"
+            width="60"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g id="XMLID_3990_">

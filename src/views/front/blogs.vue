@@ -1,7 +1,7 @@
 <template>
   <div v-if="blogsData != null" id="blogsSection" class="width80 margin-auto">
-    <introduction 
-     :title="
+    <introduction
+      :title="
         $cookie.get('ltrTheme')
           ? 'News and Articles Archive'
           : 'آرشیــــو اخــــبار و مقــــالات'
@@ -14,7 +14,11 @@
         {{ blogsData.data.webLogIntro.text }}
       </p>
     </introduction>
-    <filterBox :typeSelected="typeSelected" :categorySelected="categorySelected"  :placeHolder="searchPlaceHolder" @filtered="filteredBlogs" />
+    <filterBox
+      :typeSelected="typeSelected" :isDesendingSelected="isDesendingSelected"
+      :placeHolder="searchPlaceHolder"
+      @filtered="filteredBlogs"
+    />
     <div
       id="weblogsList"
       class="width100 d-flex f-wrap justify-content-between"
@@ -56,102 +60,43 @@ export default {
     pagination
   },
   data() {
-    return {
-      categorySelected:"",
-      typeSelected:"",
+    return {      isDesendingSelected: "",
+
+      typeSelected: "",
       searchPlaceHolder: "",
-      // weblogs: {
-      //   total: 10,
-      //   prePage: 6,
-      //   blogs: [
-      //     {
-      //       image: "https://s4.uupload.ir/files/asdsadas_3pst.png",
-      //       category: "دسته بندی مقالات زندگی و سلامت",
-      //       title:
-      //         "25 میان‌وعده‌ی خوشمزه که کمتر از 100 کیلو کالری انرژی دارند",
-      //       date: "26 مرداد ماه 1400",
-      //       comment: "45"
-      //     },
-      //     {
-      //       image: "https://s4.uupload.ir/files/asdasdasdasd_fs1i.png",
-      //       category: "دسته بندی مقالات زندگی و سلامت",
-
-      //       title: "24 بمب انرژی که باید در رژیم غذایی خود بگنجانید",
-      //       date: "26 مرداد ماه 1400",
-      //       comment: "36"
-      //     },
-
-      //     {
-      //       image: "https://s4.uupload.ir/files/clip_li5.png",
-      //       category: "دسته بندی مقالات زندگی و سلامت",
-
-      //       title: "درمان کبد چرب؛ رژیم غذایی مناسب و روش های خانگی اثربخش",
-      //       date: "26 مرداد ماه 1400",
-      //       comment: "36"
-      //     },
-
-      //     {
-      //       image: "https://s4.uupload.ir/files/asdsadasdasdasdasd_p0eb.png",
-      //       category: "دسته بندی مقالات زندگی و سلامت",
-
-      //       title:
-      //         "20 خاصیت بی‌نظیر خرما که از نظر علمی ثابت شده‌اند و به همه توصیه می شود",
-      //       date: "26 مرداد ماه 1400",
-      //       comment: "36"
-      //     },
-
-      //     {
-      //       image: "https://s4.uupload.ir/files/asdasassssssa_b67n.png",
-      //       category: "دسته بندی مقالات زندگی و سلامت",
-      //       title:
-      //         "12 خاصیت شگفت‌آور دمنوش زنجبیل و لیمو ترش ( و طرز تهیه‌ی آن )",
-      //       date: "26 مرداد ماه 1400",
-      //       comment: "45"
-      //     },
-      //     {
-      //       image: "https://s4.uupload.ir/files/dddddddddddddddd_3ys.png",
-      //       category: "دسته بندی مقالات زندگی و سلامت",
-
-      //       title: "غذا خوردن به همراه خانواده چه فوایدی دارد ؟",
-      //       date: "26 مرداد ماه 1400",
-      //       comment: "36"
-      //     }
-      //   ],
-      //   description:
-      //     "مارگارين اولين شركت توليد كننده روغن گياهي در ايران است كه با برندهای خروس، آفتاب و آفتاب طلايي  در بين مردم شناخته شده است. اين شركت كه در دی ماه سال 1332 با ظرفیت تصفيه 8 تن روغن گياهي در روز پا به عرصه صنعت گذاشت و اکنون با همكاري كارشناسان مجرب توانسته است با ظرفیت توليدي 1000 تن در روز، میهمان بسیاری ازخانواده ها و صنایع مختلف کشور باشد. اين مجموعه همواره سعي می نماید محصولاتی با کیفیت برتر و منطبق با نیاز مشتریان طراحی و تولید نماید ."
-      // },
-      routes:[{ route: "", routeTitle_fa: "وبلاگ", routeTitle_en:"weblogs"}],
+      routes: [{ route: "", routeTitle_fa: "وبلاگ", routeTitle_en: "weblogs" }]
     };
   },
   watch: {
     blogsData() {
-    
       setTimeout(() => {
         this.setStyle();
       }, 500);
     },
     "$route.query": {
       handler(value) {
-        if(Object.keys(value).length==0)return
+        if (Object.keys(value).length == 0) return;
         let pack = {
           page: value.page ? value.page : 1,
-          category: value.category ? value.category : "",
+          isDesending: value.isDesending ? value.isDesending : "",
           type: value.type ? value.type : 1,
           search: value.search ? value.search : "",
           keyword: value.keyword ? value.keyword : ""
         };
         this.searchPlaceHolder = value.search ? value.search : "";
-         this.typeSelected=value.type?value.type:"",
-         this.categorySelected=value.category?value.category:"",
-        this.$store.dispatch("getBlogsFromServer", pack);
+        (this.typeSelected = value.type ? value.type : ""),
+          (this.categorySelected = value.category ? value.category : ""),
+          this.$store.dispatch("getBlogsFromServer", pack);
       },
       deep: true,
       immediate: true
     }
   },
-   metaInfo() {
+  metaInfo() {
     return {
-      title: this.$cookie.get("ltrTheme") ? "weblog-list-margarin" : "مارگارین - پست ها",
+      title: this.$cookie.get("ltrTheme")
+        ? "weblog-list-margarin"
+        : "مارگارین - پست ها",
       meta: [
         {
           name: "description",
@@ -159,24 +104,24 @@ export default {
         },
         {
           property: "og:title",
-          content:  this.$cookie.get("ltrTheme") ? "weblog-list-margarin" : "مارگارین - پست ها",
+          content: this.$cookie.get("ltrTheme")
+            ? "weblog-list-margarin"
+            : "مارگارین - پست ها"
         },
         { name: "robots", content: "index,follow" }
       ]
     };
   },
   computed: {
-     blogsData() {
+    blogsData() {
       return this.$store.getters.getBlogsData;
-    },
-   
+    }
   },
   mounted() {
-    
     if (this.blogsData == null) {
       let pack = {
         page: this.$route.query.page ? this.$route.query.page : 1,
-       type:this.$route.query.type ? this.$route.query.type : 1,
+        type: this.$route.query.type ? this.$route.query.type : 1,
         category: this.$route.query.category ? this.$route.query.category : "",
         search: this.$route.query.search ? this.$route.query.search : "",
         keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
@@ -192,18 +137,24 @@ export default {
   },
   methods: {
     pageChanged(page) {
-    
       this.$router.replace({
         name: "weblogs",
         query: {
-           page:page,
-        type:this.$route.query.type ? this.$route.query.type : 1,
-        category: this.$route.query.category ? this.$route.query.category : "",
-        search: this.$route.query.search ? this.$route.query.search : "",
-        keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
+          page: page,
+          type: this.$route.query.type ? this.$route.query.type : 1,
+          category: this.$route.query.category
+            ? this.$route.query.category
+            : "",
+          search: this.$route.query.search ? this.$route.query.search : "",
+          keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
         }
       });
-      document.getElementById('weblogsList').scrollIntoView({behavior:'smooth'})
+      if (window.innerWidth < 1000)
+      {
+               document
+          .getElementById("weblogsList")
+          .scrollIntoView({ behavior: "smooth" });
+      }
     },
     filteredBlogs(filter) {
       filter.page = this.$route.query.page ? this.$route.query.page : 1;
@@ -217,11 +168,10 @@ export default {
         query: {
           page: filter.page,
           search: filter.search,
-          category: filter.category,
+          isDesending: filter.isDesending,
           type: filter.type
         }
       });
-
     },
     setStyle() {
       if (window.innerWidth > 1000) {

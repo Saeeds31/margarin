@@ -87,7 +87,7 @@
       data-aos-delay="500"
       data-aos-once="false"
     />
-    <footerSite v-if="$root.sectionIndexHome == 7 ||$root.screenSize < 1000" />
+    <footerSite v-if="$root.sectionIndexHome == 8 ||$root.screenSize < 1000" />
     <footerNavigation class="showInMobile" />
   </div>
   <Loader v-else />
@@ -208,7 +208,7 @@ export default {
       }
       if (this.wheelCounter == 3) {
         this.wheelCounter = 0;
-        if (this.$root.sectionIndexHome != 7) {
+        if (this.$root.sectionIndexHome != 8) {
           this.$root.sectionIndexHome++;
         }
         window.removeEventListener("wheel", this.showSectionWithScroll);

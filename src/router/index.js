@@ -298,7 +298,17 @@ const routes = [{
                         );
                     }
                 },
+                {
+                    path: "product-comments",
+                    name: "panelProductComment",
 
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/productComment.vue"
+                        );
+                    }
+                },
 
                 {
                     path: "product-categories",
@@ -347,7 +357,17 @@ const routes = [{
                     }
                 },
 
+                {
+                    path: "recipes-raw_material",
+                    name: "panelRecipesRawMaterial",
 
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/recipesRawMaterial.vue"
+                        );
+                    }
+                },
                 {
                     path: "recipe-categories",
                     name: "panelRecipeCategories",
@@ -505,7 +525,9 @@ const routes = [{
 
 const router = new VueRouter({
     scrollBehavior(to, from, savedPosition) {
-        window.scrollTo(0, 0)
+
+        if (to.name != from.name)
+            window.scrollTo(0, 0)
             // ...
     },
     mode: "history",

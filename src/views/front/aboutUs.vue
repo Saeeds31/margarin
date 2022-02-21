@@ -51,13 +51,7 @@
       :text="aboutUsData.aboutUs.statisticText"
       class="width100"
     />
-    <awards
-      :prizes="aboutUsData.prizes"
-      data-aos="fade-up"
-        data-aos-delay="500"
-      data-aos-duration="1500"
-      data-aos-once="true"
-    />
+    
     <collapseBox
       v-if="collapseList"
       :list="collapseList"
@@ -66,6 +60,13 @@
       data-aos-duration="1500"
       data-aos-once="true"
       class="width80 margin-auto"
+    />
+    <awards
+      :prizes="aboutUsData.prizes"
+      data-aos="fade-up"
+        data-aos-delay="500"
+      data-aos-duration="1500"
+      data-aos-once="true"
     />
   </div>
   <loader v-else />

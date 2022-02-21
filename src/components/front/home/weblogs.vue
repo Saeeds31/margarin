@@ -3,11 +3,11 @@
     <sectionHeader :data="weblogsHeaderData">
       <svg
       id="newsSvg"
-            height="70"
+            height="50"
             viewBox="0 0 511 511.99897"
-            width="80"
+            width="60"
             xmlns="http://www.w3.org/2000/svg"
-          >
+        >
             <path
               d="m298.484375 24.015625c4.980469-6.621094 3.648437-16.023437-2.972656-21.003906-6.617188-4.976563-16.023438-3.648438-21.003907 2.972656l-63.933593 85.015625h37.535156zm0 0"
             />
@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       weblogsHeaderData: {
-        route: "/weblogs",
+        route: "/weblogs?type=0",
         routeTitle:this.$cookie.get('ltrTheme')?"View news archive": "مشاهده آرشیو اخبار",
         title:this.$cookie.get('ltrTheme')?"News and announcements": "اخبــــــار و اطلاعیــــــه هــــــا",
         summary:this.$cookie.get('ltrTheme')?"Study the latest": "مطالعـــه جدیـــدترین هـــا",

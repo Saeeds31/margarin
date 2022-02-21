@@ -1499,7 +1499,7 @@ AAAAAElFTkSuQmCC"
         ><i class="fa fa-angle-down" v-b-toggle.collapse-3></i>
 
         <span>
-          محصولات ها
+          محصولات 
           <svg
             id="_056-water-bottle"
             data-name="056-water-bottle"
@@ -1541,7 +1541,16 @@ AAAAAElFTkSuQmCC"
             >دسته بندی
             <i class="fa fa-align-justify" aria-hidden="true"></i></span
         ></router-link>
-      
+       <router-link to="/admin-panel/product-comments"
+          :class="{ activeRoute: $route.name == 'panelProductComment' }"
+          class="childRoute"
+        >
+          <span>
+            دیدگاه ها
+            <!--  -->
+
+            <i class="fa fa-comments" aria-hidden="true"></i></span
+        ></router-link>
       </b-collapse>
       <router-link
         :class="{ activeRoute: $route.name == 'panelUsers' }"

@@ -149,6 +149,8 @@ mixins:[adminMixin],
           edit: true,
           delete: true,
           editLabel:"ویرایش",
+          innerRoute: "/admin-panel/recipes-raw_material",
+          innerRouteTitle:'مواد اولیه'
         }
       ],
       pageSize:10,
@@ -179,6 +181,7 @@ mixins:[adminMixin],
       }
   },
   methods:{
+    
       showModalFunction(){
          this.showModal=true;
     setTimeout(()=>{

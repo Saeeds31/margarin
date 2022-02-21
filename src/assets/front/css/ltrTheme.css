@@ -442,6 +442,10 @@
         text-align: left
     }
     
+    .ltrTheme #homeSection #weeklyCookingSection .cart .body .header .titles h4 {
+        text-align: left;
+    }
+    
     @media (max-width:1000px) {
         .ltrTheme ul.menuChild {
             align-items: flex-start;

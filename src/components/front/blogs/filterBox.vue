@@ -11,17 +11,17 @@
         class="hiddenInMobile"
         :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
         id="sortOption"
-        track-by="name"
+       track-by="name"
         label="name"
         v-model="type"
         :options="typeOption"
       ></multiSelect>
       <multiSelect
-        id="categotyOption"
-        v-if="categories"
-        :placeholder="$cookie.get('ltrTheme') ? 'Category' : 'دسته بندی'"
-        v-model="category"
-        :options="categories"
+        id="categotyOption"       track-by="name"
+        label="name"
+               :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
+v-model="sort"
+        :options="sortOptions"
       >
       </multiSelect>
       <div id="searchBox" class="width45">
@@ -98,7 +98,8 @@ export default {
         searched() {
       let filter = {
         category: this.category != null ? this.category : "",
-        type: this.type != null ? this.type.value : "",
+                isDesending: this.sort != null ? this.sort.value : true,
+
         search: this.search
       };
       this.$emit("filtered", filter);
@@ -120,18 +121,17 @@ export default {
     type(newVal) {
       // this.filterList.push(newVal);
       let filter = {
-        category: this.category != null ? this.category : "",
+              isDesending: newVal != null ?newVal.value: true,
         type: this.type != null ? this.type.value : 1,
         search: this.search
       };
       this.$emit("filtered", filter);
     },
-    category(newVal) {
-      console.log(newVal);
+        sort(newVal) {
       // this.filterList.push(newVal);
       let filter = {
-        category: newVal != null ? newVal : "",
-        type: this.type != null ? this.type.value : "",
+             type: this.type != null ? this.type.value : 1,
+        isDesending: newVal != null ?newVal.value: true,
         search: this.search
       };
       this.$emit("filtered", filter);
@@ -147,8 +147,29 @@ export default {
           : "جستجو را همین الان شروع کنید ...",
       search: "",
       filterList: [],
-      category: this.categorySelected != "" ? this.categorySelected : null,
-
+      category: null,
+        sortOptions: [
+        {
+          name: this.$cookie.get("ltrTheme") ? "Oldest" : "قدیمی ترین",
+          value: "false"
+        },
+        {
+          name: this.$cookie.get("ltrTheme") ? "Newest" : "جدیدترین",
+          value: "true"
+        }
+      ],
+ sort:
+        this.isDesendingSelected != ""
+          ? this.isDesendingSelected == true
+            ? {
+                name: this.$cookie.get("ltrTheme") ? "Newest" : "جدیدترین",
+                value: "true"
+              }
+            : {
+                name: this.$cookie.get("ltrTheme") ? "Oldest" : "قدیمی ترین",
+                value: "false"
+              }
+          : null,
       type:
         this.typeSelected != ""
           ? this.typeSelected == "1"
@@ -164,16 +185,17 @@ export default {
       typeOption: [
         {
           name: this.$cookie.get("ltrTheme") ? "Articles" : "مقالات",
-          value: "0"
+          value: "1"
         },
-        { name: this.$cookie.get("ltrTheme") ? "News" : "اخبار", value: "1" }
+        { name: this.$cookie.get("ltrTheme") ? "News" : "اخبار", value: "0" }
       ]
     };
   },
   props: {
     placeHolder: String,
     typeSelected: String,
-    categorySelected: String
+        isDesendingSelected: String,
+
   }
 };
 </script>

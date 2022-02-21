@@ -311,11 +311,7 @@ export default {
     }
   },
   mounted() {
-    if (this.blogData == null) {
-      this.$store.dispatch("getBlogFromServer", this.$route.params.id);
-    } else {
       this.setStyle();
-    }
     window.addEventListener("resize", this.setStyle);
   },
     metaInfo() {
@@ -452,6 +448,10 @@ shareBlog(){
         );
       }
     }
+  },
+  beforeCreate(){
+      this.$store.dispatch("getBlogFromServer", this.$route.params.id);
+
   }
 };
 </script>

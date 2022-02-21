@@ -39,7 +39,7 @@
         id="content"
         class="d-flex justify-content-start width90 height100 hiddenInMobile"
       >
-        <div id="orangeShadow"></div>
+        <!-- <div id="orangeShadow"></div> -->
         <p
           id="wallTitle"
           class="d-flex justify-content-center align-items-center"

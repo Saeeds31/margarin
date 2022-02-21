@@ -214,10 +214,9 @@ export default {
       return this.$store.getters.getCookingData;
     }
   },
-  mounted() {
-   if(this.cookingData==null){
+  beforeCreate() {
      this.$store.dispatch("getCookingFromServer",this.$route.params.id);
-   }
+
   }
 };
 </script>

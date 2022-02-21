@@ -84,7 +84,7 @@ mixins:[adminMixin],
         {
           style: "col-6",
           show_in_table: false,
-          placeholder: "تصویر اسلایدر",
+          placeholder:"عرض 1900 پیکسل ارتفاع 1200 پیکسل",
           type: "image",
           multiData: false,
           name: "تصویر اسلایدر",

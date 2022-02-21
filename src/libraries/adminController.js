@@ -144,7 +144,7 @@ export default {
                     putData.userId = this.userId
                 }
                 putData.id = this.editedId;
-                if (putData.createDate) {
+                if (putData.createDate && this.apiRoute != 'Blog') {
                     delete putData.createDate
                 }
                 await this.$axios

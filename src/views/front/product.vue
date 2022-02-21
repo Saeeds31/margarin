@@ -224,7 +224,7 @@
               </button>
               <button class="comment d-flex justify-content-around">
                 <span>
-                  {{ `${product.comments.length}  ${$cookie.get('ltrTheme')?'comments':"نظرات داده شده"}` }}
+                  {{ `${productData.comments.length}  ${$cookie.get('ltrTheme')?'comments':"نظرات داده شده"}` }}
                 </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -318,18 +318,23 @@
         alt="مارگارین"
       />
     </div>
+      <commentBox   data-aos="fade-up"
+        data-aos-delay="500"
+      data-aos-duration="1000"
+      data-aos-once="true" :likeRoute="'ProductComment'" :field="'productId'" :routeComment="'ProductComment'" :comments="productData.comments" />
   </div>
   <loader v-else />
 </template>
 <script>
 import videoBox from "@/components/front/aboutUs/videoBox.vue";
+import commentBox from "@/components/front/shared/commentBox.vue";
 import Loader from "@/components/front/shared/loader.vue";
 import optionButton from "@/components/front/productDetail/option.vue";
 import doubleLine from "@/components/front/shared/doubleLine.vue";
 import currentPath from "@/components/front/shared/currentPath.vue";
 export default {
   components: {
-    currentPath,
+    currentPath,commentBox,
     doubleLine,
     optionButton,
     videoBox,
@@ -480,14 +485,15 @@ export default {
   },
   mounted() {
     window.addEventListener("resize", this.setStyle);
-    if (this.productData == null) {
-      this.$store.dispatch("getProductFromServer", this.$route.params.id);
-    } else {
       this.setStyle();
-    }
   },
   beforeCreate() {
+      this.$store.dispatch("getProductFromServer", this.$route.params.id);
+
+  },
+  beforeDestroy(){
     window.removeEventListener("resize", this.setStyle);
+
   }
 };
 </script>

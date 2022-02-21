@@ -1,9 +1,15 @@
 <template>
   <div class="cart width100 d-flex justify-content-between">
-    <div  class="imageBox width60 d-flex justify-content-center align-items-end hiddenInMobile">
+    <div data-aos="zoom-in"
+      data-aos-duration="1500"
+      data-aos-delay="500"
+      data-aos-once="false"  class="imageBox width60 d-flex justify-content-center align-items-end hiddenInMobile">
       <img class="width60" :src="$root.baseImageUrl+data.image" :alt="data.title" />
     </div>
-    <div class="body width50 d-flex flex-direction-column align-items-end">
+    <div data-aos="zoom-in"
+      data-aos-duration="1500"
+      data-aos-delay="500"
+      data-aos-once="false" class="body width50 d-flex flex-direction-column align-items-end">
       <div  class="header d-flex justify-content-end">
          	 <svg
 			  id="cookingHomeSvg"
@@ -125,13 +131,13 @@
         {{ data.shortDescription }}
       </p>
       <p class="seen">
-        {{ $cookie.get('ltrTheme')?`to now ${data.viewCount} People have observed`
-        :`تــا کنــون ${data.viewCount} نــفر مشاهــده کرده انــد` }}
+        {{ $cookie.get('ltrTheme')?`Time to read the article ${data.timeToRead} Minutes`
+        :`زمان مورد مطالعه مطلب ${data.timeToRead} دقیقه می باشد` }}
       </p>
 <div class="loading">
     <span></span>
 </div>
-      <div class="buttons width70 d-flex justify-content-between">
+      <div class="buttons width75 d-flex justify-content-between">
         <router-link class="kitchen width45" to="/cooking-archive">
      <svg width="24px" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M20.3287 11.0002V13.0002L7.50042 13.0002L10.7429 16.2428L9.32873 17.657L3.67188 12.0001L9.32873 6.34326L10.7429 7.75747L7.50019 11.0002L20.3287 11.0002Z" fill="black"/>
@@ -151,6 +157,11 @@
 export default {
   props: {
     data: Object
+  },
+  methods:{
+    gotoDetail(route){
+      this.$router.push(route)
+    }
   }
 };
 </script>
@@ -163,6 +174,8 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: max-content;
+    padding:0 10px
 }
 .kitchen svg{
     margin:0 8px;

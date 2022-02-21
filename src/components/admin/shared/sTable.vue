@@ -44,7 +44,7 @@
             </span>
           </td>
           <td v-if="header.type == 'setting'" :key="index + 20">
-            <router-link class="innerRouteButton" :to="`${header.innerRoute}?id=${item.id}`" v-if="header.innerRoute">ویژگی ها</router-link>
+            <router-link class="innerRouteButton" :to="`${header.innerRoute}?id=${item.id}`" v-if="header.innerRoute">{{header.innerRouteTitle?header.innerRouteTitle:'ویژگی ها'}}</router-link>
             <b-button
               class="tableButtons"
               v-if="header.edit == true"

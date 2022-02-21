@@ -2,6 +2,7 @@
   <div id="aboutUsSection" class="d-flex justify-content-end">
     <div id="text" class="width50 d-flex flex-direction-column align-items-end">
       <img
+      @mouseenter="animateToImage"
       data-aos="flip-right" data-aos-duration="2200" data-aos-delay="500"    data-aos-once="false"
       id="aboutUsSectionImage"
         class="width70"
@@ -125,6 +126,13 @@ export default {
     window.removeEventListener("resize", this.setStyle);
   },
   methods: {
+    animateToImage(){
+document.getElementById("aboutUsSectionImage").classList.add("aboutUsSectionImageHover");
+setTimeout(()=>{
+document.getElementById("aboutUsSectionImage").classList.remove("aboutUsSectionImageHover");
+
+},4100)
+    },
     setStyle() {
       if (window.innerWidth> 1000) {
         this.$root.setProportionStyle(

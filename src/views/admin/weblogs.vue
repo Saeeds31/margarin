@@ -110,7 +110,7 @@ mixins:[adminMixin],
           key: "description",
         },
            {
-              style: "col-12",
+              style: "col-6",
               show_in_table: false,
               placeholder: " زمان مطالعه پست را وارد کنید",
               type: "number",
@@ -119,14 +119,33 @@ mixins:[adminMixin],
               key: "timeToRead",
             },
         
+        {
+          style: "col-6",
+          show_in_table: false,
+          placeholder: " تاریخ خبر  را وارد کنید",
+          type: "date",
+          multiData: false,
+          name: "تاریخ خبر",
+          key: "createDate",
+          disable:true
+        },
        {
-          style: "col-12",
+          style: "col-6",
           show_in_table: true,
           placeholder: "تصویر پست",
           type: "image",
           multiData: false,
           name: "تصویر پست",
           key: "image",
+        },
+       {
+          style: "col-6",
+          show_in_table: true,
+          placeholder: "آیا ویژه است",
+          type: "boolean",
+          multiData: false,
+          name: "آیا ویژه است",
+          key: "special",
         },
         
        {

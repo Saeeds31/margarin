@@ -10,6 +10,7 @@
 export default {
   methods: {
     homeRoute() {
+      this.$root.sectionIndexHome=1;
         this.$router.push("/");
     }
   },

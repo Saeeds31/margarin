@@ -1,7 +1,7 @@
 <template>
   <div id="weeklyCookingSection" class="width100 height100vh">
     <VueSlickCarousel v-bind="sliderSettings">
-      <cart v-for="(item, index) in cookings" :key="index" :data="item" />
+      <cart :style="{'zIndex':index}"  v-for="(item, index) in cookings" :key="index" :data="item" />
     </VueSlickCarousel>
   </div>
 </template>
@@ -12,16 +12,15 @@ export default {
   data() {
     return {
       sliderSettings: {
-        fade: true,
+        fade:true,
         dots: false,
         arrows: true,
         dotsClass: "slick-dots custom-dot-class",
         edgeFriction: 0.35,
         infinite: false,
-        autoplay: true,
-        speed: 3000,
-        autoplaySpeed: 3000,
-        cssEase: "linear",
+        autoplay: false,
+        speed: 500,
+        autoplaySpeed: 500,
         slidesToShow: 1,
         slidesToScroll: 1
       }
@@ -239,8 +238,9 @@ export default {
 #weeklyCookingSection {
   margin: 5% auto 2.5%;
   background-image: url("../../../assets/front/images/weeklyCookingBack.png");
-  background-size: 36% 100%;
-  background-repeat: no-repeat;
+background-size: 36% 85%;
+    background-repeat: no-repeat;
+    background-position-y: bottom;
 }
 </style>
 <style>

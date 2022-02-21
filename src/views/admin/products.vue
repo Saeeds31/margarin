@@ -82,6 +82,15 @@ export default {
           key: "name"
         },
         {
+          style: "col-12",
+          show_in_table: true,
+          placeholder: "قیمت مصوب را وارد کنید",
+          type: "string",
+          multiData: true,
+          name: "قیمت مصوب",
+          key: "price"
+        },
+        {
           style: "col-6",
           show_in_table: true,
           placeholder: "دسته بندی را انتخاب کنید",

@@ -544,7 +544,7 @@ input:-internal-autofill-selected {
 #homeSection #homeLeader #headerContent {
     position: absolute;
     right: 5%;
-    top: 6%;
+    top: 2%;
     z-index: 10;
 }
 
@@ -555,20 +555,39 @@ input:-internal-autofill-selected {
 }
 
 #homeSection #homeLeader #headerContent #buttons {
-    width: 35%;
+    width: 30%;
+}
+
+#homeSection #homeLeader #headerContent.reStyleHeaderContent #buttons button i {
+    font-size: 24px
+}
+
+#homeSection #homeLeader #headerContent.reStyleHeaderContent #buttons button {
+    width: 45px;
+    height: 45px;
+}
+
+#homeSection #homeLeader #headerContent.reStyleHeaderContent .mainLogo {
+    width: 75px !important
 }
 
 #homeSection #homeLeader #headerContent #buttons button {
     background-color: #ffffff20;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     border: none;
     border-radius: 10px;
 }
 
 #homeSection #homeLeader #headerContent #buttons button i.fa.fa-bars {
     color: white;
-    font-size: 40px;
+    font-size: 30px;
+}
+
+#homeSection #homeLeader #headerContent #buttons button#toggleMenu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #homeSection #homeLeader #headerContent #buttons button.reStyleToggle i.fa.fa-bars {
@@ -582,7 +601,7 @@ input:-internal-autofill-selected {
 
 #homeSection #homeLeader #ambassadorButton {
     background-color: #01B74A;
-    padding: 15px 20px;
+    padding: 15px;
     width: max-content;
     height: max-content;
     border-radius: 10px;
@@ -617,12 +636,19 @@ svg#newsSvg,
     opacity: 0.15;
 }
 
+#homeSection #footer {
+    background: #dedede;
+    padding-top: 0;
+    margin-top: 30vh;
+    height: 70vh;
+}
+
 #homeSection #homeLeader #headerContent #navBarMenu ul li a {
     font-family: 'yekan-bold';
     font-size: 17px;
     color: white;
     cursor: pointer;
-    text-shadow: 0 0 10px black;
+    text-shadow: 0px 0px 20px #ff8b00
 }
 
 #homeSection #homeLeader #verticalMenu {
@@ -633,6 +659,11 @@ svg#newsSvg,
     padding: 10px 0;
     border-radius: 35px;
     z-index: 9;
+    transform: scale(0.9);
+}
+
+#homeSection #homeLeader #verticalMenu.newRightPosition {
+    right: 2.5%
 }
 
 #homeSection #homeLeader #verticalMenu ul {
@@ -746,13 +777,14 @@ svg#newsSvg,
     margin: 0 5%;
 }
 
-#homeSection #sliderSection #sliderContent #bottomWall #content #orangeShadow {
+
+/* #homeSection #sliderSection #sliderContent #bottomWall #content #orangeShadow {
     width: 10%;
     height: 60%;
     background: #ffffff57;
     margin: auto 0;
     border-left: 2px solid #f7931c;
-}
+} */
 
 #homeSection #sliderSection #sliderContent #bottomWall #content #wallTitle {
     font-size: 16px;
@@ -986,12 +1018,15 @@ svg#newsSvg,
     height: 100vh;
     padding-top: 5%;
     margin: 0;
+    z-index: 8;
+    position: relative;
 }
 
 #homeSection #weeklyCookingSection .cart .imageBox img {
     border-radius: 20px;
     padding: 15px;
-    height: 520px;
+    height: 490px;
+    width: 460px;
     background: #ffffff69;
 }
 
@@ -1019,6 +1054,7 @@ svg#newsSvg,
     color: var(--color-theme);
     font-size: 25px;
     font-family: 'yekan-heavy';
+    text-align: right;
 }
 
 #homeSection #weeklyCookingSection .cart .body p {
@@ -1310,6 +1346,8 @@ svg#newsSvg,
     overflow: hidden;
     /* margin-bottom: 200px; */
     width: 100%;
+    position: relative;
+    z-index: 8;
 }
 
 #homeSection #certificatesSlider .cart .content {
@@ -3700,7 +3738,8 @@ div#application {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: #625d5d;
+    /* background: #625d5d; */
+    background: #000000eb;
     position: fixed;
     align-items: center;
     z-index: 1000000000000;
@@ -3724,6 +3763,15 @@ div#application {
     border-bottom: 3px solid #e5e0d857
 }
 
+.menuHeader:hover {
+    border-bottom: 3px solid #ff9d00
+}
+
+.menuHeader:hover a {
+    color: #ff9d00;
+    text-shadow: 0 0 10px red;
+}
+
 .menuHeader a {
     font-size: 18px;
     font-family: 'yekan-bold';
@@ -3745,19 +3793,42 @@ ul.menuChild li a {
     opacity: 0.8;
 }
 
+ul.menuChild li:hover a {
+    text-shadow: 0 0 10px orange;
+    color: red
+}
+
 ul.menuChild li {
     direction: rtl;
     margin-top: 5px;
     text-align: right;
 }
 
+#productDetailSection div#commentBox {
+    width: 85%;
+    margin: auto;
+    margin-bottom: 200px;
+}
+
+.aboutUsSectionImageHover {
+    animation: flipAboutUsImage 2s 2 linear alternate;
+}
+
+@keyframes flipAboutUsImage {
+    from {
+        transform: scale(1, 1)
+    }
+    to {
+        transform: scale(-1, 1)
+    }
+}
+
 #mobileMenu #closeArrow {
-    transform: rotate( 197deg) scale(0.7);
     width: 100px;
     border-radius: 10px;
     position: fixed;
     left: 5px;
-    top: -31px;
+    top: 15px;
     cursor: pointer;
 }
 
@@ -3840,6 +3911,7 @@ img#moonSvg {
 
 #weeklyCookingSection .cart.width100.d-flex.justify-content-between {
     margin-top: -40px;
+    align-items: center;
 }
 
 
