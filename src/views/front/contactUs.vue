@@ -873,7 +873,8 @@ export default {
         fullName: this.fullName,
         email: this.email,
         phone: this.mobile,
-        text: this.text
+        text: this.text,
+        forManager:false,
       };
       this.disabled = true;
       this.$axios

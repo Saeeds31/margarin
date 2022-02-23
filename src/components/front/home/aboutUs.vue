@@ -11,14 +11,16 @@
       />
       <div id="sliderSection" class="showInMobile width100">
         <VueSlickCarousel v-bind="sliderSettings">
-          <cart v-for="item in aboutUsList" :content="item" :key="item.id" />
+          <cart  v-for="item in aboutUsList" :content="item" :key="item.id" />
         </VueSlickCarousel>
       </div>
-      <h1>{{$cookie.get('ltrTheme')?'About Margarine Group':'دربــــــاره گــــــروه مارگاریــــــن'}}</h1>
+      <h1>{{$cookie.get('ltrTheme')?'About Margarine ':'دربــــــاره  مارگاریــــــن'}}</h1>
       <h3 class="summary">{{$cookie.get('ltrTheme')?'Importance for family health':'اهــــــمیت بــــــه ســــــلامت خانــــــواده'}}</h3>
       <p>
         
-        {{$cookie.get('ltrTheme')? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, printer et al. It is practical, many books in the past sixty-three percent of the present and the future, require a lot of knowledge of society and professionals, to create more knowledge with software for computer designers, especially creative designers, and the leading culture in Persian, In this case, it can be hoped that all the difficulties in providing solutions, and difficult typing conditions will end, and the time required, including typing the main achievements, and answering the continuous questions of the existing world of design, will be basically used.' :' لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد. '}}
+        {{$cookie.get('ltrTheme')? 'Margarine is the first vegetable oil company in Iran, which is known among the people with the brands of rooster, sun and golden sun. This company, which entered the field of industry in January 1943 with a refining capacity of 8 tons of vegetable oil per day, and now with the cooperation of experienced experts has been able to be a guest of many families and different industries in the country with a production capacity of 1000 tons per day.
+This collection always tries to design and produce products with superior quality and in accordance with the needs of customers. Currently, the company produces 38 different types of oil products in two sections of industry and industry (B2B) and household consumption (B2C), which in addition to complying with the criteria of the Iranian Institute of Standards and Industrial Research and the Deputy Minister of Food and Drugs, with standards Internationals such as CODEX from the Swiss company SGS have also been adapted, which is why margarine products are now on the market in most Middle Eastern and even European countries.' :'مارگارين اولين شركت توليد كننده روغن گياهي در ايران است كه با برندهای خروس، آفتاب و آفتاب طلايي  در بين مردم شناخته شده است. اين شركت كه در دی ماه سال 1332 با ظرفیت تصفيه 8 تن روغن گياهي در روز پا به عرصه صنعت گذاشت و اکنون با همكاري كارشناسان مجرب توانسته است با ظرفیت توليدي 1000 تن در روز، میهمان بسیاری ازخانواده ها و صنایع مختلف کشور باشد.
+اين مجموعه همواره سعي می نماید محصولاتی با کیفیت برتر و منطبق با نیاز مشتریان طراحی و تولید نماید. هم اکنون  38 نوع  محصول متنوع روغني در دو بخش صنف و صنعت (B2B) و مصارف خانوار (B2C) در این شرکت تولید می‌شود که علاوه بر مطابقت با ضوابط موسسه استاندارد و تحقیقات صنعتی ایران و معاونت غذا و دارو وزارت بهداشت، با استاندارد های بین¬المللی نظیر CODEX از شرکت SGS سوئیس نیز انطباق داده شده است، به همین سبب اینک محصولات مارگارین در بازار اغلب کشورهای خاورمیانه و حتی کشورهای اروپایی به چشم می خورد.'}}
       </p>
     </div>
     <div id="pictures" class="width50 hiddenInMobile">
@@ -94,26 +96,26 @@ export default {
           id: 1,
           image: "https://s4.uupload.ir/files/a_3j4x.png",
           title:this.$cookie.get("ltrTheme")?"Introducing the collection": "معرفی مجموعه",
-          text:this.$cookie.get("ltrTheme")?"Lorem ipsum dolor sit amet, consectetur adipiscing elit.": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
+          text:this.$cookie.get("ltrTheme")?"":""
         },
           {
           id: 3,
           image: "https://s4.uupload.ir/files/b_mbnf.png",
           title:this.$cookie.get("ltrTheme")?"Perspectives": "چشم اندازها",
-          text:this.$cookie.get("ltrTheme")?"Lorem ipsum dolor sit amet, consectetur adipiscing elit.": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
+          text:this.$cookie.get("ltrTheme")?"":""
         },
         {
           id: 2,
           image: "https://s4.uupload.ir/files/aboutushomecart1_p0ia.png",
           title:this.$cookie.get("ltrTheme")?"Our mission": "ماموریت ما",
-          text:this.$cookie.get("ltrTheme")?"Lorem ipsum dolor sit amet, consectetur adipiscing elit.": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
+          text:this.$cookie.get("ltrTheme")?"":""
         },
       
         {
           id: 4,
           image: "https://s4.uupload.ir/files/-e-icon_2e8m.png",
-          title:this.$cookie.get("ltrTheme")?"Group values": "ارزش های گروه",
-          text:this.$cookie.get("ltrTheme")?"Lorem ipsum dolor sit amet, consectetur adipiscing elit.": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ می باشد ."
+          title:this.$cookie.get("ltrTheme")?"Group values": "ارزش های مارگارین",
+          text:this.$cookie.get("ltrTheme")?"":""
         }
       ]
     };

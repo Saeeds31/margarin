@@ -32,7 +32,7 @@
 
             <span>{{$cookie.get('ltrTheme')?'Get the 2022 calendar':'دریافت تقویم سال 1400'}}</span>
           </button>
-          <button class="d-flex flex-direction-column align-items-center">
+          <button @click="$router.push('/catalogue')" class="d-flex flex-direction-column align-items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -58,8 +58,8 @@
         class="width20 d-flex flex-direction-column align-items-end"
       >
         <h1 id="footerTitle" class="footerTitle">{{$cookie.get('ltrTheme')?'Headquarters address':'نشانی دفتر مرکزی'}}</h1>
-        <p>{{$cookie.get('ltrTheme')?'Iran, Tehran, Rey city, 3 km of Varamin road, Shahid Tondgovian boulevard, Margarine industrial companies group':' ایران , تهران , شهر ري , كيلومتر 3 جاده ورامين , بلوار شهید تندگویان ,
-          گروه شرکت های صنعتی مارگارین'}}</p>
+        <p>{{$cookie.get('ltrTheme')?'Iran, Tehran, Rey city, 3 km of Varamin road, Shahid Tondgovian boulevard, Margarine industrial companies ':' ایران , تهران , شهر ري , كيلومتر 3 جاده ورامين , بلوار شهید تندگویان ,
+           شرکت های صنعتی مارگارین'}}</p>
         <span> info@email.com </span>
         <h2> ۰۲۱- ۳۵۸۱۱</h2>
         <div v-if="$root.footerData" id="social" class="width100 d-flex justify-content-around">
@@ -198,7 +198,7 @@
 
             <span>{{$cookie.get('ltrTheme')?'Get the 2022 calendar':'دریافت تقویم سال 1400'}}</span>
           </button>
-          <button class="d-flex flex-direction-column align-items-center">
+          <button @click="$router.push('/catalogue')" class="d-flex flex-direction-column align-items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"

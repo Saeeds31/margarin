@@ -1,5 +1,5 @@
 <template>
-    <div class="aboutCart  d-flex flex-direction-column align-items-end">
+    <div @click="routeToAbout()" class="aboutCart  d-flex flex-direction-column align-items-end">
         <img 
       data-aos="flip-left" :data-aos-duration="3000"    data-aos-once="false" data-aos-delay="500"
          class="width40"  :src="content.image" alt="">
@@ -11,6 +11,10 @@
 export default {
     props:{
         content:Object
+    },methods:{
+        routeToAbout(){
+            this.$router.push('/about-us?section=collapseSection')
+        }
     }
 }
 </script>

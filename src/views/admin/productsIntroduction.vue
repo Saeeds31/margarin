@@ -68,11 +68,24 @@ export default {
         {
           style: "col-12",
           show_in_tabel: true,
-          placeholder: " تصویر اصلی را وارد کنید",
+         
+          placeholder: " تصویر اصلی با ارتفاع 586 و عرض 460 پیکسل",
           type: "image",
           multiData:false,
           name: "تصویر",
           key: "image"
+        },
+        
+       
+        {
+          style: "col-12",
+          show_in_tabel: false,
+         
+          placeholder: " فایل قیمت مصوب را آپلود کنید",
+          type: "file",
+          multiData:false,
+          name: "فایل قیمت مصوب",
+          key: "priceListFile"
         },
         
         {

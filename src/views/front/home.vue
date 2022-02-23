@@ -155,15 +155,18 @@ export default {
 
       if (newVal.news.length == 0) return;
       else if (newVal.news.length >= 3) {
-        let counter = Math.floor(newVal.news.length / 3);
         let sl = [];
         let ml = [];
-        for (let index = 0; index < counter; index++) {
-          sl.push(newVal.news[index]);
-        }
-        for (let index2 = counter; index2 < newVal.news.length; index2++) {
-          ml.push(newVal.news[index2]);
-        }
+        newVal.news.forEach((item)=>{
+          if(item.isSpecial==true){
+
+            sl.push(item);
+          }else{
+
+            ml.push(item);
+          }
+        })
+        
         this.$store.commit("setMultiSliderNews", ml);
         this.$store.commit("setSingleSliderNews", sl);
       } else {

@@ -4,12 +4,12 @@
       <slot> </slot>
     </div>
     <div class="content d-flex flex-direction-column align-items-center">
-      <h3 class="blackColor06">{{ catalogue.summary }}</h3>
+      <h3 class="blackColor06">{{ catalogue.section }}</h3>
       <h1 class="blackColor08">{{ catalogue.title }}</h1>
       <double-line class="width40" />
       <p>
         <span class="blackColor04">
-          {{ catalogue.date }}
+          {{ catalogue.fileDate }}
         </span>
        
 <svg class="calendarSvgCatalogue" width="18" height="18" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -56,8 +56,8 @@
       </p>
     </div>
    <div class="download d-flex justify-content-center width100">
-        <a :href="catalogue.file" target="_blank" >
-      <span> دریافت فایل </span>
+        <a :href="$root.baseImageUrl+catalogue.file" target="_blank" >
+      <span> {{$cookie.get('ltrTheme')?'Get File':'دریافت فایل'}} </span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"

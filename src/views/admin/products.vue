@@ -84,7 +84,7 @@ export default {
         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "قیمت مصوب را وارد کنید",
+          placeholder: "قیمت مصوب را (به تومان و دلار) وارد کنید",
           type: "string",
           multiData: true,
           name: "قیمت مصوب",
@@ -100,6 +100,18 @@ export default {
           multiple: false,
           selectIN: "ProductCategory",
           key: "categoryId"
+        },
+        
+        {
+          style: "col-6",
+          show_in_table: true,
+          placeholder: "برند را انتخاب کنید",
+          type: "select",
+          multiData: false,
+          name: " برند",
+          multiple: false,
+          selectIN: "Brand",
+          key: "brandId"
         },
 
         {
@@ -134,16 +146,16 @@ export default {
         {
           style: "col-6",
           show_in_table: true,
-          placeholder: "تصویر محصول",
+          placeholder: "تصویر محصول با ارتفاع 467پیکسل و عرض 267 پیکسل",
           type: "image",
           multiData: false,
-          name: "تصویر محصول",
+          name: "تصویر محصول ",
           key: "image"
         },
         {
           style: "col-6",
           show_in_table: false,
-          placeholder: "تصویر جدول تغذیه",
+          placeholder: "تصویر جدول تغذیه با ارتفاع 250 و عرض 350 پیکسل",
           type: "image",
           multiData: false,
           name: "تصویر جدول تغذیه",
@@ -201,7 +213,7 @@ export default {
     } else {
       this.currentPage = 1;
     }
-    this.loadSettings([{ route: "ProductCategory", field: "name" }]);
+    this.loadSettings([{ route: "ProductCategory", field: "name" },{ route: "Brand", field: "title" }]);
 
     this.loadItems(this.currentPage);
   },

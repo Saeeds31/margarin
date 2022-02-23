@@ -70,6 +70,7 @@ export default {
         edgeFriction: 0.35,
         infinite: false,
         autoplay: true,
+        pauseOnHover:false,
         speed: 3500,
         autoplaySpeed: 2000,
         slidesToShow: 1,
@@ -82,6 +83,9 @@ export default {
   mounted() {
     this.setStyle();
     window.addEventListener("resize", this.setStyle);
+    // setTimeout(() =>{
+    //   this.sliderSettings.infinite=true
+    // },1000)
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.setStyle);

@@ -54,51 +54,51 @@ mixins:[adminMixin],
         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "عنوان جایزه را وارد کنید",
+          placeholder: "گردآورنده کاتالوگ را وارد کنید",
+          type: "string",
+          multiData: true,
+          name: "گرد آورنده",
+          key: "section",
+        },
+        {
+          style: "col-12",
+          show_in_table: true,
+          placeholder: "عنوان کاتالوگ را وارد کنید",
           type: "string",
           multiData: true,
           name: "عنوان",
           key: "title",
         },
           
-        {
-          style: "col-12",
-          show_in_table: false,
-          placeholder: "توضیحات کوتاه جایزه را وارد کنید",
-          type: "string",
-          multiData: true,
-          name: "توضیحات کوتاه",
-          key: "shortDescription",
-        },
-          
        
-          
-        {
-          style: "col-12",
-          show_in_table: false,
-          placeholder: "توضیحات جایزه را وارد کنید",
-          type: "description",
-          multiData: true,
-          name: "توضیحات",
-          key: "description",
-        },
+         
           
        
         {
           style: "col-12",
           show_in_table: false,
-          placeholder: " زمان دریافت جایزه را وارد کنید",
+          placeholder: " زمان ساخت را وارد کنید",
           type: "date",
           multiData: false,
-          name: "زمان دریافت",
-          key: "receivedDate",
+          name: "زمان ساخت",
+          key: "fileDate",
           disable:true
         },
           
          {
           style: "col-12",
+          show_in_table: false,
+          placeholder: "  فایل کاتالوگ را آپلود کنید" ,
+          type: "file",
+          multiData: false,
+          name: "فایل ",
+          key: "file",
+        },
+          
+         {
+          style: "col-12",
           show_in_table: true,
-          placeholder: "تصویر جایزه با ارتفاع 400 و عرض 240 پیکسل",
+          placeholder: "  تصویر کاتالوگ را در عرض و ارتفاع 90 پیکسل وارد کنید " ,
           type: "image",
           multiData: false,
           name: "تصویر ",
@@ -125,9 +125,9 @@ mixins:[adminMixin],
         english: {},
         both: {}
       },
-      title: "جوایز",
+      title: "کاتالوگ ها",
       editedId: null,
-      apiRoute: "Prize",
+      apiRoute: "CatalogueFile",
     };
   },
   mounted() {

@@ -73,7 +73,7 @@ mixins:[adminMixin],
         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "آیکن دسته بندی را انتخاب کنید",
+          placeholder: "آیکن دسته بندی با ارتفاع و عرض 64 پیکسل",
           type: "image",
           multiData: false,
           name: "آیکن",

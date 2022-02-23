@@ -15,6 +15,10 @@
         class="slotElements"
       >
         {{productsData.data.productsIntro.text }}
+        <br>
+      <a id="getListButton" :href="$root.baseImageUrl+productsData.data.productsIntro.priceListFile">{{$cookie.get('ltrTheme')?'Get approved price list':'دریافت لیست قیمت مصوب'}}
+        <i class="fa fa-download"></i>
+      </a>
       </p>
     </introduction>
     <filterBox
@@ -166,3 +170,11 @@ watch: {
   },
 };
 </script>
+<style>
+a#getListButton {
+    padding: 10px;
+    text-shadow: 0 0 14px orange;
+    font-family: 'yekan-bold';
+    font-size: 22px;
+}
+</style>

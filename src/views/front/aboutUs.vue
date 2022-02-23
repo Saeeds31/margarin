@@ -4,8 +4,8 @@
       class="width80 margin-auto"
       :title="
         $cookie.get('ltrTheme')
-          ? 'About Margarin Group'
-          : 'دربــــاره گــــروه مارگاریــــن'
+          ? 'About Margarin '
+          : 'دربــــاره  مارگاریــــن'
       "
       :summary="aboutUsData.aboutUs.title"
       :image="$root.baseImageUrl + aboutUsData.aboutUs.image"
@@ -111,6 +111,9 @@ export default {
     },
     racemeItems(){
       return this.$store.getters.getRacemeItems
+    },
+    collapseList(){
+      return this.$store.getters.getAboutUsCollapseList;
     }
   },
   created() {
@@ -127,7 +130,7 @@ export default {
         { number:newValue.aboutUs.personel, title_en:"Factory personnel",title_fa: "نفر پرسنل کارخانه" }
       ]
       this.$store.commit("setRacemeItems",racemeItems)
-      this.collapseList=[
+      let collapse=[
         {
           id: 1,
           image:  newValue.aboutUs.exteraTitle1Icon,
@@ -149,14 +152,20 @@ export default {
           answer: newValue.aboutUs.exteraText3
         }
       ];
-
+      this.$store.commit('setAboutUSCollapseList',collapse)
     }
   },
   data() {
     return {
-      collapseList: null,
       routes:[{ route: "", routeTitle_fa: "درباره ما", routeTitle_en:"about us"}],
     };
+  },
+  mounted(){
+    if(this.$route.query.section){
+      setTimeout(()=>{
+        document.getElementById(this.$route.query.section).scrollIntoView({behavior:'smooth'})
+      },2000)
+    }
   }
 };
 </script>

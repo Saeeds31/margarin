@@ -94,7 +94,7 @@
         <div class="d-flex width100 align-items-center justify-content-around">
           <p class="blackColor04 width80">
             ایران , تهران , شهر ري , كيلومتر 3 جاده ورامين , بلوار شهید تندگویان
-            گروه شرکت های صنعتی مارگارین
+             شرکت های صنعتی مارگارین
           </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"

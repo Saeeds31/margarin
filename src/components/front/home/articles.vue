@@ -336,8 +336,8 @@ this.$root.setProportionStyle(
 #sliderSection .slick-prev,
 #sliderSection .slick-next {
   background: white;
-  width: 56px;
-  height: 56px;
+  width: 60px;
+  height: 60px;
   border-radius: 50px;
   box-shadow: 0 0 18px #00000059;
   cursor: pointer;

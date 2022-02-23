@@ -112,7 +112,7 @@ mixins:[adminMixin],
        {
           style: "col-12",
           show_in_table: true,
-          placeholder: "تصویر پست",
+          placeholder: "تصویر پست در ارتفاع 300 و عرض 530 پیکسل",
           type: "image",
           multiData: false,
           name: "تصویر پست",

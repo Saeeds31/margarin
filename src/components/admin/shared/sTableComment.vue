@@ -75,6 +75,12 @@
               @click="sendReact('disLike',item.id)"
               ><i class="fa fa-dislike"></i>disLike</b-button
             >
+            <b-button
+              class="tableButtons"
+              variant="info"
+              @click="changeStatus(item.id)"
+              ><i class="fa fa-dislike"></i>{{item.isShow==false?'تایید':'عدم تایید'}}</b-button
+            >
           </td>
         </template>
      
@@ -291,6 +297,18 @@ export default {
     ReplyByAdminRoute:String,
   },
   methods: {
+    changeStatus(id){
+      this.$axios.post(this.likeRoute+"/ChangeStatus?id="+id).then((response) => {
+        this.$toast.success(response.data.message);
+        this.list.forEach((item)=>{
+          if(item.id==id){
+            item.isShow=!item.isShow
+          }
+        })
+      })
+
+      // 
+    },
     sendAnswer(){
      
      let pack={

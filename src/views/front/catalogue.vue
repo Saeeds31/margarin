@@ -1,18 +1,23 @@
 <template>
-  <div id="catalogueSection" class="width100">
-    <introduction class="width80 margin-auto" :title="
+  <div v-if="catalogueData" id="catalogueSection" class="width100">
+    <introduction
+      class="width80 margin-auto"
+      :title="
         $cookie.get('ltrTheme')
           ? 'Get catalogs'
           : 'دریــــافت کاتالــــوگ هــــا'
       "
-      :summary="$cookie.get('ltrTheme')?'Study and view details':'مطالعــــه و مشــــاهده جزئیــــات'"
-      :image="'https://s4.uupload.ir/files/clips_mm8.png'"
-      :routes="routes">
-      <p    data-aos-duration="1500"
+      :summary="catalogueData.catalogueIntro.title"
+      :image="$root.baseImageUrl+catalogueData.catalogueIntro.image"
+      :routes="routes"
+    >
+      <p
+        data-aos-duration="1500"
         data-aos-once="true"
         data-aos="zoom-in"
-         class="slotElements">
-        {{ description }}
+        class="slotElements"
+      >
+        {{ catalogueData.catalogueIntro.text }}
       </p>
     </introduction>
     <div
@@ -24,22 +29,24 @@
         data-aos-duration="1000"
         data-aos-once="true"
         data-aos-delay="500"
-        v-for="(catalogue, index) in catalogues"
+        v-for="(catalogue, index) in catalogueData.catalogueFiles"
         :key="index"
         :catalogue="catalogue"
       >
-        <img :src="catalogue.image" :alt="catalogue.title" />
+        <img :src="$root.baseImageUrl+catalogue.image" :alt="catalogue.title" />
       </catalogue>
     </div>
   </div>
+  <loader v-else />
 </template>
 <script>
 import catalogue from "@/components/front/catalogue/cart.vue";
 import introduction from "@/components/front/shared/introduction.vue";
+import Loader from '@/components/front/shared/loader.vue';
 export default {
   components: {
     introduction,
-    catalogue
+    catalogue,Loader
   },
   data() {
     return {
@@ -74,35 +81,54 @@ export default {
         }
       ],
 
-      routes:[{ route: "", routeTitle_fa: "کاتالوگ", routeTitle_en:"Catalogue"}],
+      routes: [
+        { route: "", routeTitle_fa: "کاتالوگ", routeTitle_en: "Catalogue" }
+      ],
 
-        description:
-          "مارگارين اولين شركت توليد كننده روغن گياهي در ايران است كه با برندهای خروس، آفتاب و آفتاب طلايي  در بين مردم شناخته شده است. اين شركت كه در دی ماه سال 1332 با ظرفیت تصفيه 8 تن روغن گياهي در روز پا به عرصه صنعت گذاشت و اکنون با همكاري كارشناسان مجرب توانسته است با ظرفیت توليدي 1000 تن در روز، میهمان بسیاری ازخانواده ها و صنایع مختلف کشور باشد. اين مجموعه همواره سعي می نماید محصولاتی با کیفیت برتر و منطبق با نیاز مشتریان طراحی و تولید نماید .",
-       
+      description:
+        "مارگارين اولين شركت توليد كننده روغن گياهي در ايران است كه با برندهای خروس، آفتاب و آفتاب طلايي  در بين مردم شناخته شده است. اين شركت كه در دی ماه سال 1332 با ظرفیت تصفيه 8 تن روغن گياهي در روز پا به عرصه صنعت گذاشت و اکنون با همكاري كارشناسان مجرب توانسته است با ظرفیت توليدي 1000 تن در روز، میهمان بسیاری ازخانواده ها و صنایع مختلف کشور باشد. اين مجموعه همواره سعي می نماید محصولاتی با کیفیت برتر و منطبق با نیاز مشتریان طراحی و تولید نماید ."
     };
   },
-   metaInfo() {
+  metaInfo() {
     return {
-      title:  this.$cookie.get("ltrTheme") ? "Catalogue - margarin" : "مارگارین -کاتالوگ ها",
+      title: this.$cookie.get("ltrTheme")
+        ? "Catalogue - margarin"
+        : "مارگارین -کاتالوگ ها",
       meta: [
         {
           name: "description",
-          content: this.description ? this.description: false
+          content: this.description ? this.description : false
         },
         {
           property: "og:title",
-          content:  this.$cookie.get("ltrTheme") ? "Catalogue - margarin" : "مارگارین -درباره ما"
+          content: this.$cookie.get("ltrTheme")
+            ? "Catalogue - margarin"
+            : "مارگارین -درباره ما"
         },
         { name: "robots", content: "index,follow" }
       ]
     };
   },
   mounted() {
-    this.setStyle();
+    if (this.catalogueData == null) {
+      this.$store.dispatch("getCatalogueDataFromServer");
+    } else {
+      this.setStyle();
+    }
     window.addEventListener("resize", this.setStyle);
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.setStyle);
+  },
+  watch: {
+    catalogueData() {
+      this.setStyle();
+    }
+  },
+  computed: {
+    catalogueData() {
+      return this.$store.getters.getCatalogueData;
+    }
   },
   methods: {
     setStyle() {

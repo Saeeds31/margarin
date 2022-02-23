@@ -49,9 +49,19 @@ export default {
           style: "col-12",
           show_in_tabel: true,
           placeholder: "عنوان صفحه را وارد کنید",
-          type: "description",
+          type: "string",
           name: "عنوان صفحه",
           key: "title",
+          multiData:true,
+        },
+          
+        {
+          style: "col-12",
+          show_in_tabel: true,
+          placeholder: "توضیحات صفحه را وارد کنید",
+          type: "description",
+          name: "توضیحات صفحه",
+          key: "text",
           multiData:true,
         },
 
@@ -84,7 +94,7 @@ export default {
         both: {}
       },
       editedId:1,
-      apiRoute:"ContactUsIntro"
+      apiRoute:"Catalogue"
     };
   },
   mounted() {

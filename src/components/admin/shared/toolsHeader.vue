@@ -1541,6 +1541,17 @@ AAAAAElFTkSuQmCC"
             >دسته بندی
             <i class="fa fa-align-justify" aria-hidden="true"></i></span
         ></router-link>
+
+ <router-link
+          :class="{ activeRoute: $route.name == 'panelProductBrand' }"
+          class="childRoute"
+          to="/admin-panel/product-brand"
+        >
+          <span
+            > برندها
+            <i class="fa fa-copyright" aria-hidden="true"></i></span
+        ></router-link>
+
        <router-link to="/admin-panel/product-comments"
           :class="{ activeRoute: $route.name == 'panelProductComment' }"
           class="childRoute"
@@ -1552,6 +1563,32 @@ AAAAAElFTkSuQmCC"
             <i class="fa fa-comments" aria-hidden="true"></i></span
         ></router-link>
       </b-collapse>
+<!--  -->
+
+
+
+      <router-link
+        :class="{ activeRoute: $route.name == 'panelCatalogue' }"
+        to="/admin-panel/catalogues"
+        ><i class="fa fa-angle-down" v-b-toggle.collapse-31></i>
+
+        <span>
+          کاتالوگ ها 
+         <i class="fa fa-file" ></i>
+        </span>
+      </router-link>
+      <b-collapse id="collapse-31" class="mt-2">
+        <router-link
+          :class="{ activeRoute: $route.name == 'panelCatalogueIntroduction' }"
+          class="childRoute"
+          to="/admin-panel/catalogue-introduction"
+        >
+          <span
+            > تنظیمات معرفی
+            <i class="fa fa-newspaper" aria-hidden="true"></i></span
+        ></router-link>  
+      </b-collapse>
+<!--  -->
       <router-link
         :class="{ activeRoute: $route.name == 'panelUsers' }"
         to="/admin-panel/users"

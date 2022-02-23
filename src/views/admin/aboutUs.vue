@@ -225,7 +225,7 @@ export default {
         {
           style: "col-6",
           show_in_tabel: true,
-          placeholder: " تصویر اصلی را وارد کنید",
+          placeholder: " تصویر اصلی با ارتفاع 586 و عرض 460 پیکسل",
           type: "image",
           multiData:false,
           name: "تصویر",
@@ -234,7 +234,7 @@ export default {
         {
           style: "col-6",
           show_in_tabel: true,
-          placeholder: " تصویر کاور را وارد کنید",
+          placeholder: " تصویر کاور  با ارتفاع 517 و عرض 1130 پیکسل",
           type: "image",
           multiData:false,
           name: "کاور ویدیو",
@@ -244,7 +244,7 @@ export default {
         {
           style: "col-6",
           show_in_tabel: false,
-          placeholder: "عکس آمار و ارقام را وارد کنید",
+          placeholder: "عکس آمار و ارقام  با ارتفاع 520 و عرض 964 پیکسل",
           type: "image",
           multiData:false,
           name: "تصویر آمار و ارقام",
@@ -254,7 +254,7 @@ export default {
         {
           style: "col-6",
           show_in_tabel: true,
-          placeholder: "آیکن معرفی نامه اول را وارد کنید",
+          placeholder: "آیکن معرفی نامه اول با ارتفاع 50 و عرض 50 پیکسل",
           type: "image",
           multiData:false,
           name: "آیکن معرفی نامه اول",
@@ -264,7 +264,7 @@ export default {
         {
           style: "col-6",
           show_in_tabel: false,
-          placeholder: "آیکن معرفی نامه دوم را وارد کنید",
+          placeholder: "آیکن معرفی نامه دوم  با ارتفاع 50 و عرض 50 پیکسل",
           type: "image",
           multiData:false,
           name: "آیکن معرفی نامه دوم",
@@ -275,7 +275,7 @@ export default {
         {
           style: "col-6",
           show_in_tabel: false,
-          placeholder: "آیکن معرفی نامه سوم را وارد کنید",
+          placeholder: "آیکن معرفی نامه سوم با ارتفاع 50 و عرض 50 پیکسل",
           type: "image",
           multiData:false,
           name: "آیکن معرفی نامه سوم",

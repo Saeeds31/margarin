@@ -238,7 +238,7 @@ export default {
 #weeklyCookingSection {
   margin: 5% auto 2.5%;
   background-image: url("../../../assets/front/images/weeklyCookingBack.png");
-background-size: 36% 85%;
+background-size: 36% 88%;
     background-repeat: no-repeat;
     background-position-y: bottom;
 }

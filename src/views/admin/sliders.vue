@@ -72,7 +72,7 @@ mixins:[adminMixin],
         },
           
         {
-          style: "col-6",
+          style: "col-12",
           show_in_table: true,
           placeholder: "https://margarin.com/products مانند",
           type: "string",
@@ -87,8 +87,18 @@ mixins:[adminMixin],
           placeholder:"عرض 1900 پیکسل ارتفاع 1200 پیکسل",
           type: "image",
           multiData: false,
-          name: "تصویر اسلایدر",
+          name: "تصویر اسلایدر در دسکتاپ",
           key: "image",
+        },
+          
+        {
+          style: "col-6",
+          show_in_table: false,
+          placeholder:"عرض 400 پیکسل ارتفاع 700 پیکسل",
+          type: "image",
+          multiData: false,
+          name: "تصویر اسلایدر در موبایل",
+          key: "mobileImage",
         },
           
         

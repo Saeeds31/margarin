@@ -132,7 +132,7 @@ mixins:[adminMixin],
        {
           style: "col-6",
           show_in_table: true,
-          placeholder: "تصویر پست",
+          placeholder: "تصویر پست با ارتفاع 468 و عرض 529 پیکسل",
           type: "image",
           multiData: false,
           name: "تصویر پست",
@@ -145,7 +145,7 @@ mixins:[adminMixin],
           type: "boolean",
           multiData: false,
           name: "آیا ویژه است",
-          key: "special",
+          key: "isSpecial",
         },
         
        {

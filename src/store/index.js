@@ -21,11 +21,16 @@ export default new Vuex.Store({
         productCategory: null,
         multiSliderNewsList: [],
         singleSliderNewsList: [],
+        catalogueData: null,
         // inner data
         racemeItemsAboutUs: null,
         contactUsCartsData: null,
+        aboutUsCollapseList: null,
     },
     getters: {
+        getAboutUsCollapseList(state) {
+            return state.aboutUsCollapseList
+        },
         // inner data getters
         getMultiSliderNews(state) {
             return state.multiSliderNewsList
@@ -43,6 +48,9 @@ export default new Vuex.Store({
         // main sever data getters
         getProductCategory(state) {
             return state.productCategory
+        },
+        getCatalogueData(state) {
+            return state.catalogueData
         },
         getCookingCategory(state) {
             return state.cookingCategory
@@ -83,6 +91,9 @@ export default new Vuex.Store({
     },
     mutations: {
         // inner data mutation
+        setAboutUSCollapseList(state, list) {
+            state.aboutUsCollapseList = list
+        },
         setMultiSliderNews(state, list) {
             state.multiSliderNewsList = list;
         },
@@ -96,6 +107,9 @@ export default new Vuex.Store({
             state.contactUsCartsData = data;
         },
         // main server data mutations
+        setCataloguesData(state, data) {
+            state.catalogueData = data;
+        },
         setProductCategory(state, list) {
             state.productCategory = list;
         },
@@ -153,6 +167,15 @@ export default new Vuex.Store({
                 console.log(JSON.parse(step3))
                 commit(pack.destination, JSON.parse(step3));
             }
+        },
+        getCatalogueDataFromServer({ dispatch }) {
+            axios.get('Home/GetCatalogueInfo').then(res => {
+                let pack = {
+                    destination: "setCataloguesData",
+                    data: res.data.data
+                };
+                dispatch("withoutEnAndFa", pack);
+            })
         },
         getProductCategoryFromServer({ commit }) {
             axios.get("Home/GetProductCategories").then(response => {

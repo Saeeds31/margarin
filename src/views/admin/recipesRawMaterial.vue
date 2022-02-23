@@ -312,7 +312,7 @@ export default {
         {
           style: "col-12",
           show_in_table: false,
-          placeholder: "تصویر مواد اولیه",
+          placeholder: "تصویر مواد اولیه با ارتفاع و عرض 64 پیکسل",
           type: "image",
           multiData: false,
           name: "تصویر",
@@ -353,7 +353,7 @@ export default {
       this.recipeId = this.$route.query.id;
       this.loadItems();
     } else {
-      this.$router.push("/admin-panel/products");
+      this.$router.push("/admin-panel/recipes");
     }
   },
   methods: { event_image_change(e) {
@@ -363,7 +363,7 @@ export default {
     },
     loadItems() {
       this.$axios
-     .get("ProductFeature/GetProductFeature?ProoductId=" + 13)
+     .get("Ingridients/GetProductFeature?ProoductId=" + this.$route.query.id)
         .then((resp) => {
           this.items = resp.data.data;
           this.status=false;

@@ -91,6 +91,17 @@ mixins:[adminMixin],
           key: "phone",
           disable:true
         },
+        
+        {
+          style: "col-6",
+          show_in_table: true,
+          placeholder: "برای مدیریت",
+          type: "boolean",
+          multiData: false,
+          name: "برای مدیریت",
+          key: "forManager",
+          disable:true
+        },
           
         {
           style: "col-12",

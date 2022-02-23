@@ -27,13 +27,12 @@
       no-close-on-backdrop
       v-model="showModal"
       @close="resetModal()"
-      :title="mode == 'create' ? 'افزودن ' + title : ' مشاهده ' + title"
+      :title="mode == 'create' ? 'افزودن ' + title : ' ویرایش ' + title"
     >
       <s-inputs
         :disabled="disabled"
         @submit="submit"
         :mode="mode"
-        :folderRoute="'prize'"
         :bigData="bigData"
         :headers="headers"
       />
@@ -54,57 +53,21 @@ mixins:[adminMixin],
         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "عنوان جایزه را وارد کنید",
+          placeholder: "نام برند را وارد کنید",
           type: "string",
           multiData: true,
-          name: "عنوان",
-          key: "title",
+          name: "نام برند",
+          key: "title"
         },
-          
         {
-          style: "col-12",
-          show_in_table: false,
-          placeholder: "توضیحات کوتاه جایزه را وارد کنید",
-          type: "string",
-          multiData: true,
-          name: "توضیحات کوتاه",
-          key: "shortDescription",
-        },
-          
-       
-          
-        {
-          style: "col-12",
-          show_in_table: false,
-          placeholder: "توضیحات جایزه را وارد کنید",
-          type: "description",
-          multiData: true,
-          name: "توضیحات",
-          key: "description",
-        },
-          
-       
-        {
-          style: "col-12",
-          show_in_table: false,
-          placeholder: " زمان دریافت جایزه را وارد کنید",
-          type: "date",
-          multiData: false,
-          name: "زمان دریافت",
-          key: "receivedDate",
-          disable:true
-        },
-          
-         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "تصویر جایزه با ارتفاع 400 و عرض 240 پیکسل",
+          placeholder: "تصویر برند را در ارتفاع و عرض 60 پیکسل وارد کنید",
           type: "image",
           multiData: false,
-          name: "تصویر ",
-          key: "image",
+          name: "تصویر",
+          key: "image"
         },
-          
       
         {
           style: "col-12",
@@ -115,29 +78,21 @@ mixins:[adminMixin],
           multiData: false,
           key: "",
           edit: true,
-          delete: true,
-          editLabel:"ویرایش",
+          delete: true
         }
       ],
-      pageSize:10,
       bigData: {
         persian: {},
         english: {},
         both: {}
       },
-      title: "جوایز",
+      title: "برند",
       editedId: null,
-      apiRoute: "Prize",
+      apiRoute: "Brand",
     };
   },
   mounted() {
-    if(this.$route.query.page){
-      this.currentPage=this.$route.query.page
-    }else{
-
-      this.currentPage=1;
-    }
-      this.loadItems(this.currentPage);
+      this.loadItems();
   },
   watch:{
       item(newVal){

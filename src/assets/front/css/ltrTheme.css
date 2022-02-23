@@ -434,8 +434,24 @@
         padding-left: 90px;
     }
     
+    .ltrTheme #homeSection #homeLeader #ambassadorButton span {
+        font-size: 12px;
+    }
+    
     .ltrTheme #frontSection #footer #footerSection .footerTitle {
         padding: 15px 30px 15px 0px
+    }
+    
+    .ltrTheme div#rawMaterial h3 {
+        text-align: left;
+    }
+    
+    .ltrTheme #rawMaterial .material {
+        justify-content: flex-start !important;
+    }
+    
+    .ltrTheme #rawMaterial .material div {
+        flex-direction: row-reverse !important;
     }
     
     .ltrTheme #frontSection #footer #footerSection ul li {

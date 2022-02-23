@@ -323,6 +323,18 @@ const routes = [{
                 },
 
                 {
+                    path: "product-brand",
+                    name: "panelProductBrand",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/productBrand.vue"
+                        );
+                    }
+                },
+
+                {
                     path: "product-feature",
                     name: "panelProductFeature",
 
@@ -518,11 +530,33 @@ const routes = [{
                         );
                     }
                 },
+                {
+                    path: "catalogue-introduction",
+                    name: "panelCatalogueIntroduction",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/catalogueIntroduction.vue"
+                        );
+                    }
+                },
+                {
+                    path: "catalogues",
+                    name: "panelCatalogue",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/catalogue.vue"
+                        );
+                    }
+                },
             ]
         },
     ]
 }];
-
+// .vue
 const router = new VueRouter({
     scrollBehavior(to, from, savedPosition) {
 

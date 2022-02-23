@@ -51,7 +51,7 @@ export default {
         virtualTour: {
           image: "https://s4.uupload.ir/files/layer_2661_copy_3_buj.png",
           title: "تور مجازی بازدید از خط تولید",
-          summary: "کیفیت و برتری با گروه مارگارین"
+          summary: "کیفیت و برتری با  مارگارین"
         },
         ourProduct: {
           title: "اولین تولید کننده روغن در کشور",
