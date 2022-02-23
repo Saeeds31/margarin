@@ -27,7 +27,7 @@
     <div id="slider">
       <VueSlickCarousel v-bind="sliderSettings">
         <div @click="gotoLink(item.link)" class="sliderItem" v-for="(item, index) in slider" :key="index">
-          <img :src="$root.baseImageUrl+item.image" :alt="item.title" />
+          <img :src="`${$root.baseImageUrl}${$root.screenSize>1000?item.image:item.mobileImage}`" :alt="item.title" />
           <h3 v-if="item.title">{{ item.title }}</h3>
           <p v-if="item.shortDesc">{{ item.shortDesc }}</p>
           <!-- <div id="shadowBox"></div> -->

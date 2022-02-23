@@ -543,16 +543,18 @@ input:-internal-autofill-selected {
 
 #homeSection #homeLeader #headerContent {
     position: absolute;
-    right: 5%;
+    right: 2.5%;
     top: 2%;
     z-index: 10;
+    width: 95%;
 }
 
-#homeSection #homeLeader #headerContent.reStyleHeaderContent {
+
+/* #homeSection #homeLeader #headerContent.reStyleHeaderContent {
     width: 95%;
     right: 2.5%;
     top: 2%;
-}
+} */
 
 #homeSection #homeLeader #headerContent #buttons {
     width: 28%;
@@ -567,8 +569,98 @@ input:-internal-autofill-selected {
     height: 45px;
 }
 
-#homeSection #homeLeader #headerContent.reStyleHeaderContent .mainLogo {
+.animationAboutCart1 {
+    position: relative;
+    animation: animationAboutCart1 1.2s infinite linear alternate;
+}
+
+.animationAboutCart2 {
+    position: relative;
+    animation: animationAboutCart2 1.2s infinite linear alternate;
+}
+
+.animationAboutCart3 {
+    position: relative;
+    animation: animationAboutCart3 1.2s infinite linear alternate;
+}
+
+.animationAboutCart4 {
+    position: relative;
+    animation: animationAboutCart4 1.2s infinite linear alternate;
+}
+
+@keyframes animationAboutCart1 {
+    from {
+        top: 0;
+    }
+    to {
+        top: 14px
+    }
+}
+
+@keyframes animationAboutCart2 {
+    from {
+        left: 0;
+    }
+    to {
+        left: 15px
+    }
+}
+
+@keyframes animationAboutCart3 {
+    from {
+        top: 0;
+    }
+    to {
+        top: -12px
+    }
+}
+
+@keyframes animationAboutCart4 {
+    from {
+        left: 0;
+    }
+    to {
+        left: -10px
+    }
+}
+
+.bolderAnimate {
+    animation: bolderAnimate 1.2s infinite linear alternate;
+}
+
+@keyframes sFade {
+    from {
+        opacity: 0;
+        transform: scaleY(0.6);
+    }
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes bolderAnimate {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.3);
+    }
+}
+
+.mainLogo,
+.aboutCart {
+    cursor: pointer;
+}
+
+
+/* #homeSection #homeLeader #headerContent.reStyleHeaderContent .mainLogo {
     width: 75px !important
+} */
+
+.flipLogo {
+    animation: flipAboutUsImage 1s 2 linear;
 }
 
 #homeSection #homeLeader #headerContent #buttons button {
@@ -657,7 +749,7 @@ svg#newsSvg,
 
 #homeSection #homeLeader #verticalMenu {
     position: fixed;
-    right: 5%;
+    right: 2%;
     background: #ffffff29;
     top: 25%;
     padding: 10px 0;
@@ -666,9 +758,11 @@ svg#newsSvg,
     transform: scale(0.9);
 }
 
+
+/* 
 #homeSection #homeLeader #verticalMenu.newRightPosition {
     right: 2.5%
-}
+} */
 
 #homeSection #homeLeader #verticalMenu ul {
     padding: 10px 0;
@@ -1638,7 +1732,6 @@ button#toggleMenuModal i {
 
 #aboutSection #collapseSection {
     border: 4px solid #00000006;
-    margin-bottom: 15%;
     padding: 2%;
     border-radius: 20px;
 }
@@ -3808,6 +3901,7 @@ div#rawMaterial h3 {
     flex-direction: column;
     align-items: center;
     min-height: 350px;
+    opacity: 0;
 }
 
 .menuHeader {
@@ -3876,13 +3970,15 @@ ul.menuChild li {
     }
 }
 
-#mobileMenu #closeArrow {
+#mobileMenu i#closeSvg {
     width: 100px;
     border-radius: 10px;
     position: fixed;
-    left: 5px;
+    left: 30px;
     top: 15px;
     cursor: pointer;
+    font-size: 28px;
+    color: white;
 }
 
 #mobileMenu #topMenu li a {
@@ -4159,10 +4255,12 @@ img#moonSvg {
     }
     #homeSection #weeklyCookingSection .cart .body .buttons a {
         margin-top: 15px;
+        width: 160px
     }
     #homeSection #weeklyCookingSection .cart .body .buttons .kitchen {
         padding: 15px 0;
         font-size: 12px;
+        width: 160px
     }
     #weeklyCookingSection .slick-prev,
     #weeklyCookingSection .slick-next {
@@ -4176,6 +4274,7 @@ img#moonSvg {
         margin: auto;
     }
     #weblogsSection {
+        margin-top: 80%;
         margin-bottom: 20%;
     }
     /* home articles responsive */
@@ -4219,17 +4318,18 @@ img#moonSvg {
     }
     #certificatesSlider .slick-prev,
     #certificatesSlider .slick-next {
-        top: 87% !important;
+        top: 40% !important;
     }
     #certificatesSlider .slick-next {
-        right: 28% !important;
+        right: 25px !important;
     }
     #homeSection #certificatesSlider {
+        height: auto;
         margin: auto !important;
         padding: 0 !important;
     }
     #certificatesSlider .slick-prev {
-        left: 28% !important;
+        left: 25px !important;
     }
     #homeSection #aboutUsSection #text h3 {
         text-align: center;
@@ -5377,6 +5477,7 @@ div#mobileMenuSection {
     min-height: auto;
     margin: auto;
     margin-bottom: 10px;
+    opacity: 1;
 }
 
 #mobileMenuSection .menuHeader a {

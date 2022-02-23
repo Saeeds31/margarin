@@ -223,19 +223,19 @@
         <h1 class="footerTitle">{{$cookie.get('ltrTheme')?'Applied links':'لینک های کاربردی'}}</h1>
         <ul>
           <li><router-link to="/about-us">{{$cookie.get('ltrTheme')?'About us':'درباره ما'}}</router-link></li>
-          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Products':'محصولات ما'}}</router-link></li>
-          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Cookings':'آشپزخانه'}}</router-link></li>
+          <li><router-link to="/products">{{$cookie.get('ltrTheme')?'Products':'محصولات ما'}}</router-link></li>
+          <li><router-link to="/cooking-archive">{{$cookie.get('ltrTheme')?'Cookings':'آشپزخانه'}}</router-link></li>
           <li><router-link to="/weblogs">{{$cookie.get('ltrTheme')?'weblogs':'وبلاگ'}}</router-link></li>
-          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Cooperation':'همکاری با ما'}}</router-link></li>
+          <li><router-link to="/cooperation">{{$cookie.get('ltrTheme')?'Cooperation':'همکاری با ما'}}</router-link></li>
           <li><router-link to="/contact-us">{{$cookie.get('ltrTheme')?'Contact Us':'تماس با ما'}}</router-link></li>
         </ul>
       </div>
       <div id="route" class="hiddenInMobile">
         <h1 class="footerTitle">{{$cookie.get('ltrTheme')?'Our group services':'خدمات گروه ما'}}</h1>
         <ul>
-          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Industrial oils':'روغن های صنعت'}}</router-link></li>
-          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Class oils':'روغن های صنف'}}</router-link></li>
-          <li><router-link to="/">{{$cookie.get('ltrTheme')?'Household oils':'روغن های خانوار'}}</router-link></li>
+          <li><router-link :to="`/products?type=${$cookie.get('ltrTheme')?'Industrial oils':'روغن های صنعت'}`">{{$cookie.get('ltrTheme')?'Industrial oils':'روغن های صنعت'}}</router-link></li>
+          <li><router-link :to="`/products?type=${$cookie.get('ltrTheme')?'Class oils':'روغن های صنف'}`">{{$cookie.get('ltrTheme')?'Class oils':'روغن های صنف'}}</router-link></li>
+          <li><router-link :to="`/products?type=${$cookie.get('ltrTheme')?'Household oils':'روغن های خانوار'}`">{{$cookie.get('ltrTheme')?'Household oils':'روغن های خانوار'}}</router-link></li>
         </ul>
       </div>
       <button

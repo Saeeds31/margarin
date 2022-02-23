@@ -87,7 +87,10 @@
       data-aos-delay="500"
       data-aos-once="false"
     />
-    <footerSite v-if="$root.sectionIndexHome == 8 ||$root.screenSize < 1000" />
+    <footerSite      data-aos="fade-up"
+      data-aos-duration="1500"
+      data-aos-delay="500"
+      data-aos-once="false" v-if="$root.sectionIndexHome == 8 ||$root.screenSize < 1000" />
     <footerNavigation class="showInMobile" />
   </div>
   <Loader v-else />
@@ -249,24 +252,7 @@ export default {
     setStyle() {
       if (window.innerWidth > 1000) {
         if (window.innerWidth > 1495) {
-          this.$root.setProportionStyle(
-            "width",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #toggleMenu svg",
-            1920,
-            28,
-            1496,
-            26
-          );
-          this.$root.setProportionStyle(
-            "height",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #toggleMenu svg",
-            1920,
-            28,
-            1496,
-            26
-          );
+         
           this.$root.setProportionStyle(
             "width",
             "px",
@@ -305,24 +291,8 @@ export default {
             26
           );
         } else {
-          this.$root.setProportionStyle(
-            "width",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #toggleMenu svg",
-            1495,
-            26,
-            1100,
-            21
-          );
-          this.$root.setProportionStyle(
-            "height",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #toggleMenu svg",
-            1495,
-            26,
-            1100,
-            21
-          );
+        
+       
           this.$root.setProportionStyle(
             "width",
             "px",
@@ -442,24 +412,7 @@ export default {
           50
         );
 
-        this.$root.setProportionStyle(
-          "width",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #toggleMenu",
-          1496,
-          60,
-          1024,
-          50
-        );
-        this.$root.setProportionStyle(
-          "height",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #toggleMenu",
-          1496,
-          60,
-          1024,
-          50
-        );
+        
         this.$root.setProportionStyle(
           "width",
           "px",

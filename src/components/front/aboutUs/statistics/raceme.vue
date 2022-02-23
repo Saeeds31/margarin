@@ -25,8 +25,8 @@
     </svg>
 
     <div class="content">
-      <h3>{{ `+ ${data.number}` }}</h3>
-      <h4>{{ $cookie.get('ltrTheme')?data.title_en:data.title_fa }}</h4>
+      <h3>{{ "+ "+counter }}</h3>
+      <h4>{{ $cookie.get("ltrTheme") ? data.title_en : data.title_fa }}</h4>
     </div>
   </div>
 </template>
@@ -34,6 +34,27 @@
 export default {
   props: {
     data: Object
-  }
+  },
+  data() {
+    return {
+      counter: 1
+    };
+  },
+  mounted(){
+    
+    let howTime =this.data.number  / 10;
+    console.log(howTime)
+    setTimeout(()=>{
+this.counter = 0;
+      let timerInterval = setInterval(() => {
+        if (this.counter == this.data.number) {
+          clearInterval(timerInterval);
+        } else {
+          this.counter++;
+        }
+      }, 1000/howTime);
+    },3000)
+  },
+ 
 };
 </script>

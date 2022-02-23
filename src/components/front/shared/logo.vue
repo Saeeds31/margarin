@@ -1,5 +1,6 @@
 <template>
   <img
+  :class="{'flipLogo':$root.sectionIndexHome>1}"
     @click="homeRoute()"
     class="mainLogo"
     src="@/assets/front/images/logo.svg"

@@ -5,6 +5,7 @@
     <div id="router" class="d-flex justify-content-between width20 align-items-center hiddenInMobile">
       <router-link :to="data.route">
         <svg
+        class="bolderAnimate"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         width="60"

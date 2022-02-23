@@ -59,15 +59,15 @@ mixins:[adminMixin],
           name: "نام برند",
           key: "title"
         },
-        {
-          style: "col-12",
-          show_in_table: true,
-          placeholder: "تصویر برند را در ارتفاع و عرض 60 پیکسل وارد کنید",
-          type: "image",
-          multiData: false,
-          name: "تصویر",
-          key: "image"
-        },
+        // {
+        //   style: "col-12",
+        //   show_in_table: true,
+        //   placeholder: "تصویر برند را در ارتفاع و عرض 60 پیکسل وارد کنید",
+        //   type: "image",
+        //   multiData: false,
+        //   name: "تصویر",
+        //   key: "image"
+        // },
       
         {
           style: "col-12",

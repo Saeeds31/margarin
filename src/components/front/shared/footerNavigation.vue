@@ -67,81 +67,7 @@ export default {
   data(){
     return{
       showMenu:false,
-        menu:[
-        {
-          header:{title:this.$cookie.get('ltrTheme')?'Margarin':'مارگارین',route:'/'},
-          menuItem:[
-            {title:this.$cookie.get('ltrTheme')?'About us (introduction company, managers and board members)':'درباره ما (معرفی شرکت,معرفی مدیران و اعضاء هیئت مدیره)',route:'/about-us'},
-            {title:this.$cookie.get('ltrTheme')?'vision':'چشم انداز',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Mission':'ماموریت',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Goals and policies':'اهداف و خط مشی',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'certificates':'گواهینامه ها',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Catalog':'کاتالوگ',route:'/catalogue'},
-          ]
-        },
-        
-        {
-          header:{title:this.$cookie.get('ltrTheme')?'Products':'محصولات',route:'/products'},
-          menuItem:[
-            {title:this.$cookie.get('ltrTheme')?'Family':'خانوار',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Class and industry':'صنف و صنعت',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Product price list':'لیست قیمت محصولات',route:'/'},
-          ]
-        },
-        
-        {
-          header:{title:this.$cookie.get('ltrTheme')?'Margarine brands':'برندهای مارگارین',route:'/'},
-          menuItem:[
-            {title:this.$cookie.get('ltrTheme')?'Aftab':'آفتاب',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Khorous':'خروس',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Aftab Talaei':'آفتاب طلایی',route:'/'},
-          ]
-        },
-        
-        {
-          header:{title:this.$cookie.get('ltrTheme')?'reports':'گزارشات',route:'/'},
-          menuItem:[
-            {title:this.$cookie.get('ltrTheme')?'Financial Statements':'صورت های مالی',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Interpretive management':'تفسیری مدیریت',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Board activities':'فعالیت های هیئت مدیره',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Internal control reports':'گزارشات کنترل داخلی',route:'/'},
-          ]
-        },
-        
-        {
-          header:{title:this.$cookie.get('ltrTheme')?'public relations':'روابط عمومی',route:'/'},
-          menuItem:[
-            {title:this.$cookie.get('ltrTheme')?'public relations':'ارتباط با روابط عمومی',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Partner panel (pay slip, survey form or feedback, internal news)':'پنل همکاران(فیش حقوقی , فرم نظر سنجی یا انتقادات و پیشنهادات , خبرهای داخلی)',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'News and announcements':'اخبار و اطلاعیه ها',route:'/weblogs?weblogType=news'},
-            {title:this.$cookie.get('ltrTheme')?'Photo Gallery':'گالری تصاویر',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Aftab Magazine':'مجله آفتاب',route:'/'},
-          ]
-        },
-        
-        {
-          header:{title:this.$cookie.get('ltrTheme')?'Research and Development':'تحقیق و توسعه',route:'/'},
-          menuItem:[
-            {title:this.$cookie.get('ltrTheme')?'Research and Development':'معرفی دپارتمان تحقیق و توسعه',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'new products':'محصولات جدید',route:'/products'},
-            {title:this.$cookie.get('ltrTheme')?'Accepting innovative offers':'پذیرش پیشنهادات نوآورانه',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'Collaborate with individuals':'همکاری مشترک با افراد',route:'/'},
-          ]
-        },
-        
-        {
-          header:{title:this.$cookie.get('ltrTheme')?'Applied links':'لینک های کاربردی',route:'/'},
-          menuItem:[
-            {title:this.$cookie.get('ltrTheme')?'Applied links':'لینک های مفید',route:'/'},
-            {title:this.$cookie.get('ltrTheme')?'kitchen':'آشپزخانه',route:'/cooking-archive'},
-            {title:this.$cookie.get('ltrTheme')?'Cooperation with us (recruitment)':'همکاری با ما (جذب نیرو)',route:'/cooperation'},
-            {title:this.$cookie.get('ltrTheme')?'Contact us':'ارتباط با ما',route:'/contact-us'},
-            {title:this.$cookie.get('ltrTheme')?'Frequently Asked Questions':'سوالات متداول',route:'/faq'},
-          ]
-        },
-        
       
-      ]
     }
   },
   methods: {
@@ -158,6 +84,11 @@ export default {
       }
     }
      
+  },
+  computed:{
+    menu(){
+      return this.$store.getters.getMenus
+    },
   }
 };
 </script>

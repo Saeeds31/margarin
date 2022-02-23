@@ -6,7 +6,7 @@
       data-aos="flip-right" data-aos-duration="2200" data-aos-delay="500"    data-aos-once="false"
       id="aboutUsSectionImage"
         class="width70"
-        src="@/assets/front/images/aboutUSHome.png"
+        :src="`${$cookie.get('ltrTheme')?enImage:faImage}`"
         alt="درباره مارگارین"
       />
       <div id="sliderSection" class="showInMobile width100">
@@ -36,6 +36,7 @@ This collection always tries to design and produce products with superior qualit
           <template  v-for="(item, index) in aboutUsList">
             <cart 
             class="otherCart"
+            :class="`animationAboutCart${index+1}`"
               v-if="index < 2" :content="item" :key="item.id" />
           </template>
         </div>
@@ -43,7 +44,7 @@ This collection always tries to design and produce products with superior qualit
           <template v-for="(item, index) in aboutUsList">
             <cart 
             :id="index==2?'carts3':''"
-            :class="{otherCart:index!=2}"
+            :class="{otherCart:index!=2,'animationAboutCart3':index==2, 'animationAboutCart4':index==3}"
   
             v-if="index > 1" :content="item" :key="item.id" />
           </template>
@@ -53,6 +54,8 @@ This collection always tries to design and produce products with superior qualit
   </div>
 </template>
 <script>
+import enImage from "@/assets/front/images/aboutUSHomeEn.png"
+import faImage from "@/assets/front/images/aboutUSHome.png"
 import VueSlickCarousel from "vue-slick-carousel";
 import cart from "@/components/front/home/aboutUs/cart.vue";
 export default {
@@ -62,6 +65,8 @@ export default {
   },
   data() {
     return {
+      enImage:enImage,
+      faImage:faImage,
       sliderSettings: {
         dots: false,
         arrows: false,

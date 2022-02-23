@@ -82,13 +82,22 @@ export default {
           key: "name"
         },
         {
-          style: "col-12",
+          style: "col-6",
           show_in_table: true,
           placeholder: "قیمت مصوب را (به تومان و دلار) وارد کنید",
           type: "string",
           multiData: true,
           name: "قیمت مصوب",
           key: "price"
+        },
+        {
+          style: "col-6",
+          show_in_table: true,
+          placeholder: "نوع محصول را وارد کنید",
+          type: "string",
+          multiData: true,
+          name: "نوع محصول",
+          key: "type"
         },
         {
           style: "col-6",
@@ -104,7 +113,7 @@ export default {
         
         {
           style: "col-6",
-          show_in_table: true,
+          show_in_table: false,
           placeholder: "برند را انتخاب کنید",
           type: "select",
           multiData: false,
@@ -153,7 +162,7 @@ export default {
           key: "image"
         },
         {
-          style: "col-6",
+          style: "col-12",
           show_in_table: false,
           placeholder: "تصویر جدول تغذیه با ارتفاع 250 و عرض 350 پیکسل",
           type: "image",

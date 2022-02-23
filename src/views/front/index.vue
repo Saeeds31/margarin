@@ -14,9 +14,16 @@ export default {
     components:{
         orgHeader,footerSite,footerNavigation
     },
-    methods:{
-       
+    computed:{
+       brands(){
+           return this.$store.getters.getBrands
+       }
     },
+    mounted(){
+        if(this.brands.length==0){
+            this.$store.dispatch('getBrandsFromServer')
+        }
+    }
     // mounted(){
     //     this.$router.push("/login-register")
     // }

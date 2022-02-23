@@ -137,6 +137,8 @@ export default {
     if (this.productsData == null) {
       let pack = {
         page: this.$route.query.page ? this.$route.query.page : 1,
+        brand: this.$route.query.brand ? this.$route.query.brand : "",
+        type: this.$route.query.type ? this.$route.query.type : "",
         category: this.$route.query.category ? this.$route.query.category : "",
         search: this.$route.query.search ? this.$route.query.search : ""
       };
@@ -151,6 +153,8 @@ watch: {
         let pack = {
           page: value.page ? value.page : 1,
           category: value.category ? value.category : "",
+        brand: this.$route.query.brand ? this.$route.query.brand : "",
+        type: this.$route.query.type ? this.$route.query.type : "",
           search: value.search ? value.search : "",
           isDesending: value.isDesending ? value.isDesending : true
         };

@@ -117,6 +117,19 @@ export function showAlert(icon, title, text) {
         text: text
     });
 }
+// export function increaseCounter(number, timer) {
+// منطق شمارنده
+//     let starter = 0;
+//     let howTime = (number - 1) / timer;
+//     let timerInterval = setInterval(() => {
+//         if (starter == number) {
+//             clearInterval(timerInterval)
+//         } else {
+//             starter++;
+//             return starter
+//         }
+//     }, howTime)
+// }
 export function slugGenerator(name) {
     if (name == null)
         return name

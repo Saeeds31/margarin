@@ -309,8 +309,8 @@ this.$root.setProportionStyle(
           "#articles #sectionHeader #text div h1",
           1000,
           32,
-          425,
-          20
+          375,
+          16
         );
       }
     }
