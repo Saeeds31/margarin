@@ -2,6 +2,8 @@
   <form @submit.prevent="sendComment()" ref="commentForm" class="commentForm">
     <div id="commentFormTop" class="d-flex justify-content-between">
       <input
+        tabindex="3"
+
         @input="$v.mobile.$touch"
         :class="{ errorBorder: $v.mobile.$error }"
         v-model="mobile"
@@ -10,6 +12,8 @@
         :placeholder="$cookie.get('ltrTheme')?'Mobile':'شماره همراه'"
       />
       <input
+        tabindex="2"
+
         @input="$v.email.$touch"
         :class="{ errorBorder: $v.email.$error }"
         v-model="email"
@@ -18,6 +22,8 @@
         :placeholder="$cookie.get('ltrTheme')?'E-mail':'پست الکترونیک'"
       />
       <input
+        tabindex="1"
+
         @input="$v.fullName.$touch"
         :class="{ errorBorder: $v.fullName.$error }"
         v-model="fullName"
@@ -27,6 +33,8 @@
       />
     </div>
     <textarea
+        tabindex="4"
+
       @input="$v.message.$touch"
       :class="{ errorBorder: $v.message.$error }"
       name="message"
@@ -43,6 +51,8 @@
       />
   
     </div>
+      <Recaptcha :showRecaptcha="showRecaptcha" @rightAnswer="rightAnswer()" @closeRecaptcha="showRecaptcha=$event" />
+
   </form>
 </template>
 <script>
@@ -52,6 +62,8 @@ import {
   maxLength,
   email
 } from "vuelidate/lib/validators";
+import Recaptcha from "@/components/front/shared/recaptcha.vue";
+
 import roundedButton from "@/components/front/shared/roundedButton.vue";
 export default {
   validations: {
@@ -75,6 +87,8 @@ export default {
   },
   data() {
     return {
+      showRecaptcha:false,
+
       mobile:null,
       email:null,
       fullName:null,
@@ -83,62 +97,18 @@ export default {
     };
   },
   components: {
-    roundedButton
+    roundedButton,
+    Recaptcha
   },
   methods: {
-    sendComment(e) {
-    //   اعتبار سنجی کامنت
-      // if (!this.$v.fullName.$error) {
-      //   if (!this.$v.fullName.required) {
-           
-      //     return this.$toast.error( "وارد کردن نام الزامی است");
-      //   } else {
-      //     return this.$toast.error(
-         
-      //       "نام باید بیش از سه حرف داشته باشد"
-      //     );
-      //   }
-      // }
-      // if (!this.$v.email.$error) {
-      //   if (!this.$v.email.required) {
-      //     return this.$toast.error("وارد کردن ایمیل الزامی است");
-      //   } else {
-      //     return this.$toast.error(
-          
-      //       "فرمت ایمیل وارد شده معتبر نیست"
-      //     );
-      //   }
-      // }
-      // if (!this.$v.mobile.$error) {
-      //   if (!this.$v.mobile.required) {
-      //     return this.$toast.error("وارد کردن تلفن الزامی است");
-      //   } else {
-      //     return this.$toast.error(
-        
-      //       "فرمت شماره وارد شده معتبر نیست"
-      //     );
-      //   }
-      // }
-      // if (!this.$v.message.$error) {
-      //   if (!this.$v.message.required) {
-      //     return this.$toast.error(
-         
-      //       "وارد کردن متن کامنت الزامی است"
-      //     );
-      //   } else  {
-      //     return this.$toast.error(
-       
-      //       "تعداد حروف مورد نیاز برای درج پیام حداقل سه حرف است"
-      //     );
-      //   }
-      // }
-      let pack={
+      rightAnswer(){
+        let pack={
         replyTo:this.replyTo,
         fullName:this.fullName,
         email:this.email,
         phone:this.mobile,
         text:this.message,
-        isShow:true,
+        isShow:false,
       }
         
       pack[this.field]=this.$route.params.id
@@ -161,6 +131,11 @@ export default {
       })
     //   بازگردانی به حالت اولیه
       //  this.$refs.commentForm.reset();
+    this.showRecaptcha=false;
+    },
+    sendComment(e) {
+   this.showRecaptcha=true;
+      
     }
   },
   props: {

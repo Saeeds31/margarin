@@ -3,7 +3,7 @@
     <div id="content" class="d-flex justify-content-between">
       <img   data-aos="fade-right"
             data-aos-duration="1000"
-            data-aos-once="true" :src="image" class="hiddenInMobile" :alt="title" />
+            data-aos-once="true" :src="image" class="hiddenInMobile introductionImage" :alt="title" />
       <div class="innerContent d-flex flex-direction-column align-items-end">
         <h1   data-aos="fade-left"
             data-aos-duration="1000"
@@ -14,14 +14,14 @@
         <doubleLine data-aos="fade-left"
             data-aos-duration="1500"
             data-aos-once="true" class="width25 hiddenInMobile" />
-        <currentPath data-aos="fade-left"
+        <currentPath class="currentPathSection" data-aos="fade-left"
             data-aos-duration="2000"
             data-aos-once="true" :routes="routes" />
         <div data-aos="fade-up"
             data-aos-duration="1000"
             data-aos-once="true" id="imageBox" class="showInMobileFlex width100 d-flex justify-content-center">
           <img
-          class="showInMobile mainImage"
+          class="showInMobile mainImage introductionImage"
           :src="image"
           :alt="title"
         />
@@ -204,7 +204,7 @@ export default {
 <style scoped>
 #backgroundOrange {
   position: absolute;
-  top: 0;
+  top: 20px;
   z-index: -1;
   left: 0;
   width: 100%;

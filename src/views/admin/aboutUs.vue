@@ -194,6 +194,26 @@ export default {
         {
           style: "col-12",
           show_in_tabel: false,
+          placeholder: " عنوان چهارم معرفی نامه را وارد کنید",
+          type: "string",
+          multiData:true,
+          name: "عنوان چهارم معرفی نامه",
+          key: "exteraTitle4"
+        },
+        
+        
+         {
+          style: "col-12",
+          show_in_tabel: false,
+       placeholder: " توضیح چهارم معرفی نامه را وارد کنید",
+          type: "description",
+          multiData:true,
+          name: "توضیح چهارم معرفی نامه",
+          key: "exteraText4"
+        },
+        {
+          style: "col-12",
+          show_in_tabel: false,
           placeholder: "توضیحات متا را وارد کنید",
           type: "description",
           multiData:true,
@@ -280,6 +300,19 @@ export default {
           multiData:false,
           name: "آیکن معرفی نامه سوم",
           key: "exteraTitle3Icon"
+        },
+        
+        
+        
+        
+        {
+          style: "col-6",
+          show_in_tabel: false,
+          placeholder: "آیکن معرفی نامه چهارم با ارتفاع 50 و عرض 50 پیکسل",
+          type: "image",
+          multiData:false,
+          name: "آیکن معرفی نامه چهارم",
+          key: "exteraTitle4Icon"
         },
         
         

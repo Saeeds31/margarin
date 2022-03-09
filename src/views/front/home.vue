@@ -140,7 +140,7 @@ export default {
       meta: [
         {
           name: "description",
-          content: this.blogData ? this.blogData.meta : false
+          content: this.footerData ? this.footerData.meta : "وبسایت مارگارین"
         },
         {
           property: "og:title",
@@ -180,6 +180,9 @@ export default {
     }
   },
   computed: {
+    footerData(){
+      return this.$root.footerData
+    },
     multiSlider() {
       return this.$store.getters.getMultiSliderNews;
     },
@@ -199,10 +202,12 @@ export default {
   beforeDestroy() {
     window.removeEventListener("wheel", this.showSectionWithScroll);
     window.removeEventListener("keydown", this.showSection);
-    document.body.removeEventListener("resize", this.setStyle);
+    window.removeEventListener("resize", this.setStyle);
   },
   methods: {
     showSectionWithScroll(event) {
+      if(this.$root.footerMapCursor!=true){
+        
       let oldLastWheel = this.lastWheel;
       this.lastWheel = event.deltaY;
       if (oldLastWheel > 0 && this.lastWheel > 0) {
@@ -212,7 +217,7 @@ export default {
       } else {
         this.wheelCounter = 0;
       }
-      if (this.wheelCounter == 3) {
+      if (this.wheelCounter == 2) {
         this.wheelCounter = 0;
         if (this.$root.sectionIndexHome != 8) {
           this.$root.sectionIndexHome++;
@@ -222,7 +227,7 @@ export default {
           window.addEventListener("wheel", this.showSectionWithScroll);
         }, 2000);
       }
-      if (this.wheelCounter == -3) {
+      if (this.wheelCounter == -2) {
         this.wheelCounter = 0;
         if (this.$root.sectionIndexHome != 1) {
           this.$root.sectionIndexHome--;
@@ -232,6 +237,7 @@ export default {
           window.addEventListener("wheel", this.showSectionWithScroll);
         }, 2000);
       }
+      }
     },
     showSection(e) {
       if (e.key == "8" || e.key == "ArrowUp") {
@@ -240,7 +246,7 @@ export default {
         }
       }
       if (e.key == "2" || e.key == "ArrowDown") {
-        if (this.$root.sectionIndexHome != 7) {
+        if (this.$root.sectionIndexHome != 8) {
           this.$root.sectionIndexHome++;
         }
       }
@@ -253,82 +259,82 @@ export default {
       if (window.innerWidth > 1000) {
         if (window.innerWidth > 1495) {
          
-          this.$root.setProportionStyle(
-            "width",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #search svg",
-            1996,
-            28,
-            1024,
-            26
-          );
-          this.$root.setProportionStyle(
-            "height",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #search svg",
-            1996,
-            28,
-            1024,
-            26
-          );
+          // this.$root.setProportionStyle(
+          //   "width",
+          //   "px",
+          //   "#homeSection #homeLeader #headerContent #buttons #search svg",
+          //   1996,
+          //   28,
+          //   1024,
+          //   26
+          // );
+          // this.$root.setProportionStyle(
+          //   "height",
+          //   "px",
+          //   "#homeSection #homeLeader #headerContent #buttons #search svg",
+          //   1996,
+          //   28,
+          //   1024,
+          //   26
+          // );
 
-          this.$root.setProportionStyle(
-            "width",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #phone svg",
-            1920,
-            28,
-            1496,
-            26
-          );
-          this.$root.setProportionStyle(
-            "height",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #phone svg",
-            1920,
-            28,
-            1496,
-            26
-          );
+          // this.$root.setProportionStyle(
+          //   "width",
+          //   "px",
+          //   "#homeSection #homeLeader #headerContent #buttons #phone svg",
+          //   1920,
+          //   28,
+          //   1496,
+          //   26
+          // );
+          // this.$root.setProportionStyle(
+          //   "height",
+          //   "px",
+          //   "#homeSection #homeLeader #headerContent #buttons #phone svg",
+          //   1920,
+          //   28,
+          //   1496,
+          //   26
+          // );
         } else {
         
        
-          this.$root.setProportionStyle(
-            "width",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #phone svg",
-            1496,
-            26,
-            1100,
-            21
-          );
-          this.$root.setProportionStyle(
-            "height",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #phone svg",
-            1496,
-            26,
-            1100,
-            21
-          );
-          this.$root.setProportionStyle(
-            "width",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #search svg",
-            1496,
-            26,
-            1024,
-            20
-          );
-          this.$root.setProportionStyle(
-            "height",
-            "px",
-            "#homeSection #homeLeader #headerContent #buttons #search svg",
-            1496,
-            26,
-            1024,
-            20
-          );
+          // this.$root.setProportionStyle(
+          //   "width",
+          //   "px",
+          //   "#homeSection #homeLeader #headerContent #buttons #phone svg",
+          //   1496,
+          //   26,
+          //   1100,
+          //   21
+          // );
+          // this.$root.setProportionStyle(
+          //   "height",
+          //   "px",
+          //   "#homeSection #homeLeader #headerContent #buttons #phone svg",
+          //   1496,
+          //   26,
+          //   1100,
+          //   21
+          // );
+          // this.$root.setProportionStyle(
+          //   "width",
+          //   "px",
+          //   "#homeSection #homeLeader #headerContent #buttons #search svg",
+          //   1496,
+          //   26,
+          //   1024,
+          //   20
+          // );
+          // this.$root.setProportionStyle(
+          //   "height",
+          //   "px",
+          //   "#homeSection #homeLeader #headerContent #buttons #search svg",
+          //   1496,
+          //   26,
+          //   1024,
+          //   20
+          // );
         }
         this.$root.setProportionStyle(
           "font-size",
@@ -339,98 +345,98 @@ export default {
           1024,
           11
         );
-        this.$root.setProportionStyle(
-          "padding-top",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #ambassadorButton",
-          1496,
-          15,
-          1024,
-          10
-        );
-        this.$root.setProportionStyle(
-          "padding-bottom",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #ambassadorButton",
-          1496,
-          15,
-          1024,
-          10
-        );
-        this.$root.setProportionStyle(
-          "padding-left",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #ambassadorButton",
-          1496,
-          20,
-          1024,
-          10
-        );
-        this.$root.setProportionStyle(
-          "padding-right",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #ambassadorButton",
-          1496,
-          20,
-          1024,
-          10
-        );
-        this.$root.setProportionStyle(
-          "font-size",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #ambassadorButton span",
-          1496,
-          16,
-          1024,
-          11
-        );
-        this.$root.setProportionStyle(
-          "width",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #ambassadorButton svg",
-          1496,
-          31,
-          1024,
-          15
-        );
-        this.$root.setProportionStyle(
-          "width",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #phone",
-          1496,
-          60,
-          1024,
-          50
-        );
-        this.$root.setProportionStyle(
-          "height",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #phone",
-          1496,
-          60,
-          1024,
-          50
-        );
+        // this.$root.setProportionStyle(
+        //   "padding-top",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #ambassadorButton",
+        //   1496,
+        //   15,
+        //   1024,
+        //   10
+        // );
+        // this.$root.setProportionStyle(
+        //   "padding-bottom",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #ambassadorButton",
+        //   1496,
+        //   15,
+        //   1024,
+        //   10
+        // );
+        // this.$root.setProportionStyle(
+        //   "padding-left",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #ambassadorButton",
+        //   1496,
+        //   20,
+        //   1024,
+        //   10
+        // );
+        // this.$root.setProportionStyle(
+        //   "padding-right",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #ambassadorButton",
+        //   1496,
+        //   20,
+        //   1024,
+        //   10
+        // );
+        // this.$root.setProportionStyle(
+        //   "font-size",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #ambassadorButton span",
+        //   1496,
+        //   16,
+        //   1024,
+        //   11
+        // );
+        // this.$root.setProportionStyle(
+        //   "width",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #ambassadorButton svg",
+        //   1496,
+        //   31,
+        //   1024,
+        //   15
+        // );
+        // this.$root.setProportionStyle(
+        //   "width",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #phone",
+        //   1496,
+        //   60,
+        //   1024,
+        //   50
+        // );
+        // this.$root.setProportionStyle(
+        //   "height",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #phone",
+        //   1496,
+        //   60,
+        //   1024,
+        //   50
+        // );
 
         
-        this.$root.setProportionStyle(
-          "width",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #search",
-          1496,
-          60,
-          1024,
-          50
-        );
-        this.$root.setProportionStyle(
-          "height",
-          "px",
-          "#homeSection #homeLeader #headerContent #buttons #search",
-          1496,
-          60,
-          1024,
-          50
-        );
+        // this.$root.setProportionStyle(
+        //   "width",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #search",
+        //   1496,
+        //   60,
+        //   1024,
+        //   50
+        // );
+        // this.$root.setProportionStyle(
+        //   "height",
+        //   "px",
+        //   "#homeSection #homeLeader #headerContent #buttons #search",
+        //   1496,
+        //   60,
+        //   1024,
+        //   50
+        // );
         this.$root.setProportionStyle(
           "width",
           "px",

@@ -898,8 +898,8 @@ export default {
                 "زن",
             ],
             religionOption: [
-                "سنی",
                 "شیعه",
+                "سنی",
 
             ],
             educations: [

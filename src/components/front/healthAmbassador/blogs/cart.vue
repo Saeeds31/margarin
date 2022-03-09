@@ -1,14 +1,14 @@
 <template>
-  <router-link class="blogCart" to="/">
+  <router-link class="blogCart" :to="`/weblog-detail/${article.id}/${$root.slugGenerator(article.title)}`">
     <div class="innerContent width100">
-      <img class="width100" :src="article.image" alt="" />
+      <img class="width100" :src="$root.baseImageUrl+article.image" :alt="article.title" />
       <div class="content">
         <p class="category width80 margin-auto">{{ article.category }}</p>
-        <h5>{{ ` منتشر شده در تاریخ ${article.date}` }}</h5>
+        <h5>{{ ` منتشر شده در تاریخ ${article.createDate}` }}</h5>
         <h1 class="width80">{{ article.title }}</h1>
         <div class="breaker"></div>
         <div class="detail">
-          <span> {{ article.comment }}نظر </span>
+          <span> {{ article.commentCount }}نظر </span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -26,8 +26,8 @@
             />
           </svg>
 
-          <span> {{ article.like }}لایک </span>
-          <svg
+          <!-- <span> {{ article.like }}لایک </span> -->
+          <!-- <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
              width="18"
@@ -42,11 +42,11 @@
               opacity="0.502"
               xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAABHNCSVQICAgIfAhkiAAAAl1JREFUSEulldnLT0EYx/3sa/Yl2SIl+1YuLBe4kZ1XKVshN24U+S9cuHBlT3iVC1FeFy6RXIheyh69sha9uLDl5/OpmTq/0znnNzL1aZ6ZeWa+M3PmeU6tXq93yZSR2PNhIPSGDngCr7JOGXsS9mQYC9/hE9yH19GnFgS60bEKZkOtYLG79LXBrzDWnXolzCnwdcftcEX/KLCaxjz4CTfhJXSF8bAQeoRdnQoLbgtj+t+CFxn/RcH/HvUlBaZgbA6LH6P+kNvVMNpbYRA8AHc4A77AGfiY8x9Oezf0glYFNmDMhGtwO+ccmyMwdoVJ9v2AE/C+xN/v6JW3K3AAoz8chs8lE+z2g24J4+eon1X4DmBsP3xVYB+Gxz9kR8Ukh0aH8TdN/PoyfhA6FdiJMQ7OwtMmE1OHfbqetkOBBRgrwF35kf+krlLi5+vbA6OgTQFjYC8MgTtw9T8F1jB/Lhh0R2IcGIk7wACqek3NtI2B5fAbTscripOmY2wMjfPUpoh/KVNx3hQmXKR+qB1PEBdagrEUjFDf+btEhTHhBoz463AjzssL2L8eZoGR6ke3riqDGTRy+4E563LWuUjAj74dzENv4WQ4UZGIGdcINz08B596wyssEnAhA8WJQ+ExtEJDXqftRnzrE8H8dRxMIQ2lTEAnF/fofcAc5evKlrU0TNff4Ch05he3XSXg+AQwNbtb48M4sSyGZeD/wSssTR3NBFzMn9A68G59vj2hJQhdoH5UtPPYlyKgr0/XJ+wde5rkgEwV8DfqrqeFnSWnlFQB13XX5hlP4f85KSn+BX4Us9EgP2iSAAAAAElFTkSuQmCC"
             />
-          </svg>
+          </svg> -->
 
           <span>
             زمان آموزش
-            {{ article.time }}
+            {{ article.timeToRead }}
             دقیقه
           </span>
           <svg

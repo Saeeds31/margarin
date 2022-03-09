@@ -25,7 +25,7 @@
       <span>{{$cookie.get('ltrTheme')?'Be a health ambassador':'سفیر سلامت باش'}}</span>
     </router-link> -->
     <div id="slider">
-      <VueSlickCarousel v-bind="sliderSettings">
+      <VueSlickCarousel @afterChange="afterChange" v-bind="sliderSettings">
         <div @click="gotoLink(item.link)" class="sliderItem" v-for="(item, index) in slider" :key="index">
           <img :src="`${$root.baseImageUrl}${$root.screenSize>1000?item.image:item.mobileImage}`" :alt="item.title" />
           <h3 v-if="item.title">{{ item.title }}</h3>
@@ -68,11 +68,12 @@ export default {
         arrows: false,
         dotsClass: "slick-dots custom-dot-class",
         edgeFriction: 0.35,
+        fade:true,
         infinite: false,
         autoplay: true,
         pauseOnHover:false,
         speed: 3500,
-        autoplaySpeed: 2000,
+        autoplaySpeed: 3000,
         slidesToShow: 1,
         slidesToScroll: 1
       },
@@ -84,13 +85,22 @@ export default {
     this.setStyle();
     window.addEventListener("resize", this.setStyle);
     // setTimeout(() =>{
-    //   this.sliderSettings.infinite=true
+    //   this.sliderSettings.infinite=true;
+    //   this.sliderSettings.autoplay=true;
     // },1000)
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.setStyle);
   },
   methods: {
+    afterChange(number){
+      if(number==this.slider.length-1){
+        this.sliderSettings.initialSlide=0
+        this.sliderSettings.infinite=true;
+      }else{
+        // this.sliderSettings.infinite=false;
+      }
+    },
     gotoLink(link){
       if(link==null)return;
       window.open(link, '_blank');

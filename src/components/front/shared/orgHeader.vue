@@ -40,7 +40,7 @@ export default {
     window.addEventListener("resize", this.setStyle);
   },
   beforeDestroy() {
-    window.addEventListener("resize", this.setStyle);
+    window.removeEventListener("resize", this.setStyle);
   },
   methods: {
     setStyle() {

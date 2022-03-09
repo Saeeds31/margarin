@@ -65,7 +65,7 @@
             <router-link to="/"> خدمات </router-link>
           </li>
           <li>
-            <router-link to="/"> محصولات </router-link>
+            <router-link to="/products"> محصولات </router-link>
           </li>
           <li>
             <router-link to="/"> فروشگاه </router-link>

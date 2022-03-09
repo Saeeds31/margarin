@@ -19,7 +19,7 @@
       data-aos-duration="1500"
       data-aos-once="false" id="weblogsList" class="width100">
         <VueSlickCarousel v-bind="sliderSettings">
-      <cart v-for="(blog, index) in data.blogs" :key="index" :article="blog" />
+      <cart v-for="(item, index) in blog" :key="index" :article="item" />
     </VueSlickCarousel>
     </div>
   </div>
@@ -76,7 +76,8 @@ export default {
     };
   },
   props: {
-    data: Object
+    data: Object,
+    blog:Array
   }
 };
 </script>

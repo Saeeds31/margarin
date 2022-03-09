@@ -1,33 +1,57 @@
 <template>
   <div id="filterBox">
     <div id="filters" class="width100 d-flex justify-content-between">
-          <multiSelect
-        class="hiddenInMobile"
-        :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
-        id="sortOption"
-        track-by="name"
-        label="name"
-        v-model="sort"
-        :options="sortOptions"
-      ></multiSelect>
-    <multiSelect
+      <multiSelect
         v-if="productCategory"
         id="categotyOption"
         :placeholder="$cookie.get('ltrTheme') ? 'Category' : 'دسته بندی'"
         v-model="category"
+        :show-labels="false"
         :options="productCategory"
       >
       </multiSelect>
+      <multiSelect
+
+        class="hiddenInMobile brandOption"
+        :placeholder="$cookie.get('ltrTheme') ? 'product brand' : 'برند محصول '"
+        id="brandOption"
+        track-by="id"
+        label="title"
+        :show-labels="false"
+        v-model="brand"
+        :options="brands"
+      >
+        <template slot="singleLabel" slot-scope="props"
+          ><img
+            class="option__image"
+            :src="$root.baseImageUrl+props.option.image"
+          /><span class="option__desc"
+            ><span class="option__title">{{ props.option.title }}</span></span
+          ></template
+        >
+        <template slot="option" slot-scope="props"
+          ><img
+            class="option__image"
+            :src="$root.baseImageUrl+props.option.image"
+            alt="No Man’s Sky"
+          />
+          <div class="option__desc">
+            <span class="option__title">{{ props.option.title }}</span
+            >
+          </div>
+        </template>
+      </multiSelect>
+
       <div id="searchBox" class="width45">
         <input
-        @keypress.enter="searched()"
+          @keypress.enter="searched()"
           v-model="search"
           class="width100"
           type="text"
           :placeholder="searchPlaceHolder"
         />
         <svg
-        @click="searched()"
+          @click="searched()"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           width="24"
@@ -44,7 +68,6 @@
         </svg>
       </div>
     </div>
- 
   </div>
 </template>
 <script>
@@ -54,33 +77,40 @@ export default {
     multiSelect
   },
   mounted() {
-    if(this.productCategory==null){
-      this.$store.dispatch("getProductCategoryFromServer")
+    if (this.productCategory == null) {
+      this.$store.dispatch("getProductCategoryFromServer");
+    }
+    if (this.brands == null) {
+      this.$store.dispatch("getBrandsFromServer");
     }
   },
   methods: {
-       searched() {
+    searched() {
       let filter = {
         category: this.category != null ? this.category : "",
 
-        isDesending: this.sort != null ? this.sort.value : true,
+        brand: this.brand != null ? this.brand.id : true,
         search: this.search
       };
       this.$emit("filtered", filter);
     }
-},
- computed:{
-   productCategory (){
-     return this.$store.getters.getProductCategory;
-   }
- },
+  },
+  computed: {
+    productCategory() {
+      return this.$store.getters.getProductCategory;
+    },
+    brands() {
+      return this.$store.getters.getBrands;
+    }
+  },
 
-   watch: {
-    sort(newVal) {
+  watch: {
+    brand(newVal) {
+      
       // this.filterList.push(newVal);
       let filter = {
         category: this.category != null ? this.category : "",
-        isDesending: newVal != null ?newVal.value: true,
+        brand: newVal != null ? newVal.id : "",
         search: this.search
       };
       this.$emit("filtered", filter);
@@ -90,12 +120,11 @@ export default {
       let filter = {
         category: newVal != null ? newVal : "",
 
-        isDesending: this.sort != null ? this.sort.value : true,
+        brand: this.brand != null ? this.brand.id : "",
         search: this.search
       };
       this.$emit("filtered", filter);
-    },
- 
+    }
   },
   data() {
     return {
@@ -108,28 +137,7 @@ export default {
           ? "Start searching now ..."
           : "جستجوی را همین الان شروع کنید ...",
       category: null,
-      sort:
-        this.isDesendingSelected != ""
-          ? this.isDesendingSelected == true
-            ? {
-                name: this.$cookie.get("ltrTheme") ? "Newest" : "جدیدترین",
-                value: "true"
-              }
-            : {
-                name: this.$cookie.get("ltrTheme") ? "Oldest" : "قدیمی ترین",
-                value: "false"
-              }
-          : null,
-      sortOptions: [
-        {
-          name: this.$cookie.get("ltrTheme") ? "Oldest" : "قدیمی ترین",
-          value: "false"
-        },
-        {
-          name: this.$cookie.get("ltrTheme") ? "Newest" : "جدیدترین",
-          value: "true"
-        }
-      ]
+      brand: null
     };
   },
   props: {
@@ -154,23 +162,38 @@ export default {
   text-align: right;
   border: 3px solid var(--grayBackground);
 }
+#filterBox .multiselect__element span {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+}
+#filterBox .brandOption .multiselect__single{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between
+}
+#filterBox .brandOption .multiselect__single img{
+  width:50px
+}
 </style>
 <style scoped>
- #filterBox #searchBox {
-    position: relative;
+#filterBox #searchBox {
+  position: relative;
 }
- #filterBox #searchBox input {
-    padding: 20px;
-    border-radius: 30px;
-    direction:rtl;
-    text-align: right;
-    border: 3px solid var(--grayBackground);
-    font-size: 13px;
-    font-family: 'yekan-heavy';
+#filterBox #searchBox input {
+  padding: 20px;
+  border-radius: 30px;
+  direction: rtl;
+  text-align: right;
+  border: 3px solid var(--grayBackground);
+  font-size: 13px;
+  font-family: "yekan-heavy";
 }
 #filterBox #searchBox svg {
-    position: absolute;
-    left: 2%;
-    top: 15px;
+  position: absolute;
+  left: 2%;
+  top: 15px;
 }
 </style>

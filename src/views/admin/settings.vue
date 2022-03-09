@@ -50,7 +50,7 @@ export default {
           show_in_table: true,
           placeholder: " عنوان سایت را وارد کنید",
           type: "string",
-          name: "عنوان سایت",
+          name: "عنوان ",
           key: "title",
           multiData:true,
         },
@@ -59,7 +59,7 @@ export default {
           show_in_table: false,
           placeholder: " شعار سایت را وارد کنید",
           type: "string",
-          name: "شعار سایت",
+          name: "شعار ",
           multiData:true,
           key: "slogan"
         },
@@ -69,7 +69,7 @@ export default {
           show_in_table: false,
           placeholder: "  توضیحات وبسایت را وارد کنید",
           type: "description",
-          name: " توضیحات وبسایت",
+          name: " توضیحات ",
           multiData:true,
           key: "webSiteDescription"
         },{
@@ -77,7 +77,7 @@ export default {
           show_in_table: false,
           placeholder: "  آدرس وبسایت را وارد کنید",
           type: "description",
-          name: " آدرس وبسایت",
+          name: " آدرس ",
           multiData:true,
           key: "address"
         },
@@ -87,7 +87,7 @@ export default {
           show_in_table: false,
           placeholder: "  متن کپی رایت وبسایت را وارد کنید",
           type: "description",
-          name: " متن کپی رایت وبسایت",
+          name: " متن کپی رایت ",
           multiData:true,
           key: "copyRight"
         },
@@ -98,7 +98,7 @@ export default {
           show_in_table: false,
           placeholder: " اینستاگرام وبسایت را وارد کنید",
           type: "string",
-          name: "اینستاگرام وبسایت",
+          name: "اینستاگرام ",
           multiData:false,
           key: "instagrm"
         },
@@ -108,7 +108,7 @@ export default {
           show_in_table: false,
           placeholder: " فیسبوک وبسایت را وارد کنید",
           type: "string",
-          name: "فیسبوک وبسایت",
+          name: "فیسبوک ",
           multiData:false,
           key: "facebook"
         },
@@ -117,7 +117,7 @@ export default {
           show_in_table: false,
           placeholder: " توئیتر وبسایت را وارد کنید",
           type: "string",
-          name: "توئیتر وبسایت",
+          name: "توئیتر ",
           multiData:false,
           key: "twitter"
         },
@@ -126,7 +126,7 @@ export default {
           show_in_table: false,
           placeholder: " واتساپ وبسایت را وارد کنید",
           type: "string",
-          name: "واتساپ وبسایت",
+          name: "واتساپ ",
           multiData:false,
           key: "whatsApp"
         },
@@ -135,7 +135,7 @@ export default {
           show_in_table: false,
           placeholder: " تلگرام وبسایت را وارد کنید",
           type: "string",
-          name: "تلگرام وبسایت",
+          name: "تلگرام ",
           multiData:false,
           key: "telgram"
         },
@@ -144,7 +144,7 @@ export default {
           show_in_table: false,
           placeholder: " فاکس وبسایت را وارد کنید",
           type: "string",
-          name: "فاکس وبسایت",
+          name: "فاکس ",
           multiData:false,
           key: "fax"
         },
@@ -153,7 +153,7 @@ export default {
           show_in_table: false,
           placeholder: " ایمیل وبسایت را وارد کنید",
           type: "string",
-          name: "ایمیل وبسایت",
+          name: "ایمیل ",
           multiData:false,
           key: "email"
         },
@@ -166,7 +166,7 @@ export default {
           show_in_table: false,
           placeholder: " کد پستی وبسایت را وارد کنید",
           type: "string",
-          name: "کد پستی وبسایت",
+          name: "کد پستی ",
           multiData:false,
           key: "postal"
         },
@@ -182,9 +182,19 @@ export default {
           key: "meta"
         },
        
+        {
+          style: "col-12",
+          show_in_table: false,
+          placeholder: "ایمیل مدیریت برای ارسال پیام های کاربران",
+          type: "string",
+          multiData:false,
+          name: "ایمیل مدیریت",
+          key: "emailManager"
+        },
+       
         
         {
-          style: "col-6",
+          style: "col-12",
           show_in_table: true,
           placeholder: " تصویر لوگو را وارد کنید",
           type: "image",
@@ -192,15 +202,15 @@ export default {
           name: "تصویر",
           key: "logo"
         },
-        {
-          style: "col-6",
-          show_in_table: true,
-          placeholder: " تصویر لوگو در پنل را وارد کنید",
-          type: "image",
-          multiData:false,
-          name: " تصویر لوگو در پنل ادمین",
-          key: "panelLogo"
-        },
+        // {
+        //   style: "col-6",
+        //   show_in_table: true,
+        //   placeholder: " تصویر لوگو در پنل را وارد کنید",
+        //   type: "image",
+        //   multiData:false,
+        //   name: " تصویر لوگو در پنل ادمین",
+        //   key: "panelLogo"
+        // },
         
         {
           style: "col-12",

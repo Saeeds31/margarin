@@ -273,12 +273,12 @@ background-size: 36% 88%;
   box-shadow: none;
 }
 #weeklyCookingSection .slick-prev {
-  left: 80%;
+  left: 76%;
   top: 85%;
   z-index: 100;
 }
 #weeklyCookingSection .slick-next {
-  right: 12%;
+  right: 15%;
   top: 85%;
   z-index: 100;
 }

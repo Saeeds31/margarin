@@ -4,9 +4,9 @@
       <svg
             id="articleSvg"
             enable-background="new 0 0 510 510"
-            height="50"
+            height="45"
             viewBox="0 0 510 510"
-            width="60"
+            width="50"
             xmlns="http://www.w3.org/2000/svg"
           >
             <g id="XMLID_3990_">
@@ -110,7 +110,7 @@ export default {
       articleHeader: {
         route: "/weblogs?page=1&search=&category=&type=2",
         routeTitle:this.$cookie.get('ltrTheme')?"View article archive": "مشاهده آرشیو مقالات",
-        title:this.$cookie.get('ltrTheme')?"Margarine Group Articles": "مقــــــالات گــــــروه مارگاریــــــن",
+        title:this.$cookie.get('ltrTheme')?"Margarine  Articles": "مقــــــالات  مارگاریــــــن",
         summary:this.$cookie.get('ltrTheme')?"Always be up to date with us": "بـــا مـــا همیشـــه بـــروز باشیـــد",
         image: true
       },
@@ -264,24 +264,7 @@ this.$root.setProportionStyle(
         );
         
         //
-        this.$root.setProportionStyle(
-          "font-size",
-          "px",
-          "#homeSection #articles #sliderSection .sliderItem .smallCart .innerContent .content p",
-          1496,
-          12,
-          1024,
-          10
-        );
-        this.$root.setProportionStyle(
-          "font-size",
-          "px",
-          "#homeSection #articles #sliderSection .sliderItem .wideCart .innerContent .content p",
-          1496,
-          12,
-          1024,
-          10
-        );
+       
         // ,
         this.$root.setProportionStyle(
           "font-size",

@@ -16,10 +16,10 @@
           </span>
         </p>
         <div class="headerBlogOption d-flex justify-content-between">
-          <div
-            class="d-flex justify-content-between align-items-center "
+          <div @click="shareBlog()"
+            class="shareBlog d-flex justify-content-between align-items-center "
           >
-            <p @click="shareBlog()" class="d-flex flex-direction-column align-items-center">
+            <p  class="d-flex flex-direction-column align-items-center">
               <span>{{$cookie.get('ltrTheme')?"share":'اشتراک گذاری'}}</span>
               <span>{{$cookie.get('ltrTheme')?"On social networks":'در شبکه های اجتماعی'}}</span>
             </p>
@@ -336,7 +336,16 @@ export default {
   methods: {
     // set style to same hieght
 shareBlog(){
-   window.open(`whatsapp://send?text=${window.location.href}`,'_blank');  
+  // console.log(this.$route)
+        window.open(`https://wa.me/?text=${this.$root.domainName+this.$route.path}`,'_blank'); 
+
+    // navigator.share({
+    //       title: this.blogData?this.blogData.title:"پست مارگارین",
+    //       text: this.blogData?this.blogData.shortDescription:"این مطلب رو حتما بخون",
+    //       url:this.$root.domainName+this.$route.path,
+    //     })
+    //         .then(() => {})
+    //         .catch((error) => console.error(error));
 },
     setStyle() {
       // setTimeout(() => {
@@ -520,5 +529,8 @@ shareBlog(){
     box-shadow: 0 0 40px #00000040;
     padding: 30px;
   }
+}
+.shareBlog{
+  cursor: pointer;
 }
 </style>

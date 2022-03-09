@@ -1,13 +1,13 @@
 <template>
     <div class="menuItem">
         <div class="menuHeader">
-            <router-link :to="header.route">{{header.title}}</router-link>
+            <a >{{header.title}}</a>
         </div>
         <ul class="menuChild">
             <li  v-for="(item,index) in menuItem" :key="index">
-                <router-link :to="item.route">
+                <a target="_blank" :href="item.route">
                     {{item.title}}
-                </router-link>
+                </a>
             </li>
         </ul>
     </div>

@@ -19,13 +19,19 @@
       @click="showModal = true"
       v-if="$root.sectionIndexHome == 1"
       id="phone"
+      v-b-tooltip.hover
+      :title="
+        $cookie.get('ltrTheme')
+          ? 'Sending a message to the management'
+          : 'ارســــال پــــیام بــــه مدیــــریت'
+      "
       class="hiddenInMobile"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="25"
-        height="30"
+        width="20"
+        height="25"
         viewBox="0 0 30 30"
       >
         <image
@@ -46,8 +52,8 @@
       <svg
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="25"
-        height="30"
+        width="20"
+        height="25"
         viewBox="0 0 30 30"
       >
         <image
@@ -94,11 +100,16 @@
       v-if="showMenuModal"
       id="mobileMenu"
     >
-     <i class="fa fa-times" id="closeSvg" 
-        @click="showMenuModal = false" aria-hidden="true"></i>
+      <i
+        class="fa fa-times"
+        id="closeSvg"
+        @click="showMenuModal = false"
+        aria-hidden="true"
+      ></i>
 
       <menuSection
-      :style="`animation:sFade 1s linear ${index+1}s forwards`"
+        
+        :style="`animation:sFade 1s linear ${(index + 1) * 0.5}s forwards`"
         v-for="(item, index) in menu"
         :key="index"
         :header="item.header"
@@ -114,7 +125,8 @@
       :title="
         $cookie.get('ltrTheme')
           ? 'Communication with management'
-          : 'ارتباط با مدیریت'"
+          : 'ارتباط با مدیریت'
+      "
     >
       <div id="contactUsSection">
         <div
@@ -355,7 +367,8 @@
               :title="
                 $cookie.get('ltrTheme')
                   ? 'Send Your Message'
-                  : 'پیام را ارسال کنید'"
+                  : 'پیام را ارسال کنید'
+              "
             />
           </div>
         </div>
@@ -410,10 +423,6 @@ export default {
         this.$v.mobile.minLength == false
       ) {
         return this.$toast.error("شماره موبایل شامل 11 رقم است");
-      } else if (this.$v.email.required == false) {
-        return this.$toast.error("وارد کردن ایمیل الزامی است");
-      } else if (this.$v.email.email == false) {
-        return this.$toast.error("فرمت وارد شده ایمیل نامعتبر است");
       } else if (this.$v.text.required == false) {
         return this.$toast.error("وارد کردن پیام الزامی است");
       } else if (this.$v.text.minLength == false) {
@@ -428,7 +437,7 @@ export default {
       };
       this.disabled = true;
       this.$axios
-        .post("ContactUs", JSON.stringify(pack), {
+        .post("ContactUs/SendMessageToManager", JSON.stringify(pack), {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json"
@@ -504,13 +513,13 @@ export default {
       writeFullName: false
     };
   },
-  computed:{
-    menu(){
-      return this.$store.getters.getMenus
+  computed: {
+    menu() {
+      return this.$store.getters.getMenus;
     },
-brands(){
-  this.$store.getters.getBrands
-}
+    brands() {
+      this.$store.getters.getBrands;
+    }
   }
 };
 </script>

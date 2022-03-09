@@ -2,8 +2,8 @@
   <div v-if="contactUsData" id="contactUsSection">
     <introduction class="width80 margin-auto" :title="
         $cookie.get('ltrTheme')
-          ? 'Contact Margarin Group'
-          : 'تماس با گــــروه مارگاریــــن'
+          ? 'Contact Margarin '
+          : 'تماس با  مارگاریــــن'
       "
       :summary="contactUsData.contactUsIntro.title"
       :image="$root.baseImageUrl + contactUsData.contactUsIntro.image"
@@ -15,8 +15,9 @@
         class="slotElements d-flex"
       >
         <contactWay
+        v-if="$root.footerData"
           :title="$cookie.get('ltrTheme')?'Fax':'ارســــال فکــــس'"
-          :value="contactUsData.contactUs.fax"
+          :value="$root.footerData.fax"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -64,8 +65,9 @@
         </contactWay>
 
         <contactWay
+        v-if="$root.footerData"
           :title="$cookie.get('ltrTheme')?'Mobile':'شمــــاره تــــماس'"
-          :value="contactUsData.contactUs.phone"
+          :value="$root.footerData.phone"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -113,8 +115,9 @@
         </contactWay>
 
         <contactWay
+        v-if="$root.footerData"
           :title="$cookie.get('ltrTheme')?'postal Code':'کـــد پستـــی'"
-          :value="contactUsData.contactUs.postal"
+          :value="$root.footerData.postal"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -162,8 +165,9 @@
         </contactWay>
 
         <contactWay
+        v-if="$root.footerData"
           :title="$cookie.get('ltrTheme')?'E-Mail':'پـــست الکـــترونیک'"
-          :value="contactUsData.contactUs.email"
+          :value="$root.footerData.email"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -386,8 +390,8 @@
         <template v-slot:footer>
           <div class="d-flex footerSvg">
             <a
-              v-if="contactUs.social.instagram"
-              :href="contactUs.social.instagram"
+              v-if="$root.footerData"
+              :href="$root.footerData.facebook"
               target="_blank"
             >
               <svg
@@ -423,8 +427,8 @@
               </svg>
             </a>
             <a
-              v-if="contactUs.social.instagram"
-              :href="contactUs.social.instagram"
+              v-if="$root.footerData"
+              :href="$root.footerData.instagrm"
               target="_blank"
             >
               <svg
@@ -469,7 +473,7 @@
       data-aos-once="true"
       class="contactUsTitle width80 margin-auto"
     >
-      <h1 class="blackColor06">{{ $cookie.get("ltrTheme")?"Sending a message to the management":'ارســــال پــــیام بــــه مدیــــریت'}}</h1>
+      <h1 class="blackColor06">{{ $cookie.get("ltrTheme")?"Sending a message to the margarin":'ارســــال پــــیام بــــه مـــارگارین'}}</h1>
       <h3 class="blackColor04">{{ $cookie.get("ltrTheme")?"Respond in the shortest time":'پاسخگویــــی در کمتریــــن زمــــان'}}</h3>
       <double-line class="hiddenInMobile width20 margin-auto" />
     </div>
@@ -682,6 +686,7 @@
           :title="$cookie.get('ltrTheme')?'Send Your Message':'پیام را ارسال کنید'"
         />
       </div>
+      <Recaptcha :showRecaptcha="showRecaptcha" @rightAnswer="rightAnswer()" @closeRecaptcha="showRecaptcha=$event" />
     </div>
   </div>
   <loader v-else />
@@ -693,7 +698,9 @@ import {
   maxLength,
   email
 } from "vuelidate/lib/validators";
+
 import Loader from "@/components/front/shared/loader.vue";
+import Recaptcha from "@/components/front/shared/recaptcha.vue";
 import cart from "@/components/front/contactUs/cart.vue";
 import contactWay from "@/components/front/contactUs/contactWay.vue";
 import introduction from "@/components/front/shared/introduction.vue";
@@ -701,7 +708,7 @@ import DoubleLine from "@/components/front/shared/doubleLine.vue";
 import RoundedButton from "@/components/front/shared/roundedButton.vue";
 export default {
   components: {
-    introduction,
+    introduction,Recaptcha,
     Loader,
     contactWay,
     cart,
@@ -710,6 +717,7 @@ export default {
   },
   data() {
     return {
+      showRecaptcha:false,
       disabled: false,
       fullName: "",
       mobile: "",
@@ -724,6 +732,44 @@ export default {
     };
   },
   methods: {
+    rightAnswer(){
+const pack = {
+        fullName: this.fullName,
+        email: this.email,
+        phone: this.mobile,
+        text: this.text,
+        forManager:false,
+      };
+      this.disabled = true;
+      this.$axios
+        .post("ContactUs", JSON.stringify(pack), {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            "Content-Type": "application/json"
+          }
+        })
+        .then(() => {
+          this.$toast.success("پیام شما با موفقیت به دست ما رسید");
+          this.fullName = "";
+          this.text = "";
+          this.disabled = false;
+          this.email = "";
+          this.mobile = "";
+        })
+        .catch((error) => {
+          this.disabled = false;
+          let arrayError = error.response.data.message.split("|");
+          arrayError.forEach((err, index) => {
+            if (index < 1) {
+              this.$toast.error(err, {
+                timeout: 1000 * (index + 4),
+                pauseOnHover: true
+              });
+            }
+          });
+        });
+    this.showRecaptcha=false;
+    },
     showSection(section, flag) {
       if (flag == true) {
         this[section] = true;
@@ -869,42 +915,8 @@ export default {
       } else if (this.$v.text.minLength == false) {
         return this.$toast.error("حداقل حروف برای یک پیام شامل 20 حرف است");
       }
-      const pack = {
-        fullName: this.fullName,
-        email: this.email,
-        phone: this.mobile,
-        text: this.text,
-        forManager:false,
-      };
-      this.disabled = true;
-      this.$axios
-        .post("ContactUs", JSON.stringify(pack), {
-          headers: {
-            // Overwrite Axios's automatically set Content-Type
-            "Content-Type": "application/json"
-          }
-        })
-        .then(() => {
-          this.$toast.success("پیام شما با موفقیت به دست ما رسید");
-          this.fullName = "";
-          this.text = "";
-          this.disabled = false;
-          this.email = "";
-          this.mobile = "";
-        })
-        .catch((error) => {
-          this.disabled = false;
-          let arrayError = error.response.data.message.split("|");
-          arrayError.forEach((err, index) => {
-            if (index < 1) {
-              this.$toast.error(err, {
-                timeout: 1000 * (index + 4),
-                pauseOnHover: true
-              });
-            }
-          });
-        });
-    }
+      this.showRecaptcha=true;
+      }
   },
   validations: {
     fullName: {

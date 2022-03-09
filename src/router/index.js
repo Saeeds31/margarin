@@ -116,6 +116,17 @@ const routes = [{
                 );
             }
         },
+        {
+            path: "/manager",
+            name: "manager",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/manager.vue"
+                );
+            }
+        },
 
         {
             path: "/cooking-archive",
@@ -346,6 +357,17 @@ const routes = [{
                     }
                 },
                 {
+                    path: "management",
+                    name: "panelManagement",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/management.vue"
+                        );
+                    }
+                },
+                {
                     path: "recipes",
                     name: "panelRecipes",
 
@@ -353,6 +375,29 @@ const routes = [{
                         return import (
                             /* webpackChunkName: "admin" */
                             "../views/admin/recipes.vue"
+                        );
+                    }
+                },
+                {
+                    path: "menus",
+                    name: "panelMenu",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/menus.vue"
+                        );
+                    }
+                },
+
+                {
+                    path: "reports",
+                    name: "panelReports",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/reports.vue"
                         );
                     }
                 },

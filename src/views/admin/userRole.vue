@@ -20,16 +20,31 @@
         />
       </b-form-group>
       <b-form-group label="افزودن نقش">
-        <b-form-input
+        <treeselect
+          :multiple="false"
+          :clearable="false"
+          :searchable="true"
           v-model="Role"
-          placeholder="نام نقش را وارد کنید"
-        ></b-form-input>
+          :options="usersRole"
+        />
+     
       </b-form-group>
-      <b-button
+     <div id="buttons">
+        <b-button
+      class="col-md-6"
         :class="{ disabled: disabled == true }"
         @click.prevent="submitForm()"
         >افزودن</b-button
       >
+      
+      <b-button
+      variant="danger"
+      class="col-md-6"
+        :class="{ disabled: disabled == true }"
+        @click.prevent="deleteRole()"
+        >حذف </b-button
+      >
+     </div>
     </div>
   </div>
 </template>
@@ -64,6 +79,7 @@ export default {
       id: null,
       Role: null,
       status: true,
+      usersRole:null,
       disabled: false
     };
   },
@@ -81,14 +97,24 @@ export default {
       this.status = false;
       console.log(this.settings);
     });
+    this.$axios.get("Users/GetSystemRoles").then(res=>{
+     let fakeList = [];
+      res.data.data.forEach((ele) => {
+        let pack = {
+          id: ele.name,
+          label: ele.name
+        };
+        fakeList.push(pack);
+      });
+      this.usersRole = fakeList;
+    })
   },
   methods: {
     submitForm() {
       this.disabled = true;
       this.$axios
         .post(
-          'Users/AssignRole',
-          JSON.stringify({ Id: this.id, Role: this.Role }),
+          `Users/AssignRole?Id=${this.id}&Role=${this.Role}`,
           {
             headers: {
               // Overwrite Axios's automatically set Content-Type
@@ -105,7 +131,30 @@ export default {
 
           this.$toast.error(error.response.data.message);
         });
-    }
+    },
+    
+    deleteRole() {
+      this.disabled = true;
+      this.$axios
+        .post(
+          `Users/DeleteRole?Id=${this.id}&Role=${this.Role}`,
+          {
+            headers: {
+              // Overwrite Axios's automatically set Content-Type
+              "Content-Type": "application/json"
+            }
+          }
+        )
+        .then((response) => {
+          this.$toast.success(response.data.message);
+          this.disabled = false;
+        })
+        .catch((error) => {
+          this.disabled = false;
+
+          this.$toast.error(error.response.data.message);
+        });
+    },
   },
 
   watch: {
@@ -130,6 +179,9 @@ div#addRole {
     margin: auto;
     display: flex;
     flex-direction: column;
+}
+#buttons {
+  display: flex;
 }
 </style>
 <style>

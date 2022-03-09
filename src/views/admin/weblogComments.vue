@@ -73,6 +73,15 @@ export default {
         {
           style: "col-12",
           show_in_table: true,
+          placeholder: "متن دیدگاه",
+          type: "string",
+          multiData: false,
+          name: "متن دیدگاه",
+          key: "text"
+        },
+        {
+          style: "col-12",
+          show_in_table: true,
           placeholder: "",
           type: "setting",
           name: "تنظیمات",

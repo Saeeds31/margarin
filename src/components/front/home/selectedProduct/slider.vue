@@ -1,7 +1,8 @@
 <template>
   <div class="width80 height55vh margin-auto" id="selectedProductSlider">
     <VueSlickCarouse v-bind="sliderSettings">
-      <cart v-for="item in products" :key="item.id" :product="item" />
+      <!-- <cart :class="{productHomeAnimated1:index%3==0,productHomeAnimated2:index%3==1,productHomeAnimated3:index%3==2,}"  v-for="(item,index) in products" :key="item.id" :product="item" /> -->
+       <cart   v-for="(item,index) in products" :key="index" :product="item" />
     </VueSlickCarouse>
   </div>
 </template>

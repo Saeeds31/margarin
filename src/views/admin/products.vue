@@ -162,13 +162,21 @@ export default {
           key: "image"
         },
         {
-          style: "col-12",
+          style: "col-6",
           show_in_table: false,
           placeholder: "تصویر جدول تغذیه با ارتفاع 250 و عرض 350 پیکسل",
           type: "image",
           multiData: false,
           name: "تصویر جدول تغذیه",
           key: "nutritionFactImage"
+        },{
+          style: "col-6",
+          show_in_table: false,
+          placeholder: "تصویر اندازه بطری ها با ارتفاع 300 و عرض 100 پیکسل",
+          type: "image",
+          multiData: false,
+          name: "تصویر اندازه بطری ها",
+          key: "sizeImage"
         },
         {
           style: "col-12",

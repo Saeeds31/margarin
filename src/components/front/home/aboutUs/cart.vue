@@ -1,19 +1,20 @@
 <template>
-    <div @click="routeToAbout()" class="aboutCart  d-flex flex-direction-column align-items-end">
+    <div @click="routeToAbout(cartIndex)" class="aboutCart  d-flex flex-direction-column align-items-center">
         <img 
       data-aos="flip-left" :data-aos-duration="3000"    data-aos-once="false" data-aos-delay="500"
          class="width40"  :src="content.image" alt="">
         <h2 class="blackColor06">{{content.title}}</h2>
-        <h3 class="width65 summary blackColor06">{{content.text}}</h3>
+        <!-- <h3 class="width65 summary blackColor06">{{content.text}}</h3> -->
     </div>
 </template>
 <script>
 export default {
     props:{
-        content:Object
+        content:Object,
+        cartIndex:Number
     },methods:{
-        routeToAbout(){
-            this.$router.push('/about-us?section=collapseSection')
+        routeToAbout(index){
+            this.$router.push('/about-us?section=collapseSection&sectionId='+index)
         }
     }
 }

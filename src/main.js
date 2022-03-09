@@ -69,8 +69,11 @@ new Vue({
         return {
             sectionIndexHome: 1,
             screenSize: 0,
+            footerMapCursor: false,
+            domainName: 'http://vue.blogtest.ir',
             footerData: null,
             baseImageUrl: "http://blogtest.ir/"
+                // change vue x url
         };
     },
     methods: {
@@ -88,20 +91,29 @@ new Vue({
         window.removeEventListener("resize", this.setScreen);
     },
     created() {
-        this.$axios.get("Home/GetFooterContactUs").then(res => {
-            this.footerData = res.data.data
-        })
+        if (this.$cookie.get("adminPanelRole")) {
+            this.$store.commit("adminPanelRole", this.$cookie.get("adminPanelRole"));
+        }
         if (this.$cookie.get("ltrTheme")) {
             this.$axios.defaults.headers.common["Accept-Language"] = "en";
-            if (!document.body.classList.contains('ltrTheme')) {
-                document.body.classList.add('ltrTheme')
+            if (!document.body.classList.contains("ltrTheme")) {
+                document.body.classList.add("ltrTheme");
             }
         } else {
             this.$axios.defaults.headers.common["Accept-Language"] = "fa";
         }
+        if (!this.$route.path.includes("admin")) {
+            this.$axios.get("Home/GetFooterContactUs").then((res) => {
+                let step1 = JSON.stringify(res.data.data);
+                let step2 = step1.replace(/_fa"/g, '"');
+                let step3 = step2.replace(/_en"/g, '"');
+
+                this.footerData = JSON.parse(step3);
+            });
+        }
         if (this.$cookie.get("darkMode")) {
-            if (!document.body.classList.contains('darkMode')) {
-                document.body.classList.add('darkMode')
+            if (!document.body.classList.contains("darkMode")) {
+                document.body.classList.add("darkMode");
             }
         }
         window.addEventListener("resize", this.setScreen);
@@ -118,6 +130,10 @@ new Vue({
                     //     type: "error",
                     //     duration: "5000"
                     // });
+                    this.$cookie.delete("Authorization");
+
+                    router.push("/login");
+                } else if (error.response.status === 403) {
                     this.$cookie.delete("Authorization");
 
                     router.push("/login");

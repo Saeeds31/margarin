@@ -4,6 +4,7 @@
         >
           <label v-if="value||screenSize<999" class="cooperationFormLabel" :for="`${value}Input`">{{`: ${title} `}}</label>
           <input 
+          :tabindex="tabindex"
             :id="`${value}Input`"
             v-model="mainValue"
             :type="type"
@@ -14,7 +15,7 @@
 </template>
 <script>
 export default {
-  props:['value','title','type'],
+  props:['value','title','type','tabindex'],
   data(){
     return{
       mainValue:this.value

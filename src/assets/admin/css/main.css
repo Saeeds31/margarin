@@ -145,3 +145,13 @@ div#logoPanel {
         margin: 1.75rem auto;
     }
 }
+
+a.videoPreviewButton {
+    font-size: 20px;
+    background: darkblue;
+    color: white;
+    padding: 10px;
+    float: right;
+    margin: 10px 0;
+    border-radius: 5px;
+}

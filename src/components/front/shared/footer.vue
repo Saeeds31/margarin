@@ -6,11 +6,11 @@
     >
       <div id="mapSection" class="hiddenInMobile">
         <div id="map" class="width85">
-          <img
+          <!-- <img
             class="width100"
             src="https://s4.uupload.ir/files/rounded_rectangle_3_copy_pfy.png"
             alt=""
-          />
+          /> -->
         </div>
         <div id="buttons" class="d-flex justify-content-evenly">
           <button class="d-flex flex-direction-column align-items-center">
@@ -30,9 +30,16 @@
               />
             </svg>
 
-            <span>{{$cookie.get('ltrTheme')?'Get the 2022 calendar':'دریافت تقویم سال 1400'}}</span>
+            <span>{{
+              $cookie.get("ltrTheme")
+                ? "Get the 2022 calendar"
+                : "دریافت تقویم سال 1400"
+            }}</span>
           </button>
-          <button @click="$router.push('/catalogue')" class="d-flex flex-direction-column align-items-center">
+          <button
+            @click="$router.push('/catalogue')"
+            class="d-flex flex-direction-column align-items-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -49,7 +56,11 @@
               />
             </svg>
 
-            <span>{{$cookie.get('ltrTheme')?'Get the company introduction catalog':'دریافت کاتالوگ معرفی شرکت'}}</span>
+            <span>{{
+              $cookie.get("ltrTheme")
+                ? "Get the company introduction catalog"
+                : "دریافت کاتالوگ معرفی شرکت"
+            }}</span>
           </button>
         </div>
       </div>
@@ -57,123 +68,153 @@
         id="aboutUs"
         class="width20 d-flex flex-direction-column align-items-end"
       >
-        <h1 id="footerTitle" class="footerTitle">{{$cookie.get('ltrTheme')?'Headquarters address':'نشانی دفتر مرکزی'}}</h1>
-        <p>{{$cookie.get('ltrTheme')?'Iran, Tehran, Rey city, 3 km of Varamin road, Shahid Tondgovian boulevard, Margarine industrial companies ':' ایران , تهران , شهر ري , كيلومتر 3 جاده ورامين , بلوار شهید تندگویان ,
-           شرکت های صنعتی مارگارین'}}</p>
-        <span> info@email.com </span>
-        <h2> ۰۲۱- ۳۵۸۱۱</h2>
-        <div v-if="$root.footerData" id="social" class="width100 d-flex justify-content-around">
-         <a target="_blank" :href="'https://wa.me/'+$root.footerData.whatsApp">
-           
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="70"
-            height="70"
-            viewBox="0 0 70 70"
+        <h1 id="footerTitle" class="footerTitle">
+          {{
+            $cookie.get("ltrTheme")
+              ? "Headquarters address"
+              : "نشانی دفتر مرکزی"
+          }}
+        </h1>
+        <p v-if="$root.footerData">{{ $root.footerData.address }}</p>
+        <span v-if="$root.footerData"> {{ $root.footerData.email }} </span>
+        <h2 v-if="$root.footerData">{{ $root.footerData.phone }}</h2>
+        <div
+          v-if="$root.footerData"
+          id="social"
+          class="width100 d-flex justify-content-around"
+        >
+          <a
+            target="_blank"
+            :href="'https://wa.me/' + $root.footerData.whatsApp"
           >
-            <g
-              id="Group_1d"
-              data-name="Group 1d"
-              transform="translate(-834 -8302)"
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="70"
+              height="70"
+              viewBox="0 0 70 70"
             >
               <g
-                id="Rounded_Rectangle_12_copy_4"
-                data-name="Rounded Rectangle 12 copy 4"
-                transform="translate(834 8302)"
-                fill="rgba(255,255,255,0)"
-                stroke="rgba(247,148,30,0.1)"
-                stroke-linejoin="round"
-                stroke-width="6"
+                id="Group_1d"
+                data-name="Group 1d"
+                transform="translate(-834 -8302)"
               >
-                <rect width="70" height="70" rx="15" stroke="none" />
-                <rect x="3" y="3" width="64" height="64" rx="12" fill="none" />
+                <g
+                  id="Rounded_Rectangle_12_copy_4"
+                  data-name="Rounded Rectangle 12 copy 4"
+                  transform="translate(834 8302)"
+                  fill="rgba(255,255,255,0)"
+                  stroke="rgba(247,148,30,0.1)"
+                  stroke-linejoin="round"
+                  stroke-width="6"
+                >
+                  <rect width="70" height="70" rx="15" stroke="none" />
+                  <rect
+                    x="3"
+                    y="3"
+                    width="64"
+                    height="64"
+                    rx="12"
+                    fill="none"
+                  />
+                </g>
+                <image
+                  id="Layer_2386"
+                  data-name="Layer 2386"
+                  width="24"
+                  height="24"
+                  transform="translate(857 8325)"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAmFJREFUSEulllmITmEYx40kyXZDiTSFEA0ZW1mmXHCjzAUjERejlCZLIksYUSRNskSWRk2R7c4FpRTKGI0S02TLDWUry1yIKL/fdF6dXt93nNO89es7z3mf5/m/63O+iu/HR/XKaH3pmwlToTr5NaAD2uERPIQn5XJUZAiY8DxMyhpB0neF33XwKfYtJeCod8E26JMjeXD5kIhcS8fEAoPovAOTCySOXU8mQt3vY4EzvFvTg+QhdAkP3TNJCyzEvhEld9pHoQrqCggbN9E9CQKDMZ7CyFSStzzPh/fwFRphTwERN74uCGzBOBQFO+L7cBuuwnZogZUFRKqCwGWClkaBA7D3wSb4mCzTYn5PFRCoDwIvCRodBc7AngKnk6VxL7xUYwoInFBgCAGfSwS55i6bN/ZWMhOXa24BgVYFZhNwr0TQD95Nh97QCrVgibA8DM0p0qWApaBcLTHhNFgLO8DyYbsAw+EwzIFyG9+hgJvZlTGiY/RtgEtQA6vAJRsI/eAdNEKpI9wSNvk1DpUZIsvo81yvh4PgjbewNcA58Ag7gPgybgwC++ncmSFglzPZCuPgIkxI/D2BLqNi5km3eUFgLG+f/0fAbvdkOZjUdVekCfrDXRiWymFlqA4C4zE6cwjo4uk6ANfhGSwCN3tEKv4Xz7OgPQjsxdidUyCPm0vlN+VvNX3Bc5EbmiXymE6rwM8goPEgz7By+JzFZzN8C74u0REMz3lP2huC/VDdjJMoEBc6bW+qR/E3rIYVUBkFv8IO/yosiH4z/mkKNPN2AXiRTNxWZireeEX8OHlcv+SZ8h8R2Zr1bGBPBwAAAABJRU5ErkJggg=="
+                />
               </g>
-              <image
-                id="Layer_2386"
-                data-name="Layer 2386"
-                width="24"
-                height="24"
-                transform="translate(857 8325)"
-                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAmFJREFUSEulllmITmEYx40kyXZDiTSFEA0ZW1mmXHCjzAUjERejlCZLIksYUSRNskSWRk2R7c4FpRTKGI0S02TLDWUry1yIKL/fdF6dXt93nNO89es7z3mf5/m/63O+iu/HR/XKaH3pmwlToTr5NaAD2uERPIQn5XJUZAiY8DxMyhpB0neF33XwKfYtJeCod8E26JMjeXD5kIhcS8fEAoPovAOTCySOXU8mQt3vY4EzvFvTg+QhdAkP3TNJCyzEvhEld9pHoQrqCggbN9E9CQKDMZ7CyFSStzzPh/fwFRphTwERN74uCGzBOBQFO+L7cBuuwnZogZUFRKqCwGWClkaBA7D3wSb4mCzTYn5PFRCoDwIvCRodBc7AngKnk6VxL7xUYwoInFBgCAGfSwS55i6bN/ZWMhOXa24BgVYFZhNwr0TQD95Nh97QCrVgibA8DM0p0qWApaBcLTHhNFgLO8DyYbsAw+EwzIFyG9+hgJvZlTGiY/RtgEtQA6vAJRsI/eAdNEKpI9wSNvk1DpUZIsvo81yvh4PgjbewNcA58Ag7gPgybgwC++ncmSFglzPZCuPgIkxI/D2BLqNi5km3eUFgLG+f/0fAbvdkOZjUdVekCfrDXRiWymFlqA4C4zE6cwjo4uk6ANfhGSwCN3tEKv4Xz7OgPQjsxdidUyCPm0vlN+VvNX3Bc5EbmiXymE6rwM8goPEgz7By+JzFZzN8C74u0REMz3lP2huC/VDdjJMoEBc6bW+qR/E3rIYVUBkFv8IO/yosiH4z/mkKNPN2AXiRTNxWZireeEX8OHlcv+SZ8h8R2Zr1bGBPBwAAAABJRU5ErkJggg=="
-              />
-            </g>
-          </svg>
-         </a>
-         <a target="_blank" :href="$root.footerData.instagrm">
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="70"
-            height="70"
-            viewBox="0 0 70 70"
-          >
-            <g
-              id="Group_2sd"
-              data-name="Group 2sd"
-              transform="translate(-914 -8302)"
+            </svg>
+          </a>
+          <a target="_blank" :href="$root.footerData.instagrm">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="70"
+              height="70"
+              viewBox="0 0 70 70"
             >
               <g
-                id="Rounded_Rectangle_12_copy_3"
-                data-name="Rounded Rectangle 12 copy 3"
-                transform="translate(914 8302)"
-                fill="rgba(255,255,255,0)"
-                stroke="rgba(247,148,30,0.1)"
-                stroke-linejoin="round"
-                stroke-width="6"
+                id="Group_2sd"
+                data-name="Group 2sd"
+                transform="translate(-914 -8302)"
               >
-                <rect width="70" height="70" rx="15" stroke="none" />
-                <rect x="3" y="3" width="64" height="64" rx="12" fill="none" />
+                <g
+                  id="Rounded_Rectangle_12_copy_3"
+                  data-name="Rounded Rectangle 12 copy 3"
+                  transform="translate(914 8302)"
+                  fill="rgba(255,255,255,0)"
+                  stroke="rgba(247,148,30,0.1)"
+                  stroke-linejoin="round"
+                  stroke-width="6"
+                >
+                  <rect width="70" height="70" rx="15" stroke="none" />
+                  <rect
+                    x="3"
+                    y="3"
+                    width="64"
+                    height="64"
+                    rx="12"
+                    fill="none"
+                  />
+                </g>
+                <image
+                  id="Layer_2385"
+                  data-name="Layer 2385"
+                  width="24"
+                  height="24"
+                  transform="translate(937 8325)"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAYVJREFUSEvNlk8oRUEUh93ITmJJWWFlRdiyl61srJCklGJDodhQSr0QVjayUrL3tpK3ssLWGlHyIr7f7Vw9f2beq3unTH3NvDlnzm9mztyZF73kWqpKSiftCeiCDqgtNXraRWxXcAk7UEh8IxOopmPBqKkwqMvtDcOK8Z4ILNKxlDLwz+GKtywBbcs5pJn5MePXoMdmXketlfRKYJfGWIrZPzO2yXKmHEho2uLtSUCdWoWvPGGU34U5dVPrIGimDybQT50Hbfec+RUk8MoP32nZxz4DEqm3gY8WfIN6FOSzCtqibWg0v6IEPjxTH8Z2BJOgZbea7y31JmzBEBy6YvgENKtxOIEBR4BT+gdBedRKfhWXgLajGUYg51mhTFNwAHegnHwrLoE8XkraNbSVEbjB3g5n0FepwDqOSto9RGUElMMGmIfZfyMQfIuCJ1lbGfSYJrnK5EPL4qpwHbT4qkh72flOcXzZpb2ufQLxdZ3Fg/OXyNeDI2PQJ1MCwR/9ZImZ/235BILFmQuYZM/pAAAAAElFTkSuQmCC"
+                />
               </g>
-              <image
-                id="Layer_2385"
-                data-name="Layer 2385"
-                width="24"
-                height="24"
-                transform="translate(937 8325)"
-                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAYVJREFUSEvNlk8oRUEUh93ITmJJWWFlRdiyl61srJCklGJDodhQSr0QVjayUrL3tpK3ssLWGlHyIr7f7Vw9f2beq3unTH3NvDlnzm9mztyZF73kWqpKSiftCeiCDqgtNXraRWxXcAk7UEh8IxOopmPBqKkwqMvtDcOK8Z4ILNKxlDLwz+GKtywBbcs5pJn5MePXoMdmXketlfRKYJfGWIrZPzO2yXKmHEho2uLtSUCdWoWvPGGU34U5dVPrIGimDybQT50Hbfec+RUk8MoP32nZxz4DEqm3gY8WfIN6FOSzCtqibWg0v6IEPjxTH8Z2BJOgZbea7y31JmzBEBy6YvgENKtxOIEBR4BT+gdBedRKfhWXgLajGUYg51mhTFNwAHegnHwrLoE8XkraNbSVEbjB3g5n0FepwDqOSto9RGUElMMGmIfZfyMQfIuCJ1lbGfSYJrnK5EPL4qpwHbT4qkh72flOcXzZpb2ufQLxdZ3Fg/OXyNeDI2PQJ1MCwR/9ZImZ/235BILFmQuYZM/pAAAAAElFTkSuQmCC"
-              />
-            </g>
-          </svg>
-         </a>
-         <a target="_blank" :href="$root.footerData.telgram">
-
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="70"
-            height="70"
-            viewBox="0 0 70 70"
-          >
-            <g
-              id="Group_3sdsd"
-              data-name="Group 3sdsd"
-              transform="translate(-994 -8302)"
+            </svg>
+          </a>
+          <a target="_blank" :href="$root.footerData.telgram">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="70"
+              height="70"
+              viewBox="0 0 70 70"
             >
               <g
-                id="Rounded_Rectangle_12_copy_2"
-                data-name="Rounded Rectangle 12 copy 2"
-                transform="translate(994 8302)"
-                fill="rgba(255,255,255,0)"
-                stroke="rgba(247,148,30,0.1)"
-                stroke-linejoin="round"
-                stroke-width="6"
+                id="Group_3sdsd"
+                data-name="Group 3sdsd"
+                transform="translate(-994 -8302)"
               >
-                <rect width="70" height="70" rx="15" stroke="none" />
-                <rect x="3" y="3" width="64" height="64" rx="12" fill="none" />
+                <g
+                  id="Rounded_Rectangle_12_copy_2"
+                  data-name="Rounded Rectangle 12 copy 2"
+                  transform="translate(994 8302)"
+                  fill="rgba(255,255,255,0)"
+                  stroke="rgba(247,148,30,0.1)"
+                  stroke-linejoin="round"
+                  stroke-width="6"
+                >
+                  <rect width="70" height="70" rx="15" stroke="none" />
+                  <rect
+                    x="3"
+                    y="3"
+                    width="64"
+                    height="64"
+                    rx="12"
+                    fill="none"
+                  />
+                </g>
+                <image
+                  id="Layer_2384"
+                  data-name="Layer 2384"
+                  width="24"
+                  height="20"
+                  transform="translate(1017 8327)"
+                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAUCAYAAACXtf2DAAAABHNCSVQICAgIfAhkiAAAAZJJREFUOE+1lD0oRWEcxh3KVxgpCoPiDqR8pKQwkE2K5GOyyILBZrXdDFJSl0EWk9ViYKEQA4MMVoNIlOTz9+g9dTrOPee9173/evq/5//xPO95v5zX1eqcLFk+vO9OhgUcSLvAJBgG15kSiEE2AcZBjWdFdv4jUAHRqJltS8AyvxCLpSpQTNOgmW0fPi9k/xbIxW0EcinsNTMdwpdYHIoraprBR5hAkyEdw1dakHpLuvk4UMAvUEVMhDoFjSmSuuXbpv/3WwJF+BET7MFrSdK1JxobwJ1LIIFdPrRxNvZGUUFI4Sy5FW9eAnsE+iPYD8nrZnaE1F2QawWffgFtYAIMBDQfE9sA0yDorLst3ww6wZGfw7vJUySXQRm4BItm1hJXLMw2Sar/j/lPUTkVteAUxMF8BLHSD6Ae3NsIuDV1DG4syFWi5VtPVpvsoukWnlsInFCjjf/KhoBI28FZ2ERs/2DLkOkSubbGYCbqL5MJlJo9eDZrvI8vBEtgDtyCNvCYroD69GQEra3eKz0Jeu8j7QeSZFvXISV9IAAAAABJRU5ErkJggg=="
+                />
               </g>
-              <image
-                id="Layer_2384"
-                data-name="Layer 2384"
-                width="24"
-                height="20"
-                transform="translate(1017 8327)"
-                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAUCAYAAACXtf2DAAAABHNCSVQICAgIfAhkiAAAAZJJREFUOE+1lD0oRWEcxh3KVxgpCoPiDqR8pKQwkE2K5GOyyILBZrXdDFJSl0EWk9ViYKEQA4MMVoNIlOTz9+g9dTrOPee9173/evq/5//xPO95v5zX1eqcLFk+vO9OhgUcSLvAJBgG15kSiEE2AcZBjWdFdv4jUAHRqJltS8AyvxCLpSpQTNOgmW0fPi9k/xbIxW0EcinsNTMdwpdYHIoraprBR5hAkyEdw1dakHpLuvk4UMAvUEVMhDoFjSmSuuXbpv/3WwJF+BET7MFrSdK1JxobwJ1LIIFdPrRxNvZGUUFI4Sy5FW9eAnsE+iPYD8nrZnaE1F2QawWffgFtYAIMBDQfE9sA0yDorLst3ww6wZGfw7vJUySXQRm4BItm1hJXLMw2Sar/j/lPUTkVteAUxMF8BLHSD6Ae3NsIuDV1DG4syFWi5VtPVpvsoukWnlsInFCjjf/KhoBI28FZ2ERs/2DLkOkSubbGYCbqL5MJlJo9eDZrvI8vBEtgDtyCNvCYroD69GQEra3eKz0Jeu8j7QeSZFvXISV9IAAAAABJRU5ErkJggg=="
-              />
-            </g>
-          </svg>
-         </a>
+            </svg>
+          </a>
         </div>
         <div
           id="buttons"
@@ -196,9 +237,16 @@
               />
             </svg>
 
-            <span>{{$cookie.get('ltrTheme')?'Get the 2022 calendar':'دریافت تقویم سال 1400'}}</span>
+            <span>{{
+              $cookie.get("ltrTheme")
+                ? "Get the 2022 calendar"
+                : "دریافت تقویم سال 1400"
+            }}</span>
           </button>
-          <button @click="$router.push('/catalogue')" class="d-flex flex-direction-column align-items-center">
+          <button
+            @click="$router.push('/catalogue')"
+            class="d-flex flex-direction-column align-items-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -215,31 +263,90 @@
               />
             </svg>
 
-            <span>{{$cookie.get('ltrTheme')?'Get the company introduction catalog':'دریافت کاتالوگ معرفی شرکت'}}</span>
+            <span>{{
+              $cookie.get("ltrTheme")
+                ? "Get the company introduction catalog"
+                : "دریافت کاتالوگ معرفی شرکت"
+            }}</span>
           </button>
         </div>
       </div>
       <div id="bestRoute" class="hiddenInMobile">
-        <h1 class="footerTitle">{{$cookie.get('ltrTheme')?'Applied links':'لینک های کاربردی'}}</h1>
+        <h1 class="footerTitle">
+          {{ $cookie.get("ltrTheme") ? "Applied links" : "لینک های کاربردی" }}
+        </h1>
         <ul>
-          <li><router-link to="/about-us">{{$cookie.get('ltrTheme')?'About us':'درباره ما'}}</router-link></li>
-          <li><router-link to="/products">{{$cookie.get('ltrTheme')?'Products':'محصولات ما'}}</router-link></li>
-          <li><router-link to="/cooking-archive">{{$cookie.get('ltrTheme')?'Cookings':'آشپزخانه'}}</router-link></li>
-          <li><router-link to="/weblogs">{{$cookie.get('ltrTheme')?'weblogs':'وبلاگ'}}</router-link></li>
-          <li><router-link to="/cooperation">{{$cookie.get('ltrTheme')?'Cooperation':'همکاری با ما'}}</router-link></li>
-          <li><router-link to="/contact-us">{{$cookie.get('ltrTheme')?'Contact Us':'تماس با ما'}}</router-link></li>
+          <li>
+            <router-link to="/about-us">{{
+              $cookie.get("ltrTheme") ? "About us" : "درباره ما"
+            }}</router-link>
+          </li>
+          <li>
+            <router-link to="/products">{{
+              $cookie.get("ltrTheme") ? "Products" : "محصولات ما"
+            }}</router-link>
+          </li>
+          <li>
+            <router-link to="/cooking-archive">{{
+              $cookie.get("ltrTheme") ? "Cookings" : "آشپزخانه"
+            }}</router-link>
+          </li>
+          <li>
+            <router-link to="/weblogs">{{
+              $cookie.get("ltrTheme") ? "weblogs" : "وبلاگ"
+            }}</router-link>
+          </li>
+          <li>
+            <router-link to="/cooperation">{{
+              $cookie.get("ltrTheme") ? "Cooperation" : "همکاری با ما"
+            }}</router-link>
+          </li>
+          <li>
+            <router-link to="/contact-us">{{
+              $cookie.get("ltrTheme") ? "Contact Us" : "تماس با ما"
+            }}</router-link>
+          </li>
         </ul>
       </div>
       <div id="route" class="hiddenInMobile">
-        <h1 class="footerTitle">{{$cookie.get('ltrTheme')?'Our group services':'خدمات گروه ما'}}</h1>
+        <h1 class="footerTitle">
+          {{ $cookie.get("ltrTheme") ? "Our  services" : "خدمات  ما" }}
+        </h1>
         <ul>
-          <li><router-link :to="`/products?type=${$cookie.get('ltrTheme')?'Industrial oils':'روغن های صنعت'}`">{{$cookie.get('ltrTheme')?'Industrial oils':'روغن های صنعت'}}</router-link></li>
-          <li><router-link :to="`/products?type=${$cookie.get('ltrTheme')?'Class oils':'روغن های صنف'}`">{{$cookie.get('ltrTheme')?'Class oils':'روغن های صنف'}}</router-link></li>
-          <li><router-link :to="`/products?type=${$cookie.get('ltrTheme')?'Household oils':'روغن های خانوار'}`">{{$cookie.get('ltrTheme')?'Household oils':'روغن های خانوار'}}</router-link></li>
+          <li>
+            <router-link
+              :to="`/products?type=${
+                $cookie.get('ltrTheme') ? 'Industrial oils' : 'روغن های صنعت'
+              }`"
+              >{{
+                $cookie.get("ltrTheme") ? "Industrial oils" : "روغن های صنعت"
+              }}</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              :to="`/products?type=${
+                $cookie.get('ltrTheme') ? 'Class oils' : 'روغن های صنف'
+              }`"
+              >{{
+                $cookie.get("ltrTheme") ? "Class oils" : "روغن های صنف"
+              }}</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              :to="`/products?type=${
+                $cookie.get('ltrTheme') ? 'Household oils' : 'روغن های خانوار'
+              }`"
+              >{{
+                $cookie.get("ltrTheme") ? "Household oils" : "روغن های خانوار"
+              }}</router-link
+            >
+          </li>
         </ul>
       </div>
       <button
-        v-if="showGotoTOp&&$route.path!='/faq'"
+        v-if="showGotoTOp && $route.path != '/faq'"
         @click="goToTop()"
         data-aos="fade-up"
         data-aos-duration="1000"
@@ -265,20 +372,58 @@
   </footer>
 </template>
 <script>
-
 export default {
   mounted() {
-   
     this.setStyle();
+    document.getElementById('map').addEventListener('mouseenter',this.setMapflag)
+    document.getElementById('map').addEventListener('mouseleave',this.unsetMapflag)
     window.addEventListener("resize", this.setStyle);
     window.addEventListener("scroll", this.setGotoTop);
+    let link = document.createElement("link");
+    link.href = "https://static.neshan.org/sdk/openlayers/5.3.0/ol.css";
+    document.head.appendChild(link);
+    let sc = document.createElement("script");
+    sc.src =
+      "https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL";
+    document.head.appendChild(sc);
+    let sc1 = document.createElement("script");
+    sc1.id = "neshanMapScript";
+    sc1.src = "https://static.neshan.org/sdk/openlayers/5.3.0/ol.js";
+    document.head.appendChild(sc1);
+    let interval = setInterval(() => {
+      if (this.$root.isInViewport(document.getElementById("neshanMapScript"))) {
+        clearInterval(interval);
+        setTimeout(()=>{
+new ol.Map({
+          target: "map",
+          key: "web.xe2mxJiodDHeDPnl2iWUXOAhs9J9221XDuSfqMZv",
+          maptype: "dreamy",
+          poi: true,
+          traffic: false,
+          view: new ol.View({
+            center: ol.proj.fromLonLat([ 51.462879,35.579448]),
+            zoom: 15
+          })
+        });
+        },1000)
+      }
+    }, 100);
   },
   beforeDestroy() {
+    
+    document.getElementById('map').removeEventListener('mouseenter',this.setMapflag)
+    document.getElementById('map').removeEventListener('mouseleave',this.unsetMapflag)
     window.removeEventListener("scroll", this.setGotoTop);
 
     window.removeEventListener("resize", this.setStyle);
   },
   methods: {
+    setMapflag(){
+      this.$root.footerMapCursor=true
+    },
+    unsetMapflag(){
+      this.$root.footerMapCursor=false
+    },
     setGotoTop() {
       if (this.$root.isInViewport(document.getElementById("footerTitle"))) {
         this.showGotoTOp = true;
@@ -365,6 +510,7 @@ export default {
       }
     }
   },
+
   data() {
     return {
       showGotoTOp: false
@@ -374,8 +520,8 @@ export default {
 </script>
 <style scoped>
 button#mainMoveToTopBotton {
-  width: max-content;
-  height: max-content;
+  width: 55px;
+  height: 55px;
   padding: 15px;
   border-radius: 100%;
   transform: rotate(90deg);
@@ -385,5 +531,10 @@ button#mainMoveToTopBotton {
   bottom: 70px;
   box-shadow: 0 0 40px #5e5e5eb0;
   background: white;
+}
+</style>
+<style>
+.ol-overlaycontainer-stopevent {
+    display: none;
 }
 </style>

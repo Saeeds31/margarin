@@ -1,7 +1,7 @@
 <template>
   <div id="collapseSection">
       <div class="accordion" role="tablist">
-    <collapseItem v-for="(item, index) in list" :key="index" :data="item">
+    <collapseItem :listIndex="index" v-for="(item, index) in list" :key="index" :data="item">
       <img class="faqImage" :src="$root.baseImageUrl+item.image" :alt="item.answer" />
     </collapseItem>
       </div>

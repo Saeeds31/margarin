@@ -241,6 +241,7 @@
         class="width100 justify-content-between"
       >
         <simpleInput
+        :tabindex="3"
           :title="$cookie.get('ltrTheme') ? 'Father Name' : 'نام پدر'"
           type="text"
           v-model="fatherName"
@@ -248,29 +249,41 @@
         <simpleInput
           :title="$cookie.get('ltrTheme') ? 'Last Name' : 'نام خانوادگی'"
           type="text"
+        :tabindex="2"
+
           v-model="lastName"
         />
         <simpleInput
           :title="$cookie.get('ltrTheme') ? 'first Name' : 'نام'"
           type="text"
+        :tabindex="1"
+
           v-model="firstName"
         />
         <selectionInput
+        :tabindex="6"
+
           :title="$cookie.get('ltrTheme') ? 'Gender' : 'جنسیت'"
           v-model="genderOption"
           @selectValue="gender = $event"
         />
         <simpleInput
+        :tabindex="5"
+
           :title="$cookie.get('ltrTheme') ? 'NationalCode' : 'شماره شناسنامه'"
           type="number"
           v-model="nationalId"
         />
         <simpleInput
+        :tabindex="4"
+
           :title="$cookie.get('ltrTheme') ? 'Passport Number' : 'شناسه ملی'"
           type="number"
           v-model="nationalCode"
         />
         <selectionInput
+        :tabindex="9"
+
           :title="$cookie.get('ltrTheme') ? 'Religion' : 'مذهب'"
           v-model="religionOption"
           @selectValue="religion = $event"
@@ -280,17 +293,22 @@
           id="selectBirthDay"
           class="width30 d-flex align-items-center justify-content-between"
         >
-          <date-picker id="birthDate" v-model="brithDate" />
+          <date-picker 
+           id="birthDate" v-model="brithDate" />
           <label>{{
             $cookie.get("ltrTheme") ? "Date of birth" : "تاریخ تولد"
           }}</label>
         </div>
         <selectionInput
+        :tabindex="7"
+
           :title="$cookie.get('ltrTheme') ? 'marital status' : 'وضعیت تاهل'"
           v-model="maritalStatus"
           @selectValue="lifeStyle = $event"
         />
         <iconInput
+        :tabindex="12"
+
           :title="$cookie.get('ltrTheme') ? 'E-mail' : 'پست الکترونیک'"
           :type="'email'"
           v-model="email"
@@ -329,6 +347,8 @@
           </svg>
         </iconInput>
         <iconInput
+        :tabindex="11"
+
           :title="
             $cookie.get('ltrTheme')
               ? 'Landline phone number'
@@ -371,6 +391,8 @@
           </svg>
         </iconInput>
         <iconInput
+        :tabindex="10"
+
           :title="$cookie.get('ltrTheme') ? 'Mobile number' : 'شماره  همراه'"
           :type="'number'"
           v-model="mobile"
@@ -419,6 +441,8 @@
         id="locationInfo"
       >
         <iconInput
+        :tabindex="15"
+
           :title="$cookie.get('ltrTheme') ? 'Postal Code' : 'کد  پستی'"
           :type="'number'"
           v-model="postalCode"
@@ -461,6 +485,8 @@
           class="selectCooperationInput d-flex justify-content-between align-items-center"
         >
           <multiSelect
+        :tabindex="14"
+
             :allow-empty="false"
             v-model="city"
             :deselect-label="
@@ -479,6 +505,8 @@
           class="selectCooperationInput d-flex justify-content-between align-items-center"
         >
           <multiSelect
+        :tabindex="13"
+
             track-by="label"
             label="label"
             :allow-empty="false"
@@ -499,58 +527,10 @@
         <div
           class="largeInput d-flex justify-content-between align-items-center width100"
         >
-          <svg
-            class="hiddenInMobile"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            width="209"
-            height="60"
-            viewBox="0 0 209 60"
-          >
-            <g
-              id="Group_1location"
-              data-name="Group 1location"
-              transform="translate(-395 -1911)"
-            >
-              <rect
-                id="Rounded_Rectangle_678"
-                data-name="Rounded Rectangle 678"
-                width="209"
-                height="60"
-                rx="30"
-                transform="translate(395 1911)"
-                fill="#b11116"
-                opacity="0.059"
-              />
-              <image
-                id="Layer_2713"
-                data-name="Layer 2713"
-                width="22"
-                height="24"
-                transform="translate(425 1929)"
-                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAYCAYAAAD+vg1LAAAABHNCSVQICAgIfAhkiAAAAqlJREFUSEuNlWmITlEYx40tKR+GRnxQMqQMiuxblKIIWTOESbIXERKfSIiQLUmWLFkzoihF9i3K9sGW8mEmRPkkW34/3fN2uu6dd079ep/znHP/99zzLG9JdWnrBjmjEf4R0CvCrY8irmD/znq+JEe4gs0HoTd8jITUCC/yRA+hCl6kxdPCjdmwCtbCS5gNj3O+qCf+A9AF1sFG+BX2poU3s7AUNsB6+JkjGtxNMNbAatgGK7KE++G8DSthSxHB9PJyHJtgINxzMZy4GfYT+AKD4U/0ZFPs6TAg8d3h9yj8iPY0xL4JLaEHfA/C85lsh67wOnqgPXY1dIcPib8dv09hLLyP9nbCfg5LYG8QNgMMQt/UKa4zL4dFcCFZG8PvLngLQyH+uvvMDXpVEH7G5AYsjIR9ifdllnh/8TAOZoFxUSyM3RhDoJvCzTG+wRzw5GHMxdgDbeBTSriMeS0sgH3Rmjm9H1oo3ArjM0yG09GmCdhnkhMYmHgYYL9wIpyNFiZhn4KycBWvmFwCcziMthjvwLudkhI+ydy77gA10Zq5rL88CB9mYvAs4XgsY2JOPwAD5jCQfcDc3Zrab4mbVZVBeB6TnWD9f01tnsXc4IVuZe8weIdS+0qZu+YLdwRhg+F1nAADkjU6Js43OesG2kLqDDVxr1iMwyIplGWOQJY7tANP6z0XSlrb/hs6mXcdl2xd77DkvVvL2nL+1+HS3a0/vmtwGUyd+nQ3U3QkDIO74QRZjX4Ui+fgIphmhR6bOra927QbDePBdC2MvH8Qc9HiOA+VGeKKHodxYJGEPlJU2A2ewhNZWdMg/LcZi2NgZfpFft1/I+/EYaNl7sks05mJ02LS75fozxzFhH1oKhyBW4nCIH5ngDmfO+oj7MPDIbROq+5qXaKu/QViYpp2z4y9FgAAAABJRU5ErkJggg=="
-              />
-              <text
-                id="انتخاب_روی_نقشه"
-                data-name="انتخاب روی نقشه"
-                transform="translate(465 1945)"
-                fill="#b11116"
-                font-size="18"
-                font-family="YekanBakh-Medium, Yekan Bakh"
-                font-weight="500"
-                letter-spacing="-0.01em"
-              >
-                <tspan x="0" y="0">
-                  {{
-                    $cookie.get("ltrTheme")
-                      ? "Select on the map"
-                      : "انتخاب روی نقشه"
-                  }}
-                </tspan>
-              </text>
-            </g>
-          </svg>
+      
           <input
+        :tabindex="16"
+
             type="text"
             id="address"
             placeholder="اتوبان تندگویان , بلوار حمدی نژاد , خیابان شقایق سوم , پلاک 38 , واحد 2"
@@ -574,6 +554,7 @@
           @click="showFileSection"
         >
           <b-form-file
+            accept=".pdf,.doc,.docx"
             id="filefromUser"
             v-model="file"
             :state="Boolean(file)"
@@ -627,12 +608,14 @@
             </g>
           </svg>
           <input
+        :tabindex="17"
+
             disabled
             type="text"
             :placeholder="
               $cookie.get('ltrTheme')
-                ? 'Select the file you want JPEG, WORD, PDF'
-                : 'فایل مورد نظر خود را انتخاب کنید         JPEG , WORD , PDF'
+                ? 'Select the file you want WORD, PDF'
+                : 'فایل مورد نظر خود را انتخاب کنید          WORD , PDF'
             "
           />
           <label for="">{{
@@ -649,6 +632,8 @@
                 ? 'For example web programming'
                 : 'برای مثال     برنامه نویسی وب'
             "
+        :tabindex="19"
+
             type="text"
             v-model="capabilities"
             id="skillInput"
@@ -660,6 +645,8 @@
           }}</label>
         </div>
         <selectionInput
+        :tabindex="18"
+
           :title="$cookie.get('ltrTheme') ? 'education' : 'تحصیلات'"
           v-model="educations"
           @selectValue="education = $event"
@@ -735,12 +722,16 @@
         id="lastStep"
       >
         <selectionInput
+        :tabindex="21"
+
           :class="{ disableInput: insurance == false }"
           :title="$cookie.get('ltrTheme') ? 'Duration to Mounth' : 'مدت به ماه'"
           v-model="monthInsurance"
           @selectValue="mounth = $event"
         />
         <selectionInput
+        :tabindex="20"
+
           :title="$cookie.get('ltrTheme') ? 'Duration to year' : 'مدت به سال'"
           :class="{ disableInput: insurance == false }"
           v-model="yearInsurance"
@@ -801,6 +792,8 @@
               : "اگر توضیح خاصی مد نظر دارید یادداشت کنید . . ."
           }}</label>
           <textarea
+        :tabindex="22"
+
             class="width100"
             id="description"
             v-model="description"
@@ -883,10 +876,16 @@
         </svg>
       </button>
     </div>
+    <Recaptcha
+      :showRecaptcha="showRecaptcha"
+      @rightAnswer="rightAnswer()"
+      @closeRecaptcha="showRecaptcha = $event"
+    />
   </div>
 </template>
 <script>
 import cooperationMixin from "@/libraries/cooperation.js";
+import Recaptcha from "@/components/front/shared/recaptcha.vue";
 import multiSelect from "vue-multiselect";
 import { BFormFile } from "bootstrap-vue";
 import simpleInput from "@/components/front/cooperation/simpleInput.vue";
@@ -897,7 +896,7 @@ import datePicker from "vue-persian-datetime-picker";
 import RoundedButton from "@/components/front/shared/roundedButton.vue";
 export default {
   components: {
-    introduction,
+    introduction,Recaptcha,
     simpleInput,
     iconInput,
     selectionInput,
@@ -908,6 +907,8 @@ export default {
   },
   data() {
     return {
+      showRecaptcha: false,
+
       education: "کارشناسی",
       insurance: true,
       notinsurance: false,
@@ -1057,6 +1058,56 @@ export default {
   },
   mixins: [cooperationMixin],
   methods: {
+   async rightAnswer() {
+      const pack = {
+        name: this.firstName,
+        lastName: this.lastName,
+        fatherName: this.fatherName,
+        shomareMelli: this.nationalCode,
+        shomareShenasname: this.nationalId,
+        gender: this.gender == "مرد" ? "male" : "female",
+        maritalStatus: this.lifeStyle,
+        birthDate: this.brithDate,
+        religion: this.religion,
+        phone: this.phone,
+        mobile: this.mobile,
+        email: this.email,
+        province: this.province.label,
+        city: this.city,
+        pstalCode: this.postalCode,
+        address: this.address,
+
+        education: this.education,
+        capabilities: this.capabilities,
+        yearInsurance: this.year,
+        monthInsurance: this.mounth,
+        extraDescription: this.description
+      };
+      if (this.file != null) {
+        pack.file = await this.uploadFile();
+      }
+      this.$axios
+        .post("Cooperation", JSON.stringify(pack), {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            "Content-Type": "application/json"
+          }
+        })
+        .then((response) => {
+          this.$toast.success(this.$cookie.get('ltrTheme')?'Your request has been successfully submitted and you will be contacted shortly':'درخواست شما با موفقیت ثبت شد و به زودی با شما تماس گرفته میشود');
+          // this.$router.push("/");
+        })
+        .catch((error) => {
+          let arrayError = error.response.data.message.split("|");
+          arrayError.forEach((err, index) => {
+            this.$toast.error(err, {
+              timeout: 1000 * (index + 4),
+              pauseOnHover: true
+            });
+          });
+        });
+      this.showRecaptcha = false;
+    },
     showFileSection() {
       document.getElementById("filefromUser").click();
     },
@@ -1067,8 +1118,6 @@ export default {
     nextStep(move) {
       if (move == "f") {
         if (this.currentStep == 1) {
-          // 1
-          //  
           if (this.firstName == "") {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
@@ -1087,14 +1136,13 @@ export default {
                 ? "the last  name is required"
                 : "نام خانوادگی را وارد کنید"
             );
-          } else if (this.lastName.length < 5) {
+          } else if (this.lastName.length < 2) {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
-                ? "The number of characters in a last name is more than five letters"
-                : "تعداد کارکتر های یک فامیلی بیش از 5 حرف است"
+                ? "The number of characters in a last name is more than two letters"
+                : "تعداد کارکتر های یک فامیلی بیش از 2 حرف است"
             );
-          }
-          else if (this.fatherName == "") {
+          } else if (this.fatherName == "") {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "the father  name is required"
@@ -1106,71 +1154,61 @@ export default {
                 ? "The number of characters in a fatherName is more than three letters"
                 : "تعداد کارکتر های نام پدر بیش از 3 حرف است"
             );
-          }
-          else if (this.nationalCode == "") {
+          } else if (this.nationalCode == "") {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "the national id is required"
                 : "کدملی را وارد کنید"
             );
-          } else if (this.nationalCode.length !=10) {
+          } else if (this.nationalCode.length != 10) {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "The number of characters in a nationalId is more than Eleven letters"
                 : "تعداد ارقام کدملی باید 11 رقم باشد"
             );
-          }
-          
-          else if (this.nationalId == "") {
+          } else if (this.nationalId == "") {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "the national id is required"
                 : "شماره شناسنامه را وارد کنید"
             );
-          }
-          else if (this.brithDate==null) {
+          } else if (this.brithDate == null) {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "Enter date of birth is required"
                 : "وارد کردن تاریخ تولد الزامی است"
             );
-          }
-          else if (this.email=="") {
+          } else if (this.email == "") {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "E-mail is required"
                 : "وارد کردن ایمیل الزامی است"
             );
-          }
-          else if (this.validateEmail(this.email)!=true) {
+          } else if (this.validateEmail(this.email) != true) {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "The email format entered is incorrect"
                 : "فرمت وارد شده ایمیل صحیح نیست"
             );
-          }
-          else if (this.phone=="") {
+          } else if (this.phone == "") {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "the phone is required"
                 : "وارد کردن تلفن ثابت الزامی است"
             );
-          }
-          else if (this.phone.length<10) {
+          } else if (this.phone.length < 10) {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "The landline number is not entered correctly, please enter it in full with the prefix"
                 : "شماره تلفن ثابت به درستی وارد نشده است لطفا به همراه پیش شماره به صورت کامل وارد کنید"
             );
-          }
-          else if (this.mobile=="") {
+          } else if (this.mobile == "") {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "the mobile is required"
                 : "وارد کردن موبایل الزامی است"
             );
-          }
-          else if (this.mobile.length!==11) {
+          } else if (this.mobile.length !== 11) {
             return this.$toast.error(
               this.$cookie.get("ltrTheme")
                 ? "Mobile must have 11 digits"
@@ -1237,52 +1275,35 @@ export default {
         this.currentStep--;
       }
     },
-    sendCoopeartion() {
-      const pack = {
-        name: this.firstName,
-        lastName: this.lastName,
-        fatherName: this.fatherName,
-        shomareMelli: this.nationalCode,
-        shomareShenasname: this.nationalId,
-        gender: this.gender == "مرد" ? "male" : "female",
-        maritalStatus: this.lifeStyle,
-        birthDate: this.brithDate,
-        religion: this.religion,
-        phone: this.phone,
-        mobile: this.mobile,
-        email: this.email,
-        province: this.province.label,
-        city: this.city,
-        pstalCode: this.postalCode,
-        address: this.address,
-        file: this.file != null ? this.file : "",
-        education: this.education,
-        capabilities: this.capabilities,
-        yearInsurance: this.year,
-        monthInsurance: this.mounth,
-        extraDescription: this.description
-      };
-      console.log(pack);
-      this.$axios
-        .post("Cooperation", JSON.stringify(pack), {
-          headers: {
-            // Overwrite Axios's automatically set Content-Type
-            "Content-Type": "application/json"
+    async uploadFile() {
+      let url = "";
+      let formData = new FormData();
+
+      formData.append("file", this.file);
+
+      var config = {
+        onUploadProgress: () => {
+          if (this.innerDisabled == false) {
+            this.$toast.info("درحال آپلود فایل");
           }
-        })
+          this.innerDisabled = true;
+        }
+      };
+      await this.$axios
+        .post(`Files/UploadFile?SavePath=cooperation`, formData, config)
         .then((response) => {
-          this.$toast.success(response.data.message);
-          this.$router.push("/");
+          console.log(response);
+          url = response.data.data;
         })
-        .catch((error) => {
-          let arrayError = error.response.data.message.split("|");
-          arrayError.forEach((err, index) => {
-            this.$toast.error(err, {
-              timeout: 1000 * (index + 4),
-              pauseOnHover: true
-            });
-          });
+        .catch(() => {
+          this.$toast.error(
+            "خطایی در آپلود فایل به وجود آمده است , لطفا صفحه را بروز رسانی کنید"
+          );
         });
+      return url;
+    },
+    async sendCoopeartion() {
+      this.showRecaptcha = true;
     }
   },
   metaInfo() {
@@ -1374,5 +1395,12 @@ button.selectedButton .selected {
 }
 .deactiveStep svg circle {
   fill: #afa2a2 !important;
+}
+#lastStep .selectCooperationInput {
+    height: 80px;
+}
+#cooperationSection #insuranceBox p {
+    font-size: 16px;
+    font-family: 'yekan-heavy';
 }
 </style>

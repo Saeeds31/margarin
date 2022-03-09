@@ -149,12 +149,10 @@ export default {
           keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
         }
       });
-      if (window.innerWidth < 1000)
-      {
+     
                document
           .getElementById("weblogsList")
           .scrollIntoView({ behavior: "smooth" });
-      }
     },
     filteredBlogs(filter) {
       filter.page = this.$route.query.page ? this.$route.query.page : 1;

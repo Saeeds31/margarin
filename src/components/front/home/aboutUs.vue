@@ -10,8 +10,8 @@
         alt="درباره مارگارین"
       />
       <div id="sliderSection" class="showInMobile width100">
-        <VueSlickCarousel v-bind="sliderSettings">
-          <cart  v-for="item in aboutUsList" :content="item" :key="item.id" />
+        <VueSlickCarousel  v-bind="sliderSettings">
+          <cart :cartIndex="index"  v-for="(item,index) in aboutUsList" :content="item" :key="item.id" />
         </VueSlickCarousel>
       </div>
       <h1>{{$cookie.get('ltrTheme')?'About Margarine ':'دربــــــاره  مارگاریــــــن'}}</h1>
@@ -43,6 +43,7 @@ This collection always tries to design and produce products with superior qualit
         <div id="column2" class="width90">
           <template v-for="(item, index) in aboutUsList">
             <cart 
+            :cartIndex="index"
             :id="index==2?'carts3':''"
             :class="{otherCart:index!=2,'animationAboutCart3':index==2, 'animationAboutCart4':index==3}"
   
@@ -72,7 +73,7 @@ export default {
         arrows: false,
         edgeFriction: 0.35,
         infinite: false,
-        autoplay: false,
+        autoplay: true,
         rtl: false,
         slidesToShow: 2,
         slidesToScroll: 1,
@@ -91,7 +92,9 @@ export default {
               centerPadding: "20px",
               slidesToShow: 1,
               slidesToScroll: 1,
-              initialSlide: 2
+        infinite: true,
+
+              initialSlide: 1
             }
           }
         ]
@@ -133,6 +136,7 @@ export default {
     window.removeEventListener("resize", this.setStyle);
   },
   methods: {
+   
     animateToImage(){
 document.getElementById("aboutUsSectionImage").classList.add("aboutUsSectionImageHover");
 setTimeout(()=>{

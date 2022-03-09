@@ -1,26 +1,27 @@
 <template>
   <div id="sideBarMenu">
     <div id="logoPanel">
-      <svg
-        version="1.1"
-        id="Layer_1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        x="0px"
-        y="0px"
-        width="70"
-        height="70"
-        viewBox="0 0 674 789"
-        enable-background="new 0 0 674 789"
-        xml:space="preserve"
-      >
-        <image
-          id="image0"
-          width="674"
-          height="789"
-          x="0"
-          y="0"
-          href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqIAAAMVCAYAAACsuZaKAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+      <router-link id="gotoHome" class="d-flex justify-content-center" to="/">
+        <svg
+          version="1.1"
+          id="Layer_1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          width="70"
+          height="70"
+          viewBox="0 0 674 789"
+          enable-background="new 0 0 674 789"
+          xml:space="preserve"
+        >
+          <image
+            id="image0"
+            width="674"
+            height="789"
+            x="0"
+            y="0"
+            href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqIAAAMVCAYAAACsuZaKAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAACA
 AElEQVR42uzddZhT19YH4F9cR5NxRTIEd3cpBUqnpe6eurv3Uvdbt1Ru3WnLQIEppVOsuEsg2DA+
 k8n4xJPvjwz9KEVGcs4+Sdb7PDy9Fzl77Uxyss6WtQFCCCGdYjYaks1GQxzrOAghJFyJWAdACCHh
@@ -1311,19 +1312,56 @@ c1Gm8ORJZZ7Tco3nZO7OgOP3b8yhXeyEEL/2f+jmtDb8c6/PAAAAJXRFWHRkYXRlOmNyZWF0ZQAy
 MDIyLTAxLTI1VDA3OjM5OjM5KzAzOjAwSm3EtgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyMi0wMS0y
 NVQwNzozOTozOSswMzowMDswfAoAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8
 AAAAAElFTkSuQmCC"
-        />
-      </svg>
+          />
+        </svg>
+      </router-link>
     </div>
     <div id="routes">
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/about-us')"
         :class="{ activeRoute: $route.name == 'panelAboutUs' }"
         to="/admin-panel/about-us"
       >
         <span>
           درباره ما
           <i class="fa fa-info-circle" aria-hidden="true"></i>
-        </span> </router-link
-      ><router-link
+        </span>
+      </router-link>
+
+      <router-link
+        v-if="showRoute(getRole, '/admin-panel/menus')"
+        :class="{ activeRoute: $route.name == 'panelMenu' }"
+        to="/admin-panel/menus"
+      >
+        <span>
+          منوها
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </span>
+      </router-link>
+
+      <router-link
+        v-if="showRoute(getRole, '/admin-panel/management')"
+        :class="{ activeRoute: $route.name == 'panelManagement' }"
+        to="/admin-panel/management"
+      >
+        <span>
+          مدیریت
+          <i class="fa fa-users" aria-hidden="true"></i>
+        </span>
+      </router-link>
+
+      <router-link
+        v-if="showRoute(getRole, '/admin-panel/reports')"
+        :class="{ activeRoute: $route.name == 'panelReport' }"
+        to="/admin-panel/reports"
+      >
+        <span>
+          گزارشات
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </span>
+      </router-link>
+      <router-link
+        v-if="showRoute(getRole, '/admin-panel/weblogs')"
         :class="{ activeRoute: $route.name == 'panelWeblogs' }"
         to="/admin-panel/weblogs"
         ><i class="fa fa-angle-down" v-b-toggle.collapse-1></i>
@@ -1332,7 +1370,11 @@ AAAAAElFTkSuQmCC"
           <i class="fa fa-blog" aria-hidden="true"></i>
         </span>
       </router-link>
-      <b-collapse id="collapse-1" class="mt-2">
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/weblog-categories')"
+        id="collapse-1"
+        class="mt-2"
+      >
         <router-link
           :class="{ activeRoute: $route.name == 'panelWeblogCategories' }"
           class="childRoute"
@@ -1342,7 +1384,8 @@ AAAAAElFTkSuQmCC"
             دسته بندی
             <i class="fa fa-align-justify" aria-hidden="true"></i></span
         ></router-link>
-        <router-link to="/admin-panel/weblog-comments"
+        <router-link
+          to="/admin-panel/weblog-comments"
           :class="{ activeRoute: $route.name == 'panelWeblogComment' }"
           class="childRoute"
         >
@@ -1351,17 +1394,18 @@ AAAAAElFTkSuQmCC"
             دیدگاه ها
             <i class="fa fa-comments" aria-hidden="true"></i></span
         ></router-link>
-          <router-link
+        <router-link
           :class="{ activeRoute: $route.name == 'panelFaqIntroduction' }"
           class="childRoute"
           to="/admin-panel/weblogs-introduction"
         >
           <span>
-            تنظیمات معرفی 
+            تنظیمات معرفی
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
         ></router-link>
       </b-collapse>
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/faqs')"
         :class="{ activeRoute: $route.name == 'panelFaqs' }"
         to="/admin-panel/faqs"
       >
@@ -1369,7 +1413,11 @@ AAAAAElFTkSuQmCC"
         <span>
           پرسش ها <i class="fa fa-question-circle" aria-hidden="true"></i></span
       ></router-link>
-      <b-collapse id="collapse-5" class="mt-2">
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/faq-categories')"
+        id="collapse-5"
+        class="mt-2"
+      >
         <router-link
           :class="{ activeRoute: $route.name == 'panelFaqCategories' }"
           class="childRoute"
@@ -1379,59 +1427,71 @@ AAAAAElFTkSuQmCC"
             دسته بندی
             <i class="fa fa-align-justify" aria-hidden="true"></i></span
         ></router-link>
-        
+
         <router-link
           :class="{ activeRoute: $route.name == 'panelFaqIntroduction' }"
           class="childRoute"
           to="/admin-panel/faq-introduction"
         >
           <span>
-            تنظیمات معرفی 
+            تنظیمات معرفی
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
         ></router-link>
       </b-collapse>
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/contact-us')"
         :class="{ activeRoute: $route.name == 'panelContactUs' }"
         to="/admin-panel/contact-us"
       >
         <i class="fa fa-angle-down" v-b-toggle.collapse-10></i>
 
-        <span
-          >
+        <span>
           تماس با ما
           <i class="fa fa-address-book" aria-hidden="true"></i></span
       ></router-link>
-      <b-collapse id="collapse-10" class="mt-2">
-         <router-link
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/contact-us-introduction')"
+        id="collapse-10"
+        class="mt-2"
+      >
+        <router-link
           :class="{ activeRoute: $route.name == 'panelContactUsIntroduction' }"
           class="childRoute"
           to="/admin-panel/contact-us-introduction"
         >
           <span>
-            تنظیمات معرفی 
+            تنظیمات معرفی
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
         ></router-link>
       </b-collapse>
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/cooperation')"
         :class="{ activeRoute: $route.name == 'panelCooperation' }"
         to="/admin-panel/cooperation"
-        >
+      >
         <i class="fa fa-angle-down" v-b-toggle.collapse-11></i>
         <span>
           همکاری با ما <i class="fa fa-user-plus" aria-hidden="true"></i></span
       ></router-link>
-      <b-collapse id="collapse-11" class="mt-2">
-         <router-link
-          :class="{ activeRoute: $route.name == 'panelCooperationIntroduction' }"
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/cooperation-introduction')"
+        id="collapse-11"
+        class="mt-2"
+      >
+        <router-link
+          :class="{
+            activeRoute: $route.name == 'panelCooperationIntroduction'
+          }"
           class="childRoute"
           to="/admin-panel/cooperation-introduction"
         >
           <span>
-            تنظیمات معرفی 
+            تنظیمات معرفی
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
         ></router-link>
       </b-collapse>
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/prize')"
         :class="{ activeRoute: $route.name == 'panelPrize' }"
         to="/admin-panel/prize"
       >
@@ -1440,6 +1500,7 @@ AAAAAElFTkSuQmCC"
           <i class="fa fa-award"></i> </span
       ></router-link>
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/panelRecipes')"
         :class="{ activeRoute: $route.name == 'panelRecipes' }"
         to="/admin-panel/recipes"
       >
@@ -1449,7 +1510,11 @@ AAAAAElFTkSuQmCC"
           <i class="fa fa-hamburger"></i>
         </span>
       </router-link>
-      <b-collapse id="collapse-2" class="mt-2">
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/recipe-categories')"
+        id="collapse-2"
+        class="mt-2"
+      >
         <router-link
           :class="{ activeRoute: $route.name == 'panelRecipeCategories' }"
           class="childRoute"
@@ -1459,16 +1524,18 @@ AAAAAElFTkSuQmCC"
             دسته بندی
             <i class="fa fa-align-justify" aria-hidden="true"></i></span
         ></router-link>
-            <router-link
+        <router-link
           :class="{ activeRoute: $route.name == 'productsIntroduction' }"
           class="childRoute"
           to="/admin-panel/recipes-introduction"
         >
-          <span
-            > تنظیمات معرفی
+          <span>
+            تنظیمات معرفی
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
-        ></router-link> 
-        <router-link to="/admin-panel/recipe-comments"
+        ></router-link>
+        <router-link
+          v-if="showRoute(getRole, '/admin-panel/recipe-comments')"
+          to="/admin-panel/recipe-comments"
           :class="{ activeRoute: $route.name == 'panelRecipeComment' }"
           class="childRoute"
         >
@@ -1480,12 +1547,14 @@ AAAAAElFTkSuQmCC"
         ></router-link>
       </b-collapse>
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/settings')"
         :class="{ activeRoute: $route.name == 'panelSettings' }"
         to="/admin-panel/settings"
       >
         <span> تنظیمات اصلی <i class="fa fa-cog" aria-hidden="true"></i></span
       ></router-link>
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/sliders')"
         :class="{ activeRoute: $route.name == 'panelSliders' }"
         to="/admin-panel/sliders"
       >
@@ -1494,12 +1563,13 @@ AAAAAElFTkSuQmCC"
           <i class="fa fa-photo-video"></i></span
       ></router-link>
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/products')"
         :class="{ activeRoute: $route.name == 'panelProducts' }"
         to="/admin-panel/products"
         ><i class="fa fa-angle-down" v-b-toggle.collapse-3></i>
 
         <span>
-          محصولات 
+          محصولات
           <svg
             id="_056-water-bottle"
             data-name="056-water-bottle"
@@ -1523,16 +1593,21 @@ AAAAAElFTkSuQmCC"
           </svg>
         </span>
       </router-link>
-      <b-collapse id="collapse-3" class="mt-2">
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/products-introduction')"
+        id="collapse-3"
+        class="mt-2"
+      >
         <router-link
           :class="{ activeRoute: $route.name == 'productsIntroduction' }"
           class="childRoute"
           to="/admin-panel/products-introduction"
         >
-          <span
-            > تنظیمات معرفی
+          <span>
+            تنظیمات معرفی
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
-        ></router-link>  <router-link
+        ></router-link>
+        <router-link
           :class="{ activeRoute: $route.name == 'panelProductCategories' }"
           class="childRoute"
           to="/admin-panel/product-categories"
@@ -1542,17 +1617,16 @@ AAAAAElFTkSuQmCC"
             <i class="fa fa-align-justify" aria-hidden="true"></i></span
         ></router-link>
 
- <router-link
+        <router-link
           :class="{ activeRoute: $route.name == 'panelProductBrand' }"
           class="childRoute"
           to="/admin-panel/product-brand"
         >
-          <span
-            > برندها
-            <i class="fa fa-copyright" aria-hidden="true"></i></span
+          <span> برندها <i class="fa fa-copyright" aria-hidden="true"></i></span
         ></router-link>
 
-       <router-link to="/admin-panel/product-comments"
+        <router-link
+          to="/admin-panel/product-comments"
           :class="{ activeRoute: $route.name == 'panelProductComment' }"
           class="childRoute"
         >
@@ -1563,40 +1637,48 @@ AAAAAElFTkSuQmCC"
             <i class="fa fa-comments" aria-hidden="true"></i></span
         ></router-link>
       </b-collapse>
-<!--  -->
-
-
+      <!--  -->
 
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/catalogues')"
         :class="{ activeRoute: $route.name == 'panelCatalogue' }"
         to="/admin-panel/catalogues"
         ><i class="fa fa-angle-down" v-b-toggle.collapse-31></i>
 
         <span>
-          کاتالوگ ها 
-         <i class="fa fa-file" ></i>
+          کاتالوگ ها
+          <i class="fa fa-file"></i>
         </span>
       </router-link>
-      <b-collapse id="collapse-31" class="mt-2">
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/catalogue-introduction')"
+        id="collapse-31"
+        class="mt-2"
+      >
         <router-link
           :class="{ activeRoute: $route.name == 'panelCatalogueIntroduction' }"
           class="childRoute"
           to="/admin-panel/catalogue-introduction"
         >
-          <span
-            > تنظیمات معرفی
+          <span>
+            تنظیمات معرفی
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
-        ></router-link>  
+        ></router-link>
       </b-collapse>
-<!--  -->
+      <!--  -->
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/users')"
         :class="{ activeRoute: $route.name == 'panelUsers' }"
         to="/admin-panel/users"
       >
         <i class="fa fa-angle-down" v-b-toggle.collapse-4></i>
         <span> کاربران <i class="fa fa-users" aria-hidden="true"></i></span
       ></router-link>
-      <b-collapse id="collapse-4" class="mt-2">
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/user-role')"
+        id="collapse-4"
+        class="mt-2"
+      >
         <router-link
           :class="{ activeRoute: $route.name == 'panelUserRole' }"
           class="childRoute"
@@ -1606,12 +1688,13 @@ AAAAAElFTkSuQmCC"
         ></router-link>
       </b-collapse>
       <router-link
+        v-if="showRoute(getRole, '/admin-panel/user-question')"
         :class="{ activeRoute: $route.name == 'panelUserRole' }"
         to="/admin-panel/user-question"
       >
         <span> سوالات کاربران <i class="fa fa-user-edit"></i></span
       ></router-link>
-      <a @click="signOut()">
+      <a style="cursor: pointer" @click="signOut()">
         <span>خروج <i class="fa fa-sign-out-alt"></i></span>
       </a>
     </div>
@@ -1619,20 +1702,30 @@ AAAAAElFTkSuQmCC"
 </template>
 <script>
 import { BCollapse, VBToggle } from "bootstrap-vue";
+import RoleMixin from "@/libraries/adminRole";
 export default {
   directives: {
     "b-toggle": VBToggle
   },
+  mixins: [RoleMixin],
   components: {
     BCollapse
   },
+  computed: {
+    getRole() {
+      if (this.$store.getters.getAdminPanelRole == null) {
+        return "";
+      } else {
+        return this.$store.getters.getAdminPanelRole;
+      }
+    }
+  },
   mounted() {},
-  methods:{
-    signOut(){
-      
-        this.$cookie.delete("Authorization");
-        this.$axios.defaults.headers.common["authorization"] = "Bearer " 
-      this.$router.push("/login")
+  methods: {
+    signOut() {
+      this.$cookie.delete("Authorization");
+      this.$axios.defaults.headers.common["authorization"] = "Bearer ";
+      this.$router.push("/login");
     }
   }
 };
@@ -1685,5 +1778,9 @@ a:hover {
 }
 .collapse {
   margin-bottom: 0.5rem !important ;
+}
+#gotoHome:hover {
+  border-left: unset;
+  background: transparent;
 }
 </style>

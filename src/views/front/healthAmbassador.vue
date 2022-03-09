@@ -4,18 +4,19 @@
       data-aos-duration="1500"
       data-aos-once="false" />
     <shopSection  :data="healthAmbassador.shopSection" />
-    <virtualTour :data="healthAmbassador.virtualTour" />
+    <!-- <virtualTour :data="healthAmbassador.virtualTour" /> -->
     <ourProduct :data="healthAmbassador.ourProduct" />
     <goodFamily :data="healthAmbassador.goodFamily" />
-    <statistics :data="healthAmbassador.statistics" />
-    <application :data="healthAmbassador.application" />
+    <!-- <statistics :data="healthAmbassador.statistics" /> -->
+    <!-- <application :data="healthAmbassador.application" /> -->
     <div id="breaker"></div>
-    <blogs  :data="healthAmbassador.blogs" />
+    <blogs v-if="homeData" :blog="homeData.articles" :data="healthAmbassador.blogs" />
     <healthFooter  class="hiddenInMobile" />
     <mainFooter  class="showInMobile" />
   </div>
 </template>
 <script>
+import shopImage from "@/assets/front/images/shopImage.jpeg"
 import mainHeader from "@/components/front/home/slider/header.vue";
 import shopSection from "@/components/front/healthAmbassador/shopSection.vue";
 import virtualTour from "@/components/front/healthAmbassador/virtualTour.vue";
@@ -43,10 +44,10 @@ export default {
     return {
       healthAmbassador: {
         shopSection: {
-          image: "https://s4.uupload.ir/files/layer_2661_copy_4_cm4d.png",
-          title: "جدیدترین محصولات ما",
+          image:shopImage,
+          title: "مارگارين در محور سلامت",
           summary: "با مارگارین همیشه سالم باش !",
-          text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد ."
+          text: 'از افتخارات شرکت مارگارین در حوزه خانوار , تلاش در زمینه تولید محصولات سلامت محور بوده و در این بخش موفق به دریافت "تندیس زرین از جشنواره ملی تولید سلامت محور "در بین شرکت های فعال در حوزه تولید روغن و صعنت غذا شده است '
         },
         virtualTour: {
           image: "https://s4.uupload.ir/files/layer_2661_copy_3_buj.png",
@@ -55,23 +56,23 @@ export default {
         },
         ourProduct: {
           title: "اولین تولید کننده روغن در کشور",
-          summary: "ویژگــــــــی هــــــــای محصــــــــولات مــــــــا",
+          summary: "ويژگي محصولات آفتاب",
           carts: [
             {
-              title: "دارای کانولا",
-              text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده "
+              title: "	روغن ميتامينه آفتابگردان",
+              text: "حاوي امگا 6 و 9\nغني شده با ويتامينه A   و D3"
             },
             {
-              title: "پالم ندارد",
-              text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده "
+              title: "	روغن ويتامينه كانولا",
+              text: "حاوي امگا 6 و 9\nغني شده با ويتامينه A   و D3"
             },
             {
-              title: "بدون کلسترول",
-              text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده "
+              title: "	روغن سرخ كردني شفاف",
+              text: "بدون پالم\nغني شده با ويتامينه A   و D3"
             },
             {
-              title: "فاقد آنتی اکسیدان",
-              text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده "
+              title: "	روغن سرخ كردني ويژه",
+              text: "جذب كم در مواد غذايي "
             }
           ]
         },
@@ -80,13 +81,13 @@ export default {
           data: [
             {
               title: "با ما بهترین ها را تجربه  کنید",
-              text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد .",
-              summary: "خانواده ای سالم و شاداب در کنار هم"
+              text: "خانواده، مهمترین رکن جامعه است که در ایجاد سبک زندگی سالم، نقش مهمی را ایفا می‏کند. تغذیه یکی از ابعاد مهم سبک زندگی است و رفتارهای تغذیه‏ای در انتخاب شیوۀ زندگی سالم و بهداشتی نقش بسیار حیاتی دارند. سلامت یک فرد به نوع و مقدار مادۀ غذایی که هر روز برای خوردن انتخاب می‏كند بستگی دارد. تغذیۀ مناسب یکی از عوامل مهم و حیاتی در تأمین سلامت و بهداشت هر شخص، خانواده و جامعه است. با استفاده از غذای مناسب، جنبش، کارآیی، رضایت خاطر و نشاط به زندگی روی آورده و قدرت مبارزه با مشکلات در انسان ایجاد می‏شود. بعلاوه تغذیۀ صحیح، سلامت و بهداشت نسل‏های بعد را نیز تضمین می‏کند",
+              summary: "خانواده سالم و شاداب با محصولات آفتاب"
             },
             {
               title: "با ما بهترین ها را تجربه خواهید کرد",
-              text: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد .",
-              summary: "خانواده ای سالم و شاداب در کنار هم"
+              text: "تغذیه سالم براي کودکان نيز مانند اصول تغذیه بزرگسالان بايد برنامه‌ریزی شده باشد. بنابراين در تمامی رژیم‌هایی که برای تغذیه سالم ارائه می‌شوند، تمامی مواد غذایی از گروه‌های مختلف قرار داشته و باید به میزان لازم مصرف شوند، چرا كه غذاهای سالم برای کودکان به رشد و سلامت بدن آنان در سنين بالاتر کمک می‌کند.\n  عاد‏‏ت‏هاي خوب غذايي در كودكان\n 1. مصرف شکر و جایگزین‌های شکر را محدود کنید\n 2. به‌جای آبمیوه به کودک میوه بدهید\n 3. مصرف نمک را کنترل کنید\n 4. چربی‌های سالم را در رژیم غذایی كودك قرار دهید\n 5. برای غذاهای ناسالم جایگزین سالم پیدا کنید",
+              summary: "خانواده سالم و شاداب با محصولات آفتاب"
             }
           ]
         },
@@ -214,9 +215,23 @@ export default {
       ]
     };
   },
+  computed:{
+    homeData(){
+      return this.$store.getters.getHomeData;
+
+    }
+  },
+  created(){
+    if (this.homeData == null) {
+      this.$store.dispatch("getHomeDataFromServer");
+    }
+  },
   mounted() {
     this.setStyle();
     window.addEventListener("resize", this.setStyle);
+  },
+  beforeDestroy(){
+    window.removeEventListener('resize',this.setStyle)
   },
   methods: {
     setStyle() {

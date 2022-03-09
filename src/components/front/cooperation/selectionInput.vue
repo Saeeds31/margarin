@@ -1,8 +1,11 @@
 <template>
   <div  class="selectCooperationInput d-flex justify-content-between align-items-center">
        <multiSelect
+        :tabindex="tabindex"
        
         :allow-empty="false"
+        :show-labels="false"
+        
         v-model="selectedValue"
         deselect-label="یک گزینه باید انتخاب شود" 
         :options="value"
@@ -22,7 +25,7 @@ export default {
   },
   watch:{
       selectedValue(newVal){
-          this.$emit("selectValue",newVal.value)
+          this.$emit("selectValue",newVal)
       }
   },
   data(){
@@ -32,6 +35,7 @@ export default {
       }
   },
   props:{
+    tabindex:Number,
       title:String,
       value:Array
   }

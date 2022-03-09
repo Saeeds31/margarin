@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
-import cookie from "vue-cookie"
+import cookie from "vue-cookie";
 Vue.use(Vuex);
 // front store
 export default new Vuex.Store({
@@ -12,6 +12,7 @@ export default new Vuex.Store({
         homeData: null,
         productsData: null,
         product: null,
+        reports: null,
         blogsData: null,
         blogCategory: null,
         blogData: null,
@@ -25,71 +26,9 @@ export default new Vuex.Store({
         singleSliderNewsList: [],
         catalogueData: null,
         // inner data
+        managerList: null,
         menus: [{
                 id: 1,
-                header: {
-                    title: cookie.get("ltrTheme") ? "Margarin" : "مارگارین",
-                    route: "/"
-                },
-                menuItem: [{
-                        title: cookie.get("ltrTheme") ?
-                            "About us (introduction company, managers and board members)" : "درباره ما (معرفی شرکت,معرفی مدیران و اعضاء هیئت مدیره)",
-                        route: "/about-us"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ? "vision" : "چشم انداز",
-                        route: "/about-us?section=collapseSection"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ? "Mission" : "ماموریت",
-                        route: "/about-us?section=collapseSection"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Goals and policies" : "اهداف و خط مشی",
-                        route: "/about-us?section=collapseSection"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "certificates" : "گواهینامه ها",
-                        route: "/about-us?section=awardsSection"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ? "Catalog" : "کاتالوگ",
-                        route: "/catalogue"
-                    }
-                ]
-            },
-
-            {
-                id: 2,
-                header: {
-                    title: cookie.get("ltrTheme") ? "Products" : "محصولات",
-                    route: "/products"
-                },
-                menuItem: [{
-                        title: cookie.get("ltrTheme") ? "Family" : "خانوار",
-                        route: `/products?type=${
-              cookie.get("ltrTheme") ? "Family" : "خانوار"
-            }`
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Class and industry" : "صنف و صنعت",
-                        route: `/products?type=${
-              cookie.get("ltrTheme") ? "Class and industry" : "صنف و صنعت"
-            }`
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Product price list" : "لیست قیمت محصولات",
-                        route: "/products"
-                    }
-                ]
-            },
-
-            {
-                id: 3,
                 header: {
                     title: cookie.get("ltrTheme") ?
                         "Margarine brands" : "برندهای مارگارین",
@@ -99,7 +38,7 @@ export default new Vuex.Store({
             },
 
             {
-                id: 4,
+                id: 2,
                 header: {
                     title: cookie.get("ltrTheme") ? "reports" : "گزارشات",
                     route: "/"
@@ -125,111 +64,18 @@ export default new Vuex.Store({
                         route: "/"
                     }
                 ]
-            },
-
-            {
-                id: 5,
-                header: {
-                    title: cookie.get("ltrTheme") ?
-                        "public relations" : "روابط عمومی",
-                    route: "/contact-us"
-                },
-                menuItem: [{
-                        title: cookie.get("ltrTheme") ?
-                            "public relations" : "ارتباط با روابط عمومی",
-                        route: "/contact-us"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Partner panel (pay slip, survey form or feedback, internal news)" : "پنل همکاران(فیش حقوقی , فرم نظر سنجی یا انتقادات و پیشنهادات , خبرهای داخلی)",
-                        route: "/"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "News and announcements" : "اخبار و اطلاعیه ها",
-                        route: "/weblogs?weblogType=news"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Photo Gallery" : "گالری تصاویر",
-                        route: "/"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Aftab Magazine" : "مجله آفتاب",
-                        route: "/"
-                    }
-                ]
-            },
-
-            {
-                id: 6,
-                header: {
-                    title: cookie.get("ltrTheme") ?
-                        "Research and Development" : "تحقیق و توسعه",
-                    route: "/"
-                },
-                menuItem: [{
-                        title: cookie.get("ltrTheme") ?
-                            "Research and Development" : "معرفی دپارتمان تحقیق و توسعه",
-                        route: "/"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "new products" : "محصولات جدید",
-                        route: "/products"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Accepting innovative offers" : "پذیرش پیشنهادات نوآورانه",
-                        route: "/"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Collaborate with individuals" : "همکاری مشترک با افراد",
-                        route: "/cooperation"
-                    }
-                ]
-            },
-
-            {
-                id: 7,
-                header: {
-                    title: cookie.get("ltrTheme") ?
-                        "Applied links" : "لینک های کاربردی",
-                    route: "/"
-                },
-                menuItem: [{
-                        title: cookie.get("ltrTheme") ?
-                            "Applied links" : "لینک های مفید",
-                        route: "/"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ? "kitchen" : "آشپزخانه",
-                        route: "/cooking-archive"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Cooperation with us (recruitment)" : "همکاری با ما (جذب نیرو)",
-                        route: "/cooperation"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ? "Contact us" : "ارتباط با ما",
-                        route: "/contact-us"
-                    },
-                    {
-                        title: cookie.get("ltrTheme") ?
-                            "Frequently Asked Questions" : "سوالات متداول",
-                        route: "/faq"
-                    }
-                ]
             }
         ],
         racemeItemsAboutUs: null,
         contactUsCartsData: null,
-        aboutUsCollapseList: null
+        aboutUsCollapseList: null,
+        adminPanelRole: null,
+        mainMenu: null
     },
     getters: {
+        getAdminPanelRole(state) {
+            return state.adminPanelRole;
+        },
         getMenus(state) {
             return state.menus;
         },
@@ -248,6 +94,9 @@ export default new Vuex.Store({
         },
         getContactUsCartsData(state) {
             return state.contactUsCartsData;
+        },
+        getManagerList(state) {
+            return state.managerList
         },
         // main sever data getters
         getBrands(state) {
@@ -294,8 +143,18 @@ export default new Vuex.Store({
         },
         getHomeData(state) {
             return state.homeData;
+        },
+        getReports(state) {
+            return state.reports;
+        },
+        getMainMenu(state) {
+            return state.mainMenu;
         }
     },
+    // {
+    //     title: cookie.get("ltrTheme") ? "Margarin" : "مارگارین",
+    //     route: "/"
+    // },
     mutations: {
         setMenus(state, pack) {
             state.menus.forEach((menu) => {
@@ -304,7 +163,16 @@ export default new Vuex.Store({
                 }
             });
         },
+        pushMenu(state, pack) {
+            state.menus.push(pack);
+        },
         // inner data mutation
+        setManagers(state, list) {
+            state.managerList = list
+        },
+        adminPanelRole(state, role) {
+            state.adminPanelRole = role;
+        },
         setAboutUSCollapseList(state, list) {
             state.aboutUsCollapseList = list;
         },
@@ -365,6 +233,12 @@ export default new Vuex.Store({
         },
         setBlogsData(state, data) {
             state.blogsData = data;
+        },
+        setReports(state, list) {
+            state.reports = list;
+        },
+        setMainMenu(state, data) {
+            state.mainMenu = data;
         }
     },
     actions: {
@@ -468,22 +342,42 @@ export default new Vuex.Store({
                 });
         },
         getBlogsFromServer({ dispatch }, pack) {
-            axios
-                .get(
-                    `Home/GetBlogArchive?search=${pack.search ? pack.search : ""}&cat=${
-            pack.category ? pack.category : ""
-          }&pageNumber=${pack.page ? pack.page : 1}&isDesending=true&type=${
-            pack.type ? pack.type : 1
-          }&keyword=${pack.keyword ? pack.keyword : ""}`
-                )
-                .then((res) => {
-                    let pack = {
-                        destination: "setBlogsData",
-                        data: res.data.data,
-                        pagination: JSON.parse(res.headers["x-pagination"])
-                    };
-                    dispatch("withoutEnAndFa", pack);
-                });
+            if (pack.keyword) {
+                // Home/SearchBlogKewords?KeyWord=sadad&pageNumber=2&isDesending=true
+                axios
+                    .get(
+                        `Home/SearchBlogKewords?pageNumber=${
+              pack.page ? pack.page : 1
+            }&isDesending=${
+              pack.isDesending ? pack.isDesending : true
+            }&keyword=${pack.keyword ? pack.keyword : ""}`
+                    )
+                    .then((res) => {
+                        let pack = {
+                            destination: "setBlogsData",
+                            data: res.data.data,
+                            pagination: JSON.parse(res.headers["x-pagination"])
+                        };
+                        dispatch("withoutEnAndFa", pack);
+                    });
+            } else {
+                axios
+                    .get(
+                        `Home/GetBlogArchive?search=${pack.search ? pack.search : ""}&cat=${
+              pack.category ? pack.category : ""
+            }&pageNumber=${pack.page ? pack.page : 1}&isDesending=${
+              pack.isDesending ? pack.isDesending : true
+            }&type=${pack.type ? pack.type : 1}`
+                    )
+                    .then((res) => {
+                        let pack = {
+                            destination: "setBlogsData",
+                            data: res.data.data,
+                            pagination: JSON.parse(res.headers["x-pagination"])
+                        };
+                        dispatch("withoutEnAndFa", pack);
+                    });
+            }
         },
         getProductFromServer({ dispatch }, id) {
             axios.get(`Home/GetProductSingle?id=${id}`).then((response) => {
@@ -516,7 +410,50 @@ export default new Vuex.Store({
                 let step2 = step1.replace(/_fa"/g, '"');
                 let step3 = step2.replace(/_en"/g, '"');
                 commit("setBrands", JSON.parse(step3));
-                commit("setMenus", { id: 3, menu: JSON.parse(step3) });
+                commit("setMenus", { id: 1, menu: JSON.parse(step3) });
+                // dispatch("withoutEnAndFa", pack);
+            });
+        },
+        getMainMenuFromServer({ commit }) {
+            axios.get("Home/GetMenu").then((res) => {
+                let step1 = JSON.stringify(res.data.data);
+                let step2 = step1.replace(/_fa"/g, '"');
+                let step3 = step2.replace(/_en"/g, '"');
+                let menus = JSON.parse(step3);
+                for (const key in menus) {
+                    let i = 3;
+                    let pack = {
+                        id: i,
+                        header: {
+                            title: key,
+                            route: "/"
+                        },
+                        menuItem: []
+                    };
+                    menus[key].forEach((item) => {
+                        pack.menuItem.push({
+                            title: item.title,
+                            route: item.url
+                        });
+                    });
+                    commit("pushMenu", pack);
+                }
+            });
+        },
+        getReportFromServer({ commit }) {
+            axios.get("Home/GetReport").then((res) => {
+                let result = res.data.data;
+                console.log(result);
+                result.forEach((item) => {
+                    item.route = "http://blogtest.ir/" + item.file;
+                });
+                console.log(result);
+
+                let step1 = JSON.stringify(result);
+                let step2 = step1.replace(/_fa"/g, '"');
+                let step3 = step2.replace(/_en"/g, '"');
+                commit("setMenus", { id: 2, menu: JSON.parse(step3) });
+                commit("setReports", res.data.data);
                 // dispatch("withoutEnAndFa", pack);
             });
         },
@@ -525,11 +462,9 @@ export default new Vuex.Store({
                 .get(
                     `Home/GetProductArchive?pageNumber=${pack.page}&search=${
             pack.search ? pack.search : ""
-          }&cat=${pack.category ? pack.category : ""}&isDesending=${
-            pack.isDesending ? pack.isDesending : true
-          }${pack.type ? "&type=" + pack.type : ""}${
-            pack.brand ? "&brand=" + pack.brand : ""
-          }`
+          }&cat=${pack.category ? pack.category : ""}${
+            pack.type ? "&type=" + pack.type : ""
+          }${pack.brand ? "&brand=" + pack.brand : ""}`
                 )
                 .then((res) => {
                     let pack = {

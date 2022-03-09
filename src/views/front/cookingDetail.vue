@@ -25,9 +25,10 @@
           class="headerBlogOption d-flex justify-content-between"
         >
           <div
+          @click="shareCooking()"
             class="d-flex justify-content-between align-items-center width30"
           >
-            <p class="d-flex flex-direction-column align-items-center">
+            <p class="shareBox d-flex flex-direction-column align-items-center">
               <span>{{
                 $cookie.get("ltrTheme") ? "Share" : "اشتراک گذاری"
               }}</span>
@@ -37,49 +38,12 @@
                   : "در شبکه های اجتماعی"
               }}</span>
             </p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="90"
-              height="90"
-              viewBox="0 0 60 60"
-            >
-              <defs>
-                <linearGradient
-                  id="linear-gradient"
-                  x1="0.789"
-                  y1="1"
-                  x2="0.211"
-                  gradientUnits="objectBoundingBox"
-                >
-                  <stop offset="0" stop-color="#f7941e" />
-                  <stop offset="1" stop-color="#f0aa56" />
-                </linearGradient>
-              </defs>
-              <g
-                id="Group_1aaaaaaaaa"
-                data-name="Group 1aaaaaaaaa"
-                transform="translate(-1079 -776)"
-              >
-                <circle
-                  id="Ellipse_1"
-                  data-name="Ellipse 1"
-                  cx="30"
-                  cy="30"
-                  r="30"
-                  transform="translate(1079 776)"
-                  fill="url(#linear-gradient)"
-                />
-                <image
-                  id="Layer_2709"
-                  data-name="Layer 2709"
-                  width="24"
-                  height="24"
-                  transform="translate(1097 794)"
-                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAflJREFUSEutlk8oZVEcx8fQjMhKY5KxUiLKnzTDwsKYhZBoFnaSTJOEkmJhZp7FNCxmYqHJn6UNpVCaMaT8yUYpUxobZfEiLJUs5Pl8dW49r3ed+96dW59+9537O9/vuef8zrkvIRQKPfF5FdP/C5TBc9iDMfgl3QSfBi1oTMGzKIMcoW3Aj0EOAvuQ+sgM1Pox+I5wr2V6V/wYrCNeZTG4iMcgDdFLWINqi0EwFoOXiPVDG2RDH3y2GCyEGxSR3AGlcA27pkIOiXUwBylGsJm4AX8hw8XkhvY3jkEnP35AZLldmREvGcMCI3ZELAHV/iy8iDDRALtgWgavudmBRJeRaL5zoRBWTc4t8aMEIB26oQKSQRttAv4pVwaLxAYXcac5wM1XOAct7hAcWPrcP5ZBkJhlSV7geRNooc+8CDs5MlAHt4Vy8pa5qQctstbF8yUDHUo1lh7feD4Ix6C3GYYTLy4yeEfiH02XSwdVRL6Zxm2To7YPMAPWRVafAGjTRJqolntgErag3BicErVvVFnWMnUG/pYblVv4Rhvnt0q4EebhqUluJf4GzxvNZXYeNOeZt3xPzDRvFtNR4cVEOa9Apf3fD7vIAWzSUGkZVVzHtaM5aqbpMQ9fHxyVrs4dnT9ul69PpkTb4SckRXHw/dF3NFXWnyDq35Y7DCGnL4TvykUAAAAASUVORK5CYII="
-                />
-              </g>
-            </svg>
+            <a class="cookingDetailSvg">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <image id="Layer_2709" data-name="Layer 2709" width="24" height="24" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAflJREFUSEutlk8oZVEcx8fQjMhKY5KxUiLKnzTDwsKYhZBoFnaSTJOEkmJhZp7FNCxmYqHJn6UNpVCaMaT8yUYpUxobZfEiLJUs5Pl8dW49r3ed+96dW59+9537O9/vuef8zrkvIRQKPfF5FdP/C5TBc9iDMfgl3QSfBi1oTMGzKIMcoW3Aj0EOAvuQ+sgM1Pox+I5wr2V6V/wYrCNeZTG4iMcgDdFLWINqi0EwFoOXiPVDG2RDH3y2GCyEGxSR3AGlcA27pkIOiXUwBylGsJm4AX8hw8XkhvY3jkEnP35AZLldmREvGcMCI3ZELAHV/iy8iDDRALtgWgavudmBRJeRaL5zoRBWTc4t8aMEIB26oQKSQRttAv4pVwaLxAYXcac5wM1XOAct7hAcWPrcP5ZBkJhlSV7geRNooc+8CDs5MlAHt4Vy8pa5qQctstbF8yUDHUo1lh7feD4Ix6C3GYYTLy4yeEfiH02XSwdVRL6Zxm2To7YPMAPWRVafAGjTRJqolntgErag3BicErVvVFnWMnUG/pYblVv4Rhvnt0q4EebhqUluJf4GzxvNZXYeNOeZt3xPzDRvFtNR4cVEOa9Apf3fD7vIAWzSUGkZVVzHtaM5aqbpMQ9fHxyVrs4dnT9ul69PpkTb4SckRXHw/dF3NFXWnyDq35Y7DCGnL4TvykUAAAAASUVORK5CYII="/>
+</svg>
+
+            </a>
           </div>
           <div
             class="d-flex justify-content-between align-items-center width30"
@@ -90,100 +54,26 @@
               }}</span>
               <span>{{ cookingData.createDate }}</span>
             </p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="90"
-              height="90"
-              viewBox="0 0 60 60"
-            >
-              <defs>
-                <linearGradient
-                  id="linear-gradient"
-                  x1="0.789"
-                  y1="1"
-                  x2="0.211"
-                  gradientUnits="objectBoundingBox"
-                >
-                  <stop offset="0" stop-color="#f7941e" />
-                  <stop offset="1" stop-color="#f0aa56" />
-                </linearGradient>
-              </defs>
-              <g
-                id="Group_1aaaaaaasssss"
-                data-name="Group 1aaaaaaasssss"
-                transform="translate(-1300 -776)"
-              >
-                <circle
-                  id="Ellipse_1"
-                  data-name="Ellipse 1"
-                  cx="30"
-                  cy="30"
-                  r="30"
-                  transform="translate(1300 776)"
-                  fill="url(#linear-gradient)"
-                />
-                <image
-                  id="Layer_2708"
-                  data-name="Layer 2708"
-                  width="24"
-                  height="24"
-                  transform="translate(1318 794)"
-                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAYRJREFUSEtj/P//vwwDA0MjEEcBMQcQUwP8ABqyDIjrGYEWzAUyktBMfQLk3wFiBzTxS1C+Hpr4ASBfBYhBjkUG80AWfMficm+g2DYgBlkkjaRDHMp+iST2FGqwF5DeimbBD5AF/7GEyT6g2HEgrkaTWwjlx6OJtwL5lkDshG4WLguw2Eme0KgFBMNtwIPoENCJyCmmB+rkEiSng1LWNSDuRBIDJXFNEJ+QD3YC1XggaVwAZScgie0Asi8AcQWSGIivPygseAZ0xW4kl9lA2UeQxFyB7HdAfBZJzA/IFkT3ASj7z0BS5AJkSwDxEiSxACh7A5JYDJD9Aoj3IIllANngYgU5Di4C+QZIijqgfKrFAc0tuAt0cQqSD9KAbFARXIYkBkspIN/BQBeQASraZyGJzQGyldGD6CdQ4AGSIlEgmx2IQUU2DEgCGXxIfIJMcuIAvajGa8nwsABWZf4G+hWUsWAAlFHYgBi5ehQB8rkJBjxCAbjKxFbpk2AGXqXgSp+mzRYApUuvH+Z9+yYAAAAASUVORK5CYII="
-                />
-              </g>
-            </svg>
+                       <a class="cookingDetailSvg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <image id="Layer_2708" data-name="Layer 2708" width="24" height="24" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAYRJREFUSEtj/P//vwwDA0MjEEcBMQcQUwP8ABqyDIjrGYEWzAUyktBMfQLk3wFiBzTxS1C+Hpr4ASBfBYhBjkUG80AWfMficm+g2DYgBlkkjaRDHMp+iST2FGqwF5DeimbBD5AF/7GEyT6g2HEgrkaTWwjlx6OJtwL5lkDshG4WLguw2Eme0KgFBMNtwIPoENCJyCmmB+rkEiSng1LWNSDuRBIDJXFNEJ+QD3YC1XggaVwAZScgie0Asi8AcQWSGIivPygseAZ0xW4kl9lA2UeQxFyB7HdAfBZJzA/IFkT3ASj7z0BS5AJkSwDxEiSxACh7A5JYDJD9Aoj3IIllANngYgU5Di4C+QZIijqgfKrFAc0tuAt0cQqSD9KAbFARXIYkBkspIN/BQBeQASraZyGJzQGyldGD6CdQ4AGSIlEgmx2IQUU2DEgCGXxIfIJMcuIAvajGa8nwsABWZf4G+hWUsWAAlFHYgBi5ehQB8rkJBjxCAbjKxFbpk2AGXqXgSp+mzRYApUuvH+Z9+yYAAAAASUVORK5CYII="/>
+</svg>
+
+                       </a>
           </div>
           <div class="d-flex justify-content-end align-items-center width30">
             <p class="d-flex flex-direction-column align-items-center">
               <span>{{
                 $cookie.get("ltrTheme") ? "Study time" : "زمان مطالعه"
               }}</span>
-              <span>{{ cookingData.timeToRead }}</span>
+              <span>{{ `${cookingData.timeToRead}  ${$cookie.get("ltrTheme") ? "Minute" : "دقیقه"}` }}</span>
             </p>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="50"
-              height="50"
-              viewBox="0 0 60 60"
-            >
-              <defs>
-                <linearGradient
-                  id="linear-gradient"
-                  x1="0.789"
-                  y1="1"
-                  x2="0.211"
-                  gradientUnits="objectBoundingBox"
-                >
-                  <stop offset="0" stop-color="#f7941e" />
-                  <stop offset="1" stop-color="#f0aa56" />
-                </linearGradient>
-              </defs>
-              <g
-                id="Group_1asdasdasdaasd"
-                data-name="Group 1asdasdasdaasd"
-                transform="translate(-1485 -776)"
-              >
-                <circle
-                  id="Ellipse_1"
-                  data-name="Ellipse 1"
-                  cx="30"
-                  cy="30"
-                  r="30"
-                  transform="translate(1485 776)"
-                  fill="url(#linear-gradient)"
-                />
-                <image
-                  id="Layer_2707"
-                  data-name="Layer 2707"
-                  width="24"
-                  height="24"
-                  transform="translate(1503 794)"
-                  xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAtZJREFUSEudlVmIj1EYh2ciS5FCiWkyciHlwq6UmrggZUkoZb1B2VOSTI2xTMhyQYgyuFCiJkrIekHZC5Erki3hRpaGaTzP9B59ff0XnHo631ne9/edc97znsq2traKEqU3Y6NgRDCSuhPcy3CX7/fFfFQWEeiAwTqoD4elfuIXg9uhAVryEwsJDGZSE4wu4PVTOOlbYOwRfQvhYXYsLzCfwUPQJSb5dwfhOtyHl9Hfj9ptGwcrMvN/8r0G9ieRrMCgUO8ag0+oF8BjGA/DA8/gQQheoe4PxyCtWJExaSVJwD2/GQP6PwLLQFGNh4XoF+pv0Cfaz6nnheDO+HuH3C6DoyUJbKCxNYzSoH+/D/zjVBbz8Q7OZfrcRrflANyCtBL9bVSgZxjpyChQuRLu5Jzrcw4YktcyAn4qMha+gtvXOfqqFZhI40IY7KZ2Ncb5kJyTUgKOuV1u5WZYG7ZTFaijYQxbpoN7fKmA83ICjk8Bz7M57BsUOBsD9lXBItjynwL12B2GN2F/XgH31Kjw8Ixv1aeVEHA7h+bGu9E28m6H7VtqL+MHBV7xUQ3eUnPPKZhVRMA7sa3AWHf6dsHFsP1I3QteK3CGjxlhNCAm7CgiUK7bADkJL2JiswLraTRGx8xYST4MyzlO45P4cLtOR0edAhNoXI4OL9ZqyN7qv3VukjNFGOrLw2iyAj1oeMDmoHRhTAkapKRXTsQL6lthiPo+dAT7qlKqWEVjb3h5Rm1imw3ZzFpMREf+8dFwniLM82hMAqaGq1AbXo5TL4EaaAKXXqiYcefCU9gDJkiLacbU0ZpN1zoz0RlyFldiwjO3mPfNUWLOchvkBgyEE+CqLT/iW/uK/INjuDZlRP71wfmO7VJwB9pLoSezhn73szZNytSlnkxvsSs26f0pxR59z2QleD/SC1dAr73LQ94EPvyt+UnFBNI8Q9jwS/ufzsBD9AxS/bmY+m+6RerADqOULAAAAABJRU5ErkJggg=="
-                />
-              </g>
-            </svg>
+                                  <a class="cookingDetailSvg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <image id="Layer_2707" data-name="Layer 2707" width="24" height="24" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABHNCSVQICAgIfAhkiAAAAtZJREFUSEudlVmIj1EYh2ciS5FCiWkyciHlwq6UmrggZUkoZb1B2VOSTI2xTMhyQYgyuFCiJkrIekHZC5Erki3hRpaGaTzP9B59ff0XnHo631ne9/edc97znsq2traKEqU3Y6NgRDCSuhPcy3CX7/fFfFQWEeiAwTqoD4elfuIXg9uhAVryEwsJDGZSE4wu4PVTOOlbYOwRfQvhYXYsLzCfwUPQJSb5dwfhOtyHl9Hfj9ptGwcrMvN/8r0G9ieRrMCgUO8ag0+oF8BjGA/DA8/gQQheoe4PxyCtWJExaSVJwD2/GQP6PwLLQFGNh4XoF+pv0Cfaz6nnheDO+HuH3C6DoyUJbKCxNYzSoH+/D/zjVBbz8Q7OZfrcRrflANyCtBL9bVSgZxjpyChQuRLu5Jzrcw4YktcyAn4qMha+gtvXOfqqFZhI40IY7KZ2Ncb5kJyTUgKOuV1u5WZYG7ZTFaijYQxbpoN7fKmA83ICjk8Bz7M57BsUOBsD9lXBItjynwL12B2GN2F/XgH31Kjw8Ixv1aeVEHA7h+bGu9E28m6H7VtqL+MHBV7xUQ3eUnPPKZhVRMA7sa3AWHf6dsHFsP1I3QteK3CGjxlhNCAm7CgiUK7bADkJL2JiswLraTRGx8xYST4MyzlO45P4cLtOR0edAhNoXI4OL9ZqyN7qv3VukjNFGOrLw2iyAj1oeMDmoHRhTAkapKRXTsQL6lthiPo+dAT7qlKqWEVjb3h5Rm1imw3ZzFpMREf+8dFwniLM82hMAqaGq1AbXo5TL4EaaAKXXqiYcefCU9gDJkiLacbU0ZpN1zoz0RlyFldiwjO3mPfNUWLOchvkBgyEE+CqLT/iW/uK/INjuDZlRP71wfmO7VJwB9pLoSezhn73szZNytSlnkxvsSs26f0pxR59z2QleD/SC1dAr73LQ94EPvyt+UnFBNI8Q9jwS/ufzsBD9AxS/bmY+m+6RerADqOULAAAAABJRU5ErkJggg=="/>
+</svg>
+
+                                  </a>
           </div>
         </div>
     
@@ -262,6 +152,19 @@ export default {
       ]
     };
   },
+  methods:{
+    shareCooking(){
+       window.open(`https://wa.me/?text=${this.$root.domainName+this.$route.path}`,'_blank'); 
+      
+      //  navigator.share({
+      //     title: this.cookingData ? this.cookingData.title:"پست مارگارین",
+      //     text: this.cookingData ? this.cookingData.shortDescription:"این مطلب آشپزی رو حتما بخون",
+      //     url:this.$root.domainName+this.$route.path,
+      //   })
+      //       .then(() => {})
+      //       .catch((error) => console.error(error));
+    }
+  },
   computed: {
     cookingData() {
       return this.$store.getters.getCookingData;
@@ -309,5 +212,8 @@ export default {
 #relatedBlogs .slick-disabled {
   border: 5px solid #ebebeb;
   box-shadow: none;
+}
+.shareBox{
+  cursor: pointer;
 }
 </style>

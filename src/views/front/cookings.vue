@@ -28,7 +28,13 @@
       @filtered="filteredBlogs"
       class="width80 margin-auto"
     />
-    <div :style="{'marginBottom':cookingsData.pagination.TotalPages > 1?'5%':'200px'}" id="cookings" class="d-flex justify-content-between width80">
+    <div
+      :style="{
+        marginBottom: cookingsData.pagination.TotalPages > 1 ? '5%' : '200px'
+      }"
+      id="cookings"
+      class="d-flex justify-content-between width80"
+    >
       <cart
         :data-aos="index % 2 == 0 ? 'fade-right' : 'fade-left'"
         data-aos-duration="1000"
@@ -170,6 +176,15 @@ export default {
           this.$root.setProportionStyle(
             "font-size",
             "px",
+            "#cookingsSection #filterBox #filters #searchBox input",
+            1920,
+            25,
+            1495,
+            20
+          );
+          this.$root.setProportionStyle(
+            "font-size",
+            "px",
             ".cookingCart h1",
             1920,
             32,
@@ -185,7 +200,7 @@ export default {
             1495,
             12
           );
-          
+
           this.$root.setProportionStyle(
             "padding-top",
             "px",
@@ -224,6 +239,10 @@ export default {
           );
         }
       } else {
+        this.$root.unsetInlineStyle(
+          "font-size",
+          "#cookingsSection #filterBox #filters #searchBox input"
+        );
         this.$root.setProportionStyle(
           "font-size",
           "px",
@@ -291,7 +310,6 @@ export default {
           375,
           9
         );
-       
 
         this.$root.setProportionStyle(
           "padding-top",
@@ -344,7 +362,9 @@ export default {
         };
         this.searchPlaceHolder = value.search ? value.search : "";
         (this.typeSelected = value.type ? value.type : ""),
-          (this.isDesendingSelected = value.isDesendingSelected ? value.isDesendingSelected : ""),
+          (this.isDesendingSelected = value.isDesendingSelected
+            ? value.isDesendingSelected
+            : ""),
           this.$store.dispatch("getCookingsFromServer", pack);
       },
       deep: true,

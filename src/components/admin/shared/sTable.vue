@@ -2,8 +2,11 @@
   <table v-if="value.length>0" class="table table-hover">
     <tr class="trHeader">
       <template v-for="(header, index) in headers">
-        <th v-if="header.show_in_table == true" :key="index">
+        <th v-if="header.type!='setting'&&header.show_in_table == true" :key="index">
           {{ header.name }}
+        </th>
+        <th  v-else-if="header.type=='setting'&&hiddenButton==false" :key="index">
+          {{header.name}}
         </th>
       </template>
     </tr>
@@ -32,8 +35,8 @@
             <span v-if="header.type == 'string'">{{header.multiData==true? item[`${header.key+'_fa'}`] :item[`${header.key}`] }}</span>
             <span v-if="header.type == 'number'">{{header.multiData==true? item[`${header.key+'_fa'}`] :item[`${header.key}`] }}</span>
             <span class="longText" v-if="header.type == 'description'">{{
-              item[`${header.key+'_fa'}`].length > 31
-                ? item[`${header.key+'_fa'}`].slice(0, 31) + "..."
+              item[`${header.key+'_fa'}`].length > cutString
+                ? item[`${header.key+'_fa'}`].slice(0, cutString) + "..."
                 : item[`${header.key+'_fa'}`]
             }}</span>
             <span v-if="header.type == 'select'">
@@ -43,7 +46,7 @@
               {{`pages/${item.id}/`}}
             </span>
           </td>
-          <td v-if="header.type == 'setting'" :key="index + 20">
+          <td v-if="header.type == 'setting' && hiddenButton==false" :key="index + 20">
             <router-link class="innerRouteButton" :to="`${header.innerRoute}?id=${item.id}`" v-if="header.innerRoute">{{header.innerRouteTitle?header.innerRouteTitle:'ویژگی ها'}}</router-link>
             <b-button
               class="tableButtons"
@@ -253,6 +256,14 @@ export default {
     BButton
   },
   props: {
+    cutString:{
+      type:Number,
+      default:31
+    },
+    hiddenButton:{
+      type:Boolean,
+      default:false
+    },
     settings: Object,
     headers: Array,
     value: Array

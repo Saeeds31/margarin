@@ -17,12 +17,28 @@ export default {
     computed:{
        brands(){
            return this.$store.getters.getBrands
+       },
+       
+       reports(){
+           return this.$store.getters.getReports
+       },
+       mainMenu(){
+           return this.$store.getters.getServerMenu
        }
     },
     mounted(){
+        
         if(this.brands.length==0){
             this.$store.dispatch('getBrandsFromServer')
         }
+        
+        if(this.reports==null){
+            this.$store.dispatch('getReportFromServer')
+        }
+        if(this.mainMenu==null){
+            this.$store.dispatch('getMainMenuFromServer')
+        }
+
     }
     // mounted(){
     //     this.$router.push("/login-register")

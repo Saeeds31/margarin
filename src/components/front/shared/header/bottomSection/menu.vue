@@ -31,7 +31,7 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/">
+        <router-link to="/products">
           <i class="fa fa-angle-down blackColor04"></i>
           {{ $cookie.get("ltrTheme") ? "Products" : "محصولات" }}
         </router-link>

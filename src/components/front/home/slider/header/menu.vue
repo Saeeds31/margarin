@@ -1,18 +1,18 @@
 <template>
-  <nav id="navBarMenu" class="width40 hiddenInMobile">
+  <nav id="navBarMenu" class="width45 hiddenInMobile">
     <ul class="width100 d-flex justify-content-between align-items-center">
       <li>
-        <a to="/weblogs">{{$cookie.get('ltrTheme')?"Suppliers":"تامین کنندگان"}}
+        <a >{{$cookie.get('ltrTheme')?"Suppliers":"تامین کنندگان"}}
       <i class="fa fa-circle"></i></a></li>
       <li>
-        <a 
+        <a  target="_blank"  href="https://saham.margarineco.com"
           >{{$cookie.get('ltrTheme')?"Shareholders":'سهامداران'}}
           <i class="fa fa-circle"></i>
         </a>
       </li>
 
       <li>
-        <a 
+        <a target="_blank" href="https://crm.margarineco.com"
           >{{$cookie.get('ltrTheme')?"Customer service":'امور مشتریان'}}
           <i class="fa fa-circle"></i>
         </a>

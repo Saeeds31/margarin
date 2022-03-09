@@ -181,7 +181,7 @@
             </div>
 
             <div v-if="productData.sizeImage" class="sizeImage">
-              <img :src="productData.sizeImage" :alt="product.name" />
+              <img :src="$root.baseImageUrl + productData.sizeImage" :alt="product.name" />
             </div>
           </div>
           <div class="imageColumn">
@@ -203,7 +203,7 @@
               data-aos-once="true"
               class="commentShare d-flex justify-content-between width100 margin-auto"
             >
-              <button class="share d-flex justify-content-around">
+              <button @click="shareProduct()" class="share d-flex justify-content-around">
                 <span>{{$cookie.get('ltrTheme')?'share':'اشتراک گذاری'}}</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -449,6 +449,16 @@ export default {
     };
   },
   methods: {
+    shareProduct(){
+       window.open(`https://wa.me/?text=${this.$root.domainName+this.$route.path}`,'_blank'); 
+      //  navigator.share({
+      //     title: this.product.title,
+      //     text: this.productData?this.productData.name:"این محصول رو بهت پیشنهاد میکنم",
+      //     url:this.$root.domainName+this.$route.path,
+      //   })
+      //       .then(() => {})
+      //       .catch((error) => console.error(error));
+    },
     setStyle() {
       if (window.innerWidth > 1000) {
         this.$root.unsetInlineStyle(

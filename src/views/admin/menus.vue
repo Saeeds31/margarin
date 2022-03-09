@@ -13,13 +13,12 @@
       <b-button variant="primary" @click="showModal = true">افزودن </b-button>
     </div>
     <div v-if="items" class="mainTable">
-      <s-table
-        :hiddenButton="getRole.toLowerCase().includes('admin') ? false : true"
-        v-model="items"
-        @showEditModal="showEditModal"
-        @deleteItem="deleteItem"
-        :headers="headers"
-      />
+       <s-table
+                    v-model="items"
+                    @showEditModal="showEditModal"
+                    @deleteItem="deleteItem"
+                    :headers="headers"
+                  />
     </div>
     <b-modal
       id="categoryModal"
@@ -43,24 +42,43 @@
 <script>
 import SInputs from "@/components/admin/shared/sInputs.vue";
 import STable from "@/components/admin/shared/sTable.vue";
-import adminMixin from "@/libraries/adminController.js";
-import { BModal, BButton, BOverlay, BSpinner } from "bootstrap-vue";
+import adminMixin from "@/libraries/adminController.js"
+import { BModal, BButton,BOverlay,BSpinner } from "bootstrap-vue";
 export default {
-  mixins: [adminMixin],
-  components: { SInputs, BModal, BButton, STable, BOverlay, BSpinner },
+mixins:[adminMixin],
+  components: { SInputs, BModal, BButton, STable,BOverlay,BSpinner },
   data() {
     return {
       headers: [
         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "نام دسته بندی را وارد کنید",
+          placeholder: "گروه منو را وارد کنید",
           type: "string",
           multiData: true,
-          name: "نام دسته بندی",
-          key: "name"
+          name: "گروه منو",
+          key: "header"
         },
-
+        
+        {
+          style: "col-12",
+          show_in_table: true,
+          placeholder: "عنوان منو را وارد کنید",
+          type: "string",
+          multiData: true,
+          name: "عنوان منو",
+          key: "title"
+        },
+        
+        {
+          style: "col-12",
+          show_in_table: true,
+          placeholder: "مسیر منو را وارد کنید",
+          type: "string",
+          multiData: false,
+          name: " مسیر منو",
+          key: "url"
+        },
         {
           style: "col-12",
           show_in_table: true,
@@ -78,28 +96,18 @@ export default {
         english: {},
         both: {}
       },
-      title: "دسته بندی",
+      title: "منوها",
       editedId: null,
-      apiRoute: "RecipeCategory",
-      pageSize: 0
+      apiRoute: "Menu",
     };
   },
   mounted() {
-    this.loadItems();
+      this.loadItems();
   },
-  watch: {
-    item(newVal) {
-      this.bigData = newVal;
-    }
-  },
-  computed: {
-    getRole() {
-      if (this.$store.getters.getAdminPanelRole == null) {
-        return "";
-      } else {
-        return this.$store.getters.getAdminPanelRole;
+  watch:{
+      item(newVal){
+          this.bigData = newVal
       }
-    }
   }
 };
 </script>

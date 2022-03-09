@@ -4,13 +4,13 @@
       data-aos-duration="1500"
       data-aos-delay="500"
       data-aos-once="false"  class="imageBox width60 d-flex justify-content-center align-items-end hiddenInMobile">
-      <img class="width60" :src="$root.baseImageUrl+data.image" :alt="data.title" />
+      <img  class="width60 " :src="$root.baseImageUrl+data.image" :alt="data.title" />
     </div>
     <div data-aos="zoom-in"
       data-aos-duration="1500"
       data-aos-delay="500"
       data-aos-once="false" class="body width50 d-flex flex-direction-column align-items-end">
-      <div  class="header d-flex justify-content-end">
+      <div  class="header d-flex justify-content-end align-items-start">
          	 <svg
 			  id="cookingHomeSvg"
             version="1.1" height="80"   width="50" class="showInMobile"
@@ -132,7 +132,7 @@
       </p>
       <p class="seen">
         {{ $cookie.get('ltrTheme')?`Time to read the article ${data.timeToRead} Minutes`
-        :`زمان مورد مطالعه مطلب ${data.timeToRead} دقیقه می باشد` }}
+        :`زمان  مطالعه مطلب ${data.timeToRead} دقیقه می باشد` }}
       </p>
 <div class="loading">
     <span></span>

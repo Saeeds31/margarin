@@ -14,6 +14,7 @@
     </div>
     <div v-if="items" class="mainTable">
        <s-table
+       :cutString="200"
                     v-model="items"
                     @showEditModal="showEditModal"
                     @deleteItem="deleteItem"

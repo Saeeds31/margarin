@@ -11,30 +11,32 @@
         class="hiddenInMobile"
         :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
         id="sortOption"
-       track-by="name"
+        track-by="name"
         label="name"
+        :show-labels="false"
         v-model="type"
         :options="typeOption"
       ></multiSelect>
       <multiSelect
-        id="categotyOption"       track-by="name"
+        id="categotyOption"
+        track-by="name"
         label="name"
-               :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
-v-model="sort"
+        :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
+        v-model="sort"
         :options="sortOptions"
+        :show-labels="false"
       >
       </multiSelect>
       <div id="searchBox" class="width45">
         <input
-        @keypress.enter="searched()"
+          @keypress.enter="searched()"
           v-model="search"
           class="width100"
           type="text"
           :placeholder="searchPlaceHolder"
         />
         <svg
-        @click="searched()"
-
+          @click="searched()"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           width="24"
@@ -95,10 +97,10 @@ export default {
     }
   },
   methods: {
-        searched() {
+    searched() {
       let filter = {
         category: this.category != null ? this.category : "",
-                isDesending: this.sort != null ? this.sort.value : true,
+        isDesending: this.sort != null ? this.sort.value : true,
 
         search: this.search
       };
@@ -121,21 +123,21 @@ export default {
     type(newVal) {
       // this.filterList.push(newVal);
       let filter = {
-              isDesending: newVal != null ?newVal.value: true,
+        isDesending: this.sort != null ? this.sort.value : true,
         type: this.type != null ? this.type.value : 1,
         search: this.search
       };
       this.$emit("filtered", filter);
     },
-        sort(newVal) {
+    sort(newVal) {
       // this.filterList.push(newVal);
       let filter = {
-             type: this.type != null ? this.type.value : 1,
-        isDesending: newVal != null ?newVal.value: true,
+        type: this.type != null ? this.type.value : 1,
+        isDesending: newVal != null ? newVal.value : true,
         search: this.search
       };
       this.$emit("filtered", filter);
-    },
+    }
   },
   data() {
     return {
@@ -148,7 +150,7 @@ export default {
       search: "",
       filterList: [],
       category: null,
-        sortOptions: [
+      sortOptions: [
         {
           name: this.$cookie.get("ltrTheme") ? "Oldest" : "قدیمی ترین",
           value: "false"
@@ -158,7 +160,7 @@ export default {
           value: "true"
         }
       ],
- sort:
+      sort:
         this.isDesendingSelected != ""
           ? this.isDesendingSelected == true
             ? {
@@ -194,8 +196,7 @@ export default {
   props: {
     placeHolder: String,
     typeSelected: String,
-        isDesendingSelected: String,
-
+    isDesendingSelected: String
   }
 };
 </script>
@@ -208,14 +209,14 @@ export default {
   border-radius: 30px;
   text-align: right;
   border: 3px solid var(--grayBackground);
-  font-size: 20px;
+  font-size: 18px !important;
   font-family: "yekan-heavy";
   direction: rtl;
 }
 #searchBox svg {
   position: absolute;
-  left: 2%;
-  top: 20px;
+  left: 4%;
+  top: 23px;
 }
 #filterBox .multiselect {
   width: 25%;
@@ -233,7 +234,7 @@ export default {
 }
 #filterBox .multiselect__placeholder,
 #filterBox .multiselect__single {
-  font-size: 20px;
+  font-size: 17px;
   font-family: "yekan-heavy";
   text-align: center;
 }

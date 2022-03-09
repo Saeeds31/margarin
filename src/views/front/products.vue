@@ -22,7 +22,7 @@
       </p>
     </introduction>
     <filterBox
-      :isDesendingSelected="isDesendingSelected"
+      :isBrandSelected="isBrandSelected"
       :categorySelected="categorySelected"
       :placeHolder="searchPlaceHolder"
       @filtered="filteredProducts"
@@ -72,7 +72,7 @@ export default {
   data() {
     return {
         categorySelected: "",
-      isDesendingSelected: "",
+      isBrandSelected: "",
       searchPlaceHolder: "",
        routes:[{ route: "", routeTitle_fa: "محصولات ", routeTitle_en:"Products"}],
 
@@ -86,7 +86,7 @@ export default {
           page: this.$route.query.page ? this.$route.query.page : 1,
           category: filter.category ? filter.category : "",
           search: filter.search ? filter.search : "",
-          isDesending: filter.isDesending ? filter.isDesending : true
+          brand: filter.brand ? filter.brand : ""
         }
       });
       document
@@ -102,9 +102,9 @@ export default {
             ? this.$route.query.category
             : "",
           search: this.$route.query.search ? this.$route.query.search : "",
-          isDesending: this.$route.query.isDesending
-            ? this.$route.query.isDesending
-            : true
+          brand: this.$route.query.brand
+            ? this.$route.query.brand
+            : ""
         }
       });
       document
@@ -156,11 +156,9 @@ watch: {
         brand: this.$route.query.brand ? this.$route.query.brand : "",
         type: this.$route.query.type ? this.$route.query.type : "",
           search: value.search ? value.search : "",
-          isDesending: value.isDesending ? value.isDesending : true
         };
         this.searchPlaceHolder = value.search ? value.search : "";
         (this.typeSelected = value.type ? value.type : ""),
-          (this.isDesendingSelected = value.isDesendingSelected ? value.isDesendingSelected : ""),
           this.$store.dispatch("getProductsFromServer", pack);
       },
       deep: true,

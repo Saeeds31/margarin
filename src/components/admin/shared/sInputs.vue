@@ -436,6 +436,7 @@
           </template>
           <template v-if="!header.multiData && header.type == 'file'">
             <b-form-file
+             :disabled="header.disable ? header.disable : false"
               v-model="files[header.key]"
               :state="Boolean(files[header.key])"
               :placeholder="header.placeholder"
@@ -444,7 +445,7 @@
             </b-form-file>
             <a
               class="videoPreviewButton"
-              v-if="mode == 'edit' && bigData.both[header.key] != ''"
+              v-if="mode == 'edit' && bigData.both[header.key] != ''&& bigData.both[header.key] != null"
               :href="baseMediaUrl + bigData.both[header.key]"
               target="_blank"
               >دریافت</a

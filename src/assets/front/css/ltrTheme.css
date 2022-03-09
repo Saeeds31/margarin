@@ -79,7 +79,6 @@
     .ltrTheme #homeSection #aboutUsSection .aboutCart h3,
     .ltrTheme div h1,
     .ltrTheme #text div h4,
-    .ltrTheme #homeSection #weeklyCookingSection .cart .body .description,
     .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content h1,
     .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content h1,
     .ltrTheme #homeSection #weblogsSection #singleSlider .cart .content h1,
@@ -100,9 +99,13 @@
     }
     
     .ltrTheme .contactCart .footerDetail,
-    .ltrTheme #searchBox input,
-    .ltrTheme .ckEditorOutput {
+    .ltrTheme #searchBox input {
         text-align: left !important
+    }
+    
+    .ltrTheme .ckEditorOutput {
+        direction: ltr !important;
+        text-align: left !important;
     }
     
     .ltrTheme #cookingHomeSvg {
@@ -123,7 +126,9 @@
     .ltrTheme #blogsSection .slotElements,
     .ltrTheme #homeSection #certificatesSlider .cart .content .certificateText,
     .ltrTheme .commentForm textarea,
+    .ltrTheme #homeSection #weeklyCookingSection .cart .body .description,
     .ltrTheme #introductionSection #content div h1,
+    .ltrTheme #contactUsSection #contactUsForm textarea,
     .ltrTheme #introductionSection #content div h3 {
         direction: ltr;
     }
@@ -152,6 +157,23 @@
     .ltrTheme .medium14,
     .ltrTheme #aboutSection #lastAboutUsP {
         direction: ltr !important;
+    }
+    
+    @media (max-width:451px) {
+        .ltrTheme .productCart .product h4 {
+            text-align: left !important;
+        }
+    }
+    
+    .ltrTheme .cookingCart .cookingRoute {
+        margin-right: unset;
+        margin-left: 5%;
+        justify-content: flex-start !important;
+    }
+    
+    .ltrTheme svg.cookingTimerSvg {
+        margin-right: 20px !important;
+        margin-left: 0px !important;
     }
     
     .ltrTheme div#descriptionBox label {

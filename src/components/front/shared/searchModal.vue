@@ -8,7 +8,7 @@
         @keypress.enter="searchInBlogs"
           class="width100"
           type="text"
-          :placeholder="$cookie.get('ltrTheme')?'search right now ...':'جستوجو را همین الان شروع کنید ...'"
+          :placeholder="$cookie.get('ltrTheme')?'search right now ...':'جستجو را همین الان شروع کنید ...'"
         />
         <svg
         @click="searchInBlogs()"
@@ -39,10 +39,10 @@ export default {
       this.$emit("exit", false);
     },
     searchInBlogs(){
-      if(search==""){
+      if(this.search==""){
         return;
       }else{
-        this.$router.push(`/weblogs?search=${this.search}`)
+        this.$router.push(`/weblogs?keyword=${this.search}`)
       }
     }
   },

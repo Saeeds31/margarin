@@ -12,6 +12,7 @@
         :placeholder="$cookie.get('ltrTheme') ? 'Sort By' : 'براساس '"
         id="sortOption"
         track-by="name"
+        :show-labels="false"
         label="name"
         v-model="sort"
         :options="sortOptions"
@@ -21,6 +22,7 @@
         id="categotyOption"
         :placeholder="$cookie.get('ltrTheme') ? 'Category' : 'دسته بندی'"
         v-model="category"
+        :show-labels="false"
         :options="cookingCategory"
       >
       </multiSelect>
@@ -148,7 +150,7 @@ export default {
           ? this.placeHolder
           : this.$cookie.get("ltrTheme")
           ? "Start searching now ..."
-          : "جستوجو را همین الان شروع کنید ...",
+          : "جستجو را همین الان شروع کنید ...",
       category: null,
       sort:
         this.isDesendingSelected != ""

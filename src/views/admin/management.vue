@@ -53,20 +53,56 @@ mixins:[adminMixin],
         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "نام برند را وارد کنید",
+          placeholder: "نام و نام خانوادگی را وارد کنید",
           type: "string",
           multiData: true,
-          name: "نام برند",
+          name: "نام و نام خانوادگی",
+          key: "fullName"
+        },
+        {
+          style: "col-12",
+          show_in_table: true,
+          placeholder: "سمت را وارد کنید",
+          type: "string",
+          multiData: true,
+          name: "سمت",
           key: "title"
         },
         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "تصویر برند را در ارتفاع40 و عرض 80 پیکسل وارد کنید",
+          placeholder: " تصویر اصلی با ارتفاع 586 و عرض 460 پیکسل",
           type: "image",
           multiData: false,
           name: "تصویر",
           key: "image"
+        },
+        {
+          style: "col-12",
+          show_in_table: false,
+          placeholder: "جایگاه را وارد کنید",
+          type: "number",
+          multiData: false,
+          name: "جایگاه",
+          key: "order"
+        },
+        {
+          style: "col-12",
+          show_in_table: false,
+          placeholder: "رزومه را وارد کنید",
+          type: "ckEditor",
+          multiData: true,
+          name: "رزومه",
+          key: "resume"
+        },
+        {
+          style: "col-12",
+          show_in_table: false,
+          placeholder: "آیا عضو هیئت مدیره است",
+          type: "boolean",
+          multiData: false,
+          name: "آیا عضو هیئت مدیره است",
+          key: "isManagementMembers"
         },
       
         {
@@ -88,7 +124,7 @@ mixins:[adminMixin],
       },
       title: "برند",
       editedId: null,
-      apiRoute: "Brand",
+      apiRoute: "Manager",
     };
   },
   mounted() {

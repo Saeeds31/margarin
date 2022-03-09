@@ -2,7 +2,7 @@
   <div class="collapseSection">
     <b-card no-body class="mb-1">
       <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle="'accordion-' + data.id"  variant="dark">
+        <b-button :id="'accordion' + listIndex" block v-b-toggle="'accordion-' + data.id"  variant="dark">
           <span class="blackColor08">
             {{ data.question }}
           </span>
@@ -111,7 +111,8 @@ export default {
     BCardText
   },
   props: {
-    data: Object
+    data: Object,
+    listIndex:Number
   },
   directives:{
 'b-toggle':VBToggle

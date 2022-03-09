@@ -450,7 +450,7 @@ input:-internal-autofill-selected {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 300px;
+    width: 270px;
     margin: 4% 0;
 }
 
@@ -543,10 +543,10 @@ input:-internal-autofill-selected {
 
 #homeSection #homeLeader #headerContent {
     position: absolute;
-    right: 2.5%;
+    right: 1%;
     top: 2%;
     z-index: 10;
-    width: 95%;
+    width: 96%;
 }
 
 
@@ -557,7 +557,7 @@ input:-internal-autofill-selected {
 } */
 
 #homeSection #homeLeader #headerContent #buttons {
-    width: 28%;
+    width: 25%;
 }
 
 #homeSection #homeLeader #headerContent.reStyleHeaderContent #buttons button i {
@@ -569,40 +569,85 @@ input:-internal-autofill-selected {
     height: 45px;
 }
 
-.animationAboutCart1 {
+.animationAboutCart1:hover {
     position: relative;
     animation: animationAboutCart1 1.2s infinite linear alternate;
 }
 
-.animationAboutCart2 {
+.animationAboutCart2:hover {
     position: relative;
     animation: animationAboutCart2 1.2s infinite linear alternate;
 }
 
-.animationAboutCart3 {
+.animationAboutCart3:hover {
     position: relative;
     animation: animationAboutCart3 1.2s infinite linear alternate;
 }
 
-.animationAboutCart4 {
+.animationAboutCart4:hover {
     position: relative;
     animation: animationAboutCart4 1.2s infinite linear alternate;
+}
+
+
+/* 
+.productHomeAnimated1 {
+    animation: animationAboutCart1 1.2s infinite linear alternate;
+}
+
+.productHomeAnimated2 {
+    animation: animationAboutCart1 1.2s 1s infinite linear alternate;
+}
+
+.productHomeAnimated3 {
+    animation: animationAboutCart1 1.2s 1.5s infinite linear alternate;
+} */
+
+.animationChefCart {
+    animation: animationChef 2.5s infinite linear alternate;
 }
 
 @keyframes animationAboutCart1 {
     from {
         top: 0;
+        position: relative;
     }
     to {
+        position: relative;
         top: 14px
+    }
+}
+
+@keyframes animationChef {
+    0% {
+        top: 0;
+        left: -14px;
+        position: relative;
+    }
+    33% {
+        position: relative;
+        top: 24px;
+        left: 0px;
+    }
+    66% {
+        position: relative;
+        top: 0;
+        left: 14px;
+    }
+    100% {
+        position: relative;
+        top: -14px;
+        left: 0;
     }
 }
 
 @keyframes animationAboutCart2 {
     from {
         left: 0;
+        position: relative;
     }
     to {
+        position: relative;
         left: 15px
     }
 }
@@ -664,7 +709,7 @@ input:-internal-autofill-selected {
 }
 
 #homeSection #homeLeader #headerContent #buttons button {
-    background-color: #ffffff20;
+    background-color: #12121220;
     width: 50px;
     height: 50px;
     border: none;
@@ -673,7 +718,7 @@ input:-internal-autofill-selected {
 
 #homeSection #homeLeader #headerContent #buttons button i.fa.fa-bars {
     color: white;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 #homeSection #homeLeader #headerContent #buttons button#toggleMenu {
@@ -689,6 +734,12 @@ input:-internal-autofill-selected {
 #homeSection #homeLeader #headerContent #buttons button.reStyleToggle {
     background-color: #5a5a5a20;
     position: relative;
+}
+
+@media (min-width:1600px) {
+    #homeSection #homeLeader #headerContent #buttons {
+        width: 20%
+    }
 }
 
 #homeSection #homeLeader #ambassadorButton {
@@ -710,6 +761,26 @@ input:-internal-autofill-selected {
 #homeSection #homeLeader #headerContent #navBarMenu ul {
     margin: 0;
     margin-left: 100px;
+    background: #00000066;
+    border-radius: 152px;
+}
+
+#homeSection #homeLeader #headerContent #navBarMenu ul li:first-child {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+#homeSection #homeLeader #headerContent #navBarMenu ul li:last-child {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+#homeSection #homeLeader #headerContent #navBarMenu ul li:hover {
+    background-color: #00000087;
+}
+
+#homeSection #homeLeader #headerContent #navBarMenu ul li:hover a {
+    color: var(--color-theme)
 }
 
 #homeSection #homeLeader #headerContent #navBarMenu i.fa.fa-circle {
@@ -744,18 +815,24 @@ svg#newsSvg,
     font-size: 17px;
     color: white;
     cursor: pointer;
-    text-shadow: 0px 0px 20px #ff8b00
+    padding: 15px;
+    display: block;
+}
+
+#homeSection #weblogsSection {
+    position: relative;
+    z-index: 8;
 }
 
 #homeSection #homeLeader #verticalMenu {
     position: fixed;
     right: 2%;
-    background: #ffffff29;
+    background: #00000066;
     top: 25%;
     padding: 10px 0;
     border-radius: 35px;
     z-index: 9;
-    transform: scale(0.9);
+    width: 3.5%
 }
 
 
@@ -771,6 +848,7 @@ svg#newsSvg,
 #homeSection #homeLeader #verticalMenu ul li {
     position: relative;
     cursor: pointer;
+    transform: scale(0.8)
 }
 
 #homeSection #homeLeader #verticalMenu ul li:hover p {
@@ -778,6 +856,7 @@ svg#newsSvg,
 }
 
 #homeSection #homeLeader #verticalMenu ul li {
+    margin: -10px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -838,6 +917,7 @@ svg#newsSvg,
     width: 100%;
     height: auto;
     height: 94vh;
+    object-fit: cover;
 }
 
 #homeSection #sliderSection #sliderContent #slider .sliderItem h3 {
@@ -970,6 +1050,7 @@ svg#newsSvg,
     border-radius: 15px;
     margin: 0;
     width: 34%;
+    padding-top: 8%;
     min-height: 280px;
 }
 
@@ -1073,6 +1154,7 @@ svg#newsSvg,
     position: relative;
     bottom: 15%;
     width: auto;
+    object-fit: contain;
     transition: all 0.5s;
 }
 
@@ -1164,8 +1246,9 @@ svg#newsSvg,
 
 #homeSection #weeklyCookingSection .cart .body .loading {
     background: #F0F0F0;
-    width: 80%;
+    width: 100%;
     height: 10px;
+    margin: 0 50px;
     border-radius: 10px;
     display: flex;
     justify-content: flex-end;
@@ -1187,17 +1270,19 @@ svg#newsSvg,
 
 #homeSection #weeklyCookingSection .cart .body .description {
     margin: 10px 0 20px;
-    width: 80%;
-    text-align: right;
-    padding: 5px;
+    width: 100%;
+    text-align: justify;
+    padding: 5px 50px;
+    direction: rtl;
 }
 
 #homeSection #weeklyCookingSection .cart .body .seen {
     margin: 0 0 10px;
+    padding: 0 50px
 }
 
 #homeSection #weeklyCookingSection .cart .body .buttons {
-    margin: 20px 0;
+    margin: 20px 50px;
 }
 
 #homeSection #weblogsSection {
@@ -1454,6 +1539,10 @@ svg#newsSvg,
     width: 60%
 }
 
+svg.cookingTimerSvg {
+    margin-right: 0 !important;
+}
+
 .cookingCart .detail svg path {
     fill: #e4abad !important;
 }
@@ -1461,11 +1550,13 @@ svg#newsSvg,
 #filterBox .multiselect__placeholder {
     color: #7c7578;
     font-weight: bolder;
+    margin-bottom: 0;
+    padding: 5px 0;
 }
 
 #filterBox .multiselect__input,
 #filterBox .multiselect__single {
-    margin: 10px 0;
+    margin: 8px 0;
 }
 
 #productsSection .productCart .product .content {
@@ -1511,9 +1602,14 @@ svg#newsSvg,
     color: black;
     opacity: 0.6;
     font-size: 13px;
-    padding: 0 15px;
+    padding: 0 100px;
+    width: 80%;
     text-align: justify;
     direction: rtl;
+}
+
+#homeSection #certificatesSlider .cart .date {
+    padding: 0 100px;
 }
 
 #homeSection #certificatesSlider .cart .content .date p {
@@ -1638,6 +1734,7 @@ svg#newsSvg,
 #aboutSection #awardsSection {
     margin-left: 25%;
     padding: 5% 0 10%;
+    margin-bottom: 10%;
 }
 
 #aboutSection #awardsSection .sliderItem .content h1 {
@@ -1828,6 +1925,7 @@ button#toggleMenuModal i {
 
 .ckEditorOutput {
     text-align: right;
+    direction: rtl;
     margin-top: 30px
 }
 
@@ -1856,9 +1954,16 @@ button#toggleMenuModal i {
     flex-direction: row-reverse;
 }
 
-#blogDetailSection #introductionSection #headerBlog .headerBlogOption div svg {
-    /* box-shadow: 5px 8px 100px #f7941e40; */
-    cursor: pointer;
+a.cookingDetailSvg {
+    width: 40px;
+    background: #f4b76e;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    padding: 10px;
+    margin: 0 7px;
 }
 
 #blogDetailSection #introductionSection #headerBlog .headerBlogOption div p {
@@ -1947,7 +2052,7 @@ button#toggleMenuModal i {
 
 #productsSection #filterBox #searchBox input,
 #productsSection #filterBox #filters .multiselect {
-    border-radius: 5px;
+    border-radius: 30px;
     background: white;
     box-shadow: 0 0 40px #00000026;
 }
@@ -1959,7 +2064,7 @@ button#toggleMenuModal i {
 }
 
 #productsSection #filterBox .multiselect .multiselect__tags {
-    border-radius: 0;
+    /* border-radius: 0; */
     border: 0px solid
 }
 
@@ -2246,7 +2351,8 @@ button#toggleMenuModal i {
     width: 100%;
     margin-top: 15px;
     text-align: right;
-    padding: 15px
+    padding: 15px;
+    direction: rtl
 }
 
 #contactUsSection #contactUsForm textarea:focus-visible {
@@ -2261,6 +2367,12 @@ button#toggleMenuModal i {
 
 #contactUsSection #contactUsForm #formTop .contactUsInput svg {
     margin: 0 10px;
+    opacity: 0.4;
+}
+
+#articles #sectionHeader div#router {
+    position: relative;
+    z-index: 11;
 }
 
 #contactUsSection #contactUsForm #formTop .contactUsInput p {
@@ -2404,7 +2516,8 @@ button#toggleMenuModal i {
 }
 
 .cookingCart .cookingRoute {
-    margin: 10px auto 20px;
+    margin-top: 30px;
+    margin-right: 5%;
     /* display: none !important; */
     position: absolute;
     bottom: -100px;
@@ -2492,6 +2605,7 @@ textarea:focus-visible {
 
 #cooperationSection #insuranceBox {
     padding: 10px;
+    margin-top: -20px;
 }
 
 #cooperationSection #insuranceBox p {
@@ -2704,11 +2818,19 @@ input[type=number] {
 #healthAmbassador button#toggleMenu i {
     font-size: 30px;
     padding: 0 2px;
-    color: white
+    color: white;
+    position: relative;
+    top: 3px
 }
 
 #healthAmbassador {
-    position: relative
+    position: relative;
+    overflow: hidden;
+}
+
+#healthAmbassador #headerContent #buttons button .fa.fa-times {
+    position: relative;
+    top: 4px
 }
 
 #healthAmbassador #headerContent {
@@ -2736,7 +2858,7 @@ input[type=number] {
 
 #healthAmbassador #headerContent #buttons button {
     border: none;
-    padding: 10px;
+    padding: 5px 10px;
     margin: 0 5px;
     background: #c0c0c09e;
     border-radius: 5px;
@@ -2874,6 +2996,7 @@ input[type=number] {
     font-family: 'peyda-black';
     font-size: 22px;
     opacity: 0.6;
+    text-align: center;
     margin: 120px 0 0;
 }
 
@@ -2933,6 +3056,7 @@ input[type=number] {
 #healthAmbassador #goodFamily #content h1 {
     font-size: 33px;
     font-family: 'peyda-black';
+    text-align: right
 }
 
 #healthAmbassador #goodFamily #content h3 {
@@ -2944,6 +3068,7 @@ input[type=number] {
 #healthAmbassador #goodFamily #content p {
     font-size: 13px;
     text-align: justify;
+    white-space: pre-wrap;
     direction: rtl;
 }
 
@@ -3068,6 +3193,8 @@ div#application {
 
 #healthAmbassador #blogsSection .blogCart .innerContent .content {
     top: 0;
+    right: 0;
+    width: 80%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -3085,6 +3212,7 @@ div#application {
     font-size: 18px;
     font-family: 'peyda-bold';
     margin: 0 5%;
+    height: 60px;
     opacity: 0.8;
 }
 
@@ -3779,6 +3907,8 @@ div#application {
     position: relative;
     top: -40%;
     margin: auto;
+    height: 349px;
+    width: 289px;
     box-shadow: 0 0 10px #12131420;
 }
 
@@ -3923,7 +4053,7 @@ div#rawMaterial h3 {
     font-size: 18px;
     font-family: 'yekan-bold';
     padding-bottom: 15px;
-    color: white;
+    color: white !important;
 }
 
 ul.menuChild {
@@ -3936,13 +4066,13 @@ ul.menuChild {
 }
 
 ul.menuChild li a {
-    color: white;
+    color: white !important;
     opacity: 0.8;
 }
 
 ul.menuChild li:hover a {
     text-shadow: 0 0 10px orange;
-    color: red
+    color: red !important
 }
 
 ul.menuChild li {
@@ -4066,14 +4196,40 @@ img#moonSvg {
 
 /* @media  */
 
-@media (max-width:425px) {
-    #introductionSection #content .innerContent .mainImage {
+@media (max-width:451px) {
+    #introductionSection #content .innerContent .mainImage,
+    #introductionSection #content img {
         width: 100% !important;
         min-width: 90% !important;
+    }
+    .productCart .product h4 {
+        text-align: right;
+    }
+    .titleBox .content h1 {
+        font-size: 14px !important;
     }
 }
 
 @media (max-width:1000px) {
+    #commentFormTop {
+        flex-direction: column;
+    }
+    #commentFormTop input {
+        width: 100% !important;
+        margin-top: 10px;
+    }
+    .titleBox .endLine {
+        width: 15%;
+    }
+    .titleBox .content {
+        width: 70%
+    }
+    #backgroundOrange {
+        display: none;
+    }
+    #homeSection #weeklyCookingSection .cart .body .header .image img {
+        min-height: 360px;
+    }
     #homeSection #weblogsSection #singleSlider .cart .content h1 {
         font-size: 14px;
     }
@@ -4539,12 +4695,31 @@ img#moonSvg {
         right: 66% !important;
         ;
     }
+    div#catalogueSection,
+    div#productsSection,
+    #contactUsSection,
+    #cookingsSection,
+    #blogsSection {
+        overflow: hidden;
+    }
+    #mobileMenu #languageSwitcher i {
+        color: white;
+    }
+    #mobileMenu div#selectedLanguage,
+    #Header #mainContent #topSection nav #topMenu li a {
+        color: white;
+    }
     #awardsSection .slick-next,
     #awardsSection .slick-prev {
-        top: unset !important;
-        bottom: 0px;
+        top: 30% !important;
         width: 40px !important;
         height: 40px !important;
+    }
+    #awardsSection .slick-next {
+        right: 4% !important;
+    }
+    #awardsSection .slick-prev {
+        left: 4% !important
     }
     .collapseSection .card .card-header button {
         flex-wrap: wrap-reverse;
@@ -4972,6 +5147,7 @@ img#moonSvg {
     #cooperationSection #insuranceBox {
         order: -1;
         width: 100%;
+        margin-top: 0;
     }
     #cooperationSection #form #lastStep #descriptionBox {
         height: 300px;
@@ -5079,6 +5255,11 @@ img#moonSvg {
 #homeSection #articles #sliderSection .sliderItem .smallCart,
 #homeSection #articles #sliderSection .sliderItem .blogCart {
     height: 46vh;
+}
+
+#pagination .c-sliding-pagination__list .c-sliding-pagination__list-element .c-sliding-pagination__page {
+    position: relative;
+    top: 2px
 }
 
 @media (max-width: 500px) {
@@ -5490,4 +5671,24 @@ div#mobileMenuSection {
 
 #mobileMenuSection ul.menuChild li a {
     color: black
+}
+
+.order1 {
+    order: 1;
+}
+
+.order2 {
+    order: 2;
+}
+
+.order3 {
+    order: 3;
+}
+
+.order4 {
+    order: 4;
+}
+
+.order5 {
+    order: 5;
 }
