@@ -761,7 +761,7 @@ input:-internal-autofill-selected {
 #homeSection #homeLeader #headerContent #navBarMenu ul {
     margin: 0;
     margin-left: 100px;
-    background: #00000066;
+    background: #0000001f;
     border-radius: 152px;
 }
 
@@ -787,6 +787,7 @@ input:-internal-autofill-selected {
     font-size: 5px;
     opacity: 0.3;
     margin: 0 5px;
+    display: none;
 }
 
 #cookingHomeSvg {
@@ -827,7 +828,7 @@ svg#newsSvg,
 #homeSection #homeLeader #verticalMenu {
     position: fixed;
     right: 2%;
-    background: #00000066;
+    background: #0000001f;
     top: 25%;
     padding: 10px 0;
     border-radius: 35px;
@@ -891,6 +892,7 @@ svg#newsSvg,
     color: white;
     top: 0;
     padding: 10px;
+    transform: scale(0.9)
 }
 
 
@@ -5670,7 +5672,7 @@ div#mobileMenuSection {
 }
 
 #mobileMenuSection ul.menuChild li a {
-    color: black
+    color: black !important
 }
 
 .order1 {

@@ -1,7 +1,12 @@
 <template>
   <div v-if="blogData" id="blogDetailSection" class="width80 margin-auto">
     <introduction
-       :title="$cookie.get('ltrTheme')?'News, Articles and Announcements':'اخــــبار , مقــــالات و اطلاعیــه'"
+       :title="
+       blogData.blogType=='News'?
+       $cookie.get('ltrTheme')?'News and Announcements':'اخــــبار و اطلاعیــه'
+       :
+       $cookie.get('ltrTheme')?'Posts and Articles':'پست ها و مقــــالات'
+       "
       :summary="$cookie.get('ltrTheme')?'Follow our useful content':'مــطاب مفیــد مارا دنبــال کنیــد'"
       :image="$root.baseImageUrl+this.blogData.image"
       :routes="routes">

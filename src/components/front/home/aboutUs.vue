@@ -35,6 +35,8 @@ This collection always tries to design and produce products with superior qualit
         <div id="column1" class="width90">
           <template  v-for="(item, index) in aboutUsList">
             <cart 
+            :cartIndex="index"
+
             class="otherCart"
             :class="`animationAboutCart${index+1}`"
               v-if="index < 2" :content="item" :key="item.id" />

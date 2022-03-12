@@ -151,11 +151,11 @@ export default new Vuex.Store({
             return state.mainMenu;
         }
     },
-    // {
-    //     title: cookie.get("ltrTheme") ? "Margarin" : "مارگارین",
-    //     route: "/"
-    // },
+
     mutations: {
+        setFullMenuOneTime(state, menuList) {
+            state.menus = menuList
+        },
         setMenus(state, pack) {
             state.menus.forEach((menu) => {
                 if (menu.id == pack.id) {
@@ -414,14 +414,29 @@ export default new Vuex.Store({
                 // dispatch("withoutEnAndFa", pack);
             });
         },
-        getMainMenuFromServer({ commit }) {
+        setMainMenuOrder({ state, commit }) {
+            let menus = state.menus;
+            let m0 = menus[0];
+            let m1 = menus[1];
+            let m2 = menus[2];
+            let m3 = menus[3];
+            menus[0] = m2;
+            menus[1] = m3;
+            menus[2] = m0;
+            menus[3] = m1;
+            commit('setFullMenuOneTime', menus)
+
+        },
+        getMainMenuFromServer({ commit, dispatch }) {
             axios.get("Home/GetMenu").then((res) => {
                 let step1 = JSON.stringify(res.data.data);
                 let step2 = step1.replace(/_fa"/g, '"');
                 let step3 = step2.replace(/_en"/g, '"');
                 let menus = JSON.parse(step3);
+                let i = 2;
                 for (const key in menus) {
-                    let i = 3;
+                    i++;
+
                     let pack = {
                         id: i,
                         header: {
@@ -437,6 +452,9 @@ export default new Vuex.Store({
                         });
                     });
                     commit("pushMenu", pack);
+                }
+                if (i >= 4) {
+                    dispatch('setMainMenuOrder')
                 }
             });
         },

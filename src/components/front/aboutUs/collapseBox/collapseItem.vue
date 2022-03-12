@@ -130,6 +130,7 @@ export default {
       text-align: justify;
       direction: rtl;
       width: 90%;
+      white-space: pre-wrap;
 }
 .collapseSection .card{
   align-items: flex-end;
