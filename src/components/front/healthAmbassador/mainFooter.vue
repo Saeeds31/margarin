@@ -5,12 +5,12 @@
     <div id="mainFooter" class="d-flex width100 justify-content-between">
       <div class="width25" id="images">
         <div>
-          <img class="width40" src="https://s4.uupload.ir/files/layer_2659_976p.png" alt="" />
+          <img class="width40" :src="samandehiImage" alt="samandehi" />
         </div>
         <div>
           <img class="width50"
-            src="https://s4.uupload.ir/files/layer_555_copy_zhy0.png"
-            alt=""
+            :src="enamadImage"
+            alt="enamad"
           />
         </div>
       </div>
@@ -341,10 +341,19 @@
 </template>
 <script>
 import logo from "@/components/front/shared/logo.vue";
+
+import samandehi from "@/assets/front/images/samandehi.png"
+import enamad from "@/assets/front/images/enamad.png"
 export default {
   components: {
     logo
-  }
+  },
+  data(){
+    return{
+      enamadImage:enamad,
+      samandehiImage:samandehi
+    }
+  },
 };
 </script>
 <style>

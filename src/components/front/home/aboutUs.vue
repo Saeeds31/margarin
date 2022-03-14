@@ -57,6 +57,11 @@ This collection always tries to design and produce products with superior qualit
   </div>
 </template>
 <script>
+
+import aboutUsHomeCart1 from "@/assets/front/images/aboutUsHomeCart1.png"
+import aboutUsHomeCart2 from "@/assets/front/images/aboutUsHomeCart2.png"
+import aboutUsHomeCart3 from "@/assets/front/images/aboutUsHomeCart3.png"
+import aboutUsHomeCart4 from "@/assets/front/images/aboutUsHomeCart4.png"
 import enImage from "@/assets/front/images/aboutUSHomeEn.png"
 import faImage from "@/assets/front/images/aboutUSHome.png"
 import VueSlickCarousel from "vue-slick-carousel";
@@ -104,26 +109,26 @@ export default {
       aboutUsList: [
         {
           id: 1,
-          image: "https://s4.uupload.ir/files/a_3j4x.png",
+          image: aboutUsHomeCart1,
           title:this.$cookie.get("ltrTheme")?"Introducing the collection": "معرفی مجموعه",
           text:this.$cookie.get("ltrTheme")?"":""
         },
           {
           id: 3,
-          image: "https://s4.uupload.ir/files/b_mbnf.png",
+          image: aboutUsHomeCart2,
           title:this.$cookie.get("ltrTheme")?"Perspectives": "چشم اندازها",
           text:this.$cookie.get("ltrTheme")?"":""
         },
         {
           id: 2,
-          image: "https://s4.uupload.ir/files/aboutushomecart1_p0ia.png",
+          image: aboutUsHomeCart3,
           title:this.$cookie.get("ltrTheme")?"Our mission": "ماموریت ما",
           text:this.$cookie.get("ltrTheme")?"":""
         },
       
         {
           id: 4,
-          image: "https://s4.uupload.ir/files/-e-icon_2e8m.png",
+          image: aboutUsHomeCart4,
           title:this.$cookie.get("ltrTheme")?"Group values": "ارزش های مارگارین",
           text:this.$cookie.get("ltrTheme")?"":""
         }

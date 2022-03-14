@@ -16,6 +16,8 @@
   </div>
 </template>
 <script>
+import goodFamilyImage from "@/assets/front/images/goodFamily.png"
+
 import shopImage from "@/assets/front/images/shopImage.jpeg"
 import mainHeader from "@/components/front/home/slider/header.vue";
 import shopSection from "@/components/front/healthAmbassador/shopSection.vue";
@@ -77,7 +79,7 @@ export default {
           ]
         },
         goodFamily: {
-          image: "https://s4.uupload.ir/files/layer_2661_copy_5_m8q.png",
+          image: goodFamilyImage,
           data: [
             {
               title: "با ما بهترین ها را تجربه  کنید",

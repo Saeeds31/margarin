@@ -32,6 +32,9 @@
   </div>
 </template>
 <script>
+import aboutUs32 from "@/assets/front/images/aboutUs32.png"
+import aboutUs59 from "@/assets/front/images/aboutUs59.png"
+import aboutUs71 from "@/assets/front/images/aboutUs71.png"
 import VueSlickCarousel from "vue-slick-carousel";
 export default {
   components: {
@@ -75,28 +78,28 @@ export default {
       },
       sliders: [
         {
-          image: "https://s4.uupload.ir/files/group_254654_jdmm.png",
+          image: aboutUs32,
           title: "واگذاری سهام به صنایع بهشهر"
         },
         {
-          image: "https://s4.uupload.ir/files/group_25465_v5y.png",
+          image: aboutUs59,
           title: "تحت پوشش سازمان صنایع"
         },
         {
-          image: "https://s4.uupload.ir/files/group_2123_4e06.png",
+          image: aboutUs71,
           title: "تاسیس شرکت مارگارین"
         },
         
         {
-          image: "https://s4.uupload.ir/files/group_254654_jdmm.png",
+          image: aboutUs32,
           title: "واگذاری سهام به صنایع بهشهر"
         },
         {
-          image: "https://s4.uupload.ir/files/group_25465_v5y.png",
+          image: aboutUs59,
           title: "تحت پوشش سازمان صنایع"
         },
         {
-          image: "https://s4.uupload.ir/files/group_2123_4e06.png",
+          image: aboutUs71,
           title: "تاسیس شرکت مارگارین"
         }
       ]

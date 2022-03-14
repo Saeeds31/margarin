@@ -1582,6 +1582,7 @@ svg.cookingTimerSvg {
     font-family: "yekan-heavy";
     font-size: 39px;
     margin: 10px;
+    text-align: right;
 }
 
 #homeSection #certificatesSlider .cart .content .titles .contentTitle .footerSection h4 {
