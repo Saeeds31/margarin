@@ -351,13 +351,11 @@ export default {
     },
     getValue(selectedIn, value) {
    
-      console.log(this.settings[selectedIn]);
       let result = this.settings[selectedIn].filter((item) => {
         if (item.id == value) {
           return item;
         }
       });
-      console.log(result);
       if (result.length == 0) return "";
       return result[0].name != undefined ? result[0].name : result[0].label;
     },

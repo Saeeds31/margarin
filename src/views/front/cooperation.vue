@@ -1292,7 +1292,6 @@ export default {
       await this.$axios
         .post(`Files/UploadFile?SavePath=cooperation`, formData, config)
         .then((response) => {
-          console.log(response);
           url = response.data.data;
         })
         .catch(() => {

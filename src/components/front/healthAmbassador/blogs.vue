@@ -56,19 +56,10 @@ export default {
     {
       "breakpoint": 600,
       "settings": {
-        "slidesToShow": 2,
-        "slidesToScroll": 2,
-        "initialSlide": 2,
-        arrows: false,
-      }
-    },
-    {
-      "breakpoint": 480,
-      "settings": {
         "slidesToShow": 1,
-        arrows: false,
         "slidesToScroll": 1,
-            centerPadding: "30px", "centerMode": true,
+        "initialSlide": 1,
+        arrows: false,
       }
     }
   ]

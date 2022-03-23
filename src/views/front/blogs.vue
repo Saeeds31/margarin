@@ -1,11 +1,7 @@
 <template>
   <div v-if="blogsData != null" id="blogsSection" class="width80 margin-auto">
     <introduction
-      :title="
-        $cookie.get('ltrTheme')
-          ? 'News and Articles Archive'
-          : 'آرشیــــو اخــــبار و مقــــالات'
-      "
+      :title="getTitle()"
       :summary="blogsData.data.webLogIntro.title"
       :image="$root.baseImageUrl + blogsData.data.webLogIntro.image"
       :routes="routes"
@@ -15,7 +11,8 @@
       </p>
     </introduction>
     <filterBox
-      :typeSelected="typeSelected" :isDesendingSelected="isDesendingSelected"
+      :typeSelected="typeSelected"
+      :isDesendingSelected="isDesendingSelected"
       :placeHolder="searchPlaceHolder"
       @filtered="filteredBlogs"
     />
@@ -60,7 +57,8 @@ export default {
     pagination
   },
   data() {
-    return {      isDesendingSelected: "",
+    return {
+      isDesendingSelected: "",
 
       typeSelected: "",
       searchPlaceHolder: "",
@@ -136,6 +134,20 @@ export default {
     window.removeEventListener("resize", this.setStyle);
   },
   methods: {
+    getTitle() {
+      if (this.$route.query.type) {
+        if (this.$route.query.type == 1) {
+          if (this.$cookie.get("ltrTheme")) return " Articles Archive";
+          else return "آرشیــــو  مقــــالات";
+        } else {
+          if (this.$cookie.get("ltrTheme")) return "News  Archive";
+          else return "آرشیــــو اخــــبار ";
+        }
+      } else {
+        if (this.$cookie.get("ltrTheme")) return "News and Articles Archive";
+        else return "آرشیــــو اخــــبار و مقــــالات";
+      }
+    },
     pageChanged(page) {
       this.$router.replace({
         name: "weblogs",
@@ -149,10 +161,10 @@ export default {
           keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
         }
       });
-     
-               document
-          .getElementById("weblogsList")
-          .scrollIntoView({ behavior: "smooth" });
+
+      document
+        .getElementById("weblogsList")
+        .scrollIntoView({ behavior: "smooth" });
     },
     filteredBlogs(filter) {
       filter.page = this.$route.query.page ? this.$route.query.page : 1;

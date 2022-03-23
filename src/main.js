@@ -81,7 +81,6 @@ new Vue({
         ...VueMethods,
         setScreen() {
             this.screenSize = window.innerWidth;
-            console.log(this.screenSize);
         }
     },
     mounted() {

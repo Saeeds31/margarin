@@ -358,9 +358,11 @@ div#managementIntro a span {
     margin: 0 10px;
     font-size: 18px;
     font-family: 'yekan-bold';
+    text-align:right;
 }
 div#managementIntro a {
     margin: 10px;
     cursor: pointer;
+    display:flex;
 }
 </style>

@@ -341,7 +341,6 @@ export default {
   methods: {
     // set style to same hieght
 shareBlog(){
-  // console.log(this.$route)
         window.open(`https://wa.me/?text=${this.$root.domainName+this.$route.path}`,'_blank'); 
 
     // navigator.share({

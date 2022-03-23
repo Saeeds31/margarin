@@ -10,6 +10,11 @@
     transition: all 0.6s;
 }
 
+input {
+    text-align: right;
+    direction: rtl;
+}
+
 @font-face {
     font-family: 'yekan-heavy';
     src: url("../fonts/yekanheavy.ttf");
@@ -439,7 +444,7 @@ input:-internal-autofill-selected {
 }
 
 #roundedButton {
-    background-color: var(--backgroundButton);
+    background-color: var(--color-theme);
     color: white;
     padding: 5px 30px 5px 5px;
     border-radius: 25px;
@@ -775,9 +780,10 @@ input:-internal-autofill-selected {
     border-bottom-right-radius: 30px;
 }
 
-#homeSection #homeLeader #headerContent #navBarMenu ul li:hover {
+
+/* #homeSection #homeLeader #headerContent #navBarMenu ul li:hover {
     background-color: #00000087;
-}
+} */
 
 #homeSection #homeLeader #headerContent #navBarMenu ul li:hover a {
     color: var(--color-theme)
@@ -1740,8 +1746,13 @@ svg.cookingTimerSvg {
     margin-bottom: 10%;
 }
 
+#healthAmbassador #blogsSection .slick-slide {
+    margin: 0 10px;
+}
+
 #aboutSection #awardsSection .sliderItem .content h1 {
     font-size: 39px;
+    text-align: right;
     font-family: 'yekan-heavy';
 }
 
@@ -1782,6 +1793,22 @@ button#toggleMenuModal i {
     margin: 1% 13%;
 }
 
+#healthAmbassador .mainLogo {
+    width: 80px;
+}
+
+#healthAmbassador #navBarMenu {
+    width: 50%;
+    background: #d8d8d8;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+#healthAmbassador #navBarMenu ul {
+    margin-bottom: 0;
+    padding: 10px;
+}
+
 #aboutSection #awardsSection .sliderItem .imageCart .roundedDate {
     position: absolute;
     left: -50px;
@@ -1790,6 +1817,7 @@ button#toggleMenuModal i {
     height: 100px;
     border-radius: 100%;
     top: 12%;
+    transform: scale(0.7);
 }
 
 #aboutSection #awardsSection .sliderItem .imageCart .roundedDate span {
@@ -1903,10 +1931,17 @@ button#toggleMenuModal i {
     }
     #blogsSection #weblogsList {
         justify-content: space-between !important;
+        padding: 10px;
+    }
+    #blogsSection {
+        width: 90%;
     }
 }
 
 @media (max-width:600px) {
+    #homeSection #aboutUsSection .aboutCart {
+        margin: auto;
+    }
     #blogsSection #weblogsList .blogCart {
         width: 100%;
     }
@@ -2851,19 +2886,25 @@ input[type=number] {
     font-size: 5px;
     opacity: 0.3;
     margin: 0 5px;
+    display: none;
 }
 
 #healthAmbassador #headerContent #navBarMenu ul li a {
     font-family: 'yekan-bold';
     font-size: 16px;
     opacity: 0.6;
+    color: white;
+}
+
+#healthAmbassador #headerContent #navBarMenu ul li:hover a {
+    color: var(--color-theme)
 }
 
 #healthAmbassador #headerContent #buttons button {
     border: none;
     padding: 5px 10px;
     margin: 0 5px;
-    background: #c0c0c09e;
+    background: #0000001f;
     border-radius: 5px;
 }
 
@@ -2880,9 +2921,17 @@ input[type=number] {
 }
 
 #healthAmbassador #shopSection #content #titles h3 {
-    font-size: 48px;
+    font-size: 42px;
     font-family: 'peyda-black';
     opacity: 0.6;
+}
+
+#healthAmbassador #ourProduct #carts .ourProductCart:nth-child(2) .svg {
+    background: darkolivegreen;
+}
+
+#healthAmbassador #ourProduct #carts .ourProductCart:nth-child(1) .svg {
+    background: #9b0096;
 }
 
 #healthAmbassador #shopSection #content #titles p {
@@ -3069,7 +3118,7 @@ input[type=number] {
 }
 
 #healthAmbassador #goodFamily #content p {
-    font-size: 13px;
+    font-size: 16px;
     text-align: justify;
     white-space: pre-wrap;
     direction: rtl;
@@ -4214,6 +4263,30 @@ img#moonSvg {
 }
 
 @media (max-width:1000px) {
+    #roundedButton {
+        width: 100%;
+    }
+    #productDetailSection div#commentBox {
+        width: 95%;
+    }
+    .comment .mainComment .headerComment {
+        justify-content: flex-end !important;
+    }
+    .rateToComment .answerCommentButton {
+        width: max-content;
+        height: max-content;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        font-size: 12px;
+        font-family: 'yekan-bold';
+    }
+    .multiselect__select {
+        top: 16px !important;
+    }
+    .sendComment.width40 {
+        width: 100%;
+    }
     #commentFormTop {
         flex-direction: column;
     }
@@ -4274,7 +4347,7 @@ img#moonSvg {
         height: 100%;
     }
     #loginRegisterSection #content {
-        right: 5%;
+        right: 15%;
         position: absolute;
         width: 70%;
     }
@@ -4375,11 +4448,13 @@ img#moonSvg {
     }
     #homeSection #weeklyCookingSection .cart .body {
         width: 100%;
+        padding-right: 7%;
     }
     #homeSection #weeklyCookingSection .cart .body .header {
         flex-direction: column;
         align-items: center;
         width: 100%;
+        align-items: center !important;
     }
     #homeSection #weeklyCookingSection .cart .body .header .titles {
         align-items: center;
@@ -4399,12 +4474,13 @@ img#moonSvg {
     }
     #homeSection #weeklyCookingSection .cart .body .seen {
         width: 80%;
-        margin: auto;
+        /* margin: auto; */
         text-align: right;
     }
     #homeSection #weeklyCookingSection .cart .body .loading {
         margin: auto;
         background: #d5d5d545;
+        width: 70%
     }
     #homeSection #weeklyCookingSection .cart .body .buttons {
         width: 80%;
@@ -4423,18 +4499,27 @@ img#moonSvg {
     }
     #weeklyCookingSection .slick-prev,
     #weeklyCookingSection .slick-next {
-        top: 50% !important;
+        top: 310px !important;
     }
     #weeklyCookingSection .slick-prev {
         left: 7% !important
+    }
+    #weeklyCookingSection .slick-next {
+        right: 7% !important
     }
     #weblogsSection .sliderBOX #singleSlider {
         width: 90%;
         margin: auto;
     }
     #weblogsSection {
-        margin-top: 80%;
-        margin-bottom: 20%;
+        /* margin-top: 80%; */
+        /* margin-bottom: 20%; */
+    }
+    #homeSection #articles {
+        height: auto
+    }
+    #homeSection #articles #sliderSection {
+        width: 100%;
     }
     /* home articles responsive */
     #articles #sliderSection .slick-prev,
@@ -4451,6 +4536,10 @@ img#moonSvg {
     #homeSection #certificatesSlider .cart .content .titles {
         flex-direction: column-reverse;
         align-items: center;
+        row-gap: 10px;
+    }
+    #homeSection #certificatesSlider .cart .date {
+        padding: 0;
     }
     /* footer responsive */
     #footer #footerSection #aboutUs {
@@ -4469,6 +4558,7 @@ img#moonSvg {
     #homeSection #certificatesSlider .cart .content {
         width: 100%;
         align-items: center !important;
+        margin: auto !important;
     }
     #homeSection #certificatesSlider .cart .content .certificateText {
         width: 100%;
@@ -4683,7 +4773,8 @@ img#moonSvg {
         margin: 50px 0 10px;
     }
     #aboutSection #awardsSection .sliderItem .content {
-        width: 90%
+        width: 90%;
+        align-items: center !important;
     }
     #aboutSection #awardsSection .sliderItem .content p {
         margin: 15px 0;
@@ -4724,9 +4815,9 @@ img#moonSvg {
     #awardsSection .slick-prev {
         left: 4% !important
     }
-    .collapseSection .card .card-header button {
+    /* .collapseSection .card .card-header button {
         flex-wrap: wrap-reverse;
-    }
+    } */
     .collapseSection .card .card-header {
         width: 90%;
     }
@@ -4743,7 +4834,10 @@ img#moonSvg {
         display: none;
     }
     #blogsSection #weblogsList .blogCart {
-        box-shadow: 0 0 50px rgb(0 0 0 / 28%);
+        box-shadow: 0 0 10px rgb(0 0 0 / 28%);
+    }
+    #imageBox {
+        padding: 10px;
     }
     #blogsSection #filterBox #filters {
         flex-wrap: wrap-reverse;
@@ -4965,7 +5059,8 @@ img#moonSvg {
         align-items: center;
     }
     #contactUsSection .mainContent .contactCart {
-        margin: 5px auto
+        margin: 5px auto;
+        align-items: center !important;
     }
     #contactUsSection #contactUsForm #formTop {
         flex-direction: column;
@@ -5119,7 +5214,8 @@ img#moonSvg {
         font-size: 16px;
     }
     .selectCooperationInput .multiselect .multiselect__select {
-        left: -20px;
+        left: -25px;
+        top: -10px !important;
     }
     #cooperationSection .vpd-input-group label {
         position: relative;
@@ -5183,6 +5279,12 @@ img#moonSvg {
 /* some exception */
 
 @media (max-width:600px) {
+    .productCart .product .content {
+        position: absolute;
+    }
+    #selectedProductSection #footerLinkRouter {
+        margin-top: 30% !important;
+    }
     #productDetailSection #introductionSection #content #imageBox .imageColumn .commentShare {
         order: 1;
         flex-direction: column;
@@ -5694,4 +5796,9 @@ div#mobileMenuSection {
 
 .order5 {
     order: 5;
+}
+
+.titleBoxCooking {
+    display: flex;
+    flex-direction: row-reverse;
 }

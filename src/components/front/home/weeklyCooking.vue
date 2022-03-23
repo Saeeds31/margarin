@@ -182,26 +182,14 @@ export default {
           425,
           23
         );
-        this.$root.setProportionStyle(
+        this.$root.unsetInlineStyle(
           "top",
-          "%",
           "#weeklyCookingSection .slick-prev",
-          1000,
-          50,
-          425,
-          43,
-          "important"
         );
 
-        this.$root.setProportionStyle(
+        this.$root.unsetInlineStyle(
           "top",
-          "%",
           "#weeklyCookingSection .slick-next",
-          1000,
-          50,
-          425,
-          43,
-          "important"
         );
 
         this.$root.setProportionStyle(

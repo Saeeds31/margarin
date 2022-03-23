@@ -39,7 +39,8 @@
     .ltrTheme #homeSection #weblogsSection #singleSlider .cart .content p,
     .ltrTheme .cookingCart .cookingRoute a,
     .ltrTheme #frontSection #footer #footerSection,
-    .ltrTheme #cooperationSection #skil {
+    .ltrTheme #cooperationSection #skil,
+    .ltrTheme #managementIntro a {
         flex-direction: row-reverse !important;
     }
     
@@ -65,7 +66,8 @@
     .ltrTheme #introductionSection #content .innerContent,
     .ltrTheme #aboutSection #statisticsSection #content #detail,
     .ltrTheme #cooperationSection #stepBox .stepTitle,
-    .ltrTheme #frontSection #footer #footerSection #aboutUs {
+    .ltrTheme #frontSection #footer #footerSection #aboutUs,
+    .ltrTheme div#managementIntro {
         align-items: flex-start !important
     }
     
@@ -94,8 +96,18 @@
     .ltrTheme #introductionSection #content div h1,
     .ltrTheme #introductionSection #content div h3,
     .ltrTheme #frontSection #footer #footerSection #aboutUs p,
-    .ltrTheme div#descriptionBox #description {
+    .ltrTheme div#descriptionBox #description,
+    .ltrTheme div#managementIntro a span {
         text-align: left;
+    }
+    
+    .ltrTheme input {
+        text-align: left;
+        direction: ltr;
+    }
+    
+    .ltrTheme #aboutSection #awardsSection .sliderItem .content h1 {
+        text-align: left
     }
     
     .ltrTheme .contactCart .footerDetail,

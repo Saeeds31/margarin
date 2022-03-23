@@ -255,7 +255,6 @@ export default new Vuex.Store({
                     pagination: paginationData
                 });
             } else {
-                console.log(JSON.parse(step3));
                 commit(pack.destination, JSON.parse(step3));
             }
         },
@@ -461,12 +460,9 @@ export default new Vuex.Store({
         getReportFromServer({ commit }) {
             axios.get("Home/GetReport").then((res) => {
                 let result = res.data.data;
-                console.log(result);
                 result.forEach((item) => {
                     item.route = "http://blogtest.ir/" + item.file;
                 });
-                console.log(result);
-
                 let step1 = JSON.stringify(result);
                 let step2 = step1.replace(/_fa"/g, '"');
                 let step3 = step2.replace(/_en"/g, '"');

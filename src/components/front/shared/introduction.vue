@@ -223,6 +223,12 @@ export default {
     box-shadow: 0 0 40px #8d8d8d70;
      min-width: 450px;
 }
+@media (max-width:1000px){
+  #introductionSection #content img{
+    box-shadow: 0 0 10px #8d8d8d70;
+
+  }
+}
 .slotElements {
   margin-top: 23%;
   width: 80%;

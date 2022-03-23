@@ -95,8 +95,7 @@ export default {
           {
             breakpoint: 480,
             settings: {
-              centerMode: true,
-              centerPadding: "20px",
+              centerMode: false,
               slidesToShow: 1,
               slidesToScroll: 1,
         infinite: true,

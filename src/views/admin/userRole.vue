@@ -95,7 +95,6 @@ export default {
       });
       this.users = fakeList;
       this.status = false;
-      console.log(this.settings);
     });
     this.$axios.get("Users/GetSystemRoles").then(res=>{
      let fakeList = [];

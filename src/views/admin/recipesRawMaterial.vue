@@ -357,7 +357,6 @@ export default {
     }
   },
   methods: { event_image_change(e) {
-      // return  console.log(e)
       const file = e.target.files[0];
         this.previewImage= URL.createObjectURL(file);
     },
@@ -426,7 +425,6 @@ export default {
       this.showModal = true;
     },
     setErrorResponse(error) {
-      console.log(error);
       let arrayError = error.split("|");
       arrayError.forEach((err, index) => {
         this.$toast.error(err, {
@@ -438,7 +436,6 @@ export default {
   
      async uploadImage() {
       let url = "";
-      console.log(2.1);
 
       let formData = new FormData();
       formData.append("files", this.image);
@@ -457,9 +454,6 @@ export default {
           config
         )
         .then((response) => {
-          console.log(2.2);
-
-          console.log(response);
           url = response.data.data.filename;
         })
         .catch(() => {
@@ -471,7 +465,6 @@ export default {
     },
     async submit() {
       if (this.image != undefined) {
-            console.log(1);
             this.bigData.both.image = await this.uploadImage();
           } else {
             if (this.mode != "edit") this.bigData.both.image = "";

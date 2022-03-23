@@ -23,7 +23,7 @@
       :title="
         $cookie.get('ltrTheme')
           ? 'Sending a message to the management'
-          : 'ارســــال پــــیام بــــه مدیــــریت'
+          : 'ارتباط مستقیم با مدیرعامل'
       "
       class="hiddenInMobile"
     >

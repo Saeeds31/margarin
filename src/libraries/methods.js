@@ -30,7 +30,6 @@ export function setSliderHeight(selector) {
         imageHeight.push(image.offsetHeight);
     });
     let maxHeight = Math.max(...imageHeight);
-    console.log(imageHeight);
     if (images[0].style["height"] == "") {
         if (window.innerWidth > 1000) {
             if (window.innerWidth > 1495) {

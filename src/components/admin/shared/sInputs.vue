@@ -589,13 +589,9 @@ export default {
   methods: {
 
     event_image_change(e) {
-      // return  console.log(e)
       const file = e.target.files[0];
       if (this.mode == "create") {
         this.previewImage[e.target.id] = URL.createObjectURL(file);
-        console.log(e.target.files[0]);
-        console.log(e.target.id);
-        console.log(this.previewImage[e.target.id]);
       }
     },
     deleteValueFromInsertList(id, key, lang) {
@@ -627,7 +623,6 @@ export default {
       }
     },
     showBothSection() {
-      console.log(this.bigData);
       if (this.mode == "edit") {
         if (Object.keys(this.bigData.both).length > 1) {
           return true;
@@ -647,7 +642,6 @@ export default {
     },
     async uploadImage(key) {
       let url = "";
-      console.log(2.1);
 
       let formData = new FormData();
       formData.append("files", this.image[key]);
@@ -666,9 +660,6 @@ export default {
           config
         )
         .then((response) => {
-          console.log(2.2);
-
-          console.log(response);
           url = response.data.data.filename;
         })
         .catch(() => {
@@ -708,7 +699,6 @@ export default {
           config
         )
         .then((response) => {
-          console.log(response);
           url = response.data.data;
         })
         .catch(() => {
@@ -722,7 +712,6 @@ export default {
       for (const header of this.headers) {
         if (header.type == "image") {
           if (this.image[header.key] != undefined) {
-            console.log(1);
             this.bigData.both[header.key] = await this.uploadImage(header.key);
           } else {
             if (this.mode != "edit") this.bigData.both[header.key] = "";
@@ -755,8 +744,6 @@ export default {
           ...this.bigData.both
         }
       };
-      // console.log(this.ckEditor)
-      // console.log(this.listValue)
       // if (Object.keys(this.ckEditor).length > 0) {
       //   pack.data = {
       //     ...pack.data,
@@ -780,7 +767,6 @@ export default {
       }
       this.innerDisabled = false;
       this.$emit("submit", pack);
-      console.log(3);
 
       // let form_data = new FormData();
       // this.headers.forEach((header) => {
@@ -813,7 +799,6 @@ export default {
       //     if (header.multiple) {
       //       if (this.selected[header.key] != undefined) {
       //         this.selected[header.key].forEach((item, index) => {
-      //           console.log(item);
       //           form_data.append(`${header.key}[${index}]`, item);
       //         });
       //       }

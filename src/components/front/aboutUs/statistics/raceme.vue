@@ -41,9 +41,9 @@ export default {
     };
   },
   mounted(){
-    
-    let howTime =this.data.number  / 10;
-    console.log(howTime)
+    if(this.data.number<600000){
+
+      let howTime =this.data.number  / 10;
     setTimeout(()=>{
 this.counter = 0;
       let timerInterval = setInterval(() => {
@@ -54,6 +54,9 @@ this.counter = 0;
         }
       }, 1000/howTime);
     },3000)
+        }else{
+          this.counter=this.data.number
+        }
   },
  
 };

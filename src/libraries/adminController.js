@@ -125,7 +125,6 @@ export default {
             this.showModal = true;
         },
         setErrorResponse(error) {
-            console.log(error);
             let arrayError = error.split("|");
             arrayError.forEach((err, index) => {
                 this.$toast.error(err, {
@@ -135,7 +134,6 @@ export default {
             });
         },
         async submit(pack) {
-            console.log(this.userId)
             this.disabled = true;
             if (pack.mode == "edit") {
 
@@ -275,7 +273,6 @@ export default {
                         fakeList.push(pack)
                     })
                     this.settings[item.route] = fakeList;
-                    console.log(this.settings)
                 })
             })
         }

@@ -396,7 +396,6 @@ export default {
       this.showModal = true;
     },
     setErrorResponse(error) {
-      console.log(error);
       let arrayError = error.split("|");
       arrayError.forEach((err, index) => {
         this.$toast.error(err, {

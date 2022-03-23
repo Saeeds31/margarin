@@ -36,8 +36,6 @@ export function getAdminProfile() {
         });
 }
 export function setCookie(name, value, time = 100000000001000) {
-    console.log(name)
-    console.log(value)
     var expires = "";
     var date = new Date();
     date.setTime(date.getTime() + time);

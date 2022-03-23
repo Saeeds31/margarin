@@ -130,7 +130,6 @@ export default {
           });
         }
       });
-      console.log(newList);
       return newList
     }
   }

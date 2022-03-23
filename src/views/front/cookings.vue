@@ -30,7 +30,7 @@
     />
     <div
       :style="{
-        marginBottom: cookingsData.pagination.TotalPages > 1 ? '5%' : '200px'
+        marginBottom: cookingsData.pagination.TotalPages > 1 ? '5%' : '100px'
       }"
       id="cookings"
       class="d-flex justify-content-between width80"
@@ -140,7 +140,7 @@ export default {
         }
       });
       document
-        .getElementById("cookingsSection")
+        .getElementById("cookings")
         .scrollIntoView({ behavior: "smooth" });
     },
     pageChanged(page) {
@@ -158,7 +158,7 @@ export default {
         }
       });
       document
-        .getElementById("cookingsSection")
+        .getElementById("cookings")
         .scrollIntoView({ behavior: "smooth" });
     },
     setStyle() {
