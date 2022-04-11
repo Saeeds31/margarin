@@ -1,5 +1,5 @@
 <template>
-  <div id="introductionSection">
+  <section id="introductionSection">
     <div id="content" class="d-flex justify-content-between">
       <img   data-aos="fade-right"
             data-aos-duration="1000"
@@ -37,7 +37,7 @@
       src="@/assets/front/images/introductionBackground.png"
       alt="مارگارین"
     />
-  </div>
+  </section>
 </template>
 <script>
 import doubleLine from "@/components/front/shared/doubleLine.vue";

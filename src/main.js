@@ -5,6 +5,7 @@ import store from "./store";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 // ..
+import requestMixin from "@/libraries/preFetchMixin.js"
 AOS.init();
 import * as MyMethods from "@/libraries/methods.js";
 // import css
@@ -29,6 +30,9 @@ import Vuelidate from "vuelidate";
 import Axios from "axios";
 import VueImg from "v-img";
 import VueCookie from "vue-cookie";
+import VueLazyload from 'vue-lazyload'
+
+Vue.use(VueLazyload)
 import * as VueMethods from "./libraries/vue-methods";
 // import VuePersianDatetimePicker from 'vue-persian-datetime-picker';
 // Vue.component('date-picker', VuePersianDatetimePicker);
@@ -63,7 +67,7 @@ Vue.use(Vuelidate);
 Vue.component("VueSlickCarouse", VueSlickCarouse);
 Vue.config.productionTip = false;
 // از بوتسترپ ویو به صورت محلی استفاده میکنیم
-
+Vue.mixin(requestMixin);
 new Vue({
     data() {
         return {

@@ -1,5 +1,5 @@
 <template>
-  <div data-aos="fade-left"
+  <section data-aos="fade-left"
     data-aos-duration="1000"
         data-aos-once="true" id="sectionHeader" class="d-flex justify-content-between width80">
     <div id="router" class="d-flex justify-content-between width20 align-items-center hiddenInMobile">
@@ -43,7 +43,7 @@
       </div>
         <slot v-if="data.image!=''"></slot>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {

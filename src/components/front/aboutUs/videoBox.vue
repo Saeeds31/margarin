@@ -1,5 +1,5 @@
 <template>
-  <div  id="videoSection">
+  <section  id="videoSection">
     <div class="posterVideo">
 <img class="width100" :src="$root.baseImageUrl+image"   :alt="title">
      <div class="backgroundGradientTheme"></div>
@@ -60,7 +60,7 @@
 
     </div>
    
-  </div>
+  </section>
 </template>
 <script>
 import VueCoreVideoPlayer from "vue-core-video-player";

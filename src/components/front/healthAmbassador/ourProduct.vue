@@ -1,5 +1,5 @@
 <template>
-  <div
+  <section
     id="ourProduct"
     class="width80 margin-auto d-flex flex-direction-column align-items-center"
   >
@@ -25,7 +25,7 @@
         
         data-aos-once="false" v-for="(item,index) in data.carts" :key="index" :data="item" />
     </div>
-  </div>
+  </section>
 </template>
 <script>
 import cart from "@/components/front/healthAmbassador/ourProduct/cart.vue";

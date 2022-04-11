@@ -1,6 +1,6 @@
 <template>
-  <div v-if="productData" id="productDetailSection">
-    <div id="introductionSection" class="width80 margin-auto">
+  <main v-if="productData" id="productDetailSection">
+    <section id="introductionSection" class="width80 margin-auto">
       <div id="content" class="d-flex justify-content-between width100">
         <div id="imageBox" class="width40">
           <div
@@ -304,12 +304,12 @@
         src="@/assets/front/images/introductionBackground.png"
         alt="مارگارین"
       />
-    </div>
+    </section>
       <commentBox   data-aos="fade-up"
         data-aos-delay="500"
       data-aos-duration="1000"
       data-aos-once="true" :likeRoute="'ProductComment'" :field="'productId'" :routeComment="'ProductComment'" :comments="productData.comments" />
-  </div>
+  </main>
   <loader v-else />
 </template>
 <script>
@@ -484,8 +484,10 @@ export default {
     window.addEventListener("resize", this.setStyle);
       this.setStyle();
   },
-  beforeCreate() {
-      this.$store.dispatch("getProductFromServer", this.$route.params.id);
+  created() {
+      // this.$store.dispatch("getProductFromServer", this.$route.params.id);
+      this.checkRequest('getProductFromServer',JSON.stringify(this.$route.params.id));
+
 
   },
   beforeDestroy(){

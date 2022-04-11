@@ -1,5 +1,5 @@
 <template>
-  <div id="tagsSection" class="d-flex justify-content-between">
+  <section id="tagsSection" class="d-flex justify-content-between">
     <div
       class="d-flex justify-content-end align-items-center width60"
       id="tags"
@@ -65,7 +65,7 @@
       </svg>
     </div>
 
-  </div>
+  </section>
 </template>
 <script>
 export default {

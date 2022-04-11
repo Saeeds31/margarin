@@ -1,5 +1,5 @@
 <template>
-  <div v-if="aboutUsData" class="width100 margin-auto" id="aboutSection">
+  <main v-if="aboutUsData" class="width100 margin-auto" id="aboutSection">
     <introduction
       class="width80 margin-auto"
       :title="
@@ -47,7 +47,7 @@
       :text="aboutUsData.aboutUs.statisticText"
       class="width100"
     />
-    <div id="managementIntro">
+    <section id="managementIntro">
       <img id="chartImage" v-img :src="managementChart" alt="چارت سازمانی" />
       <a @click="showChartImage()">
         <span>
@@ -178,7 +178,7 @@
           </g>
         </svg>
       </router-link>
-    </div>
+    </section>
     <collapseBox
       v-if="collapseList"
       :list="collapseList"
@@ -195,7 +195,7 @@
       data-aos-duration="1500"
       data-aos-once="true"
     />
-  </div>
+  </main>
   <loader v-else />
 </template>
 <script>
@@ -248,7 +248,9 @@ export default {
   },
   created() {
     if (this.aboutUsData == null) {
-      this.$store.dispatch("getAboutUsFromServer");
+      // this.$store.dispatch("getAboutUsFromServer");
+      this.checkRequest('getAboutUsFromServer',JSON.stringify(null));
+
     }
   },
   watch: {
@@ -344,7 +346,7 @@ img#chartImage {
   width: 0px;
   height: 0px;
 }
-div#managementIntro {
+section#managementIntro {
   width: 80%;
   margin: 15px auto;
   border: 4px solid #00000006;
@@ -354,13 +356,13 @@ div#managementIntro {
   align-items: flex-end;
   flex-direction: column;
 }
-div#managementIntro a span {
+section#managementIntro a span {
     margin: 0 10px;
     font-size: 18px;
     font-family: 'yekan-bold';
     text-align:right;
 }
-div#managementIntro a {
+section#managementIntro a {
     margin: 10px;
     cursor: pointer;
     display:flex;

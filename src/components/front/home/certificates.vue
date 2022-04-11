@@ -1,5 +1,5 @@
 <template>
-  <div id="certificatesSlider" class="width80">
+  <section id="certificatesSlider" class="width80">
     <VueSlickCarousel v-bind="sliderSettings">
       <cart
         v-for="certificate in prizes"
@@ -7,7 +7,7 @@
         :key="certificate.id"
       />
     </VueSlickCarousel>
-  </div>
+  </section>
 </template>
 <script>
 import cart from "@/components/front/home/certificate/cart.vue";

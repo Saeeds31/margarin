@@ -1,5 +1,5 @@
 <template>
-  <div id="Header" class="d-flex justify-content-between align-items-center">
+  <header id="Header" class="d-flex justify-content-between align-items-center">
     <div id="mainContent" class="d-flex flex-direction-column">
       <topSection
         data-aos="fade-right"
@@ -21,7 +21,7 @@
       data-aos-duration="1500"
       id="mainLogo1"
     ></logo>
-  </div>
+  </header>
 </template>
 <script>
 import doubleLine from "@/components/front/shared/doubleLine.vue";

@@ -1,5 +1,5 @@
 <template>
-  <div
+  <footer
     class="footer d-flex flex-direction-column align-items-center width80 margin-auto"
   >
     <div id="mainFooter" class="d-flex width100 justify-content-between">
@@ -337,7 +337,7 @@
       </div>
     </div>
     <div id="bottomShadow" class="footerShadow"></div>
-  </div>
+  </footer>
 </template>
 <script>
 import logo from "@/components/front/shared/logo.vue";

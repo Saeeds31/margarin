@@ -1,5 +1,5 @@
 <template>
-  <div v-if="productsData" id="productsSection">
+  <main v-if="productsData" id="productsSection">
     <introduction  class="width80 margin-auto"   :title="
         $cookie.get('ltrTheme')
           ? 'Products Margarin '
@@ -75,7 +75,7 @@
       data-aos-once="true"
       class="width80 margin-auto"
     />
-    <div
+    <section
       id="products"
       class="d-flex justify-content-between width80 margin-auto"
     >
@@ -88,15 +88,15 @@
         :product="product"
         :key="index"
       />
-    </div>
-    <div  id="pagination">
+    </section>
+    <section  id="pagination">
       <pagination v-if="productsData.pagination.TotalPages>1"
         :totalPages="productsData.pagination.TotalPages"
         :currentPage="productsData.pagination.CurrentPage"
       @pageChanged="pageChanged"
       />
-    </div>
-  </div>
+    </section>
+  </main>
   <loader v-else />
 </template>
 <script>
@@ -187,7 +187,9 @@ export default {
         search: this.$route.query.search ? this.$route.query.search : ""
       };
 
-      this.$store.dispatch("getProductsFromServer", pack);
+      // this.$store.dispatch("getProductsFromServer", pack);
+      this.checkRequest('getProductsFromServer',JSON.stringify(pack));
+
     }
   },
 watch: {
@@ -203,7 +205,9 @@ watch: {
         };
         this.searchPlaceHolder = value.search ? value.search : "";
         (this.typeSelected = value.type ? value.type : ""),
-          this.$store.dispatch("getProductsFromServer", pack);
+          // this.$store.dispatch("getProductsFromServer", pack);
+      this.checkRequest('getProductsFromServer',JSON.stringify(pack));
+
       },
       deep: true,
       immediate: true

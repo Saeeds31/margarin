@@ -1,5 +1,5 @@
 <template>
-  <div
+  <section
     id="goodFamily"
     class="d-flex justify-content-between width80 margin-auto align-items-center"
   >
@@ -36,7 +36,7 @@
         {{ data.data[index].text }}
       </p>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 export default {

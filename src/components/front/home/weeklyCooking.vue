@@ -1,9 +1,9 @@
 <template>
-  <div id="weeklyCookingSection" class="width100 height100vh">
+  <section id="weeklyCookingSection" class="width100 height100vh">
     <VueSlickCarousel v-bind="sliderSettings">
       <cart :style="{'zIndex':index}"  v-for="(item, index) in cookings" :key="index" :data="item" />
     </VueSlickCarousel>
-  </div>
+  </section>
 </template>
 <script>
 import VueSlickCarousel from "vue-slick-carousel";

@@ -1,5 +1,5 @@
 <template>
-  <div
+  <main
     id="loginRegisterSection"
     class="d-flex height100vh width100 align-items-center"
   >
@@ -12,7 +12,7 @@
       alt=""
     />
 
-    <div
+    <section
       id="content"
       data-aos="fade-left"
       data-aos-duration="1000"
@@ -87,8 +87,8 @@
           </svg>
         </span>
       </router-link>
-    </div>
-  </div>
+    </section>
+  </main>
 </template>
 <script>
 import Logo from "@/components/front/shared/logo.vue";

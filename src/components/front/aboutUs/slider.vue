@@ -1,5 +1,5 @@
 <template>
-  <div id="sliderbox">
+  <section id="sliderbox">
     <p id="lastText" class="blackColor06 hiddenInMobile">{{ firstText }}</p>
     <div id="sliderContent">
       <VueSlickCarousel v-bind="sliderSettings">
@@ -29,7 +29,7 @@
       </VueSlickCarousel>
     </div>
     <p id="lastAboutUsP">{{ lastText }}</p>
-  </div>
+  </section>
 </template>
 <script>
 import aboutUs32 from "@/assets/front/images/aboutUs32.png"

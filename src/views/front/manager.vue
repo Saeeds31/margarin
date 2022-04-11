@@ -1,5 +1,5 @@
 <template>
-  <div id="managerSection" v-if="managerList">
+  <main id="managerSection" v-if="managerList">
     <introduction
       class="width80 margin-auto managerIntroHeader"
       :title="
@@ -41,7 +41,7 @@
         v-html="item.resume"
       ></p>
     </introduction>
-  </div>
+  </main>
   <loader v-else />
 </template>
 <script>
@@ -103,7 +103,7 @@ export default {
 #managerSection .slotElements {
   direction: rtl;
 }
-div#managerSection {
+main#managerSection {
   margin-bottom: 200px;
 }
 

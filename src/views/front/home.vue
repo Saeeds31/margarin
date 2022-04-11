@@ -1,10 +1,10 @@
 <template>
-  <div v-if="homeData != null" id="homeSection">
-    <div id="homeLeader">
+  <main v-if="homeData != null" id="homeSection">
+    <section id="homeLeader">
       <headerSticky />
       <verticalMenu />
-    </div>
-    <div
+    </section>
+    <section
       v-if="
         (homeData.sliders.length > 0 && $root.sectionIndexHome == 1) ||
         (homeData.sliders.length > 0 && $root.screenSize < 1000)
@@ -24,7 +24,7 @@
         </div>
       </div> -->
       <slider :slider="homeData.sliders" class="width100 height100" />
-    </div>
+    </section>
     <aboutUs
       v-if="$root.sectionIndexHome == 2 || $root.screenSize < 1000"
       data-aos="fade-up"
@@ -46,7 +46,8 @@
     <weeklyCooking
       v-if="
         (homeData.recipes.length > 0 && $root.sectionIndexHome == 4) ||
-        (homeData.recipes.length > 0 && $root.screenSize < 1000)"
+        (homeData.recipes.length > 0 && $root.screenSize < 1000)
+      "
       :cookings="homeData.recipes"
       data-aos="fade-up"
       data-aos-duration="1500"
@@ -80,19 +81,24 @@
     />
     <certificates
       :prizes="homeData.prizes"
-      v-if="(homeData.prizes.length > 0 && $root.sectionIndexHome == 7) ||
-        (homeData.prizes.length > 0 && $root.screenSize < 1000)"
+      v-if="
+        (homeData.prizes.length > 0 && $root.sectionIndexHome == 7) ||
+        (homeData.prizes.length > 0 && $root.screenSize < 1000)
+      "
       data-aos="fade-up"
       data-aos-duration="1500"
       data-aos-delay="500"
       data-aos-once="false"
     />
-    <footerSite      data-aos="fade-up"
+    <footerSite
+      data-aos="fade-up"
       data-aos-duration="1500"
       data-aos-delay="500"
-      data-aos-once="false" v-if="$root.sectionIndexHome == 8 ||$root.screenSize < 1000" />
+      data-aos-once="false"
+      v-if="$root.sectionIndexHome == 8 || $root.screenSize < 1000"
+    />
     <footerNavigation class="showInMobile" />
-  </div>
+  </main>
   <Loader v-else />
 </template>
 <script>
@@ -123,7 +129,17 @@ export default {
   },
   created() {
     if (this.homeData == null) {
-      this.$store.dispatch("getHomeDataFromServer");
+      this.checkRequest("getHomeDataFromServer", JSON.stringify(null));
+      // increase website speed
+      this.checkRequest("getAboutUsFromServer", JSON.stringify(null));
+      let pack = {
+        page: this.$route.query.page ? this.$route.query.page : 1,
+        brand: this.$route.query.brand ? this.$route.query.brand : "",
+        type: this.$route.query.type ? this.$route.query.type : "",
+        category: this.$route.query.category ? this.$route.query.category : "",
+        search: this.$route.query.search ? this.$route.query.search : ""
+      };
+      this.checkRequest("getProductsFromServer", JSON.stringify(pack));
     }
   },
   data() {
@@ -160,28 +176,25 @@ export default {
       else if (newVal.news.length >= 3) {
         let sl = [];
         let ml = [];
-        newVal.news.forEach((item)=>{
-          if(item.isSpecial==true){
-
+        newVal.news.forEach((item) => {
+          if (item.isSpecial == true) {
             sl.push(item);
-          }else{
-
+          } else {
             ml.push(item);
           }
-        })
-        
+        });
+
         this.$store.commit("setMultiSliderNews", ml);
         this.$store.commit("setSingleSliderNews", sl);
       } else {
         this.$store.commit("setMultiSliderNews", newVal.news);
         this.$store.commit("setSingleSliderNews", newVal.news);
       }
-      
     }
   },
   computed: {
-    footerData(){
-      return this.$root.footerData
+    footerData() {
+      return this.$root.footerData;
     },
     multiSlider() {
       return this.$store.getters.getMultiSliderNews;
@@ -194,7 +207,6 @@ export default {
     }
   },
   mounted() {
-    
     window.addEventListener("resize", this.setStyle);
     window.addEventListener("keydown", this.showSection);
     window.addEventListener("wheel", this.showSectionWithScroll);
@@ -206,37 +218,51 @@ export default {
   },
   methods: {
     showSectionWithScroll(event) {
-      if(this.$root.footerMapCursor!=true){
-        
-      let oldLastWheel = this.lastWheel;
-      this.lastWheel = event.deltaY;
-      if (oldLastWheel > 0 && this.lastWheel > 0) {
-        this.wheelCounter++;
-      } else if (oldLastWheel < 0 && this.lastWheel < 0) {
-        this.wheelCounter--;
-      } else {
-        this.wheelCounter = 0;
-      }
-      if (this.wheelCounter == 2) {
-        this.wheelCounter = 0;
-        if (this.$root.sectionIndexHome != 8) {
-          this.$root.sectionIndexHome++;
+      if (this.$root.footerMapCursor != true) {
+        let oldLastWheel = this.lastWheel;
+        this.lastWheel = event.deltaY;
+        if (oldLastWheel > 0 && this.lastWheel > 0) {
+          this.wheelCounter++;
+        } else if (oldLastWheel < 0 && this.lastWheel < 0) {
+          this.wheelCounter--;
+        } else {
+          this.wheelCounter = 0;
         }
-        window.removeEventListener("wheel", this.showSectionWithScroll);
-        setTimeout(() => {
-          window.addEventListener("wheel", this.showSectionWithScroll);
-        }, 2000);
-      }
-      if (this.wheelCounter == -2) {
-        this.wheelCounter = 0;
-        if (this.$root.sectionIndexHome != 1) {
-          this.$root.sectionIndexHome--;
+        if (this.wheelCounter == 2) {
+          this.wheelCounter = 0;
+          if (this.$root.sectionIndexHome != 8) {
+            this.$root.sectionIndexHome++;
+          }
+          window.removeEventListener("wheel", this.showSectionWithScroll);
+          setTimeout(() => {
+            window.addEventListener("wheel", this.showSectionWithScroll);
+          }, 2000);
         }
-        window.removeEventListener("wheel", this.showSectionWithScroll);
-        setTimeout(() => {
-          window.addEventListener("wheel", this.showSectionWithScroll);
-        }, 2000);
-      }
+        if (this.wheelCounter == -2) {
+          this.wheelCounter = 0;
+          if (this.$root.sectionIndexHome != 1) {
+            this.$root.sectionIndexHome--;
+          }
+          window.removeEventListener("wheel", this.showSectionWithScroll);
+          setTimeout(() => {
+            window.addEventListener("wheel", this.showSectionWithScroll);
+          }, 2000);
+        }
+        // increase speed of website with preFetchData
+        if (this.sectionIndexHome == 4) {
+          let pack = {
+            page: this.$route.query.page ? this.$route.query.page : 1,
+            isDesending: this.$route.query.isDesending
+              ? this.$route.query.isDesending
+              : true,
+            category: this.$route.query.category
+              ? this.$route.query.category
+              : "",
+            search: this.$route.query.search ? this.$route.query.search : ""
+          };
+          // this.$store.dispatch("getCookingsFromServer", pack);
+          this.checkRequest("getCookingsFromServer", JSON.stringify(pack));
+        }
       }
     },
     showSection(e) {
@@ -258,7 +284,6 @@ export default {
     setStyle() {
       if (window.innerWidth > 1000) {
         if (window.innerWidth > 1495) {
-         
           // this.$root.setProportionStyle(
           //   "width",
           //   "px",
@@ -277,7 +302,6 @@ export default {
           //   1024,
           //   26
           // );
-
           // this.$root.setProportionStyle(
           //   "width",
           //   "px",
@@ -297,8 +321,6 @@ export default {
           //   26
           // );
         } else {
-        
-       
           // this.$root.setProportionStyle(
           //   "width",
           //   "px",
@@ -418,7 +440,6 @@ export default {
         //   50
         // );
 
-        
         // this.$root.setProportionStyle(
         //   "width",
         //   "px",

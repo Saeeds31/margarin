@@ -1,5 +1,5 @@
 <template>
-  <div id="awardsSection" class="width70">
+  <section id="awardsSection" class="width70">
     <VueSlickCarousel v-bind="sliderSettings">
       <div
         class="sliderItem d-flex justify-content-start align-items-center"
@@ -102,7 +102,7 @@
               <h1 class="showInMobile blackColor06">{{ slider.title }}</h1>
       </div>
     </VueSlickCarousel>
-  </div>
+  </section>
 </template>
 <script>
 import VueSlickCarousel from "vue-slick-carousel";

@@ -1,5 +1,5 @@
 <template>
-  <div id="filterBox">
+  <section id="filterBox">
     <div
       id="filters"
       data-aos="zoom-in"
@@ -83,7 +83,7 @@
         <span>{{ item.name }}</span>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 import multiSelect from "vue-multiselect";
@@ -116,7 +116,9 @@ export default {
   },
   mounted() {
     if (this.categories == null) {
-      this.$store.dispatch("getBlogCategoryFromServer");
+      // this.$store.dispatch("getBlogCategoryFromServer");
+      this.checkRequest('getBlogCategoryFromServer',JSON.stringify(null));
+
     }
   },
   watch: {

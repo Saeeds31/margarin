@@ -1,5 +1,5 @@
 <template>
-  <div
+  <section
     id="blogsSection"
     class="width80 margin-auto d-flex align-items-center flex-direction-column"
   >
@@ -22,7 +22,7 @@
       <cart v-for="(item, index) in blog" :key="index" :article="item" />
     </VueSlickCarousel>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 import VueSlickCarousel from "vue-slick-carousel";

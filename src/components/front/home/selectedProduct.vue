@@ -1,5 +1,5 @@
 <template>
-  <div id="selectedProductSection" class="">
+  <section id="selectedProductSection" class="">
     <sectionHeader :data="headerData">
       <svg
             id="articleSvg"
@@ -82,7 +82,7 @@
     </sectionHeader>
     <slider :products="products" />
     <footerLinker :data="headerData" />
-  </div>
+  </section>
 </template>
 <script>
 import slider from "@/components/front/home/selectedProduct/slider.vue";

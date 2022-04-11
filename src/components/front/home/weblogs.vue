@@ -1,5 +1,5 @@
 <template>
-  <div id="weblogsSection" class="width100">
+  <section id="weblogsSection" class="width100">
     <sectionHeader :data="weblogsHeaderData">
       <svg
       id="newsSvg"
@@ -31,7 +31,7 @@
     </div>
         <footerLinker   :data="weblogsHeaderData"  />
 
-  </div>
+  </section>
 </template>
 <script>
 import footerLinker from "@/components/front/shared/footerLink.vue"

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blogsData != null" id="blogsSection" class="width80 margin-auto">
+  <main v-if="blogsData != null" id="blogsSection" class="width80 margin-auto">
     <introduction
       :title="getTitle()"
       :summary="blogsData.data.webLogIntro.title"
@@ -16,7 +16,7 @@
       :placeHolder="searchPlaceHolder"
       @filtered="filteredBlogs"
     />
-    <div
+    <section
       id="weblogsList"
       class="width100 d-flex f-wrap justify-content-between"
     >
@@ -30,16 +30,16 @@
         :article="weblog"
         :key="index"
       />
-    </div>
-    <div id="weblogPagination">
+    </section>
+    <section id="weblogPagination">
       <pagination
         v-if="blogsData.pagination.TotalPages > 1"
         :totalPages="blogsData.pagination.TotalPages"
         :currentPage="blogsData.pagination.CurrentPage"
         @pageChanged="pageChanged"
       />
-    </div>
-  </div>
+    </section>
+  </main>
   <loader v-else />
 </template>
 <script>
@@ -84,7 +84,9 @@ export default {
         this.searchPlaceHolder = value.search ? value.search : "";
         (this.typeSelected = value.type ? value.type : ""),
           (this.categorySelected = value.category ? value.category : ""),
-          this.$store.dispatch("getBlogsFromServer", pack);
+          // this.$store.dispatch("getBlogsFromServer", pack);
+      this.checkRequest('getBlogsFromServer',JSON.stringify(pack));
+
       },
       deep: true,
       immediate: true
@@ -124,7 +126,9 @@ export default {
         search: this.$route.query.search ? this.$route.query.search : "",
         keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
       };
-      this.$store.dispatch("getBlogsFromServer", pack);
+      // this.$store.dispatch("getBlogsFromServer", pack);
+      this.checkRequest('getBlogsFromServer',JSON.stringify(pack));
+      
     } else {
       this.setStyle();
     }

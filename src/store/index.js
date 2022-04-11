@@ -6,6 +6,8 @@ Vue.use(Vuex);
 // front store
 export default new Vuex.Store({
     state: {
+        // pre fetch state
+        requestList: [],
         // server data
         faqList: null,
         aboutUsData: null,
@@ -31,7 +33,8 @@ export default new Vuex.Store({
                 id: 1,
                 header: {
                     title: cookie.get("ltrTheme") ?
-                        "Margarine brands" : "برندهای مارگارین",
+                        "Margarine brands" :
+                        "برندهای مارگارین",
                     route: "/"
                 },
                 menuItem: []
@@ -45,22 +48,26 @@ export default new Vuex.Store({
                 },
                 menuItem: [{
                         title: cookie.get("ltrTheme") ?
-                            "Financial Statements" : "صورت های مالی",
+                            "Financial Statements" :
+                            "صورت های مالی",
                         route: "/"
                     },
                     {
                         title: cookie.get("ltrTheme") ?
-                            "Interpretive management" : "تفسیری مدیریت",
+                            "Interpretive management" :
+                            "تفسیری مدیریت",
                         route: "/"
                     },
                     {
                         title: cookie.get("ltrTheme") ?
-                            "Board activities" : "فعالیت های هیئت مدیره",
+                            "Board activities" :
+                            "فعالیت های هیئت مدیره",
                         route: "/"
                     },
                     {
                         title: cookie.get("ltrTheme") ?
-                            "Internal control reports" : "گزارشات کنترل داخلی",
+                            "Internal control reports" :
+                            "گزارشات کنترل داخلی",
                         route: "/"
                     }
                 ]
@@ -73,6 +80,9 @@ export default new Vuex.Store({
         mainMenu: null
     },
     getters: {
+        getRequestList(state) {
+            return state.requestList;
+        },
         getAdminPanelRole(state) {
             return state.adminPanelRole;
         },
@@ -96,7 +106,7 @@ export default new Vuex.Store({
             return state.contactUsCartsData;
         },
         getManagerList(state) {
-            return state.managerList
+            return state.managerList;
         },
         // main sever data getters
         getBrands(state) {
@@ -151,10 +161,15 @@ export default new Vuex.Store({
             return state.mainMenu;
         }
     },
-
     mutations: {
+        // pre fetch mutation
+        addToRequestList(state, reqObject) {
+            state.requestList.push(reqObject);
+            // reference of reqObject is exist in preFetch mixin
+        },
+        // end of pre fetch mutation
         setFullMenuOneTime(state, menuList) {
-            state.menus = menuList
+            state.menus = menuList;
         },
         setMenus(state, pack) {
             state.menus.forEach((menu) => {
@@ -168,7 +183,7 @@ export default new Vuex.Store({
         },
         // inner data mutation
         setManagers(state, list) {
-            state.managerList = list
+            state.managerList = list;
         },
         adminPanelRole(state, role) {
             state.adminPanelRole = role;
@@ -242,6 +257,8 @@ export default new Vuex.Store({
         }
     },
     actions: {
+        // بخش دوم هر تابع برای افزایش کارایی و سرعت وب سایت در نظر گرفته شده است
+        // goto preFetchMixin.js file to understand this
         withoutEnAndFa({ commit }, pack) {
             let step1 = JSON.stringify(pack.data);
             let step2 = step1.replace(/_fa"/g, '"');
@@ -258,13 +275,20 @@ export default new Vuex.Store({
                 commit(pack.destination, JSON.parse(step3));
             }
         },
-        getCatalogueDataFromServer({ dispatch }) {
+        getCatalogueDataFromServer({ dispatch, commit }) {
             axios.get("Home/GetCatalogueInfo").then((res) => {
                 let pack = {
                     destination: "setCataloguesData",
                     data: res.data.data
                 };
                 dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getCatalogueDataFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
             });
         },
         getProductCategoryFromServer({ commit }) {
@@ -279,6 +303,13 @@ export default new Vuex.Store({
                     }
                 });
                 commit("setProductCategory", list);
+                commit("addToRequestList", {
+                    actionName: "getProductCategoryFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "commit",
+                    functionName: "setProductCategory",
+                    data: JSON.stringify(list)
+                });
             });
         },
         getCookingCategoryFromServer({ commit }) {
@@ -293,33 +324,61 @@ export default new Vuex.Store({
                     }
                 });
                 commit("setCookingCategory", list);
+                commit("addToRequestList", {
+                    actionName: "getCookingCategoryFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "commit",
+                    functionName: "setCookingCategory",
+                    data: JSON.stringify(list)
+                });
             });
         },
-        getCookingFromServer({ dispatch }, id) {
+        getCookingFromServer({ dispatch, commit }, id) {
             axios.get(`Home/GetCookingSingle?id=${id}`).then((response) => {
                 let pack = {
                     destination: "setCookingData",
                     data: response.data.data
                 };
                 dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getCookingFromServer",
+                    actionParam: JSON.stringify(id),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
             });
         },
-        getContactUsFromServer({ dispatch }) {
+        getContactUsFromServer({ dispatch, commit }) {
             axios.get("Home/GetContactUsInfo").then((res) => {
                 let pack = {
                     destination: "setContactUsData",
                     data: res.data.data
                 };
                 dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getContactUsFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
             });
         },
-        getBlogFromServer({ dispatch }, id) {
+        getBlogFromServer({ dispatch, commit }, id) {
             axios.get(`Home/GetBlogSingle?id=${id}`).then((response) => {
                 let pack = {
                     destination: "setBlogData",
                     data: response.data.data
                 };
                 dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getBlogFromServer",
+                    actionParam: JSON.stringify(id),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
             });
         },
         getCookingsFromServer({ dispatch }, pack) {
@@ -332,15 +391,22 @@ export default new Vuex.Store({
           }&isDesending=${pack.isDesending ? pack.isDesending : true}`
                 )
                 .then((res) => {
-                    let pack = {
+                    let resPack = {
                         destination: "setCookingsData",
                         data: res.data.data,
                         pagination: JSON.parse(res.headers["x-pagination"])
                     };
-                    dispatch("withoutEnAndFa", pack);
+                    dispatch("withoutEnAndFa", resPack);
+                    commit("addToRequestList", {
+                        actionName: "getCookingsFromServer",
+                        actionParam: JSON.stringify(pack),
+                        commitOrDispatch: "dispatch",
+                        functionName: "withoutEnAndFa",
+                        data: JSON.stringify(resPack)
+                    });
                 });
         },
-        getBlogsFromServer({ dispatch }, pack) {
+        getBlogsFromServer({ dispatch, commit }, pack) {
             if (pack.keyword) {
                 // Home/SearchBlogKewords?KeyWord=sadad&pageNumber=2&isDesending=true
                 axios
@@ -352,12 +418,19 @@ export default new Vuex.Store({
             }&keyword=${pack.keyword ? pack.keyword : ""}`
                     )
                     .then((res) => {
-                        let pack = {
+                        let resPack = {
                             destination: "setBlogsData",
                             data: res.data.data,
                             pagination: JSON.parse(res.headers["x-pagination"])
                         };
-                        dispatch("withoutEnAndFa", pack);
+                        dispatch("withoutEnAndFa", resPack);
+                        commit("addToRequestList", {
+                            actionName: "getBlogsFromServer",
+                            actionParam: JSON.stringify(pack),
+                            commitOrDispatch: "dispatch",
+                            functionName: "withoutEnAndFa",
+                            data: JSON.stringify(resPack)
+                        });
                     });
             } else {
                 axios
@@ -369,34 +442,55 @@ export default new Vuex.Store({
             }&type=${pack.type ? pack.type : 1}`
                     )
                     .then((res) => {
-                        let pack = {
+                        let resPack = {
                             destination: "setBlogsData",
                             data: res.data.data,
                             pagination: JSON.parse(res.headers["x-pagination"])
                         };
-                        dispatch("withoutEnAndFa", pack);
+                        dispatch("withoutEnAndFa", resPack);
+                        commit("addToRequestList", {
+                            actionName: "getBlogsFromServer",
+                            actionParam: JSON.stringify(pack),
+                            commitOrDispatch: "dispatch",
+                            functionName: "withoutEnAndFa",
+                            data: JSON.stringify(resPack)
+                        });
                     });
             }
         },
-        getProductFromServer({ dispatch }, id) {
+        getProductFromServer({ dispatch, commit }, id) {
             axios.get(`Home/GetProductSingle?id=${id}`).then((response) => {
                 let pack = {
                     destination: "setProduct",
                     data: response.data.data
                 };
                 dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getProductFromServer",
+                    actionParam: JSON.stringify(id),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
             });
         },
-        getHomeDataFromServer({ dispatch }) {
+        getHomeDataFromServer({ dispatch, commit }) {
             axios.get("Home/GetHomeInfo").then((res) => {
                 let pack = {
                     destination: "setHomeData",
                     data: res.data.data
                 };
                 dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getHomeDataFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
             });
         },
-        getBrandsFromServer({ commit }) {
+        getBrandsFromServer({ dispatch, commit }) {
             axios.get("Home/GetBrands").then((res) => {
                 res.data.data.forEach((item, index) => {
                     res.data.data[index].route = `/products?brand=${item.id}`;
@@ -405,13 +499,23 @@ export default new Vuex.Store({
                     destination: "setBrands",
                     data: res.data.data
                 };
-                let step1 = JSON.stringify(pack.data);
-                let step2 = step1.replace(/_fa"/g, '"');
-                let step3 = step2.replace(/_en"/g, '"');
-                commit("setBrands", JSON.parse(step3));
-                commit("setMenus", { id: 1, menu: JSON.parse(step3) });
+                dispatch("handlerGetBrand", pack);
+                commit("addToRequestList", {
+                    actionName: "getBrandsFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "dispatch",
+                    functionName: "handlerGetBrand",
+                    data: JSON.stringify(pack)
+                });
                 // dispatch("withoutEnAndFa", pack);
             });
+        },
+        handlerGetBrand({ commit }, pack) {
+            let step1 = JSON.stringify(pack.data);
+            let step2 = step1.replace(/_fa"/g, '"');
+            let step3 = step2.replace(/_en"/g, '"');
+            commit("setBrands", JSON.parse(step3));
+            commit("setMenus", { id: 1, menu: JSON.parse(step3) });
         },
         setMainMenuOrder({ state, commit }) {
             let menus = state.menus;
@@ -423,55 +527,74 @@ export default new Vuex.Store({
             menus[1] = m3;
             menus[2] = m0;
             menus[3] = m1;
-            commit('setFullMenuOneTime', menus)
-
+            commit("setFullMenuOneTime", menus);
         },
         getMainMenuFromServer({ commit, dispatch }) {
             axios.get("Home/GetMenu").then((res) => {
-                let step1 = JSON.stringify(res.data.data);
-                let step2 = step1.replace(/_fa"/g, '"');
-                let step3 = step2.replace(/_en"/g, '"');
-                let menus = JSON.parse(step3);
-                let i = 2;
-                for (const key in menus) {
-                    i++;
-
-                    let pack = {
-                        id: i,
-                        header: {
-                            title: key,
-                            route: "/"
-                        },
-                        menuItem: []
-                    };
-                    menus[key].forEach((item) => {
-                        pack.menuItem.push({
-                            title: item.title,
-                            route: item.url
-                        });
-                    });
-                    commit("pushMenu", pack);
-                }
-                if (i >= 4) {
-                    dispatch('setMainMenuOrder')
-                }
+                dispatch("handlerGetMainMenu", res.data.data);
+                commit("addToRequestList", {
+                    actionName: "getMainMenuFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "dispatch",
+                    functionName: "handlerGetMainMenu",
+                    data: JSON.stringify(res.data.data)
+                });
             });
         },
-        getReportFromServer({ commit }) {
-            axios.get("Home/GetReport").then((res) => {
-                let result = res.data.data;
-                result.forEach((item) => {
-                    item.route = "http://blogtest.ir/" + item.file;
+        handlerGetMainMenu({ commit, dispatch }, data) {
+            let step1 = JSON.stringify(data);
+            let step2 = step1.replace(/_fa"/g, '"');
+            let step3 = step2.replace(/_en"/g, '"');
+            let menus = JSON.parse(step3);
+            let i = 2;
+            for (const key in menus) {
+                i++;
+
+                let pack = {
+                    id: i,
+                    header: {
+                        title: key,
+                        route: "/"
+                    },
+                    menuItem: []
+                };
+                menus[key].forEach((item) => {
+                    pack.menuItem.push({
+                        title: item.title,
+                        route: item.url
+                    });
                 });
-                let step1 = JSON.stringify(result);
-                let step2 = step1.replace(/_fa"/g, '"');
-                let step3 = step2.replace(/_en"/g, '"');
-                commit("setMenus", { id: 2, menu: JSON.parse(step3) });
-                commit("setReports", res.data.data);
+                commit("pushMenu", pack);
+            }
+            if (i >= 4) {
+                dispatch("setMainMenuOrder");
+            }
+        },
+        getReportFromServer({ dispatch, commit }) {
+            axios.get("Home/GetReport").then((res) => {
+                dispatch("handlerGetReport", res.data.data);
+                commit("addToRequestList", {
+                    actionName: "getReportFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "dispatch",
+                    functionName: "handlerGetReport",
+                    data: JSON.stringify(res.data.data)
+                });
                 // dispatch("withoutEnAndFa", pack);
             });
         },
-        getProductsFromServer({ dispatch }, pack) {
+        handlerGetReport({ commit }, data) {
+            let result = data;
+            result.forEach((item) => {
+                item.route = "http://blogtest.ir/" + item.file;
+            });
+            let step1 = JSON.stringify(result);
+            let step2 = step1.replace(/_fa"/g, '"');
+            let step3 = step2.replace(/_en"/g, '"');
+            commit("setMenus", { id: 2, menu: JSON.parse(step3) });
+            commit("setReports", data);
+        },
+        getProductsFromServer({ dispatch, commit }, pack) {
             axios
                 .get(
                     `Home/GetProductArchive?pageNumber=${pack.page}&search=${
@@ -481,30 +604,51 @@ export default new Vuex.Store({
           }${pack.brand ? "&brand=" + pack.brand : ""}`
                 )
                 .then((res) => {
-                    let pack = {
+                    let resPack = {
                         destination: "setProductsData",
                         data: res.data.data,
                         pagination: JSON.parse(res.headers["x-pagination"])
                     };
-                    dispatch("withoutEnAndFa", pack);
+                    dispatch("withoutEnAndFa", resPack);
+                    commit("addToRequestList", {
+                        actionName: "getProductsFromServer",
+                        actionParam: JSON.stringify(pack),
+                        commitOrDispatch: "dispatch",
+                        functionName: "withoutEnAndFa",
+                        data: JSON.stringify(resPack)
+                    });
                 });
         },
-        getFaqListFromServer({ dispatch }) {
+        getFaqListFromServer({ dispatch, commit }) {
             axios.get("Home/GetFAQ").then((res) => {
                 let pack = {
                     destination: "setFaqList",
                     data: res.data.data
                 };
                 dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getFaqListFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
             });
         },
-        getAboutUsFromServer({ dispatch }) {
+        getAboutUsFromServer({ dispatch, commit }) {
             axios.get("Home/GetAboutUs").then((res) => {
                 let pack = {
                     destination: "setAboutUsData",
                     data: res.data.data
                 };
                 dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getAboutUsFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
             });
         },
         getBlogCategoryFromServer({ commit }) {
@@ -519,8 +663,14 @@ export default new Vuex.Store({
                     }
                 });
                 commit("setBlogCategory", list);
+                commit("addToRequestList", {
+                    actionName: "getBlogCategoryFromServer",
+                    actionParam: JSON.stringify(null),
+                    commitOrDispatch: "commit",
+                    functionName: "setBlogCategory",
+                    data: JSON.stringify(list)
+                });
             });
         }
-    },
-    modules: {}
+    }
 });

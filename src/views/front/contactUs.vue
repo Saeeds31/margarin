@@ -1,5 +1,5 @@
 <template>
-  <div v-if="contactUsData" id="contactUsSection">
+  <main v-if="contactUsData" id="contactUsSection">
     <introduction class="width80 margin-auto" :title="
         $cookie.get('ltrTheme')
           ? 'Contact Margarin '
@@ -215,7 +215,7 @@
         </contactWay>
       </div>
     </introduction>
-    <div v-if="contactUs" class="mainContent width80 margin-auto d-flex justify-content-between">
+    <section v-if="contactUs" class="mainContent width80 margin-auto d-flex justify-content-between">
       <cart
         data-aos="fade-right"
         data-aos-duration="1000"
@@ -466,8 +466,8 @@
           </div>
         </template>
       </cart>
-    </div>
-    <div
+    </section>
+    <section
       data-aos="zoom-in"
       data-aos-duration="1000"
       data-aos-once="true"
@@ -476,8 +476,8 @@
       <h1 class="blackColor06">{{ $cookie.get("ltrTheme")?"Sending a message to the margarin":'ارســــال پــــیام بــــه مـــارگارین'}}</h1>
       <h3 class="blackColor04">{{ $cookie.get("ltrTheme")?"Respond in the shortest time":'پاسخگویــــی در کمتریــــن زمــــان'}}</h3>
       <double-line class="hiddenInMobile width20 margin-auto" />
-    </div>
-    <div
+    </section>
+    <section
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-once="true"
@@ -687,8 +687,8 @@
         />
       </div>
       <Recaptcha :showRecaptcha="showRecaptcha" @rightAnswer="rightAnswer()" @closeRecaptcha="showRecaptcha=$event" />
-    </div>
-  </div>
+    </section>
+  </main>
   <loader v-else />
 </template>
 <script>
@@ -999,7 +999,9 @@ const pack = {
   },
   mounted() {
     if (this.contactUsData == null) {
-      this.$store.dispatch("getContactUsFromServer");
+      // this.$store.dispatch("getContactUsFromServer");
+      this.checkRequest('getContactUsFromServer',JSON.stringify(null));
+
     } else {
       this.setStyle();
     }

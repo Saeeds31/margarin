@@ -1,5 +1,5 @@
 <template>
-  <div v-if="cookingData" id="blogDetailSection" class="width80 margin-auto">
+  <main v-if="cookingData" id="blogDetailSection" class="width80 margin-auto">
     <introduction
       :title="cookingData.title"
       :summary="cookingData.userInfo"
@@ -79,7 +79,7 @@
     
       </div>
     </introduction>
-        <div v-if="cookingData.ingridients.length>0" id="rawMaterial">
+        <section v-if="cookingData.ingridients.length>0" id="rawMaterial">
           <h3>
             {{
               $cookie.get("ltrTheme")
@@ -96,7 +96,7 @@
               <img :src="$root.baseImageUrl+mate.image" :alt="mate.title" />
             </div>
           </div>
-        </div>
+        </section>
     <div
       data-aos="fade-up"
       data-aos-duration="1000"
@@ -112,7 +112,7 @@
       :routeComment="'RecipeComment'"
       :comments="cookingData.comments"
     />
-  </div>
+  </main>
   <Loader v-else />
 </template>
 <script>
@@ -170,8 +170,11 @@ export default {
       return this.$store.getters.getCookingData;
     }
   },
-  beforeCreate() {
-    this.$store.dispatch("getCookingFromServer", this.$route.params.id);
+  created() {
+      this.checkRequest('getCookingFromServer',JSON.stringify(this.$route.params.id));
+
+    // this.$store.dispatch("getCookingFromServer", this.$route.params.id);
+
   }
 };
 </script>

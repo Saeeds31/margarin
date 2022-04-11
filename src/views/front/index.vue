@@ -1,7 +1,7 @@
 <template>
   <div id="frontSection">
       <orgHeader v-if="!$route.name.includes('loginRegister')&&!$route.name.includes('home')&&!$route.name.includes('healthAmbassador')&&!$route.path.includes('admin-panel')" class="width80 margin-auto"  />
-      <router-view></router-view>
+          <router-view></router-view>
       <footerSite v-if="!$route.name.includes('healthAmbassador')&&!$route.path.includes('admin-panel')&&!$route.name.includes('loginRegister')&&!$route.name.includes('home')" />
       <footerNavigation class="showInMobile" />
   </div>
@@ -29,14 +29,21 @@ export default {
     mounted(){
         
         if(this.brands.length==0){
-            this.$store.dispatch('getBrandsFromServer')
+            // this.$store.dispatch('getBrandsFromServer')
+      this.checkRequest('getBrandsFromServer',JSON.stringify(null));
+
         }
         
         if(this.reports==null){
-            this.$store.dispatch('getReportFromServer')
+            // this.$store.dispatch('getReportFromServer')
+      this.checkRequest('getReportFromServer',JSON.stringify(null));
+
+            
         }
         if(this.mainMenu==null){
-            this.$store.dispatch('getMainMenuFromServer')
+            // this.$store.dispatch('getMainMenuFromServer')
+      this.checkRequest('getMainMenuFromServer',JSON.stringify(null));
+
         }
 
     }

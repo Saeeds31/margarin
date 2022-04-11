@@ -1,5 +1,5 @@
 <template>
-  <div id="commentBox">
+  <section id="commentBox">
     <titleBox v-if="comments.length>0" data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-once="true" :title="`${ comments.length} ${$cookie.get('ltrTheme')?'Comment provided ':'نظر ارائه شده است'}`">
@@ -39,7 +39,7 @@ viewBox="0 0 3333.33 3333.33"
     <sendComment :field="field" :replyTo="replyTo" @changeReplatTo="changeReplatTo" data-aos="fade-up"
         data-aos-duration="1000"
         data-aos-once="true" :route="routeComment" />
-  </div>
+  </section>
 </template>
 <script>
 import comment from "@/components/front/shared/comment/comment.vue";

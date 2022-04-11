@@ -108,7 +108,7 @@ const routes = [{
         {
             path: "/contact-us",
             name: "contactUs",
-
+            // { path: '/', component: () => import('./Home.vue') }
             component: function() {
                 return import (
                     /* webpackChunkName: "front" */

@@ -1,11 +1,11 @@
 <template>
-  <div id="pagination">
+  <section id="pagination">
     <sliding-pagination
       :current="currentPage"
       :total="totalPages"
       @page-change="pageChangeHandler"
     ></sliding-pagination>
-  </div>
+  </section>
 </template>
 <script>
 import SlidingPagination from "vue-sliding-pagination";

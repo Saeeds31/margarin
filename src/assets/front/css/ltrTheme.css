@@ -67,7 +67,7 @@
     .ltrTheme #aboutSection #statisticsSection #content #detail,
     .ltrTheme #cooperationSection #stepBox .stepTitle,
     .ltrTheme #frontSection #footer #footerSection #aboutUs,
-    .ltrTheme div#managementIntro {
+    .ltrTheme section#managementIntro {
         align-items: flex-start !important
     }
     
@@ -97,7 +97,7 @@
     .ltrTheme #introductionSection #content div h3,
     .ltrTheme #frontSection #footer #footerSection #aboutUs p,
     .ltrTheme div#descriptionBox #description,
-    .ltrTheme div#managementIntro a span {
+    .ltrTheme section#managementIntro a span {
         text-align: left;
     }
     
@@ -111,7 +111,8 @@
     }
     
     .ltrTheme .contactCart .footerDetail,
-    .ltrTheme #searchBox input {
+    .ltrTheme #searchBox input,
+    .ltrTheme #aboutSection #awardsSection .sliderItem .content h3 {
         text-align: left !important
     }
     
@@ -476,7 +477,7 @@
         padding: 15px 30px 15px 0px
     }
     
-    .ltrTheme div#rawMaterial h3 {
+    .ltrTheme section#rawMaterial h3 {
         text-align: left;
     }
     

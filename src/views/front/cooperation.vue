@@ -1,5 +1,5 @@
 <template>
-  <div class="width100 margin-auto" id="cooperationSection">
+  <main class="width100 margin-auto" id="cooperationSection">
     <introduction
       v-if="result"
       class="width80 margin-auto"
@@ -21,7 +21,7 @@
         {{ result.text }}
       </p>
     </introduction>
-    <div
+    <section
       data-aos="zoom-in"
       data-aos-duration="1000"
       data-aos-delay="500"
@@ -229,8 +229,8 @@
         <span class="blackColor06">{{ stepText }}</span>
         <span class="blackColor06">{{ stepTitle }}</span>
       </p>
-    </div>
-    <div id="form" class="width80 margin-auto">
+    </section>
+    <section id="form" class="width80 margin-auto">
       <div
         data-aos="fade-up"
         data-aos-delay="500"
@@ -807,8 +807,8 @@
           ></textarea>
         </div>
       </div>
-    </div>
-    <div
+    </section>
+    <section
       data-aos="fade-up"
       data-aos-delay="500"
       data-aos-duration="1000"
@@ -875,13 +875,13 @@
           </g>
         </svg>
       </button>
-    </div>
+    </section>
     <Recaptcha
       :showRecaptcha="showRecaptcha"
       @rightAnswer="rightAnswer()"
       @closeRecaptcha="showRecaptcha = $event"
     />
-  </div>
+  </main>
 </template>
 <script>
 import cooperationMixin from "@/libraries/cooperation.js";

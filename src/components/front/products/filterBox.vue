@@ -1,5 +1,5 @@
 <template>
-  <div id="filterBox">
+  <section id="filterBox">
     <div id="filters" class="width100 d-flex justify-content-between">
       <multiSelect
         v-if="productCategory"
@@ -68,7 +68,7 @@
         </svg>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 import multiSelect from "vue-multiselect";
@@ -78,10 +78,14 @@ export default {
   },
   mounted() {
     if (this.productCategory == null) {
-      this.$store.dispatch("getProductCategoryFromServer");
+      // this.$store.dispatch("getProductCategoryFromServer");
+      this.checkRequest('getProductCategoryFromServer',JSON.stringify(null));
+
     }
     if (this.brands == null) {
-      this.$store.dispatch("getBrandsFromServer");
+      // this.$store.dispatch("getBrandsFromServer");
+      this.checkRequest('getBrandsFromServer',JSON.stringify(null));
+
     }
   },
   methods: {

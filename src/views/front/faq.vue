@@ -1,5 +1,5 @@
 <template>
-  <div  id="faqSection" class="width100"
+  <main  id="faqSection" class="width100"
       v-if="faq"
   >
     <introduction class="width80 margin-auto" :title="
@@ -16,7 +16,7 @@
         {{ faq.faqIntro.text }}
       </p>
     </introduction>
-    <div
+    <section
       id="faq"
       class="width80 margin-auto justify-content-evenly d-flex"
     >
@@ -238,8 +238,8 @@
           />
         </svg>
       </button>
-    </div>
-  </div>
+    </section>
+  </main>
     <loader v-else />
 </template>
 <script>
@@ -285,7 +285,9 @@ export default {
   },
   mounted() {
     if (this.faq == null) {
-      this.$store.dispatch("getFaqListFromServer");
+      // this.$store.dispatch("getFaqListFromServer");
+      this.checkRequest('getFaqListFromServer',JSON.stringify(null));
+
     }
   },
  

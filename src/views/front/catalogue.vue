@@ -1,5 +1,5 @@
 <template>
-  <div v-if="catalogueData" id="catalogueSection" class="width100">
+  <main v-if="catalogueData" id="catalogueSection" class="width100">
     <introduction
       class="width80 margin-auto"
       :title="
@@ -20,7 +20,7 @@
         {{ catalogueData.catalogueIntro.text }}
       </p>
     </introduction>
-    <div
+    <section
       id="catalogues"
       class="width70 margin-auto d-flex justify-content-between"
     >
@@ -35,8 +35,8 @@
       >
         <img :src="$root.baseImageUrl+catalogue.image" :alt="catalogue.title" />
       </catalogue>
-    </div>
-  </div>
+    </section>
+  </main>
   <loader v-else />
 </template>
 <script>
@@ -111,7 +111,9 @@ export default {
   },
   mounted() {
     if (this.catalogueData == null) {
-      this.$store.dispatch("getCatalogueDataFromServer");
+      // this.$store.dispatch("getCatalogueDataFromServer");
+      this.checkRequest('getCatalogueDataFromServer',JSON.stringify(null));
+
     } else {
       this.setStyle();
     }

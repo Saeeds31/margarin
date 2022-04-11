@@ -1,5 +1,5 @@
 <template>
-  <div id="aboutUsSection" class="d-flex justify-content-end">
+  <section id="aboutUsSection" class="d-flex justify-content-end">
     <div id="text" class="width50 d-flex flex-direction-column align-items-end">
       <img
       @mouseenter="animateToImage"
@@ -54,7 +54,7 @@ This collection always tries to design and produce products with superior qualit
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 <script>
 

@@ -1,5 +1,5 @@
 <template>
-  <div id="healthAmbassador" class="width100">
+  <main id="healthAmbassador" class="width100">
     <mainHeader data-aos="zoom-in"
       data-aos-duration="1500"
       data-aos-once="false" />
@@ -13,7 +13,7 @@
     <blogs v-if="homeData" :blog="homeData.articles" :data="healthAmbassador.blogs" />
     <healthFooter  class="hiddenInMobile" />
     <mainFooter  class="showInMobile" />
-  </div>
+  </main>
 </template>
 <script>
 import goodFamilyImage from "@/assets/front/images/goodFamily.png"
@@ -225,7 +225,9 @@ export default {
   },
   created(){
     if (this.homeData == null) {
-      this.$store.dispatch("getHomeDataFromServer");
+      // this.$store.dispatch("getHomeDataFromServer");
+      this.checkRequest('getHomeDataFromServer',JSON.stringify(null));
+      
     }
   },
   mounted() {

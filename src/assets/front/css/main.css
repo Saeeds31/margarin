@@ -1017,7 +1017,7 @@ svg#newsSvg,
     transform: scaleY(.97);
 }
 
-#homeSection div#selectedProductSection {
+#homeSection section#selectedProductSection {
     height: 100vh;
     overflow: hidden;
 }
@@ -1758,6 +1758,7 @@ svg.cookingTimerSvg {
 
 #aboutSection #awardsSection .sliderItem .content h3 {
     font-size: 25px;
+    text-align: right;
 }
 
 #toggleMenuModal {
@@ -4017,7 +4018,7 @@ div#application {
 
 #healthAmbassador #searchModal {}
 
-div#rawMaterial h3 {
+section#rawMaterial h3 {
     text-align: right;
     font-size: 22px;
     font-family: 'yekan-bold';
@@ -4133,7 +4134,7 @@ ul.menuChild li {
     text-align: right;
 }
 
-#productDetailSection div#commentBox {
+#productDetailSection section#commentBox {
     width: 85%;
     margin: auto;
     margin-bottom: 200px;
@@ -4266,7 +4267,7 @@ img#moonSvg {
     #roundedButton {
         width: 100%;
     }
-    #productDetailSection div#commentBox {
+    #productDetailSection section#commentBox {
         width: 95%;
     }
     .comment .mainComment .headerComment {
@@ -4789,8 +4790,8 @@ img#moonSvg {
         right: 66% !important;
         ;
     }
-    div#catalogueSection,
-    div#productsSection,
+    main#catalogueSection,
+    main#productsSection,
     #contactUsSection,
     #cookingsSection,
     #blogsSection {

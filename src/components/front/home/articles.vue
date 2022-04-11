@@ -1,5 +1,5 @@
 <template>
-  <div id="articles" class="width100">
+  <section id="articles" class="width100">
     <sectionHeader :data="articleHeader" >
       <svg
             id="articleSvg"
@@ -74,7 +74,7 @@
       </VueSlickCarousel>
     </div>
     <footerLinker :data="articleHeader" />
-  </div>
+  </section>
 </template>
 <script>
 import footerLinker from "@/components/front/shared/footerLink.vue";

@@ -1,5 +1,5 @@
 <template>
-  <div id="shopSection" class="width100">
+  <section id="shopSection" class="width100">
     <div
       id="content"
       class="width80 margin-auto d-flex justify-content-between align-items-center"
@@ -67,7 +67,7 @@
       src="@/assets/front/images/shopSectionBackground.png"
       alt=""
     />
-  </div>
+  </section>
 </template>
 <script>
 import roundedButton from "@/components/front/shared/roundedButton.vue";

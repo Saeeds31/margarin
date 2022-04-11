@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blogData" id="blogDetailSection" class="width80 margin-auto">
+  <main v v-if="blogData" id="blogDetailSection" class="width80 margin-auto">
     <introduction
        :title="
        blogData.blogType=='News'?
@@ -193,7 +193,7 @@
       :tags="blogData.keyWords.split(',')"
     />
     <sectionHeader :data="blogDetailHeader"> </sectionHeader>
-    <div
+    <section
       data-aos="fade-up"
       data-aos-duration="1000"
       data-aos-once="true"
@@ -209,8 +209,8 @@
           :showComment="true"
         />
       </VueSlickCarousel>
-    </div>
-    <div
+    </section>
+    <section
       data-aos="fade-up"
       data-aos-duration="1000"
         data-aos-delay="500"
@@ -226,12 +226,12 @@
           :showComment="true"
         />
       </VueSlickCarousel>
-    </div>
+    </section>
     <commentBox   data-aos="fade-up"
         data-aos-delay="500"
       data-aos-duration="1000"
       data-aos-once="true" :likeRoute="'BlogComment'" :field="'blogId'" :routeComment="'BlogComment'" :comments="blogData.comments" />
-  </div>
+  </main>
   <loader v-else />
 </template>
 <script>
@@ -304,7 +304,9 @@ export default {
   watch: {
     '$route.params.id':{
       handler(){
-      this.$store.dispatch("getBlogFromServer", this.$route.params.id);
+      // this.$store.dispatch("getBlogFromServer", this.$route.params.id);
+      this.checkRequest('getBlogFromServer',JSON.stringify(this.$route.params.id));
+
       document.getElementById("blogDetailSection").scrollIntoView({behavior:'smooth'})
 
       }
@@ -462,8 +464,11 @@ shareBlog(){
       }
     }
   },
-  beforeCreate(){
-      this.$store.dispatch("getBlogFromServer", this.$route.params.id);
+  created(){
+      this.checkRequest('getBlogFromServer',JSON.stringify(this.$route.params.id));
+
+      // this.$store.dispatch("getBlogFromServer", this.$route.params.id);
+
 
   }
 };

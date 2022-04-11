@@ -1,5 +1,5 @@
 <template>
-  <div v-if="cookingsData" id="cookingsSection" class="width100">
+  <main v-if="cookingsData" id="cookingsSection" class="width100">
     <introduction
       v-if="cookingsData"
       :title="
@@ -28,7 +28,7 @@
       @filtered="filteredBlogs"
       class="width80 margin-auto"
     />
-    <div
+    <section
       :style="{
         marginBottom: cookingsData.pagination.TotalPages > 1 ? '5%' : '100px'
       }"
@@ -44,14 +44,14 @@
         v-for="(item, index) in cookingsData.data.cookingArchives"
         :key="index"
       />
-    </div>
+    </section>
     <pagination
       v-if="cookingsData.pagination.TotalPages > 1"
       :totalPages="cookingsData.pagination.TotalPages"
       :currentPage="cookingsData.pagination.CurrentPage"
       @pageChanged="pageChanged"
     />
-  </div>
+  </main>
   <loader v-else />
 </template>
 <script>
@@ -365,7 +365,9 @@ export default {
           (this.isDesendingSelected = value.isDesendingSelected
             ? value.isDesendingSelected
             : ""),
-          this.$store.dispatch("getCookingsFromServer", pack);
+          // this.$store.dispatch("getCookingsFromServer", pack);
+      this.checkRequest('getCookingsFromServer',JSON.stringify(pack));
+          
       },
       deep: true,
       immediate: true
@@ -387,7 +389,10 @@ export default {
         search: this.$route.query.search ? this.$route.query.search : ""
         // keyword: this.$route.query.keyword ? this.$route.query.keyword : ""
       };
-      this.$store.dispatch("getCookingsFromServer", pack);
+      // this.$store.dispatch("getCookingsFromServer", pack);
+      this.checkRequest('getCookingsFromServer',JSON.stringify(pack));
+
+      
     } else {
       this.setStyle();
     }
