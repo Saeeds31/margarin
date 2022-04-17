@@ -241,7 +241,7 @@
     background: linear-gradient(148deg, black, #000054)
 }
 
-.darkMode #aboutSection #statisticsSection #racemeSection .raceme svg g {
+.darkMode #aboutSection #racemeSection .raceme svg g {
     opacity: 1;
 }
 
@@ -249,7 +249,7 @@
     opacity: 1;
 }
 
-.darkMode #aboutSection #statisticsSection #racemeSection .raceme svg g path,
+.darkMode #aboutSection #racemeSection .raceme svg g path,
 .darkMode #Header #mainContent #bottomSection #buttons .searchSvg circle {
     fill: #f7941e;
 }
@@ -262,10 +262,12 @@
     background: #efefef
 }
 
+.darkMode #frontSection #footer #footerSection #buttons a,
 .darkMode #frontSection #footer #footerSection #buttons button {
     background-color: #ffffff61
 }
 
+.darkMode #frontSection #footer #footerSection #buttons a span,
 .darkMode #frontSection #footer #footerSection #buttons button span {
     opacity: 1;
 }
@@ -315,7 +317,7 @@
     fill: white;
 }
 
-.darkMode #aboutSection #statisticsSection #racemeSection .raceme h4 {
+.darkMode #aboutSection #racemeSection .raceme h4 {
     color: white
 }
 

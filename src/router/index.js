@@ -5,7 +5,6 @@ Vue.use(VueRouter);
 
 const routes = [{
     path: "/",
-    name: "Home",
 
     component: function() {
         return import ( /* webpackChunkName: "front" */ "../views/front/index.vue");
@@ -29,6 +28,40 @@ const routes = [{
                 return import (
                     /* webpackChunkName: "front" */
                     "../views/front/aboutUs.vue"
+                );
+            }
+        },
+        {
+            path: "/magazine",
+            name: "magazineFront",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/magazine.vue"
+                );
+            }
+        },
+
+        {
+            path: "/social-responsibility",
+            name: "socialResponsibility",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/socialResponsibility.vue"
+                );
+            }
+        },
+        {
+            path: "/reportage",
+            name: "reportageFront",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/reportage.vue"
                 );
             }
         },
@@ -174,6 +207,51 @@ const routes = [{
                 );
             }
         },
+
+        {
+            path: "/magazine-detail/:id/:slug?",
+            name: "magazineDetail",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/magazineDetail.vue"
+                );
+            }
+        },
+        {
+            path: "development",
+            name: "underDevelopment",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/underDevelopment.vue"
+                );
+            }
+        },
+        {
+            path: "/social-responsibility-detail/:id/:slug?",
+            name: "socialResponsibilityDetail",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/socialResponsibilityDetail.vue"
+                );
+            }
+        },
+        {
+            path: "/reportage-detail/:id/:slug?",
+            name: "reportageDetail",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/reportageDetail.vue"
+                );
+            }
+        },
         {
             path: "/login",
             name: "loginRegister",
@@ -220,6 +298,17 @@ const routes = [{
                         );
                     }
                 },
+                {
+                    path: "InovativeIdea",
+                    name: "InovativeIdea",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/InovativeIdea.vue"
+                        );
+                    }
+                },
 
                 {
                     path: "contact-us-introduction",
@@ -233,6 +322,92 @@ const routes = [{
                     }
                 },
 
+
+                {
+                    path: "reportage",
+                    name: "reportage",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/reportage.vue"
+                        );
+                    }
+                },
+
+
+                {
+                    path: "reportage-introduction",
+                    name: "reportageIntroduction",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/reportageIntroduction.vue"
+                        );
+                    }
+                },
+
+
+                {
+                    path: "magazine",
+                    name: "magazine",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/magazine.vue"
+                        );
+                    }
+                },
+
+
+                {
+                    path: "upload-file",
+                    name: "uploadFile",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/uploadFile.vue"
+                        );
+                    }
+                },
+                {
+                    path: "magazine-introduction",
+                    name: "magazineIntroduction",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/magazineIntroduction.vue"
+                        );
+                    }
+                },
+                {
+                    path: "social-responsibily",
+                    name: "SocialResponsibily",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/socialResponsibily.vue"
+                        );
+                    }
+                },
+
+
+                {
+                    path: "social-responsibily-introduction",
+                    name: "socialResponsibilyIntroduction",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/socialResponsibilyIntroduction.vue"
+                        );
+                    }
+                },
 
                 {
                     path: "weblogs",
@@ -296,6 +471,7 @@ const routes = [{
                         );
                     }
                 },
+
 
 
                 {

@@ -158,6 +158,36 @@ export default {
           key: "email"
         },
         
+        {
+          style: "col-6",
+          show_in_table: false,
+          placeholder: " شماره تلفن وبسایت را وارد کنید",
+          type: "string",
+          name: "شماره تلفن ",
+          multiData:false,
+          key: "phone"
+        },
+        
+        {
+          style: "col-12",
+          show_in_table: false,
+          placeholder: " عنوان تقویم را وارد کنید",
+          type: "string",
+          name: "عنوان تقویم ",
+          multiData:true,
+          key: "calenderTitle"
+        },
+        
+        {
+          style: "col-6",
+          show_in_table: false,
+          placeholder: " فایل تقویم  را وارد کنید",
+          type: "file",
+          name: "فایل تقویم  ",
+          multiData:false,
+          key: "calenderFile"
+        },
+        
       
         
         

@@ -36,7 +36,7 @@ export default {
         
         if(this.reports==null){
             // this.$store.dispatch('getReportFromServer')
-      this.checkRequest('getReportFromServer',JSON.stringify(null));
+    //   this.checkRequest('getReportFromServer',JSON.stringify(null));
 
             
         }

@@ -97,7 +97,6 @@
       data-aos-once="false"
       v-if="$root.sectionIndexHome == 8 || $root.screenSize < 1000"
     />
-    <footerNavigation class="showInMobile" />
   </main>
   <Loader v-else />
 </template>
@@ -131,7 +130,6 @@ export default {
     if (this.homeData == null) {
       this.checkRequest("getHomeDataFromServer", JSON.stringify(null));
       // increase website speed
-      this.checkRequest("getAboutUsFromServer", JSON.stringify(null));
       let pack = {
         page: this.$route.query.page ? this.$route.query.page : 1,
         brand: this.$route.query.brand ? this.$route.query.brand : "",

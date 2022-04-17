@@ -55,7 +55,7 @@ export default {
     return {
       weblogsHeaderData: {
         route: "/weblogs?type=0",
-        routeTitle:this.$cookie.get('ltrTheme')?"View news archive": "مشاهده آرشیو اخبار",
+        routeTitle:this.$cookie.get('ltrTheme')?"View news ": "مشاهده  اخبار",
         title:this.$cookie.get('ltrTheme')?"News and Events": "اخبــــــار و رویداد هــــــا",
         summary:this.$cookie.get('ltrTheme')?"Study the latest": "مطالعـــه جدیـــدترین هـــا",
         image: true

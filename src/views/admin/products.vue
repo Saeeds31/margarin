@@ -178,8 +178,18 @@ export default {
           name: "تصویر اندازه بطری ها",
           key: "sizeImage"
         },
+           {
+          style: "col-6",
+          show_in_tabel: true,
+          placeholder: " تصویر کاور  با ارتفاع 517 و عرض 1130 پیکسل",
+          type: "image",
+          multiData:false,
+          name: "کاور ویدیو",
+          key: "videoCover"
+        },
+        
         {
-          style: "col-12",
+          style: "col-6",
           show_in_table: false,
           placeholder: "ویدیو محصول",
           type: "video",
@@ -188,6 +198,15 @@ export default {
           key: "videoLink"
         },
 
+        {
+          style: "col-12",
+          show_in_table: false,
+          placeholder: "فعال کردن تحت توسعه برای این محصول",
+          type: "boolean",
+          multiData: false,
+          name: "آیا تحت توسعه است؟",
+          key: "underDevelopment"
+        },
         {
           style: "col-12",
           show_in_table: false,

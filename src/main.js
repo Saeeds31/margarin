@@ -20,9 +20,9 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import "@/assets/admin/css/main.css";
-import "@/assets/front/css/main.css";
-import "@/assets/front/css/dark.css";
-import "@/assets/front/css/ltrTheme.css";
+import "@/assets/front/css/main.css?version=1.02";
+import "@/assets/front/css/dark.css?version=1.02";
+import "@/assets/front/css/ltrTheme.css?version=1.02";
 // plugins
 import VueSlickCarouse from "vue-slick-carousel";
 // import Swal from 'sweetalert2/dist/sweetalert2.js'
@@ -32,7 +32,12 @@ import VueImg from "v-img";
 import VueCookie from "vue-cookie";
 import VueLazyload from 'vue-lazyload'
 
-Vue.use(VueLazyload)
+// Vue.use(VueLazyload)
+Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    loading: '/assets/front/images/skeleton.gif',
+    attempt: 1
+})
 import * as VueMethods from "./libraries/vue-methods";
 // import VuePersianDatetimePicker from 'vue-persian-datetime-picker';
 // Vue.component('date-picker', VuePersianDatetimePicker);

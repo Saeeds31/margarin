@@ -18,7 +18,7 @@
         <br>
         <br>
         <br>
-      <a id="getListButton" :href="$root.baseImageUrl+productsData.data.productsIntro.priceListFile">{{$cookie.get('ltrTheme')?'Get approved price list':'دریافت لیست قیمت مصوب'}}
+      <a v-if="productsData.data.productsIntro.priceListFile!=null&&productsData.data.productsIntro.priceListFile!=''" id="getListButton" :href="$root.baseImageUrl+productsData.data.productsIntro.priceListFile">{{$cookie.get('ltrTheme')?'Get approved price list':'دریافت لیست قیمت مصوب'}}
         
 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" x="0px" y="0px"
 	 viewBox="0 0 287 287" style="enable-background:new 0 0 287 287;" xml:space="preserve">
@@ -96,6 +96,7 @@
       @pageChanged="pageChanged"
       />
     </section>
+  
   </main>
   <loader v-else />
 </template>
@@ -115,6 +116,7 @@ export default {
   },
   data() {
     return {
+      
         categorySelected: "",
       isBrandSelected: "",
       searchPlaceHolder: "",

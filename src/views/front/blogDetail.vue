@@ -272,8 +272,7 @@ export default {
             settings: {
               dots: true,
               slidesToShow: 1,
-              centerMode: true,
-              centerPadding: "20px",
+           
               focusOnSelect: true,
               slidesToScroll: 1,
               arrows: false
@@ -429,11 +428,11 @@ shareBlog(){
           "#blogDetailSection #introductionSection #content .innerContent #headerBlog .imageBoxMobile"
         );
       } else {
-        setTimeout(() => {
-          this.$root.setSliderHeight(
-            "#relatedBlogs .blogCartMobile .innerContent img"
-          );
-        });
+        // setTimeout(() => {
+        //   this.$root.setSliderHeight(
+        //     "#relatedBlogs .blogCartMobile .innerContent img"
+        //   );
+        // },1500);
         this.$root.unsetInlineStyle(
           "width",
           "#blogDetailSection #commentBox .titleBox .content"

@@ -10,6 +10,7 @@
       :routes="routes"
     >
       <p
+        id="aboutMargarin"
         data-aos="zoom-in"
         data-aos-duration="1000"
         data-aos-once="true"
@@ -40,9 +41,7 @@
       class="width80 margin-auto"
     />
     <statistics
-      v-if="racemeItems"
       :chartImage="$root.baseImageUrl + aboutUsData.aboutUs.staticImage"
-      :racemeItems="racemeItems"
       data-aos-delay="500"
       :text="aboutUsData.aboutUs.statisticText"
       class="width100"
@@ -179,6 +178,17 @@
         </svg>
       </router-link>
     </section>
+    <div
+      v-if="racemeItems"
+      data-aos="zoom-in-up"
+      data-aos-duration="1000"
+      data-aos-once="true"
+      id="racemeSection"
+      class="width80 margin-auto margin-tb-20 d-flex justify-content-between"
+    >
+      <raceme v-for="(item, index) in racemeItems" :key="index" :data="item" />
+    </div>
+    <fourItem v-if="collapseList" :list="collapseList" class="hiddenInMobile" />
     <collapseBox
       v-if="collapseList"
       :list="collapseList"
@@ -186,7 +196,7 @@
       data-aos-delay="500"
       data-aos-duration="1500"
       data-aos-once="true"
-      class="width80 margin-auto"
+      class="width80 margin-auto showInMobile"
     />
     <awards
       :prizes="aboutUsData.prizes"
@@ -199,6 +209,9 @@
   <loader v-else />
 </template>
 <script>
+import raceme from "@/components/front/aboutUs/statistics/raceme.vue";
+
+import fourItem from "@/components/front/aboutUs/fourItem.vue";
 import chartImage from "@/assets/front/images/chartImage.jpg";
 import introduction from "@/components/front/shared/introduction.vue";
 import slider from "@/components/front/aboutUs/slider.vue";
@@ -209,8 +222,10 @@ import collapseBox from "@/components/front/aboutUs/collapseBox.vue";
 import Loader from "@/components/front/shared/loader.vue";
 export default {
   components: {
+    fourItem,
     introduction,
     slider,
+    raceme,
     videoBox,
     statistics,
     awards,
@@ -249,22 +264,16 @@ export default {
   created() {
     if (this.aboutUsData == null) {
       // this.$store.dispatch("getAboutUsFromServer");
-      this.checkRequest('getAboutUsFromServer',JSON.stringify(null));
-
+      this.checkRequest("getAboutUsFromServer", JSON.stringify(null));
     }
   },
   watch: {
     aboutUsData(newValue) {
       let racemeItems = [
         {
-          number: newValue.aboutUs.fund,
-          title_en: "Billion tomans of capital",
-          title_fa: "میلیارد تومان سرمایه"
-        },
-        {
           number: newValue.aboutUs.brand,
           title_en: "Specialized brand",
-          title_fa: "برند تخصصی"
+          title_fa: "تنوع محصول"
         },
         {
           number: newValue.aboutUs.products,
@@ -279,12 +288,12 @@ export default {
       ];
       this.$store.commit("setRacemeItems", racemeItems);
       let collapse = [
-        {
-          id: 1,
-          image: newValue.aboutUs.exteraTitle1Icon,
-          question: newValue.aboutUs.exteraTitle1,
-          answer: newValue.aboutUs.exteraText1
-        },
+        // {
+        //   id: 1,
+        //   image: newValue.aboutUs.exteraTitle1Icon,
+        //   question: newValue.aboutUs.exteraTitle1,
+        //   answer: newValue.aboutUs.exteraText1
+        // },
 
         {
           id: 2,
@@ -357,14 +366,18 @@ section#managementIntro {
   flex-direction: column;
 }
 section#managementIntro a span {
-    margin: 0 10px;
-    font-size: 18px;
-    font-family: 'yekan-bold';
-    text-align:right;
+  margin: 0 10px;
+  font-size: 18px;
+  font-family: "yekan-bold";
+  text-align: right;
 }
 section#managementIntro a {
-    margin: 10px;
-    cursor: pointer;
-    display:flex;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+}
+.margin-tb-20{
+  margin-top:20px;
+  margin-bottom:20px;
 }
 </style>

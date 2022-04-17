@@ -11,16 +11,23 @@ export default new Vuex.Store({
         // server data
         faqList: null,
         aboutUsData: null,
+        underDevProduct: null,
+        singleReportage: null,
         homeData: null,
         productsData: null,
         product: null,
+        socialResponsibilityData: null,
         reports: null,
         blogsData: null,
+        magazineData: null,
         blogCategory: null,
+        socialResponse: null,
         blogData: null,
         brands: [],
         contactUsData: null,
         cookingsData: null,
+        reportageData: null,
+        singleMagazine: null,
         cookingData: null,
         cookingCategory: null,
         productCategory: null,
@@ -33,8 +40,7 @@ export default new Vuex.Store({
                 id: 1,
                 header: {
                     title: cookie.get("ltrTheme") ?
-                        "Margarine brands" :
-                        "برندهای مارگارین",
+                        "Margarine brands" : "برندهای مارگارین",
                     route: "/"
                 },
                 menuItem: []
@@ -48,27 +54,23 @@ export default new Vuex.Store({
                 },
                 menuItem: [{
                         title: cookie.get("ltrTheme") ?
-                            "Financial Statements" :
-                            "صورت های مالی",
-                        route: "/"
+                            "Financial Statements" : "صورت های مالی",
+                        route: "http://vue.blogtest.ir/reportage-detail/5/%D8%B5%D9%88%D8%B1%D8%AA-%D9%87%D8%A7%DB%8C-%D9%85%D8%A7%D9%84%DB%8C"
                     },
                     {
                         title: cookie.get("ltrTheme") ?
-                            "Interpretive management" :
-                            "تفسیری مدیریت",
-                        route: "/"
+                            "Interpretive management" : "تفسیری مدیریت",
+                        route: "http://vue.blogtest.ir/reportage-detail/3/%D8%AA%D9%81%D8%B3%DB%8C%D8%B1%DB%8C-%D9%85%D8%AF%D9%8A%D8%B1%D9%8A%D8%AA"
                     },
                     {
                         title: cookie.get("ltrTheme") ?
-                            "Board activities" :
-                            "فعالیت های هیئت مدیره",
-                        route: "/"
+                            "Board activities" : "فعالیت های هیئت مدیره",
+                        route: "http://vue.blogtest.ir/reportage-detail/6/%D9%81%D8%B9%D8%A7%D9%84%D9%8A%D8%AA-%D9%87%D8%A7%D9%8A-%D9%87%D9%8A%D8%A6%D8%AA-%D9%85%D8%AF%D9%8A%D8%B1%D9%87-"
                     },
                     {
                         title: cookie.get("ltrTheme") ?
-                            "Internal control reports" :
-                            "گزارشات کنترل داخلی",
-                        route: "/"
+                            "Internal control reports" : "گزارشات کنترل داخلی",
+                        route: "http://vue.blogtest.ir/reportage-detail/7/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%D8%A7%D8%AA-%D9%83%D9%86%D8%AA%D8%B1%D9%84-%D8%AF%D8%A7%D8%AE%D9%84%D9%8A"
                     }
                 ]
             }
@@ -80,6 +82,15 @@ export default new Vuex.Store({
         mainMenu: null
     },
     getters: {
+        getUnderDevProducts(state) {
+            return state.underDevProduct
+        },
+        getSingleReportage(state) {
+            return state.singleReportage
+        },
+        getSocialResponsibilitySingleData(state) {
+            return state.socialResponsibilityData
+        },
         getRequestList(state) {
             return state.requestList;
         },
@@ -136,8 +147,22 @@ export default new Vuex.Store({
         getBlogData(state) {
             return state.blogData;
         },
+        getSingleMagazine(state) {
+            return state.singleMagazine;
+        },
         getBlogsData(state) {
             return state.blogsData;
+        },
+
+        getMagazineData(state) {
+            return state.magazineData;
+        },
+
+        getSocialResponsibility(state) {
+            return state.socialResponse;
+        },
+        getReportageData(state) {
+            return state.reportageData;
         },
         getProduct(state) {
             return state.product;
@@ -163,6 +188,12 @@ export default new Vuex.Store({
     },
     mutations: {
         // pre fetch mutation
+        setSingleReportage(state, data) {
+            state.singleReportage = data
+        },
+        setReportageData(state, data) {
+            state.reportageData = data;
+        },
         addToRequestList(state, reqObject) {
             state.requestList.push(reqObject);
             // reference of reqObject is exist in preFetch mixin
@@ -177,6 +208,9 @@ export default new Vuex.Store({
                     return (menu.menuItem = pack.menu);
                 }
             });
+        },
+        setSocialResponsibility(state, data) {
+            state.socialResponse = data
         },
         pushMenu(state, pack) {
             state.menus.push(pack);
@@ -231,6 +265,12 @@ export default new Vuex.Store({
         setBlogData(state, data) {
             state.blogData = data;
         },
+        setMagazineSingledData(state, data) {
+            state.singleMagazine = data;
+        },
+        setSocialResponsibilitySingleData(state, data) {
+            state.socialResponsibilityData = data;
+        },
         setHomeData(state, data) {
             state.homeData = data;
         },
@@ -246,9 +286,16 @@ export default new Vuex.Store({
         setProduct(state, data) {
             state.product = data;
         },
+        setUnderDevProducts(state, data) {
+            state.underDevProduct = data;
+        },
         setBlogsData(state, data) {
             state.blogsData = data;
         },
+        setMagazineData(state, data) {
+            state.magazineData = data;
+        },
+
         setReports(state, list) {
             state.reports = list;
         },
@@ -381,6 +428,56 @@ export default new Vuex.Store({
                 });
             });
         },
+
+        getMagazineSingle({ dispatch, commit }, id) {
+            axios.get(`Home/GetMagazineSingle?id=${id}`).then((response) => {
+                let pack = {
+                    destination: "setMagazineSingledData",
+                    data: response.data.data
+                };
+                dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getMagazineSingle",
+                    actionParam: JSON.stringify(id),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
+            });
+        },
+
+        getReportageSingleFromServer({ dispatch, commit }, id) {
+            axios.get(`Home/GetReportageSingle?id=${id}`).then((response) => {
+                let pack = {
+                    destination: "setSingleReportage",
+                    data: response.data.data
+                };
+                dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getReportageSingleFromServer",
+                    actionParam: JSON.stringify(id),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
+            });
+        },
+        getSocialSingleResponsibilityFromServer({ dispatch, commit }, id) {
+            axios.get(`Home/GetSocialResponsibilitySingle?id=${id}`).then((response) => {
+                let pack = {
+                    destination: "setSocialResponsibilitySingleData",
+                    data: response.data.data
+                };
+                dispatch("withoutEnAndFa", pack);
+                commit("addToRequestList", {
+                    actionName: "getSocialSingleResponsibilityFromServer",
+                    actionParam: JSON.stringify(id),
+                    commitOrDispatch: "dispatch",
+                    functionName: "withoutEnAndFa",
+                    data: JSON.stringify(pack)
+                });
+            });
+        },
         getCookingsFromServer({ dispatch }, pack) {
             axios
                 .get(
@@ -458,6 +555,71 @@ export default new Vuex.Store({
                     });
             }
         },
+        getMagazineFromServer({ dispatch, commit }, pack) {
+
+            axios
+                .get(
+                    `Home/GetSocialMagazineArchive?pageNumber=${pack.page ? pack.page : 1}`
+                )
+                .then((res) => {
+                    let resPack = {
+                        destination: "setMagazineData",
+                        data: res.data.data,
+                        pagination: JSON.parse(res.headers["x-pagination"])
+                    };
+                    dispatch("withoutEnAndFa", resPack);
+                    commit("addToRequestList", {
+                        actionName: "getMagazineFromServer",
+                        actionParam: JSON.stringify(pack),
+                        commitOrDispatch: "dispatch",
+                        functionName: "withoutEnAndFa",
+                        data: JSON.stringify(resPack)
+                    });
+                });
+        },
+        getReportageFromServer({ dispatch, commit }, pack) {
+
+            axios
+                .get(
+                    `Home/GetReportageArchive?pageNumber=${pack.page ? pack.page : 1}`
+                )
+                .then((res) => {
+                    let resPack = {
+                        destination: "setReportageData",
+                        data: res.data.data,
+                        pagination: JSON.parse(res.headers["x-pagination"])
+                    };
+                    dispatch("withoutEnAndFa", resPack);
+                    commit("addToRequestList", {
+                        actionName: "getReportageFromServer",
+                        actionParam: JSON.stringify(pack),
+                        commitOrDispatch: "dispatch",
+                        functionName: "withoutEnAndFa",
+                        data: JSON.stringify(resPack)
+                    });
+                });
+        },
+        getSocialResponsibilityFromServer({ dispatch, commit }, pack) {
+            axios
+                .get(
+                    `Home/GetSocialResponsibilityArchive?pageNumber=${pack.page ? pack.page : 1}`
+                )
+                .then((res) => {
+                    let resPack = {
+                        destination: "setSocialResponsibility",
+                        data: res.data.data,
+                        pagination: JSON.parse(res.headers["x-pagination"])
+                    };
+                    dispatch("withoutEnAndFa", resPack);
+                    commit("addToRequestList", {
+                        actionName: "getSocialResponsibilityFromServer",
+                        actionParam: JSON.stringify(pack),
+                        commitOrDispatch: "dispatch",
+                        functionName: "withoutEnAndFa",
+                        data: JSON.stringify(resPack)
+                    });
+                });
+        },
         getProductFromServer({ dispatch, commit }, id) {
             axios.get(`Home/GetProductSingle?id=${id}`).then((response) => {
                 let pack = {
@@ -474,6 +636,8 @@ export default new Vuex.Store({
                 });
             });
         },
+
+
         getHomeDataFromServer({ dispatch, commit }) {
             axios.get("Home/GetHomeInfo").then((res) => {
                 let pack = {
@@ -612,6 +776,31 @@ export default new Vuex.Store({
                     dispatch("withoutEnAndFa", resPack);
                     commit("addToRequestList", {
                         actionName: "getProductsFromServer",
+                        actionParam: JSON.stringify(pack),
+                        commitOrDispatch: "dispatch",
+                        functionName: "withoutEnAndFa",
+                        data: JSON.stringify(resPack)
+                    });
+                });
+        },
+        getUnderDevProductFromServer({ dispatch, commit }, pack) {
+            axios
+                .get(
+                    `Home/GetDevelopmentDepartment?pageNumber=${pack.page}&search=${
+            pack.search ? pack.search : ""
+          }&cat=${pack.category ? pack.category : ""}${
+            pack.type ? "&type=" + pack.type : ""
+          }${pack.brand ? "&brand=" + pack.brand : ""}`
+                )
+                .then((res) => {
+                    let resPack = {
+                        destination: "setUnderDevProducts",
+                        data: res.data.data,
+                        pagination: JSON.parse(res.headers["x-pagination"])
+                    };
+                    dispatch("withoutEnAndFa", resPack);
+                    commit("addToRequestList", {
+                        actionName: "getUnderDevProductFromServer",
                         actionParam: JSON.stringify(pack),
                         commitOrDispatch: "dispatch",
                         functionName: "withoutEnAndFa",

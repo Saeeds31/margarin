@@ -16,7 +16,8 @@
   </main>
 </template>
 <script>
-import goodFamilyImage from "@/assets/front/images/goodFamily.png"
+// import goodFamilyImage from "@/assets/front/images/goodFamily.png"
+import goodFamilyImage from "@/assets/front/images/health/image.png"
 
 import shopImage from "@/assets/front/images/shopImage.jpeg"
 import mainHeader from "@/components/front/home/slider/header.vue";
@@ -29,6 +30,11 @@ import application from "@/components/front/healthAmbassador/application.vue";
 import blogs from "@/components/front/healthAmbassador/blogs.vue";
 import mainFooter from "@/components/front/shared/footer.vue";
 import healthFooter from "@/components/front/healthAmbassador/mainFooter.vue";
+// import image
+import image1 from "@/assets/front/images/health/1.jpg"
+import image2 from "@/assets/front/images/health/2.jpg"
+import image3 from "@/assets/front/images/health/3.jpg"
+import image4 from "@/assets/front/images/health/4.jpg"
 export default {
   components: {
     mainHeader,
@@ -62,18 +68,24 @@ export default {
           carts: [
             {
               title: "	روغن ميتامينه آفتابگردان",
+              image:image1,
               text: "حاوي امگا 6 و 9\nغني شده با ويتامينه A   و D3"
             },
             {
               title: "	روغن ويتامينه كانولا",
+              image:image4,
               text: "حاوي امگا 6 و 9\nغني شده با ويتامينه A   و D3"
             },
             {
               title: "	روغن سرخ كردني شفاف",
+              image:image2,
+
               text: "بدون پالم\nغني شده با ويتامينه A   و D3"
             },
             {
               title: "	روغن سرخ كردني ويژه",
+              image:image3,
+
               text: "جذب كم در مواد غذايي "
             }
           ]

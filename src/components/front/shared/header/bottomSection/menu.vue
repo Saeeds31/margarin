@@ -12,10 +12,10 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/">
+        <a href="https://saham.margarineco.com/">
           <i class="far fa-circle"></i>
           {{ $cookie.get("ltrTheme") ? "Shareholders" : "سهامداران" }}
-        </router-link>
+        </a>
       </li>
       <li>
         <router-link to="/weblogs">

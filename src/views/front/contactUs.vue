@@ -778,7 +778,36 @@ const pack = {
         document.getElementById(section).focus();
       }, 500);
     },
-    setStyle() {
+    validateEmail(email) {
+      var re = /\S+@\S+\.\S+/;
+      return re.test(email);
+    },
+   
+    
+    sendMessage() {
+      if (this.$v.fullName.required == false) {
+        return this.$toast.error("وارد کردن نام الزامی است");
+      } else if (this.$v.fullName.minLength == false) {
+        return this.$toast.error("نام کامل شما باید بیش از شش حرف باشد");
+      } else if (this.$v.mobile.required == false) {
+        return this.$toast.error("وارد کردن شماره موبایل الزامی است");
+      } else if (
+        this.$v.mobile.minLength == false ||
+        this.$v.mobile.minLength == false
+      ) {
+        return this.$toast.error("شماره موبایل شامل 11 رقم است");
+      } else if (this.$v.email.required == false) {
+        return this.$toast.error("وارد کردن ایمیل الزامی است");
+      } else if (this.$v.email.email == false) {
+        return this.$toast.error("فرمت وارد شده ایمیل نامعتبر است");
+      } else if (this.$v.text.required == false) {
+        return this.$toast.error("وارد کردن پیام الزامی است");
+      } else if (this.$v.text.minLength == false) {
+        return this.$toast.error("حداقل حروف برای یک پیام شامل 20 حرف است");
+      }
+      this.showRecaptcha=true;
+      },
+       setStyle() {
       if (window.innerWidth > 1000) {
         if (window.innerWidth > 1495) {
           this.$root.setProportionStyle(
@@ -890,33 +919,6 @@ const pack = {
         );
       }
     },
-    validateEmail(email) {
-      var re = /\S+@\S+\.\S+/;
-      return re.test(email);
-    },
-    sendMessage() {
-      if (this.$v.fullName.required == false) {
-        return this.$toast.error("وارد کردن نام الزامی است");
-      } else if (this.$v.fullName.minLength == false) {
-        return this.$toast.error("نام کامل شما باید بیش از شش حرف باشد");
-      } else if (this.$v.mobile.required == false) {
-        return this.$toast.error("وارد کردن شماره موبایل الزامی است");
-      } else if (
-        this.$v.mobile.minLength == false ||
-        this.$v.mobile.minLength == false
-      ) {
-        return this.$toast.error("شماره موبایل شامل 11 رقم است");
-      } else if (this.$v.email.required == false) {
-        return this.$toast.error("وارد کردن ایمیل الزامی است");
-      } else if (this.$v.email.email == false) {
-        return this.$toast.error("فرمت وارد شده ایمیل نامعتبر است");
-      } else if (this.$v.text.required == false) {
-        return this.$toast.error("وارد کردن پیام الزامی است");
-      } else if (this.$v.text.minLength == false) {
-        return this.$toast.error("حداقل حروف برای یک پیام شامل 20 حرف است");
-      }
-      this.showRecaptcha=true;
-      }
   },
   validations: {
     fullName: {

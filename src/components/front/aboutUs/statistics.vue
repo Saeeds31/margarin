@@ -1,14 +1,6 @@
 <template>
   <div id="statisticsSection">
-    <div
-      data-aos="zoom-in-up"
-      data-aos-duration="1000"
-      data-aos-once="true"
-      id="racemeSection"
-      class="width80 margin-auto d-flex justify-content-between"
-    >
-      <raceme v-for="(item, index) in racemeItems" :key="index" :data="item" />
-    </div>
+
     <div
       id="content"
      
@@ -45,14 +37,10 @@
   </div>
 </template>
 <script>
-import raceme from "@/components/front/aboutUs/statistics/raceme.vue";
 export default {
-  components: {
-    raceme
-  },
+  
   props:{
     text:String,
-    racemeItems:Array,
     chartImage:String
   },
   data() {

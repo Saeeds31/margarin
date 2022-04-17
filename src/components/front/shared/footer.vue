@@ -13,7 +13,7 @@
           /> -->
         </div>
         <div id="buttons" class="d-flex justify-content-evenly">
-          <button class="d-flex flex-direction-column align-items-center">
+          <a :href="$root.baseImageUrl+ $root.footerData.calenderFile" target="_blank"  class="d-flex flex-direction-column align-items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -30,12 +30,11 @@
               />
             </svg>
 
-            <span>{{
-              $cookie.get("ltrTheme")
-                ? "Get the 2022 calendar"
-                : "دریافت تقویم سال 1400"
-            }}</span>
-          </button>
+            <span>
+             {{$root.footerData.calenderTitle}}
+
+            </span>
+          </a>
           <button
             @click="$router.push('/catalogue')"
             class="d-flex flex-direction-column align-items-center"
@@ -220,7 +219,7 @@
           id="buttons"
           class="d-flex justify-content-between showInMobileFlex"
         >
-          <button class="d-flex flex-direction-column align-items-center">
+          <a :href="$root.baseImageUrl+ $root.footerData.calenderFile" target="_blank" class="d-flex flex-direction-column align-items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -237,12 +236,11 @@
               />
             </svg>
 
-            <span>{{
-              $cookie.get("ltrTheme")
-                ? "Get the 2022 calendar"
-                : "دریافت تقویم سال 1400"
-            }}</span>
-          </button>
+            <span>
+             {{$root.footerData.calenderTitle}}
+              
+            </span>
+          </a>
           <button
             @click="$router.push('/catalogue')"
             class="d-flex flex-direction-column align-items-center"
@@ -375,8 +373,12 @@
 export default {
   mounted() {
     this.setStyle();
-    document.getElementById('map').addEventListener('mouseenter',this.setMapflag)
-    document.getElementById('map').addEventListener('mouseleave',this.unsetMapflag)
+    document
+      .getElementById("map")
+      .addEventListener("mouseenter", this.setMapflag);
+    document
+      .getElementById("map")
+      .addEventListener("mouseleave", this.unsetMapflag);
     window.addEventListener("resize", this.setStyle);
     window.addEventListener("scroll", this.setGotoTop);
     let link = document.createElement("link");
@@ -393,36 +395,41 @@ export default {
     let interval = setInterval(() => {
       if (this.$root.isInViewport(document.getElementById("neshanMapScript"))) {
         clearInterval(interval);
-        setTimeout(()=>{
-new ol.Map({
-          target: "map",
-          key: "web.xe2mxJiodDHeDPnl2iWUXOAhs9J9221XDuSfqMZv",
-          maptype: "dreamy",
-          poi: true,
-          traffic: false,
-          view: new ol.View({
-            center: ol.proj.fromLonLat([ 51.462879,35.579448]),
-            zoom: 15
-          })
-        });
-        },1000)
+        setTimeout(() => {
+          new ol.Map({
+            target: "map",
+            key: "web.xe2mxJiodDHeDPnl2iWUXOAhs9J9221XDuSfqMZv",
+            maptype: "dreamy",
+            poi: true,
+            traffic: false,
+            view: new ol.View({
+              center: ol.proj.fromLonLat([51.462879, 35.579448]),
+              zoom: 15
+            })
+          });
+        }, 1000);
       }
     }, 100);
   },
   beforeDestroy() {
-    
-    document.getElementById('map').removeEventListener('mouseenter',this.setMapflag)
-    document.getElementById('map').removeEventListener('mouseleave',this.unsetMapflag)
+    if (document.getElementById("map")) {
+      document
+        .getElementById("map")
+        .removeEventListener("mouseenter", this.setMapflag);
+      document
+        .getElementById("map")
+        .removeEventListener("mouseleave", this.unsetMapflag);
+    }
     window.removeEventListener("scroll", this.setGotoTop);
 
     window.removeEventListener("resize", this.setStyle);
   },
   methods: {
-    setMapflag(){
-      this.$root.footerMapCursor=true
+    setMapflag() {
+      this.$root.footerMapCursor = true;
     },
-    unsetMapflag(){
-      this.$root.footerMapCursor=false
+    unsetMapflag() {
+      this.$root.footerMapCursor = false;
     },
     setGotoTop() {
       if (this.$root.isInViewport(document.getElementById("footerTitle"))) {
@@ -535,6 +542,6 @@ button#mainMoveToTopBotton {
 </style>
 <style>
 .ol-overlaycontainer-stopevent {
-    display: none;
+  display: none;
 }
 </style>

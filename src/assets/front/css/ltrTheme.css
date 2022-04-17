@@ -481,6 +481,10 @@
         text-align: left;
     }
     
+    .ltrTheme #homeSection #homeLeader #headerContent #buttons {
+        width: 27%
+    }
+    
     .ltrTheme #rawMaterial .material {
         justify-content: flex-start !important;
     }

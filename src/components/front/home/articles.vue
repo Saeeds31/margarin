@@ -30,16 +30,16 @@
       >
         <div
           v-for="i in articleLength"
-          :key="i*10"
+          :key="'a'+i*10"
           class="sliderItem"
         >
           <div class="firstRow d-flex justify-content-between width100">
-            <smallCart :article="articles[4 * i - 4]" :key="i*544" />
+            <smallCart :article="articles[4 * i - 4]" :key="'b'+i*544" />
             <wideCart
               :showComment="true"
               class="width60"
               :article="articles[4 * i - 3]"
-              :key="i*500"
+              :key="'c'+i*500"
             />
           </div>
           <div class="secondRow d-flex justify-content-between width100">
@@ -47,9 +47,9 @@
               :showComment="true"
               class="width60"
               :article="articles[4 * i - 2]"
-              :key="i*100"
+              :key="'d'+i*100"
             />
-            <smallCart :article="articles[4 * i - 1]" :key="i*528" />
+            <smallCart :article="articles[4 * i - 1]" :key="'e'+i*528" />
           </div>
         </div>
         
@@ -61,7 +61,7 @@
      
         <div
           v-for="(item,index) in articles"
-          :key="item"
+          :key="'hj'+index"
           class="sliderItem"
         >
             <wideCart

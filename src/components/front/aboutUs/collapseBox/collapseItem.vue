@@ -160,6 +160,26 @@ export default {
 .collapseSection .btn-dark:focus{
   box-shadow:none !important
 }
+@media (max-width:560px){
+  
+.collapseSection .card .card-header button .faqImage{
+  margin: 0 25px;
+}
+.collapseSection .card .card-header button span{
+  font-size:18px;
+display: block;
+text-align: right;
+}
+}@media (max-width:420px){
+  
+.collapseSection .card .card-header button .faqImage{
+  margin: 0 15px;
+}
+.collapseSection .card .card-header button span{
+  font-size:15px;
+
+}
+}
 @media (max-width:1000px){
   .collapseSection .card .card-header {
     width: 90%;

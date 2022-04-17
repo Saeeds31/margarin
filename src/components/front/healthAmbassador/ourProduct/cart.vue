@@ -1,21 +1,7 @@
 <template>
   <div class="ourProductCart">
     <div class="svg">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        width="60"
-        height="60"
-        viewBox="0 0 83 85"
-      >
-        <image
-          id="Layer_2634"
-          data-name="Layer 2634"
-          width="83"
-          height="85"
-          xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFMAAABVCAYAAAA169gdAAAABHNCSVQICAgIfAhkiAAAAuBJREFUeF7tnMuuEkEURat9cBWR8HACQrwJf+DAmQPnfJX+wtWBn+DUIX9hxMQIgSkJIQx4iLzsJlWdbsSQwynIJVkMSZ+dYvWu2ifVTQXb7fa18fup+ZUzWc96P3zqBUHwzekFwNShBaaOX6oamMD0RuAya2a3232iHXI+n3/pNKbT6SOtXiaTeeo0lsvlA61ev9//6TTq9fpvrV6j0fh+MICAKUcLTMsMZ8rNk6pgmlscrJlKJxFAFiBprnQSrZEFSGskdxKtEa2RMaS5fOakKkhz0twYAkg+jQigMwbQe3c/5vP5Y/m9SVeEa9w7981ms1FvmYU72fGYwkcsgXZ84/H4i9PIZrNLrV4ul7tLbsEBU0EUmBYezlS4KCplmluAV7VmDgaD58obbwqFwlunsVqtHmr1kgGk1Yrqe73eV6dTKpWmWs1qtfr5YAABU44WmJYZzpSbJ1XBNFcCTJYDE5jGkOZKF9AaWYC0RnIn0RrRGsldc6iCNPfDcacCTGDSGrFrJJwF+2n+wdX7aI3C3etbp7dYLNTPlIS/7ejlw+Ewfqc97IlnRwuOXFCpVD4mt+CAqSAKTAsPZypcFJUyzZUAk+VXC3O9XqtfQvDIcSc1Go3aTjMMyz9a/XDN/HSRAAKm8lYlWyNgAlNEgGlucbFminzz78UEkBJgshyYwDSGNFe6gNbIAvS9BYczcaaIAH0mfabIMP+9mNbID8eL7Bq9cWNttVovtOOu1WqvnMZsNrt3z4Da7fYvN75yuaw+iqfZbMbPlKKz4ICpcBAwLTycqXBRVMo0VwJMll8MZqfTic9dO3X8xWLx1tVOJpN7F0DnPiQqDiBgyi20/39zYMoZxhXAtCjOcbAezsSZpxEggE7jdrAKmMA0hj5T6QKadguQpl3uJPpM+ky5aw5VkOZ+OO5UgHktMPfG+czjuCOpG896vuXmPgX3D6oDpoIuMBXw9kuBCUxvBLyumX8BUzvEfrvoX2AAAAAASUVORK5CYII="
-        />
-      </svg>
+      <img class="ourProductImage" :src="data.image" :alt="data.title" />
     </div>
 
     <h1>{{ data.title }}</h1>
@@ -30,5 +16,8 @@ export default {
 };
 </script>
 <style scoped>
-
+img.ourProductImage {
+    width: 100px;
+    border-radius: 20px;
+}
 </style>

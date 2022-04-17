@@ -140,7 +140,7 @@ export default {
   methods: {
     getTitle() {
       if (this.$route.query.type) {
-        if (this.$route.query.type == 1) {
+        if (this.$route.query.type ==2) {
           if (this.$cookie.get("ltrTheme")) return " Articles Archive";
           else return "آرشیــــو  مقــــالات";
         } else {

@@ -33,6 +33,7 @@
         :disabled="disabled"
         @submit="submit"
         :mode="mode"
+        :folderRoute="'uploadFile'"
         :bigData="bigData"
         :headers="headers"
       />

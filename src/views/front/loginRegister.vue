@@ -58,7 +58,7 @@
           @buttonClicked="login()"
           :class="{ disabled: disable }"
           :type="'button'"
-          :title="'ورود به سامانه سهام داران'"
+          :title="'ورود به پنل مارگارین'"
           :buttonType="'button'"
         />
       </div>
@@ -550,7 +550,7 @@ export default {
     return {
       title: this.$cookie.get("ltrTheme")
         ? "login Margarin"
-        : "مارگارین - ورود",
+        : "ورود به پنل همکاران",
       meta: [
         {
           name: "description",

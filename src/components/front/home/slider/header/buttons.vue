@@ -1,5 +1,5 @@
 <template>
-  <div id="buttons" class="d-flex justify-content-between">
+  <div id="buttons" class="d-flex justify-content-between" :class="{newButtonsStyle:$root.sectionIndexHome != 1}">
     <button
       data-aos="zoom-in-up"
       data-aos-duration="2500"
@@ -16,6 +16,25 @@
       <i class="fa fa-bars"></i>
     </button>
     <button
+      class="hiddenInMobile"
+      @click="changeLanguage"
+    >
+    
+<svg :class="{orangeSvg:$root.sectionIndexHome != 1}" width="28" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<g>
+	<path fill="white" d="M21.1,26.4c-1.3-0.4-2.1-1.6-2.1-3c0-1.3,0.8-2.4,2-2.9c2.3-0.9,4-2.2,5.2-4.1c1.4-2.1,1.7-6,1.8-7.7C25.5,4.7,21.1,2,16,2
+		C12.1,2,8.6,3.6,6,6.2c0,0.5,0.2,1.9,0.9,3.3c0.6,1.2,2.8,1.7,4.7,2.1c0.8,0.2,1.6,0.4,2.3,0.6c1.8,0.6,3.2,2.1,3.5,4
+		c0.4,1.9-0.3,3.9-1.8,5.1l-1.1,0.9c-1.6,1.3-3.3,2.8-3.5,6.7c1.5,0.6,3.2,0.9,5,0.9c3,0,5.8-1,8.1-2.6L21.1,26.4z"/>
+	<path fill="white" d="M13.3,20.8l1.1-0.9c0.9-0.8,1.4-2,1.1-3.2c-0.2-1.2-1.1-2.1-2.2-2.5c-0.6-0.2-1.3-0.4-2.1-0.5c-2.4-0.5-5.1-1.1-6.1-3.2
+		C4.7,9.7,4.5,9,4.3,8.3C2.9,10.5,2,13.2,2,16c0,5.2,2.9,9.8,7.1,12.2C9.5,24.3,11.3,22.4,13.3,20.8z"/>
+	<path fill="white" d="M27.8,17.6c-1.5,2.2-3.5,3.8-6.1,4.8C21.3,22.6,21,23,21,23.5c0,0.5,0.3,0.9,0.8,1.1l4.1,1.4c2.5-2.5,4.1-6,4.1-9.9
+		c0-1.2-0.2-2.3-0.4-3.4C29.3,14.3,28.7,16.2,27.8,17.6z"/>
+</g>
+</svg>
+
+    </button> 
+     <button
       @click="showModal = true"
       v-if="$root.sectionIndexHome == 1"
       id="phone"
@@ -139,7 +158,7 @@
             {{
               $cookie.get("ltrTheme")
                 ? "Sending a message to the management"
-                : "ارســــال پــــیام بــــه مدیــــریت"
+                : "اراتبــــاط مستقیــــم بــــا مدیــــرعامل"
             }}
           </h1>
           <h3 class="blackColor04">
@@ -367,8 +386,7 @@
               :title="
                 $cookie.get('ltrTheme')
                   ? 'Send Your Message'
-                  : 'پیام را ارسال کنید'
-              "
+                  : 'پیام را ارسال کنید'"
             />
           </div>
         </div>
@@ -399,6 +417,21 @@ export default {
     RoundedButton
   },
   methods: {
+     changeLanguage() {
+      if (!this.$cookie.get('ltrTheme')) {
+       
+        this.$cookie.set("ltrTheme","true")
+            this.$axios.defaults.headers.common["Accept-Language"] = "en";
+
+      } else {
+        this.$cookie.delete("ltrTheme")
+            this.$axios.defaults.headers.common["Accept-Language"] = "fa";
+
+
+
+      }
+      this.$router.go(0)
+    },
     showSection(section, flag) {
       if (flag == true) {
         this[section] = true;
@@ -527,5 +560,11 @@ export default {
 #mobileMenu nav ul {
   flex-direction: column !important;
 }
+.newButtonsStyle{
+  justify-content: flex-start !important;
+  gap: 10px;
+}
+.orangeSvg path{
+  fill:#f5992c;
+}
 </style>
-<style></style>

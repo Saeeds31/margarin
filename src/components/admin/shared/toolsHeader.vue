@@ -1360,6 +1360,7 @@ AAAAAElFTkSuQmCC"
           <i class="fa fa-info-circle" aria-hidden="true"></i>
         </span>
       </router-link>
+      <!--  -->
       <router-link
         v-if="showRoute(getRole, '/admin-panel/weblogs')"
         :class="{ activeRoute: $route.name == 'panelWeblogs' }"
@@ -1404,6 +1405,99 @@ AAAAAElFTkSuQmCC"
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
         ></router-link>
       </b-collapse>
+<!-- end of posts -->
+<!-- start social -->
+<router-link
+        v-if="showRoute(getRole, '/admin-panel/social-responsibily')"
+        :class="{ activeRoute: $route.name == 'SocialResponsibily' }"
+        to="/admin-panel/social-responsibily"
+        ><i class="fa fa-angle-down" v-b-toggle.collapse-60></i>
+        <span>
+          مسئولیت اجتماعی
+          <i class="fa fa-blog" aria-hidden="true"></i>
+        </span>
+      </router-link>
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/social-responsibily-introduction')"
+        id="collapse-60"
+        class="mt-2"
+      >
+        <router-link
+          :class="{ activeRoute: $route.name == 'socialResponsibilyIntroduction' }"
+          class="childRoute"
+          to="/admin-panel/social-responsibily-introduction"
+        >
+          <span>
+            معرفی نامه
+            <i class="fa fa-align-justify" aria-hidden="true"></i></span
+        ></router-link>
+      </b-collapse>
+      <!-- end social -->
+      <!-- start report -->
+      <router-link
+        v-if="showRoute(getRole, '/admin-panel/reportage')"
+        :class="{ activeRoute: $route.name == 'reportage' }"
+        to="/admin-panel/reportage"
+        ><i class="fa fa-angle-down" v-b-toggle.collapse-61></i>
+        <span>
+          گزارشات
+          <i class="fa fa-blog" aria-hidden="true"></i>
+        </span>
+      </router-link>
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/reportage-introduction')"
+        id="collapse-61"
+        class="mt-2"
+      >
+        <router-link
+          :class="{ activeRoute: $route.name == 'reportageIntroduction' }"
+          class="childRoute"
+          to="/admin-panel/reportage-introduction"
+        >
+          <span>
+            معرفی نامه
+            <i class="fa fa-align-justify" aria-hidden="true"></i></span
+        ></router-link>
+      </b-collapse>
+      <!-- end report -->
+      <!-- start mag -->
+          <router-link
+        v-if="showRoute(getRole, '/admin-panel/magazine')"
+        :class="{ activeRoute: $route.name == 'magazine' }"
+        to="/admin-panel/magazine"
+        ><i class="fa fa-angle-down" v-b-toggle.collapse-62></i>
+        <span>
+          مجله آفتاب
+          <i class="fa fa-blog" aria-hidden="true"></i>
+        </span>
+      </router-link>
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/magazine-introduction')"
+        id="collapse-62"
+        class="mt-2"
+      >
+        <router-link
+          :class="{ activeRoute: $route.name == 'magazineIntroduction' }"
+          class="childRoute"
+          to="/admin-panel/magazine-introduction"
+        >
+          <span>
+            معرفی نامه
+            <i class="fa fa-align-justify" aria-hidden="true"></i></span
+        ></router-link>
+      </b-collapse>
+      <!-- end mag -->
+             <router-link
+        v-if="showRoute(getRole, '/admin-panel/upload-file')"
+        :class="{ activeRoute: $route.name == 'uploadFile' }"
+        to="/admin-panel/upload-file"
+        >
+        <span>
+          آپلود فایل
+          <i class="fa fa-blog" aria-hidden="true"></i>
+        </span>
+      </router-link>
+<!-- start faq -->
       <router-link
         v-if="showRoute(getRole, '/admin-panel/faqs')"
         :class="{ activeRoute: $route.name == 'panelFaqs' }"
@@ -1447,6 +1541,17 @@ AAAAAElFTkSuQmCC"
 
         <span>
           تماس با ما
+          <i class="fa fa-address-book" aria-hidden="true"></i></span
+      ></router-link>
+      
+      <router-link
+        v-if="showRoute(getRole, '/admin-panel/InovativeIdea')"
+        :class="{ activeRoute: $route.name == 'InovativeIdea' }"
+        to="/admin-panel/InovativeIdea"
+      >
+
+        <span>
+         تحت توسعه
           <i class="fa fa-address-book" aria-hidden="true"></i></span
       ></router-link>
       <b-collapse

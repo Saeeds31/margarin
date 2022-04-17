@@ -222,6 +222,7 @@ export default {
     background: white;
     box-shadow: 0 0 40px #8d8d8d70;
      min-width: 450px;
+     height:max-content;
 }
 @media (max-width:1000px){
   #introductionSection #content img{

@@ -1,9 +1,9 @@
 <template>
-  <img
+  <img v-if="$root.footerData"
   :class="{'flipLogo':$root.sectionIndexHome>1}"
     @click="homeRoute()"
     class="mainLogo"
-    src="@/assets/front/images/logo.svg"
+    :src="$root.baseImageUrl+$root.footerData.logo"
     alt="لوگو مارگارین"
   />
 </template>

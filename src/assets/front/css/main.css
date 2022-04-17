@@ -562,7 +562,7 @@ input:-internal-autofill-selected {
 } */
 
 #homeSection #homeLeader #headerContent #buttons {
-    width: 25%;
+    width: 27%;
 }
 
 #homeSection #homeLeader #headerContent.reStyleHeaderContent #buttons button i {
@@ -699,6 +699,10 @@ input:-internal-autofill-selected {
     }
 }
 
+.mainLogo {
+    width: 90px;
+}
+
 .mainLogo,
 .aboutCart {
     cursor: pointer;
@@ -743,7 +747,7 @@ input:-internal-autofill-selected {
 
 @media (min-width:1600px) {
     #homeSection #homeLeader #headerContent #buttons {
-        width: 20%
+        width: 22.5%
     }
 }
 
@@ -834,7 +838,7 @@ svg#newsSvg,
 #homeSection #homeLeader #verticalMenu {
     position: fixed;
     right: 2%;
-    background: #0000001f;
+    background: #0000004f;
     top: 25%;
     padding: 10px 0;
     border-radius: 35px;
@@ -871,7 +875,7 @@ svg#newsSvg,
 }
 
 #homeSection #homeLeader #verticalMenu ul li a svg path {
-    fill: #c1b7b4;
+    fill: white;
     transition: all 0.5s;
 }
 
@@ -1676,11 +1680,11 @@ svg.cookingTimerSvg {
     margin: 10% 0 0;
 }
 
-#aboutSection #statisticsSection #racemeSection .raceme {
+#aboutSection #racemeSection .raceme {
     position: relative
 }
 
-#aboutSection #statisticsSection #racemeSection .raceme .content {
+#aboutSection #racemeSection .raceme .content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1690,13 +1694,13 @@ svg.cookingTimerSvg {
     top: 30%;
 }
 
-#aboutSection #statisticsSection #racemeSection .raceme h3 {
+#aboutSection #racemeSection .raceme h3 {
     color: var(--color-theme);
     font-size: 54px;
     font-family: 'yekan-heavy';
 }
 
-#aboutSection #statisticsSection #racemeSection .raceme h4 {
+#aboutSection #racemeSection .raceme h4 {
     color: #666666;
     font-size: 16px;
     font-family: 'yekan-heavy';
@@ -1741,9 +1745,10 @@ svg.cookingTimerSvg {
 }
 
 #aboutSection #awardsSection {
-    margin-left: 25%;
+    margin-left: 13%;
     padding: 5% 0 10%;
     margin-bottom: 10%;
+    width: 82%;
 }
 
 #healthAmbassador #blogsSection .slick-slide {
@@ -1779,6 +1784,7 @@ button#toggleMenuModal i {
     font-size: 14px;
     text-align: justify;
     direction: rtl;
+    font-weight: bold;
 }
 
 #aboutSection #awardsSection .sliderItem .content p span:first-child {
@@ -2340,12 +2346,14 @@ a.cookingDetailSvg {
 
 #contactUsSection #introductionSection .slotElements {
     flex-wrap: wrap;
-    display: flex;
-    justify-content: space-between;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    /* justify-content: space-between; */
 }
 
 #contactUsSection #introductionSection .slotElements .contactWay {
-    width: 40%;
+    /* width: 40%; */
     margin-bottom: 15px;
     flex-direction: row-reverse;
 }
@@ -2358,32 +2366,33 @@ a.cookingDetailSvg {
     width: 30%
 }
 
-#contactUsSection .contactUsTitle h1 {
+.contactUsTitle h1 {
     font-size: 39px;
     font-family: 'yekan-heavy';
     text-align: center;
 }
 
-#contactUsSection .contactUsTitle h3 {
+.contactUsTitle h3 {
     font-size: 24px;
     text-align: center;
 }
 
-#contactUsSection #contactUsForm {
+#contactUsForm,
+#developForm {
     margin: 2% auto 15%;
 }
 
-#contactUsSection #contactUsForm #formBottom {
+#contactUsForm #formBottom {
     position: relative;
 }
 
-#contactUsSection #contactUsForm #formTop .contactUsInput {
+#contactUsForm #formTop .contactUsInput {
     width: 32%;
     border-radius: 10px;
     border: 4px solid var(--grayBackground);
 }
 
-#contactUsSection #contactUsForm textarea {
+#contactUsForm textarea {
     border-radius: 10px;
     border: 4px solid var(--grayBackground);
     resize: none;
@@ -2394,17 +2403,17 @@ a.cookingDetailSvg {
     direction: rtl
 }
 
-#contactUsSection #contactUsForm textarea:focus-visible {
+#contactUsForm textarea:focus-visible {
     outline: none;
 }
 
-#contactUsSection #contactUsForm #formBottom #roundedButton {
+#contactUsForm #formBottom #roundedButton {
     position: absolute;
     margin: 0 15px;
     bottom: 10%;
 }
 
-#contactUsSection #contactUsForm #formTop .contactUsInput svg {
+#contactUsForm #formTop .contactUsInput svg {
     margin: 0 10px;
     opacity: 0.4;
 }
@@ -2414,7 +2423,7 @@ a.cookingDetailSvg {
     z-index: 11;
 }
 
-#contactUsSection #contactUsForm #formTop .contactUsInput p {
+#contactUsForm #formTop .contactUsInput p {
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -2423,17 +2432,17 @@ a.cookingDetailSvg {
     padding: 20px;
 }
 
-#contactUsSection #contactUsForm #formTop .contactUsInput p span:last-child {
+#contactUsForm #formTop .contactUsInput p span:last-child {
     font-size: 16px;
     font-family: 'yekan-light';
 }
 
-#contactUsSection #contactUsForm #formTop .contactUsInput p span:first-child {
+#contactUsForm #formTop .contactUsInput p span:first-child {
     font-size: 16px;
     font-family: 'yekan-heavy';
 }
 
-#contactUsSection #contactUsForm #formTop .contactUsInput input {
+#contactUsForm #formTop .contactUsInput input {
     width: 100%;
     height: 100%;
     border: none;
@@ -2855,7 +2864,7 @@ input[type=number] {
 /* healthAmbassador style*/
 
 #healthAmbassador button#toggleMenu i {
-    font-size: 30px;
+    font-size: 22px;
     padding: 0 2px;
     color: white;
     position: relative;
@@ -2913,8 +2922,6 @@ input[type=number] {
     width: 50%;
 }
 
-#healthAmbassador #shopSection #content {}
-
 #healthAmbassador #shopSection #content #titles h1 {
     opacity: 0.6;
     font-family: 'peyda-bold';
@@ -2928,11 +2935,11 @@ input[type=number] {
 }
 
 #healthAmbassador #ourProduct #carts .ourProductCart:nth-child(2) .svg {
-    background: darkolivegreen;
+    /* background: darkolivegreen; */
 }
 
 #healthAmbassador #ourProduct #carts .ourProductCart:nth-child(1) .svg {
-    background: #9b0096;
+    /* background: #9b0096; */
 }
 
 #healthAmbassador #shopSection #content #titles p {
@@ -3065,20 +3072,20 @@ input[type=number] {
 
 #healthAmbassador #ourProduct #carts .ourProductCart .svg {
     padding: 20px;
-    background: red;
+    /* background: red; */
     border-radius: 30px;
     position: absolute;
     top: -40px;
 }
 
 #healthAmbassador #ourProduct #carts .ourProductCart:nth-child(odd) .svg {
-    background-color: var(--color-theme);
-    box-shadow: 0 0 50px #f7941e8a;
+    /* background-color: var(--color-theme);
+    box-shadow: 0 0 50px #f7941e8a; */
 }
 
 #healthAmbassador #ourProduct #carts .ourProductCart:nth-child(even) .svg {
-    background-color: var(--backgroundButton);
-    box-shadow: 0 0 50px #b1101594;
+    /* background-color: var(--backgroundButton);
+    box-shadow: 0 0 50px #b1101594; */
 }
 
 #healthAmbassador #goodFamily #content .choose {
@@ -3229,6 +3236,12 @@ div#application {
 #healthAmbassador #blogsSection h2 {
     font-family: 'peyda-black';
     font-size: 38px;
+}
+
+@media (max-width:768px) {
+    #healthAmbassador #blogsSection h2 {
+        font-size: 26px;
+    }
 }
 
 #healthAmbassador #blogsSection .lineBreak {
@@ -3970,6 +3983,7 @@ div#application {
     bottom: 25%
 }
 
+#frontSection #footer #footerSection #buttons a,
 #frontSection #footer #footerSection #buttons button {
     background-color: #00000012;
     border: none;
@@ -3978,12 +3992,14 @@ div#application {
     width: 115px;
 }
 
+#frontSection #footer #footerSection #buttons a span,
 #frontSection #footer #footerSection #buttons button span {
     color: black;
     opacity: 0.3;
     font-size: 12px;
     margin-top: 10px;
-    width: 70%
+    width: 70%;
+    text-align: center
 }
 
 
@@ -4250,6 +4266,12 @@ img#moonSvg {
 /* @media  */
 
 @media (max-width:451px) {
+    #productDetailSection #introductionSection .mainProductImage .mainImage img {
+        height: auto;
+        width: max-content !important;
+        object-fit: fill;
+        min-width: unset !important;
+    }
     #introductionSection #content .innerContent .mainImage,
     #introductionSection #content img {
         width: 100% !important;
@@ -4443,9 +4465,13 @@ img#moonSvg {
     }
     /*home cooking responsive */
     #homeSection #weeklyCookingSection {
+        height: auto;
         background-image: none;
         margin-bottom: 20%;
         overflow: visible;
+    }
+    #homeSection section#selectedProductSection {
+        height: auto;
     }
     #homeSection #weeklyCookingSection .cart .body {
         width: 100%;
@@ -4712,11 +4738,11 @@ img#moonSvg {
         border-radius: 10px;
         background: white; */
     }
-    #aboutSection #statisticsSection #racemeSection {
+    #aboutSection #racemeSection {
         flex-wrap: wrap;
         justify-content: center !important;
     }
-    #aboutSection #statisticsSection #racemeSection .raceme {
+    #aboutSection #racemeSection .raceme {
         margin: 10px;
     }
     #aboutSection #statisticsSection #content {
@@ -5017,6 +5043,11 @@ img#moonSvg {
         font-size: 19px;
         text-align: right;
         width: 100%;
+        height: 60px;
+    }
+    #rawMaterial .material {
+        flex-direction: column;
+        align-items: flex-end !important;
     }
     #blogDetailSection #relatedBlogs .blogCartMobile .innerContent .content #doubleLine {
         width: 70%;
@@ -5054,6 +5085,7 @@ img#moonSvg {
     #contactUsSection #introductionSection .slotElements {
         flex-direction: column;
         align-items: center;
+        display: flex !important;
     }
     #contactUsSection .mainContent {
         flex-direction: column-reverse;
@@ -5063,15 +5095,15 @@ img#moonSvg {
         margin: 5px auto;
         align-items: center !important;
     }
-    #contactUsSection #contactUsForm #formTop {
+    #contactUsForm #formTop {
         flex-direction: column;
         align-items: center;
     }
-    #contactUsSection #contactUsForm #formTop .contactUsInput {
+    #contactUsForm #formTop .contactUsInput {
         width: 100%;
         margin: 10px auto;
     }
-    #contactUsSection #contactUsForm #formBottom #roundedButton {
+    #contactUsForm #formBottom #roundedButton {
         position: relative;
         margin: 15px auto;
         bottom: unset;
@@ -5369,6 +5401,7 @@ img#moonSvg {
 }
 
 @media (max-width: 500px) {
+    #frontSection #footer #footerSection #buttons a,
     #frontSection #footer #footerSection #buttons button {
         transform: scale(0.8);
     }
@@ -5768,7 +5801,7 @@ div#mobileMenuSection {
 }
 
 #mobileMenuSection .menuHeader a {
-    color: black
+    color: black !important
 }
 
 #mobileMenuSection ul.menuChild {
@@ -5802,4 +5835,83 @@ div#mobileMenuSection {
 .titleBoxCooking {
     display: flex;
     flex-direction: row-reverse;
+}
+
+#productsSection #contactUsForm #formTop .contactUsInput {
+    width: 48%
+}
+
+@media (max-width: 1000px) {
+    #productsSection #contactUsForm #formTop .contactUsInput,
+    select#selectunderType {
+        width: 100% !important;
+        margin: 10px auto;
+    }
+    select#selectunderType {
+        padding: 15px 30px !important;
+        ;
+    }
+}
+
+#productsSection #contactUsForm #formTop {
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    gap: 10px;
+}
+
+#collapseSection .item:nth-child(even) {
+    background: url(../images/blue.png);
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 20% 70%;
+    flex-direction: row;
+}
+
+#collapseSection .item:nth-child(odd) {
+    background: url(../images/green.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 20% 70%;
+    flex-direction: row-reverse;
+}
+
+#collapseSection .item:nth-child(1) {
+    background: url(../images/yellow.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 20% 70%;
+}
+
+#collapseSection .item {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+}
+
+#collapseSection .item strong {
+    width: 300px;
+    margin: 0 50px;
+    text-align: right;
+    display: block;
+}
+
+.item p {
+    padding: 80px;
+    direction: rtl;
+    text-align: justify;
+}
+
+@media (max-width:1000px) {
+    #collapseSection .item {
+        flex-direction: column !important;
+    }
+    #collapseSection .item:nth-child(even) {
+        background-position: top;
+    }
+    #collapseSection .item:nth-child(odd) {
+        background-position: top;
+    }
 }
