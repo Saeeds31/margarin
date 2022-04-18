@@ -409,7 +409,7 @@ export default {
           });
         }, 1000);
       }
-    }, 100);
+    }, 1000);
   },
   beforeDestroy() {
     if (document.getElementById("map")) {

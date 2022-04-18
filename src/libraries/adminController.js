@@ -115,6 +115,7 @@ export default {
                 .catch(() => {});
         },
         showEditModal(id) {
+
             this.editedId = id;
             this.status = true;
             this.$axios.get(`${this.apiRoute}/${id}`).then(response => {
@@ -123,6 +124,10 @@ export default {
             })
             this.mode = "edit";
             this.showModal = true;
+            setTimeout(() => {
+                document.getElementById('blogModal___BV_modal_content_').removeAttribute('tabindex')
+
+            })
         },
         setErrorResponse(error) {
             let arrayError = error.split("|");

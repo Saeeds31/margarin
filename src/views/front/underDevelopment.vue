@@ -4,8 +4,8 @@
       class="width80 margin-auto"
       :title="
         $cookie.get('ltrTheme')
-          ? 'Products Under Development '
-          : 'مــــحصولات  تـــحت تـــوسعـــه'
+          ? 'Research And  Development '
+          : 'تحقیـــق و تـــوسعـــه'
       "
       :summary="'معرفي دپارتمان تحقيق و توسعه'"
       :image="image1"
