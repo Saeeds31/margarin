@@ -1243,6 +1243,7 @@ svg#newsSvg,
   font-size: 25px;
   font-family: "yekan-heavy";
   text-align: right;
+  min-height: 60px;
 }
 
 #homeSection #weeklyCookingSection .cart .body p {
@@ -1281,6 +1282,7 @@ svg#newsSvg,
   text-align: justify;
   padding: 5px 50px;
   direction: rtl;
+  min-height: 180px;
 }
 
 #homeSection #weeklyCookingSection .cart .body .seen {
