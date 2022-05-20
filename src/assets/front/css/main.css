@@ -6352,6 +6352,8 @@ section#galleries h3 {
   .cookingDetail #introductionSection #content img {
     width: 563px !important;
     height: 311px !important;
+    min-width: 563px !important;
+    min-height: 311px !important;
   }
 }
 .blogDetailSection #introductionSection #content .imageBoxMobile img {
