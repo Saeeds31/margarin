@@ -372,7 +372,7 @@ export default {
       answerId:null,
       answer:null,
       showModal:false,
-      baseMediaUrl: "http://blogtest.ir/",
+      baseMediaUrl: "http://test.mmc.ir/",
     }
   }
 };

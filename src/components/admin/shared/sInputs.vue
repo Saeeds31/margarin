@@ -300,9 +300,9 @@
 
             <template v-if="header.multiData && header.type == 'ckEditor'">
               <ckeditor
-                 name="Descriptionltr"
+                name="Descriptionltr"
                 lan="en"
-               :config="ckEditorConfig1"
+                :config="ckEditorConfig1"
                 class="cke_rtl"
                 v-model="bigData.english[header.key + '_en']"
               ></ckeditor>
@@ -436,7 +436,7 @@
           </template>
           <template v-if="!header.multiData && header.type == 'file'">
             <b-form-file
-             :disabled="header.disable ? header.disable : false"
+              :disabled="header.disable ? header.disable : false"
               v-model="files[header.key]"
               :state="Boolean(files[header.key])"
               :placeholder="header.placeholder"
@@ -445,7 +445,11 @@
             </b-form-file>
             <a
               class="videoPreviewButton"
-              v-if="mode == 'edit' && bigData.both[header.key] != ''&& bigData.both[header.key] != null"
+              v-if="
+                mode == 'edit' &&
+                bigData.both[header.key] != '' &&
+                bigData.both[header.key] != null
+              "
               :href="baseMediaUrl + bigData.both[header.key]"
               target="_blank"
               >دریافت</a
@@ -510,7 +514,7 @@
           <template v-if="!header.multiData && header.type == 'ckEditor'">
             <ckeditor
               :editor="editor"
-               :config="ckEditorConfig"
+              :config="ckEditorConfig"
               v-model="editorData"
             ></ckeditor>
           </template>
@@ -582,12 +586,11 @@ import {
   BFormFile,
   BFormCheckbox,
   BCol,
-  BFormTextarea
+  BFormTextarea,
 } from "bootstrap-vue";
 
 export default {
   methods: {
-
     event_image_change(e) {
       const file = e.target.files[0];
       if (this.mode == "create") {
@@ -607,7 +610,7 @@ export default {
       }
       this.listValue[key + lang].push({
         value: this.listName[lang],
-        id: this.helpIndex[lang]
+        id: this.helpIndex[lang],
       });
       this.listName[lang] = "";
     },
@@ -651,7 +654,7 @@ export default {
             this.$toast.info("درحال آپلود تصویر");
           }
           this.innerDisabled = true;
-        }
+        },
       };
       await this.$axios
         .post(
@@ -688,7 +691,7 @@ export default {
             }
           }
           this.innerDisabled = true;
-        }
+        },
       };
       await this.$axios
         .post(
@@ -712,6 +715,12 @@ export default {
       for (const header of this.headers) {
         if (header.type == "image") {
           if (this.image[header.key] != undefined) {
+            if (this.image[header.key].size > 2097152) {
+              this.$toast.warning(
+                "حجم تصویر  بارگذاری شده بیش از 2 مگ می باشد"
+              );
+              return;
+            }
             this.bigData.both[header.key] = await this.uploadImage(header.key);
           } else {
             if (this.mode != "edit") this.bigData.both[header.key] = "";
@@ -734,6 +743,11 @@ export default {
           } else {
             if (this.mode != "edit") this.bigData.both[header.key] = "";
           }
+        } else if (header.type == "boolean") {
+          // fixed null boolean given in send ,when not switched
+          if (this.bigData.both[header.key] == null) {
+            this.bigData.both[header.key] = false;
+          }
         }
       }
       let pack = {
@@ -741,8 +755,8 @@ export default {
         data: {
           ...this.bigData.persian,
           ...this.bigData.english,
-          ...this.bigData.both
-        }
+          ...this.bigData.both,
+        },
       };
       // if (Object.keys(this.ckEditor).length > 0) {
       //   pack.data = {
@@ -762,7 +776,7 @@ export default {
         }
         pack.data = {
           ...pack.data,
-          ...result
+          ...result,
         };
       }
       this.innerDisabled = false;
@@ -846,7 +860,7 @@ export default {
       //   }
       // });
       // this.$emit("submit", form_data);
-    }
+    },
   },
   components: {
     BForm,
@@ -862,7 +876,7 @@ export default {
     Treeselect,
     BCol,
     BFormTextarea,
-    datePicker
+    datePicker,
   },
   props: {
     bigData: Object,
@@ -872,51 +886,59 @@ export default {
     headers: Array,
     disabled: Boolean,
     settings: Object,
-    edit_item: Object
+    edit_item: Object,
   },
   watch: {
     bigData(newVal) {
       if (newVal.persian["keyWords_fa"]) {
         this.listValue["keyWords_fa"] = [];
-        let helpArray=newVal.persian["keyWords_fa"].split(",")
+        let helpArray = newVal.persian["keyWords_fa"].split(",");
         helpArray.forEach((item, index) => {
-          this.listValue['keyWords_fa'].push({
+          this.listValue["keyWords_fa"].push({
             value: item,
-            id: index
+            id: index,
           });
-          this.helpIndex['_fa'] = index + 1;
+          this.helpIndex["_fa"] = index + 1;
         });
       }
       if (newVal.english["keyWords_en"]) {
-        this.listValue['keyWords_en'] = [];
-        let helpArray=newVal.english["keyWords_en"].split(",")
+        this.listValue["keyWords_en"] = [];
+        let helpArray = newVal.english["keyWords_en"].split(",");
 
         helpArray.forEach((item, index) => {
-          this.listValue['keyWords_en'].push({
+          this.listValue["keyWords_en"].push({
             value: item,
-            id: index
+            id: index,
           });
-          this.helpIndex['_en'] = index + 1;
+          this.helpIndex["_en"] = index + 1;
         });
       }
-    }
+    },
   },
   data() {
     return {
-     ckEditorConfig:{ contentsLangDirection: 'rtl',
-    language : 'fa',
-    filebrowserImageUploadUrl : 'http://www.blogtest.ir/api/files/uploadckfile',
-    
-     } ,
-     
-     ckEditorConfig1:{ contentsLangDirection: 'ltr',
-    language : 'fa',
-    filebrowserImageUploadUrl : 'http://www.blogtest.ir/api/files/uploadckfile',
-    
-     } ,
+      ckEditorConfig: {
+        contentsLangDirection: "rtl",
+        allowedContent: true,
+        language: "fa",
+        filebrowserImageUploadUrl:
+          "http://www.test.mmc.ir/api/files/uploadckfile",
+        colorButton:true,
+        extraPlugins: 'justify'
+      },
+
+      ckEditorConfig1: {
+        contentsLangDirection: "ltr",
+        language: "fa",
+        allowedContent: true,
+        filebrowserImageUploadUrl:
+          "http://www.test.mmc.ir/api/files/uploadckfile",
+        colorButton:true,
+        extraPlugins: 'justify'
+      },
       previewImage: {},
       innerDisabled: false,
-      baseMediaUrl: "http://blogtest.ir/",
+      baseMediaUrl: "http://test.mmc.ir/",
       image: {},
       video: {},
       string: {},
@@ -932,20 +954,20 @@ export default {
       selected: {},
       listName: {
         _fa: null,
-        _en: null
+        _en: null,
       },
       listValue: {},
       helpIndex: {
         _fa: 1,
-        _en: 1
+        _en: 1,
       },
       // editor: ClassicEditor,
       editorData: "<p>محتوا را وارد کنید</p>",
       editorConfig: {
-        language: "fa"
-      }
+        language: "fa",
+      },
     };
-  }
+  },
 };
 </script>
 

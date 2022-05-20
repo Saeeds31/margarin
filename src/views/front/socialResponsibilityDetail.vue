@@ -12,7 +12,7 @@
       >
         <p class="imageBoxMobile">
           <img class="showInMobile width100" :src="$root.baseImageUrl+blogData.image" :alt="blogData.title" />
-          <span>
+          <span class="text-a-right">
             {{ blogData.title }}
           </span>
         </p>
@@ -361,7 +361,7 @@ shareBlog(){
             "%",
             "#blogDetailSection #introductionSection #headerBlog",
             1920,
-            30,
+            35,
             1496,
             20
           );
@@ -535,5 +535,11 @@ shareBlog(){
 }
 .shareBlog{
   cursor: pointer;
+}
+</style>
+<style scoped>
+.text-a-right{
+  display: block;
+  margin-top: 20px;
 }
 </style>

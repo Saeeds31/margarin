@@ -126,6 +126,7 @@ div#logoPanel {
 
 .SForm .englishTab .form-control {
     text-align: left;
+    direction: ltr;
 }
 
 .filters .btn-primary {

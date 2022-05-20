@@ -97,7 +97,8 @@
     .ltrTheme #introductionSection #content div h3,
     .ltrTheme #frontSection #footer #footerSection #aboutUs p,
     .ltrTheme div#descriptionBox #description,
-    .ltrTheme section#managementIntro a span {
+    .ltrTheme section#managementIntro a span,
+    .ltrTheme .text-a-right {
         text-align: left;
     }
     
@@ -142,15 +143,23 @@
     .ltrTheme #homeSection #weeklyCookingSection .cart .body .description,
     .ltrTheme #introductionSection #content div h1,
     .ltrTheme #contactUsSection #contactUsForm textarea,
-    .ltrTheme #introductionSection #content div h3 {
+    .ltrTheme #introductionSection #content div h3,
+    .ltrTheme #productsSection #products,
+    .ltrTheme section#galleries {
         direction: ltr;
     }
     
+   .ltrTheme section#galleries h3{
+       text-align: left;
+   }
     .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content .description,
     .ltrTheme #homeSection #weblogsSection #multiSlider .cart .content h1 {
         direction: ltr;
     }
-    
+    .ltrTheme #blogDetailSection #introductionSection #headerBlog p span{
+        text-align: left;
+        
+    }
     .ltrTheme #productsSection #filterBox #searchBox input {
         direction: ltr !important;
         text-align: left;
@@ -442,11 +451,18 @@
         right: unset;
         left: 15%;
     }
-    
-    .ltrTheme #aboutSection #sliderbox p {
-        text-align: justify
+    .ltrTheme .productCart .product h1,
+    .ltrTheme .productCart .product h4{
+        text-align: left;
+        direction: ltr;
     }
-    
+    .ltrTheme #aboutSection #sliderbox p {
+        text-align: justify;
+        direction: ltr;
+    }
+   .ltrTheme .contactCart p span:last-child{
+        direction: ltr;
+      }
     .ltrTheme #Header #mainContent #mobileMenu nav #topMenu {
         flex-direction: column !important;
     }

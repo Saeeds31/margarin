@@ -91,6 +91,7 @@
   </main>
 </template>
 <script>
+import rolemixin from "@/libraries/adminRole.js"
 import Logo from "@/components/front/shared/logo.vue";
 import roundedButton from "@/components/front/shared/roundedButton.vue";
 export default {
@@ -98,7 +99,13 @@ export default {
     Logo,
     roundedButton
   },
+  mixins:[rolemixin],
   methods: {
+    getPath(roles){
+      let roleArr=roles.split(",");
+      let res=this.roleData[roleArr[0]].split(",")[0]
+      return res
+    },
     login() {
       const formData = new FormData();
       formData.append("grant_type", "password");
@@ -118,8 +125,8 @@ export default {
               if(res.data.data.toLowerCase().includes('admin')){
 
                 this.$router.push("/admin-panel/about-us");
-              }else {
-                this.$router.push("/admin-panel/recipes");
+              }else  {
+                this.$router.push(this.getPath(res.data.data));
 
               }
             })

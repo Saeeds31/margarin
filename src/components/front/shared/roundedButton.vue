@@ -1,5 +1,5 @@
 <template>
-  <router-link v-if="type == 'link'" id="roundedButton" :to="link">
+  <a v-if="type == 'link'" id="roundedButton" :href="link">
  <span>
       <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@
     </svg>
  </span>
 {{ title }} 
-  </router-link>
+  </a>
  
     <button @click="clickedEvent()" v-else id="roundedButton" :type="buttonType" >
           <span

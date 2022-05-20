@@ -1,4 +1,9 @@
 <style scoped>
+.item img{
+width:300px;
+height: auto;
+object-fit: fill;
+}
 
 </style>
 <template>
@@ -9,8 +14,11 @@
       data-aos-delay="500"
       data-aos-once="true"
          class="item">
+    <img :src="item.cover" :alt="item.question">
+            <div class="detail">
             <strong>{{item.question}}</strong>
             <p>{{item.answer}}</p>
+            </div>
         </div>
     </section>
 </template>

@@ -19,7 +19,7 @@ export default {
 </script>
 <style scoped>
 .contactCart {
-    padding: 5%;
+    padding: 2%;
     background: white;
     border-radius: 10px;
     box-shadow:0 0 10px #00000029;
@@ -40,9 +40,17 @@ export default {
         font-size: 18px;
     font-family:'yekan-bold';
     text-align: right;
+    direction: rtl;
 }
+
 .contactCart .headerSvg{
 border-radius: 100%;
 box-shadow: 5px 8px 100px #b0090e7d;
+}
+</style>
+<style>
+    .ltrTheme .contactCart .footerDetail
+{
+    direction: ltr;
 }
 </style>

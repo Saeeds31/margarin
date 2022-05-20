@@ -3,7 +3,7 @@
     class="footer d-flex flex-direction-column align-items-center width80 margin-auto"
   >
     <div id="mainFooter" class="d-flex width100 justify-content-between">
-      <div class="width25" id="images">
+      <!-- <div class="width25" id="images">
         <div>
           <img class="width40" :src="samandehiImage" alt="samandehi" />
         </div>
@@ -13,7 +13,7 @@
             alt="enamad"
           />
         </div>
-      </div>
+      </div> -->
 
       <div class="links width15">
         <h1>سایر لینک های مهم</h1>
@@ -23,29 +23,29 @@
         </div>
         <ul>
           <li>
-            <router-link to="/login-register"> ورود </router-link>
+            <router-link to="/login"> ورود </router-link>
           </li>
           <li>
-            <router-link to="/login-register"> عضویت </router-link>
+            <router-link to="/login"> عضویت </router-link>
           </li>
-          <li>
+          <!-- <li>
             <router-link to="/"> سهام دارن </router-link>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <router-link to="/"> همکاری با ما </router-link>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <router-link to="/"> ویرایش اطلاعات </router-link>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <router-link to="/cooperation"> استخدام </router-link>
-          </li>
+          </li> -->
           <li>
-            <router-link to="/"> آشپزخانه </router-link>
+            <router-link to="/cooking-archive"> آشپزخانه </router-link>
           </li>
-          <li>
+          <!-- <li>
             <router-link to="/"> دریافت اپلیکیشن </router-link>
-          </li>
+          </li> -->
         </ul>
       </div>
       <div class="links width15">
@@ -61,24 +61,24 @@
           <li>
             <router-link to="/about-us"> درباره ما </router-link>
           </li>
-          <li>
+          <!-- <li>
             <router-link to="/"> خدمات </router-link>
-          </li>
+          </li> -->
           <li>
             <router-link to="/products"> محصولات </router-link>
           </li>
-          <li>
+          <!-- <li>
             <router-link to="/"> فروشگاه </router-link>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <router-link to="/"> اخبار و اطلاعیه ها </router-link>
-          </li>
+          </li> -->
           <li>
             <router-link to="/weblogs"> وبلاگ </router-link>
           </li>
-          <li>
+          <!-- <li>
             <router-link to="/"> آموزش </router-link>
-          </li>
+          </li> -->
           <li>
             <router-link to="/contact-us"> تماس با ما </router-link>
           </li>
@@ -86,16 +86,14 @@
       </div>
       <div class=" width40 d-flex flex-direction-column align-items-end">
         <logo class="width15" />
-        <p class="blackColor04">
+        <!-- <p class="blackColor04">
           لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
           از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و
           سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی است .
-        </p>
+        </p> -->
         <div class="d-flex width100 align-items-center justify-content-around">
           <p class="blackColor04 width80">
-            ایران , تهران , شهر ري , كيلومتر 3 جاده ورامين , بلوار شهید تندگویان
-             شرکت های صنعتی مارگارین
-          </p>
+          ایران _ تهران- شهر ري-كيلومتر 3 جاده ورامين - شركت مارگارين </p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -151,8 +149,8 @@
           </svg>
         </div>
         <div class="d-flex social">
-          <div>
-            <svg
+          <!-- <div>
+            <svg 
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
               width="78"
@@ -196,7 +194,7 @@
                 />
               </g>
             </svg>
-          </div>
+          </div> -->
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -287,7 +285,7 @@
               </g>
             </svg>
           </div>
-          <div>
+          <!-- <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -332,7 +330,7 @@
                 />
               </g>
             </svg>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

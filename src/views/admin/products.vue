@@ -92,12 +92,22 @@ export default {
         },
         {
           style: "col-6",
-          show_in_table: true,
-          placeholder: "نوع محصول را وارد کنید",
+          show_in_table: false,
+          placeholder: "رنگ محصول راوارد کنید",
           type: "string",
-          multiData: true,
+          multiData: false,
+          name: "رنگ محصول",
+          key: "colorCode"
+        },
+        {
+          style: "col-6",
+          show_in_table: false,
+          placeholder: "نوع محصول را وارد کنید",
+          type: "select",
+          multiData: false,
           name: "نوع محصول",
-          key: "type"
+          selectIN: "selectListType",
+          key: "type_fa"
         },
         {
           style: "col-6",
@@ -199,13 +209,22 @@ export default {
         },
 
         {
-          style: "col-12",
+          style: "col-6",
           show_in_table: false,
           placeholder: "فعال کردن تحت توسعه برای این محصول",
           type: "boolean",
           multiData: false,
           name: "آیا تحت توسعه است؟",
           key: "underDevelopment"
+        },
+        {
+          style: "col-6",
+          show_in_table: false,
+          placeholder: "مخفی کردن این محصول",
+          type: "boolean",
+          multiData: false,
+          name: "ایا محصول پنهان شود؟",
+          key: "hide"
         },
         {
           style: "col-12",
@@ -251,6 +270,7 @@ export default {
     }
     this.loadSettings([{ route: "ProductCategory", field: "name" },{ route: "Brand", field: "title" }]);
 
+      this.settings['selectListType']=[ {id:'خانوار',label:'خانوار'}, {id:'صنف و صنعت',label:'صنف و صنعت'}]
     this.loadItems(this.currentPage);
   },
   watch: {

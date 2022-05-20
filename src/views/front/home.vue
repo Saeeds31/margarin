@@ -65,7 +65,6 @@
       :multiSliderList="multiSlider"
       data-aos="fade-up"
       data-aos-duration="1500"
-      data-aos-delay="500"
       data-aos-once="false"
     />
     <articles
@@ -188,7 +187,8 @@ export default {
         this.$store.commit("setMultiSliderNews", newVal.news);
         this.$store.commit("setSingleSliderNews", newVal.news);
       }
-    }
+    },
+   
   },
   computed: {
     footerData() {

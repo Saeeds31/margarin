@@ -65,6 +65,29 @@ const routes = [{
                 );
             }
         },
+        {
+            path: "/partner-report",
+            name: "partner",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/partner.vue"
+                );
+            }
+        },
+
+        {
+            path: "/search",
+            name: "search",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/search.vue"
+                );
+            }
+        },
 
         {
             path: "/weblogs",
@@ -122,6 +145,19 @@ const routes = [{
                 return import (
                     /* webpackChunkName: "front" */
                     "../views/front/faq.vue"
+                );
+            }
+        },
+        
+
+        {
+            path: "galleries",
+            name: "galleriesFront",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "admin" */
+                    "../views/front/galleries.vue"
                 );
             }
         },
@@ -242,6 +278,17 @@ const routes = [{
             }
         },
         {
+            path: "/report-detail/:id/:slug?",
+            name: "partnerReportDetail",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/partnerReportDetail.vue"
+                );
+            }
+        },
+        {
             path: "/reportage-detail/:id/:slug?",
             name: "reportageDetail",
 
@@ -347,6 +394,32 @@ const routes = [{
                         );
                     }
                 },
+// partner panel
+
+{
+    path: "partners-panel",
+    name: "partnersPanel",
+
+    component: function() {
+        return import (
+            /* webpackChunkName: "admin" */
+            "../views/admin/partnersPanel.vue"
+        );
+    }
+},
+
+
+{
+    path: "partners-introduction",
+    name: "partnersIntroduction",
+
+    component: function() {
+        return import (
+            /* webpackChunkName: "admin" */
+            "../views/admin/partnersIntroduction.vue"
+        );
+    }
+},
 
 
                 {
@@ -565,6 +638,17 @@ const routes = [{
                         );
                     }
                 },
+                {
+                    path: "utility-menu",
+                    name: "utilityMenu",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/utilityMenu.vue"
+                        );
+                    }
+                },
 
                 {
                     path: "reports",
@@ -647,6 +731,30 @@ const routes = [{
                         );
                     }
                 },
+                // gallery
+                
+                {
+                    path: "galleries",
+                    name: "galleries",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/galleries.vue"
+                        );
+                    }
+                },
+                {
+                    path: "gallery-introduction",
+                    name: "galleryIntroduction",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/galleryIntroduction.vue"
+                        );
+                    }
+                },
 
                 {
                     path: "settings",
@@ -668,17 +776,6 @@ const routes = [{
                         return import (
                             /* webpackChunkName: "admin" */
                             "../views/admin/users.vue"
-                        );
-                    }
-                },
-                {
-                    path: "user-role",
-                    name: "panelUserRole",
-
-                    component: function() {
-                        return import (
-                            /* webpackChunkName: "admin" */
-                            "../views/admin/userRole.vue"
                         );
                     }
                 },

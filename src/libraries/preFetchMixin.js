@@ -37,6 +37,7 @@ export default {
             } else {
                 if (actionParam == "null") this.$store.dispatch(actionName);
                 else
+                
                     this.$store.dispatch(
                         actionName,
                         this.convertJsonStingPack(actionParam)

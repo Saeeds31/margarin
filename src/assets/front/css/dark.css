@@ -41,6 +41,8 @@
 .darkMode .ckEditorOutput,
 .darkMode .blackColor08,
 .darkMode .cookingCart .detail span,
+.darkMode #collapseSection .item p,
+.darkMode section#managementIntro a span,
 .darkMode #homeSection #sliderSection #sliderContent #headerContent #navBarMenu ul li a {
     color: white !important;
 }

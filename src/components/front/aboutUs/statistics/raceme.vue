@@ -25,7 +25,7 @@
     </svg>
 
     <div class="content">
-      <h3>{{ "+ "+counter }}</h3>
+      <h3>{{ "+ " + counter }}</h3>
       <h4>{{ $cookie.get("ltrTheme") ? data.title_en : data.title_fa }}</h4>
     </div>
   </div>
@@ -33,31 +33,45 @@
 <script>
 export default {
   props: {
-    data: Object
+    data: Object,
   },
   data() {
     return {
-      counter: 1
+      counter: 1,
+      faker: 1,
+      icreaser: 1,
     };
   },
-  mounted(){
-    if(this.data.number<600000){
-
-      let howTime =this.data.number  / 10;
-    setTimeout(()=>{
-this.counter = 0;
-      let timerInterval = setInterval(() => {
-        if (this.counter == this.data.number) {
-          clearInterval(timerInterval);
+  mounted() {
+    if (this.data.number < 600000) {
+      let howTime = this.data.number / 10;
+      setTimeout(() => {
+        this.counter = 0;
+        this.faker = 0;
+        let interValTimer = 1000 / howTime;
+        if (interValTimer < 10) {
+          this.icreaser=10/interValTimer;
+          let timerInterval = setInterval(() => {
+            if (this.faker >= this.data.number) {
+              clearInterval(timerInterval);
+            } else {
+              this.faker += this.icreaser;
+              this.counter = Math.floor(this.faker);
+            }
+          }, 10);
         } else {
-          this.counter++;
+          let timerInterval = setInterval(() => {
+            if (this.counter == this.data.number) {
+              clearInterval(timerInterval);
+            } else {
+              this.counter += this.icreaser;
+            }
+          }, interValTimer);
         }
-      }, 1000/howTime);
-    },3000)
-        }else{
-          this.counter=this.data.number
-        }
+      }, 3000);
+    } else {
+      this.counter = this.data.number;
+    }
   },
- 
 };
 </script>

@@ -26,9 +26,17 @@ export default {
     routeToAbout(index) {
       if (index == 0) {
         this.$router.push("/about-us?#aboutMargarin");
-      } else {
+      } else if(index==1){
         this.$router.push(
-          "/about-us?section=collapseSection&sectionId=" + index
+          "/about-us?section=vision" 
+        );
+      }else if(index==2){
+        this.$router.push(
+          "/about-us?section=mission" 
+        );
+      }else if(index==3){
+        this.$router.push(
+          "/about-us?section=fourSection" 
         );
       }
     }

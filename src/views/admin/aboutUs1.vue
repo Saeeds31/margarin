@@ -1,89 +1,86 @@
 <template>
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <!-- /.content-header -->
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 cardH">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">جدول کتاب ها</h3>
-                <div class="card-tools">
-                  <div class="input-group input-group-sm insert_box d-flex">
-                    <b-form-input
-                      v-model="searchName"
-                      placeholder="جستوجوی نام کتاب"
-                    ></b-form-input>
-                    <treeselect
-                    style="width:40%;"
-                    :multiple="false"
-                    :clearable="false"
-                    :searchable="false"
-                     v-model="filter"
-                    :options="filterOption"
-                  />
-                    <button @click="showPostModal()" class="btn btn-success">
-                      افزودن
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <template v-if="!status">
-                <div v-if="Items" class="card-body table-responsive p-0">
-                  <STable
-                        :settings="settings"
-                    v-model="Items"
-                    @showEditModal="showEditModal"
-                    @deleteItem="deleteItem"
-                    :headers="headers"
-                  />
-                </div>
-              </template>
-              <!-- /.card-header -->
+   <div id="margarinValues">
+        <div class="margarin_values_desc" id="margarinValues_social">
+          تعهد به افزایش سطح سلامت جامعه
+          <br />
 
-              <!-- /.card-body -->
-              <!-- <div class="card-footer">
-                <b-button variant="warning"
-                 @click="showDraggableTable()"
-                >
-الویت بندی
-                </b-button>
-              </div> -->
-            </div>
-            <!-- /.card -->
+          رعایت الزامات قانونی در تولید محصولات
+          <br />
+
+          رقابت حرفه ای و اخلاقی با سایر رقبا
+          <br />
+
+          پیشرو در طراحی و تولید محصولات جدید
+        </div>
+        <div class="margarin_values_desc" id="margarinValues_customer">
+          جلب اعتماد و احترام به مشتریان
+          <br />
+          خلق نوآوری های فراتر از انتظارات مشتریان
+          <br />
+          تاکید بر حفظ و پایداری مشتریان
+        </div>
+        <div class="margarin_values_desc" id="margarinValues_staff">
+          شایسته سالاری و استفاده از نیروهای متخصص و وفادار
+          <br />
+
+          تاکید بر اتحاد، همدلی، مشارکت و کارگروهی
+          <br />
+
+          تعهد به تعالی، پیشرفت و ایجاد انگیزه در کارکنان
+          <br />
+
+          تعهد به فراگیری آموزش و ثبت و انتقال دانش
+        </div>
+        <div class="margarin_values_desc" id="margarinValues_other">
+          حفظ و صیانت از سرمایه های مادی و معنوی شرکای تجاری
+          <br />
+
+          التزام به سودآوری پایدار و بلندمدت
+          <br />
+
+          شفافیت و صداقت در انتقال اطلاعات به ذینفعان
+        </div>
+
+        <div id="margin_values_circle">
+          <div
+            @mouseleave="unfocusSec('margarinValues_social')"
+            @mouseenter="focusSec('margarinValues_social', '64f2ff')"
+          >
+            <img
+              src="@/assets/front/images/circle_tl.png"
+              alt="margarin values"
+            />
+          </div>
+          <div
+            @mouseleave="unfocusSec('margarinValues_customer')"
+            @mouseenter="focusSec('margarinValues_customer', '36ff54')"
+          >
+            <img
+              src="@/assets/front/images/circle_tr.png"
+              alt="margarin values"
+            />
+          </div>
+          <div
+            @mouseleave="unfocusSec('margarinValues_staff')"
+            @mouseenter="focusSec('margarinValues_staff', 'ff7f7e')"
+          >
+            <img
+              src="@/assets/front/images/circle_bl.png"
+              alt="margarin values"
+            />
+          </div>
+          <div
+            @mouseleave="unfocusSec('margarinValues_other')"
+            @mouseenter="focusSec('margarinValues_other', 'feff5c')"
+          >
+            <img
+              src="@/assets/front/images/circle_br.png"
+              alt="margarin values"
+            />
           </div>
         </div>
-        <div class="d-flex justify-content-center" v-if="!status">
-          <pagination
-            v-if="fullData != null"
-            :data="fullData"
-            @pagination-change-page="changePage"
-            :disabled="status"
-          ></pagination>
-        </div>
       </div>
-    </section>
-    <Loading :show_loading="status" />
-    <template v-if="settings != null">
-      <PostModal
-    :title="'کتاب'"
-        :specificationList="settings.specificationList"
-        :settings="settings"
-        @changeDisplayModal="showpModalFunc"
-        :disabled="disabled"
-        @submit="submit"
-        :showPostModal="showpModal"
-        :mode="mode"
-        :edit_item="edit_item"
-        :headers="headers"
-      />
-    </template>
-
-    <!-- /.content -->
-  </div>
 </template>
 <script>
 import PostModal from "@/components/mainComponent/postModal.vue";

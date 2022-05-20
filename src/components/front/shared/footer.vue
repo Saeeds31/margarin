@@ -13,7 +13,11 @@
           /> -->
         </div>
         <div id="buttons" class="d-flex justify-content-evenly">
-          <a :href="$root.baseImageUrl+ $root.footerData.calenderFile" target="_blank"  class="d-flex flex-direction-column align-items-center">
+          <a
+            :href="$root.baseImageUrl + $root.footerData.calenderFile"
+            target="_blank"
+            class="d-flex flex-direction-column align-items-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -31,8 +35,7 @@
             </svg>
 
             <span>
-             {{$root.footerData.calenderTitle}}
-
+              {{ $root.footerData.calenderTitle }}
             </span>
           </a>
           <button
@@ -219,7 +222,11 @@
           id="buttons"
           class="d-flex justify-content-between showInMobileFlex"
         >
-          <a :href="$root.baseImageUrl+ $root.footerData.calenderFile" target="_blank" class="d-flex flex-direction-column align-items-center">
+          <a
+            :href="$root.baseImageUrl + $root.footerData.calenderFile"
+            target="_blank"
+            class="d-flex flex-direction-column align-items-center"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -237,8 +244,7 @@
             </svg>
 
             <span>
-             {{$root.footerData.calenderTitle}}
-              
+              {{ $root.footerData.calenderTitle }}
             </span>
           </a>
           <button
@@ -314,7 +320,7 @@
           <li>
             <router-link
               :to="`/products?type=${
-                $cookie.get('ltrTheme') ? 'Industrial oils' : 'روغن های صنعت'
+                $cookie.get('ltrTheme') ? 'صنف و صنعت' : 'صنف و صنعت'
               }`"
               >{{
                 $cookie.get("ltrTheme") ? "Industrial oils" : "روغن های صنعت"
@@ -324,7 +330,7 @@
           <li>
             <router-link
               :to="`/products?type=${
-                $cookie.get('ltrTheme') ? 'Class oils' : 'روغن های صنف'
+                $cookie.get('ltrTheme') ? 'صنف و صنعت' : 'صنف و صنعت'
               }`"
               >{{
                 $cookie.get("ltrTheme") ? "Class oils" : "روغن های صنف"
@@ -334,7 +340,7 @@
           <li>
             <router-link
               :to="`/products?type=${
-                $cookie.get('ltrTheme') ? 'Household oils' : 'روغن های خانوار'
+                $cookie.get('ltrTheme') ? 'خانوار' : 'خانوار'
               }`"
               >{{
                 $cookie.get("ltrTheme") ? "Household oils" : "روغن های خانوار"
@@ -373,43 +379,8 @@
 export default {
   mounted() {
     this.setStyle();
-    document
-      .getElementById("map")
-      .addEventListener("mouseenter", this.setMapflag);
-    document
-      .getElementById("map")
-      .addEventListener("mouseleave", this.unsetMapflag);
-    window.addEventListener("resize", this.setStyle);
-    window.addEventListener("scroll", this.setGotoTop);
-    let link = document.createElement("link");
-    link.href = "https://static.neshan.org/sdk/openlayers/5.3.0/ol.css";
-    document.head.appendChild(link);
-    let sc = document.createElement("script");
-    sc.src =
-      "https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL";
-    document.head.appendChild(sc);
-    let sc1 = document.createElement("script");
-    sc1.id = "neshanMapScript";
-    sc1.src = "https://static.neshan.org/sdk/openlayers/5.3.0/ol.js";
-    document.head.appendChild(sc1);
-    let interval = setInterval(() => {
-      if (this.$root.isInViewport(document.getElementById("neshanMapScript"))) {
-        clearInterval(interval);
-        setTimeout(() => {
-          new ol.Map({
-            target: "map",
-            key: "web.xe2mxJiodDHeDPnl2iWUXOAhs9J9221XDuSfqMZv",
-            maptype: "dreamy",
-            poi: true,
-            traffic: false,
-            view: new ol.View({
-              center: ol.proj.fromLonLat([51.462879, 35.579448]),
-              zoom: 15
-            })
-          });
-        }, 1000);
-      }
-    }, 1000);
+    this.initConfigFooter();
+    this.setMapConfig();
   },
   beforeDestroy() {
     if (document.getElementById("map")) {
@@ -425,6 +396,63 @@ export default {
     window.removeEventListener("resize", this.setStyle);
   },
   methods: {
+    initConfigFooter() {
+      try {
+        document
+          .getElementById("map")
+          .addEventListener("mouseenter", this.setMapflag);
+        document
+          .getElementById("map")
+          .addEventListener("mouseleave", this.unsetMapflag);
+        window.addEventListener("resize", this.setStyle);
+        window.addEventListener("scroll", this.setGotoTop);
+      } catch (error) {
+      setTimeout(() => {
+        
+        this.initConfigFooter();
+      }, 2000);
+      }
+    },
+    setMapConfig() {
+      try {
+        let link = document.createElement("link");
+        link.href = "https://static.neshan.org/sdk/openlayers/5.3.0/ol.css";
+        document.head.appendChild(link);
+        let sc = document.createElement("script");
+        sc.src =
+          "https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL";
+        document.head.appendChild(sc);
+        let sc1 = document.createElement("script");
+        sc1.id = "neshanMapScript";
+        sc1.src = "https://static.neshan.org/sdk/openlayers/5.3.0/ol.js";
+        document.head.appendChild(sc1);
+        let interval = setInterval(() => {
+          if (
+            this.$root.isInViewport(document.getElementById("neshanMapScript"))
+          ) {
+            clearInterval(interval);
+            setTimeout(() => {
+              new ol.Map({
+                target: "map",
+                key: "web.xe2mxJiodDHeDPnl2iWUXOAhs9J9221XDuSfqMZv",
+                maptype: "dreamy",
+                poi: true,
+                traffic: false,
+                view: new ol.View({
+                  center: ol.proj.fromLonLat([51.462879, 35.579448]),
+                  zoom: 15,
+                }),
+              });
+            }, 1000);
+          }
+        }, 1000);
+      } catch (error) {
+     setTimeout(() => {
+          console.log(error);
+        this.setMapConfig();
+     }, 2000);
+      }
+    },
     setMapflag() {
       this.$root.footerMapCursor = true;
     },
@@ -515,14 +543,14 @@ export default {
           95
         );
       }
-    }
+    },
   },
 
   data() {
     return {
-      showGotoTOp: false
+      showGotoTOp: false,
     };
-  }
+  },
 };
 </script>
 <style scoped>

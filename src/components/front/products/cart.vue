@@ -1,12 +1,13 @@
 <template>
- <div @mouseover="customeHover(product.id,product.catColor)"  @mouseenter="customeHover(product.id,product.catColor)" @mouseleave="killCustomeHover(product.id)" class="productCart">
+ <div @mouseover="customeHover(product.id,product.colorCode)"  @mouseenter="customeHover(product.id,product.colorCode)" @mouseleave="killCustomeHover(product.id)" class="productCart">
       <div :id="`product${product.id}`" class="product">
+  <img class="newLabel" v-if="product.underDevelopment==true" :src="$cookie.get('ltrTheme')?newEn:newFa" alt="جدید">
       <div class="image width100 height40vh d-flex justify-content-center">
     <img class="width30" :src="$root.baseImageUrl+product.image" :alt="product.name" />
 
       </div>
     <div
-      class="content d-flex flex-direction-column align-items-end width80 margin-auto"
+      class="content d-flex flex-direction-column align-items-center width80 margin-auto"
     >
       <h1>{{ product.name }}</h1>
       <h4>
@@ -39,6 +40,8 @@
  </div>
 </template>
 <script>
+import newFa from "@/assets/front/images/newFa.png"
+import newEn from "@/assets/front/images/newEn.png"
 export default {
   props: {
     product: Object
@@ -57,6 +60,20 @@ export default {
       this.$root.unsetInlineStyle('border',`#productRoute${id}`)
       this.$root.unsetInlineStyle('color',`#productRouteSpan${id}`)
     }
+  },
+  data(){
+    return{
+      newFa:newFa,
+      newEn:newEn,
+    }
   }
 };
 </script>
+<style>
+img.newLabel {
+    position: absolute !important;
+    left: 0;
+    width: 110px !important;
+    top: 0;
+    transform: rotate(-20deg);
+}</style>

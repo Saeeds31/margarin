@@ -35,6 +35,8 @@
 import aboutUs32 from "@/assets/front/images/aboutUs32.png"
 import aboutUs59 from "@/assets/front/images/aboutUs59.png"
 import aboutUs71 from "@/assets/front/images/aboutUs71.png"
+import aboutUs83 from "@/assets/front/images/aboutUs83.png"
+import aboutUs92 from "@/assets/front/images/aboutUs92.png"
 import VueSlickCarousel from "vue-slick-carousel";
 export default {
   components: {
@@ -79,7 +81,7 @@ export default {
       sliders: [
         {
           image: aboutUs32,
-          title: "واگذاری سهام به صنایع بهشهر"
+          title: "تاسیس شرکت"
         },
         {
           image: aboutUs59,
@@ -87,21 +89,18 @@ export default {
         },
         {
           image: aboutUs71,
-          title: "تاسیس شرکت مارگارین"
+          title: "واگذاری سهام به صنایع بهشهر"
+        },
+        {
+          image: aboutUs83,
+          title: "همكاري با شركت صافولاي عربستان"
+        },
+        {
+          image: aboutUs92,
+          title: "تولد دوباره مارگاين"
         },
         
-        {
-          image: aboutUs32,
-          title: "واگذاری سهام به صنایع بهشهر"
-        },
-        {
-          image: aboutUs59,
-          title: "تحت پوشش سازمان صنایع"
-        },
-        {
-          image: aboutUs71,
-          title: "تاسیس شرکت مارگارین"
-        }
+        
       ]
     };
   }

@@ -46,6 +46,7 @@
       :text="aboutUsData.aboutUs.statisticText"
       class="width100"
     />
+
     <section id="managementIntro">
       <img id="chartImage" v-img :src="managementChart" alt="چارت سازمانی" />
       <a @click="showChartImage()">
@@ -178,6 +179,65 @@
         </svg>
       </router-link>
     </section>
+    <div id="margarinIntro">
+      <div class="backAbout" id="mission">
+        <div class="imageBox">
+          <img
+            class="margarinIntro_image"
+            src="@/assets/front/images/vision.png"
+            alt="ماموریت ما"
+          />
+        </div>
+        <div class="descriptionSec">
+          <h3>
+            {{ this.$cookie.get("ltrTheme") ? "Mission" : "ماموریت  ما" }}
+          </h3>
+          <p data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
+            مارگارین با نگاه به تاریخ درخشان خود، به عنوان اولین شرکت تولید روغن
+            خوراکی و تکیه بر دانش فنی، مهارت و تخصص کارکنان و زیرساخت و تجهیزات
+            مناسب و نیز تعهد همه جانبه به سلامت مشتریان و انجام مسئولیت های
+            اجتماعی، تولید محصولات غذایی متنوع و با کیفیت بر مبنای انتظارات
+            مشتریان را در کنار ایجاد ارزش و ثروت برای سایر ذینفعان ماموریت اصلی
+            خود می داند.
+          </p>
+        </div>
+      </div>
+
+      <div class="backAbout" id="vision">
+        <div class="imageBox">
+          <img
+            class="margarinIntro_image"
+            src="@/assets/front/images/jobs.png"
+            alt="ماموریت ما"
+          />
+        </div>
+        <div class="descriptionSec">
+          <h3>
+            {{ this.$cookie.get("ltrTheme") ? "vision" : "چشم انداز ها" }}
+          </h3>
+          <p data-aos="fade-up" data-aos-duration="1500" data-aos-once="true">
+            <i class="fa fa-check"></i>کسب جايگاه اول در تنوع توليد <br />
+            <i class="fa fa-check"></i> تبدیل شدن به اولین انتخاب مشتریان در
+            محصولات تخصصي حوزه صنف و صنعت <br />
+            <i class="fa fa-check"></i> حضور در پنج شرکت برتر حوزه محصولات
+            خانوار با تکیه بر تولید محصولات سلامت محور و با کیفیت <br />
+            <i class="fa fa-check"></i> ایجاد حداکثر سود برای سهامداران
+          </p>
+        </div>
+      </div>
+    </div>
+    <section>
+      <h3 id="margarinValuesTitle">ارزش های مارگارین</h3>
+
+      <arzesh />
+    </section>
+    <awards
+      :prizes="aboutUsData.prizes"
+      data-aos="fade-up"
+      data-aos-delay="500"
+      data-aos-duration="1500"
+      data-aos-once="true"
+    />
     <div
       v-if="racemeItems"
       data-aos="zoom-in-up"
@@ -188,29 +248,12 @@
     >
       <raceme v-for="(item, index) in racemeItems" :key="index" :data="item" />
     </div>
-    <fourItem v-if="collapseList" :list="collapseList" class="hiddenInMobile" />
-    <collapseBox
-      v-if="collapseList"
-      :list="collapseList"
-      data-aos="flip-right"
-      data-aos-delay="500"
-      data-aos-duration="1500"
-      data-aos-once="true"
-      class="width80 margin-auto showInMobile"
-    />
-    <awards
-      :prizes="aboutUsData.prizes"
-      data-aos="fade-up"
-      data-aos-delay="500"
-      data-aos-duration="1500"
-      data-aos-once="true"
-    />
   </main>
   <loader v-else />
 </template>
 <script>
+import arzesh from "@/components/front/aboutUs/arzesh.vue";
 import raceme from "@/components/front/aboutUs/statistics/raceme.vue";
-
 import fourItem from "@/components/front/aboutUs/fourItem.vue";
 import chartImage from "@/assets/front/images/chartImage.jpg";
 import introduction from "@/components/front/shared/introduction.vue";
@@ -223,6 +266,7 @@ import Loader from "@/components/front/shared/loader.vue";
 export default {
   components: {
     fourItem,
+    arzesh,
     introduction,
     slider,
     raceme,
@@ -230,7 +274,7 @@ export default {
     statistics,
     awards,
     collapseBox,
-    Loader
+    Loader,
   },
   metaInfo() {
     return {
@@ -240,14 +284,14 @@ export default {
       meta: [
         {
           name: "description",
-          content: this.aboutUsData ? this.aboutUsData.aboutUs.meta : false
+          content: this.aboutUsData ? this.aboutUsData.aboutUs.meta : false,
         },
         {
           property: "og:title",
-          content: this.$cookie.get("ltrTheme") ? "about-us" : "درباره ما"
+          content: this.$cookie.get("ltrTheme") ? "about-us" : "درباره ما",
         },
-        { name: "robots", content: "index,follow" }
-      ]
+        { name: "robots", content: "index,follow" },
+      ],
     };
   },
   computed: {
@@ -259,7 +303,7 @@ export default {
     },
     collapseList() {
       return this.$store.getters.getAboutUsCollapseList;
-    }
+    },
   },
   created() {
     if (this.aboutUsData == null) {
@@ -268,23 +312,31 @@ export default {
     }
   },
   watch: {
+    $route: {
+      handler() {
+        if (this.$route.query.section) {
+          this.gotoSection();
+        }
+      },
+      immediate: true,
+    },
     aboutUsData(newValue) {
       let racemeItems = [
         {
           number: newValue.aboutUs.brand,
           title_en: "Specialized brand",
-          title_fa: "تنوع محصول"
+          title_fa: "تنوع محصول",
         },
         {
           number: newValue.aboutUs.products,
           title_en: "Product produced",
-          title_fa: "محصول تولید شده"
+          title_fa: "محصول تولید شده",
         },
         {
           number: newValue.aboutUs.personel,
           title_en: "Factory personnel",
-          title_fa: "نفر پرسنل کارخانه"
-        }
+          title_fa: "نفر پرسنل کارخانه",
+        },
       ];
       this.$store.commit("setRacemeItems", racemeItems);
       let collapse = [
@@ -297,44 +349,41 @@ export default {
 
         {
           id: 2,
+          cover: cover1,
           image: newValue.aboutUs.exteraTitle2Icon,
           question: newValue.aboutUs.exteraTitle2,
-          answer: newValue.aboutUs.exteraText2
+          answer: newValue.aboutUs.exteraText2,
         },
 
         {
+          cover: cover2,
           id: 3,
           image: newValue.aboutUs.exteraTitle3Icon,
           question: newValue.aboutUs.exteraTitle3,
-          answer: newValue.aboutUs.exteraText3
+          answer: newValue.aboutUs.exteraText3,
         },
 
         {
+          cover: cover3,
           id: 4,
           image: newValue.aboutUs.exteraTitle4Icon,
           question: newValue.aboutUs.exteraTitle4,
-          answer: newValue.aboutUs.exteraText4
-        }
+          answer: newValue.aboutUs.exteraText4,
+        },
       ];
       this.$store.commit("setAboutUSCollapseList", collapse);
-    }
+    },
   },
   data() {
     return {
+      setTimeOutGoto: null,
       managementChart: chartImage,
       routes: [
-        { route: "", routeTitle_fa: "درباره ما", routeTitle_en: "about us" }
-      ]
+        { route: "", routeTitle_fa: "درباره ما", routeTitle_en: "about us" },
+      ],
     };
   },
   mounted() {
-    if (this.$route.query.section) {
-      setTimeout(() => {
-        document
-          .getElementById(this.$route.query.section)
-          .scrollIntoView({ behavior: "smooth" });
-      }, 2000);
-    }
     if (this.$route.query.sectionId) {
       setTimeout(() => {
         document
@@ -343,11 +392,35 @@ export default {
       }, 2200);
     }
   },
+  beforeDestroy() {
+    clearTimeout(this.setTimeOutGoto);
+  },
   methods: {
+    gotoSection() {
+      let el = document.getElementById(this.$route.query.section);
+      if (el == null) {
+        this.setTimeOutGoto = setTimeout(() => {
+          this.gotoSection();
+        }, 1000);
+      } else {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    },
+    unfocusSec(id) {
+      let el = document.getElementById(id);
+      el.style.backgroundColor = "white";
+    },
+    focusSec(id, color) {
+      let el = document.getElementById(id);
+      el.style.backgroundColor = "#" + color;
+      if (this.$root.screenSize < 1000) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    },
     showChartImage() {
       document.getElementById("chartImage").click();
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
@@ -357,7 +430,7 @@ img#chartImage {
 }
 section#managementIntro {
   width: 80%;
-  margin: 15px auto;
+  margin: 7% auto;
   border: 4px solid #00000006;
   border-radius: 10px;
   padding: 15px;
@@ -376,8 +449,222 @@ section#managementIntro a {
   cursor: pointer;
   display: flex;
 }
-.margin-tb-20{
-  margin-top:20px;
-  margin-bottom:20px;
+.margin-tb-20 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+div#margarinIntro {
+  width: 90%;
+  margin: auto;
+}
+div#margarinIntro h3 {
+  text-align: right;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+.ltrTheme div#margarinIntro h3 {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+div#margarinIntro .descriptionSec {
+  position: relative;
+}
+div#margarinIntro .descriptionSec .margarinIntro_image {
+  width: 100%;
+}
+
+div#margarinIntro .descriptionSec p {
+  direction: rtl;
+  text-align: justify;
+  width: 80%;
+  font-size: 25px;
+  z-index: 10;
+  opacity: 0.6;
+  font-family: "yekan-bold";
+  white-space: break-spaces;
+}
+
+.ltrTheme div#margarinIntro .descriptionSec p {
+  direction: ltr;
+  text-align: left;
+}
+@media (max-width: 768px) {
+  div#margarinIntro .descriptionSec p {
+    text-align: center;
+    width: 70%;
+    top: 10%;
+    right: 15%;
+    position: relative;
+    top: unset;
+    right: unset;
+    margin: auto;
+  }
+  div#margarinIntro .descriptionSec {
+    padding: 50px 0;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  div#margarinIntro h3 {
+    margin-top: 50px;
+  }
+}
+div#margarinValues {
+  width: 90%;
+  margin: 50px auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  height: auto;
+}
+div#margin_values_circle {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  align-items: center;
+}
+.margarin_values_desc {
+  padding: 10px 15px;
+  border: 1px solid grey;
+  border-radius: 15px;
+  direction: rtl;
+  text-align: right;
+  line-height: 36px;
+  font-size: 22px;
+  min-height: 170px;
+  height: max-content;
+  font-weight: bold;
+}
+.backAbout {
+  background-image: url("../../assets/front/images/aboutUsBackgroundSlider.png");
+  background-size: 50% auto;
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.backAbout#mission {
+  background-image: url("../../assets/front/images/backMission.png");
+  background-size: 50% 90%;
+}
+.backAbout#vision {
+  background-image: url("../../assets/front/images/backVision.png");
+  background-size: 50% 90%;
+}
+.margarin_values_desc:nth-child(odd) {
+  text-align: justify;
+  padding-right: 30%;
+}
+#margarinValues_customer {
+  border: 4px solid #36ff54;
+}
+#margarinValues_social {
+  border: 4px solid #64f2ff;
+}
+#margarinValues_other {
+  border: 4px solid #feff5c;
+}
+#margarinValues_staff {
+  border: 4px solid #ff7f7e;
+}
+div#margin_values_circle div {
+  width: 50%;
+  display: flex;
+  height: 50%;
+}
+div#margin_values_circle div img {
+  width: 40%;
+}
+div#margin_values_circle div:nth-child(odd) {
+  justify-content: flex-end;
+}
+#mission,
+#vision {
+  height: 100vh;
+}
+@media (max-width: 1000px) {
+  #mission,
+  #vision {
+    height: auto;
+  }
+  div#margin_values_circle {
+    position: relative;
+    top: unset;
+    left: unset;
+    transform: unset;
+    order: -1;
+  }
+  div#margarinValues {
+    grid-template-columns: 1fr;
+  }
+  .margarin_values_desc:nth-child(odd) {
+    text-align: right;
+    padding-right: 15px;
+  }
+  div#margin_values_circle div img {
+    width: 60%;
+  }
+}
+.backAbout {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+.backAbout .descriptionSec {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+}
+.backAbout .imageBox {
+  margin-right: 15%;
+  background: white;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px #00000014;
+}
+.backAbout#mission .imageBox {
+  width: 40%;
+}
+.backAbout#vision .imageBox {
+  width: 40%;
+}
+.backAbout .imageBox img {
+  width: 100%;
+  border-radius: 15px;
+  background: #f0f0f0;
+}
+@media (max-width: 1000px) {
+  .backAbout,
+  .backAbout#mission,
+  .backAbout#vision {
+    background: unset;
+    flex-direction: column;
+    background-position: top;
+  }
+  .backAbout .descriptionSec {
+    width: 100%;
+  }
+  .backAbout .imageBox,
+  .backAbout#vision .imageBox,
+  .backAbout#mission .imageBox {
+    margin-right: unset;
+    width: 80%;
+  }
+}
+h3#margarinValuesTitle {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 36px;
+  font-family: "yekan-bold";
+  position: relative;
+  top: 50px;
 }
 </style>

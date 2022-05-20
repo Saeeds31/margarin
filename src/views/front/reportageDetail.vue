@@ -361,7 +361,7 @@ shareBlog(){
             "%",
             "#blogDetailSection #introductionSection #headerBlog",
             1920,
-            30,
+            35,
             1496,
             20
           );

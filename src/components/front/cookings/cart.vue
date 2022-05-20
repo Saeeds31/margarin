@@ -148,14 +148,14 @@
     <div class="detail">
       <span> {{ `${data.commentCount} ${this.$cookie.get("ltrTheme")?'Comment':'نظر'}` }} </span>
     <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8,11a1,1,0,1,0,1,1A1,1,0,0,0,8,11Zm4,0a1,1,0,1,0,1,1A1,1,0,0,0,12,11Zm4,0a1,1,0,1,0,1,1A1,1,0,0,0,16,11ZM12,2A10,10,0,0,0,2,12a9.89,9.89,0,0,0,2.26,6.33l-2,2a1,1,0,0,0-.21,1.09A1,1,0,0,0,3,22h9A10,10,0,0,0,12,2Zm0,18H5.41l.93-.93a1,1,0,0,0,.3-.71,1,1,0,0,0-.3-.7A8,8,0,1,1,12,20Z"/></svg>
-      <span> {{ `${0} ${this.$cookie.get("ltrTheme")?"Like":"لایک"}` }} </span>
+      <span> {{ `${data.like} ${this.$cookie.get("ltrTheme")?"Like":"لایک"}` }} </span>
     
-<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25" height="25"
-	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+<svg  @click="addLike(data.id)" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25" height="25"
+	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;cursor: pointer;" xml:space="preserve">
 <g>
 	<g id="heart_x5F_stroke">
 		<g>
-			<path style="fill:#030104;" d="M23.113,6c2.457,0,4.492,1.82,4.836,4.188L16.004,23.906L4.051,10.188C4.395,7.82,6.43,6,8.887,6
+			<path :id="'heartSVG'+data.id" style="fill:#030104;" d="M23.113,6c2.457,0,4.492,1.82,4.836,4.188L16.004,23.906L4.051,10.188C4.395,7.82,6.43,6,8.887,6
 				c2.016,0,3.855,2.164,3.855,2.164L16,11.625l3.258-3.461C19.258,8.164,21.098,6,23.113,6 M23.113,2
 				c-2.984,0-5.5,1.578-7.113,3.844C14.387,3.578,11.871,2,8.887,2C3.984,2,0,5.992,0,10.891v0.734L16.008,30L32,11.625v-0.734
 				C32,5.992,28.016,2,23.113,2L23.113,2z"/>
@@ -235,6 +235,12 @@ export default {
     data: Object
   },
   methods:{
+	  addLike(id){
+		  this.$axios.post(`Recipe/AddLike?id=${id}`).then(res=>{
+              this.$toast.success(res.data.message);
+			  document.getElementById("heartSVG"+id).classList.add("redSvg");
+		  })
+	  },
     goToRoute(path){
       if(window.innerWidth<1000)
       this.$router.push(path)
@@ -242,3 +248,8 @@ export default {
   }
 };
 </script>
+<style>
+.cookingCart .detail svg path.redSvg{
+	fill: red !important;
+}
+</style>

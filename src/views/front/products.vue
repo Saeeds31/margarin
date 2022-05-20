@@ -77,7 +77,7 @@
     />
     <section
       id="products"
-      class="d-flex justify-content-between width80 margin-auto"
+      class="d-flex  width80 margin-auto"
     >
       <cart
         :data-aos="index % 2 == 0 ? 'fade-right' : 'fade-left'"

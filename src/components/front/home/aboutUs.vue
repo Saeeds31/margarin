@@ -1,23 +1,42 @@
 <template>
   <section id="aboutUsSection" class="d-flex justify-content-end">
     <div id="text" class="width50 d-flex flex-direction-column align-items-end">
-      <img
-      @mouseenter="animateToImage"
-      data-aos="flip-right" data-aos-duration="2200" data-aos-delay="500"    data-aos-once="false"
-      id="aboutUsSectionImage"
-        class="width70"
-        :src="`${$cookie.get('ltrTheme')?enImage:faImage}`"
-        alt="درباره مارگارین"
-      />
+      <div id="aboutUsLogoSection">
+        <img
+          id="aboutUsSectionImage"
+          class="width70"
+          :src="`${$cookie.get('ltrTheme') ? enImage : faImage}`"
+          alt="درباره مارگارین"
+        />
+        <h3 id="aboutUsCounter">
+          {{ $root.aboutUsCounter }}
+        </h3>
+      </div>
       <div id="sliderSection" class="showInMobile width100">
-        <VueSlickCarousel  v-bind="sliderSettings">
-          <cart :cartIndex="index"  v-for="(item,index) in aboutUsList" :content="item" :key="item.id" />
+        <VueSlickCarousel v-bind="sliderSettings">
+          <cart
+            :cartIndex="index"
+            v-for="(item, index) in aboutUsList"
+            :content="item"
+            :key="item.id"
+          />
         </VueSlickCarousel>
       </div>
-      <h1>{{$cookie.get('ltrTheme')?'About Margarine ':'دربــــــاره  مارگاریــــــن'}}</h1>
-      <h3 class="summary">{{$cookie.get('ltrTheme')?'Importance for family health':'اهــــــمیت بــــــه ســــــلامت خانــــــواده'}}</h3>
+      <h1>
+        {{
+          $cookie.get("ltrTheme")
+            ? "About Margarine "
+            : "دربــــــاره  مارگاریــــــن"
+        }}
+      </h1>
+      <h3 class="summary">
+        {{
+          $cookie.get("ltrTheme")
+            ? "Importance for family health"
+            : "اهــــــمیت بــــــه ســــــلامت خانــــــواده"
+        }}
+      </h3>
       <p>
-        
         {{$cookie.get('ltrTheme')? 'Margarine is the first vegetable oil company in Iran, which is known among the people with the brands of rooster, sun and golden sun. This company, which entered the field of industry in January 1943 with a refining capacity of 8 tons of vegetable oil per day, and now with the cooperation of experienced experts has been able to be a guest of many families and different industries in the country with a production capacity of 1000 tons per day.
 This collection always tries to design and produce products with superior quality and in accordance with the needs of customers. Currently, the company produces 38 different types of oil products in two sections of industry and industry (B2B) and household consumption (B2C), which in addition to complying with the criteria of the Iranian Institute of Standards and Industrial Research and the Deputy Minister of Food and Drugs, with standards Internationals such as CODEX from the Swiss company SGS have also been adapted, which is why margarine products are now on the market in most Middle Eastern and even European countries.' :'مارگارين اولين شركت توليد كننده روغن گياهي در ايران است كه با برندهای خروس، آفتاب و آفتاب طلايي  در بين مردم شناخته شده است. اين شركت كه در دی ماه سال 1332 با ظرفیت تصفيه 8 تن روغن گياهي در روز پا به عرصه صنعت گذاشت و اکنون با همكاري كارشناسان مجرب توانسته است با ظرفیت توليدي 1000 تن در روز، میهمان بسیاری ازخانواده ها و صنایع مختلف کشور باشد.
 اين مجموعه همواره سعي می نماید محصولاتی با کیفیت برتر و منطبق با نیاز مشتریان طراحی و تولید نماید. هم اکنون  38 نوع  محصول متنوع روغني در دو بخش صنف و صنعت (B2B) و مصارف خانوار (B2C) در این شرکت تولید می‌شود که علاوه بر مطابقت با ضوابط موسسه استاندارد و تحقیقات صنعتی ایران و معاونت غذا و دارو وزارت بهداشت، با استاندارد های بین¬المللی نظیر CODEX از شرکت SGS سوئیس نیز انطباق داده شده است، به همین سبب اینک محصولات مارگارین در بازار اغلب کشورهای خاورمیانه و حتی کشورهای اروپایی به چشم می خورد.'}}
@@ -30,26 +49,34 @@ This collection always tries to design and produce products with superior qualit
         src="@/assets/front/images/aboutUsHomeBack.png"
         alt="background1"
       />
-     
+
       <div id="carts" class="width100 height100 d-flex flex-direction-column">
         <div id="column1" class="width90">
-          <template  v-for="(item, index) in aboutUsList">
-            <cart 
-            :cartIndex="index"
-
-            class="otherCart"
-            :class="`animationAboutCart${index+1}`"
-              v-if="index < 2" :content="item" :key="item.id" />
+          <template v-for="(item, index) in aboutUsList">
+            <cart
+              :cartIndex="index"
+              class="otherCart"
+              :class="`animationAboutCart${index + 1}`"
+              v-if="index < 2"
+              :content="item"
+              :key="item.id"
+            />
           </template>
         </div>
         <div id="column2" class="width90">
           <template v-for="(item, index) in aboutUsList">
-            <cart 
-            :cartIndex="index"
-            :id="index==2?'carts3':''"
-            :class="{otherCart:index!=2,'animationAboutCart3':index==2, 'animationAboutCart4':index==3}"
-  
-            v-if="index > 1" :content="item" :key="item.id" />
+            <cart
+              :cartIndex="index"
+              :id="index == 2 ? 'carts3' : ''"
+              :class="{
+                otherCart: index != 2,
+                animationAboutCart3: index == 2,
+                animationAboutCart4: index == 3,
+              }"
+              v-if="index > 1"
+              :content="item"
+              :key="item.id"
+            />
           </template>
         </div>
       </div>
@@ -57,24 +84,23 @@ This collection always tries to design and produce products with superior qualit
   </section>
 </template>
 <script>
-
-import aboutUsHomeCart1 from "@/assets/front/images/aboutUsHomeCart1.png"
-import aboutUsHomeCart2 from "@/assets/front/images/aboutUsHomeCart2.png"
-import aboutUsHomeCart3 from "@/assets/front/images/aboutUsHomeCart3.png"
-import aboutUsHomeCart4 from "@/assets/front/images/aboutUsHomeCart4.png"
-import enImage from "@/assets/front/images/aboutUSHomeEn.png"
-import faImage from "@/assets/front/images/aboutUSHome.png"
+import aboutUsHomeCart1 from "@/assets/front/images/aboutUsHomeCart1.png";
+import aboutUsHomeCart2 from "@/assets/front/images/aboutUsHomeCart2.png";
+import aboutUsHomeCart3 from "@/assets/front/images/aboutUsHomeCart3.png";
+import aboutUsHomeCart4 from "@/assets/front/images/aboutUsHomeCart4.png";
+import enImage from "@/assets/front/images/aboutUSHomeEn.png";
+import faImage from "@/assets/front/images/aboutUSHome.png";
 import VueSlickCarousel from "vue-slick-carousel";
 import cart from "@/components/front/home/aboutUs/cart.vue";
 export default {
   components: {
     cart,
-    VueSlickCarousel
+    VueSlickCarousel,
   },
   data() {
     return {
-      enImage:enImage,
-      faImage:faImage,
+      enImage: enImage,
+      faImage: faImage,
       sliderSettings: {
         dots: false,
         arrows: false,
@@ -89,8 +115,8 @@ export default {
             breakpoint: 768,
             settings: {
               slidesToShow: 2,
-              slidesToScroll: 2
-            }
+              slidesToScroll: 2,
+            },
           },
           {
             breakpoint: 480,
@@ -98,40 +124,44 @@ export default {
               centerMode: false,
               slidesToShow: 1,
               slidesToScroll: 1,
-        infinite: true,
+              infinite: true,
 
-              initialSlide: 1
-            }
-          }
-        ]
+              initialSlide: 1,
+            },
+          },
+        ],
       },
       aboutUsList: [
         {
           id: 1,
           image: aboutUsHomeCart1,
-          title:this.$cookie.get("ltrTheme")?"Introducing the collection": "معرفی مجموعه",
-          text:this.$cookie.get("ltrTheme")?"":""
+          title: this.$cookie.get("ltrTheme")
+            ? "Introducing the collection"
+            : "معرفی مجموعه",
+          text: this.$cookie.get("ltrTheme") ? "" : "",
         },
-          {
+        {
           id: 3,
           image: aboutUsHomeCart2,
-          title:this.$cookie.get("ltrTheme")?"Perspectives": "چشم اندازها",
-          text:this.$cookie.get("ltrTheme")?"":""
+          title: this.$cookie.get("ltrTheme") ? "Perspectives" : "چشم اندازها",
+          text: this.$cookie.get("ltrTheme") ? "" : "",
         },
         {
           id: 2,
           image: aboutUsHomeCart3,
-          title:this.$cookie.get("ltrTheme")?"Our mission": "ماموریت ما",
-          text:this.$cookie.get("ltrTheme")?"":""
+          title: this.$cookie.get("ltrTheme") ? "Our mission" : "ماموریت ما",
+          text: this.$cookie.get("ltrTheme") ? "" : "",
         },
-      
+
         {
           id: 4,
           image: aboutUsHomeCart4,
-          title:this.$cookie.get("ltrTheme")?"Group values": "ارزش های مارگارین",
-          text:this.$cookie.get("ltrTheme")?"":""
-        }
-      ]
+          title: this.$cookie.get("ltrTheme")
+            ? "Group values"
+            : "ارزش های مارگارین",
+          text: this.$cookie.get("ltrTheme") ? "" : "",
+        },
+      ],
     };
   },
   mounted() {
@@ -142,16 +172,18 @@ export default {
     window.removeEventListener("resize", this.setStyle);
   },
   methods: {
-   
-    animateToImage(){
-document.getElementById("aboutUsSectionImage").classList.add("aboutUsSectionImageHover");
-setTimeout(()=>{
-document.getElementById("aboutUsSectionImage").classList.remove("aboutUsSectionImageHover");
-
-},4100)
+    animateToImage() {
+      document
+        .getElementById("aboutUsSectionImage")
+        .classList.add("aboutUsSectionImageHover");
+      setTimeout(() => {
+        document
+          .getElementById("aboutUsSectionImage")
+          .classList.remove("aboutUsSectionImageHover");
+      }, 4100);
     },
     setStyle() {
-      if (window.innerWidth> 1000) {
+      if (window.innerWidth > 1000) {
         this.$root.setProportionStyle(
           "font-size",
           "px",
@@ -190,9 +222,9 @@ document.getElementById("aboutUsSectionImage").classList.remove("aboutUsSectionI
           1024,
           18
         );
-          this.$root.unsetInlineStyle(
+        this.$root.unsetInlineStyle(
           "margin-bottom",
-          "#homeSection #aboutUsSection",
+          "#homeSection #aboutUsSection"
         );
         this.$root.setProportionStyle(
           "font-size",
@@ -249,7 +281,7 @@ document.getElementById("aboutUsSectionImage").classList.remove("aboutUsSectionI
           425,
           80
         );
-       
+
         this.$root.setProportionStyle(
           "font-size",
           "px",
@@ -277,10 +309,43 @@ document.getElementById("aboutUsSectionImage").classList.remove("aboutUsSectionI
           425,
           11
         );
-    
-        
       }
-    }
-  }
+    },
+  },
 };
 </script>
+<style scoped>
+div#aboutUsLogoSection img {
+  width: 100%;
+}
+div#aboutUsLogoSection {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  width: 450px;
+}
+@media (max-width:768px){
+div#aboutUsLogoSection {
+  width: 100%;
+}
+}
+#aboutUsCounter{
+    position: absolute;
+    font-size: 74px !important;
+    color: #e4a41e !important;
+    font-weight: bold;
+      right: 50%;
+    transform: translate(50%);
+}
+@media (max-width:480px){
+#aboutUsCounter{
+    position: absolute;
+    right: 50%;
+    font-size: 55px !important;
+    transform: translate(50%);
+}
+div#aboutUsLogoSection img {
+  width: 100%;
+}
+}
+</style>

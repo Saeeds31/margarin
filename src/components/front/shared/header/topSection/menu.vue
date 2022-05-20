@@ -1,10 +1,10 @@
 <template>
   <nav class="width50">
     <ul id="topMenu" class="width100 d-flex justify-content-between">
-      <li><router-link to="/">CRM
-      <i class="fa fa-circle"></i></router-link></li>
+      <li><a href="https://crm.margarineco.com/">CRM
+      <i class="fa fa-circle"></i></a></li>
       <li>
-        <router-link to="/"
+        <router-link to="/partner-report"
           >
           {{$cookie.get('ltrTheme')?'Partners panel':'پنل همکاران'}}
           <i class="fa fa-circle"></i>
@@ -24,7 +24,7 @@
         </router-link>
       </li>
       <li>
-        <router-link to="/">
+        <router-link to="/about-us?section=awardsSection">
           {{$cookie.get('ltrTheme')?'Honors':'افتخارات'}}
           <i class="fa fa-circle"></i>
         </router-link>

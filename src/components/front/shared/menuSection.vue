@@ -5,9 +5,10 @@
         </div>
         <ul class="menuChild">
             <li  v-for="(item,index) in menuItem" :key="index">
-                <a target="_blank" :href="item.route">
+                <a v-if="item.route!='#utilityLink#'" target="_blank" :href="item.route">
                     {{item.title}}
                 </a>
+                <a v-else style="cursor: pointer;" @click="$root.showUtilityModalFunction()">{{item.title}}</a>
             </li>
         </ul>
     </div>

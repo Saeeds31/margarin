@@ -27,6 +27,7 @@ p{
 p span:first-child{
 font-size: 15px;
 font-family: 'yekan-bold';
+width: 100%;
 }
 p span:last-child{
     font-size:20px;

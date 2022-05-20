@@ -1,11 +1,15 @@
 <template>
-  <div id="buttons" class="d-flex justify-content-between" :class="{newButtonsStyle:$root.sectionIndexHome != 1}">
+  <div
+    id="buttons"
+    class="d-flex justify-content-between"
+    :class="{ newButtonsStyle: $root.sectionIndexHome != 1 }"
+  >
     <button
       data-aos="zoom-in-up"
       data-aos-duration="2500"
       data-aos-delay="2500"
       data-aos-once="false"
-      v-if="$root.sectionIndexHome != 1"
+      v-if="$root.sectionIndexHome != 1&& $route.name!='healthAmbassador'"
       class="reStyleToggle"
       @click="toggleMenu()"
       id="toggleMenu"
@@ -15,28 +19,43 @@
     <button v-else @click="toggleMenu()" id="toggleMenu">
       <i class="fa fa-bars"></i>
     </button>
-    <button
-      class="hiddenInMobile"
-      @click="changeLanguage"
-    >
-    
-<svg :class="{orangeSvg:$root.sectionIndexHome != 1}" width="28" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
-<g>
-	<path fill="white" d="M21.1,26.4c-1.3-0.4-2.1-1.6-2.1-3c0-1.3,0.8-2.4,2-2.9c2.3-0.9,4-2.2,5.2-4.1c1.4-2.1,1.7-6,1.8-7.7C25.5,4.7,21.1,2,16,2
+    <button class="hiddenInMobile" @click="changeLanguage">
+      <svg
+        :class="{ orangeSvg: $root.sectionIndexHome != 1 }"
+        width="28"
+        version="1.1"
+        id="Icons"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 32 32"
+        style="enable-background: new 0 0 32 32"
+        xml:space="preserve"
+      >
+        <g>
+          <path
+            fill="white"
+            d="M21.1,26.4c-1.3-0.4-2.1-1.6-2.1-3c0-1.3,0.8-2.4,2-2.9c2.3-0.9,4-2.2,5.2-4.1c1.4-2.1,1.7-6,1.8-7.7C25.5,4.7,21.1,2,16,2
 		C12.1,2,8.6,3.6,6,6.2c0,0.5,0.2,1.9,0.9,3.3c0.6,1.2,2.8,1.7,4.7,2.1c0.8,0.2,1.6,0.4,2.3,0.6c1.8,0.6,3.2,2.1,3.5,4
-		c0.4,1.9-0.3,3.9-1.8,5.1l-1.1,0.9c-1.6,1.3-3.3,2.8-3.5,6.7c1.5,0.6,3.2,0.9,5,0.9c3,0,5.8-1,8.1-2.6L21.1,26.4z"/>
-	<path fill="white" d="M13.3,20.8l1.1-0.9c0.9-0.8,1.4-2,1.1-3.2c-0.2-1.2-1.1-2.1-2.2-2.5c-0.6-0.2-1.3-0.4-2.1-0.5c-2.4-0.5-5.1-1.1-6.1-3.2
-		C4.7,9.7,4.5,9,4.3,8.3C2.9,10.5,2,13.2,2,16c0,5.2,2.9,9.8,7.1,12.2C9.5,24.3,11.3,22.4,13.3,20.8z"/>
-	<path fill="white" d="M27.8,17.6c-1.5,2.2-3.5,3.8-6.1,4.8C21.3,22.6,21,23,21,23.5c0,0.5,0.3,0.9,0.8,1.1l4.1,1.4c2.5-2.5,4.1-6,4.1-9.9
-		c0-1.2-0.2-2.3-0.4-3.4C29.3,14.3,28.7,16.2,27.8,17.6z"/>
-</g>
-</svg>
-
-    </button> 
-     <button
+		c0.4,1.9-0.3,3.9-1.8,5.1l-1.1,0.9c-1.6,1.3-3.3,2.8-3.5,6.7c1.5,0.6,3.2,0.9,5,0.9c3,0,5.8-1,8.1-2.6L21.1,26.4z"
+          />
+          <path
+            fill="white"
+            d="M13.3,20.8l1.1-0.9c0.9-0.8,1.4-2,1.1-3.2c-0.2-1.2-1.1-2.1-2.2-2.5c-0.6-0.2-1.3-0.4-2.1-0.5c-2.4-0.5-5.1-1.1-6.1-3.2
+		C4.7,9.7,4.5,9,4.3,8.3C2.9,10.5,2,13.2,2,16c0,5.2,2.9,9.8,7.1,12.2C9.5,24.3,11.3,22.4,13.3,20.8z"
+          />
+          <path
+            fill="white"
+            d="M27.8,17.6c-1.5,2.2-3.5,3.8-6.1,4.8C21.3,22.6,21,23,21,23.5c0,0.5,0.3,0.9,0.8,1.1l4.1,1.4c2.5-2.5,4.1-6,4.1-9.9
+		c0-1.2-0.2-2.3-0.4-3.4C29.3,14.3,28.7,16.2,27.8,17.6z"
+          />
+        </g>
+      </svg>
+    </button>
+    <button
       @click="showModal = true"
-      v-if="$root.sectionIndexHome == 1"
+      v-if="$root.sectionIndexHome == 1 || $route.name=='healthAmbassador'"
       id="phone"
       v-b-tooltip.hover
       :title="
@@ -63,7 +82,7 @@
       </svg>
     </button>
     <button
-      v-if="$root.sectionIndexHome == 1"
+      v-if="$root.sectionIndexHome == 1 || $route.name=='healthAmbassador'"
       @click="showSearch = true"
       id="search"
       class="hiddenInMobile"
@@ -127,7 +146,6 @@
       ></i>
 
       <menuSection
-        
         :style="`animation:sFade 1s linear ${(index + 1) * 0.5}s forwards`"
         v-for="(item, index) in menu"
         :key="index"
@@ -135,6 +153,26 @@
         :menuItem="item.menuItem"
       />
     </div>
+    <b-modal
+      id="utilityModal"
+      hide-footer
+      ref="utilityModal"
+      v-model="$root.showUtilityModal"
+      @close="$root.showUtilityModal = false"
+      :title="$cookie.get('ltrTheme') ? 'Applied links' : 'لینک های کاربردی'"
+    >
+      <div id="utilityBox">
+        <ul>
+          <li
+            class="utilityLinks"
+            v-for="(link, index) in utilityLink"
+            :key="index"
+          >
+            <a target="_blank" :href="link.url">{{ link.title }}</a>
+          </li>
+        </ul>
+      </div>
+    </b-modal>
     <b-modal
       id="managementMessageModal"
       hide-footer
@@ -386,7 +424,8 @@
               :title="
                 $cookie.get('ltrTheme')
                   ? 'Send Your Message'
-                  : 'پیام را ارسال کنید'"
+                  : 'پیام را ارسال کنید'
+              "
             />
           </div>
         </div>
@@ -399,7 +438,7 @@ import {
   required,
   minLength,
   maxLength,
-  email
+  email,
 } from "vuelidate/lib/validators";
 import search from "@/components/front/shared/searchModal.vue";
 import RoundedButton from "@/components/front/shared/roundedButton.vue";
@@ -414,23 +453,18 @@ export default {
     search,
     menuSection,
     BModal,
-    RoundedButton
+    RoundedButton,
   },
   methods: {
-     changeLanguage() {
-      if (!this.$cookie.get('ltrTheme')) {
-       
-        this.$cookie.set("ltrTheme","true")
-            this.$axios.defaults.headers.common["Accept-Language"] = "en";
-
+    changeLanguage() {
+      if (!this.$cookie.get("ltrTheme")) {
+        this.$cookie.set("ltrTheme", "true");
+        this.$axios.defaults.headers.common["Accept-Language"] = "en";
       } else {
-        this.$cookie.delete("ltrTheme")
-            this.$axios.defaults.headers.common["Accept-Language"] = "fa";
-
-
-
+        this.$cookie.delete("ltrTheme");
+        this.$axios.defaults.headers.common["Accept-Language"] = "fa";
       }
-      this.$router.go(0)
+      this.$router.go(0);
     },
     showSection(section, flag) {
       if (flag == true) {
@@ -466,15 +500,15 @@ export default {
         email: this.email,
         phone: this.mobile,
         forManager: true,
-        text: this.text
+        text: this.text,
       };
       this.disabled = true;
       this.$axios
         .post("ContactUs/SendMessageToManager", JSON.stringify(pack), {
           headers: {
             // Overwrite Axios's automatically set Content-Type
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         })
         .then(() => {
           this.$toast.success("پیام شما با موفقیت به دست ما رسید");
@@ -492,7 +526,7 @@ export default {
             if (index < 1) {
               this.$toast.error(err, {
                 timeout: 1000 * (index + 4),
-                pauseOnHover: true
+                pauseOnHover: true,
               });
             }
           });
@@ -510,26 +544,26 @@ export default {
     },
     exitSearch(flag) {
       this.showSearch = flag;
-    }
+    },
   },
   validations: {
     fullName: {
       required,
-      minLength: minLength(5)
+      minLength: minLength(5),
     },
     email: {
       required,
-      email
+      email,
     },
     text: {
       required,
-      minLength: minLength(20)
+      minLength: minLength(20),
     },
     mobile: {
       required,
       minLength: minLength(5),
-      maxLength: maxLength(5)
-    }
+      maxLength: maxLength(5),
+    },
   },
   data() {
     return {
@@ -543,28 +577,55 @@ export default {
       text: "",
       writeEamil: false,
       writeMobile: false,
-      writeFullName: false
+      writeFullName: false,
     };
   },
   computed: {
     menu() {
       return this.$store.getters.getMenus;
     },
+    utilityLink() {
+      return this.$store.getters.getUtilityLinks;
+    },
     brands() {
       this.$store.getters.getBrands;
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
 #mobileMenu nav ul {
   flex-direction: column !important;
 }
-.newButtonsStyle{
+.newButtonsStyle {
   justify-content: flex-start !important;
   gap: 10px;
 }
-.orangeSvg path{
-  fill:#f5992c;
+.orangeSvg path {
+  fill: #f5992c;
+}
+#utilityModal___BV_modal_content_ {
+  width: max-content !important;
+  margin: auto;
+}
+div#utilityBox ul li a {
+  font-size: 22px;
+  transition: all 1s;
+}
+div#utilityBox ul li a:hover {
+  color: var(--color-theme);
+}
+div#utilityBox ul li {
+  text-align: right;
+  color: var(--color-theme);
+}
+div#utilityBox ul {
+  direction: rtl;
+  list-style: disc;
+  color: var(--theme-color);
+}
+div#utilityBox {
+  width: 350px;
+  margin-right: 10px;
 }
 </style>

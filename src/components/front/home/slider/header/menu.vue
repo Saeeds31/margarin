@@ -2,8 +2,8 @@
   <nav id="navBarMenu" class="width45 hiddenInMobile">
     <ul class="width100 d-flex justify-content-between align-items-center">
       <li>
-        <a >{{$cookie.get('ltrTheme')?"Suppliers":"تامین کنندگان"}}
-      <i class="fa fa-circle"></i></a></li>
+        <router-link to="/reportage" >{{$cookie.get('ltrTheme')?"Reportage":"گزارشات"}}
+      <i class="fa fa-circle"></i></router-link></li>
       <li>
         <a  target="_blank"  href="https://saham.margarineco.com"
           >{{$cookie.get('ltrTheme')?"Shareholders":'سهامداران'}}

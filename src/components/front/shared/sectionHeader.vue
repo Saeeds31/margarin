@@ -88,7 +88,7 @@ export default {
 </script>
 <style scoped>
 #sectionHeader {
-  margin:5% auto 2.5%;
+  margin:6% auto 1.5%;
 }
 #text .ifImage{
   margin: 0 25px;

@@ -1,7 +1,7 @@
 <template>
   <div id="sideBarMenu">
     <div id="logoPanel">
-      <router-link id="gotoHome" class="d-flex justify-content-center" to="/">
+      <router-link target="_blank" id="gotoHome" class="d-flex justify-content-center" to="/">
         <svg
           version="1.1"
           id="Layer_1"
@@ -1333,11 +1333,29 @@ AAAAAElFTkSuQmCC"
         :class="{ activeRoute: $route.name == 'panelMenu' }"
         to="/admin-panel/menus"
       >
+      <i class="fa fa-angle-down" v-b-toggle.collapse-58></i>
         <span>
           منوها
           <i class="fa fa-bars" aria-hidden="true"></i>
         </span>
       </router-link>
+  <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/utility-menu')"
+        id="collapse-58"
+        class="mt-2"
+      >
+      <router-link
+       class="childRoute"
+        v-if="showRoute(getRole, '/admin-panel/utility-menu')"
+        :class="{ activeRoute: $route.name == 'utilityMenu' }"
+        to="/admin-panel/utility-menu"
+      >
+        <span>
+          لینک های کاربردی
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </span>
+      </router-link>
+  </b-collapse>
 
       <router-link
         v-if="showRoute(getRole, '/admin-panel/management')"
@@ -1360,6 +1378,33 @@ AAAAAElFTkSuQmCC"
           <i class="fa fa-info-circle" aria-hidden="true"></i>
         </span>
       </router-link>
+      <!-- start gallery -->
+      <router-link
+        v-if="showRoute(getRole, '/admin-panel/galleries')"
+        :class="{ activeRoute: $route.name == 'galleries' }"
+        to="/admin-panel/galleries"
+        ><i class="fa fa-angle-down" v-b-toggle.collapse-60></i>
+        <span>
+          گالری
+          <i class="fa fa-blog" aria-hidden="true"></i>
+        </span>
+      </router-link>
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/gallery-introduction')"
+        id="collapse-60"
+        class="mt-2"
+      >
+        <router-link
+          :class="{ activeRoute: $route.name == 'galleryIntroduction' }"
+          class="childRoute"
+          to="/admin-panel/gallery-introduction"
+        >
+          <span>
+            معرفی نامه
+            <i class="fa fa-align-justify" aria-hidden="true"></i></span
+        ></router-link>
+      </b-collapse>
+      <!-- end gallery -->
       <!--  -->
       <router-link
         v-if="showRoute(getRole, '/admin-panel/weblogs')"
@@ -1460,6 +1505,33 @@ AAAAAElFTkSuQmCC"
         ></router-link>
       </b-collapse>
       <!-- end report -->
+      <!-- start partner -->
+       <router-link
+        v-if="showRoute(getRole, '/admin-panel/partners-panel')"
+        :class="{ activeRoute: $route.name == 'partnersPanel' }"
+        to="/admin-panel/partners-panel"
+        ><i class="fa fa-angle-down" v-b-toggle.collapse-101></i>
+        <span>
+          پنل همکاران
+          <i class="fa fa-blog" aria-hidden="true"></i>
+        </span>
+      </router-link>
+      <b-collapse
+        v-if="showRoute(getRole, '/admin-panel/partners-introduction')"
+        id="collapse-101"
+        class="mt-2"
+      >
+        <router-link
+          :class="{ activeRoute: $route.name == 'partnersIntroduction' }"
+          class="childRoute"
+          to="/admin-panel/partners-introduction"
+        >
+          <span>
+            معرفی نامه
+            <i class="fa fa-align-justify" aria-hidden="true"></i></span
+        ></router-link>
+      </b-collapse>
+      <!-- end partner -->
       <!-- start mag -->
           <router-link
         v-if="showRoute(getRole, '/admin-panel/magazine')"
@@ -1488,13 +1560,12 @@ AAAAAElFTkSuQmCC"
       </b-collapse>
       <!-- end mag -->
              <router-link
-        v-if="showRoute(getRole, '/admin-panel/upload-file')"
         :class="{ activeRoute: $route.name == 'uploadFile' }"
         to="/admin-panel/upload-file"
         >
         <span>
           آپلود فایل
-          <i class="fa fa-blog" aria-hidden="true"></i>
+          <i class="fa fa-file" aria-hidden="true"></i>
         </span>
       </router-link>
 <!-- start faq -->
@@ -1544,16 +1615,7 @@ AAAAAElFTkSuQmCC"
           <i class="fa fa-address-book" aria-hidden="true"></i></span
       ></router-link>
       
-      <router-link
-        v-if="showRoute(getRole, '/admin-panel/InovativeIdea')"
-        :class="{ activeRoute: $route.name == 'InovativeIdea' }"
-        to="/admin-panel/InovativeIdea"
-      >
-
-        <span>
-         تحت توسعه
-          <i class="fa fa-address-book" aria-hidden="true"></i></span
-      ></router-link>
+  
       <b-collapse
         v-if="showRoute(getRole, '/admin-panel/contact-us-introduction')"
         id="collapse-10"
@@ -1569,6 +1631,16 @@ AAAAAElFTkSuQmCC"
             <i class="fa fa-newspaper" aria-hidden="true"></i></span
         ></router-link>
       </b-collapse>
+          <router-link
+        v-if="showRoute(getRole, '/admin-panel/InovativeIdea')"
+        :class="{ activeRoute: $route.name == 'InovativeIdea' }"
+        to="/admin-panel/InovativeIdea"
+      >
+
+        <span>
+         تحت توسعه
+          <i class="fa fa-address-book" aria-hidden="true"></i></span
+      ></router-link>
       <router-link
         v-if="showRoute(getRole, '/admin-panel/cooperation')"
         :class="{ activeRoute: $route.name == 'panelCooperation' }"
@@ -1776,22 +1848,9 @@ AAAAAElFTkSuQmCC"
         :class="{ activeRoute: $route.name == 'panelUsers' }"
         to="/admin-panel/users"
       >
-        <i class="fa fa-angle-down" v-b-toggle.collapse-4></i>
         <span> کاربران <i class="fa fa-users" aria-hidden="true"></i></span
       ></router-link>
-      <b-collapse
-        v-if="showRoute(getRole, '/admin-panel/user-role')"
-        id="collapse-4"
-        class="mt-2"
-      >
-        <router-link
-          :class="{ activeRoute: $route.name == 'panelUserRole' }"
-          class="childRoute"
-          to="/admin-panel/user-role"
-        >
-          <span> افزودن نقش <i class="fa fa-user-tag"></i></span
-        ></router-link>
-      </b-collapse>
+    
       <router-link
         v-if="showRoute(getRole, '/admin-panel/user-question')"
         :class="{ activeRoute: $route.name == 'panelUserRole' }"

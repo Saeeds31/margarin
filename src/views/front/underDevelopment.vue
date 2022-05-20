@@ -32,6 +32,7 @@
     <!-- start desc -->
     <section id="underDevelopDescription">
       <h3>دفتر تحقيق و توسعه</h3>
+      
       <p
         id="IntroductionOfDepartment"
       >
@@ -42,7 +43,9 @@
         دانش بنيان، امور مربوط به كميته تحقق و توسعه محصول و امور مشتريان،
         مديريت فرآيند تحقق محصولات جديد و... پرداخته مي‏شود.
       </p>
-      <h3>آزمايشگاه تحقيق و توسعه</h3>
+      <details>
+      <summary class="summaryDevelop"> مشاهده ادامه مطلب</summary>
+         <h3>آزمايشگاه تحقيق و توسعه</h3>
       <p>
         آزمايشگاه تحقيق و توسعه شركت مارگارين با همکاری و همراهی متخصصان حرفه‌ای
         به تحقیق در زمینه روغن‌ها، چربی‌ها و محصولات جانبی آن‌ها می‌پردازد.
@@ -73,8 +76,8 @@
         تضمین کیفیت (QA) راهی برای جلوگیری از خطا و اشکالات پیش آمده در هنگام
         تحویل محصولات یا ارائه ی خدمات به مشتری است و تضمین کیفیت طبق گواهی ISO
         9000 قسمتی از مدیریت کیفیت کالا در جهت ایجاد اطمینان از انجام الزامات
-        کیفی است. نظام تضمین کیفیت دارای دو جنبه درونی و برون سازمانی است. • در
-        درون سازمان برای مدیریت سازمان ایجاد اطمینان می نماید. • در برون سازمان
+        کیفی است. نظام تضمین کیفیت دارای دو جنبه درونی و برون سازمانی است. <br /> در
+        درون سازمان برای مدیریت سازمان ایجاد اطمینان می نماید. <br /> در برون سازمان
         برای مشتریان ایجاد اطمینان می نماید
       </p>
       <h3>اقدامات دپارتمان تحقيق و توسعه در حوزه تضمين كيفيت</h3>
@@ -129,6 +132,7 @@
         مديريت محترم عامل در داخل اين مجموعه توليد نمي‏شوند. صاحب اين فرآيند
         دپارتمان تحقيق و توسعه مي‎باشد.
       </p>
+   </details>
     </section>
     <h3 id="newUnderProductTitle">
       محصولات جدید
@@ -254,7 +258,7 @@
       data-aos-once="true"
       class="contactUsTitle width80 margin-auto"
     >
-      <h1 class="blackColor06">
+      <h1 id="underDevelopmentFormTitle" class="blackColor06">
         {{
           $cookie.get("ltrTheme")
             ? "Innovative proposals and collaborative collaboration with individuals"
@@ -751,9 +755,17 @@ export default {
       } else {
         this.type = 2;
       }
-      document
-        .getElementById("contactUsForm")
+     setTimeout(() => {
+        document
+        .getElementById("underDevelopmentFormTitle")
         .scrollIntoView({ behavior: "smooth" });
+     }, 1000);
+    }else if(this.$route.query.section){
+          setTimeout(() => {
+        document
+        .getElementById(this.$route.query.section)
+        .scrollIntoView({ behavior: "smooth" });
+     }, 1000);
     }
   }
 };
@@ -774,6 +786,7 @@ section#underDevelopDescription {
   width: 95%;
   margin: auto;
   padding: 20px;
+  margin-bottom: 50px;
 }
 select#selectunderType {
   width: 48%;
@@ -789,5 +802,14 @@ select#selectunderType {
   padding-right:50px;
   text-align: right;
   font-weight: bold;
+}
+
+.summaryDevelop{
+    background: var(--color-theme);
+    width: max-content;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    direction: rtl;
 }
 </style>

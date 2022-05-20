@@ -20,7 +20,10 @@
       id="weblogsList"
       class="width100 d-flex f-wrap justify-content-between"
     >
-      <weblogCart
+     <template v-if="blogsData.data.blogs.length>0">
+      
+         
+        <weblogCart
         :data-aos="index % 2 == 0 ? 'fade-right' : 'fade-left'"
         data-aos-duration="1000"
         data-aos-delay="500"
@@ -30,6 +33,8 @@
         :article="weblog"
         :key="index"
       />
+     </template>
+     <p v-else id="notFound">{{$cookie.get("ltrTheme")? "No results found":"نتیجه ایی پیدا نشد"}}</p>
     </section>
     <section id="weblogPagination">
       <pagination
@@ -132,14 +137,31 @@ export default {
     } else {
       this.setStyle();
     }
+    if(this.$route.query.keyword){
+      this.gotoSection("weblogsList");
+    }
     window.addEventListener("resize", this.setStyle);
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.setStyle);
   },
   methods: {
+     gotoSection(id) {
+      let el = document.getElementById(id);
+      if (el == null) {
+        this.setTimeOutGoto = setTimeout(() => {
+          this.gotoSection(id);
+        }, 1000);
+      } else {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    },
     getTitle() {
-      if (this.$route.query.type) {
+      if(this.$route.query.keyword){
+         if (this.$cookie.get("ltrTheme")) return "Search Results";
+        else return "نتایج جستجو";
+      }
+    else  if (this.$route.query.type) {
         if (this.$route.query.type ==2) {
           if (this.$cookie.get("ltrTheme")) return " Articles Archive";
           else return "آرشیــــو  مقــــالات";
@@ -250,5 +272,12 @@ export default {
 }
 #blogsSection .slotElements {
   margin-top: 23%;
+}
+p#notFound {
+    width: 100%;
+    text-align: center;
+    margin: 50px 0;
+    font-size: 24px;
+    font-family: 'yekan-bold';
 }
 </style>

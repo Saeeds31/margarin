@@ -27,7 +27,7 @@
     <introduction
       v-for="(item, index) in managerList"
       :key="index"
-      class="width80 margin-auto members"
+      class="width80 margin-auto members  mr-t-10"
       :title="item.fullName"
       :summary="item.title"
       :image="$root.baseImageUrl + item.image"
@@ -37,7 +37,7 @@
         data-aos="zoom-in"
         data-aos-duration="1000"
         data-aos-once="true"
-        class="slotElements width80 blackColor08"
+        class="slotElements width80 blackColor08 mr-t-5"
         v-html="item.resume"
       ></p>
     </introduction>
@@ -96,6 +96,12 @@ export default {
 };
 </script>
 <style>
+#managerSection .slotElements p {
+    margin:25px 0;
+}
+#managerSection .slotElements{
+  white-space: unset !important;
+}
 #managerSection .members #backgroundOrange,
 #managerSection .members .currentPathSection {
   display: none !important;
@@ -129,5 +135,12 @@ main#managerSection {
   #managerSection #introductionSection{
     margin-bottom: 0;
   }
+}
+.mr-t-5{
+  margin-top: 5% !important;
+  width: 100% !important;
+  text-align: right !important;
+}.mr-t-10{
+  margin-top: 10% !important;
 }
 </style>

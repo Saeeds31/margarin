@@ -221,12 +221,13 @@ export default {
   border-radius: 20px;      padding: 15px;
     background: white;
     box-shadow: 0 0 40px #8d8d8d70;
-     min-width: 450px;
-     height:max-content;
+     width: 450px;
+     height:586px;
 }
 @media (max-width:1000px){
   #introductionSection #content img{
     box-shadow: 0 0 10px #8d8d8d70;
+    height:auto;
 
   }
 }
@@ -234,7 +235,8 @@ export default {
   margin-top: 23%;
   width: 80%;
   text-align: justify;
-  font-size: 18px;
+  font-size: 19px;
   direction: rtl;
+  white-space: break-spaces;
 }
 </style>

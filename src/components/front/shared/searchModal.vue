@@ -11,6 +11,7 @@
           :placeholder="$cookie.get('ltrTheme')?'search right now ...':'جستجو را همین الان شروع کنید ...'"
         />
         <svg
+        style="cursor: pointer;"
         @click="searchInBlogs()"
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -42,7 +43,7 @@ export default {
       if(this.search==""){
         return;
       }else{
-        this.$router.push(`/weblogs?keyword=${this.search}`)
+        this.$router.push(`/search?keyword=${this.search}`)
       }
     }
   },

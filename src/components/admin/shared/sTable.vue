@@ -1,7 +1,7 @@
 <template>
   <table v-if="value.length > 0" class="table table-hover">
     <tr class="trHeader">
-      <template v-for="(header, index) in headers">
+      <template v-for="(header, index) in headers" >
         <th
           v-if="header.type != 'setting' && header.show_in_table == true"
           :key="index"
@@ -10,7 +10,7 @@
         </th>
         <th
           v-else-if="header.type == 'setting' && hiddenButton == false"
-          :key="index"
+          :key="index+'2'"
         >
           {{ header.name }}
         </th>
@@ -96,6 +96,13 @@
               variant="primary"
               @click="showEditModal(item.id)"
               >{{ header.editLabel ? header.editLabel : "ویرایش" }}</b-button
+            >
+            <b-button
+              class="tableButtons"
+              v-if="header.modal"
+              variant="info"
+              @click="$emit('callModalFromTable',item.id)"
+              >{{header.buttonModalTitle}}</b-button
             >
             <b-button
               class="tableButtons"
@@ -284,7 +291,7 @@ export default {
   },
   data() {
     return {
-      baseMediaUrl: "http://blogtest.ir/"
+      baseMediaUrl: "http://test.mmc.ir/"
     };
   }
 };

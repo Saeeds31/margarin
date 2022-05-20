@@ -30,11 +30,16 @@
 <script>
 export default {
   props: {
-    blog: Object
+    blog: Object,
+    route:{
+      type:String,
+      default:'weblog-detail'
+    }
   },
   methods:{
     gotoLink(id,title){
-      this.$router.push(`weblog-detail/${id}/${this.$root.slugGenerator(title)}`)
+          this.$router.push(`${this.route}/${id}/${this.$root.slugGenerator(title)}`);
+      // window.open(`${window.location.origin}`+route.href);
     }
   }
 };

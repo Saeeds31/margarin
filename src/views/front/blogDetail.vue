@@ -1,5 +1,5 @@
 <template>
-  <main v v-if="blogData" id="blogDetailSection" class="width80 margin-auto">
+  <main v v-if="blogData" id="blogDetailSection" class="width80 margin-auto blogDetailSection">
     <introduction
        :title="
        blogData.blogType=='News'?
@@ -192,7 +192,7 @@
       data-aos-once="true"
       :tags="blogData.keyWords.split(',')"
     />
-    <sectionHeader :data="blogDetailHeader"> </sectionHeader>
+    <sectionHeader class="unsetAnimation" :data="blogDetailHeader"> </sectionHeader>
     <section
       data-aos="fade-up"
       data-aos-duration="1000"
@@ -369,7 +369,7 @@ shareBlog(){
             "%",
             "#blogDetailSection #introductionSection #headerBlog",
             1920,
-            30,
+            35,
             1496,
             20
           );
@@ -540,5 +540,8 @@ shareBlog(){
 }
 .shareBlog{
   cursor: pointer;
+}
+.unsetAnimation .bolderAnimate{
+  animation: unset;
 }
 </style>
