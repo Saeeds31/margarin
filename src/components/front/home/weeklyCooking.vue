@@ -270,4 +270,11 @@ background-size: 36% 88%;
   top: 85%;
   z-index: 100;
 }
+#weeklyCookingSection .slick-slide{
+  z-index: -1;
+}
+#weeklyCookingSection .slick-slide.slick-active{
+  z-index: 1 !important;
+}
+  
 </style>
