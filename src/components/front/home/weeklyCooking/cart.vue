@@ -229,6 +229,8 @@ export default {
   text-align: center;
 }
 .imageBox {
+  /*
   margin-top: 5%;
+  */
 }
 </style>
