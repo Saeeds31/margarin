@@ -65,7 +65,7 @@ Vue.use(VueMeta, {
   refreshOnceOnNavigation: true,
 });
 Vue.prototype.$axios = Axios;
-Axios.defaults.baseURL = "http://test.mmc.ir/api/";
+Axios.defaults.baseURL = "https://test.mmc.ir/api/";
 Vue.use(Vuelidate);
 // Vue.use(Swal)
 Vue.component("VueSlickCarouse", VueSlickCarouse);
@@ -74,16 +74,16 @@ Vue.config.productionTip = false;
 Vue.mixin(requestMixin);
 new Vue({
   data() {
-    // http://test.mmc.ir
+    // https://test.mmc.ir
     return {
       aboutUsCounter: 9,
       sectionIndexHome: 1,
       screenSize: 0,
       showUtilityModal:false,
       footerMapCursor: false,
-      domainName: "http://test1.mmc.ir",
+      domainName: "https://mmc.ir",
       footerData: null,
-      baseImageUrl: "http://test.mmc.ir/",
+      baseImageUrl: "https://test.mmc.ir/",
       // change vue x url
     };
   },

@@ -922,7 +922,7 @@ export default {
         allowedContent: true,
         language: "fa",
         filebrowserImageUploadUrl:
-          "http://www.test.mmc.ir/api/files/uploadckfile",
+          "https://test.mmc.ir/api/files/uploadckfile",
         colorButton:true,
         extraPlugins: 'justify'
       },
@@ -932,13 +932,13 @@ export default {
         language: "fa",
         allowedContent: true,
         filebrowserImageUploadUrl:
-          "http://www.test.mmc.ir/api/files/uploadckfile",
+          "https://test.mmc.ir/api/files/uploadckfile",
         colorButton:true,
         extraPlugins: 'justify'
       },
       previewImage: {},
       innerDisabled: false,
-      baseMediaUrl: "http://test.mmc.ir/",
+      baseMediaUrl: "https://test.mmc.ir/",
       image: {},
       video: {},
       string: {},

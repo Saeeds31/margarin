@@ -291,7 +291,7 @@ export default {
   },
   data() {
     return {
-      baseMediaUrl: "http://test.mmc.ir/"
+      baseMediaUrl: "https://test.mmc.ir/"
     };
   }
 };

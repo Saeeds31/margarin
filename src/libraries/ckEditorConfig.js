@@ -8,7 +8,7 @@ CKEDITOR.editorConfig = function(config) {
     // config.uiColor = '#AADC6E';
     config.contentsLangDirection = 'rtl';
     config.language = 'fa';
-    config.filebrowserImageUploadUrl = 'http://www.test.mmc.ir/api/filesuploadckfile';
+    config.filebrowserImageUploadUrl = 'https://test.mmc.ir/api/filesuploadckfile';
     config.toolbar = 'MyToolbar';
 
     config.toolbar_MyToolbar = [
