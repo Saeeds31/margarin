@@ -43,6 +43,7 @@ export default {
       if(this.search==""){
         return;
       }else{
+         this.$emit("exit", false);
         this.$router.push(`/search?keyword=${this.search}`)
       }
     }

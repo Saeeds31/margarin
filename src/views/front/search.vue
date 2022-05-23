@@ -10,11 +10,7 @@
         {{ blogsData.data.webLogIntro.text }}
       </p>
     </introduction>
-    <filterBox
-      :typeSelected="typeSelected"
-      :isDesendingSelected="isDesendingSelected"
-      :placeHolder="searchPlaceHolder"
-      @filtered="filteredBlogs"
+   iltered="filteredBlogs"
     />
     <section
       id="weblogsList"
@@ -24,21 +20,61 @@
       
          
         <weblogCart
-        :data-aos="index % 2 == 0 ? 'fade-right' : 'fade-left'"
-        data-aos-duration="1000"
-        data-aos-delay="500"
-        data-aos-once="true"
+        
         :showComment="true"
         v-for="(weblog, index) in blogsData.data.blogs"
         :article="weblog"
         :key="index"
       />
      </template>
-     <p v-else id="notFound">{{$cookie.get("ltrTheme")? "No results found":"نتیجه ایی پیدا نشد"}}</p>
+
+     <!-- magazine -->
+     
+     
+     <template v-if="blogsData.data.magazines.length>0">
+      
+         
+        <magazineCart
+        
+        :showComment="true"
+        v-for="(weblog, index) in blogsData.data.magazines"
+        :article="weblog"
+        :key="index"
+      />
+     </template>
+     <!-- reportage -->
+     
+     
+     <template v-if="blogsData.data.reportages.length>0">
+      
+         
+        <reportageCart
+        
+        :showComment="true"
+        v-for="(weblog, index) in blogsData.data.reportages"
+        :article="weblog"
+        :key="index"
+      />
+     </template>
+     <!-- social -->
+     
+     
+     <template v-if="blogsData.data.socials.length>0">
+      
+         
+        <socialCart
+        
+        :showComment="true"
+        v-for="(weblog, index) in blogsData.data.socials"
+        :article="weblog"
+        :key="index"
+      />
+     </template>
+     <!-- <p v-else id="notFound">{{$cookie.get("ltrTheme")? "No results found":"نتیجه ایی پیدا نشد"}}</p> -->
     </section>
     <section id="weblogPagination">
       <pagination
-        v-if="blogsData.pagination.TotalPages > 1"
+        v-if="false"
         :totalPages="blogsData.pagination.TotalPages"
         :currentPage="blogsData.pagination.CurrentPage"
         @pageChanged="pageChanged"
@@ -48,17 +84,20 @@
   <loader v-else />
 </template>
 <script>
+import reportageCart from "@/components/front/reportage/weblogCart.vue";
+import magazineCart from "@/components/front/magazine/weblogCart.vue";
+
 import pagination from "@/components/front/shared/pagination.vue";
 import weblogCart from "@/components/front/blogs/weblogCart.vue";
 import introduction from "@/components/front/shared/introduction.vue";
-import filterBox from "@/components/front/blogs/filterBox.vue";
 import Loader from "@/components/front/shared/loader.vue";
+import socialCart from "@/components/front/socialResposnibility/weblogCart.vue";
+
 export default {
   components: {
     Loader,
     introduction,
-    filterBox,
-    weblogCart,
+    weblogCart,socialCart,reportageCart,magazineCart,
     pagination
   },
   data() {
