@@ -18,7 +18,7 @@
         !$route.name.includes('home')
       "
     />
-    <footerNavigation class="showInMobile" />
+    <footerNavigation class="showInMobileFlex" />
   </div>
 </template>
 <script>

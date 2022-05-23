@@ -8,7 +8,7 @@
         data-aos="fade-right"
         data-aos-duration="1500"
         id="tandis"
-        data-aos-once="false"
+        data-aos-once="true"
         :src="data.image"
         alt=""
       />
@@ -16,8 +16,8 @@
         <h1
           data-aos="fade-left"
           data-aos-duration="1000"
-          
-          data-aos-once="false"
+                  data-aos-once="true"
+
         >
           {{ data.title }}
         <img src="@/assets/front/images/heart.png" width="40" id="heartHealth" />
@@ -25,17 +25,15 @@
         </h1>
         <h3
           data-aos="fade-left"
-          data-aos-duration="1500"
-          
-          data-aos-once="false"
+          data-aos-duration="1500"        data-aos-once="true"
+
         >
           {{ data.summary }}
         </h3>
         <div
           data-aos="fade-left"
-          data-aos-duration="1500"
-          
-          data-aos-once="false"
+          data-aos-duration="1500"        data-aos-once="true"
+
         >
           <span></span>
           <span></span>
@@ -43,16 +41,16 @@
         <p
           data-aos="fade-left"
           data-aos-duration="2000"
-          
-          data-aos-once="false"
+                  data-aos-once="true"
+
         >
           {{ data.text }}
         </p>
         <rounded-button
           data-aos="fade-left"
           data-aos-duration="1500"
-          
-          data-aos-once="false"
+                  data-aos-once="true"
+
           :type="'link'"
           :link="'/products'"
           :title="'محصولات مارگارین'"

@@ -567,10 +567,10 @@ export default {
   },
   data() {
     return {
-      showModal: false,
       showSearch: false,
       showMenuModal: false,
       disabled: false,
+      showModal: false,
       fullName: "",
       mobile: "",
       email: "",

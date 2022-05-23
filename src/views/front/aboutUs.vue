@@ -667,4 +667,9 @@ h3#margarinValuesTitle {
   position: relative;
   top: 50px;
 }
+@media (max-width:580px){
+  h3#margarinValuesTitle{
+    top: -20px;
+  }
+}
 </style>
