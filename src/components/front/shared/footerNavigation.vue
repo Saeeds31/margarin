@@ -356,6 +356,15 @@ export default {
     };
   },
   methods: {
+    
+    showSection(section, flag) {
+      if (flag == true) {
+        this[section] = true;
+      }
+      setTimeout(() => {
+        document.getElementById(section).focus();
+      }, 500);
+    },
     showFooterNav() {
       if (this.$route.name.includes("home")) {
         return true;
@@ -466,5 +475,8 @@ a#phoneButtonFooter path {
 }
 #managementMessageModal___BV_modal_outer_{
   z-index: 104000000000 !important;
+}
+#managementMessageModal___BV_modal_outer_ #contactUsForm #formTop{
+  flex-direction: column-reverse;
 }
 </style>

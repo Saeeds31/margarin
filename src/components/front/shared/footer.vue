@@ -323,17 +323,7 @@
                 $cookie.get('ltrTheme') ? 'صنف و صنعت' : 'صنف و صنعت'
               }`"
               >{{
-                $cookie.get("ltrTheme") ? "Industrial oils" : "روغن های صنعت"
-              }}</router-link
-            >
-          </li>
-          <li>
-            <router-link
-              :to="`/products?type=${
-                $cookie.get('ltrTheme') ? 'صنف و صنعت' : 'صنف و صنعت'
-              }`"
-              >{{
-                $cookie.get("ltrTheme") ? "Class oils" : "روغن های صنف"
+                $cookie.get("ltrTheme") ? "Industrial oils" : "روغن های صنف و صنعت"
               }}</router-link
             >
           </li>
