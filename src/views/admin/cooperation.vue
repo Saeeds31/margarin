@@ -33,7 +33,7 @@
         :disabled="disabled"
         :killButtons="true"
         @submit="submit"
-        :mode="mode"
+        :mode="'edit'"
         :folderRoute="'testAboutUs'"
         :bigData="bigData"
         :headers="headers"

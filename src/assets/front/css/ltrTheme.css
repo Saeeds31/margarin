@@ -490,7 +490,8 @@
     }
     
     .ltrTheme #frontSection #footer #footerSection .footerTitle {
-        padding: 15px 30px 15px 0px
+        padding: 15px 30px 15px 0;
+        text-align:left;
     }
     
     .ltrTheme section#rawMaterial h3 {

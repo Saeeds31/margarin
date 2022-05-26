@@ -586,6 +586,13 @@ img.imageArzesh {
     width: 100px;
 }
 @media (max-width: 768px) {
+  .circle.three,.circle.five{
+    transform: unset !important;
+  }
+  .three .content-container{
+    right: unset;
+    left: -210px;
+  }
   .six .content-container .content .preWrap {
     position: relative;
     right: unset;

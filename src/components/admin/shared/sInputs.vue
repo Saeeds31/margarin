@@ -436,6 +436,7 @@
           </template>
           <template v-if="!header.multiData && header.type == 'file'">
             <b-form-file
+            v-if="header.disable ? !header.disable :true"
               :disabled="header.disable ? header.disable : false"
               v-model="files[header.key]"
               :state="Boolean(files[header.key])"

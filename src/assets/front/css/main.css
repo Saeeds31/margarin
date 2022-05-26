@@ -4171,6 +4171,8 @@ div#application {
   width: max-content;
   padding: 15px 0px 15px 30px;
   margin-bottom: 20px;
+  min-width: 150px;
+  text-align: right;
 }
 
 #frontSection #footer #footerSection ul li {
