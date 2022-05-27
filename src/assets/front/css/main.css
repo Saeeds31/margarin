@@ -4168,7 +4168,7 @@ div#application {
   opacity: 0.6;
   padding-bottom: 20px;
   border-bottom: 3px solid #00000054;
-  width: max-content;
+  width: 100%;
   padding: 15px 0px 15px 30px;
   margin-bottom: 20px;
   min-width: 150px;
