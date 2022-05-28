@@ -476,7 +476,10 @@ a#phoneButtonFooter path {
 #managementMessageModal___BV_modal_outer_{
   z-index: 104000000000 !important;
 }
+@media (max-width:768px){
+  
 #managementMessageModal___BV_modal_outer_ #contactUsForm #formTop{
   flex-direction: column-reverse;
+}
 }
 </style>
