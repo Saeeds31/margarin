@@ -2700,8 +2700,11 @@ a.cookingDetailSvg {
 .cookingCart .image .chef h4 {
   margin-top: 10px;
   font-size: 14px;
+  display: none;
 }
-
+.cookingDetail #introductionSection #content div h3{
+  display: none;
+}
 .cookingCart h1 {
   margin-top: 80px;
   font-size: 29px;
