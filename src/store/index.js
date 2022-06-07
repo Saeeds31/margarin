@@ -64,28 +64,28 @@ export default new Vuex.Store({
               ? "Financial Statements"
               : "صورت های مالی",
             route:
-              "https://test.mmc.ir/reportage-detail/5/%D8%B5%D9%88%D8%B1%D8%AA-%D9%87%D8%A7%DB%8C-%D9%85%D8%A7%D9%84%DB%8C",
+              "https://mmc.ir/reportage-detail/5/%D8%B5%D9%88%D8%B1%D8%AA-%D9%87%D8%A7%DB%8C-%D9%85%D8%A7%D9%84%DB%8C",
           },
           {
             title: cookie.get("ltrTheme")
               ? "Interpretive management"
               : "تفسیری مدیریت",
             route:
-              "https://test.mmc.ir/reportage-detail/3/%D8%AA%D9%81%D8%B3%DB%8C%D8%B1%DB%8C-%D9%85%D8%AF%D9%8A%D8%B1%D9%8A%D8%AA",
+              "https://mmc.ir/reportage-detail/3/%D8%AA%D9%81%D8%B3%DB%8C%D8%B1%DB%8C-%D9%85%D8%AF%D9%8A%D8%B1%D9%8A%D8%AA",
           },
           {
             title: cookie.get("ltrTheme")
               ? "Board activities"
               : "فعالیت های هیئت مدیره",
             route:
-              "https://test.mmc.ir/reportage-detail/6/%D9%81%D8%B9%D8%A7%D9%84%D9%8A%D8%AA-%D9%87%D8%A7%D9%8A-%D9%87%D9%8A%D8%A6%D8%AA-%D9%85%D8%AF%D9%8A%D8%B1%D9%87-",
+              "https://mmc.ir/reportage-detail/6/%D9%81%D8%B9%D8%A7%D9%84%D9%8A%D8%AA-%D9%87%D8%A7%D9%8A-%D9%87%D9%8A%D8%A6%D8%AA-%D9%85%D8%AF%D9%8A%D8%B1%D9%87-",
           },
           {
             title: cookie.get("ltrTheme")
               ? "Internal control reports"
               : "گزارشات کنترل داخلی",
             route:
-              "https://test.mmc.ir/reportage-detail/7/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%D8%A7%D8%AA-%D9%83%D9%86%D8%AA%D8%B1%D9%84-%D8%AF%D8%A7%D8%AE%D9%84%D9%8A",
+              "https://mmc.ir/reportage-detail/7/%DA%AF%D8%B2%D8%A7%D8%B1%D8%B4%D8%A7%D8%AA-%D9%83%D9%86%D8%AA%D8%B1%D9%84-%D8%AF%D8%A7%D8%AE%D9%84%D9%8A",
           },
         ],
       },
