@@ -436,7 +436,7 @@
           </template>
           <template v-if="!header.multiData && header.type == 'file'">
             <b-form-file
-            v-if="header.disable ? !header.disable :true"
+              v-if="header.disable ? !header.disable : true"
               :disabled="header.disable ? header.disable : false"
               v-model="files[header.key]"
               :state="Boolean(files[header.key])"
@@ -454,6 +454,19 @@
               :href="baseMediaUrl + bigData.both[header.key]"
               target="_blank"
               >دریافت</a
+            >
+
+            <a
+              class="videoPreviewButton"
+              v-if="
+                mode == 'edit' &&
+                bigData.both[header.key] != '' &&
+                bigData.both[header.key] != null
+              "
+              @click="removeFile(header.key)"
+              style="backgroundcolor: red; marginleft: 20px"
+              target="_blank"
+              >حذف</a
             >
           </template>
           <template
@@ -712,6 +725,11 @@ export default {
         });
       return url;
     },
+    removeFile(key) {
+      this.bigData.both[key] = null;
+      this.files[key] = undefined;
+      this.$toast.success("برای حذف کامل دکمه بروزرسانی را بزنید");
+    },
     async submitForm() {
       for (const header of this.headers) {
         if (header.type == "image") {
@@ -922,20 +940,18 @@ export default {
         contentsLangDirection: "rtl",
         allowedContent: true,
         language: "fa",
-        filebrowserImageUploadUrl:
-          "https://test.mmc.ir/api/files/uploadckfile",
-        colorButton:true,
-        extraPlugins: 'justify'
+        filebrowserImageUploadUrl: "https://test.mmc.ir/api/files/uploadckfile",
+        colorButton: true,
+        extraPlugins: "justify",
       },
 
       ckEditorConfig1: {
         contentsLangDirection: "ltr",
         language: "fa",
         allowedContent: true,
-        filebrowserImageUploadUrl:
-          "https://test.mmc.ir/api/files/uploadckfile",
-        colorButton:true,
-        extraPlugins: 'justify'
+        filebrowserImageUploadUrl: "https://test.mmc.ir/api/files/uploadckfile",
+        colorButton: true,
+        extraPlugins: "justify",
       },
       previewImage: {},
       innerDisabled: false,
