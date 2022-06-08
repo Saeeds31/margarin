@@ -464,7 +464,7 @@
                 bigData.both[header.key] != null
               "
               @click="removeFile(header.key)"
-              style="backgroundcolor: red; marginleft: 20px"
+              id="deleteFile"
               target="_blank"
               >حذف</a
             >
@@ -1073,5 +1073,10 @@ div#bothLanguage {
   box-shadow: 0 0 40px #00000054;
   float: right;
   cursor: zoom-in;
+}
+#deleteFile {
+  background-color: red;
+  margin-left: 20px;
+  cursor: pointer;
 }
 </style>
