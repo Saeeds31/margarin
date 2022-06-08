@@ -455,6 +455,19 @@
               target="_blank"
               >دریافت</a
             >
+            
+            <a
+              class="videoPreviewButton"
+              v-if="
+                mode == 'edit' &&
+                bigData.both[header.key] != '' &&
+                bigData.both[header.key] != null
+              "
+              @click="removeFile(header.key)"
+              style="backgroundColor:red ;marginLeft:20px;"
+              target="_blank"
+              >حذف</a
+            >
           </template>
           <template
             v-if="
@@ -711,6 +724,13 @@ export default {
           );
         });
       return url;
+    },
+    removeFile(key){
+
+      this.bigData.both[key]=null;
+      this.files[key]=undefined;
+                        this.$toast.success("برای حذف کامل دکمه بروزرسانی را بزنید");
+
     },
     async submitForm() {
       for (const header of this.headers) {
