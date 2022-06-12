@@ -196,7 +196,7 @@
             {{
               $cookie.get("ltrTheme")
                 ? "Sending a message to the management"
-                : "اراتبــــاط مستقیــــم بــــا مدیــــرعامل"
+                : "ارتبــــاط مستقیــــم بــــا مدیــــرعامل"
             }}
           </h1>
           <h3 class="blackColor04">
