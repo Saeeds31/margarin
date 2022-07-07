@@ -1368,7 +1368,7 @@ AAAAAElFTkSuQmCC"
         </span>
       </router-link>
 
-      <router-link
+      <!-- <router-link
         v-if="showRoute(getRole, '/admin-panel/reports')"
         :class="{ activeRoute: $route.name == 'panelReport' }"
         to="/admin-panel/reports"
@@ -1377,7 +1377,7 @@ AAAAAElFTkSuQmCC"
           گزارشات
           <i class="fa fa-info-circle" aria-hidden="true"></i>
         </span>
-      </router-link>
+      </router-link> -->
       <!-- start gallery -->
       <router-link
         v-if="showRoute(getRole, '/admin-panel/galleries')"
