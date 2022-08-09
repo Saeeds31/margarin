@@ -2301,6 +2301,7 @@ a.cookingDetailSvg {
   .tools
   .discountRate
   .discount {
+    display: none !important;
   padding: 15px 30px;
   background: var(--color-theme);
   border-bottom-left-radius: 20px;
