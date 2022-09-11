@@ -624,7 +624,7 @@
         </div>
         <div
           id="skil"
-          class="width60 d-flex align-items-center justify-content-between"
+          class="width100 d-flex align-items-center justify-content-between"
         >
           <input
             :placeholder="
@@ -642,6 +642,28 @@
             $cookie.get("ltrTheme")
               ? "Do you have any special skills or expertise?"
               : "آیا دارای مهارت یا تخصص خاصی هستید ؟"
+          }}</label>
+        </div>
+        <div
+          id="skil"
+          class="width60 d-flex align-items-center justify-content-between"
+        >
+          <input
+            :placeholder="
+              $cookie.get('ltrTheme')
+                ? 'For example, electrical engineering'
+                : 'برای مثال     مهندسی برق'
+            "
+        :tabindex="19"
+
+            type="text"
+            v-model="capabilities"
+            id="skillInput"
+          />
+          <label for="skillInput">{{
+            $cookie.get("ltrTheme")
+              ? "major?"
+              : "رشته تحصیلی"
           }}</label>
         </div>
         <selectionInput
