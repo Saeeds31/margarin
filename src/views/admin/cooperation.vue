@@ -20,6 +20,15 @@
                     :headers="headers"
                   />
     </div>
+    <div v-if="items != null && totalPages > 1">
+      <div id="pagination">
+        <pagination
+          @pageChanged="pageChanged"
+          :totalPages="totalPages"
+          :currentPage="currentPage"
+        />
+      </div>
+    </div>
     <b-modal
       id="categoryModal"
       hide-footer
@@ -42,13 +51,15 @@
   </div>
 </template>
 <script>
+import pagination from "@/components/front/shared/pagination.vue";
+
 import SInputs from "@/components/admin/shared/sInputs.vue";
 import STable from "@/components/admin/shared/sTable.vue";
 import adminMixin from "@/libraries/adminController.js"
 import { BModal, BButton,BOverlay,BSpinner } from "bootstrap-vue";
 export default {
 mixins:[adminMixin],
-  components: { SInputs, BModal, BButton, STable,BOverlay,BSpinner },
+  components: {pagination, SInputs, BModal, BButton, STable,BOverlay,BSpinner },
   data() {
     return {
       headers: [
@@ -225,13 +236,23 @@ mixins:[adminMixin],
           disable:true
         },
         {
-          style: "col-12",
+          style: "col-6",
           show_in_table: false,
           placeholder: "تحصیلات",
           type: "string",
           multiData: false,
           name: "تحصیلات",
           key: "education",
+          disable:true
+        },
+        {
+          style: "col-6",
+          show_in_table: false,
+          placeholder: "رشته تحصیلی ",
+          type: "string",
+          multiData: false,
+          name: "رشته تحصیلی",
+          key: "major",
           disable:true
         },
         {

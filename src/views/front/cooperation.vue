@@ -623,6 +623,35 @@
           }}</label>
         </div>
         <div
+        id="skil"
+        class="width60 d-flex align-items-center justify-content-between"
+      >
+        <input
+          :placeholder="
+            $cookie.get('ltrTheme')
+              ? 'For example, electrical engineering'
+              : 'برای مثال     مهندسی برق'
+          "
+      :tabindex="19"
+
+          type="text"
+          v-model="major"
+          id="skillInput"
+        />
+        <label for="skillInput">{{
+          $cookie.get("ltrTheme")
+            ? "major?"
+            : "رشته تحصیلی"
+        }}</label>
+      </div>
+      <selectionInput
+      :tabindex="18"
+
+        :title="$cookie.get('ltrTheme') ? 'education' : 'تحصیلات'"
+        v-model="educations"
+        @selectValue="education = $event"
+      />
+        <div
           id="skil"
           class="width100 d-flex align-items-center justify-content-between"
         >
@@ -644,35 +673,7 @@
               : "آیا دارای مهارت یا تخصص خاصی هستید ؟"
           }}</label>
         </div>
-        <div
-          id="skil"
-          class="width60 d-flex align-items-center justify-content-between"
-        >
-          <input
-            :placeholder="
-              $cookie.get('ltrTheme')
-                ? 'For example, electrical engineering'
-                : 'برای مثال     مهندسی برق'
-            "
-        :tabindex="19"
-
-            type="text"
-            v-model="capabilities"
-            id="skillInput"
-          />
-          <label for="skillInput">{{
-            $cookie.get("ltrTheme")
-              ? "major?"
-              : "رشته تحصیلی"
-          }}</label>
-        </div>
-        <selectionInput
-        :tabindex="18"
-
-          :title="$cookie.get('ltrTheme') ? 'education' : 'تحصیلات'"
-          v-model="educations"
-          @selectValue="education = $event"
-        />
+       
         <div
           v-if="!newRow"
           class="width100 insertRow d-flex justify-content-end"
@@ -1046,6 +1047,7 @@ export default {
         "سهند"
       ],
       capabilities: "",
+      major:"",
       educationDegree: this.$cookie.get("ltrTheme") ? "Masters" : "کارشناسی",
       religion: this.$cookie.get("ltrTheme") ? "Shia" : "شیعه",
       brithDate: null,
@@ -1101,6 +1103,7 @@ export default {
 
         education: this.education,
         capabilities: this.capabilities,
+        major:this.major,
         yearInsurance: this.year,
         monthInsurance: this.mounth,
         extraDescription: this.description

@@ -46,6 +46,7 @@ export default {
                         let paginationData = JSON.parse(response.headers['x-pagination'])
                         this.totalPages = paginationData.TotalPages;
                         this.currentPage = paginationData.CurrentPage
+                        console.log(paginationData);
                     }
                     this.items = response.data.data;
                 })
