@@ -1007,8 +1007,8 @@ const pack = {
           title2_fa: 'ارتباط با مشتریان',
           title2_en: 'communication with clients',
   
-          body_en: "SMS system number:1000432\nEmail:crm@mmc.ir\nAnnounced telephone numbers: 02135811 extension 1 & 5",
-          body_fa: "شماره سامانه پیام کوتاه:10000432\nایمیل:crm@mmc.ir\nشماره تلفن های اعلام شده:02135811 داخلی 1 و 5"
+          body_en: "direct Number:02135811491\nvoiceMail number:02135811811\nSMS system number:1000432\nEmail:crm@mmc.ir\nAnnounced telephone numbers: 02135811 extension 1 & 5",
+          body_fa: "شماره مستقیم: 02135811491\nشماره پیغام گیر:02135811811\nشماره سامانه پیام کوتاه:10000432\nایمیل:crm@mmc.ir\nشماره تلفن های اعلام شده:02135811 داخلی 1 و 5"
         }
       })
       
