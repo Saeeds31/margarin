@@ -3,7 +3,8 @@ import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+    {
     path: "/",
 
     component: function() {
@@ -221,6 +222,7 @@ const routes = [{
             }
         },
 
+       
         {
             path: "/cooperation",
             name: "cooperation",
@@ -307,6 +309,17 @@ const routes = [{
                 return import (
                     /* webpackChunkName: "front" */
                     "../views/front/loginRegister.vue"
+                );
+            }
+        },
+        {
+            path: "/supplier-register",
+            name: "supplierRegister",
+
+            component: function() {
+                return import (
+                    /* webpackChunkName: "front" */
+                    "../views/front/supplierRegister.vue"
                 );
             }
         },
@@ -482,6 +495,29 @@ const routes = [{
                     }
                 },
 
+                {
+                    path: "supplier-news",
+                    name: "supplierNews",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/supplierNews.vue"
+                        );
+                    }
+                },
+
+                {
+                    path: "supplier-news-categories",
+                    name: "supplierNewsCategories",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/supplierNewsCategories.vue"
+                        );
+                    }
+                },
                 {
                     path: "weblogs",
                     name: "panelWeblogs",

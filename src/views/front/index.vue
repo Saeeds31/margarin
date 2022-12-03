@@ -2,20 +2,17 @@
   <div id="frontSection">
     <orgHeader
       v-if="
-        !$route.name.includes('loginRegister') &&
-        !$route.name.includes('home') &&
-        !$route.name.includes('healthAmbassador') &&
+      !hiddenList.includes($route.name)  &&
         !$route.path.includes('admin-panel')
       "
       class="width80 margin-auto"
     />
     <router-view></router-view>
     <footerSite
-      v-if="
-        !$route.name.includes('healthAmbassador') &&
-        !$route.path.includes('admin-panel') &&
-        !$route.name.includes('loginRegister') &&
-        !$route.name.includes('home')
+      v-if="    
+      !hiddenList.includes($route.name)   &&
+        !$route.path.includes('admin-panel')
+        
       "
     />
     <footerNavigation class="showInMobileFlex" />
@@ -30,6 +27,16 @@ export default {
     orgHeader,
     footerSite,
     footerNavigation,
+  },
+  data(){
+    return{
+      hiddenList:[
+        'supplierRegister',
+        'healthAmbassador',
+        'loginRegister',
+        'home'
+      ]
+    }
   },
   computed: {
     brands() {

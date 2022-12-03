@@ -1367,6 +1367,34 @@ AAAAAElFTkSuQmCC"
           <i class="fa fa-users" aria-hidden="true"></i>
         </span>
       </router-link>
+      <!-- supplier admin routes -->
+      <router-link
+      v-if="showRoute(getRole, '/admin-panel/supplier-news')"
+      :class="{ activeRoute: $route.name == 'supplierNews' }"
+      to="/admin-panel/supplier-news"
+      ><i class="fa fa-angle-down" v-b-toggle.collapse-105></i>
+      <span>
+        اخبار تامین کنندگان
+        <i class="fa fa-blog" aria-hidden="true"></i>
+      </span>
+    </router-link>
+    <b-collapse
+      v-if="showRoute(getRole, '/admin-panel/supplier-news-categories')"
+      id="collapse-105"
+      class="mt-2"
+    >
+      <router-link
+        :class="{ activeRoute: $route.name == 'supplierNewsCategories' }"
+        class="childRoute"
+        to="/admin-panel/supplier-news-categories"
+      >
+        <span>
+          دسته بندی
+          <i class="fa fa-align-justify" aria-hidden="true"></i></span
+      ></router-link>
+    
+
+    </b-collapse>
 
       <router-link
         v-if="showRoute(getRole, '/admin-panel/reports')"
