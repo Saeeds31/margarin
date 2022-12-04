@@ -167,7 +167,7 @@ input:focus-visible {
 .disableButton {
   pointer-events: none;
   cursor: not-allowed;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .errorBorder {

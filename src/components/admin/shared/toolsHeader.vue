@@ -1369,13 +1369,13 @@ AAAAAElFTkSuQmCC"
       </router-link>
       <!-- supplier admin routes -->
       <router-link
-      v-if="showRoute(getRole, '/admin-panel/supplier-news')"
-      :class="{ activeRoute: $route.name == 'supplierNews' }"
-      to="/admin-panel/supplier-news"
+      v-if="showRoute(getRole, '/admin-panel/supplier-list')"
+      :class="{ activeRoute: $route.name == 'supplierList' }"
+      to="/admin-panel/supplier-list"
       ><i class="fa fa-angle-down" v-b-toggle.collapse-105></i>
       <span>
-        اخبار تامین کنندگان
-        <i class="fa fa-blog" aria-hidden="true"></i>
+         تامین کنندگان
+        <i class="fa fa-users" aria-hidden="true"></i>
       </span>
     </router-link>
     <b-collapse
@@ -1383,15 +1383,24 @@ AAAAAElFTkSuQmCC"
       id="collapse-105"
       class="mt-2"
     >
-      <router-link
-        :class="{ activeRoute: $route.name == 'supplierNewsCategories' }"
-        class="childRoute"
-        to="/admin-panel/supplier-news-categories"
-      >
-        <span>
-          دسته بندی
-          <i class="fa fa-align-justify" aria-hidden="true"></i></span
-      ></router-link>
+    <router-link
+      :class="{ activeRoute: $route.name == 'supplierNews' }"
+      class="childRoute"
+      to="/admin-panel/supplier-news"
+    >
+      <span>
+        اخبار تامین کنندگان
+        <i class="fa fa-blog" aria-hidden="true"></i></span
+    ></router-link>
+    <router-link
+      :class="{ activeRoute: $route.name == 'supplierNewsCategories' }"
+      class="childRoute"
+      to="/admin-panel/supplier-news-categories"
+    >
+      <span>
+        دسته بندی
+        <i class="fa fa-align-justify" aria-hidden="true"></i></span
+    ></router-link>
     
 
     </b-collapse>
@@ -1886,6 +1895,23 @@ AAAAAElFTkSuQmCC"
       >
         <span> سوالات کاربران <i class="fa fa-user-edit"></i></span
       ></router-link>
+      <!-- supplier routes -->
+      
+      <router-link
+      v-if="showRoute(getRole, '/admin-panel/supplier-profile')"
+      :class="{ activeRoute: $route.name == 'supplierProfile' }"
+      to="/admin-panel/supplier-profile"
+    >
+      <span> اطلاعات کاربری <i class="fa fa-user"></i></span
+    ></router-link>
+      
+    <router-link
+      v-if="showRoute(getRole, '/admin-panel/supplier-newslist')"
+      :class="{ activeRoute: $route.name == 'supplierNewsList' }"
+      to="/admin-panel/supplier-newslist"
+    >
+      <span> مشاهده اخبار <i class="fa fa-blog"></i></span
+    ></router-link>
       <a style="cursor: pointer" @click="signOut()">
         <span>خروج <i class="fa fa-sign-out-alt"></i></span>
       </a>

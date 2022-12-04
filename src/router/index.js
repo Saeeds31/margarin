@@ -519,6 +519,39 @@ const routes = [
                     }
                 },
                 {
+                    path: "supplier-profile",
+                    name: "supplierProfile",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/supplierProfile.vue"
+                        );
+                    }
+                },
+                {
+                    path: "supplier-list",
+                    name: "supplierList",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/supplierList.vue"
+                        );
+                    }
+                },
+                {
+                    path: "supplier-newslist",
+                    name: "supplierNewsList",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/supplierNewsList.vue"
+                        );
+                    }
+                },
+                {
                     path: "weblogs",
                     name: "panelWeblogs",
 

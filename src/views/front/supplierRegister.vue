@@ -328,7 +328,7 @@ export default {
           name: this.name,
           lastName: this.lastName,
           address: this.address,
-          province: this.selectedProvince,
+          province: this.selectedProvinceLabel,
           city: this.selectedCity,
           gender: this.gender,
           isCompany: true,
@@ -818,6 +818,7 @@ export default {
       this.provinceAndCity.forEach((item) => {
         if (item.id == newValue) {
           this.cities = item.cities;
+          this.selectedProvinceLabel=item.label
           return (this.selectedCity = item.cities[0]);
         }
       });
@@ -837,6 +838,7 @@ export default {
       repassword: null,
       selectedCity: null,
       selectedProvince: null,
+      selectedProvinceLabel:null,
       cities: null,
       password: null,
       disable: false,
