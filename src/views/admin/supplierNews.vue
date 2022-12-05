@@ -88,15 +88,15 @@
             name: "توضیحات کامل",
             key: "description",
           },
-             {
-                style: "col-6",
-                show_in_table: false,
-                placeholder: " زمان مطالعه پست را وارد کنید",
-                type: "number",
-                multiData: false,
-                name: "زمان مطالعه پست",
-                key: "timeToRead",
-              },
+            //  {
+            //     style: "col-6",
+            //     show_in_table: false,
+            //     placeholder: " زمان مطالعه پست را وارد کنید",
+            //     type: "number",
+            //     multiData: false,
+            //     name: "زمان مطالعه پست",
+            //     key: "timeToRead",
+            //   },
           
               {
                 style: "col-6",
@@ -109,7 +109,7 @@
               },
           
           {
-            style: "col-12",
+            style: "col-6",
             show_in_table: false,
             placeholder: " دسته بندی خبر  را وارد کنید",
             type: "select",
@@ -123,11 +123,11 @@
           {
             style: "col-6",
             show_in_table: false,
-            placeholder: " تاریخ خبر  را وارد کنید",
+            placeholder: " تاریخ انقضاء  را وارد کنید",
             type: "date",
             multiData: false,
-            name: "تاریخ خبر",
-            key: "createDate",
+            name: "تاریخ انقضاء",
+            key: "expireDate",
             disable:true
           },
          {
@@ -140,24 +140,24 @@
             key: "image",
           },
           
-         {
-            style: "col-12",
-            show_in_table: false,
-            placeholder: "کلید واژه ها",
-            type: "list",
-            multiData: true,
-            name: "کلید واژه ها",
-            key: "keyWords",
-          },
-         {
-            style: "col-12",
-            show_in_table: false,
-            placeholder: "توضیحات متا را وارد کنید",
-            type: "description",
-            multiData: true,
-            name: "توضیحات متا ",
-            key: "meta",
-          },
+        //  {
+        //     style: "col-12",
+        //     show_in_table: false,
+        //     placeholder: "کلید واژه ها",
+        //     type: "list",
+        //     multiData: true,
+        //     name: "کلید واژه ها",
+        //     key: "keyWords",
+        //   },
+        //  {
+        //     style: "col-12",
+        //     show_in_table: false,
+        //     placeholder: "توضیحات متا را وارد کنید",
+        //     type: "description",
+        //     multiData: true,
+        //     name: "توضیحات متا ",
+        //     key: "meta",
+        //   },
           
           {
             style: "col-12",

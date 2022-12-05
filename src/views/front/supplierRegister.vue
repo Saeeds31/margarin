@@ -38,18 +38,51 @@
         </div>
         <div class="supplierInputGroup">
           <div>
-            <label for=""> جنسیت :<span>*</span></label>
-            <select v-model="gender">
-              <option value="male">مرد</option>
-              <option value="female">زن</option>
-            </select>
+            <label for="">ایمیل :<span>*</span></label>
+            <input
+              type="email"
+              placeholder="نام کاربری شما خواهد بود"
+              v-model="email"
+              class="supplierInput"
+              id=""
+            />
           </div>
 
           <div>
-            <label for="">کدپستی :</label>
-            <input v-model="postalCode" type="text" class="supplierInputs" />
+            <label for="">شماره تماس :<span>*</span></label>
+            <input
+              type="tel"
+              v-model="phoneNumber"
+              name=""
+              class="supplierInput"
+              id=""
+            />
+          </div>
+        </div> 
+        <div class="supplierInputGroup">
+          <div>
+            <label for="">رمز عبور :<span>*</span></label>
+            <input
+              v-model="password"
+              type="password"
+              name=""
+              class="supplierInput"
+              id=""
+            />
+          </div>
+
+          <div>
+            <label for="">تکرار رمز عبور :<span>*</span></label>
+            <input
+              type="password"
+              v-model="repassword"
+              name=""
+              class="supplierInput"
+              id=""
+            />
           </div>
         </div>
+     
         <div class="supplierInputGroup">
           <div>
             <label for="">استان :<span>*</span></label>
@@ -87,59 +120,31 @@
             rows="5"
           ></textarea>
         </div>
-
         <div class="supplierInputGroup">
+          <!-- <div>
+            <label for=""> جنسیت :<span>*</span></label>
+            <select v-model="gender">
+              <option value="male">مرد</option>
+              <option value="female">زن</option>
+            </select>
+          </div> -->
           <div>
-            <label for="">ایمیل :<span>*</span></label>
-            <input
-              type="email"
-              placeholder="نام کاربری شما خواهد بود"
-              v-model="email"
-              class="supplierInput"
-              id=""
-            />
+            <label for="">کدپستی :</label>
+            <input v-model="postalCode" type="text" class="supplierInputs" />
           </div>
-
-          <div>
-            <label for="">شماره تماس :<span>*</span></label>
-            <input
-              type="tel"
-              v-model="phoneNumber"
-              name=""
-              class="supplierInput"
-              id=""
-            />
+          <div id="isCompanySection">
+            <label for="isCompany">آیا یک شخص حقوقی هستید؟</label>
+            <input type="checkbox" name="" v-model="isCompany"  id="isCompany">
           </div>
+       
         </div>
-        <div class="supplierInputGroup">
-          <div>
-            <label for="">رمز عبور :<span>*</span></label>
-            <input
-              v-model="password"
-              type="password"
-              name=""
-              class="supplierInput"
-              id=""
-            />
-          </div>
-
-          <div>
-            <label for="">تکرار رمز عبور :<span>*</span></label>
-            <input
-              type="password"
-              v-model="repassword"
-              name=""
-              class="supplierInput"
-              id=""
-            />
-          </div>
-        </div>
+      
       </div>
       <div v-else id="register" class="width80">
         <p dir="rtl">{{`کد تایید ارسال شده به شماره ${phoneNumber} را وارد کنید`}}</p>
         <PincodeInput
     v-model="code"
-    length="5"
+    length="6"
     placeholder="-"
   />
       </div>
@@ -268,12 +273,7 @@ export default {
         id:this.userId
       }
       this.$axios
-          .post("Users/VerifyPhoneNumber", JSON.stringify(pack), {
-            headers: {
-              // Overwrite Axios's automatically set Content-Type
-              "Content-Type": "application/json",
-            },
-          })
+          .get(`Users/VerifyPhoneNumber?id=${this.userId}&token=${this.code}`)
           .then((res) => {
             if (!res.data.isSuccess) {
               this.$toast.error(res.data.message);
@@ -303,15 +303,8 @@ export default {
         this.$toast.error("نام را وارد کنید");
       } else if (!this.lastName) {
         this.$toast.error("نام خانوادگی را وارد کنید");
-      } else if (!this.gender) {
-        this.$toast.error("جنسیت را وارد کنید");
-      } else if (!this.selectedProvince) {
-        this.$toast.error("استان را انتخاب کنید");
-      } else if (!this.selectedCity) {
-        this.$toast.error("شهر را انتخاب کنید");
-      } else if (!this.address) {
-        this.$toast.error("ادرس کامل را وارد کنید");
-      } else if (!this.email) {
+      } 
+      else if (!this.email) {
         this.$toast.error("ایمیل را وارد کنید");
       } else if (this.email && !this.validateEmail(this.email)) {
         this.$toast.error("فرمت ایمیل به درستی وارد نشده است");
@@ -323,15 +316,24 @@ export default {
         this.$toast.error("رمز عبور را وارد کنید");
       } else if (this.password != this.repassword) {
         this.$toast.error("تکرار رمز عبور صحیح نمی باشد");
-      } else {
+      }
+      // else if (!this.gender) {
+      //   this.$toast.error("جنسیت را وارد کنید");
+      // }
+       else if (!this.selectedProvince) {
+        this.$toast.error("استان را انتخاب کنید");
+      } else if (!this.selectedCity) {
+        this.$toast.error("شهر را انتخاب کنید");
+      } else if (!this.address) {
+        this.$toast.error("ادرس کامل را وارد کنید");
+      }  else {
         let pack = {
           name: this.name,
           lastName: this.lastName,
           address: this.address,
           province: this.selectedProvinceLabel,
           city: this.selectedCity,
-          gender: this.gender,
-          isCompany: true,
+          isCompany: this.isCompany,
           postalCode: this.postalCode ? this.postalCode : " ",
           email: this.email,
           phoneNumber: this.phoneNumber,
@@ -825,7 +827,7 @@ export default {
     },
   },
   data() {
-    return {
+    return {isCompany:false,
       userId:null,
       code:null,
       name: null,
@@ -874,3 +876,19 @@ export default {
   },
 };
 </script>
+<style>
+  div#isCompanySection input {
+    width: 30px;
+    height: 30px;
+}
+div#isCompanySection label{
+  margin-bottom: 0;
+}
+  div#isCompanySection {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: end;
+}
+</style>

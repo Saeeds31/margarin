@@ -96,12 +96,75 @@ mixins:[adminMixin],
   mounted() {
       this.loadItems();
       this.settings["allCategories"]=[]
-      this.$axios.get(`/${this.apiRoute}`).then(res=>{
+      this.getAllCategories();
+  },
+  methods:{
+    async submit(pack) {
+            this.disabled = true;
+            if (pack.mode == "edit") {
+
+                let putData = pack.data;
+                if (this.userId != null) {
+                    putData.userId = this.userId
+                }
+                putData.id = this.editedId;
+                if (putData.createDate && this.apiRoute != 'Blog') {
+                    delete putData.createDate
+                }
+                await this.$axios
+                    .put(this.apiRoute, JSON.stringify(putData), {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                    .then((response) => {
+                        this.$toast.success(response.data.message);
+                        this[this.witchOneLoaded](this.AllListFlag == true ? null : this.currentPage)
+                        this.showModal = false;
+                        this.resetModal();
+                        this.getAllCategories();
+
+                    })
+                    .catch((error) => {
+                        this.disabled = false;
+
+                        this.setErrorResponse(error.response.data.message);
+                    });
+            } else {
+                if (this.userId != null) {
+                    pack.data.userId = this.userId
+                }
+                await this.$axios
+                    .post(this.apiRoute, JSON.stringify(pack.data), {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                    .then((response) => {
+                        pack.data.id = response.data.data.id;
+                        this.$toast.success(response.data.message);
+                        this.items.push(pack.data);
+                        this.showModal = false;
+                        this.resetModal();
+      this.getAllCategories();
+
+                    })
+                    .catch((error) => {
+                        this.disabled = false;
+
+                        this.setErrorResponse(error.response.data.message);
+                    });
+            }
+            
+        },
+    getAllCategories(){
+      this.$axios.get(`SuppliersCategory/GetParent`).then(res=>{
         res.data.data.forEach(cate => {
           cate.label=cate.name
         });
         this.settings["allCategories"]=res.data.data
       })
+    }
   },
   watch:{
       item(newVal){

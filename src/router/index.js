@@ -530,6 +530,17 @@ const routes = [
                     }
                 },
                 {
+                    path: "supplier-profile",
+                    name: "supplierProfile",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/supplierProfile.vue"
+                        );
+                    }
+                },
+                {
                     path: "supplier-list",
                     name: "supplierList",
 

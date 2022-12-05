@@ -28,7 +28,17 @@
           <td>
             {{ item.phoneNumber }}
           </td>
-          <td>
+          <td class="handlerSUp">
+            <b-button variant="primary" @click="showSendModal(item.id)"
+            >پیام  </b-button
+          >
+            <b-button variant="info" @click="showDetail(item)"
+              >مشاهده  </b-button
+            >
+            <b-button variant="warning" @click="deleteSupplier(item.id)"
+              >حذف  </b-button
+            >
+           
             <b-button
               variant="danger"
               @click="adminConfirm(item.id, !item.isAdminConfirm)"
@@ -40,9 +50,6 @@
               @click="adminConfirm(item.id, !item.isAdminConfirm)"
               v-else
               >فعال کردن</b-button
-            >
-            <b-button variant="info" @click="showDetail(item)"
-              >مشاهده اطلاعات بیشتر</b-button
             >
           </td>
         </tr>
@@ -182,74 +189,121 @@
     >
       <div v-if="item" id="supplierContent">
         <img :src="item.image" :alt="item.title" />
-        <span>نام کامل :</span>
-        <p>
-          {{
-            `${item.gender == "male" ? "آقای" : "خانم"} ${item.name} ${
-              item.lastName
-            }`
-          }}
-        </p>
-        <span>کدملی :</span>
-        <p>
-          {{item.shenaseMelli}}
-        </p>
-        <span>آدرس :</span>
-        <p>
-          {{ `استان ${item.province}- شهر ${item.city} - ${item.address}- کدپستی ${item.postalCode}` }}
-        </p>
-        <span>ایمیل :</span>
-        <p>
-          {{ item.email }}
-        </p>
-        <span>شماره تماس :</span>
-        <p>
-          {{ item.phoneNumber }}
-        </p>
-        <span>شماره ثابت :</span>
-        <p>
-          {{ item.phone }}
-        </p>
-          <span>کد سامانه تجارت :</span>
-          <p>
-            {{item.samaneTejaratCode}}
-          </p>
-          <span>
+        <div class="infoGroup">
+          <div>
+            <span>نام کامل :</span>
+            <p>
+              {{
+                `${item.gender == "male" ? "آقای" : "خانم"} ${item.name} ${
+                  item.lastName
+                }`
+              }}
+            </p>
+          </div>
+          <div>
+            <span>کدملی :</span>
+            <p>
+              {{item.shenaseMelli}}
+            </p>
+          </div>
+        </div>
+        <div class="infoGroup">
+          <div>  
+            <span>آدرس :</span>
+            <p>
+              {{ `استان ${item.province}- شهر ${item.city} - ${item.address}- کدپستی ${item.postalCode}` }}
+            </p></div>
+          <div><span>ایمیل :</span>
+            <p>
+              {{ item.email }}
+            </p></div>
+        </div>
+        <div class="infoGroup">
+          <div><span>شماره تماس :</span>
+            <p>
+              {{ item.phoneNumber }}
+            </p></div>
+          <div><span>شماره ثابت :</span>
+            <p>
+              {{ item.phone }}
+            </p></div>
+        </div>
+        <div class="infoGroup">
+          <div><span>کد سامانه تجارت :</span>
+            <p>
+              {{item.samaneTejaratCode}}
+            </p></div>
+          <div><span>
             نام نماینده :
           </span>
           <p>
             {{item.namayendeName}}
-          </p>
-          <span>
+          </p></div>
+        </div>
+        <div class="infoGroup">
+          <div><span>
             حقیقی یا حقوقی :
           </span>
           <p>
             {{item.isCompany?"حقوقی":"حقیقی"}}
-          </p>
-          <span>
+          </p></div>
+          <div><span>
             نام حقوقی :
           </span>
           <p>
             {{item.companyName}}
-          </p>
-          <template v-if="item.isCompany">
-            <span >
-              کد اقتصادی :
+          </p></div>
+        </div>
+        <div class="infoGroup">
+          <div></div>
+          <div></div>
+        </div>
+         
+        <div class="infoGroup">
+          <div>
+            <span>
+              نام معرف :
             </span>
             <p>
-              {{item.codeEqtesadi}}
-  
+              {{item.relatedName}}
             </p>
-
-          </template>
-         <span>
-           نام معرف :
-         </span>
-         <p>
-           {{item.relatedName}}
-         </p>
+          </div>
+          <div>
+            <template v-if="item.isCompany">
+              <span >
+                کد اقتصادی :
+              </span>
+              <p>
+                {{item.codeEqtesadi}}
+    
+              </p>
+  
+            </template></div>
+          
+        </div>
+         
+          
+          
+          
+         
          <b-button variant="primary" @click="downloadResume(item.resumeFile)" :class="{disableButton:!item.resumeFile}">دریافت رزومه</b-button>
       </div>
+    </b-modal>
+    <b-modal
+      id="sendmodal"
+      hide-footer
+      ref="sendModal"
+      no-close-on-backdrop
+      v-model="sendModal"
+      @close="resetSendModal()"
+      title="ارسال پیام"
+    >
+    <div id="sendMessageContent">
+      
+    <label for="">پیام خود را وارد کنید</label>
+<textarea style="width: 320px; height: 280px;" v-model="message"></textarea>
+<input type="submit" value="ارسال" @click="sendMessage()">
+    </div>
     </b-modal>
   </div>
 </template>
@@ -261,12 +315,73 @@ export default {
     return {
       items: null,
       apiRoute: "Users/GetSuppliers",
+      sendModal: false,
       showModal: false,
       status: true,
       item: null,
+      userId:null,
+      message:"",
     };
   },
   methods: {
+    sendMessage(){
+    let  pack=  {
+  userId: this.userId,
+  message: this.message,
+}
+this.$axios.post("SupplierMessage",JSON.stringify(pack), {
+            headers: {
+              // Overwrite Axios's automatically set Content-Type
+              "Content-Type": "application/json",
+            },
+          }).then(res=>{
+this.resetSendModal();
+this.$toast.success(res.data.message)
+}).catch(err=>{
+  this.$toast.error(err.response.data.message)
+})
+    },
+    showSendModal(id){
+      this.userId=id;
+      this.sendModal=true;
+    },
+    resetSendModal(){
+      this.message="";
+      this.sendModal=false;
+
+    },
+    deleteSupplier(id){
+      
+      window
+                .swal({
+                    title: "کاربر حذف شود؟",
+                    text: "این عمل بازگشت پذیر نیست",
+                    icon: "warning",
+
+                    showCancelButton: true,
+                    showConfirmButton: true,
+                    dangerMode: true,
+                    buttons: ["خیر", "بله"]
+                })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        this.$axios
+                            .delete(  `Users/${id}`)
+                            .then((response) => {
+                                this.$toast.success(response.data.message);
+
+                                this.items = this.items.filter((item) => item.id != id);
+                            })
+                            .catch((error) => {
+                                this.$toast.error(error.response.data.message);
+
+
+                            });
+                    }
+                })
+                .catch(() => {});
+        
+    },
     showDetail(item) {
       this.item = item;
       this.showModal = true;
@@ -331,5 +446,40 @@ div#supplierContent {
     gap: 4px;
     align-items: flex-end;
     padding: 15px;
+}
+.infoGroup div {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  justify-content: space-between;
+  gap: 10px;
+  direction: rtl;
+}
+div#sendMessageContent textarea{
+  padding: 15px;
+}
+  div#sendMessageContent input[type="submit"] {
+  background: green;
+  color: white;
+  padding: 10px 24px;
+  border: chartreuse;
+  border-radius: 4px;
+}
+
+div#sendMessageContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  direction: rtl;
+}
+.handlerSUp{
+  display: flex;
+  gap: 10px;
 }
 </style>
