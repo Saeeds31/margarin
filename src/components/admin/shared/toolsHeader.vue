@@ -1327,13 +1327,21 @@ AAAAAElFTkSuQmCC"
        <span> اطلاعات کاربری <i class="fa fa-user"></i></span
      ></router-link>
        
-     <router-link
-       v-if="showRoute(getRole, '/admin-panel/supplier-newslist')"
-       :class="{ activeRoute: $route.name == 'supplierNewsList' }"
-       to="/admin-panel/supplier-newslist"
-     >
-       <span> مشاهده اخبار <i class="fa fa-blog"></i></span
-     ></router-link>
+       <router-link
+         v-if="showRoute(getRole, '/admin-panel/supplier-newslist')"
+         :class="{ activeRoute: $route.name == 'supplierNewsList' }"
+         to="/admin-panel/supplier-newslist"
+       >
+         <span> مشاهده اخبار <i class="fa fa-blog"></i></span
+       ></router-link>
+       
+       <router-link
+         v-if="showRoute(getRole, '/admin-panel/supplier-message')"
+         :class="{ activeRoute: $route.name == 'supplierMessage' }"
+         to="/admin-panel/supplier-message"
+       >
+         <span>پیام ها<i class="fa fa-blog"></i></span
+       ></router-link>
       <router-link
         v-if="showRoute(getRole, '/admin-panel/about-us')"
         :class="{ activeRoute: $route.name == 'panelAboutUs' }"
@@ -1614,6 +1622,7 @@ AAAAAElFTkSuQmCC"
       </b-collapse>
       <!-- end mag -->
              <router-link
+             v-if="getRole!='Supplier'"
         :class="{ activeRoute: $route.name == 'uploadFile' }"
         to="/admin-panel/upload-file"
         >

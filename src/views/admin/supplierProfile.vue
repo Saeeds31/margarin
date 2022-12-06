@@ -440,9 +440,11 @@ export default {
       companyName: "",
       namayendeName: "",
       phone: "",
+      isAdminConfirm:false,
       resumeFile: "",
       resumeFileFile:null,
       relatedName: "",
+      id:"",
       samaneTejaratCode: "",
       codeEqtesadi: "",
       shenaseMelli: "",
@@ -465,12 +467,12 @@ export default {
       };
       await this.$axios
         .post(
-          `Files/UploadImage?folderName=supplierResume`,
+          `Files/UploadFile?SavePath=supplier`,
           formData,
           config
         )
         .then((response) => {
-          this.resumeFile = response.data.data.filename;
+          url = response.data.data;
         })
         .catch(() => {
           this.$toast.error(
@@ -490,22 +492,21 @@ export default {
     },
     setUserCategories() {
       this.user.categories.forEach((cate) => {
-        if (this.selectedCategories.find((cat) => cat.id === cate.id)) {
+        if (this.selectedCategories.find((cat) => cat.id === cate)) {
           this.selectedCategories.find(
-            (cat) => cat.id === cate.id
+            (cat) => cat.id === cate
           ).status = true;
         }
       });
+      console.log(this.selectedCategories);
     },
     showModalCategory(user) {
       this.showCategoryModal = true;
       this.editedCategories = user.categories;
     },
     
-    edit() {
-      if(this.resumeFileFile){
-        this.uploadImage();
-      }
+   async edit() {
+      
       let pack = {
         address: this.address,
         categories: this.categories,
@@ -514,9 +515,11 @@ export default {
         email: this.email,
         gender: this.gender,
         image: this.image,
+        id:this.id,
         acitivityField: this.acitivityField,
         descriptionField: this.descriptionField,
         isCompany: this.isCompany,
+        isAdminConfirm:this.isAdminConfirm,
         lastName: this.lastName,
         namayendeName: this.namayendeName,
         name: this.name,
@@ -530,6 +533,9 @@ export default {
         shenaseMelli: this.shenaseMelli,
         province: this.provinceLabel,
       };
+      if(this.resumeFileFile){
+       pack.resumeFile=await this.uploadImage();
+      }
       let categories = [];
       this.selectedCategories.forEach((cate) => {
         if (cate.status) {
@@ -553,12 +559,9 @@ export default {
         )
         .then((res) => {
           this.$toast.success(res.data.message);
-          if (!cate) {
             this.showModal = false;
             this.getProfile();
-          } else {
-            this.showCategoryModal = false;
-          }
+         
         })
         .catch((err) => {
           let arrayError = err.response.data.message.split("|");
@@ -582,12 +585,14 @@ export default {
       this.gender = user.gender;
       this.image = user.image;
       this.isCompany = user.isCompany;
+      this.isAdminConfirm=user.isAdminConfirm;
       this.lastName = user.lastName;
       this.namayendeName = user.namayendeName;
       this.name = user.name;
       this.phone = user.phone;
       this.phoneNumber = user.phoneNumber;
       this.postalCode = user.postalCode;
+      this.id=user.id;
       this.relatedName = user.relatedName;
       this.resumeFile = user.resumeFile;
       this.codeEqtesadi = user.codeEqtesadi;
@@ -607,7 +612,6 @@ export default {
       this.$axios
         .get("supplier/profile")
         .then((res) => {
-          this.$toast.success(res.data.message);
           this.isSuccess = true;
           this.user = res.data.data;
           if (needCategories) this.getAllCategories();
