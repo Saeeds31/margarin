@@ -341,11 +341,12 @@
           <div>
             <label for=""> فایل رزومه:<span>*</span></label>
             <b-form-file
-              v-model="resumeFile"
-              name=""
+              accept="file/*"
+              v-model="resumeFileFile"
               class="supplierInput"
-              id=""
-            />
+              :state="Boolean(resumeFileFile)"
+            ></b-form-file>
+            
           </div>
           <div v-if="user.isCompany">
             <label for=""> کد اقتصادی :<span>*</span></label>
@@ -403,7 +404,6 @@ import adminMixin from "@/libraries/adminController.js";
 import rolemixin from "@/libraries/adminRole.js";
 import cooperation from "@/libraries/cooperation";
 import { BModal, BButton, BOverlay, BSpinner, BFormFile } from "bootstrap-vue";
-import { off } from "process";
 export default {
   mixins: [adminMixin, rolemixin, cooperation],
   components: {
@@ -417,6 +417,7 @@ export default {
   },
   data() {
     return {
+      innerDisabled:false,
       isSuccess: false,
       showCategoryModal: false,
       showModal: false,
@@ -440,6 +441,7 @@ export default {
       namayendeName: "",
       phone: "",
       resumeFile: "",
+      resumeFileFile:null,
       relatedName: "",
       samaneTejaratCode: "",
       codeEqtesadi: "",
@@ -449,6 +451,34 @@ export default {
     };
   },
   methods: {
+    async uploadImage() {
+      let url = "";
+      let formData = new FormData();
+      formData.append("files", this.resumeFileFile);
+      var config = {
+        onUploadProgress: () => {
+          if (this.innerDisabled == false) {
+            this.$toast.info("درحال آپلود روزمه");
+          }
+          this.innerDisabled = true;
+        },
+      };
+      await this.$axios
+        .post(
+          `Files/UploadImage?folderName=supplierResume`,
+          formData,
+          config
+        )
+        .then((response) => {
+          this.resumeFile = response.data.data.filename;
+        })
+        .catch(() => {
+          this.$toast.error(
+            "خطایی در آپلود ویدیو به وجود آمده است , لطفا صفحه را بروز رسانی کنید"
+          );
+        });
+      return url;
+    },
     getAllCategories() {
       this.$axios.get(`SuppliersCategory`).then((res) => {
         res.data.data.forEach((cate) => {
@@ -471,7 +501,11 @@ export default {
       this.showCategoryModal = true;
       this.editedCategories = user.categories;
     },
+    
     edit() {
+      if(this.resumeFileFile){
+        this.uploadImage();
+      }
       let pack = {
         address: this.address,
         categories: this.categories,
@@ -538,9 +572,9 @@ export default {
     },
 
     fillData(user) {
-      (this.acitivityField = user.acitivityField),
-        (this.descriptionField = user.descriptionField),
-        (this.address = user.address);
+     this.acitivityField = user.acitivityField;
+       this.descriptionField = user.descriptionField;
+       this.address = user.address;
       this.categories = user.categories;
       this.city = user.ity;
       this.companyName = user.companyName;
