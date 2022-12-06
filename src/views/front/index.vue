@@ -15,7 +15,7 @@
         
       "
     />
-    <footerNavigation class="showInMobileFlex" />
+    <footerNavigation v-if="!$route.path.includes('/supplier-register')" class="showInMobileFlex" />
   </div>
 </template>
 <script>

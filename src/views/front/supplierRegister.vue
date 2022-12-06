@@ -1,7 +1,7 @@
 <template>
   <main
     id="loginRegisterSection"
-    class="d-flex height100vh width100 align-items-center"
+    class="supplierRegister d-flex  width100 align-items-center"
   >
     <img
       data-aos="fade-right"
@@ -248,14 +248,53 @@ div#register input,
 div#register textarea {
   width: 100%;
 }
+div#isCompanySection input {
+    width: 30px;
+    height: 30px;
+}
+div#isCompanySection label{
+  margin-bottom: 0;
+}
+  div#isCompanySection {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: end;
+}
+#loginRegisterSection.supplierRegister #loginRegisterImage{
+  width:50%;
+  height: auto;
+}
+#loginRegisterSection.supplierRegister  #content{
+  top:0;
+}
+@media (max-width:1000px){
+  .supplierInputGroup {
+  display: grid;
+  grid-template-columns: 1fr;
+  }
+#loginRegisterSection.supplierRegister #loginRegisterImage{
+  width:100%;
+  height: auto;
+}
+#loginRegisterSection.supplierRegister #content{
+  margin-bottom: 80px;
+}
+  #loginRegisterSection.supplierRegister{
+    overflow: visible;
+  }
+  
+}
+
 </style>
 
 <script>
   import PincodeInput from 'vue-pincode-input';
 import rolemixin from "@/libraries/adminRole.js";
+import cooperation from "../../libraries/cooperation";
 import Logo from "@/components/front/shared/logo.vue";
 import roundedButton from "@/components/front/shared/roundedButton.vue";
-import cooperation from "../../libraries/cooperation";
 export default {
   components: {
     Logo,
@@ -477,15 +516,7 @@ export default {
             40
           );
         }
-        this.$root.setProportionStyle(
-          "height",
-          "%",
-          "#loginRegisterImage",
-          1496,
-          75,
-          1100,
-          70
-        );
+      
         this.$root.setProportionStyle(
           "font-size",
           "px",
@@ -876,19 +907,4 @@ export default {
   },
 };
 </script>
-<style>
-  div#isCompanySection input {
-    width: 30px;
-    height: 30px;
-}
-div#isCompanySection label{
-  margin-bottom: 0;
-}
-  div#isCompanySection {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 10px;
-    justify-content: flex-end;
-    align-items: end;
-}
-</style>
+

@@ -38,7 +38,7 @@
             <b-button variant="warning" @click="deleteSupplier(item.id)"
               >حذف  </b-button
             >
-           
+            
             <b-button
               variant="danger"
               @click="adminConfirm(item.id, !item.isAdminConfirm)"
@@ -397,6 +397,7 @@ this.$toast.success(res.data.message)
       });
     },
     adminConfirm(id, status) {
+      console.log(id);
       this.$axios
         .post(`Users/ChangeSupplierAdminConfirm?id=${id}`)
         .then((res) => {
