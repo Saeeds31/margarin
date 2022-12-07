@@ -10,7 +10,14 @@
         </template>
       </b-overlay>
   
-      <div v-if="items != null && items.length > 0" class="mainTable"></div>
+      <div v-if="items != null && items.length > 0" class="mainTable">
+        <div v-for="item in items" :key="item.id" class="message">
+            {{item.message}}
+            <span class="date">
+                {{item.createDate}}
+            </span>
+        </div>
+    </div>
   
       <b-modal
         id="categoryModal"
@@ -63,5 +70,19 @@
     align-items: center;
     margin: auto;
   }
+  .message .date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 5px;
+}
+.message {
+    box-shadow: 0 0 5px #1213;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    direction: rtl;
+    position: relative;
+}
   </style>
   
