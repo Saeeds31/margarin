@@ -83,7 +83,7 @@
           </div>
         </div>
      
-        <div class="supplierInputGroup">
+        <!-- <div class="supplierInputGroup">
           <div>
             <label for="">استان :<span>*</span></label>
             <select name="" id="" v-model="selectedProvince">
@@ -119,7 +119,7 @@
             cols="30"
             rows="5"
           ></textarea>
-        </div>
+        </div> -->
         <div class="supplierInputGroup">
           <!-- <div>
             <label for=""> جنسیت :<span>*</span></label>
@@ -128,10 +128,10 @@
               <option value="female">زن</option>
             </select>
           </div> -->
-          <div>
+          <!-- <div>
             <label for="">کدپستی :</label>
             <input v-model="postalCode" type="text" class="supplierInputs" />
-          </div>
+          </div> -->
           <div id="isCompanySection">
             <label for="isCompany">آیا یک شخص حقوقی هستید؟</label>
             <input type="checkbox" name="" v-model="isCompany"  id="isCompany">
@@ -242,8 +242,9 @@ div#register input,
 #register textarea,
 #register select {
   border-radius: 8px;
-  border: 2px solid #1a3fa2;
-  padding: 4px;
+  border: 2px solid #ffffff;
+  padding: 8px;
+  box-shadow: 0 0 5px #11221163;
 }
 div#register textarea {
   width: 100%;
@@ -290,9 +291,10 @@ div#isCompanySection label{
 </style>
 
 <script>
+  
   import PincodeInput from 'vue-pincode-input';
 import rolemixin from "@/libraries/adminRole.js";
-import cooperation from "../../libraries/cooperation";
+// import cooperation from "../../libraries/cooperation";
 import Logo from "@/components/front/shared/logo.vue";
 import roundedButton from "@/components/front/shared/roundedButton.vue";
 export default {
@@ -300,7 +302,9 @@ export default {
     Logo,
     roundedButton,PincodeInput
   },
-  mixins: [rolemixin, cooperation],
+  mixins: [rolemixin
+  // , cooperation
+],
   methods: {
     validateEmail(email) {
       var re = /\S+@\S+\.\S+/;
@@ -359,21 +363,22 @@ export default {
       // else if (!this.gender) {
       //   this.$toast.error("جنسیت را وارد کنید");
       // }
-       else if (!this.selectedProvince) {
-        this.$toast.error("استان را انتخاب کنید");
-      } else if (!this.selectedCity) {
-        this.$toast.error("شهر را انتخاب کنید");
-      } else if (!this.address) {
-        this.$toast.error("ادرس کامل را وارد کنید");
-      }  else {
+      //  else if (!this.selectedProvince) {
+      //   this.$toast.error("استان را انتخاب کنید");
+      // } else if (!this.selectedCity) {
+      //   this.$toast.error("شهر را انتخاب کنید");
+      // } else if (!this.address) {
+      //   this.$toast.error("ادرس کامل را وارد کنید");
+      // } 
+       else {
         let pack = {
           name: this.name,
           lastName: this.lastName,
-          address: this.address,
-          province: this.selectedProvinceLabel,
-          city: this.selectedCity,
+          // address: this.address,
+          // province: this.selectedProvinceLabel,
+          // city: this.selectedCity,
           isCompany: this.isCompany,
-          postalCode: this.postalCode ? this.postalCode : " ",
+          // postalCode: this.postalCode ? this.postalCode : " ",
           email: this.email,
           phoneNumber: this.phoneNumber,
           password: this.password,
@@ -415,34 +420,7 @@ export default {
       let res = this.roleData[roleArr[0]].split(",")[0];
       return res;
     },
-    login() {
-      const formData = new FormData();
-      formData.append("grant_type", "password");
-      formData.append("username", this.username);
-      formData.append("password", this.password);
-      this.disable = true;
-      this.$axios
-        .post("Users/Token", formData)
-        .then((response) => {
-          this.$cookie.set("Authorization", response.data.access_token);
-          this.$axios.defaults.headers.common["authorization"] =
-            "Bearer " + response.data.access_token;
-          this.$axios.get("Users/GetRole").then((res) => {
-            this.$store.commit("adminPanelRole", res.data.data);
-            this.$cookie.set("adminPanelRole", res.data.data);
-            this.$toast.success("به پنل ادمین خوش آمدید");
-            if (res.data.data.toLowerCase().includes("admin")) {
-              this.$router.push("/admin-panel/about-us");
-            } else {
-              this.$router.push(this.getPath(res.data.data));
-            }
-          });
-        })
-        .catch((error) => {
-          this.disable = false;
-          this.$toast.error(error.response.data.message);
-        });
-    },
+   
     setStyle() {
       if (window.innerWidth > 1000) {
         if (window.innerWidth > 1495) {
@@ -850,17 +828,17 @@ export default {
     },
   },
 
-  watch: {
-    selectedProvince(newValue) {
-      this.provinceAndCity.forEach((item) => {
-        if (item.id == newValue) {
-          this.cities = item.cities;
-          this.selectedProvinceLabel=item.label
-          return (this.selectedCity = item.cities[0]);
-        }
-      });
-    },
-  },
+  // watch: {
+  //   selectedProvince(newValue) {
+  //     this.provinceAndCity.forEach((item) => {
+  //       if (item.id == newValue) {
+  //         this.cities = item.cities;
+  //         this.selectedProvinceLabel=item.label
+  //         return (this.selectedCity = item.cities[0]);
+  //       }
+  //     });
+  //   },
+  // },
   data() {
     return {isCompany:false,
       userId:null,
@@ -868,15 +846,15 @@ export default {
       name: null,
       lastName: null,
       phoneNumber: null,
-      address: null,
-      postalCode: null,
+      // address: null,
+      // postalCode: null,
       gender: null,
       email: null,
       repassword: null,
-      selectedCity: null,
-      selectedProvince: null,
-      selectedProvinceLabel:null,
-      cities: null,
+      // selectedCity: null,
+      // selectedProvince: null,
+      // selectedProvinceLabel:null,
+      // cities: null,
       password: null,
       disable: false,
       verifySection:false

@@ -519,27 +519,41 @@ const routes = [
                     }
                 },
                 {
-                    path: "supplier-profile",
-                    name: "supplierProfile",
-
-                    component: function() {
-                        return import (
-                            /* webpackChunkName: "admin" */
-                            "../views/admin/supplierProfile.vue"
-                        );
-                    }
+                    path: "supplier",
+                            name: "supplierIndex",
+        
+                            component: function() {
+                                return import (
+                                    /* webpackChunkName: "admin" */
+                                    "../views/admin/supplierIndex.vue"
+                                );
+                            },
+                    children:[
+                        {
+                            path: "news",
+                            name: "supplierNewsList",
+        
+                            component: function() {
+                                return import (
+                                    /* webpackChunkName: "admin" */
+                                    "../views/admin/supplierNewsList.vue"
+                                );
+                            }
+                        },
+                        {
+                            path: "profile",
+                            name: "supplierProfile",
+        
+                            component: function() {
+                                return import (
+                                    /* webpackChunkName: "admin" */
+                                    "../views/admin/supplierProfile.vue"
+                                );
+                            }
+                        },
+                    ]
                 },
-                {
-                    path: "supplier-profile",
-                    name: "supplierProfile",
-
-                    component: function() {
-                        return import (
-                            /* webpackChunkName: "admin" */
-                            "../views/admin/supplierProfile.vue"
-                        );
-                    }
-                },
+                
                 {
                     path: "supplier-list",
                     name: "supplierList",
@@ -551,28 +565,7 @@ const routes = [
                         );
                     }
                 },
-                {
-                    path: "supplier-message",
-                    name: "supplierMessage",
-
-                    component: function() {
-                        return import (
-                            /* webpackChunkName: "admin" */
-                            "../views/admin/supplierMessage.vue"
-                        );
-                    }
-                },
-                {
-                    path: "supplier-newslist",
-                    name: "supplierNewsList",
-
-                    component: function() {
-                        return import (
-                            /* webpackChunkName: "admin" */
-                            "../views/admin/supplierNewsList.vue"
-                        );
-                    }
-                },
+               
                 {
                     path: "weblogs",
                     name: "panelWeblogs",

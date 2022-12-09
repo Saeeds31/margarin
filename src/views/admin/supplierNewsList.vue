@@ -10,7 +10,29 @@
       </template>
     </b-overlay>
 
-    <div v-if="items != null && items.length > 0" class="mainTable">
+    <div v-if="items != null && items.length > 0" class="container">
+      <div v-for="item in items" :key="item" class="card">
+        <figure class="card__thumb">
+          <img
+          :src="`https://test.mmc.ir/${item.image}`"
+          :alt="item.title_fa" 
+           class="card__image">
+          <figcaption class="card__caption">
+            <h2 class="card__title">{{ item.title_fa }}</h2>
+            <a  @click="showReqModal(item)" class="card__button fshow">ارسال درخواست</a>
+            <p class="card__snippet lshow">
+              {{item.shortDescription_fa}}
+            </p>
+            
+            <a  @click="showNews(item)" class="card__button lshow">مشاهده خبر</a>
+            <a  @click="showReqModal(item)" class="card__button lshwo">ارسال درخواست</a>
+          </figcaption>
+        </figure>
+      </div>
+    
+    </div>
+    
+    <!-- <div v-if="items != null && items.length > 0" class="mainTable">
       <article v-for="item in items" :key="item">
         <div class="dateNews">
           <span class="newsDate">{{
@@ -45,7 +67,7 @@
           </div>
         </div>
       </article>
-    </div>
+    </div> -->
 
     <b-modal
       id="categoryModal"
@@ -271,5 +293,152 @@ div#contentNewsModal {
 }
 div#contentNewsModal .mainImage {
     width: 450px;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0 80px;
+}
+
+.card {
+  width: 300px;
+  margin: 10px;
+  background-color: white;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+}
+.card:hover .card__caption {
+  top: 50%;
+  transform: translateY(-50%);
+}
+.card:hover .card__image {
+  transform: translateY(-10px);
+  
+}
+.card:hover .card__thumb::after {
+  top: 0;
+}
+.card:hover .card__snippet {
+  margin: 20px 0;
+}
+.lshow{
+  display: none;
+}
+.card:hover .fshow{
+  display: none;
+}
+.card:hover  .lshow{
+  display: inline-block;
+
+}
+.card__thumb {
+  position: relative;
+  max-height: 400px;
+  overflow: hidden;
+}
+@media (min-width: 1024px) {
+  .card__thumb {
+    max-height: 500px;
+  }
+}
+.card__thumb::after {
+  position: absolute;
+  top: 0;
+  display: block;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 40%, rgba(255, 255, 255, 0) 100%);
+  transition: 0.3s;
+}
+@media (min-width: 1024px) {
+  .card__thumb::after {
+    top: calc(100% - 140px);
+  }
+}
+.card__image {
+  transition: 0.5s ease-in-out;
+  width: 100%;
+}
+.card__caption {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  padding: 0 20px;
+  color: white;
+  transform: translateY(-50%);
+  text-align: center;
+  transition: 0.3s;
+}
+@media (min-width: 1024px) {
+  .card__caption {
+    top: calc(100% - 110px);
+    transform: unset;
+  }
+}
+.card__title {
+  display: -webkit-box;
+  max-height: 85px;
+  overflow: hidden;
+  font-family: "Playfair Display", serif;
+  font-size: 23px;
+  line-height: 28px;
+  text-shadow: 0px 1px 5px black;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.card__snippet {
+  display: -webkit-box;
+  max-height: 150px;
+  margin: 20px 0;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  transition: 0.5s ease-in-out;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+@media (min-width: 1024px) {
+  .card__snippet {
+    margin: 60px 0;
+  }
+}
+.card__button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  border: 1px solid white;
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.card__button:hover {
+  color: black;
+  background-color: white;
+}
+
+.disclaimer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px 10px;
+  background-color: white;
+  transform: translateX(-50%);
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+.disclaimer__link {
+  color: #755d87;
+  text-decoration: none;
 }
 </style>
