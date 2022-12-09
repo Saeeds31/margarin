@@ -154,9 +154,14 @@
             </div>
           </div>
 
-          <b-button variant="primary" @click="editUser(user)"
+          <div id="buttons">
+            <b-button variant="primary" @click="editUser(user)"
             >ویرایش اطلاعات</b-button
           >
+          <a variant="success" :href="`https://www.test.mmc.ir/${user.resumeFile}`" v-if="user.resumeFile.toString().includes('supplier')"
+            >مشاهده رزومه ارسالی</a
+          >
+          </div>
         
         </div>
       </div>
@@ -341,14 +346,13 @@
           <div>
             <label for=""> فایل رزومه:<span>*</span></label>
             <b-form-file
-              accept="file/*"
               v-model="resumeFileFile"
               class="supplierInput"
               :state="Boolean(resumeFileFile)"
             ></b-form-file>
             
           </div>
-          <div v-if="user.isCompany">
+          <div v-if="user&&user.isCompany||isCompany">
             <label for=""> کد اقتصادی :<span>*</span></label>
             <input
               type="text"
@@ -365,8 +369,7 @@
           </div>
         </div>
         <hr />
-        <h3 style="text-align: right">انتخاب دسته بندی اخبار :</h3>
-        <hr />
+        <h3 style="text-align: right;direction: rtl;">انتخاب دسته بندی اخبار :</h3>
         <div id="categoriesContent">
           <div v-for="cate in selectedCategories" :key="cate">
             <label :for="`cate${cate.id}`">{{ cate.name }}</label>
@@ -379,20 +382,6 @@
         </div>
         <b-button variant="primary" @click="edit()">ویرایش</b-button>
       </div>
-    </b-modal>
-
-    <b-modal
-      id="categoryModal"
-      hide-footer
-      ref="categoryModal"
-      no-close-on-backdrop
-      v-model="showCategoryModal"
-      @close="resetModal()"
-      title="انتخاب دسته بندی"
-    >
-      <b-button variant="primary" @click="insertCategories()"
-        >ثبت دسته بندی
-      </b-button>
     </b-modal>
   </div>
 </template>
@@ -417,6 +406,7 @@ export default {
   },
   data() {
     return {
+      codeEqtesadi:"",
       innerDisabled:false,
       isSuccess: false,
       showCategoryModal: false,
@@ -456,7 +446,7 @@ export default {
     async uploadImage() {
       let url = "";
       let formData = new FormData();
-      formData.append("files", this.resumeFileFile);
+      formData.append("file", this.resumeFileFile);
       var config = {
         onUploadProgress: () => {
           if (this.innerDisabled == false) {
@@ -543,7 +533,9 @@ export default {
         }
       });
       pack.categories = categories;
-
+      if(this.isCompany){
+        pack.codeEqtesadi=this.codeEqtesadi
+      }
       this.$axios
         .post(
           `supplier/${
@@ -563,8 +555,8 @@ export default {
             this.getProfile();
          
         })
-        .catch((err) => {
-          let arrayError = err.response.data.message.split("|");
+        .catch((error) => {
+          let arrayError = error.response.data.message.split("|");
           arrayError.forEach((err, index) => {
             this.$toast.error(err, {
               timeout: 1000 * (index + 4),
@@ -583,6 +575,8 @@ export default {
       this.companyName = user.companyName;
       this.email = user.email;
       this.gender = user.gender;
+      this.codeEqtesadi=user.codeEqtesadi?user.codeEqtesadi:"";
+
       this.image = user.image;
       this.isCompany = user.isCompany;
       this.isAdminConfirm=user.isAdminConfirm;
@@ -678,6 +672,24 @@ div#addressBox {
   gap: 8px;
   direction: rtl;
   width: 100%;
+}
+div#buttons a.disable {
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+div#buttons a {
+  background: green;
+  padding: 8px 16px;
+  color: white;
+  border-radius: 5px;
+}
+div#buttons {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
 }
 div#register input,
 #register textarea,
@@ -775,5 +787,10 @@ div#categoriesContent {
   flex-wrap: wrap;
   direction: rtl;
   gap: 20px;
+}
+@media (max-width:768px){
+  #supplierContent .infoGroup{
+    grid-template-columns: 1fr;
+  }
 }
 </style>

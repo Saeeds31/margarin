@@ -286,7 +286,9 @@
           
           
          
-         <b-button variant="primary" @click="downloadResume(item.resumeFile)" :class="{disableButton:!item.resumeFile}">دریافت رزومه</b-button>
+         <b-button variant="primary"  v-if="item.resumeFile.toString().includes('supplier')">
+           <a target="_blank" :href="`https://www.test.mmc.ir/${item.resumeFile}`">دریافت رزومه</a>
+         </b-button>
       </div>
     </b-modal>
     <b-modal
