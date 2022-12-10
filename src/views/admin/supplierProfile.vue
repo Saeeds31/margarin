@@ -11,9 +11,9 @@
     </b-overlay>
 
     <div class="mainTable">
-      <router-link to="/login" id="notSuccessMessage" v-if="!isSuccess">
-        اطلاعات شما مورد تایید نیست لطفا با پشتیبانی تماس بگیرید
-      </router-link>
+      <a href="" id="notSuccessMessage" v-if="!isSuccess">
+        درحال دریافت اطلاعات شما
+      </a>
       <div id="supplierInfo">
         <div v-if="user" id="supplierContent">
           <img :src="user.image" :alt="user.title" />

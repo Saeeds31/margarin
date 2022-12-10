@@ -9,7 +9,12 @@
         </div>
       </template>
     </b-overlay>
-
+    <router-link to="/admin-panel/supplier/profile" id="notSuccessMessage" v-if="isSuccess==false">
+      حساب کاربری شما تایید نشده است لطفا با پشتیبانی تماس بگیرید
+    </router-link>
+    <a  id="notSuccessMessage" v-else-if="isSuccess=='falsefalse'">
+      درحال دریافت اطلاعات شما
+    </a>
     <div v-if="items != null && items.length > 0" class="container">
       <div v-for="item in items" :key="item" class="card">
         <figure class="card__thumb">
@@ -133,6 +138,8 @@ export default {
       resumeFileFile: null,
       items: null,
       showModal: false,
+      isSuccess: 'falsefalse',
+
       showNewsModal: false,
       selectedItem: null,
     };
@@ -199,9 +206,11 @@ export default {
     this.$axios
       .get("Supplier/GetRelatedNews")
       .then((res) => {
+        this.isSuccess=true;
         this.items = res.data.data;
       })
       .catch((err) => {
+        this.isSuccess=false;
         this.$toast.error(err.response.data.message);
       });
   },
@@ -332,6 +341,19 @@ div#contentNewsModal .mainImage {
   display: inline-block;
 
 }
+
+#notSuccessMessage {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffffe3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .card__thumb {
   position: relative;
   max-height: 400px;
