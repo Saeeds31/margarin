@@ -508,6 +508,18 @@ const routes = [
                 },
 
                 {
+                    path: "supplier-requests",
+                    name: "supplierRequest",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/supplierRequest.vue"
+                        );
+                    }
+                },
+
+                {
                     path: "supplier-news-categories",
                     name: "supplierNewsCategories",
 
@@ -529,6 +541,17 @@ const routes = [
                                 );
                             },
                     children:[
+                        {
+                            path: "change-password",
+                            name: "supplierChangePassword",
+        
+                            component: function() {
+                                return import (
+                                    /* webpackChunkName: "admin" */
+                                    "../views/admin/supplierChangePassword.vue"
+                                );
+                            }
+                        },
                         {
                             path: "news",
                             name: "supplierNewsList",

@@ -21,7 +21,7 @@
         :headers="headers"
       />
     </div>
-    <div v-if="items != null && totalPages > 1">
+    <!-- <div v-if="items != null && totalPages > 1">
       <div id="pagination">
         <pagination
           @pageChanged="pageChanged"
@@ -29,7 +29,7 @@
           :currentPage="currentPage"
         />
       </div>
-    </div>
+    </div> -->
     <b-modal
       id="categoryModal"
       hide-footer
@@ -78,7 +78,7 @@
 import Treeselect from "@riophae/vue-treeselect";
 // import the styles
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
-import pagination from "@/components/front/shared/pagination.vue";
+// import pagination from "@/components/front/shared/pagination.vue";
 import SInputs from "@/components/admin/shared/sInputs.vue";
 import STable from "@/components/admin/shared/sTable.vue";
 import adminMixin from "@/libraries/adminController.js";
@@ -92,7 +92,7 @@ export default {
     STable,
     BOverlay,
     BSpinner,
-    pagination,
+    // pagination,
     Treeselect,
   },
   data() {
@@ -210,7 +210,7 @@ export default {
       { id: "Female", label: "زن" },
     ];
 
-    this.loadItems(this.currentPage);
+    this.loadItems();
   },
   methods: {
 

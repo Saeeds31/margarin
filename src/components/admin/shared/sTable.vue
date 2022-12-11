@@ -101,7 +101,7 @@
               class="tableButtons"
               v-if="header.modal"
               variant="info"
-              @click="$emit('callModalFromTable',item.id)"
+              @click="callCallBack(item.id)"
               >{{header.buttonModalTitle}}</b-button
             >
             <b-button
@@ -266,6 +266,10 @@ export default {
     value: Array
   },
   methods: {
+    callCallBack(id){
+      console.log(id);
+      this.$emit('callModalFromTable',id);
+    },
     copyField(field) {
       /* Copy the text inside the text field */
       navigator.clipboard.writeText(field);

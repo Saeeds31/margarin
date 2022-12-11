@@ -1335,6 +1335,14 @@ AAAAAElFTkSuQmCC"
          <span> مشاهده اخبار <i class="fa fa-blog"></i></span
        ></router-link>
        
+       <router-link
+         v-if="showRoute(getRole, '/admin-panel/supplier/change-password')"
+         :class="{ activeRoute: $route.name == 'supplierChangePassword' }"
+         to="/admin-panel/supplier/change-password"
+       >
+         <span>  تغییر رمز <i class="fa fa-eye"></i></span
+       ></router-link>
+       
        <!-- <router-link
          v-if="showRoute(getRole, '/admin-panel/supplier-message')"
          :class="{ activeRoute: $route.name == 'supplierMessage' }"

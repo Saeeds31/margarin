@@ -30,7 +30,7 @@ export default {
           "/admin-panel/catalogues,/admin-panel/catalogue-introduction",
         Magazine: "/admin-panel/magazine-introduction,/admin-panel/magazine",
         Marketing: "/admin-panel/magazine-introduction,/admin-panel/magazine",
-        Supplier:"/admin-panel/supplier/profile,/admin-panel/supplier/news"
+        Supplier:"/admin-panel/supplier/profile,/admin-panel/supplier/news,/admin-panel/supplier/change-password"
       },
     };
   },
