@@ -286,7 +286,7 @@
           
           
          
-         <b-button variant="primary"  v-if="item.resumeFile.toString().includes('supplier')">
+         <b-button variant="primary"  v-if="item.resumeFile&&item.resumeFile.toString().includes('supplier')">
            <a target="_blank" :href="`https://www.test.mmc.ir/${item.resumeFile}`">دریافت رزومه</a>
          </b-button>
       </div>
