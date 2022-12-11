@@ -158,7 +158,7 @@
             <b-button variant="primary" @click="editUser(user)"
             >ویرایش اطلاعات</b-button
           >
-          <a variant="success" :href="`https://www.test.mmc.ir/${user.resumeFile}`" v-if="user.resumeFile.toString().includes('supplier')"
+          <a variant="success" :href="`https://www.test.mmc.ir/${user.resumeFile}`" v-if="user.resumeFile&&user.resumeFile.toString().includes('supplier')"
             >مشاهده رزومه ارسالی</a
           >
           </div>
