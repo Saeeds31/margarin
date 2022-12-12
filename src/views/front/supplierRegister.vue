@@ -399,8 +399,6 @@ export default {
               this.$toast.success(res.data.message);
               this.verifySection=true;
               this.$axios.get(`Users/SendVerifyCodePhoneNumber?id=${this.userId}`).then(res=>{
-                console.log(res);
-                
               })
             }
           })

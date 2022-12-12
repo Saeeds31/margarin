@@ -77,7 +77,6 @@ export default {
       newV.galleries.forEach((element) => {
         fakeThis.images.push(fakeThis.$root.baseImageUrl + element.image);
       });
-      console.log(this.images);
     },
   },
   computed: {

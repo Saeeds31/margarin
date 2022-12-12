@@ -114,7 +114,7 @@ export default {
         {
           style: "col-6",
           show_in_table: false,
-          placeholder: " اطلاعات فایل مورد نیاز",
+          placeholder: "فایل موارد مورد نیاز",
           type: "file",
           multiData: false,
           name: " اطلاعات فایل مورد نیاز",

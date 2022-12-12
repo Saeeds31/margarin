@@ -159,7 +159,12 @@ export default {
         };
         pack.documentFile = await this.uploadFile();
         this.$axios
-          .post("supplier/SetRequest")
+          .post("supplier/SetRequest",
+          JSON.stringify(pack), {
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
           .then((res) => {
             this.$toast.success(res.data.message);
             this.resumeFileFile = null;
@@ -180,7 +185,7 @@ export default {
     async uploadFile() {
       let url = "";
       let formData = new FormData();
-      formData.append("files", this.resumeFileFile);
+      formData.append("file", this.resumeFileFile);
       var config = {
         onUploadProgress: () => {
           if (this.innerDisabled == false) {

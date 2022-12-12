@@ -21,27 +21,13 @@
             <div>
               <span>نام کامل :</span>
               <p>
-                {{
-                  `${user.gender == "male" ? "آقای" : "خانم"} ${user.name} ${
-                    user.lastName
-                  }`
-                }}
+                {{ ` ${user.name} ${user.lastName}` }}
               </p>
             </div>
             <div>
               <span>کدملی :</span>
               <p>
                 {{ user.shenaseMelli }}
-              </p>
-            </div>
-          </div>
-          <div class="infoGroup">
-            <div>
-              <span>آدرس :</span>
-              <p>
-                {{
-                  `استان ${user.province}- شهر ${user.city} - ${user.address}- کدپستی ${user.postalCode}`
-                }}
               </p>
             </div>
             <div>
@@ -64,7 +50,15 @@
                 {{ user.phone }}
               </p>
             </div>
+
+            <div>
+              <span> شماره ملی : </span>
+              <p>
+                {{ user.shenaseMelli }}
+              </p>
+            </div>
           </div>
+
           <div class="infoGroup">
             <div>
               <span>کد سامانه تجارت :</span>
@@ -77,6 +71,34 @@
               <p>
                 {{ user.namayendeName }}
               </p>
+            </div>
+            <div>
+              <span> نام معرف : </span>
+              <p>
+                {{ user.relatedName }}
+              </p>
+            </div>
+          </div>
+          <div class="infoGroup">
+            <div>
+              <span> زمینه فعالیت : </span>
+              <p>
+                {{ user.acitivityField }}
+              </p>
+            </div>
+            <div>
+              <span> شرح زمینه فعالیت : </span>
+              <p>
+                {{ user.descriptionField }}
+              </p>
+            </div>
+            <div>
+              <template v-if="user.isCompany">
+                <span> کد اقتصادی : </span>
+                <p>
+                  {{ user.codeEqtesadi }}
+                </p>
+              </template>
             </div>
           </div>
           <div class="infoGroup">
@@ -93,76 +115,32 @@
               </p>
             </div>
           </div>
-          <div class="infoGroup">
-            <div>
-              <span> شماره ثابت : </span>
-              <p>
-                {{ user.phone }}
-              </p>
-            </div>
-            <div>
-              <span> شماره ملی : </span>
-              <p>
-                {{ user.shenaseMelli }}
-              </p>
-            </div>
-          </div>
 
           <div class="infoGroup">
             <div>
-              <span> زمینه فعالیت : </span>
+              <span>آدرس :</span>
               <p>
-                {{ user.acitivityField }}
+                {{
+                  `استان ${user.province}- شهر ${user.city} - ${user.address}- کدپستی ${user.postalCode}`
+                }}
               </p>
-            </div>
-            <div>
-              <span> شرح زمینه فعالیت : </span>
-              <p>
-                {{ user.descriptionField }}
-              </p>
-            </div>
-          </div>
-          <div class="infoGroup">
-            <div>
-              <span> کد سامانه تجارت الکترونیک : </span>
-              <p>
-                {{ user.samaneTejaratCode }}
-              </p>
-            </div>
-            <div>
-              <span> نام نماینده : </span>
-              <p>
-                {{ user.namayendeName }}
-              </p>
-            </div>
-          </div>
-
-          <div class="infoGroup">
-            <div>
-              <span> نام معرف : </span>
-              <p>
-                {{ user.relatedName }}
-              </p>
-            </div>
-            <div>
-              <template v-if="user.isCompany">
-                <span> کد اقتصادی : </span>
-                <p>
-                  {{ user.codeEqtesadi }}
-                </p>
-              </template>
             </div>
           </div>
 
           <div id="buttons">
             <b-button variant="primary" @click="editUser(user)"
-            >ویرایش اطلاعات</b-button
-          >
-          <a variant="success" :href="`https://www.test.mmc.ir/${user.resumeFile}`" v-if="user.resumeFile&&user.resumeFile.toString().includes('supplier')"
-            >مشاهده رزومه ارسالی</a
-          >
+              >ویرایش اطلاعات</b-button
+            >
+            <a
+              variant="success"
+              :href="`https://test.mmc.ir/${user.resumeFile}`"
+              v-if="
+                user.resumeFile &&
+                user.resumeFile.toString().includes('supplier')
+              "
+              >مشاهده رزومه ارسالی</a
+            >
           </div>
-        
         </div>
       </div>
     </div>
@@ -350,9 +328,8 @@
               class="supplierInput"
               :state="Boolean(resumeFileFile)"
             ></b-form-file>
-            
           </div>
-          <div v-if="user&&user.isCompany||isCompany">
+          <div v-if="(user && user.isCompany) || isCompany">
             <label for=""> کد اقتصادی :<span>*</span></label>
             <input
               type="text"
@@ -369,16 +346,25 @@
           </div>
         </div>
         <hr />
-        <h3 style="text-align: right;direction: rtl;">انتخاب دسته بندی اخبار :</h3>
+        <h3 style="text-align: right; direction: rtl">
+          انتخاب دسته بندی اخبار :
+        </h3>
         <div id="categoriesContent">
-          <div v-for="cate in selectedCategories" :key="cate">
+          <treeselect
+            :multiple="true"
+            :clearable="false"
+            :searchable="true"
+            v-model="selectedCategories"
+            :options="categoriesoptions"
+          />
+          <!-- <div v-for="cate in selectedCategories" :key="cate">
             <label :for="`cate${cate.id}`">{{ cate.name }}</label>
             <input
               type="checkbox"
               :id="`cate${cate.id}`"
               v-model="cate.status"
             />
-          </div>
+          </div> -->
         </div>
         <b-button variant="primary" @click="edit()">ویرایش</b-button>
       </div>
@@ -389,7 +375,9 @@
 import SInputs from "@/components/admin/shared/sInputs.vue";
 import STable from "@/components/admin/shared/sTable.vue";
 import adminMixin from "@/libraries/adminController.js";
-
+import Treeselect from "@riophae/vue-treeselect";
+// import the styles
+import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 import rolemixin from "@/libraries/adminRole.js";
 import cooperation from "@/libraries/cooperation";
 import { BModal, BButton, BOverlay, BSpinner, BFormFile } from "bootstrap-vue";
@@ -398,6 +386,7 @@ export default {
   components: {
     SInputs,
     BModal,
+    Treeselect,
     BButton,
     STable,
     BOverlay,
@@ -406,8 +395,8 @@ export default {
   },
   data() {
     return {
-      codeEqtesadi:"",
-      innerDisabled:false,
+      codeEqtesadi: "",
+      innerDisabled: false,
       isSuccess: false,
       showCategoryModal: false,
       showModal: false,
@@ -430,16 +419,17 @@ export default {
       companyName: "",
       namayendeName: "",
       phone: "",
-      isAdminConfirm:false,
+      isAdminConfirm: false,
       resumeFile: "",
-      resumeFileFile:null,
+      resumeFileFile: null,
       relatedName: "",
-      id:"",
+      id: "",
       samaneTejaratCode: "",
       codeEqtesadi: "",
       shenaseMelli: "",
       cities: null,
-      selectedCategories: [],
+      selectedCategories: null,
+      categoriesoptions: [],
     };
   },
   methods: {
@@ -456,11 +446,7 @@ export default {
         },
       };
       await this.$axios
-        .post(
-          `Files/UploadFile?SavePath=supplier`,
-          formData,
-          config
-        )
+        .post(`Files/UploadFile?SavePath=supplier`, formData, config)
         .then((response) => {
           url = response.data.data;
         })
@@ -472,31 +458,44 @@ export default {
       return url;
     },
     getAllCategories() {
-      this.$axios.get(`SuppliersCategory`).then((res) => {
+      this.$axios.get(`SuppliersCategory/GetParentsWithChild`).then((res) => {
+        let categories=[];
         res.data.data.forEach((cate) => {
-          cate.status = false;
-          this.selectedCategories.push(cate);
+          let children = [];
+          if (cate.childs.length) {
+            cate.childs.forEach((cateChild) => {
+              let item = {
+                id: cateChild.id,
+                label: cateChild.name,
+              };
+              children.push(item);
+            });
+          }
+          let item = {
+            id: cate.id,
+            label: cate.name,
+            children:children
+          };
+          categories.push(item);
         });
+      
+      this.categoriesoptions=categories;
         this.setUserCategories();
       });
     },
     setUserCategories() {
       this.user.categories.forEach((cate) => {
         if (this.selectedCategories.find((cat) => cat.id === cate)) {
-          this.selectedCategories.find(
-            (cat) => cat.id === cate
-          ).status = true;
+          this.selectedCategories.find((cat) => cat.id === cate).status = true;
         }
       });
-      console.log(this.selectedCategories);
     },
     showModalCategory(user) {
       this.showCategoryModal = true;
       this.editedCategories = user.categories;
     },
-    
-   async edit() {
-      
+
+    async edit() {
       let pack = {
         address: this.address,
         categories: this.categories,
@@ -505,11 +504,11 @@ export default {
         email: this.email,
         gender: this.gender,
         image: this.image,
-        id:this.id,
+        id: this.id,
         acitivityField: this.acitivityField,
         descriptionField: this.descriptionField,
         isCompany: this.isCompany,
-        isAdminConfirm:this.isAdminConfirm,
+        isAdminConfirm: this.isAdminConfirm,
         lastName: this.lastName,
         namayendeName: this.namayendeName,
         name: this.name,
@@ -523,8 +522,8 @@ export default {
         shenaseMelli: this.shenaseMelli,
         province: this.provinceLabel,
       };
-      if(this.resumeFileFile){
-       pack.resumeFile=await this.uploadImage();
+      if (this.resumeFileFile) {
+        pack.resumeFile = await this.uploadImage();
       }
       let categories = [];
       this.selectedCategories.forEach((cate) => {
@@ -533,8 +532,8 @@ export default {
         }
       });
       pack.categories = categories;
-      if(this.isCompany){
-        pack.codeEqtesadi=this.codeEqtesadi
+      if (this.isCompany) {
+        pack.codeEqtesadi = this.codeEqtesadi;
       }
       this.$axios
         .post(
@@ -551,9 +550,8 @@ export default {
         )
         .then((res) => {
           this.$toast.success(res.data.message);
-            this.showModal = false;
-            this.getProfile();
-         
+          this.showModal = false;
+          this.getProfile();
         })
         .catch((error) => {
           let arrayError = error.response.data.message.split("|");
@@ -567,26 +565,26 @@ export default {
     },
 
     fillData(user) {
-     this.acitivityField = user.acitivityField;
-       this.descriptionField = user.descriptionField;
-       this.address = user.address;
+      this.acitivityField = user.acitivityField;
+      this.descriptionField = user.descriptionField;
+      this.address = user.address;
       this.categories = user.categories;
       this.city = user.ity;
       this.companyName = user.companyName;
       this.email = user.email;
       this.gender = user.gender;
-      this.codeEqtesadi=user.codeEqtesadi?user.codeEqtesadi:"";
+      this.codeEqtesadi = user.codeEqtesadi ? user.codeEqtesadi : "";
 
       this.image = user.image;
       this.isCompany = user.isCompany;
-      this.isAdminConfirm=user.isAdminConfirm;
+      this.isAdminConfirm = user.isAdminConfirm;
       this.lastName = user.lastName;
       this.namayendeName = user.namayendeName;
       this.name = user.name;
       this.phone = user.phone;
       this.phoneNumber = user.phoneNumber;
       this.postalCode = user.postalCode;
-      this.id=user.id;
+      this.id = user.id;
       this.relatedName = user.relatedName;
       this.resumeFile = user.resumeFile;
       this.codeEqtesadi = user.codeEqtesadi;
@@ -728,7 +726,6 @@ div#isCompanySection {
 }
 
 div#supplierContent p {
-  background: #80808042;
   padding: 10px 20px;
   min-width: 100%;
   min-height: 50px;
@@ -736,7 +733,6 @@ div#supplierContent p {
   text-align: right;
 }
 div#supplierContent span {
-  background: #80808042;
   padding: 10px 20px;
   min-width: 200px;
   text-align: right;
@@ -761,7 +757,7 @@ div#supplierContent {
 
 .infoGroup {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
   justify-content: space-between;
   gap: 10px;
@@ -788,9 +784,9 @@ div#categoriesContent {
   direction: rtl;
   gap: 20px;
 }
-@media (max-width:768px){
-  #supplierContent .infoGroup{
-    grid-template-columns: 1fr;
+@media (max-width: 768px) {
+  #supplierContent .infoGroup {
+    grid-template-columns: 1fr 1fr;
   }
 }
 </style>

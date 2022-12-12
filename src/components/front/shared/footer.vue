@@ -438,7 +438,6 @@ export default {
         }, 1000);
       } catch (error) {
      setTimeout(() => {
-          console.log(error);
         this.setMapConfig();
      }, 2000);
       }

@@ -287,7 +287,7 @@
           
          
          <b-button variant="primary"  v-if="item.resumeFile&&item.resumeFile.toString().includes('supplier')">
-           <a target="_blank" :href="`https://www.test.mmc.ir/${item.resumeFile}`">دریافت رزومه</a>
+           <a target="_blank" :href="`https://test.mmc.ir/${item.resumeFile}`">دریافت رزومه</a>
          </b-button>
       </div>
     </b-modal>
@@ -399,7 +399,6 @@ this.$toast.success(res.data.message)
       });
     },
     adminConfirm(id, status) {
-      console.log(id);
       this.$axios
         .post(`Users/ChangeSupplierAdminConfirm?id=${id}`)
         .then((res) => {

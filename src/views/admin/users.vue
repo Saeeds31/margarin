@@ -221,7 +221,6 @@ export default {
           finalString.push(item)
         })
       }
-        console.log(finalString);
 
       this.$axios.post(`Users/AssignRole?Id=${this.selectedUser}`,`${JSON.stringify(finalString)}`,{headers:{'Content-Type': 'application/json'}}).then(response=>{
               this.$toast.success(response.data.message);

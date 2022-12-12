@@ -267,7 +267,6 @@ export default {
   },
   methods: {
     callCallBack(id){
-      console.log(id);
       this.$emit('callModalFromTable',id);
     },
     copyField(field) {
