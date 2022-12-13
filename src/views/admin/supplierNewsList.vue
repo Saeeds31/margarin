@@ -39,11 +39,11 @@
                 <p>{{ item.short_description }}</p>
               </div>
               <div class="links">
-                <a @click="showNews(item)" class="card__button lshow"
-                  >مشاهده خبر</a
+                <b-button variant="info" @click="showNews(item)" 
+                  >مشاهده خبر</b-button
                 >
-                <a @click="showReqModal(item)" class="card__button lshwo"
-                  >ارسال درخواست</a
+                <b-button variant="primary" @click="showReqModal(item)" 
+                  >ارسال درخواست</b-button
                 >
               </div>
             </div>
@@ -129,7 +129,7 @@
         <div>
           <label class="label" for=""> فایل مدارک:<span>*</span></label>
           <b-form-file
-            accept=".zip"
+            accept=".zip,.docx,.pdf"
             v-model="resumeFileFile"
             class="supplierInput"
             :state="Boolean(resumeFileFile)"
@@ -352,15 +352,11 @@ div#contentNewsModal .mainImage {
 .card:hover .card__snippet {
   margin: 20px 0;
 }
-.lshow {
-  display: none;
-}
+
 .card:hover .fshow {
   display: none;
 }
-.card:hover .lshow {
-  display: inline-block;
-}
+
 
 #notSuccessMessage {
   position: fixed;
@@ -512,6 +508,7 @@ div#contentNewsModal .mainImage {
   display: flex;
   flex-direction:column;
   justify-content: space-between;
+  height: 150px;
 
 }
 
@@ -536,11 +533,11 @@ div#contentNewsModal .mainImage {
     justify-content: space-between;
 }
 .cardImg {
-  width: 300px;
+  width:150px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   object-fit: cover;
-  height: 300px;
+  height:150px;
 }
 
 .cardText {

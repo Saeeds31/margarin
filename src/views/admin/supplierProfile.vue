@@ -762,6 +762,12 @@ div#supplierContent {
     grid-template-columns: 1fr;
   }
 }
+div#categoriesContent{
+  direction: rtl;
+}
+#categoriesContent .vue-treeselect{
+  text-align: right;
+}
 div#categoriesContent div label {
   margin-bottom: 0;
 }

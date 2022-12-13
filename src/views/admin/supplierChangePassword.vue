@@ -59,39 +59,8 @@
   
   };
   </script>
-  <style>
+  <style scoped>
   
-    div#supplierContent p {
-      background: #80808042;
-      padding: 10px 20px;
-      min-width: 100%;
-      min-height: 50px;
-      direction: rtl;
-      text-align: right;
-  }
-  div#supplierContent span {
-      background: #80808042;
-      padding: 10px 20px;
-      min-width: 200px;
-      text-align: right;
-      direction: rtl;
-      font-weight: bolder;
-  }
-  div#supplierContent img {
-      width: 210px;
-      margin: auto;
-  }
-  div#supplierContent {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      align-items: flex-end;
-      padding: 15px;
-  }
-  .infoGroup div {
-    display: flex;
-    flex-direction: column;
-  }
   
   .infoGroup {
     display: grid;
