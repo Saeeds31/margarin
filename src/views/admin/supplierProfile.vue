@@ -157,12 +157,12 @@
         <div class="supplierInputGroup">
           <div>
             <label for="">نام : <span>*</span></label>
-            <input type="text" v-model="name" class="supplierInputs" />
+            <input type="text" v-model="name" class="supplierInputs input" />
           </div>
 
           <div>
             <label for="">نام خانوادگی :<span>*</span></label>
-            <input type="text" class="supplierInputs" v-model="lastName" />
+            <input type="text" class="supplierInputs input" v-model="lastName" />
           </div>
         </div>
 
@@ -173,7 +173,7 @@
               type="email"
               placeholder="نام کاربری شما خواهد بود"
               v-model="email"
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
@@ -182,7 +182,7 @@
             <input
               type="number"
               v-model="shenaseMelli"
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
@@ -194,7 +194,7 @@
             <input
               type="text"
               v-model="companyName"
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
@@ -205,7 +205,7 @@
               type="tel"
               v-model="samaneTejaratCode"
               name=""
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
@@ -217,7 +217,7 @@
               type="tel"
               v-model="acitivityField"
               name=""
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
@@ -226,7 +226,7 @@
             <input
               type="text"
               v-model="descriptionField"
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
@@ -237,7 +237,7 @@
             <input
               type="text"
               v-model="namayendeName"
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
@@ -246,7 +246,7 @@
             <input
               type="text"
               v-model="relatedName"
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
@@ -258,25 +258,25 @@
               type="tel"
               v-model="phoneNumber"
               name=""
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
 
           <div>
             <label for=""> شماره ثابت :<span>*</span></label>
-            <input type="number" v-model="phone" class="supplierInput" id="" />
+            <input type="number" v-model="phone" class="supplierInput input" id="" />
           </div>
         </div>
 
         <div class="supplierInputGroup">
           <div>
             <label for="">کدپستی :</label>
-            <input v-model="postalCode" type="text" class="supplierInputs" />
+            <input v-model="postalCode" type="text" class="supplierInputs input" />
           </div>
           <div>
             <label for=""> جنسیت :<span>*</span></label>
-            <select v-model="gender">
+            <select class="select" v-model="gender">
               <option value="male">مرد</option>
               <option value="female">زن</option>
             </select>
@@ -286,7 +286,7 @@
         <div class="supplierInputGroup">
           <div>
             <label for="">استان :<span>*</span></label>
-            <select name="" id="" v-model="province">
+            <select class="select" name="" id="" v-model="province">
               <option
                 :value="prov.id"
                 v-for="prov in provinceAndCity"
@@ -300,7 +300,7 @@
           <div>
             <label for="">شهر :<span>*</span></label>
 
-            <select name="" id="" v-model="city">
+            <select class="select" name="" id="" v-model="city">
               <option value="null" v-if="province == null">
                 لطفا یک استان را انتخاب کنید
               </option>
@@ -314,7 +314,7 @@
           <label for="">آدرس کامل :<span>*</span></label>
           <textarea
             v-model="address"
-            name=""
+            class="textarea"
             id=""
             cols="30"
             rows="5"
@@ -334,7 +334,7 @@
             <input
               type="text"
               v-model="codeEqtesadi"
-              class="supplierInput"
+              class="supplierInput input"
               id=""
             />
           </div>
@@ -484,11 +484,7 @@ export default {
       });
     },
     setUserCategories() {
-      this.user.categories.forEach((cate) => {
-        if (this.selectedCategories.find((cat) => cat.id === cate)) {
-          this.selectedCategories.find((cat) => cat.id === cate).status = true;
-        }
-      });
+     this.selectedCategories= this.user.categories;
     },
     showModalCategory(user) {
       this.showCategoryModal = true;
@@ -526,12 +522,8 @@ export default {
         pack.resumeFile = await this.uploadImage();
       }
       let categories = [];
-      this.selectedCategories.forEach((cate) => {
-        if (cate.status) {
-          categories.push(cate.id);
-        }
-      });
-      pack.categories = categories;
+      
+      pack.categories = this.selectedCategories;
       if (this.isCompany) {
         pack.codeEqtesadi = this.codeEqtesadi;
       }
@@ -618,6 +610,7 @@ export default {
     this.getProfile(true);
   },
   watch: {
+    
     province(newValue) {
       this.provinceAndCity.forEach((item) => {
         if (item.id == newValue) {
@@ -689,9 +682,9 @@ div#buttons {
   align-items: center;
   justify-content: space-between;
 }
-div#register input,
-#register textarea,
-#register select {
+div#register .input,
+#register .textarea,
+#register .select {
   border-radius: 8px;
   border: 2px solid #1a3fa2;
   padding: 4px;
@@ -772,18 +765,7 @@ div#supplierContent {
 div#categoriesContent div label {
   margin-bottom: 0;
 }
-div#categoriesContent div {
-  direction: ltr;
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-div#categoriesContent {
-  display: flex;
-  flex-wrap: wrap;
-  direction: rtl;
-  gap: 20px;
-}
+
 @media (max-width: 768px) {
   #supplierContent .infoGroup {
     grid-template-columns: 1fr 1fr;

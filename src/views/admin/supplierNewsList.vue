@@ -9,34 +9,50 @@
         </div>
       </template>
     </b-overlay>
-    <router-link to="/admin-panel/supplier/profile" id="notSuccessMessage" v-if="isSuccess==false">
+    <router-link
+      to="/admin-panel/supplier/profile"
+      id="notSuccessMessage"
+      v-if="isSuccess == false"
+    >
       حساب کاربری شما تایید نشده است لطفا با پشتیبانی تماس بگیرید
     </router-link>
-    <a  id="notSuccessMessage" v-else-if="isSuccess=='falsefalse'">
+    <a id="notSuccessMessage" v-else-if="isSuccess == 'falsefalse'">
       درحال دریافت اطلاعات شما
     </a>
     <div v-if="items != null && items.length > 0" class="container">
-      <div v-for="item in items" :key="item" class="card">
-        <figure class="card__thumb">
-          <img
-          :src="`https://test.mmc.ir/${item.image}`"
-          :alt="item.title_fa" 
-           class="card__image">
-          <figcaption class="card__caption">
-            <h2 class="card__title">{{ item.title_fa }}</h2>
-            <a  @click="showReqModal(item)" class="card__button fshow">ارسال درخواست</a>
-            <p class="card__snippet lshow">
-              {{item.shortDescription_fa}}
-            </p>
-            
-            <a  @click="showNews(item)" class="card__button lshow">مشاهده خبر</a>
-            <a  @click="showReqModal(item)" class="card__button lshwo">ارسال درخواست</a>
-          </figcaption>
-        </figure>
+      <div class="SecendCardStyle" v-for="item in items" :key="item">
+        <a class="card_link">
+          <div class="contenCard" data-aos="fade-in">
+            <img
+              class="cardImg"
+              :src="`https://test.mmc.ir/${item.image}`"
+              :alt="item.title_fa"
+            />
+            <div class="cardbox">
+              <div class="topCardBox">
+                <p>{{ item.title_fa }}</p>
+
+                <!-- <img class="logo" :src="item.logo" :alt="item.title_fa" /> -->
+              </div>
+
+              <div class="cardText">
+                <p>{{ item.short_description }}</p>
+              </div>
+              <div class="links">
+                <a @click="showNews(item)" class="card__button lshow"
+                  >مشاهده خبر</a
+                >
+                <a @click="showReqModal(item)" class="card__button lshwo"
+                  >ارسال درخواست</a
+                >
+              </div>
+            </div>
+          </div>
+        </a>
       </div>
-    
+     
     </div>
-    
+
     <!-- <div v-if="items != null && items.length > 0" class="mainTable">
       <article v-for="item in items" :key="item">
         <div class="dateNews">
@@ -81,21 +97,25 @@
       no-close-on-backdrop
       v-model="showNewsModal"
       @close="resetModal()"
-      :title="`مشاهده خبر${selectedItem?selectedItem.title_fa:''}`"
+      :title="`مشاهده خبر${selectedItem ? selectedItem.title_fa : ''}`"
     >
-    <div v-if="selectedItem" id="contentNewsModal">
-      <img class="mainImage" :src="`https://test.mmc.ir/${selectedItem.image}`" alt="">
-      <div class="vhtmlContent">
-        <div v-html="selectedItem.shortDescription_fa" />
+      <div v-if="selectedItem" id="contentNewsModal">
+        <img
+          class="mainImage"
+          :src="`https://test.mmc.ir/${selectedItem.image}`"
+          alt=""
+        />
+        <div class="vhtmlContent">
+          <div v-html="selectedItem.shortDescription_fa" />
+        </div>
+        <b-button
+          class="setReq"
+          variant="success"
+          @click="showReqModal(selectedItem)"
+          >ارسال درخواست</b-button
+        >
       </div>
-      <b-button
-                class="setReq"
-                variant="success"
-                @click="showReqModal(selectedItem)"
-                >ارسال درخواست</b-button
-              >
-    </div> 
-  </b-modal>
+    </b-modal>
     <b-modal
       id="categoryModal"
       hide-footer
@@ -138,17 +158,16 @@ export default {
       resumeFileFile: null,
       items: null,
       showModal: false,
-      isSuccess: 'falsefalse',
+      isSuccess: "falsefalse",
 
       showNewsModal: false,
       selectedItem: null,
     };
   },
   methods: {
-    showNews(item){
-      this.showNewsModal= true;
-      this.selectedItem=item;
-
+    showNews(item) {
+      this.showNewsModal = true;
+      this.selectedItem = item;
     },
     async setReq() {
       if (!this.resumeFileFile) {
@@ -159,12 +178,11 @@ export default {
         };
         pack.documentFile = await this.uploadFile();
         this.$axios
-          .post("supplier/SetRequest",
-          JSON.stringify(pack), {
-                        headers: {
-                            "Content-Type": "application/json"
-                        }
-                    })
+          .post("supplier/SetRequest", JSON.stringify(pack), {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
           .then((res) => {
             this.$toast.success(res.data.message);
             this.resumeFileFile = null;
@@ -176,8 +194,8 @@ export default {
       }
     },
     showReqModal(item) {
-      if(this.showNewsModal){
-        this.showNewsModal=false;
+      if (this.showNewsModal) {
+        this.showNewsModal = false;
       }
       this.showModal = true;
       this.selectedItem = item;
@@ -211,11 +229,11 @@ export default {
     this.$axios
       .get("Supplier/GetRelatedNews")
       .then((res) => {
-        this.isSuccess=true;
+        this.isSuccess = true;
         this.items = res.data.data;
       })
       .catch((err) => {
-        this.isSuccess=false;
+        this.isSuccess = false;
         this.$toast.error(err.response.data.message);
       });
   },
@@ -267,46 +285,45 @@ div#userRole {
   align-items: flex-end;
 }
 span.newsDate {
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 5px;
-    background: #d5d5d5;
-    box-shadow: 0 0 5px #1213;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 5px;
+  background: #d5d5d5;
+  box-shadow: 0 0 5px #1213;
 }
 
 .dateNewsContent {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 10px;
-    width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
 }
 .dateNewsContent .descBtn {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
-div#reqContent .label{
+div#reqContent .label {
   display: flex;
 }
 div#reqContent {
-    display: flex;
-    flex-direction: column;
-    direction: rtl;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  direction: rtl;
+  gap: 20px;
 }
 div#contentNewsModal {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    margin: auto;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+  gap: 20px;
 }
 div#contentNewsModal .mainImage {
-    width: 450px;
+  width: 450px;
 }
 .container {
   display: flex;
@@ -328,7 +345,6 @@ div#contentNewsModal .mainImage {
 }
 .card:hover .card__image {
   transform: translateY(-10px);
-  
 }
 .card:hover .card__thumb::after {
   top: 0;
@@ -336,15 +352,14 @@ div#contentNewsModal .mainImage {
 .card:hover .card__snippet {
   margin: 20px 0;
 }
-.lshow{
+.lshow {
   display: none;
 }
-.card:hover .fshow{
+.card:hover .fshow {
   display: none;
 }
-.card:hover  .lshow{
+.card:hover .lshow {
   display: inline-block;
-
 }
 
 #notSuccessMessage {
@@ -376,7 +391,11 @@ div#contentNewsModal .mainImage {
   content: "";
   width: 100%;
   height: 100%;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 40%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
   transition: 0.3s;
 }
 @media (min-width: 1024px) {
@@ -444,10 +463,12 @@ div#contentNewsModal .mainImage {
   text-transform: uppercase;
   text-decoration: none;
   transition: 0.3s;
+  background:rgb(6 14 104);
+  cursor: pointer;
 }
 .card__button:hover {
-  color: black;
-  background-color: white;
+  color: white;
+  background-color: black;
 }
 
 .disclaimer {
@@ -467,5 +488,92 @@ div#contentNewsModal .mainImage {
 .disclaimer__link {
   color: #755d87;
   text-decoration: none;
+}
+
+.SecendCardStyle {
+  display: grid;
+  grid-template-columns: 1fr;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 1rem 0;
+  border: 1px solid #80808075;
+    width: 100%;
+}
+
+.contenCard {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+}
+
+.cardbox {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+
+}
+
+.topCardBox {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.topCardBox img {
+  width: 100px;
+}
+.topCardBox p {
+  font-weight: bold;
+  color:black;
+  width: 100%;
+  direction: rtl;
+  text-align: right;
+}
+.links {
+    display: flex;
+    justify-content: space-between;
+}
+.cardImg {
+  width: 300px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  object-fit: cover;
+  height: 300px;
+}
+
+.cardText {
+  margin: 1rem 0;
+  text-align: justify;
+}
+
+.cardText p {
+  font-size: 14px;
+  color:black;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  color: #0d6fed;
+}
+
+.locationicon {
+  margin: 0;
+}
+
+.locationicon path {
+  fill: #0d6fed;
+}
+
+.cardPhoneNumber {
+  display: flex;
+  justify-content: flex-end;
+}
+.cardPhoneNumber span {
+  display: flex;
+  align-items: center;
 }
 </style>
