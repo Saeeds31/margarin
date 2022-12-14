@@ -106,7 +106,7 @@
           alt=""
         />
         <div class="vhtmlContent">
-          <div v-html="selectedItem.shortDescription_fa" />
+          <div v-html="selectedItem.description_fa" />
         </div>
         <b-button
           class="setReq"
@@ -485,7 +485,10 @@ div#contentNewsModal .mainImage {
   color: #755d87;
   text-decoration: none;
 }
-
+.vhtmlContent {
+    direction: rtl;
+    text-align: right;
+}
 .SecendCardStyle {
   display: grid;
   grid-template-columns: 1fr;

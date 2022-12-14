@@ -27,7 +27,7 @@
           <td>
             <a
               target="_blank"
-              :href="`https://www.test.mmc.ir/${item.documentFile}`"
+              :href="`https://test.mmc.ir/${item.documentFile}`"
               >دانلود</a
             >
           </td>
