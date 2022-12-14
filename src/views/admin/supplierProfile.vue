@@ -210,16 +210,19 @@
             />
           </div>
         </div>
-        <div class="supplierInputGroup">
+        <div class="supplierInputGroup TreeselectBox">
           <div>
             <label for=""> زمینه فعالیت:<span>*</span></label>
-            <input
+            <!-- <input
               type="tel"
               v-model="acitivityField"
               name=""
               class="supplierInput input"
               id=""
-            />
+            /> -->
+            <select class="select" v-model="acitivityField" name="" id="">
+              <option v-for="cat in categories_second" :value="cat.name" :key="cat.id">{{cat.name}}</option>
+            </select>
           </div>
           <div>
             <label for=""> شرح زمینه فعالیت :<span>*</span></label>
@@ -395,6 +398,7 @@ export default {
   },
   data() {
     return {
+      categories_second:[],
       codeEqtesadi: "",
       innerDisabled: false,
       isSuccess: false,
@@ -430,6 +434,7 @@ export default {
       cities: null,
       selectedCategories: null,
       categoriesoptions: [],
+
     };
   },
   methods: {
@@ -482,6 +487,9 @@ export default {
       this.categoriesoptions=categories;
         this.setUserCategories();
       });
+      this.$axios.get("/SuppliersCategory").then(res=>{
+        this.categories_second=res.data.data
+      })
     },
     setUserCategories() {
      this.selectedCategories= this.user.categories;
