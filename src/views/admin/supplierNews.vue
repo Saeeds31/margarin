@@ -47,7 +47,7 @@
         :folderRoute="'weblogs'"
         :bigData="bigData"
         :settings="settings"
-        :headers="headers"
+        :headers="headers.filter((item)=>{return item.show_in_Form!=false})"
       />
     </b-modal>
 
@@ -76,19 +76,29 @@ export default {
         {
           style: "col-12",
           show_in_table: true,
-          placeholder: "عنوان پست را وارد کنید",
+          placeholder: "کد خبر را وارد کنید",
           type: "string",
-          multiData: true,
-          name: "عنوان پست",
-          key: "title",
+          multiData: false,
+          name: "کد خبر",
+          key: "code",
         },
         {
           style: "col-12",
+          show_in_table: true,
+          placeholder: "عنوان خبر را وارد کنید",
+          type: "string",
+          multiData: true,
+          name: "عنوان خبر",
+          key: "title",
+        },
+        
+        {
+          style: "col-12",
           show_in_table: false,
-          placeholder: "توضیح کوتاه پست را وارد کنید",
+          placeholder: "توضیح کوتاه خبر را وارد کنید",
           type: "description",
           multiData: true,
-          name: "توضیح کوتاه پست",
+          name: "توضیح کوتاه خبر",
           key: "shortDescription",
         },
 
@@ -104,10 +114,10 @@ export default {
         //  {
         //     style: "col-6",
         //     show_in_table: false,
-        //     placeholder: " زمان مطالعه پست را وارد کنید",
+        //     placeholder: " زمان مطالعه خبر را وارد کنید",
         //     type: "number",
         //     multiData: false,
-        //     name: "زمان مطالعه پست",
+        //     name: "زمان مطالعه خبر",
         //     key: "timeToRead",
         //   },
 
@@ -146,11 +156,19 @@ export default {
         {
           style: "col-6",
           show_in_table: true,
-          placeholder: "تصویر پست با ارتفاع 468 و عرض 529 پیکسل",
+          placeholder: "تصویر خبر با ارتفاع 468 و عرض 529 پیکسل",
           type: "image",
           multiData: false,
-          name: "تصویر پست",
+          name: "تصویر خبر",
           key: "image",
+        },
+        {
+          style: "col-6",
+          show_in_table: true,
+          show_in_Form: false,
+          type: "string",
+          name: "تعداد درخواست ها",
+          key: "requestCount",
         },
 
         //  {
@@ -221,6 +239,7 @@ export default {
   },
   methods: {
     callModalFromTable(newsId) {
+      // 
       this.$router.push(`/admin-panel/supplier-requests?newsId=${newsId}`)
      
     },

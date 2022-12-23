@@ -26,6 +26,25 @@
       <!-- <h1>ســـامانه سهامـــداران مارگاریـــن</h1> -->
       <div v-if="!verifySection" id="register" class="width80">
         <div class="supplierInputGroup">
+          <!-- <div>
+            <label for=""> جنسیت :<span>*</span></label>
+            <select v-model="gender">
+              <option value="male">مرد</option>
+              <option value="female">زن</option>
+            </select>
+          </div> -->
+          
+          <div id="isCompanySection">
+            <label for="isCompany">آیا یک شخص حقوقی هستید؟</label>
+            <input type="checkbox" name="" v-model="isCompany"  id="isCompany">
+          </div>
+          <div v-if="isCompany">
+            <label for="">اسم شرکت :</label>
+            <input v-model="companyName" type="text" class="supplierInputs" />
+          </div>
+       
+        </div>
+        <div class="supplierInputGroup">
           <div>
             <label for="">نام : <span>*</span></label>
             <input type="text" v-model="name" class="supplierInputs" />
@@ -120,24 +139,7 @@
             rows="5"
           ></textarea>
         </div> -->
-        <div class="supplierInputGroup">
-          <!-- <div>
-            <label for=""> جنسیت :<span>*</span></label>
-            <select v-model="gender">
-              <option value="male">مرد</option>
-              <option value="female">زن</option>
-            </select>
-          </div> -->
-          <!-- <div>
-            <label for="">کدپستی :</label>
-            <input v-model="postalCode" type="text" class="supplierInputs" />
-          </div> -->
-          <div id="isCompanySection">
-            <label for="isCompany">آیا یک شخص حقوقی هستید؟</label>
-            <input type="checkbox" name="" v-model="isCompany"  id="isCompany">
-          </div>
-       
-        </div>
+
       
       </div>
       <div v-else id="register" class="width80">
@@ -342,7 +344,10 @@ export default {
       if(this.verifySection){
         return this.verifyCode();
       }
-      if (!this.name) {
+      if (this.isCompany&&this.companyName.length<3) {
+        this.$toast.error("لطفا نام شرکت را به صورت کامل وارد نمایید");
+      }
+      else if (!this.name) {
         this.$toast.error("نام را وارد کنید");
       } else if (!this.lastName) {
         this.$toast.error("نام خانوادگی را وارد کنید");
@@ -378,6 +383,7 @@ export default {
           // province: this.selectedProvinceLabel,
           // city: this.selectedCity,
           isCompany: this.isCompany,
+          companyName:this.companyName,
           // postalCode: this.postalCode ? this.postalCode : " ",
           email: this.email,
           phoneNumber: this.phoneNumber,
@@ -838,7 +844,9 @@ export default {
   //   },
   // },
   data() {
-    return {isCompany:false,
+    return {
+      companyName:"",
+      isCompany:false,
       userId:null,
       code:null,
       name: null,

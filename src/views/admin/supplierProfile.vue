@@ -99,24 +99,73 @@
                   {{ user.codeEqtesadi }}
                 </p>
               </template>
+              <template v-else>
+                
+              <span> حقیقی یا حقوقی : </span>
+              <p>
+                {{ user.isCompany ? "حقوقی" : "حقیقی" }}
+              </p>
+              </template>
             </div>
           </div>
-          <div class="infoGroup">
+          <div v-if="user.isCompany" class="infoGroup">
             <div>
               <span> حقیقی یا حقوقی : </span>
               <p>
                 {{ user.isCompany ? "حقوقی" : "حقیقی" }}
               </p>
             </div>
-            <div>
-              <span> نام حقوقی : </span>
+            <div >
+              <span> نام شرکت : </span>
               <p>
                 {{ user.companyName }}
               </p>
             </div>
+            <div >
+              <span> نام مدیر عامل : </span>
+              <p>
+                {{ user.ceoName }}
+              </p>
+            </div>
           </div>
 
-          <div class="infoGroup">
+          <div  v-if="user.isCompany" class="infoGroup">
+            <div>
+              <span>شماره تماس مدیر عامل :</span>
+              <p>
+                {{user.ceoPhone}}
+              </p>
+            </div>
+            <div>
+              <span>   نام نماینده اول :</span>
+              <p>
+                {{user.agent1Name}}
+              </p>
+            </div>
+            <div>
+              <span>شماره تماس  نماینده اول :</span>
+              <p>
+                {{user.agent1Phone}}
+              </p>
+            </div>
+            </div>
+
+            <div  v-if="user.isCompany" class="infoGroup">
+              <div>
+                <span>   نام نماینده دوم :</span>
+                <p>
+                  {{user.agent2Name}}
+                </p>
+              </div>
+              
+              <div>
+                <span>شماره تماس  نماینده دوم :</span>
+                <p>
+                  {{user.agent2Phone}}
+                </p>
+              </div>
+              </div>
+            <div class="infoGroup">
             <div>
               <span>آدرس :</span>
               <p>
@@ -332,7 +381,14 @@
               :state="Boolean(resumeFileFile)"
             ></b-form-file>
           </div>
-          <div v-if="(user && user.isCompany) || isCompany">
+          
+        </div>
+        <div class="supplierInputGroup">
+          <div id="isCompanySection">
+            <label for="isCompany">آیا یک شخص حقوقی هستید؟</label>
+            <input type="checkbox" name="" v-model="isCompany" id="isCompany" />
+          </div>
+          <div v-if="isCompany">
             <label for=""> کد اقتصادی :<span>*</span></label>
             <input
               type="text"
@@ -342,12 +398,58 @@
             />
           </div>
         </div>
-        <div class="supplierInputGroup">
-          <div id="isCompanySection">
-            <label for="isCompany">آیا یک شخص حقوقی هستید؟</label>
-            <input type="checkbox" name="" v-model="isCompany" id="isCompany" />
+        <div v-if="isCompany" class="supplierInputGroup">
+          <div>
+            <label for="">نام مدیرعامل :<span>*</span></label>
+            <input
+              type="tel"
+              v-model="ceoName"
+              name=""
+              class="supplierInput input"
+              id=""
+            />
+          </div>
+
+          <div>
+            <label for=""> شماره مدیرعامل :<span>*</span></label>
+            <input type="number" v-model="ceoPhone" class="supplierInput input" id="" />
           </div>
         </div>
+        <div v-if="isCompany" class="supplierInputGroup">
+          <div>
+            <label for="">نام نماینده اول :<span>*</span></label>
+            <input
+              type="tel"
+              v-model="agent1Name"
+              name=""
+              class="supplierInput input"
+              id=""
+            />
+          </div>
+
+          <div>
+            <label for=""> شماره نماینده اول :<span>*</span></label>
+            <input type="number" v-model="agent1Phone" class="supplierInput input" id="" />
+          </div>
+        </div>
+        <div v-if="isCompany" class="supplierInputGroup">
+          <div>
+            <label for="">نام نماینده دوم :<span>*</span></label>
+            <input
+              type="tel"
+              v-model="agent2Name"
+              name=""
+              class="supplierInput input"
+              id=""
+            />
+          </div>
+
+          <div>
+            <label for=""> شماره نماینده دوم :<span>*</span></label>
+            <input type="number" v-model="agent2Phone" class="supplierInput input" id="" />
+          </div>
+        </div>
+       
         <hr />
         <h3 style="text-align: right; direction: rtl">
           انتخاب دسته بندی اخبار :
@@ -423,6 +525,12 @@ export default {
       companyName: "",
       namayendeName: "",
       phone: "",
+      agent1Phone:"",
+      agent2Phone:"",
+      agent1Name:"",
+      agent2Name:"",
+      ceoName:"",
+      ceoPhone:"",
       isAdminConfirm: false,
       resumeFile: "",
       resumeFileFile: null,
@@ -534,6 +642,12 @@ export default {
       pack.categories = this.selectedCategories;
       if (this.isCompany) {
         pack.codeEqtesadi = this.codeEqtesadi;
+        pack.ceoName = this.ceoName;
+        pack.ceoPhone = this.ceoPhone;
+        pack.agent1Name = this.agent1Name;
+        pack.agent1Phone = this.agent1Phone;
+        pack.agent2Phone = this.agent2Phone;
+        pack.agent2Name = this.agent2Name;
       }
       this.$axios
         .post(
@@ -574,9 +688,7 @@ export default {
       this.email = user.email;
       this.gender = user.gender;
       this.codeEqtesadi = user.codeEqtesadi ? user.codeEqtesadi : "";
-
       this.image = user.image;
-      this.isCompany = user.isCompany;
       this.isAdminConfirm = user.isAdminConfirm;
       this.lastName = user.lastName;
       this.namayendeName = user.namayendeName;
@@ -595,6 +707,15 @@ export default {
           this.province = item.id;
         }
       });
+      this.isCompany = user.isCompany;
+      if(this.isCompany){
+        this.ceoName=user.ceoName;
+        this.ceoPhone=user.ceoPhone;
+        this.agent1Name=user.agent1Name;
+        this.agent2Name=user.agent2Name;
+        this.agent1Phone=user.agent1Phone;
+        this.agent2Phone=user.agent2Phone;
+      }
     },
     editUser(user) {
       this.fillData(user);

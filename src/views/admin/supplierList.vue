@@ -32,9 +32,12 @@
             <b-button variant="primary" @click="showSendModal(item.id)"
             >پیام  </b-button
           >
-            <b-button variant="info" @click="showDetail(item)"
-              >مشاهده  </b-button
-            >
+          <b-button variant="info" @click="showDetail(item)"
+            >مشاهده  </b-button
+          >
+          <b-button variant="dark" @click="report(item)"
+            >گزارش  </b-button
+          >
             <b-button variant="warning" @click="deleteSupplier(item.id)"
               >حذف  </b-button
             >
@@ -326,6 +329,11 @@ export default {
     };
   },
   methods: {
+    report(item){
+      this.$axios.get(`SuppliersNews/GetSupplierRequestsReport?id=${item.id}`).then(res=>{
+        console.log(res);
+      })
+    },
     sendMessage(){
     let  pack=  {
   userId: this.userId,

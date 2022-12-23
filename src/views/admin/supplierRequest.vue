@@ -37,7 +37,8 @@
             >
           </td>
         </tr>
-      </table>
+      </table> 
+      <b-button :class="{disabled:disable==true}" v-if="items.length > 0" @click="getReport()" variant="primary">گزارش گیری</b-button>
       <div class="noItems" v-else>
         <svg
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -196,6 +197,7 @@ export default {
   },
   data() {
     return {
+      disable:false,
       status: true,
       headers: [
         {
@@ -277,6 +279,14 @@ export default {
     resetSendModal() {
       this.message = "";
       this.sendModal = false;
+    },
+    getReport(){
+      this.disable=true;
+      this.$axios.get(`SuppliersNews/GetReport?id=10${this.$route.query.newsId}`).then(res=>{
+        console.log(res);
+      this.disable=true;
+
+      })
     },
     loadItems() {
       this.$axios
