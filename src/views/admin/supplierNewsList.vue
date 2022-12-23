@@ -30,8 +30,11 @@
             />
             <div class="cardbox">
               <div class="topCardBox">
+                
+                <p style="opacity: 0.5;text-align: left; font-size:12px;">
+                  {{item.code+" - "+new Date(item.createDate).toLocaleDateString("fa")}}
+                </p>
                 <p>{{ item.title_fa }}</p>
-
                 <!-- <img class="logo" :src="item.logo" :alt="item.title_fa" /> -->
               </div>
 
@@ -97,9 +100,10 @@
       no-close-on-backdrop
       v-model="showNewsModal"
       @close="resetModal()"
-      :title="`مشاهده خبر${selectedItem ? selectedItem.title_fa : ''}`"
+      :title="`مشاهده خبر -${selectedItem ? selectedItem.code : ''}`"
     >
       <div v-if="selectedItem" id="contentNewsModal">
+        <h3>{{ selectedItem.title_fa }}</h3>
         <img
           class="mainImage"
           :src="`https://test.mmc.ir/${selectedItem.image}`"
