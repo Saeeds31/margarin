@@ -1434,6 +1434,14 @@ AAAAAElFTkSuQmCC"
         <i class="fa fa-blog" aria-hidden="true"></i></span
     ></router-link>
     <router-link
+    class="childRoute"
+       v-if="showRoute(getRole, '/admin-panel/supplier-message')"
+       :class="{ activeRoute: $route.name == 'supplierMessageAdmin' }"
+       to="/admin-panel/supplier-message"
+     >
+       <span> مشاهده پیام ها <i class="fa fa-comment"></i></span
+     ></router-link>
+    <router-link
       :class="{ activeRoute: $route.name == 'supplierNewsCategories' }"
       class="childRoute"
       to="/admin-panel/supplier-news-categories"

@@ -506,6 +506,17 @@ const routes = [
                         );
                     }
                 },
+                {
+                    path: "supplier-message",
+                    name: "supplierMessageAdmin",
+
+                    component: function() {
+                        return import (
+                            /* webpackChunkName: "admin" */
+                            "../views/admin/supplierMessageAdmin.vue"
+                        );
+                    }
+                },
 
                 {
                     path: "supplier-requests",
