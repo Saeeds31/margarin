@@ -339,22 +339,21 @@ export default {
   methods: {
     report(item) {
       this.$axios
-        .get(`SuppliersNews/GetSupplierRequestsReport?id=${item.id}`)
+        .get(`SuppliersNews/GetSupplierRequestsReport?id=${item.id}`, {
+          headers: {
+            "Content-Disposition": "attachment; filename=XYZ.xlsx",
+            "Content-Type":
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          },
+          responseType: "arraybuffer",
+        })
         .then((response) => {
-          console.log(response);
-          const type = response.headers["content-type"];
-          const blob = new Blob([response.data], {
-            type: type,
-            encoding: "UTF-8",
-          });
+          const temp = window.URL.createObjectURL(new Blob([response.data]));
           const link = document.createElement("a");
-          link.href = window.URL.createObjectURL(blob);
-          link.download = "file.xlsx";
+          link.href = temp;
+          link.setAttribute("download", "file.xlsx"); //or any other extension
+          document.body.appendChild(link);
           link.click();
-
-          // clean up "a" element & remove ObjectURL
-          document.body.removeChild(link);
-          URL.revokeObjectURL(href);
         })
         .catch((err) => {
           this.$toast.error(err.response.data.message);

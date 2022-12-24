@@ -37,8 +37,14 @@
             >
           </td>
         </tr>
-      </table> 
-      <b-button :class="{disabled:disable==true}" v-if="items.length > 0" @click="getReport()" variant="primary">گزارش گیری</b-button>
+      </table>
+      <b-button
+        :class="{ disabled: disable == true }"
+        v-if="items.length > 0"
+        @click="getReport()"
+        variant="primary"
+        >گزارش گیری</b-button
+      >
       <div class="noItems" v-else>
         <svg
           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -197,7 +203,7 @@ export default {
   },
   data() {
     return {
-      disable:false,
+      disable: false,
       status: true,
       headers: [
         {
@@ -280,25 +286,27 @@ export default {
       this.message = "";
       this.sendModal = false;
     },
-    getReport(){
-      this.disable=true;
-      this.$axios.get(`SuppliersNews/GetReport?id=10${this.$route.query.newsId}`).then(response=>{
-        const type = response.headers["content-type"];
-          const blob = new Blob([response.data], {
-            type: type,
-            encoding: "UTF-8",
-          });
+    getReport() {
+      this.disable = true;
+      this.$axios
+        .get(`SuppliersNews/GetReport?id=${this.$route.query.newsId}`, {
+          headers: {
+            "Content-Disposition": "attachment; filename=XYZ.xlsx",
+            "Content-Type":
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          },
+          responseType: "arraybuffer",
+        })
+        .then((response) => {
+          const temp = window.URL.createObjectURL(new Blob([response.data]));
           const link = document.createElement("a");
-          link.href = window.URL.createObjectURL(blob);
-          link.download = "file.xlsx";
+          link.href = temp;
+          link.setAttribute("download", "file.xlsx"); //or any other extension
+          document.body.appendChild(link);
           link.click();
-
-          // clean up "a" element & remove ObjectURL
-          document.body.removeChild(link);
-          URL.revokeObjectURL(href);
-      this.disable=true;
-
-      }).catch((err) => {
+          this.disable = true;
+        })
+        .catch((err) => {
           this.$toast.error(err.response.data.message);
         });
     },

@@ -112,12 +112,17 @@
         <div class="vhtmlContent">
           <div v-html="selectedItem.description_fa" />
         </div>
-        <b-button
+        <div class="d-flex justify-content-between ">
+          <b-button
           class="setReq"
           variant="success"
           @click="showReqModal(selectedItem)"
           >ارسال درخواست</b-button
         >
+        <a class="btn btn-primary ml-1" v-if="selectedItem.requirementFile" :href="`https://test.mmc.ir/${selectedItem.requirementFile}`" target="_blank">
+        دریافت مدارک مورد نیاز 
+        </a>
+        </div>
       </div>
     </b-modal>
     <b-modal

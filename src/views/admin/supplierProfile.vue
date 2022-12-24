@@ -400,7 +400,7 @@
         </div>
         <div v-if="isCompany" class="supplierInputGroup">
           <div>
-            <label for="">نام مدیرعامل :<span>*</span></label>
+            <label for="">نام مدیرعامل :</label>
             <input
               type="tel"
               v-model="ceoName"
@@ -411,13 +411,13 @@
           </div>
 
           <div>
-            <label for=""> شماره مدیرعامل :<span>*</span></label>
+            <label for=""> شماره مدیرعامل :</label>
             <input type="number" v-model="ceoPhone" class="supplierInput input" id="" />
           </div>
         </div>
         <div v-if="isCompany" class="supplierInputGroup">
           <div>
-            <label for="">نام نماینده اول :<span>*</span></label>
+            <label for="">نام نماینده اول :</label>
             <input
               type="tel"
               v-model="agent1Name"
@@ -428,13 +428,13 @@
           </div>
 
           <div>
-            <label for=""> شماره نماینده اول :<span>*</span></label>
+            <label for=""> شماره نماینده اول :</label>
             <input type="number" v-model="agent1Phone" class="supplierInput input" id="" />
           </div>
         </div>
         <div v-if="isCompany" class="supplierInputGroup">
           <div>
-            <label for="">نام نماینده دوم :<span>*</span></label>
+            <label for="">نام نماینده دوم :</label>
             <input
               type="tel"
               v-model="agent2Name"
@@ -445,7 +445,7 @@
           </div>
 
           <div>
-            <label for=""> شماره نماینده دوم :<span>*</span></label>
+            <label for=""> شماره نماینده دوم :</label>
             <input type="number" v-model="agent2Phone" class="supplierInput input" id="" />
           </div>
         </div>
