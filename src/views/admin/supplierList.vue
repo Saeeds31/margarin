@@ -30,18 +30,16 @@
           </td>
           <td class="handlerSUp">
             <b-button variant="primary" @click="showSendModal(item.id)"
-            >پیام  </b-button
-          >
-          <b-button variant="info" @click="showDetail(item)"
-            >مشاهده  </b-button
-          >
-          <b-button variant="dark" @click="report(item)"
-            >گزارش  </b-button
-          >
+              >پیام
+            </b-button>
+            <b-button variant="info" @click="showDetail(item)"
+              >مشاهده
+            </b-button>
+            <b-button variant="dark" @click="report(item)">گزارش </b-button>
             <b-button variant="warning" @click="deleteSupplier(item.id)"
-              >حذف  </b-button
-            >
-            
+              >حذف
+            </b-button>
+
             <b-button
               variant="danger"
               @click="adminConfirm(item.id, !item.isAdminConfirm)"
@@ -206,92 +204,100 @@
           <div>
             <span>کدملی :</span>
             <p>
-              {{item.shenaseMelli}}
+              {{ item.shenaseMelli }}
             </p>
           </div>
         </div>
         <div class="infoGroup">
-          <div>  
+          <div>
             <span>آدرس :</span>
             <p>
-              {{ `استان ${item.province}- شهر ${item.city} - ${item.address}- کدپستی ${item.postalCode}` }}
-            </p></div>
-          <div><span>ایمیل :</span>
+              {{
+                `استان ${item.province}- شهر ${item.city} - ${item.address}- کدپستی ${item.postalCode}`
+              }}
+            </p>
+          </div>
+          <div>
+            <span>ایمیل :</span>
             <p>
               {{ item.email }}
-            </p></div>
+            </p>
+          </div>
         </div>
-        <div class="infoGroup">
-          <div><span>شماره تماس :</span>
-            <p>
-              {{ item.phoneNumber }}
-            </p></div>
-          <div><span>شماره ثابت :</span>
-            <p>
-              {{ item.phone }}
-            </p></div>
-        </div>
-        <div class="infoGroup">
-          <div><span>کد سامانه تجارت :</span>
-            <p>
-              {{item.samaneTejaratCode}}
-            </p></div>
-          <div><span>
-            نام نماینده :
-          </span>
-          <p>
-            {{item.namayendeName}}
-          </p></div>
-        </div>
-        <div class="infoGroup">
-          <div><span>
-            حقیقی یا حقوقی :
-          </span>
-          <p>
-            {{item.isCompany?"حقوقی":"حقیقی"}}
-          </p></div>
-          <div><span>
-            نام حقوقی :
-          </span>
-          <p>
-            {{item.companyName}}
-          </p></div>
-        </div>
-        <div class="infoGroup">
-          <div></div>
-          <div></div>
-        </div>
-         
         <div class="infoGroup">
           <div>
-            <span>
-              نام معرف :
-            </span>
+            <span>شماره تماس :</span>
             <p>
-              {{item.relatedName}}
+              {{ item.phoneNumber }}
+            </p>
+          </div>
+          <div>
+            <span>شماره ثابت :</span>
+            <p>
+              {{ item.phone }}
+            </p>
+          </div>
+        </div>
+        <div class="infoGroup">
+          <div>
+            <span>کد سامانه تجارت :</span>
+            <p>
+              {{ item.samaneTejaratCode }}
+            </p>
+          </div>
+          <div>
+            <span> نام نماینده : </span>
+            <p>
+              {{ item.namayendeName }}
+            </p>
+          </div>
+        </div>
+        <div class="infoGroup">
+          <div>
+            <span> حقیقی یا حقوقی : </span>
+            <p>
+              {{ item.isCompany ? "حقوقی" : "حقیقی" }}
+            </p>
+          </div>
+          <div>
+            <span> نام حقوقی : </span>
+            <p>
+              {{ item.companyName }}
+            </p>
+          </div>
+        </div>
+        <div class="infoGroup">
+          <div></div>
+          <div></div>
+        </div>
+
+        <div class="infoGroup">
+          <div>
+            <span> نام معرف : </span>
+            <p>
+              {{ item.relatedName }}
             </p>
           </div>
           <div>
             <template v-if="item.isCompany">
-              <span >
-                کد اقتصادی :
-              </span>
+              <span> کد اقتصادی : </span>
               <p>
-                {{item.codeEqtesadi}}
-    
+                {{ item.codeEqtesadi }}
               </p>
-  
-            </template></div>
-          
+            </template>
+          </div>
         </div>
-         
-          
-          
-          
-         
-         <b-button variant="primary"  v-if="item.resumeFile&&item.resumeFile.toString().includes('supplier')">
-           <a target="_blank" :href="`https://test.mmc.ir/${item.resumeFile}`">دریافت رزومه</a>
-         </b-button>
+
+        <b-button
+          variant="primary"
+          v-if="
+            item.resumeFile && item.resumeFile.toString().includes('supplier')
+          "
+        >
+          <a target="_blank" :href="`https://test.mmc.ir/${item.resumeFile}`"
+            >دریافت رزومه</a
+          >
+        </b-button>
       </div>
     </b-modal>
     <b-modal
@@ -303,12 +309,14 @@
       @close="resetSendModal()"
       title="ارسال پیام"
     >
-    <div id="sendMessageContent">
-      
-    <label for="">پیام خود را وارد کنید</label>
-<textarea style="width: 320px; height: 280px;" v-model="message"></textarea>
-<input type="submit" value="ارسال" @click="sendMessage()">
-    </div>
+      <div id="sendMessageContent">
+        <label for="">پیام خود را وارد کنید</label>
+        <textarea
+          style="width: 320px; height: 280px"
+          v-model="message"
+        ></textarea>
+        <input type="submit" value="ارسال" @click="sendMessage()" />
+      </div>
     </b-modal>
   </div>
 </template>
@@ -324,73 +332,89 @@ export default {
       showModal: false,
       status: true,
       item: null,
-      userId:null,
-      message:"",
+      userId: null,
+      message: "",
     };
   },
   methods: {
-    report(item){
-      this.$axios.get(`SuppliersNews/GetSupplierRequestsReport?id=${item.id}`).then(res=>{
-        console.log(res);
-      })
-    },
-    sendMessage(){
-    let  pack=  {
-  userId: this.userId,
-  message: this.message,
-}
-this.$axios.post("SupplierMessage",JSON.stringify(pack), {
-            headers: {
-              // Overwrite Axios's automatically set Content-Type
-              "Content-Type": "application/json",
-            },
-          }).then(res=>{
-this.resetSendModal();
-this.$toast.success(res.data.message)
-}).catch(err=>{
-  this.$toast.error(err.response.data.message)
-})
-    },
-    showSendModal(id){
-      this.userId=id;
-      this.sendModal=true;
-    },
-    resetSendModal(){
-      this.message="";
-      this.sendModal=false;
+    report(item) {
+      this.$axios
+        .get(`SuppliersNews/GetSupplierRequestsReport?id=${item.id}`)
+        .then((response) => {
+          console.log(response);
+          const type = response.headers["content-type"];
+          const blob = new Blob([response.data], {
+            type: type,
+            encoding: "UTF-8",
+          });
+          const link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.download = "file.xlsx";
+          link.click();
 
+          // clean up "a" element & remove ObjectURL
+          document.body.removeChild(link);
+          URL.revokeObjectURL(href);
+        })
+        .catch((err) => {
+          this.$toast.error(err.response.data.message);
+        });
     },
-    deleteSupplier(id){
-      
+    sendMessage() {
+      let pack = {
+        userId: this.userId,
+        message: this.message,
+      };
+      this.$axios
+        .post("SupplierMessage", JSON.stringify(pack), {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          this.resetSendModal();
+          this.$toast.success(res.data.message);
+        })
+        .catch((err) => {
+          this.$toast.error(err.response.data.message);
+        });
+    },
+    showSendModal(id) {
+      this.userId = id;
+      this.sendModal = true;
+    },
+    resetSendModal() {
+      this.message = "";
+      this.sendModal = false;
+    },
+    deleteSupplier(id) {
       window
-                .swal({
-                    title: "کاربر حذف شود؟",
-                    text: "این عمل بازگشت پذیر نیست",
-                    icon: "warning",
+        .swal({
+          title: "کاربر حذف شود؟",
+          text: "این عمل بازگشت پذیر نیست",
+          icon: "warning",
 
-                    showCancelButton: true,
-                    showConfirmButton: true,
-                    dangerMode: true,
-                    buttons: ["خیر", "بله"]
-                })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        this.$axios
-                            .delete(  `Users/${id}`)
-                            .then((response) => {
-                                this.$toast.success(response.data.message);
+          showCancelButton: true,
+          showConfirmButton: true,
+          dangerMode: true,
+          buttons: ["خیر", "بله"],
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            this.$axios
+              .delete(`Users/${id}`)
+              .then((response) => {
+                this.$toast.success(response.data.message);
 
-                                this.items = this.items.filter((item) => item.id != id);
-                            })
-                            .catch((error) => {
-                                this.$toast.error(error.response.data.message);
-
-
-                            });
-                    }
-                })
-                .catch(() => {});
-        
+                this.items = this.items.filter((item) => item.id != id);
+              })
+              .catch((error) => {
+                this.$toast.error(error.response.data.message);
+              });
+          }
+        })
+        .catch(() => {});
     },
     showDetail(item) {
       this.item = item;
@@ -429,33 +453,32 @@ this.$toast.success(res.data.message)
 };
 </script>
 <style>
-
-  div#supplierContent p {
-    background: #80808042;
-    padding: 10px 20px;
-    min-width: 100%;
-    min-height: 50px;
-    direction: rtl;
-    text-align: right;
+div#supplierContent p {
+  background: #80808042;
+  padding: 10px 20px;
+  min-width: 100%;
+  min-height: 50px;
+  direction: rtl;
+  text-align: right;
 }
 div#supplierContent span {
-    background: #80808042;
-    padding: 10px 20px;
-    min-width: 200px;
-    text-align: right;
-    direction: rtl;
-    font-weight: bolder;
+  background: #80808042;
+  padding: 10px 20px;
+  min-width: 200px;
+  text-align: right;
+  direction: rtl;
+  font-weight: bolder;
 }
 div#supplierContent img {
-    width: 210px;
-    margin: auto;
+  width: 210px;
+  margin: auto;
 }
 div#supplierContent {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    align-items: flex-end;
-    padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+  padding: 15px;
 }
 .infoGroup div {
   display: flex;
@@ -470,10 +493,10 @@ div#supplierContent {
   gap: 10px;
   direction: rtl;
 }
-div#sendMessageContent textarea{
+div#sendMessageContent textarea {
   padding: 15px;
 }
-  div#sendMessageContent input[type="submit"] {
+div#sendMessageContent input[type="submit"] {
   background: green;
   color: white;
   padding: 10px 24px;
@@ -488,7 +511,7 @@ div#sendMessageContent {
   gap: 15px;
   direction: rtl;
 }
-.handlerSUp{
+.handlerSUp {
   display: flex;
   gap: 10px;
 }

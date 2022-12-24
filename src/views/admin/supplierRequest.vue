@@ -282,11 +282,25 @@ export default {
     },
     getReport(){
       this.disable=true;
-      this.$axios.get(`SuppliersNews/GetReport?id=10${this.$route.query.newsId}`).then(res=>{
-        console.log(res);
+      this.$axios.get(`SuppliersNews/GetReport?id=10${this.$route.query.newsId}`).then(response=>{
+        const type = response.headers["content-type"];
+          const blob = new Blob([response.data], {
+            type: type,
+            encoding: "UTF-8",
+          });
+          const link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.download = "file.xlsx";
+          link.click();
+
+          // clean up "a" element & remove ObjectURL
+          document.body.removeChild(link);
+          URL.revokeObjectURL(href);
       this.disable=true;
 
-      })
+      }).catch((err) => {
+          this.$toast.error(err.response.data.message);
+        });
     },
     loadItems() {
       this.$axios
