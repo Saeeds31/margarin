@@ -27,8 +27,8 @@
               v-if="header.type == 'boolean'"
               class="badge"
               :class="{
-                'badge-success': item[`${header.key + '_fa'}`] == 1,
-                'badge-warning': item[`${header.key + '_fa'}`] == 0
+                'badge-success': item[`${header.key + '_fa'}`] == 1||item[`${header.key}`] == 1,
+                'badge-warning': item[`${header.key + '_fa'}`] == 0||item[`${header.key}`] == 0
               }"
             >
               {{
@@ -55,9 +55,12 @@
                 : item[`${header.key}`]
             }}</span>
             <span class="longText" v-if="header.type == 'description'">{{
-              item[`${header.key + "_fa"}`].length > cutString
+              !header.multiData?
+              item[`${header.key}`]
+              :item[`${header.key + "_fa"}`].length > cutString
                 ? item[`${header.key + "_fa"}`].slice(0, cutString) + "..."
                 : item[`${header.key + "_fa"}`]
+                
             }}</span>
             <span v-if="header.type == 'select'">
               {{ getValue(header.selectIN, item[`${header.key}`]) }}

@@ -564,6 +564,17 @@ const routes = [
                             }
                         },
                         {
+                            path: "message",
+                            name: "supplierMessage",
+        
+                            component: function() {
+                                return import (
+                                    /* webpackChunkName: "admin" */
+                                    "../views/admin/supplierMessage.vue"
+                                );
+                            }
+                        },
+                        {
                             path: "profile",
                             name: "supplierProfile",
         
