@@ -248,6 +248,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+.mainContentAdmin{
+  margin: auto;
+}
+</style>
 <style>
 div#userRole {
   width: 90%;

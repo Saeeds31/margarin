@@ -104,7 +104,7 @@
               class="tableButtons"
               v-if="header.modal"
               variant="info"
-              @click="callCallBack(item.id)"
+              @click="callCallBack(customeFiledCallBack?item[customeFiledCallBack]:item.id)"
               >{{header.buttonModalTitle}}</b-button
             >
             <b-button
@@ -256,6 +256,10 @@ export default {
     BButton
   },
   props: {
+    customeFiledCallBack: {
+      type: String,
+      default: ""
+    },
     cutString: {
       type: Number,
       default: 31
