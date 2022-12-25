@@ -15,14 +15,24 @@
       </b-button>
     </div>
     <div v-if="items" class="mainTable">
-      <s-table
-        @callModalFromTable="callModalFromTable"
-        v-model="items"
-        @showEditModal="showEditModal"
-        :settings="settings"
-        @deleteItem="deleteItem"
-        :headers="headers"
-      />
+      <table class="table table-hover">
+        <tr class="trHeader">
+          <th>پیام</th>
+          <th>زمان ارسال</th>
+          <th>پاسخ سیستم</th>
+        </tr>
+        <tr class="trDetail" v-for="item in items" :key="item.id">
+          <td>
+            {{ item.message }}
+          </td>
+          <td>
+            {{ item.createDate }}
+          </td>
+          <td>
+            <i class="fa fa-check" v-if="!item.forAdmin"></i>
+          </td>
+        </tr>
+      </table>
     </div>
 
     <b-modal
@@ -70,7 +80,7 @@ export default {
   },
   data() {
     return {
-      showModal:false,
+      showModal: false,
       headers: [
         {
           style: "col-12",
@@ -107,7 +117,7 @@ export default {
         english: {},
         both: {},
       },
-      message:"",
+      message: "",
       userId: null,
 
       title: " پیام ها",
@@ -134,14 +144,12 @@ export default {
         replyTo: null,
       };
       this.$axios
-        .post(`SupplierMessage`,pack)
+        .post(`SupplierMessage`, pack)
         .then((res) => {
           this.$toast.success(res.data.message);
-          this.message = "";   
-             this.showModal = false;
-    this.loadItems();
-
-
+          this.message = "";
+          this.showModal = false;
+          this.loadItems();
         })
         .catch((err) => {
           this.$toast.error(err.response.data.message);
@@ -159,8 +167,8 @@ export default {
 };
 </script>
 <style>
-  .headerStyle{
-    direction: rtl;
-    text-align: right;
-  }
+.headerStyle {
+  direction: rtl;
+  text-align: right;
+}
 </style>
