@@ -53,7 +53,7 @@
         id="loginRegisterOption"
         class="d-flex width80 justify-content-between align-items-center"
       >
-        <a> ثبت نام کنید </a>
+        <router-link to="/supplier-register"> ثبت نام کنید </router-link>
         <roundedButton
           @buttonClicked="login()"
           :class="{ disabled: disable }"

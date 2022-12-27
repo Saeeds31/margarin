@@ -451,7 +451,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 div#supplierContent p {
   background: #80808042;
   padding: 10px 20px;

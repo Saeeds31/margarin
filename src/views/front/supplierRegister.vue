@@ -60,7 +60,7 @@
             <label for="">ایمیل :<span>*</span></label>
             <input
               type="email"
-              placeholder="نام کاربری شما خواهد بود"
+              placeholder="test@gmail.com"
               v-model="email"
               class="supplierInput"
               id=""
@@ -72,6 +72,8 @@
             <input
               type="tel"
               v-model="phoneNumber"
+              placeholder="نام کاربری شما خواهد بود"
+
               name=""
               class="supplierInput"
               id=""

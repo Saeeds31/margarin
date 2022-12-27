@@ -2,7 +2,8 @@
   <nav id="navBarMenu" class="width45 hiddenInMobile">
     <ul class="width100 d-flex justify-content-between align-items-center">
       <li>
-        <router-link to="/reportage" >{{$cookie.get('ltrTheme')?"Reportage":"گزارشات"}}
+        <!-- <router-link to="/reportage" >{{$cookie.get('ltrTheme')?"Reportage":"گزارشات"}} -->
+          <router-link to="/reportage" >{{$cookie.get('ltrTheme')?"Supplier system":"سامانه تامین کنندگان"}}
       <i class="fa fa-circle"></i></router-link></li>
       <li>
         <a  target="_blank"  href="https://saham.margarineco.com"
