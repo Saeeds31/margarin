@@ -16,6 +16,7 @@
       <s-table
         @callModalFromTable="callModalFromTable"
         v-model="items"
+        customeFiledCallBack="userId"
         @showEditModal="showEditModal"
         :settings="settings"
         @deleteItem="deleteItem"
@@ -32,23 +33,22 @@
       </div>
     </div>
     <b-modal
-      id="blogModal"
+      id="sendmodal"
       hide-footer
-      ref="blogModal"
+      ref="sendModal"
       no-close-on-backdrop
-      v-model="showModal"
-      @close="resetModal()"
-      :title="mode == 'create' ? 'افزودن ' + title : ' مشاهده ' + title"
+      v-model="sendModal"
+      @close="resetSendModal()"
+      title="ارسال پیام"
     >
-      <s-inputs
-        :disabled="disabled"
-        @submit="submit"
-        :mode="mode"
-        :folderRoute="'weblogs'"
-        :bigData="bigData"
-        :settings="settings"
-        :headers="headers.filter((item)=>{return item.show_in_Form!=false})"
-      />
+      <div id="sendMessageContent">
+        <label for="">پیام خود را وارد کنید</label>
+        <textarea
+          style="width: 320px; height: 280px"
+          v-model="message"
+        ></textarea>
+        <input type="submit" value="ارسال" @click="sendMessage()" />
+      </div>
     </b-modal>
 
   </div>
@@ -72,6 +72,7 @@ export default {
   },
   data() {
     return {
+      sendModal: false,
       headers: [
         {
           style: "col-12",
@@ -90,14 +91,19 @@ export default {
           name: "نام کاربری",
           key: "username",
         },
-        
         {
           style: "col-12",
           show_in_table: true,
-          type: "boolean",
+          placeholder: "",
+          type: "setting",
+          name: "ارسال پیام",
           multiData: false,
-          name: "ارسالی توسط کاربر",
-          key: "forAdmin",
+          key: "",
+          edit: false,
+          modal: true,
+          buttonModalTitle: " پاسخ",
+          delete: false,
+          editLabel: "ویرایش",
         },
 
       ],
@@ -107,15 +113,22 @@ export default {
         english: {},
         both: {},
       },
+      userId:null,
       title: "تامین کنندگان",
       editedId: null,
       apiRoute: "SupplierMessage",
+      message:"",
     };
   },
   mounted() {
-   
+    if(this.$route.query.page){
+      this.currentPage=this.$route.query.page
+    }else{
+
+      this.currentPage=1;
+    }
     this.getId();
-    this.loadItems();
+    this.loadItems(this.currentPage);
     
   },
   watch: {
@@ -124,10 +137,38 @@ export default {
     },
   },
   methods: {
-    callModalFromTable(newsId) {
-      // 
-      this.$router.push(`/admin-panel/supplier-requests?newsId=${newsId}`)
+    callModalFromTable(userId) {
+      this.sendModal=true;
+      this.userId=userId;
+      
      
+    },
+    sendMessage() {
+      let pack = {
+        userId: this.userId,
+        message: this.message,
+        forAdmin:false,
+        isRead:false,
+        replyTo:null,
+      };
+      this.$axios
+        .post("SupplierMessage", JSON.stringify(pack), {
+          headers: {
+            // Overwrite Axios's automatically set Content-Type
+            "Content-Type": "application/json",
+          },
+        })
+        .then((res) => {
+          this.resetSendModal();
+          this.$toast.success(res.data.message);
+        })
+        .catch((err) => {
+          this.$toast.error(err.response.data.message);
+        });
+    },
+    resetSendModal() {
+      this.message = "";
+      this.sendModal = false;
     },
     showModalFunction() {
       this.showModal = true;
@@ -140,3 +181,23 @@ export default {
   },
 };
 </script>
+<style>
+
+div#sendMessageContent textarea {
+  padding: 15px;
+}
+div#sendMessageContent input[type="submit"] {
+  background: green;
+  color: white;
+  padding: 10px 24px;
+  border: chartreuse;
+  border-radius: 4px;
+}
+
+div#sendMessageContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  direction: rtl;
+}</style>

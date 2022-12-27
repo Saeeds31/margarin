@@ -248,6 +248,11 @@ export default {
   },
 };
 </script>
+<style scoped>
+.mainContentAdmin{
+  margin: auto;
+}
+</style>
 <style>
 div#userRole {
   width: 90%;
@@ -339,7 +344,7 @@ div#contentNewsModal .mainImage {
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  margin: 20px 0 80px;
+  margin: 20px auto 80px;
 }
 
 .card {

@@ -204,19 +204,19 @@
     >
       <div id="register" class="width80">
         <div class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for="">نام : <span>*</span></label>
             <input type="text" v-model="name" class="supplierInputs input" />
           </div>
 
-          <div>
+          <div class="div">
             <label for="">نام خانوادگی :<span>*</span></label>
             <input type="text" class="supplierInputs input" v-model="lastName" />
           </div>
         </div>
 
         <div class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for="">ایمیل :<span>*</span></label>
             <input
               type="email"
@@ -226,7 +226,7 @@
               id=""
             />
           </div>
-          <div>
+          <div class="div">
             <label for="">شناسه ملی :<span>*</span></label>
             <input
               type="number"
@@ -238,7 +238,7 @@
         </div>
 
         <div class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for=""> نام واحد صنفی :<span>*</span></label>
             <input
               type="text"
@@ -248,7 +248,7 @@
             />
           </div>
 
-          <div>
+          <div class="div">
             <label for=""> کد سامانه تجارت الکترونیک :<span>*</span></label>
             <input
               type="tel"
@@ -260,7 +260,7 @@
           </div>
         </div>
         <div class="supplierInputGroup TreeselectBox">
-          <div>
+          <div class="div">
             <label for=""> زمینه فعالیت:<span>*</span></label>
             <!-- <input
               type="tel"
@@ -269,11 +269,22 @@
               class="supplierInput input"
               id=""
             /> -->
-            <select class="select" v-model="acitivityField" name="" id="">
+            <!-- <select class="select" v-model="acitivityField" name="" id="">
               <option v-for="cat in categories_second" :value="cat.name" :key="cat.id">{{cat.name}}</option>
-            </select>
+            </select> -->
+            <div id="categoriesContent">
+          <treeselect
+            :multiple="true"
+            :limit="2"
+            :clearable="false"
+            :searchable="true"
+            v-model="selectedCategories"
+            :options="categoriesoptions"
+          />
+          
+        </div>
           </div>
-          <div>
+          <div class="div">
             <label for=""> شرح زمینه فعالیت :<span>*</span></label>
             <input
               type="text"
@@ -284,7 +295,7 @@
           </div>
         </div>
         <div class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for=""> نام نماینده :<span>*</span></label>
             <input
               type="text"
@@ -293,7 +304,7 @@
               id=""
             />
           </div>
-          <div>
+          <div class="div">
             <label for=""> نام معرف :<span>*</span></label>
             <input
               type="text"
@@ -304,7 +315,7 @@
           </div>
         </div>
         <div class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for="">شماره تماس :<span>*</span></label>
             <input
               type="tel"
@@ -315,18 +326,18 @@
             />
           </div>
 
-          <div>
+          <div class="div">
             <label for=""> شماره ثابت :<span>*</span></label>
             <input type="number" v-model="phone" class="supplierInput input" id="" />
           </div>
         </div>
 
         <div class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for="">کدپستی :</label>
             <input v-model="postalCode" type="text" class="supplierInputs input" />
           </div>
-          <div>
+          <div class="div">
             <label for=""> جنسیت :<span>*</span></label>
             <select class="select" v-model="gender">
               <option value="male">مرد</option>
@@ -336,7 +347,7 @@
         </div>
 
         <div class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for="">استان :<span>*</span></label>
             <select class="select" name="" id="" v-model="province">
               <option
@@ -349,7 +360,7 @@
             </select>
           </div>
 
-          <div>
+          <div class="div">
             <label for="">شهر :<span>*</span></label>
 
             <select class="select" name="" id="" v-model="city">
@@ -362,7 +373,7 @@
             </select>
           </div>
         </div>
-        <div id="addressBox">
+        <div class="div" id="addressBox">
           <label for="">آدرس کامل :<span>*</span></label>
           <textarea
             v-model="address"
@@ -373,7 +384,7 @@
           ></textarea>
         </div>
         <div class="supplierInputGroup">
-          <div>
+          <div style="width:200%" class="div">
             <label for=""> فایل رزومه:<span>*</span></label>
             <b-form-file
               v-model="resumeFileFile"
@@ -384,11 +395,11 @@
           
         </div>
         <div class="supplierInputGroup">
-          <div id="isCompanySection">
+          <div class="div" id="isCompanySection">
             <label for="isCompany">آیا یک شخص حقوقی هستید؟</label>
             <input type="checkbox" name="" v-model="isCompany" id="isCompany" />
           </div>
-          <div v-if="isCompany">
+          <div class="div" v-if="isCompany">
             <label for=""> کد اقتصادی :<span>*</span></label>
             <input
               type="text"
@@ -399,7 +410,7 @@
           </div>
         </div>
         <div v-if="isCompany" class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for="">نام مدیرعامل :</label>
             <input
               type="tel"
@@ -410,13 +421,13 @@
             />
           </div>
 
-          <div>
+          <div class="div">
             <label for=""> شماره مدیرعامل :</label>
             <input type="number" v-model="ceoPhone" class="supplierInput input" id="" />
           </div>
         </div>
         <div v-if="isCompany" class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for="">نام نماینده اول :</label>
             <input
               type="tel"
@@ -427,13 +438,13 @@
             />
           </div>
 
-          <div>
+          <div class="div">
             <label for=""> شماره نماینده اول :</label>
             <input type="number" v-model="agent1Phone" class="supplierInput input" id="" />
           </div>
         </div>
         <div v-if="isCompany" class="supplierInputGroup">
-          <div>
+          <div class="div">
             <label for="">نام نماینده دوم :</label>
             <input
               type="tel"
@@ -444,33 +455,14 @@
             />
           </div>
 
-          <div>
+          <div class="div">
             <label for=""> شماره نماینده دوم :</label>
             <input type="number" v-model="agent2Phone" class="supplierInput input" id="" />
           </div>
         </div>
        
         <hr />
-        <h3 style="text-align: right; direction: rtl">
-          انتخاب دسته بندی اخبار :
-        </h3>
-        <div id="categoriesContent">
-          <treeselect
-            :multiple="true"
-            :clearable="false"
-            :searchable="true"
-            v-model="selectedCategories"
-            :options="categoriesoptions"
-          />
-          <!-- <div v-for="cate in selectedCategories" :key="cate">
-            <label :for="`cate${cate.id}`">{{ cate.name }}</label>
-            <input
-              type="checkbox"
-              :id="`cate${cate.id}`"
-              v-model="cate.status"
-            />
-          </div> -->
-        </div>
+        
         <b-button variant="primary" @click="edit()">ویرایش</b-button>
       </div>
     </b-modal>
@@ -617,7 +609,7 @@ export default {
         gender: this.gender,
         image: this.image,
         id: this.id,
-        acitivityField: this.acitivityField,
+        acitivityField: "-",
         descriptionField: this.descriptionField,
         isCompany: this.isCompany,
         isAdminConfirm: this.isAdminConfirm,
@@ -757,7 +749,6 @@ div#register label {
   direction: rtl;
   font-size: 18px;
   font-weight: 700;
-  margin: auto;
 }
 div#register {
   display: flex;
@@ -781,7 +772,7 @@ div#addressBox {
   display: grid;
   direction: rtl;
 }
-.supplierInputGroup div {
+.supplierInputGroup .div {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -893,9 +884,12 @@ div#supplierContent {
 }
 div#categoriesContent{
   direction: rtl;
+  width: 100%;
+
 }
 #categoriesContent .vue-treeselect{
   text-align: right;
+  width: 100%;
 }
 div#categoriesContent div label {
   margin-bottom: 0;
