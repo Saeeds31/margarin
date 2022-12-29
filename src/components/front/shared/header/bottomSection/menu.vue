@@ -2,12 +2,11 @@
   <nav class="width55">
     <ul id="bottomMenu" class="d-flex justify-content-between width100">
       <li>
-        <router-link to="/reportage">
+        <router-link to="/login">
           <i class="far fa-circle"></i>
           {{
             $cookie.get("ltrTheme")
-              ? "reportage"
-              : "گزارشات"
+              ?"Supplier system":"سامانه تامین کنندگان"
           }}
         </router-link>
       </li>
