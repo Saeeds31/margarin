@@ -61,7 +61,7 @@
 
           <div class="infoGroup">
             <div>
-              <span>کد سامانه تجارت :</span>
+              <span>کد نقش سامانه جامع تجارت ایران :</span>
               <p>
                 {{ user.samaneTejaratCode }}
               </p>
@@ -93,19 +93,12 @@
               </p>
             </div>
             <div>
-              <template v-if="user.isCompany">
                 <span> کد اقتصادی : </span>
                 <p>
                   {{ user.codeEqtesadi }}
                 </p>
-              </template>
-              <template v-else>
                 
-              <span> حقیقی یا حقوقی : </span>
-              <p>
-                {{ user.isCompany ? "حقوقی" : "حقیقی" }}
-              </p>
-              </template>
+             
             </div>
           </div>
           <div v-if="user.isCompany" class="infoGroup">
@@ -151,6 +144,7 @@
             </div>
 
             <div  v-if="user.isCompany" class="infoGroup">
+             
               <div>
                 <span>   نام نماینده دوم :</span>
                 <p>
@@ -249,7 +243,7 @@
           </div>
 
           <div class="div">
-            <label for=""> کد سامانه تجارت الکترونیک :<span>*</span></label>
+            <label for=""> کد نقش سامانه جامع تجارت ایران  :<span>*</span></label>
             <input
               type="tel"
               v-model="samaneTejaratCode"
@@ -399,7 +393,7 @@
             <label for="isCompany">آیا یک شخص حقوقی هستید؟</label>
             <input type="checkbox" name="" v-model="isCompany" id="isCompany" />
           </div>
-          <div class="div" v-if="isCompany">
+          <div class="div" >
             <label for=""> کد اقتصادی :<span>*</span></label>
             <input
               type="text"
@@ -632,8 +626,8 @@ export default {
       let categories = [];
       
       pack.categories = this.selectedCategories;
+      pack.codeEqtesadi = this.codeEqtesadi;
       if (this.isCompany) {
-        pack.codeEqtesadi = this.codeEqtesadi;
         pack.ceoName = this.ceoName;
         pack.ceoPhone = this.ceoPhone;
         pack.agent1Name = this.agent1Name;

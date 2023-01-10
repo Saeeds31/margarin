@@ -74,13 +74,26 @@ export default {
     return {
       headers: [
         {
-          style: "col-12",
+          style: "col-6",
           show_in_table: true,
           placeholder: "کد خبر را وارد کنید",
           type: "string",
           multiData: false,
           name: "کد خبر",
           key: "code",
+        },
+        {
+          style: "col-6",
+          show_in_table: true,
+          placeholder: "اولویت خبر را وارد کنید",
+          type: "select",
+          multiData: false,
+          name: "کد خبر",
+          key: "code",
+          multiple: false,
+          name: "اولویت بندی خبر",
+          key: "priority",
+          selectIN: "priorityList",
         },
         {
           style: "col-12",
@@ -224,6 +237,9 @@ export default {
     }
     this.getId();
     this.loadItems(this.currentPage);
+    this.settings['priorityList']=
+    [ {id:1,label:'بالا'}, {id:2,label:'معمولی'},{id:3,label:'پایین'}]
+
     this.settings["allCategories"] = [];
     this.$axios.get("/SuppliersCategory").then((res) => {
       res.data.data.forEach((cate) => {

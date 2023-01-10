@@ -103,7 +103,24 @@
       :title="`مشاهده خبر -${selectedItem ? selectedItem.code : ''}`"
     >
       <div v-if="selectedItem" id="contentNewsModal">
-        <h3>{{ selectedItem.title_fa }}</h3>
+        <div class="headerNews">
+          <span>
+            
+          <span class="title">{{`  عنوان:`}}</span>
+          <span>{{selectedItem.title_fa}}</span>
+          </span>
+          <span>
+            
+          <span class="title">{{`تاریخ درج خبر:`}}</span>
+          <span>{{new Date(selectedItem.createDate).toLocaleDateString("fa")}}</span>
+          </span>
+          <span>
+            
+            <span class="title">{{`مهلت ارسال درخواست تا:`}}</span>
+            <span>{{new Date(selectedItem.expireDate).toLocaleDateString("fa")}}</span>
+
+          </span>
+        </div>
         <img
           class="mainImage"
           :src="`https://test.mmc.ir/${selectedItem.image}`"
@@ -589,5 +606,19 @@ div#contentNewsModal .mainImage {
 .cardPhoneNumber span {
   display: flex;
   align-items: center;
+}
+
+.headerNews {
+  display: flex;
+  width: 100%;
+  flex-direction: row-reverse;
+  gap: 10px;
+  border-bottom: 1px solid #1213;
+  padding-bottom: 10px;
+}
+
+.headerNews .title {
+  opacity: 0.8;
+  direction: rtl;
 }
 </style>

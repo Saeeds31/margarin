@@ -240,7 +240,7 @@
         </div>
         <div class="infoGroup">
           <div>
-            <span>کد سامانه تجارت :</span>
+            <span>کد نقش سامانه جامع تجارت ایران :</span>
             <p>
               {{ item.samaneTejaratCode }}
             </p>
