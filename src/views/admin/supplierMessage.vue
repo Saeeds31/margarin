@@ -10,27 +10,29 @@
       </template>
     </b-overlay>
     <div class="filters">
-      <b-button variant="primary" @click="showModalFunction"
+      <!-- <b-button variant="primary" @click="showModalFunction"
         >ارسال پیام
-      </b-button>
+      </b-button> -->
     </div>
     <div v-if="items" class="mainTable">
       <table class="table table-hover">
         <tr class="trHeader">
           <th>پیام</th>
+          <th>عنوان خبر</th>
           <th>زمان ارسال</th>
-          <th>پاسخ سیستم</th>
+          <th>جزئیات گفتگو </th>
         </tr>
         <tr class="trDetail" v-for="item in items" :key="item.id">
           <td>
             {{ item.message }}
           </td>
+          <td>{{item.newsTitle}}</td>
           <td>
             {{ item.createDate }}
           </td>
           <td>
-            <i class="fa fa-check" v-if="!item.forAdmin"></i>
-          </td>
+            <b-button variant="primary" @click="showDetail(item)">مشاهده</b-button>
+             </td>
         </tr>
       </table>
     </div>
@@ -44,11 +46,22 @@
       @close="resetModal()"
       :title="mode == 'create' ? 'افزودن ' + title : ' مشاهده ' + title"
     >
-      <b-form-group label="پیام" class="headerStyle">
-        <b-form-textarea v-model="message" placeholder="پیام را وارد کنید">
-        </b-form-textarea>
-      </b-form-group>
-      <b-button variant="primary" @click="sendMessage()"> ارسال پیام </b-button>
+    <div id="messageContent">
+      <div id="messages">
+        <p v-for="(message,index) in messages" :key="index" :class="{'supplierMessage':message.forAdmin==true}">
+          {{message.message}}
+        </p>
+      </div>
+      <div id="sendMessageBox">
+
+        <b-form-group label="پیام" class="headerStyle">
+          <b-form-textarea v-model="message" placeholder="پیام را وارد کنید">
+          </b-form-textarea>
+        </b-form-group>
+        <b-button variant="primary" @click="sendMessage()"> ارسال پیام </b-button>
+      </div>
+
+    </div>
     </b-modal>
   </div>
 </template>
@@ -81,6 +94,8 @@ export default {
   data() {
     return {
       showModal: false,
+      selectedItem:"",
+      messages:"",
       headers: [
         {
           style: "col-12",
@@ -122,7 +137,7 @@ export default {
 
       title: " پیام ها",
       editedId: null,
-      apiRoute: "SupplierMessage/GetUserMessage",
+      apiRoute: "SupplierMessage/GetUserInbox",
     };
   },
   mounted() {
@@ -139,6 +154,7 @@ export default {
       let pack = {
         userId: this.userId,
         message: this.message,
+        newsId:this.selectedItem.newsId,
         isRead: false,
         forAdmin: true,
         replyTo: null,
@@ -155,13 +171,20 @@ export default {
           this.$toast.error(err.response.data.message);
         });
     },
-    showModalFunction() {
-      this.showModal = true;
-      setTimeout(() => {
-        document
-          .getElementById("blogModal___BV_modal_content_")
-          .removeAttribute("tabindex");
-      });
+    showDetail(item) {
+      this.selectedItem=item;
+      this.$toast.warning("درحال دریافت اطلاعات...")
+      this.$axios.get(`SupplierMessage/GetUserMessage?newsId=${item.newsId}`).then(res=>{
+        this.messages=res.data.data;
+        this.showModal = true;
+        setTimeout(() => {
+          document
+            .getElementById("blogModal___BV_modal_content_")
+            .removeAttribute("tabindex");
+        });
+      }).catch(err=>{
+        this.$toast.error(err.response.data.message)
+      })
     },
   },
 };
@@ -170,5 +193,25 @@ export default {
 .headerStyle {
   direction: rtl;
   text-align: right;
+}
+div#messages p.supplierMessage {
+  align-self: end;
+  background: #0088cc;
+}
+div#messages {
+  display: flex;
+  flex-direction: column-reverse;
+}
+div#messages p {
+  background: yellowgreen;
+  width: 350px;
+  color: white;
+  align-self: start;
+  text-align: right;
+  padding: 8px;
+  border-radius: 8px;
+  direction: rtl;
+  font-size: 16px;
+  white-space: pre-wrap;
 }
 </style>

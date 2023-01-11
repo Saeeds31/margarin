@@ -104,7 +104,7 @@
               class="tableButtons"
               v-if="header.modal"
               variant="info"
-              @click="callCallBack(customeFiledCallBack?item[customeFiledCallBack]:item.id)"
+              @click="callCallBack(customeFiledCallBack?customeFiledCallBack=='item'?item:item[customeFiledCallBack]:item.id)"
               >{{header.buttonModalTitle}}</b-button
             >
             <b-button

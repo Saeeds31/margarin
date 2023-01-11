@@ -16,7 +16,7 @@
       <s-table
         @callModalFromTable="callModalFromTable"
         v-model="items"
-        customeFiledCallBack="userId"
+        customeFiledCallBack="item"
         @showEditModal="showEditModal"
         :settings="settings"
         @deleteItem="deleteItem"
@@ -113,6 +113,7 @@ export default {
         english: {},
         both: {},
       },
+      newsId:"",
       userId:null,
       title: "تامین کنندگان",
       editedId: null,
@@ -137,9 +138,10 @@ export default {
     },
   },
   methods: {
-    callModalFromTable(userId) {
+    callModalFromTable(item) {
       this.sendModal=true;
-      this.userId=userId;
+      this.userId=item.userId;
+      this.newsId=item.newsId;
       
      
     },
@@ -147,6 +149,7 @@ export default {
       let pack = {
         userId: this.userId,
         message: this.message,
+        newsId:this.newsId,
         forAdmin:false,
         isRead:false,
         replyTo:null,

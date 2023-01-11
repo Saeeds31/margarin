@@ -48,6 +48,9 @@
                 <b-button variant="primary" @click="showReqModal(item)" 
                   >ارسال درخواست</b-button
                 >
+                <b-button variant="warning" @click="showModalMessageModalFunction(item)" 
+                  >ارسال پیام</b-button
+                >
               </div>
             </div>
           </div>
@@ -164,18 +167,33 @@
         <b-button variant="success" @click="setReq()">ارسال درخواست</b-button>
       </div>
     </b-modal>
+    <b-modal
+    id="blogModal"
+    hide-footer
+    ref="blogModal"
+    no-close-on-backdrop
+    v-model="showModalMessageModal"
+    @close="resetModal()"
+    title="ارسال پیام"
+  >
+    <b-form-group label="پیام" class="headerStyle">
+      <b-form-textarea v-model="message" placeholder="پیام را وارد کنید">
+      </b-form-textarea>
+    </b-form-group>
+    <b-button variant="primary" @click="sendMessage()"> ارسال پیام </b-button>
+  </b-modal>
   </div>
 </template>
 <script>
 // import the styles
 import adminMixin from "@/libraries/adminController.js";
-import { BModal, BButton, BOverlay, BSpinner, BFormFile } from "bootstrap-vue";
+import { BModal, BButton, BOverlay, BSpinner, BFormFile,BFormGroup,BFormTextarea } from "bootstrap-vue";
 export default {
   mixins: [adminMixin],
   components: {
     BModal,
     BFormFile,
-    BButton,
+    BButton,BFormGroup,BFormTextarea,
     BOverlay,
     BSpinner,
   },
@@ -183,14 +201,46 @@ export default {
     return {
       resumeFileFile: null,
       items: null,
+      showModalMessageModal:false,
       showModal: false,
       isSuccess: "falsefalse",
-
+      message:"",
+      newsId:null,
       showNewsModal: false,
       selectedItem: null,
+      userId:""
     };
   },
   methods: {
+    sendMessage(item) {
+      let pack = {
+        userId: this.userId,
+        message: this.message,
+        newsId:this.newsId,
+        isRead: false,
+        forAdmin: true,
+        replyTo: null,
+      };
+      this.$axios
+        .post(`SupplierMessage`, pack)
+        .then((res) => {
+          this.$toast.success("پیام شما با موفقیت ارسال شد");
+          this.message = "";
+          this.showModalMessageModal = false;
+        })
+        .catch((err) => {
+          this.$toast.error(err.response.data.message);
+        });
+    },
+    showModalMessageModalFunction(item) {
+      this.newsId=item.id;
+      this.showModalMessageModal = true;
+      setTimeout(() => {
+        document
+          .getElementById("blogModal___BV_modal_content_")
+          .removeAttribute("tabindex");
+      });
+    },
     showNews(item) {
       this.showNewsModal = true;
       this.selectedItem = item;
@@ -252,6 +302,8 @@ export default {
     },
   },
   mounted() {
+    this.getId();
+
     this.$axios
       .get("Supplier/GetRelatedNews")
       .then((res) => {
@@ -564,7 +616,7 @@ div#contentNewsModal .mainImage {
 }
 .links {
     display: flex;
-    justify-content: space-between;
+    gap:8px;
 }
 .cardImg {
   width:150px;
@@ -620,5 +672,9 @@ div#contentNewsModal .mainImage {
 .headerNews .title {
   opacity: 0.8;
   direction: rtl;
+}
+.headerStyle {
+  direction: rtl;
+  text-align: right;
 }
 </style>
