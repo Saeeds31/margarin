@@ -189,7 +189,7 @@ export default {
          name : "آگهی به صورت پیش فرض برای مناقصه ثبت میشود",
           type: "boolean",
           multiData: false,
-          placeholder: "حراج است؟",
+          placeholder: "مزایده است؟",
           disable:true,
           key: "isAuction",
         },

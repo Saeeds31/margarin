@@ -24,7 +24,7 @@
         فیلتر سازی بر اساس :
       </h4>
       <div>
-        <label for="isAuctionTrue">حراج</label>
+        <label for="isAuctionTrue">مزایده</label>
         <input type="checkbox" v-model="isAuctionTrue" id="isAuctionTrue" />
       </div>
       <div>
@@ -36,7 +36,7 @@
       <template v-if="items&&items.length">
         <div class="SecendCardStyle" v-for="item in items" :key="item">
         <a class="card_link">
-          <div class="contenCard" data-aos="fade-in">
+          <div class="contenCard">
             <img
               class="cardImg"
               :src="`https://test.mmc.ir/${item.image}`"
@@ -265,7 +265,7 @@ export default {
           });
       }else{
         this.$axios
-          .get(`SuppliersNews/GetByAuctionFilter?isAuction=${this.isAuctionTrue==true?true:false}`)
+          .get(`SuppliersNews/GetByAuctionFilter?isAuction=${this.isAuctionTrue==true?true:false}&PageNumber=1&PageSize=100`)
           .then((res) => {
             this.isSuccess = true;
             this.items = res.data.data;
@@ -734,7 +734,7 @@ div#contentNewsModal .mainImage {
   display: flex;
   width: 100%;
   flex-direction: row-reverse;
-  gap: 10px;
+  gap: 5%;
   border-bottom: 1px solid #1213;
   padding-bottom: 10px;
 }

@@ -214,7 +214,7 @@
             <label for="">ایمیل :<span>*</span></label>
             <input
               type="email"
-              placeholder="نام کاربری شما خواهد بود"
+              placeholder="yourEmail@domain.com"
               v-model="email"
               class="supplierInput input"
               id=""
@@ -315,6 +315,7 @@
               type="tel"
               v-model="phoneNumber"
               name=""
+              placeholder="09120001234"
               class="supplierInput input"
               id=""
             />
@@ -322,7 +323,7 @@
 
           <div class="div">
             <label for=""> شماره ثابت :<span>*</span></label>
-            <input type="number" v-model="phone" class="supplierInput input" id="" />
+            <input placeholder="02123456789" type="number" v-model="phone" class="supplierInput input" id="" />
           </div>
         </div>
 
@@ -434,7 +435,7 @@
 
           <div class="div">
             <label for=""> شماره نماینده اول :</label>
-            <input type="number" v-model="agent1Phone" class="supplierInput input" id="" />
+            <input placeholder="09120001234" type="number" v-model="agent1Phone" class="supplierInput input" id="" />
           </div>
         </div>
         <div v-if="isCompany" class="supplierInputGroup">
@@ -450,8 +451,8 @@
           </div>
 
           <div class="div">
-            <label for=""> شماره نماینده دوم :</label>
-            <input type="number" v-model="agent2Phone" class="supplierInput input" id="" />
+            <label  for=""> شماره نماینده دوم :</label>
+            <input placeholder="09120001234" type="number" v-model="agent2Phone" class="supplierInput input" id="" />
           </div>
         </div>
        
