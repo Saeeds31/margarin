@@ -1332,7 +1332,7 @@ AAAAAElFTkSuQmCC"
        :class="{ activeRoute: $route.name == 'supplierNewsList' }"
        to="/admin-panel/supplier/news"
      >
-       <span> مشاهده اخبار <i class="fa fa-blog"></i></span
+       <span> مشاهده آگهی <i class="fa fa-blog"></i></span
      ></router-link>
        
      <router-link

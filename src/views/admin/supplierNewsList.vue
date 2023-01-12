@@ -19,8 +19,22 @@
     <a id="notSuccessMessage" v-else-if="isSuccess == 'falsefalse'">
       درحال دریافت اطلاعات شما
     </a>
+    <div id="selectOption">
+      <h4>
+        فیلتر سازی بر اساس :
+      </h4>
+      <div>
+        <label for="isAuctionTrue">حراج</label>
+        <input type="checkbox" v-model="isAuctionTrue" id="isAuctionTrue" />
+      </div>
+      <div>
+        <label for="isAuctionFalse">مناقصه</label>
+        <input type="checkbox" v-model="isAuctionFalse" id="isAuctionFalse" />
+      </div>
+    </div>
     <div v-if="items != null && items.length > 0" class="container">
-      <div class="SecendCardStyle" v-for="item in items" :key="item">
+      <template v-if="items&&items.length">
+        <div class="SecendCardStyle" v-for="item in items" :key="item">
         <a class="card_link">
           <div class="contenCard" data-aos="fade-in">
             <img
@@ -30,9 +44,12 @@
             />
             <div class="cardbox">
               <div class="topCardBox">
-                
-                <p style="opacity: 0.5;text-align: left; font-size:12px;">
-                  {{item.code+" - "+new Date(item.createDate).toLocaleDateString("fa")}}
+                <p style="opacity: 0.5; text-align: left; font-size: 12px">
+                  {{
+                    item.code +
+                    " - " +
+                    new Date(item.createDate).toLocaleDateString("fa")
+                  }}
                 </p>
                 <p>{{ item.title_fa }}</p>
                 <!-- <img class="logo" :src="item.logo" :alt="item.title_fa" /> -->
@@ -42,13 +59,15 @@
                 <p>{{ item.short_description }}</p>
               </div>
               <div class="links">
-                <b-button variant="info" @click="showNews(item)" 
+                <b-button variant="info" @click="showNews(item)"
                   >مشاهده خبر</b-button
                 >
-                <b-button variant="primary" @click="showReqModal(item)" 
+                <b-button variant="primary" @click="showReqModal(item)"
                   >ارسال درخواست</b-button
                 >
-                <b-button variant="warning" @click="showModalMessageModalFunction(item)" 
+                <b-button
+                  variant="warning"
+                  @click="showModalMessageModalFunction(item)"
                   >ارسال پیام</b-button
                 >
               </div>
@@ -56,7 +75,8 @@
           </div>
         </a>
       </div>
-     
+      </template>
+      <p v-else>موردی یافت نشد</p>
     </div>
 
     <!-- <div v-if="items != null && items.length > 0" class="mainTable">
@@ -108,20 +128,20 @@
       <div v-if="selectedItem" id="contentNewsModal">
         <div class="headerNews">
           <span>
-            
-          <span class="title">{{`  عنوان:`}}</span>
-          <span>{{selectedItem.title_fa}}</span>
+            <span class="title">{{ `  عنوان:` }}</span>
+            <span>{{ selectedItem.title_fa }}</span>
           </span>
           <span>
-            
-          <span class="title">{{`تاریخ درج خبر:`}}</span>
-          <span>{{new Date(selectedItem.createDate).toLocaleDateString("fa")}}</span>
+            <span class="title">{{ `تاریخ درج خبر:` }}</span>
+            <span>{{
+              new Date(selectedItem.createDate).toLocaleDateString("fa")
+            }}</span>
           </span>
           <span>
-            
-            <span class="title">{{`مهلت ارسال درخواست تا:`}}</span>
-            <span>{{new Date(selectedItem.expireDate).toLocaleDateString("fa")}}</span>
-
+            <span class="title">{{ `مهلت ارسال درخواست تا:` }}</span>
+            <span>{{
+              new Date(selectedItem.expireDate).toLocaleDateString("fa")
+            }}</span>
           </span>
         </div>
         <img
@@ -132,16 +152,21 @@
         <div class="vhtmlContent">
           <div v-html="selectedItem.description_fa" />
         </div>
-        <div class="d-flex justify-content-between ">
+        <div class="d-flex justify-content-between">
           <b-button
-          class="setReq"
-          variant="success"
-          @click="showReqModal(selectedItem)"
-          >ارسال درخواست</b-button
-        >
-        <a class="btn btn-primary ml-1" v-if="selectedItem.requirementFile" :href="`https://test.mmc.ir/${selectedItem.requirementFile}`" target="_blank">
-        دریافت مدارک مورد نیاز 
-        </a>
+            class="setReq"
+            variant="success"
+            @click="showReqModal(selectedItem)"
+            >ارسال درخواست</b-button
+          >
+          <a
+            class="btn btn-primary ml-1"
+            v-if="selectedItem.requirementFile"
+            :href="`https://test.mmc.ir/${selectedItem.requirementFile}`"
+            target="_blank"
+          >
+            دریافت مدارک مورد نیاز
+          </a>
         </div>
       </div>
     </b-modal>
@@ -168,32 +193,42 @@
       </div>
     </b-modal>
     <b-modal
-    id="blogModal"
-    hide-footer
-    ref="blogModal"
-    no-close-on-backdrop
-    v-model="showModalMessageModal"
-    @close="resetModal()"
-    title="ارسال پیام"
-  >
-    <b-form-group label="پیام" class="headerStyle">
-      <b-form-textarea v-model="message" placeholder="پیام را وارد کنید">
-      </b-form-textarea>
-    </b-form-group>
-    <b-button variant="primary" @click="sendMessage()"> ارسال پیام </b-button>
-  </b-modal>
+      id="blogModal"
+      hide-footer
+      ref="blogModal"
+      no-close-on-backdrop
+      v-model="showModalMessageModal"
+      @close="resetModal()"
+      title="ارسال پیام"
+    >
+      <b-form-group label="پیام" class="headerStyle">
+        <b-form-textarea v-model="message" placeholder="پیام را وارد کنید">
+        </b-form-textarea>
+      </b-form-group>
+      <b-button variant="primary" @click="sendMessage()"> ارسال پیام </b-button>
+    </b-modal>
   </div>
 </template>
 <script>
 // import the styles
 import adminMixin from "@/libraries/adminController.js";
-import { BModal, BButton, BOverlay, BSpinner, BFormFile,BFormGroup,BFormTextarea } from "bootstrap-vue";
+import {
+  BModal,
+  BButton,
+  BOverlay,
+  BSpinner,
+  BFormFile,
+  BFormGroup,
+  BFormTextarea,
+} from "bootstrap-vue";
 export default {
   mixins: [adminMixin],
   components: {
     BModal,
     BFormFile,
-    BButton,BFormGroup,BFormTextarea,
+    BButton,
+    BFormGroup,
+    BFormTextarea,
     BOverlay,
     BSpinner,
   },
@@ -201,22 +236,51 @@ export default {
     return {
       resumeFileFile: null,
       items: null,
-      showModalMessageModal:false,
+      showModalMessageModal: false,
       showModal: false,
       isSuccess: "falsefalse",
-      message:"",
-      newsId:null,
+      message: "",
+      newsId: null,
       showNewsModal: false,
       selectedItem: null,
-      userId:""
+      userId: "",
+      isAuctionFalse: false,
+      isAuctionTrue: false,
     };
   },
   methods: {
+    handlerRequest() {
+      // isAuctionFalseisAuctionTrue
+      this.isSuccess = "falsefalse";
+      if ((this.isAuctionTrue == true && this.isAuctionFalse == true)||(this.isAuctionTrue == false && this.isAuctionFalse == false)) {
+        this.$axios
+          .get("Supplier/GetRelatedNews")
+          .then((res) => {
+            this.isSuccess = true;
+            this.items = res.data.data;
+          })
+          .catch((err) => {
+            this.isSuccess = false;
+            this.$toast.error(err.response.data.message);
+          });
+      }else{
+        this.$axios
+          .get(`SuppliersNews/GetByAuctionFilter?isAuction=${this.isAuctionTrue==true?true:false}`)
+          .then((res) => {
+            this.isSuccess = true;
+            this.items = res.data.data;
+          })
+          .catch((err) => {
+            this.isSuccess = false;
+            this.$toast.error(err.response.data.message);
+          });
+      }
+    },
     sendMessage(item) {
       let pack = {
         userId: this.userId,
         message: this.message,
-        newsId:this.newsId,
+        newsId: this.newsId,
         isRead: false,
         forAdmin: true,
         replyTo: null,
@@ -233,7 +297,7 @@ export default {
         });
     },
     showModalMessageModalFunction(item) {
-      this.newsId=item.id;
+      this.newsId = item.id;
       this.showModalMessageModal = true;
       setTimeout(() => {
         document
@@ -315,10 +379,18 @@ export default {
         this.$toast.error(err.response.data.message);
       });
   },
+  watch: {
+    isAuctionTrue() {
+      this.handlerRequest();
+    },
+    isAuctionFalse() {
+      this.handlerRequest();
+    },
+  },
 };
 </script>
 <style scoped>
-.mainContentAdmin{
+.mainContentAdmin {
   margin: auto;
 }
 </style>
@@ -440,7 +512,6 @@ div#contentNewsModal .mainImage {
   display: none;
 }
 
-
 #notSuccessMessage {
   position: fixed;
   left: 0;
@@ -542,7 +613,7 @@ div#contentNewsModal .mainImage {
   text-transform: uppercase;
   text-decoration: none;
   transition: 0.3s;
-  background:rgb(6 14 104);
+  background: rgb(6 14 104);
   cursor: pointer;
 }
 .card__button:hover {
@@ -569,8 +640,8 @@ div#contentNewsModal .mainImage {
   text-decoration: none;
 }
 .vhtmlContent {
-    direction: rtl;
-    text-align: right;
+  direction: rtl;
+  text-align: right;
 }
 .SecendCardStyle {
   display: grid;
@@ -579,7 +650,7 @@ div#contentNewsModal .mainImage {
   border-radius: 10px;
   margin: 1rem 0;
   border: 1px solid #80808075;
-    width: 100%;
+  width: 100%;
 }
 
 .contenCard {
@@ -592,10 +663,9 @@ div#contentNewsModal .mainImage {
   width: 100%;
   padding: 1rem;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   justify-content: space-between;
   height: 150px;
-
 }
 
 .topCardBox {
@@ -609,21 +679,21 @@ div#contentNewsModal .mainImage {
 }
 .topCardBox p {
   font-weight: bold;
-  color:black;
+  color: black;
   width: 100%;
   direction: rtl;
   text-align: right;
 }
 .links {
-    display: flex;
-    gap:8px;
+  display: flex;
+  gap: 8px;
 }
 .cardImg {
-  width:150px;
+  width: 150px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   object-fit: cover;
-  height:150px;
+  height: 150px;
 }
 
 .cardText {
@@ -633,7 +703,7 @@ div#contentNewsModal .mainImage {
 
 .cardText p {
   font-size: 14px;
-  color:black;
+  color: black;
 }
 
 .location {
@@ -676,5 +746,22 @@ div#contentNewsModal .mainImage {
 .headerStyle {
   direction: rtl;
   text-align: right;
+}
+div#selectOption h4 {
+  direction: rtl;
+}
+div#selectOption div * {
+  margin: 0;
+}
+div#selectOption div {
+  display: flex;
+  gap: 8px;
+}
+div#selectOption {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  align-items: center;
+  gap: 16px;
 }
 </style>
