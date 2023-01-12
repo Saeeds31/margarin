@@ -60,7 +60,7 @@
               </div>
               <div class="links">
                 <b-button variant="info" @click="showNews(item)"
-                  >مشاهده خبر</b-button
+                  >مشاهده آگهی</b-button
                 >
                 <b-button variant="primary" @click="showReqModal(item)"
                   >ارسال درخواست</b-button
@@ -142,6 +142,12 @@
             <span>{{
               new Date(selectedItem.expireDate).toLocaleDateString("fa")
             }}</span>
+          </span>
+          <span>
+            <span class="title">نوع آگهی :</span>
+            <span>
+              {{selectedItem.isAuction==true?"مزایده":"مناقصه"}}
+            </span>
           </span>
         </div>
         <img
