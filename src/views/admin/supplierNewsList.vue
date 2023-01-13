@@ -271,7 +271,7 @@ export default {
           });
       }else{
         this.$axios
-          .get(`SuppliersNews/GetByAuctionFilter?isAuction=${this.isAuctionTrue==true?true:false}&PageNumber=1&PageSize=100`)
+          .get(`SuppliersNews/GetRelatedNewsByAuction?isAuction=${this.isAuctionTrue==true?true:false}`)
           .then((res) => {
             this.isSuccess = true;
             this.items = res.data.data;
