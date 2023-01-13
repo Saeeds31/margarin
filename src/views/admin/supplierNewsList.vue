@@ -271,7 +271,7 @@ export default {
           });
       }else{
         this.$axios
-          .get(`SuppliersNews/GetRelatedNewsByAuction?isAuction=${this.isAuctionTrue==true?true:false}`)
+          .get(`Supplier/GetRelatedNewsByAuction?isAuction=${this.isAuctionTrue==true?true:false}`)
           .then((res) => {
             this.isSuccess = true;
             this.items = res.data.data;
