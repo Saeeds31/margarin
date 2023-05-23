@@ -135,6 +135,12 @@ div#logoPanel {
     font-family: 'yekan-bold';
 }
 
+.filters .btn-warning {
+    padding: 10px 20px;
+    box-shadow: -3px 8px 10px #f6ff0024;
+    font-family: 'yekan-bold';
+}
+
 .SForm .englishTab .col-form-label {
     text-align: left;
     direction: ltr;

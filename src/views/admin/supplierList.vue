@@ -179,6 +179,15 @@
         <p>اطلاعاتی برای نمایش وجود ندارد</p>
       </div>
     </div>
+    <div v-if="items != null && totalPages > 1">
+      <div id="pagination">
+        <pagination
+          @pageChanged="pageChanged"
+          :totalPages="totalPages"
+          :currentPage="currentPage"
+        />
+      </div>
+    </div>
     <b-modal
       id="categoryModal"
       hide-footer
@@ -240,7 +249,7 @@
         </div>
         <div class="infoGroup">
           <div>
-            <span>کد نقش سامانه جامع تجارت ایران :</span>
+            <span> امع تجارت ایران :</span>
             <p>
               {{ item.samaneTejaratCode }}
             </p>
@@ -322,8 +331,10 @@
 </template>
 <script>
 import { BModal, BButton, BOverlay, BSpinner } from "bootstrap-vue";
+import pagination from "@/components/front/shared/pagination.vue";
+
 export default {
-  components: { BModal, BButton, BOverlay, BSpinner },
+  components: { BModal, BButton, BOverlay, BSpinner, pagination },
   data() {
     return {
       items: null,
@@ -334,9 +345,18 @@ export default {
       item: null,
       userId: null,
       message: "",
+      currentPage: 1,
+      totalPages: 1,
     };
   },
   methods: {
+    pageChanged(page) {
+      this.$router.replace({
+        path: this.$route.path,
+        query: { ...this.$route.query, page: page },
+      });
+      this.loadItems(page)
+    },
     report(item) {
       this.$axios
         .get(`SuppliersNews/GetSupplierRequestsReport?id=${item.id}`, {
@@ -423,11 +443,18 @@ export default {
       this.showModal = false;
       this.item = null;
     },
-    loadItems() {
-      this.$axios.get(this.apiRoute).then((res) => {
-        this.status = false;
-        this.items = res.data.data;
-      });
+    loadItems(page) {
+      let header = {};
+      header["Access-Control-Expose-Headers"] = "X-Pagination";
+      this.$axios
+        .get(this.apiRoute + `?PageNumber=${page}&PageSize=20`, header)
+        .then((res) => {
+          let paginationData = JSON.parse(res.headers["x-pagination"]);
+          this.totalPages = paginationData.TotalPages;
+          this.currentPage = paginationData.CurrentPage;
+          this.status = false;
+          this.items = res.data.data;
+        });
     },
     adminConfirm(id, status) {
       this.$axios
@@ -442,7 +469,12 @@ export default {
     },
   },
   mounted() {
-    this.loadItems();
+    if (this.$route.query.page) {
+      this.currentPage = this.$route.query.page;
+    } else {
+      this.currentPage = 1;
+    }
+    this.loadItems(this.currentPage);
   },
   watch: {
     item(newVal) {

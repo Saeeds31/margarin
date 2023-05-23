@@ -72,6 +72,9 @@
             <span v-if="header.type == 'file'">
               {{item[header.key] }}
             </span>
+            <span v-if="header.type == 'date'">
+              {{new Date(item[header.key]).toLocaleDateString('fa') }}
+            </span>
           </td>
           <td
             v-if="header.type == 'setting' && hiddenButton == false"

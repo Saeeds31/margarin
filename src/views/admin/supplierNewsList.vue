@@ -51,7 +51,9 @@
                     new Date(item.createDate).toLocaleDateString("fa")
                   }}
                 </p>
-                <p>{{ item.title_fa }}</p>
+                <p>{{ item.title_fa }}
+                  <span class="isAuction">{{ item.isAuction==true?'مزایده':'مناقصه' }}</span>
+                </p>
                 <!-- <img class="logo" :src="item.logo" :alt="item.title_fa" /> -->
               </div>
 
@@ -769,5 +771,15 @@ div#selectOption {
   width: 100%;
   align-items: center;
   gap: 16px;
+}
+span.isAuction {
+  color: white;
+  background: red;
+  padding: 4px 8px;
+  border-radius: 4px 8px;
+  position: relative;
+  right: 10px;
+  bottom: 11px;
+  font-size: 15px;
 }
 </style>

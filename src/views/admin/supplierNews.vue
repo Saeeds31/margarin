@@ -9,8 +9,9 @@
         </div>
       </template>
     </b-overlay>
-    <div class="filters">
+    <div class="filters d-flex align-items-center " style="gap:12px" >
       <b-button variant="primary" @click="showModalFunction">افزودن </b-button>
+      <b-button variant="warning" @click="getReport()">گزارش </b-button>
     </div>
     <div v-if="items" class="mainTable">
       <s-table
@@ -41,16 +42,20 @@
       :title="mode == 'create' ? 'افزودن ' + title : ' مشاهده ' + title"
     >
       <s-inputs
+      v-if="newsCode"
         :disabled="disabled"
         @submit="submit"
         :mode="mode"
         :folderRoute="'weblogs'"
         :bigData="bigData"
         :settings="settings"
-        :headers="headers.filter((item)=>{return item.show_in_Form!=false})"
+        :headers="
+          headers.filter((item) => {
+            return item.show_in_Form != false;
+          })
+        "
       />
     </b-modal>
-
   </div>
 </template>
 <script>
@@ -81,6 +86,7 @@ export default {
           multiData: false,
           name: "کد خبر",
           key: "code",
+          disable:true
         },
         {
           style: "col-6",
@@ -88,12 +94,12 @@ export default {
           placeholder: "اولویت خبر را وارد کنید",
           type: "select",
           multiData: false,
-          name: "کد خبر",
           key: "code",
           multiple: false,
           name: "اولویت بندی خبر",
           key: "priority",
           selectIN: "priorityList",
+         
         },
         {
           style: "col-12",
@@ -104,7 +110,7 @@ export default {
           name: "عنوان خبر",
           key: "title",
         },
-        
+
         {
           style: "col-12",
           show_in_table: false,
@@ -183,14 +189,23 @@ export default {
           name: "تعداد درخواست ها",
           key: "requestCount",
         },
+
+        {
+          style: "col-6",
+          show_in_table: true,
+          show_in_Form: false,
+          type: "date",
+          name: "تاریخ خبر ",
+          key: "createDate",
+        },
         {
           style: "col-6",
           show_in_table: false,
-         name : "آگهی به صورت پیش فرض برای مناقصه ثبت میشود",
+          name: "آگهی به صورت پیش فرض برای مناقصه ثبت میشود",
           type: "boolean",
           multiData: false,
           placeholder: "مزایده است؟",
-          disable:true,
+          disable: true,
           key: "isAuction",
         },
 
@@ -229,6 +244,7 @@ export default {
         },
       ],
       pageSize: 10,
+      newsCode:null,
       bigData: {
         persian: {},
         english: {},
@@ -247,8 +263,11 @@ export default {
     }
     this.getId();
     this.loadItems(this.currentPage);
-    this.settings['priorityList']=
-    [ {id:1,label:'بالا'}, {id:2,label:'معمولی'},{id:3,label:'پایین'}]
+    this.settings["priorityList"] = [
+      { id: 1, label: "بالا" },
+      { id: 2, label: "معمولی" },
+      { id: 3, label: "پایین" },
+    ];
 
     this.settings["allCategories"] = [];
     this.$axios.get("/SuppliersCategory").then((res) => {
@@ -264,13 +283,37 @@ export default {
     },
   },
   methods: {
+    getReport() {
+      this.$axios.get("SuppliersNews/GetSupplierNewsReports",{
+          headers: {
+            "Content-Disposition": "attachment; filename=XYZ.xlsx",
+            "Content-Type":
+              "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          },
+          responseType: "arraybuffer",
+        }).then((response) => {
+          const temp = window.URL.createObjectURL(new Blob([response.data]));
+          const link = document.createElement("a");
+          link.href = temp;
+          link.setAttribute("download", "file.xlsx"); //or any other extension
+          document.body.appendChild(link);
+          link.click();
+        });
+    },
     callModalFromTable(newsId) {
-      // 
-      this.$router.push(`/admin-panel/supplier-requests?newsId=${newsId}`)
-     
+      //
+      this.$router.push(`/admin-panel/supplier-requests?newsId=${newsId}`);
     },
     showModalFunction() {
       this.showModal = true;
+      this.newsCode=null;
+      this.$axios.get('SuppliersNews/GetLastNewsCode').then(
+        (res)=>{
+
+          this.bigData.both.code=res.data.data;
+          this.newsCode=res.data.data
+        }
+      )
       setTimeout(() => {
         document
           .getElementById("blogModal___BV_modal_content_")
