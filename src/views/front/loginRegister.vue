@@ -24,44 +24,65 @@
       /></router-link>
       <p>با ما در پروفایل کاربری همراه و همکار باشید</p>
       <!-- <h1>ســـامانه سهامـــداران مارگاریـــن</h1> -->
-      <div id="userNameBox" class="width80">
-        <img src="@/assets/front/images/userInput.svg" alt="نام کاربری" />
-        <input
-          v-model="username"
-          placeholder="نام کاربری خود را وارد کنید"
-          type="text"
-        />
-      </div>
-      <div id="passWordBox" class="width80">
-        <img
-          id="icon"
-          src="@/assets/front/images/passInput.svg"
-          alt="نام کاربری"
-        />
-        <input
-          @keypress.enter="login"
-          v-model="password"
-          placeholder="کلمه عبور خود را وارد کنید"
-          type="password"
-        />
-        <div id="forgetPass">
-          <span> بازیابی کلمه عبور </span>
-          <img src="@/assets/front/images/forgetInput.svg" alt="نام کاربری" />
+      <template v-if="!showForgetForm">
+        <div id="userNameBox" class="width80">
+          <img src="@/assets/front/images/userInput.svg" alt="نام کاربری" />
+          <input
+            v-model="username"
+            placeholder="نام کاربری خود را وارد کنید"
+            type="text"
+          />
         </div>
-      </div>
-      <div
-        id="loginRegisterOption"
-        class="d-flex width80 justify-content-between align-items-center"
-      >
-        <router-link to="/supplier-register"> ثبت نام کنید </router-link>
+        <div id="passWordBox" class="width80">
+          <img
+            id="icon"
+            src="@/assets/front/images/passInput.svg"
+            alt="نام کاربری"
+          />
+          <input
+            @keypress.enter="login"
+            v-model="password"
+            placeholder="کلمه عبور خود را وارد کنید"
+            type="password"
+          />
+          <div @click="showForgetForm = true" id="forgetPass">
+            <span> بازیابی کلمه عبور </span>
+            <img src="@/assets/front/images/forgetInput.svg" alt="نام کاربری" />
+          </div>
+        </div>
+        <div
+          id="loginRegisterOption"
+          class="d-flex width80 justify-content-between align-items-center"
+        >
+          <router-link to="/supplier-register"> ثبت نام کنید </router-link>
+          <roundedButton
+            @buttonClicked="login()"
+            :class="{ disabled: disable }"
+            :type="'button'"
+            :title="'ورود به پنل مارگارین'"
+            :buttonType="'button'"
+          />
+        </div>
+      </template>
+      <template v-else>
+        <label for="forggetPassInput">نام کاربری یا شماره تماس خود را وارد کنید</label>
+        <div id="userNameBox" class="width80">
+          <img src="@/assets/front/images/userInput.svg" alt="نام کاربری" />
+          <input
+          id="forggetPassInput"
+            v-model="forgetInfo"
+            placeholder="نام کاربری خود را وارد کنید"
+            type="text"
+          />
+        </div>
         <roundedButton
-          @buttonClicked="login()"
-          :class="{ disabled: disable }"
+          @buttonClicked="sendForget()"
+          :class="{ disabled: disableForget }"
           :type="'button'"
-          :title="'ورود به پنل مارگارین'"
+          title="بازیابی رمز"
           :buttonType="'button'"
         />
-      </div>
+      </template>
       <router-link
         id="gotoHome"
         class="d-flex align-items-center justify-content-between width30"
@@ -91,20 +112,20 @@
   </main>
 </template>
 <script>
-import rolemixin from "@/libraries/adminRole.js"
+import rolemixin from "@/libraries/adminRole.js";
 import Logo from "@/components/front/shared/logo.vue";
 import roundedButton from "@/components/front/shared/roundedButton.vue";
 export default {
   components: {
     Logo,
-    roundedButton
+    roundedButton,
   },
-  mixins:[rolemixin],
+  mixins: [rolemixin],
   methods: {
-    getPath(roles){
-      let roleArr=roles.split(",");
-      let res=this.roleData[roleArr[0]].split(",")[0]
-      return res
+    getPath(roles) {
+      let roleArr = roles.split(",");
+      let res = this.roleData[roleArr[0]].split(",")[0];
+      return res;
     },
     login() {
       const formData = new FormData();
@@ -118,18 +139,16 @@ export default {
           this.$cookie.set("Authorization", response.data.access_token);
           this.$axios.defaults.headers.common["authorization"] =
             "Bearer " + response.data.access_token;
-            this.$axios.get('Users/GetRole').then(res=>{
-              this.$store.commit('adminPanelRole',res.data.data);
-              this.$cookie.set('adminPanelRole',res.data.data)
-                this.$toast.success("به پنل ادمین خوش آمدید");
-              if(res.data.data.toLowerCase().includes('admin')){
-
-                this.$router.push("/admin-panel/about-us");
-              }else  {
-                this.$router.push(this.getPath(res.data.data));
-
-              }
-            })
+          this.$axios.get("Users/GetRole").then((res) => {
+            this.$store.commit("adminPanelRole", res.data.data);
+            this.$cookie.set("adminPanelRole", res.data.data);
+            this.$toast.success("به پنل ادمین خوش آمدید");
+            if (res.data.data.toLowerCase().includes("admin")) {
+              this.$router.push("/admin-panel/about-us");
+            } else {
+              this.$router.push(this.getPath(res.data.data));
+            }
+          });
         })
         .catch((error) => {
           this.disable = false;
@@ -548,10 +567,30 @@ export default {
           8
         );
       }
-    }
+    },
+    async sendForget() {
+      this.disableForget = true;
+      try {
+        let res = await this.$axios.get(`Users/RestoreForgotPassword?UserName=${this.forgetInfo}`);
+        this.$toast.success(res.data.data);
+        this.showForgetForm=false;
+      } catch (error) {
+        this.$toast.warning("خطایی در صحت اطلاعات رخ داده است");
+
+      } finally {
+        this.disableForget = false;
+      }
+    },
   },
   data() {
-    return { username: null, password: null, disable: false };
+    return {
+      disableForget: false,
+      showForgetForm: false,
+      username: null,
+      password: null,
+      forgetInfo:null,
+      disable: false,
+    };
   },
   metaInfo() {
     return {
@@ -561,14 +600,16 @@ export default {
       meta: [
         {
           name: "description",
-          content: this.aboutUsData ? this.aboutUsData.aboutUs.meta : false
+          content: this.aboutUsData ? this.aboutUsData.aboutUs.meta : false,
         },
         {
           property: "og:title",
-          content: this.$cookie.get("ltrTheme") ? "login Margarin" : "درباره ما"
+          content: this.$cookie.get("ltrTheme")
+            ? "login Margarin"
+            : "درباره ما",
         },
-        { name: "robots", content: "index,follow" }
-      ]
+        { name: "robots", content: "index,follow" },
+      ],
     };
   },
   mounted() {
@@ -577,7 +618,7 @@ export default {
   },
   beforeDestroy() {
     window.removeEventListener("resize", this.setStyle);
-  }
+  },
 };
 </script>
 <style scoped>
