@@ -182,7 +182,7 @@ export default {
         });
 
         this.$store.commit("setMultiSliderNews", ml);
-        this.$store.commit("setSingleSliderNews", sl);
+        this.$store.commit("setSingleSliderNews", sl.length!=0?sl:ml.slice(0,3));
       } else {
         this.$store.commit("setMultiSliderNews", newVal.news);
         this.$store.commit("setSingleSliderNews", newVal.news);

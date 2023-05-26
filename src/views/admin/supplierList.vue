@@ -9,7 +9,9 @@
         </div>
       </template>
     </b-overlay>
-
+    <div class="filters d-flex align-items-center" style="gap: 12px">
+      <b-button variant="primary" @click="getReport()">گزارش </b-button>
+    </div>
     <div v-if="items" class="mainTable">
       <table v-if="items.length > 0" class="table table-hover">
         <tr class="trHeader">
@@ -350,16 +352,9 @@ export default {
     };
   },
   methods: {
-    pageChanged(page) {
-      this.$router.replace({
-        path: this.$route.path,
-        query: { ...this.$route.query, page: page },
-      });
-      this.loadItems(page)
-    },
-    report(item) {
+    getReport() {
       this.$axios
-        .get(`SuppliersNews/GetSupplierRequestsReport?id=${item.id}`, {
+        .get("SuppliersNews/GetSupplierNewsReports", {
           headers: {
             "Content-Disposition": "attachment; filename=XYZ.xlsx",
             "Content-Type":
@@ -374,10 +369,39 @@ export default {
           link.setAttribute("download", "file.xlsx"); //or any other extension
           document.body.appendChild(link);
           link.click();
-        })
-        .catch((err) => {
-          this.$toast.error(err.response.data.message);
         });
+    },
+    pageChanged(page) {
+      this.$router.replace({
+        path: this.$route.path,
+        query: { ...this.$route.query, page: page },
+      });
+      this.loadItems(page);
+    },
+    async report(item) {
+
+      try {
+        let response = await this.$axios.get(
+          `SuppliersNews/GetSupplierRequestsReport?id=${item.id}`,
+          {
+            headers: {
+              "Content-Disposition": "attachment; filename=XYZ.xlsx",
+              "Content-Type":
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            },
+            responseType: "arraybuffer",
+          }
+        );
+        const temp = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = temp;
+        link.setAttribute("download", "file.xlsx"); //or any other extension
+        document.body.appendChild(link);
+        link.click();
+      } catch (error) {
+      this.$toast.error("هیچ رکوردی ثبت نشده است")
+
+      }
     },
     sendMessage() {
       let pack = {
@@ -447,7 +471,7 @@ export default {
       let header = {};
       header["Access-Control-Expose-Headers"] = "X-Pagination";
       this.$axios
-        .get(this.apiRoute + `?PageNumber=${page}&PageSize=20`, header)
+        .get(this.apiRoute + `?PageNumber=${page}&PageSize=15`, header)
         .then((res) => {
           let paginationData = JSON.parse(res.headers["x-pagination"]);
           this.totalPages = paginationData.TotalPages;
