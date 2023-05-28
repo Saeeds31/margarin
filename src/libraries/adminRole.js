@@ -31,8 +31,7 @@ export default {
         Magazine: "/admin-panel/magazine-introduction,/admin-panel/magazine",
         Marketing: "/admin-panel/magazine-introduction,/admin-panel/magazine",
         Supplier:"/admin-panel/supplier/message,/admin-panel/supplier/profile,/admin-panel/supplier/news,/admin-panel/supplier/change-password",
-        Supplier_managment:"/admin-panel/supplier/message,/admin-panel/supplier/profile,/admin-panel/supplier/news,/admin-panel/supplier/change-password"
-        
+        Supplier_managment:"/admin-panel/supplier-list,/admin-panel/supplier-news,/admin-panel/supplier-message,/admin-panel/supplier-news-categories"  
       },
     };
   },
