@@ -9,7 +9,7 @@
         </div>
       </template>
     </b-overlay>
-    <div class="filters d-flex align-items-center " style="gap:12px" >
+    <div class="filters d-flex align-items-center" style="gap: 12px">
       <b-button variant="primary" @click="showModalFunction">افزودن </b-button>
       <b-button variant="warning" @click="getReport()">گزارش </b-button>
     </div>
@@ -42,7 +42,7 @@
       :title="mode == 'create' ? 'افزودن ' + title : ' مشاهده ' + title"
     >
       <s-inputs
-      v-if="newsCode"
+        v-if="newsCode"
         :disabled="disabled"
         @submit="submit"
         :mode="mode"
@@ -86,7 +86,7 @@ export default {
           multiData: false,
           name: "کد خبر",
           key: "code",
-          disable:true
+          disable: true,
         },
         {
           style: "col-6",
@@ -99,7 +99,6 @@ export default {
           name: "اولویت بندی خبر",
           key: "priority",
           selectIN: "priorityList",
-         
         },
         {
           style: "col-12",
@@ -244,7 +243,7 @@ export default {
         },
       ],
       pageSize: 10,
-      newsCode:null,
+      newsCode: null,
       bigData: {
         persian: {},
         english: {},
@@ -284,14 +283,16 @@ export default {
   },
   methods: {
     getReport() {
-      this.$axios.get("SuppliersNews/GetSupplierNewsReports",{
+      this.$axios
+        .get("SuppliersNews/GetSupplierNewsReports", {
           headers: {
             "Content-Disposition": "attachment; filename=XYZ.xlsx",
             "Content-Type":
               "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
           },
           responseType: "arraybuffer",
-        }).then((response) => {
+        })
+        .then((response) => {
           const temp = window.URL.createObjectURL(new Blob([response.data]));
           const link = document.createElement("a");
           link.href = temp;
@@ -304,16 +305,29 @@ export default {
       //
       this.$router.push(`/admin-panel/supplier-requests?newsId=${newsId}`);
     },
+    showEditModal(id) {
+      this.editedId = id;
+      this.status = true;
+      this.$axios.get(`${this.apiRoute}/${id}`).then((response) => {
+        this.newsCode = response.data.data.code;
+        this.status = false;
+        this.item = this.convertToBigData(response.data.data);
+      });
+      this.mode = "edit";
+      this.showModal = true;
+      setTimeout(() => {
+        document
+          .getElementById("blogModal___BV_modal_content_")
+          .removeAttribute("tabindex");
+      });
+    },
     showModalFunction() {
       this.showModal = true;
-      this.newsCode=null;
-      this.$axios.get('SuppliersNews/GetLastNewsCode').then(
-        (res)=>{
-
-          this.bigData.both.code=res.data.data;
-          this.newsCode=res.data.data
-        }
-      )
+      this.newsCode = null;
+      this.$axios.get("SuppliersNews/GetLastNewsCode").then((res) => {
+        this.bigData.both.code = res.data.data;
+        this.newsCode = res.data.data;
+      });
       setTimeout(() => {
         document
           .getElementById("blogModal___BV_modal_content_")
